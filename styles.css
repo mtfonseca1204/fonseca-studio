@@ -1631,8 +1631,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .projects-grid-3 {
-    grid-template-columns: repeat(3, 1fr);
-    max-width: 1200px;
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 1400px;
     margin: 0 auto;
 }
 
@@ -3786,7 +3786,7 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .projects-grid-3 {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         gap: 16px;
     }
     
@@ -3830,12 +3830,14 @@ h1, h2, h3, h4, h5, h6 {
         order: -1;
     }
     
+    /* Services video - full width on tablet portrait */
     .video-placeholder {
         aspect-ratio: 16 / 9;
-        max-height: 300px;
+        max-height: none;
+        width: 100%;
     }
     
-    /* Keep 2 cards on tablet portrait for Latest Drops */
+    /* 2x2 grid for Latest Drops on tablet portrait */
     .projects-grid-3 {
         grid-template-columns: repeat(2, 1fr);
         gap: 16px;
