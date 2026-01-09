@@ -13,8 +13,7 @@ echo "🚀 Pushing to GitHub..."
 git push origin main
 
 echo "⚡ Triggering Vercel deployment..."
-curl -X POST "https://api.vercel.com/v1/integrations/deploy/prj_ubdKFJSt8RMMJrBfnc1i24Nmokgp/SrnoIVhrYi"
+curl -X POST "https://api.vercel.com/v1/integrations/deploy/prj_ubdKFJSt8RMMJrBfnc1i24Nmokgp/ItisN61sDL"
 
 echo ""
 echo "✅ Done! Check https://fonseca.studio in a few minutes."
-
