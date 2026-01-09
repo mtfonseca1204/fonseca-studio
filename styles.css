@@ -1229,9 +1229,8 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.6;
     color: var(--text-gray);
     letter-spacing: -0.01em;
-    max-width: 800px;
+    max-width: 600px;
     margin: 0 auto;
-    white-space: nowrap;
 }
 
 .text-highlight {
