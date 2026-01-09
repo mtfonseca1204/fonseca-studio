@@ -438,22 +438,19 @@ function initFormInteractions() {
                 });
                 
                 if (response.ok) {
-                    submitBtn.classList.add('success');
-                    submitBtn.innerHTML = `
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <path d="M16.667 5L7.5 14.167L3.333 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                        <span>Message Sent!</span>
-                    `;
+                    // Show success modal
+                    const modal = document.getElementById('successModal');
+                    if (modal) {
+                        modal.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    }
                     
-                    setTimeout(() => {
-                        this.reset();
-                        formGroups.forEach(group => group.classList.remove('has-value'));
-                        submitBtn.innerHTML = originalContent;
-                        submitBtn.classList.remove('success');
-                        submitBtn.disabled = false;
-                        submitBtn.style.pointerEvents = '';
-                    }, 3000);
+                    // Reset form
+                    this.reset();
+                    formGroups.forEach(group => group.classList.remove('has-value'));
+                    submitBtn.innerHTML = originalContent;
+                    submitBtn.disabled = false;
+                    submitBtn.style.pointerEvents = '';
                 } else {
                     throw new Error('Form submission failed');
                 }
@@ -706,3 +703,30 @@ function initCursorTrail() {
         });
     });
 }
+
+// =====================================================
+// SUCCESS MODAL
+// =====================================================
+function closeSuccessModal() {
+    const modal = document.getElementById('successModal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+// Close modal on backdrop click
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('successModal');
+    if (modal) {
+        const backdrop = modal.querySelector('.modal-backdrop');
+        backdrop.addEventListener('click', closeSuccessModal);
+        
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeSuccessModal();
+            }
+        });
+    }
+});
