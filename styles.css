@@ -3780,8 +3780,14 @@ h1, h2, h3, h4, h5, h6 {
    RESPONSIVE DESIGN
    ===================================================== */
 @media (max-width: 1024px) {
+    /* Latest Drops - keep 3 cards on tablet landscape, 2 on portrait */
     .projects-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .projects-grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
     }
     
     .all-projects-grid {
@@ -3796,6 +3802,17 @@ h1, h2, h3, h4, h5, h6 {
     
     .related-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Services video - horizontal on tablet */
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .video-placeholder {
+        aspect-ratio: 16 / 9;
+        max-height: 350px;
     }
     
     .gallery-grid-3 {
@@ -3815,7 +3832,13 @@ h1, h2, h3, h4, h5, h6 {
     
     .video-placeholder {
         aspect-ratio: 16 / 9;
-        max-height: 400px;
+        max-height: 300px;
+    }
+    
+    /* Keep 2 cards on tablet portrait for Latest Drops */
+    .projects-grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
     }
     
     .service-item {
