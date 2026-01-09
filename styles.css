@@ -843,7 +843,7 @@ h1, h2, h3, h4, h5, h6 {
     left: 0;
     right: 0;
     z-index: 1000;
-    padding: 24px 40px;
+    padding: 20px 32px;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -865,12 +865,13 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
     max-width: 1400px;
     margin: 0 auto;
+    gap: 10px;
 }
 
 .nav-left {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
 }
 
 .nav-link {
@@ -913,6 +914,7 @@ h1, h2, h3, h4, h5, h6 {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    margin: 0 -20px;
 }
 
 .nav-logo a {
@@ -922,7 +924,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-logo-img {
-    height: 28px;
+    height: 24px;
     width: auto;
     transition: opacity 0.3s ease;
 }
@@ -948,15 +950,15 @@ h1, h2, h3, h4, h5, h6 {
 .nav-right {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 8px;
 }
 
 .nav-cta {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 500;
     color: var(--text-dark);
     text-decoration: none;
-    padding: 10px 20px;
+    padding: 8px 16px;
     border: 1px solid var(--border-color);
     border-radius: 100px;
     transition: all 0.3s ease;
@@ -980,6 +982,7 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
     transition: all 0.3s ease;
     position: relative;
+    flex-shrink: 0;
 }
 
 .dark-mode-toggle:hover {
@@ -1107,7 +1110,7 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 120px 0 80px;
+    padding: 80px 0 60px;
     overflow: hidden;
     background: #ffffff;
 }
@@ -1170,12 +1173,16 @@ h1, h2, h3, h4, h5, h6 {
     max-width: 1000px;
     margin: 0 auto;
     padding: 0 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
 }
 
 .hero-availability {
     display: flex;
     justify-content: center;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
     opacity: 0;
     animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
 }
@@ -1184,8 +1191,9 @@ h1, h2, h3, h4, h5, h6 {
     background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
     border: none;
     color: #ffffff;
-    padding: 10px 20px;
+    padding: 8px 18px;
     font-weight: 500;
+    font-size: 13px;
     box-shadow: 0 4px 20px rgba(34, 197, 94, 0.3);
 }
 
@@ -1200,7 +1208,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-logo {
-    margin-bottom: 16px;
+    margin-bottom: 8px;
     opacity: 0;
     animation: heroLogoReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
 }
@@ -1220,7 +1228,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .logo-image {
     width: 100%;
-    max-width: 950px;
+    max-width: 800px;
     height: auto;
     display: block;
     margin: 0 auto;
@@ -1232,7 +1240,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-tagline {
-    margin-bottom: 24px;
+    margin-bottom: 16px;
     opacity: 0;
     animation: heroTextReveal 1s cubic-bezier(0.16, 1, 0.3, 1) 0.9s forwards;
 }
@@ -1330,7 +1338,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .hero-actions {
     display: flex;
-    gap: 20px;
+    gap: 12px;
     justify-content: center;
     flex-wrap: wrap;
     opacity: 0;
@@ -1349,15 +1357,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-hero {
-    padding: 20px 40px;
-    font-size: 18px;
+    padding: 16px 32px;
+    font-size: 16px;
     font-weight: 600;
     text-decoration: none;
     border-radius: 10px;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     display: inline-flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     position: relative;
     overflow: hidden;
 }
@@ -3926,6 +3934,53 @@ h1, h2, h3, h4, h5, h6 {
 /* =====================================================
    RESPONSIVE DESIGN
    ===================================================== */
+@media (max-width: 1440px) {
+    .navbar {
+        padding: 18px 28px;
+    }
+    
+    .nav-container {
+        gap: 8px;
+    }
+    
+    .nav-right {
+        gap: 6px;
+    }
+    
+    .nav-cta {
+        padding: 7px 14px;
+        font-size: 13px;
+    }
+    
+    .nav-logo-img {
+        height: 22px;
+    }
+    
+    .hero {
+        padding: 70px 0 50px;
+    }
+    
+    .logo-image {
+        max-width: 700px;
+    }
+    
+    .hero-availability {
+        margin-bottom: 12px;
+    }
+    
+    .hero-logo {
+        margin-bottom: 6px;
+    }
+    
+    .hero-tagline {
+        margin-bottom: 12px;
+    }
+    
+    .hero-actions {
+        gap: 10px;
+    }
+}
+
 @media (max-width: 1024px) {
     /* Latest Drops - keep 3 cards on tablet landscape, 2 on portrait */
     .projects-grid {
