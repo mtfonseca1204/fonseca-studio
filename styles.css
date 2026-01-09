@@ -3908,6 +3908,26 @@ h1, h2, h3, h4, h5, h6 {
         display: flex;
     }
     
+    .hero-tagline p {
+        white-space: normal;
+        max-width: 100%;
+        font-size: 16px;
+    }
+    
+    .hero-grid {
+        width: 800px;
+        height: 800px;
+    }
+    
+    .logo-image {
+        max-width: 80%;
+    }
+    
+    .scroll-indicator {
+        bottom: 20px;
+        right: 20px;
+    }
+    
     .projects-grid {
         grid-template-columns: 1fr;
         gap: 32px;
@@ -4023,6 +4043,21 @@ h1, h2, h3, h4, h5, h6 {
     
     .logo-image {
         max-width: 90%;
+    }
+    
+    .hero-tagline p {
+        white-space: normal;
+        max-width: 100%;
+        font-size: 14px;
+    }
+    
+    .hero-grid {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .scroll-indicator {
+        display: none;
     }
     
     .testimonial-card {
