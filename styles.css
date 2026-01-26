@@ -37,6 +37,81 @@
 }
 
 /* =====================================================
+   PRELOADER - Dennis Snellenberg Style
+   ===================================================== */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    background-color: #ffffff;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.9s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.preloader.complete {
+    transform: translateY(-100vh);
+    transform: translateY(-100dvh);
+}
+
+.preloader-word-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 120px;
+    overflow: hidden;
+}
+
+.preloader-word {
+    position: absolute;
+    font-size: clamp(42px, 10vw, 90px);
+    font-weight: 500;
+    color: #000000;
+    letter-spacing: -0.03em;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    white-space: nowrap;
+}
+
+.preloader-word.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.preloader-word.exit {
+    opacity: 0;
+    transform: translateY(-50px);
+}
+
+/* Dark mode preloader */
+[data-theme="dark"] .preloader {
+    background-color: #0a0a0a;
+}
+
+[data-theme="dark"] .preloader-word {
+    color: #ffffff;
+}
+
+/* Hide scrollbar during preload */
+body.loading {
+    overflow: hidden;
+}
+
+/* After preloader finishes */
+body.loaded .preloader {
+    pointer-events: none;
+}
+
+/* =====================================================
    GLOBAL ANIMATIONS
    ===================================================== */
 @keyframes fadeIn {

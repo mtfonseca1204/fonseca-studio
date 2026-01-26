@@ -4,6 +4,7 @@
 
 // Wait for DOM to be ready
 document.addEventListener('DOMContentLoaded', () => {
+    initPreloader();
     initDarkMode();
     initMobileMenu();
     initNavbarScroll();
@@ -20,6 +21,61 @@ document.addEventListener('DOMContentLoaded', () => {
     initCursorTrail();
     updateYear();
 });
+
+// =====================================================
+// PRELOADER - Dennis Snellenberg Style
+// =====================================================
+function initPreloader() {
+    const preloader = document.getElementById('preloader');
+    if (!preloader) return;
+    
+    const words = preloader.querySelectorAll('.preloader-word');
+    if (!words.length) return;
+    
+    // Add loading class to body
+    document.body.classList.add('loading');
+    
+    let currentWord = 0;
+    const wordDuration = 350; // Time each word is visible (ms)
+    const transitionDelay = 150; // Delay before showing next word (ms)
+    
+    // Ensure first word is visible
+    words[0].classList.add('active');
+    
+    // Start cycling after first word is shown
+    setTimeout(() => {
+        const wordCycler = setInterval(() => {
+            // Exit current word
+            words[currentWord].classList.remove('active');
+            words[currentWord].classList.add('exit');
+            
+            // Move to next word
+            currentWord++;
+            
+            if (currentWord < words.length) {
+                // Activate new word with smooth delay
+                setTimeout(() => {
+                    words[currentWord].classList.add('active');
+                }, transitionDelay);
+            } else {
+                // All words shown - complete preloader
+                clearInterval(wordCycler);
+                
+                // Soft exit
+                setTimeout(() => {
+                    preloader.classList.add('complete');
+                    document.body.classList.remove('loading');
+                    document.body.classList.add('loaded');
+                    
+                    // Remove from DOM after slide animation
+                    setTimeout(() => {
+                        preloader.style.display = 'none';
+                    }, 1000);
+                }, 500);
+            }
+        }, wordDuration + transitionDelay);
+    }, 300);
+}
 
 // =====================================================
 // DARK MODE
