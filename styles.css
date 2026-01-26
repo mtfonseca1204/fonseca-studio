@@ -1210,7 +1210,7 @@ h1, h2, h3, h4, h5, h6 {
 .hero-logo {
     margin-bottom: 8px;
     opacity: 0;
-    animation: heroLogoReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+    animation: fadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
 }
 
 @keyframes heroLogoReveal {
