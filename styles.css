@@ -3639,12 +3639,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .project-gallery {
     background: var(--bg-light);
-    padding: 0 0 100px;
+    padding: 60px 0 100px;
 }
 
 .gallery-full {
     width: 100%;
-    margin-bottom: 0;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
 }
 
 .gallery-placeholder {
@@ -3656,12 +3658,22 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
     height: auto;
     display: block;
+    border-radius: 12px;
+}
+
+/* Fix for images with edge artifacts */
+.gallery-img-crop-right {
+    object-fit: cover;
+    object-position: left center;
+    width: calc(100% + 5px);
+    margin-right: -5px;
 }
 
 .gallery-video {
     width: 100%;
     height: auto;
     display: block;
+    border-radius: 12px;
 }
 
 .gallery-1 { background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%); }
