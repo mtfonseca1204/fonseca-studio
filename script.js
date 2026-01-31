@@ -19,8 +19,145 @@ document.addEventListener('DOMContentLoaded', () => {
     initBackgroundEffects();
     initSpotlightCards();
     initCursorTrail();
+    initHeroClock();
+    initHeroGrid();
     updateYear();
 });
+
+// =====================================================
+// HERO CLOCK - Removed (not used in current design)
+// =====================================================
+function initHeroClock() {
+    // Clock removed from hero design
+}
+
+// =====================================================
+// HERO DOT GRID - Clean dots with breathing & hover
+// =====================================================
+function initHeroGrid() {
+    const canvas = document.getElementById('heroGrid');
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    const spacing = 40;
+    const dotRadius = 1;
+    let dots = [];
+    let mouseX = -1000;
+    let mouseY = -1000;
+    let animationId;
+    let time = 0;
+    
+    function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        const cols = Math.ceil(canvas.width / spacing) + 1;
+        const rows = Math.ceil(canvas.height / spacing) + 1;
+        
+        dots = [];
+        for (let i = 0; i <= cols; i++) {
+            for (let j = 0; j <= rows; j++) {
+                dots.push({
+                    x: i * spacing,
+                    y: j * spacing,
+                    hoverOpacity: 0,
+                    pulseOffset: Math.random() * Math.PI * 2,
+                    pulseSpeed: 0.4 + Math.random() * 0.5
+                });
+            }
+        }
+    }
+    
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        const color = isDark ? '255,255,255' : '0,0,0';
+        
+        dots.forEach(dot => {
+            // Breathing animation
+            const breathe = (Math.sin(time * dot.pulseSpeed + dot.pulseOffset) + 1) / 2;
+            const breatheOpacity = breathe * (isDark ? 0.08 : 0.05);
+            
+            // Base + breathe + hover
+            const baseOpacity = isDark ? 0.1 : 0.06;
+            const hoverOpacity = dot.hoverOpacity * (isDark ? 0.5 : 0.35);
+            const finalOpacity = baseOpacity + breatheOpacity + hoverOpacity;
+            
+            // Draw dot
+            ctx.beginPath();
+            ctx.arc(dot.x, dot.y, dotRadius, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(${color}, ${finalOpacity})`;
+            ctx.fill();
+        });
+        
+        // Edge fade
+        const gradient = ctx.createRadialGradient(
+            canvas.width / 2, canvas.height / 2, 0,
+            canvas.width / 2, canvas.height / 2, Math.max(canvas.width, canvas.height) * 0.55
+        );
+        const bgColor = isDark ? '10,10,10' : '255,255,255';
+        gradient.addColorStop(0, `rgba(${bgColor}, 0)`);
+        gradient.addColorStop(0.6, `rgba(${bgColor}, 0)`);
+        gradient.addColorStop(1, `rgba(${bgColor}, 1)`);
+        
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+    
+    function update() {
+        time += 0.02;
+        const radius = 100;
+        
+        dots.forEach(dot => {
+            const dx = mouseX - dot.x;
+            const dy = mouseY - dot.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            
+            let target = 0;
+            if (dist < radius) {
+                target = Math.pow(1 - dist / radius, 2);
+            }
+            
+            dot.hoverOpacity += (target - dot.hoverOpacity) * 0.1;
+            
+            if (target === 0) {
+                dot.hoverOpacity *= 0.95;
+            }
+        });
+    }
+    
+    function animate() {
+        update();
+        draw();
+        animationId = requestAnimationFrame(animate);
+    }
+    
+    const hero = document.querySelector('.hero');
+    if (hero) {
+        hero.addEventListener('mousemove', (e) => {
+            const rect = hero.getBoundingClientRect();
+            mouseX = e.clientX - rect.left;
+            mouseY = e.clientY - rect.top;
+        });
+        
+        hero.addEventListener('mouseleave', () => {
+            mouseX = -1000;
+            mouseY = -1000;
+        });
+    }
+    
+    window.addEventListener('resize', resize);
+    resize();
+    animate();
+    
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            cancelAnimationFrame(animationId);
+        } else {
+            animate();
+        }
+    });
+}
 
 // =====================================================
 // PRELOADER - Dennis Snellenberg Style
@@ -286,7 +423,7 @@ function initParallaxEffects() {
 // MAGNETIC BUTTONS
 // =====================================================
 function initMagneticButtons() {
-    const magneticBtns = document.querySelectorAll('.btn-primary, .btn-hero, .cta-button, .btn-submit');
+    const magneticBtns = document.querySelectorAll('.btn-primary, .btn-secondary, .btn-hero, .cta-button, .btn-submit, .magnetic');
     
     magneticBtns.forEach(btn => {
         btn.addEventListener('mousemove', (e) => {
@@ -294,11 +431,24 @@ function initMagneticButtons() {
             const x = e.clientX - rect.left - rect.width / 2;
             const y = e.clientY - rect.top - rect.height / 2;
             
-            btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+            // Stronger magnetic effect
+            const strength = btn.classList.contains('btn-primary') ? 0.25 : 0.15;
+            btn.style.transform = `translate(${x * strength}px, ${y * strength}px)`;
+            
+            // Also move inner text/icon
+            const text = btn.querySelector('.btn-text');
+            const icon = btn.querySelector('.btn-icon');
+            if (text) text.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
+            if (icon) icon.style.transform = `translate(${x * 0.15 + 4}px, ${y * 0.15 - 4}px)`;
         });
 
         btn.addEventListener('mouseleave', () => {
             btn.style.transform = 'translate(0, 0)';
+            
+            const text = btn.querySelector('.btn-text');
+            const icon = btn.querySelector('.btn-icon');
+            if (text) text.style.transform = 'translate(0, 0)';
+            if (icon) icon.style.transform = 'translate(0, 0)';
         });
 
         // Click ripple effect
@@ -382,21 +532,30 @@ function initCounterAnimation() {
 }
 
 function animateCounter(element) {
-    const text = element.textContent;
-    const match = text.match(/([+-]?)(\d+)/);
-    if (!match) return;
+    // Check for data-value attribute first
+    const dataValue = element.getAttribute('data-value');
+    let end, prefix = '', suffix = '';
     
-    const prefix = match[1] || '';
-    const end = parseInt(match[2]);
-    const suffix = text.replace(match[0], '');
-    const duration = 2000;
+    if (dataValue) {
+        end = parseInt(dataValue);
+    } else {
+        const text = element.textContent;
+        const match = text.match(/([+-]?)(\d+)/);
+        if (!match) return;
+        
+        prefix = match[1] || '';
+        end = parseInt(match[2]);
+        suffix = text.replace(match[0], '');
+    }
+    
+    const duration = 1500;
     let start = 0;
     let startTimestamp = null;
     
     const step = (timestamp) => {
         if (!startTimestamp) startTimestamp = timestamp;
         const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-        const easeProgress = 1 - Math.pow(1 - progress, 3); // Ease out cubic
+        const easeProgress = 1 - Math.pow(1 - progress, 4); // Ease out quart
         const current = Math.floor(easeProgress * (end - start) + start);
         element.textContent = prefix + current + suffix;
         

@@ -36,7 +36,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
@@ -130,40 +130,38 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-background">
-            <!-- Premium Grid with Circular Fade -->
-            <div class="hero-grid"></div>
-        </div>
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-availability">
-                    <div class="availability-badge">
-                        <span class="pulse"></span>
-                        <span>Available for new projects</span>
-                    </div>
+        <!-- Interactive Grid Background -->
+        <canvas class="hero-grid-canvas" id="heroGrid"></canvas>
+        <div class="hero-blur-top"></div>
+        
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="title-line"><span class="word">I design</span></span>
+                <span class="title-line"><span class="word">products people</span></span>
+                <span class="title-line"><span class="word">can't stop</span> <span class="word italic">using</span></span>
+            </h1>
+            
+            <p class="hero-sub">Turning complex ideas into intuitive experiences. Every pixel, every interaction — designed to make your users stay.</p>
+            
+            <div class="hero-bottom">
+                <div class="hero-meta">
+                    <span>Based in Rio de Janeiro</span>
+                    <span class="meta-sep">·</span>
+                    <span>Working worldwide</span>
+                    <span class="meta-sep">·</span>
+                    <span class="hero-status"><span class="status-dot"></span>Open for projects</span>
                 </div>
-                <div class="hero-logo">
-                    <img src="Logo-fonseca.png" alt="Fonseca Studio" class="logo-image">
-                </div>
-                <div class="hero-tagline">
-                    <p>UX Designer crafting digital experiences that <span class="text-highlight">users love</span> and <span class="text-highlight">businesses grow</span></p>
-                </div>
-                <div class="hero-actions">
-                    <a href="#work" class="btn-hero btn-primary">
-                        <span>View My Work</span>
+                
+                <a href="#work" class="hero-cta magnetic">
+                    <span class="cta-bg"></span>
+                    <span class="cta-text">See the work</span>
+                    <span class="cta-icon">
                         <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                            <path d="M4.5 9H13.5M13.5 9L9 4.5M13.5 9L9 13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M5 13L13 5M13 5H6M13 5V12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
-                    </a>
-                    <a href="#contact" class="btn-hero btn-secondary">
-                        <span>Start a Project</span>
-                    </a>
-                </div>
+                    </span>
+                </a>
             </div>
-        </div>
-        <div class="scroll-indicator">
-            <span>Scroll to explore</span>
-            <div class="scroll-line"></div>
         </div>
     </section>
 
@@ -185,10 +183,16 @@
                 <a href="project-hedgehog.html" class="project-card">
                     <div class="project-image">
                         <img src="Hedgehog /Hedgehog/Cover Hedgehog main page.png" alt="Hedgehog" class="project-img">
+                        <div class="project-overlay">
+                            <span class="project-view">View Project</span>
+                        </div>
                     </div>
                     <div class="project-info">
                         <span class="project-name">Hedgehog</span>
-                        <span class="project-location">(Web3)</span>
+                        <div class="project-tags">
+                            <span class="project-tag">Web3</span>
+                            <span class="project-tag">Website Design</span>
+                        </div>
                     </div>
                 </a>
 
@@ -196,10 +200,16 @@
                 <a href="project-nora.html" class="project-card">
                     <div class="project-image">
                         <img src="NORA/COVER/Cover nora main page.png" alt="NORA" class="project-img">
+                        <div class="project-overlay">
+                            <span class="project-view">View Project</span>
+                        </div>
                     </div>
                     <div class="project-info">
                         <span class="project-name">NØRA</span>
-                        <span class="project-location">(Branding)</span>
+                        <div class="project-tags">
+                            <span class="project-tag">Branding</span>
+                            <span class="project-tag">Visual Identity</span>
+                        </div>
                     </div>
                 </a>
 
@@ -207,10 +217,16 @@
                 <a href="project-aura.html" class="project-card">
                     <div class="project-image">
                         <img src="AURA/Cover/Cover Aura main page.png" alt="AURA" class="project-img">
+                        <div class="project-overlay">
+                            <span class="project-view">View Project</span>
+                        </div>
                     </div>
                     <div class="project-info">
                         <span class="project-name">AURA</span>
-                        <span class="project-location">(Branding)</span>
+                        <div class="project-tags">
+                            <span class="project-tag">Branding</span>
+                            <span class="project-tag">Visual Identity</span>
+                        </div>
                     </div>
                 </a>
 
@@ -218,10 +234,16 @@
                 <a href="project-caramel.html" class="project-card">
                     <div class="project-image">
                         <img src="Caramel/Cover/Cover Caramel main page.png" alt="Caramel" class="project-img">
+                        <div class="project-overlay">
+                            <span class="project-view">View Project</span>
+                        </div>
                     </div>
                     <div class="project-info">
                         <span class="project-name">Caramel</span>
-                        <span class="project-location">(Web3)</span>
+                        <div class="project-tags">
+                            <span class="project-tag">Web3</span>
+                            <span class="project-tag">Website Design</span>
+                        </div>
                     </div>
                 </a>
             </div>
@@ -389,7 +411,7 @@
         <div class="container">
             <div class="about-grid">
                 <div class="about-image">
-                    <img src="Profile img.jpeg" alt="Matheus Fonseca - UX/UI Designer" class="about-photo">
+                    <img src="Profile img att.png" alt="Matheus Fonseca - UX/UI Designer" class="about-photo">
                 </div>
                 <div class="about-content">
                     <span class="section-label">About Me</span>
@@ -406,8 +428,8 @@
                             <span>Prototyping</span>
                             <span>User Research</span>
                             <span>Design Systems</span>
-                            <span>Product Design</span>
-                            <span>Branding</span>
+                            <span>Website Design</span>
+                            <span>Strategy Design</span>
                             <span>Web3 / DeFi</span>
                         </div>
                     </div>
@@ -471,6 +493,19 @@
                     </div>
                 </div>
 
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Working with Fonseca was a great experience. He took our brand positioning and translated it into a cohesive visual identity system—defining clear standards and templates that made it so much easier to create social media content and apply our brand consistently across different touchpoints. His ability to understand not just what we needed, but why we needed it, made all the difference. Highly recommended."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="Testimunials Photo/Rafael.png" alt="Rafael Queiroz" class="author-avatar-img">
+                        <div class="author-info">
+                            <span class="author-name">Rafael Queiroz</span>
+                            <span class="author-role">Head of Design, Picnic</span>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Duplicate Cards for Infinite Loop -->
                 <div class="testimonial-card">
                     <div class="testimonial-content">
@@ -510,6 +545,19 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Working with Fonseca was a great experience. He took our brand positioning and translated it into a cohesive visual identity system—defining clear standards and templates that made it so much easier to create social media content and apply our brand consistently across different touchpoints. His ability to understand not just what we needed, but why we needed it, made all the difference. Highly recommended."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="Testimunials Photo/Rafael.png" alt="Rafael Queiroz" class="author-avatar-img">
+                        <div class="author-info">
+                            <span class="author-name">Rafael Queiroz</span>
+                            <span class="author-role">Head of Design, Picnic</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -541,6 +589,9 @@
                 <div class="brand-logo-wrapper">
                     <img src="logos to carosel/Vector.svg" alt="Client Logo" class="brand-logo-img">
                 </div>
+                <div class="brand-logo-wrapper">
+                    <img src="logos to carosel/Transparent.space.png" alt="Transparent Space" class="brand-logo-img">
+                </div>
                 <!-- Duplicate for Infinite Loop -->
                 <div class="brand-logo-wrapper">
                     <img src="logos to carosel/Frame 18.svg" alt="Client Logo" class="brand-logo-img">
@@ -559,6 +610,9 @@
                 </div>
                 <div class="brand-logo-wrapper">
                     <img src="logos to carosel/Vector.svg" alt="Client Logo" class="brand-logo-img">
+                </div>
+                <div class="brand-logo-wrapper">
+                    <img src="logos to carosel/Transparent.space.png" alt="Transparent Space" class="brand-logo-img">
                 </div>
             </div>
         </div>
