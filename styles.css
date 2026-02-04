@@ -3600,19 +3600,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .filter-section {
-    padding: 0 0 40px;
+    padding: 24px 0 40px;
     background: var(--bg-white);
-    position: sticky;
-    top: 70px;
-    z-index: 100;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .filter-bar {
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
-    padding: 16px 0;
-    border-bottom: 1px solid var(--border-color);
+    padding: 0;
 }
 
 .filter-btn {
@@ -4833,10 +4830,13 @@ h1, h2, h3, h4, h5, h6 {
         gap: 32px;
     }
     
+    .page-header {
+        padding: 110px 0 40px;
+    }
+    
     .filter-bar {
         overflow-x: auto;
         flex-wrap: nowrap;
-        padding-bottom: 16px;
         -webkit-overflow-scrolling: touch;
     }
     
@@ -4965,6 +4965,11 @@ h1, h2, h3, h4, h5, h6 {
     
     .mobile-link {
         font-size: 20px;
+    }
+    
+    /* Page header adjustment */
+    .page-header {
+        padding: 90px 0 32px;
     }
     
     /* Hero 480px */
