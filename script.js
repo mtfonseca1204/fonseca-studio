@@ -161,6 +161,7 @@ function initHeroGrid() {
 
 // =====================================================
 // PRELOADER - Dennis Snellenberg Style
+// Only shows on first visit or page refresh, not on navigation
 // =====================================================
 function initPreloader() {
     const preloader = document.getElementById('preloader');
@@ -168,6 +169,27 @@ function initPreloader() {
     
     const words = preloader.querySelectorAll('.preloader-word');
     if (!words.length) return;
+    
+    // Check if this is a page navigation (not first visit or refresh)
+    const isPageRefresh = performance.navigation ? 
+        performance.navigation.type === 1 : 
+        performance.getEntriesByType('navigation')[0]?.type === 'reload';
+    
+    const hasSeenPreloader = sessionStorage.getItem('preloaderShown');
+    
+    // Show preloader only on:
+    // 1. First visit (no sessionStorage flag)
+    // 2. Page refresh (isPageRefresh is true)
+    // Skip on page navigation (hasSeenPreloader exists but not a refresh)
+    if (hasSeenPreloader && !isPageRefresh) {
+        // Skip preloader - user is navigating within the site
+        preloader.style.display = 'none';
+        document.body.classList.add('loaded');
+        return;
+    }
+    
+    // Mark that preloader has been shown this session
+    sessionStorage.setItem('preloaderShown', 'true');
     
     // Add loading class to body
     document.body.classList.add('loading');
