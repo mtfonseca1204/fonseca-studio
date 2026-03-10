@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initHeroClock();
     initHeroGrid();
     updateYear();
+    initCaseStudyNav();
 });
 
 // =====================================================
@@ -767,6 +768,63 @@ function updateYear() {
     if (yearElement) {
         yearElement.textContent = new Date().getFullYear();
     }
+}
+
+// =====================================================
+// CASE STUDY - Sticky side nav + active state
+// =====================================================
+function initCaseStudyNav() {
+    const sideNav = document.getElementById('caseSideNav');
+    const caseContent = document.querySelector('.project-case-content');
+    const sections = document.querySelectorAll('.case-section');
+    const heroNav = document.getElementById('projectCaseNav');
+
+    if (!caseContent || !sections.length) return;
+
+    const heroNavLinks = heroNav ? heroNav.querySelectorAll('.case-nav-link') : [];
+    const sideNavLinks = sideNav ? sideNav.querySelectorAll('.case-side-nav-link') : [];
+
+    function getCurrentSection() {
+        let current = '';
+        const scrollY = window.scrollY + 200;
+        sections.forEach(section => {
+            const top = section.offsetTop;
+            const id = section.getAttribute('id');
+            if (scrollY >= top) current = id;
+        });
+        if (!current && sections.length) current = sections[0].getAttribute('id');
+        return current;
+    }
+
+    function updateActiveLink() {
+        const current = getCurrentSection();
+        [heroNavLinks, sideNavLinks].forEach(links => {
+            links.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+            });
+        });
+    }
+
+    function updateSideNavVisibility() {
+        if (!sideNav) return;
+        const contentTop = caseContent.offsetTop - 150;
+        const contentBottom = caseContent.offsetTop + caseContent.offsetHeight - 300;
+        const scrollY = window.scrollY;
+        if (scrollY >= contentTop && scrollY <= contentBottom) {
+            sideNav.classList.add('visible');
+        } else {
+            sideNav.classList.remove('visible');
+        }
+    }
+
+    function onScroll() {
+        updateActiveLink();
+        updateSideNavVisibility();
+    }
+
+    window.addEventListener('scroll', onScroll);
+    window.addEventListener('load', onScroll);
 }
 
 // =====================================================

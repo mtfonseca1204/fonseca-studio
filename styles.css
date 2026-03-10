@@ -3897,6 +3897,278 @@ h1, h2, h3, h4, h5, h6 {
     color: #000000;
 }
 
+/* Case Study Hero - Oleksii Style */
+.project-hero-case .project-hero-tagline {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+}
+
+.project-case-meta {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    padding-top: 48px;
+    margin-top: 48px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.case-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.case-meta-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.case-meta-value {
+    font-size: 15px;
+    font-weight: 500;
+    color: #000000;
+}
+
+/* Case Study Sticky Nav */
+.project-case-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.case-nav-link {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.5);
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 100px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.case-nav-link:hover {
+    color: #000000;
+    border-color: rgba(0, 0, 0, 0.3);
+}
+
+.case-nav-link.active {
+    background: #000000;
+    color: #ffffff;
+    border-color: #000000;
+}
+
+/* Case Study Content Sections */
+.project-case-content {
+    padding: 80px 0 100px;
+    background: var(--bg-white);
+}
+
+.container-narrow {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.case-section {
+    padding: 48px 0;
+    border-bottom: 1px solid var(--border-color);
+    scroll-margin-top: 120px;
+}
+
+.case-section:last-child {
+    border-bottom: none;
+}
+
+.case-section-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.case-section-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 24px;
+    letter-spacing: -0.5px;
+}
+
+.case-section-body p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--text-gray);
+    margin-bottom: 20px;
+}
+
+.case-section-body p:last-child {
+    margin-bottom: 0;
+}
+
+.case-list {
+    list-style: none;
+    margin: 0 0 24px;
+}
+
+.case-list li {
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--text-gray);
+    padding-left: 24px;
+    margin-bottom: 12px;
+    position: relative;
+}
+
+.case-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.case-section-body .file-under-tags {
+    margin-top: 16px;
+}
+
+/* Case section inline gallery */
+.case-section-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 48px;
+}
+
+.case-gallery-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+}
+
+.case-section-gallery .gallery-video,
+.case-section-gallery video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+}
+
+/* Case Study Dark Mode */
+[data-theme="dark"] .project-hero-case .project-hero-tagline {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+[data-theme="dark"] .project-case-meta {
+    border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .case-meta-label {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+[data-theme="dark"] .case-meta-value {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .project-case-nav {
+    border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .case-nav-link {
+    color: rgba(255, 255, 255, 0.5);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+[data-theme="dark"] .case-nav-link:hover {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+[data-theme="dark"] .case-nav-link.active {
+    background: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
+}
+
+/* Sticky Side Nav - Oleksii style (appears when scrolling through sections) */
+.case-side-nav {
+    position: fixed;
+    left: 32px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.case-side-nav.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.case-side-nav-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.case-side-nav-link {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.5);
+    text-decoration: none;
+    padding: 6px 0 6px 14px;
+    border-left: 2px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+    white-space: nowrap;
+}
+
+.case-side-nav-link:hover {
+    color: #000000;
+}
+
+.case-side-nav-link.active {
+    color: #000000;
+    font-weight: 600;
+    border-left-color: #000000;
+}
+
+/* Side nav dark mode */
+[data-theme="dark"] .case-side-nav-link {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+[data-theme="dark"] .case-side-nav-link:hover {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .case-side-nav-link.active {
+    color: #ffffff;
+    border-left-color: #ffffff;
+}
+
+/* Hide side nav on tablet and mobile */
+@media (max-width: 1024px) {
+    .case-side-nav {
+        display: none;
+    }
+}
+
 .back-link-light {
     color: rgba(0, 0, 0, 0.6);
 }
@@ -3906,11 +4178,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .project-hero-title {
-    font-size: clamp(60px, 12vw, 140px);
-    font-weight: 800;
-    letter-spacing: -3px;
-    line-height: 1;
-    margin: 40px 0;
+    font-size: clamp(36px, 6vw, 56px);
+    font-weight: 600;
+    letter-spacing: -1.5px;
+    line-height: 1.15;
+    margin: 28px 0 24px;
     color: #000000;
 }
 
@@ -4666,11 +4938,11 @@ h1, h2, h3, h4, h5, h6 {
         transform: none;
         flex: 0 0 auto;
         margin-right: auto;
-        padding-left: 4px;
+        padding-left: 16px;
     }
     
     .nav-logo a {
-        padding: 10px 12px 10px 0;
+        padding: 10px 16px 10px 0;
     }
     
     .nav-logo-img {
@@ -4850,6 +5122,20 @@ h1, h2, h3, h4, h5, h6 {
         grid-template-columns: 1fr 1fr;
     }
     
+    .project-case-meta {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+    
+    .project-case-nav {
+        gap: 6px;
+    }
+    
+    .case-nav-link {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+    
     .gallery-grid,
     .gallery-grid-3 {
         grid-template-columns: 1fr;
@@ -4873,6 +5159,24 @@ h1, h2, h3, h4, h5, h6 {
         flex-direction: column;
         align-items: flex-start;
         gap: 16px;
+    }
+    
+    .project-case-meta {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .project-case-nav {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 8px;
+        margin-top: 24px;
+    }
+    
+    .case-nav-link {
+        white-space: nowrap;
+        flex-shrink: 0;
     }
     
     .process-steps {
@@ -4926,19 +5230,19 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .navbar {
-        padding: 14px 16px;
+        padding: 14px 20px;
     }
     
     .navbar.scrolled {
-        padding: 12px 16px;
+        padding: 12px 20px;
     }
     
     .nav-logo {
-        padding-left: 2px;
+        padding-left: 12px;
     }
     
     .nav-logo a {
-        padding: 8px 10px 8px 0;
+        padding: 8px 14px 8px 0;
     }
     
     .nav-logo-img {
