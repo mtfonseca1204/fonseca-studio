@@ -5368,3 +5368,68 @@ h1, h2, h3, h4, h5, h6 {
 }
 /* Updated: Thu Jan  8 21:33:09 -03 2026 */
 /* Deploy test: Thu Jan  8 22:07:36 -03 2026 */
+
+/* =====================================================
+   LANGUAGE TOGGLE
+   ===================================================== */
+.language-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px;
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.82);
+}
+
+.language-toggle-btn {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    color: var(--text-dark);
+    min-width: 38px;
+    height: 32px;
+    padding: 0 10px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.language-toggle-btn.active {
+    background: var(--primary-color);
+    color: var(--bg-white);
+}
+
+.navbar-dark .language-toggle {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+.navbar-dark .language-toggle-btn {
+    color: #ffffff;
+}
+
+.navbar-dark .language-toggle-btn.active {
+    background: #ffffff;
+    color: #0f172a;
+}
+
+.language-toggle-mobile {
+    display: none;
+    justify-content: center;
+    margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+    .nav-right .language-toggle {
+        display: none;
+    }
+
+    .language-toggle-mobile {
+        display: inline-flex;
+    }
+}
