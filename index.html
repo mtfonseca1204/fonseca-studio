@@ -17,7 +17,7 @@
     <meta property="og:url" content="https://fonseca.studio/">
     <meta property="og:title" content="Fonseca Studio — Senior UX/UI & Product Designer">
     <meta property="og:description" content="Award-winning designer helping startups and enterprise brands ship world-class digital experiences. Web3, Healthcare, Enterprise.">
-    <meta property="og:image" content="https://fonseca.studio/og-image.png">
+    <meta property="og:image" content="https://fonseca.studio/Profile img att.png">
     <meta property="og:locale" content="en_US">
     <meta property="og:site_name" content="Fonseca Studio">
     
@@ -26,9 +26,10 @@
     <meta name="twitter:url" content="https://fonseca.studio/">
     <meta name="twitter:title" content="Fonseca Studio — Senior UX/UI & Product Designer">
     <meta name="twitter:description" content="Award-winning designer helping startups and enterprise brands ship world-class digital experiences.">
-    <meta name="twitter:image" content="https://fonseca.studio/og-image.png">
+    <meta name="twitter:image" content="https://fonseca.studio/Profile img att.png">
     
     <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="icon" type="image/png" href="Logo-fonseca.png">
     <link rel="apple-touch-icon" href="Logo-fonseca.png">
     <link rel="canonical" href="https://fonseca.studio/">
@@ -36,7 +37,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&family=Bebas+Neue&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
     
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
@@ -67,18 +68,16 @@
     </script>
 </head>
 <body>
-    <!-- Preloader - Dennis Snellenberg Style -->
+    <!-- Preloader -->
     <div class="preloader" id="preloader">
-        <div class="preloader-word-wrapper">
-            <span class="preloader-word active">Hello</span>
-            <span class="preloader-word">Bonjour</span>
-            <span class="preloader-word">स्वागत हे</span>
-            <span class="preloader-word">Ciao</span>
-            <span class="preloader-word">Olá</span>
-            <span class="preloader-word">おい</span>
-            <span class="preloader-word">Hallå</span>
-            <span class="preloader-word">Guten tag</span>
-            <span class="preloader-word">Hallo</span>
+        <div class="preloader-inner">
+            <div class="preloader-name" id="preloaderName">
+                <span class="pl-grotesk">F</span><span class="pl-serif">O</span><span class="pl-block">N</span><span class="pl-cursive">s</span><span class="pl-block">E</span><span class="pl-serif">C</span><span class="pl-accent pl-grotesk">A</span><span class="pl-accent pl-cursive">.</span>
+            </div>
+            <div class="preloader-sub">Product Designer</div>
+            <div class="preloader-line">
+                <div class="preloader-line-fill"></div>
+            </div>
         </div>
     </div>
 
@@ -128,39 +127,100 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <!-- Interactive Grid Background -->
+    <!-- Hero Section — Bento Grid -->
+    <section id="home" class="hero hero--bento">
         <canvas class="hero-grid-canvas" id="heroGrid"></canvas>
-        <div class="hero-blur-top"></div>
-        
-        <div class="hero-content">
-            <h1 class="hero-title">
-                <span class="title-line"><span class="word">I design</span></span>
-                <span class="title-line"><span class="word">products people</span></span>
-                <span class="title-line"><span class="word">can't stop</span> <span class="word italic">using</span></span>
-            </h1>
-            
-            <p class="hero-sub">Turning complex ideas into intuitive experiences. Every pixel, every interaction — designed to make your users stay.</p>
-            
-            <div class="hero-bottom">
-                <div class="hero-meta">
-                    <span>Based in Rio de Janeiro</span>
-                    <span class="meta-sep">·</span>
-                    <span>Working worldwide</span>
-                    <span class="meta-sep">·</span>
-                    <span class="hero-status"><span class="status-dot"></span>Open for projects</span>
+
+        <div class="bento-grid">
+            <!-- Name card -->
+            <div class="bento-card bento-card--name">
+                <div class="bento-name-top">
+                    <span class="bento-tag">Product Designer ®</span>
+                    <span class="bento-tag">Rio de Janeiro, BR</span>
                 </div>
+                <img src="Folder for photos hero/flower.png" alt="" class="bento-flower" aria-hidden="true">
+                <h1 class="bento-headline">
+                    <span class="bento-hi">Hey, I'm</span>
+                    <span class="bento-name-big">Fonseca<span class="bento-accent">.</span></span>
+                </h1>
+            </div>
+
+            <!-- Info + CTAs card -->
+            <div class="bento-card bento-card--info">
+                <p class="bento-desc">Designing digital products where strategy, systems and experience meet. Hackathons winner, former American football competitor, and product designer inspired by fashion, architecture, culture, music and food.</p>
+                <div class="bento-bottom">
+                    <div class="bento-actions">
+                        <a href="#work" class="bento-cta-btn">
+                            <span>Selected Work</span>
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H1M13 1V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </a>
+                        <a href="#about" class="bento-act-link">About</a>
+                        <a href="#contact" class="bento-act-link">Contact</a>
+                    </div>
+                    <div class="bento-avail">
+                        <span class="status-dot"></span>
+                        <span>Available for projects</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Photo slider card -->
+            <div class="bento-card bento-card--slider">
+                <div class="bento-photo-slider" id="bentoSlider">
+                    <img src="Folder for photos hero/thai.jpeg" " alt="Fonseca" class="bento-slide active">
+                    <img src="Folder for photos hero/arg.jpeg" alt="Fonseca" class="bento-slide">
+                    <img src="Folder for photos hero/82696FF8-0EC1-4E97-984A-C4339843AAC9_1_201_a.jpeg" alt="Work" class="bento-slide">
+                    <img src="Folder for photos hero/4E862F38-470A-4852-86A3-320B9C646533_1_105_c.jpeg" alt="Fonseca" class="bento-slide">
                 
-                <a href="#work" class="hero-cta magnetic">
-                    <span class="cta-bg"></span>
-                    <span class="cta-text">See the work</span>
-                    <span class="cta-icon">
-                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                            <path d="M5 13L13 5M13 5H6M13 5V12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </span>
-                </a>
+                </div>
+                <div class="bento-slider-nav">
+                    <button class="bento-slide-dot active" data-idx="0"></button>
+                    <button class="bento-slide-dot" data-idx="1"></button>
+                    <button class="bento-slide-dot" data-idx="2"></button>
+                    <button class="bento-slide-dot" data-idx="3"></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-b-marquee" aria-hidden="true">
+            <div class="hero-b-marquee-track">
+                <span>STRATEGY</span><span class="mq-dot">●</span>
+                <span>SYSTEMS</span><span class="mq-dot">●</span>
+                <span>EXPERIENCE</span><span class="mq-dot">●</span>
+                <span>PRODUCT</span><span class="mq-dot">●</span>
+                <span>DESIGN</span><span class="mq-dot">●</span>
+                <span>WEB3</span><span class="mq-dot">●</span>
+                <span>HEALTHCARE</span><span class="mq-dot">●</span>
+                <span>ENTERPRISE</span><span class="mq-dot">●</span>
+                <span>STRATEGY</span><span class="mq-dot">●</span>
+                <span>SYSTEMS</span><span class="mq-dot">●</span>
+                <span>EXPERIENCE</span><span class="mq-dot">●</span>
+                <span>PRODUCT</span><span class="mq-dot">●</span>
+                <span>DESIGN</span><span class="mq-dot">●</span>
+                <span>WEB3</span><span class="mq-dot">●</span>
+                <span>HEALTHCARE</span><span class="mq-dot">●</span>
+                <span>ENTERPRISE</span><span class="mq-dot">●</span>
+
+                <span>STRATEGY</span><span class="mq-dot">●</span>
+                <span>SYSTEMS</span><span class="mq-dot">●</span>
+                <span>EXPERIENCE</span><span class="mq-dot">●</span>
+                <span>PRODUCT</span><span class="mq-dot">●</span>
+                <span>DESIGN</span><span class="mq-dot">●</span>
+                <span>WEB3</span><span class="mq-dot">●</span>
+                <span>HEALTHCARE</span><span class="mq-dot">●</span>
+                <span>ENTERPRISE</span><span class="mq-dot">●</span>
+                <span>STRATEGY</span><span class="mq-dot">●</span>
+                <span>SYSTEMS</span><span class="mq-dot">●</span>
+                <span>EXPERIENCE</span><span class="mq-dot">●</span>
+                <span>PRODUCT</span><span class="mq-dot">●</span>
+                <span>DESIGN</span><span class="mq-dot">●</span>
+                <span>WEB3</span><span class="mq-dot">●</span>
+                <span>HEALTHCARE</span><span class="mq-dot">●</span>
+                <span>ENTERPRISE</span><span class="mq-dot">●</span>
+
+
+
+
             </div>
         </div>
     </section>
@@ -169,17 +229,16 @@
     <section id="work" class="work-section">
         <div class="container">
             <div class="work-header">
-                <span class="work-label">(Latest drops)</span>
+                <span class="work-label">(Selected work)</span>
                 <a href="projects.html" class="work-see-all">
-                    See all projects
+                    All projects
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                         <path d="M1 13L13 1M13 1H1M13 1V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </a>
             </div>
 
-            <div class="projects-grid projects-grid-3">
-                <!-- Project 1 - Transparent.space Product -->
+            <div class="projects-grid projects-grid-home">
                 <a href="project-transparent-space.html" class="project-card">
                     <div class="project-image">
                         <img src="Cover transparent product main page.png" alt="Transparent.space Product" class="project-img">
@@ -196,7 +255,6 @@
                     </div>
                 </a>
 
-                <!-- Project 2 - Transparent.space Brand -->
                 <a href="project-transparent-space-brand.html" class="project-card">
                     <div class="project-image">
                         <img src="Cover transparent main page.png" alt="Transparent.space Brand" class="project-img">
@@ -208,12 +266,11 @@
                         <span class="project-name">Transparent.space</span>
                         <div class="project-tags">
                             <span class="project-tag">Branding</span>
-                            <span class="project-tag">UI Design</span>
+                            <span class="project-tag">UX/UI Design</span>
                         </div>
                     </div>
                 </a>
 
-                <!-- Project 3 - Hedgehog -->
                 <a href="project-hedgehog.html" class="project-card">
                     <div class="project-image">
                         <img src="Hedgehog /Hedgehog/Cover Hedgehog main page.png" alt="Hedgehog" class="project-img">
@@ -230,7 +287,22 @@
                     </div>
                 </a>
 
-                <!-- Project 4 - Picnic -->
+                <a href="project-aura.html" class="project-card">
+                    <div class="project-image">
+                        <img src="AURA/Cover/Cover Aura main page.png" alt="AURA" class="project-img">
+                        <div class="project-overlay">
+                            <span class="project-view">View Project</span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-name">AURA</span>
+                        <div class="project-tags">
+                            <span class="project-tag">Luxury</span>
+                            <span class="project-tag">Branding</span>
+                        </div>
+                    </div>
+                </a>
+
                 <a href="project-picnic.html" class="project-card">
                     <div class="project-image">
                         <img src="Cover Picnic main page.png" alt="Picnic" class="project-img">
@@ -243,6 +315,22 @@
                         <div class="project-tags">
                             <span class="project-tag">Branding</span>
                             <span class="project-tag">Key Visual</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="project-nora.html" class="project-card">
+                    <div class="project-image">
+                        <img src="NORA/COVER/Cover nora main page.png" alt="NORA" class="project-img">
+                        <div class="project-overlay">
+                            <span class="project-view">View Project</span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-name">NORA</span>
+                        <div class="project-tags">
+                            <span class="project-tag">Bakery</span>
+                            <span class="project-tag">Branding</span>
                         </div>
                     </div>
                 </a>
@@ -295,111 +383,6 @@
                 <div class="services-video">
                     <div class="video-placeholder">
                         <video src="Video main page.webm" autoplay muted loop playsinline></video>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Process Section -->
-    <section class="process-section">
-        <div class="container">
-            <div class="section-intro">
-                <span class="section-label">(Process)</span>
-                <h2 class="section-title">How I work</h2>
-                <p class="section-description">A proven approach that ensures we deliver the right solution, on time and on budget.</p>
-            </div>
-
-            <div class="process-steps">
-                <div class="process-step animate-on-scroll">
-                    <div class="step-icon-wrapper">
-                        <div class="step-icon">
-                            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <circle cx="11" cy="11" r="8"/>
-                                <path d="m21 21-4.35-4.35"/>
-                                <path d="M11 8v6M8 11h6"/>
-                            </svg>
-                        </div>
-                        <span class="step-badge">01</span>
-                    </div>
-                    <div class="step-content">
-                        <h3>Discover</h3>
-                        <p>Research users & business goals to understand the challenge.</p>
-                    </div>
-                    <div class="step-line"></div>
-                </div>
-
-                <div class="process-step animate-on-scroll">
-                    <div class="step-icon-wrapper">
-                        <div class="step-icon">
-                            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M12 3v3m0 12v3M3 12h3m12 0h3"/>
-                                <circle cx="12" cy="12" r="4"/>
-                                <path d="m4.93 4.93 2.12 2.12m9.9 9.9 2.12 2.12M4.93 19.07l2.12-2.12m9.9-9.9 2.12-2.12"/>
-                            </svg>
-                        </div>
-                        <span class="step-badge">02</span>
-                    </div>
-                    <div class="step-content">
-                        <h3>Define</h3>
-                        <p>Synthesize insights and define a clear design strategy.</p>
-                    </div>
-                    <div class="step-line"></div>
-                </div>
-
-                <div class="process-step animate-on-scroll">
-                    <div class="step-icon-wrapper">
-                        <div class="step-icon">
-                            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M12 19l7-7 3 3-7 7-3-3z"/>
-                                <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
-                                <path d="M2 2l7.586 7.586"/>
-                                <circle cx="11" cy="11" r="2"/>
-                            </svg>
-                        </div>
-                        <span class="step-badge">03</span>
-                    </div>
-                    <div class="step-content">
-                        <h3>Design</h3>
-                        <p>Create wireframes, prototypes, and polished UI designs.</p>
-                    </div>
-                    <div class="step-line"></div>
-                </div>
-
-                <div class="process-step animate-on-scroll">
-                    <div class="step-icon-wrapper">
-                        <div class="step-icon">
-                            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M3 3v18h18"/>
-                                <path d="M7 12l4-4 4 4 5-5"/>
-                                <circle cx="7" cy="12" r="1.5"/>
-                                <circle cx="11" cy="8" r="1.5"/>
-                                <circle cx="15" cy="12" r="1.5"/>
-                                <circle cx="20" cy="7" r="1.5"/>
-                            </svg>
-                        </div>
-                        <span class="step-badge">04</span>
-                    </div>
-                    <div class="step-content">
-                        <h3>Analyze</h3>
-                        <p>Test with real users and iterate based on data insights.</p>
-                    </div>
-                    <div class="step-line"></div>
-                </div>
-
-                <div class="process-step animate-on-scroll">
-                    <div class="step-icon-wrapper">
-                        <div class="step-icon">
-                            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M5 12l5 5L20 7"/>
-                                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
-                            </svg>
-                        </div>
-                        <span class="step-badge">05</span>
-                    </div>
-                    <div class="step-content">
-                        <h3>Deliver</h3>
-                        <p>Hand off designs with specs and support development.</p>
                     </div>
                 </div>
             </div>

@@ -21,6 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initCursorTrail();
     initHeroClock();
     initHeroGrid();
+    initBentoSlider();
+    initBadgeFlip();
     updateYear();
     initCaseStudyNav();
 });
@@ -167,74 +169,28 @@ function initHeroGrid() {
 function initPreloader() {
     const preloader = document.getElementById('preloader');
     if (!preloader) return;
-    
-    const words = preloader.querySelectorAll('.preloader-word');
-    if (!words.length) return;
-    
-    // Check if this is a page navigation (not first visit or refresh)
-    const isPageRefresh = performance.navigation ? 
-        performance.navigation.type === 1 : 
+
+    const isPageRefresh = performance.navigation ?
+        performance.navigation.type === 1 :
         performance.getEntriesByType('navigation')[0]?.type === 'reload';
-    
+
     const hasSeenPreloader = sessionStorage.getItem('preloaderShown');
-    
-    // Show preloader only on:
-    // 1. First visit (no sessionStorage flag)
-    // 2. Page refresh (isPageRefresh is true)
-    // Skip on page navigation (hasSeenPreloader exists but not a refresh)
+
     if (hasSeenPreloader && !isPageRefresh) {
-        // Skip preloader - user is navigating within the site
         preloader.style.display = 'none';
         document.body.classList.add('loaded');
         return;
     }
-    
-    // Mark that preloader has been shown this session
+
     sessionStorage.setItem('preloaderShown', 'true');
-    
-    // Add loading class to body
     document.body.classList.add('loading');
-    
-    let currentWord = 0;
-    const wordDuration = 350; // Time each word is visible (ms)
-    const transitionDelay = 150; // Delay before showing next word (ms)
-    
-    // Ensure first word is visible
-    words[0].classList.add('active');
-    
-    // Start cycling after first word is shown
+
     setTimeout(() => {
-        const wordCycler = setInterval(() => {
-            // Exit current word
-            words[currentWord].classList.remove('active');
-            words[currentWord].classList.add('exit');
-            
-            // Move to next word
-            currentWord++;
-            
-            if (currentWord < words.length) {
-                // Activate new word with smooth delay
-                setTimeout(() => {
-                    words[currentWord].classList.add('active');
-                }, transitionDelay);
-            } else {
-                // All words shown - complete preloader
-                clearInterval(wordCycler);
-                
-                // Soft exit
-                setTimeout(() => {
-                    preloader.classList.add('complete');
-                    document.body.classList.remove('loading');
-                    document.body.classList.add('loaded');
-                    
-                    // Remove from DOM after slide animation
-                    setTimeout(() => {
-                        preloader.style.display = 'none';
-                    }, 1000);
-                }, 500);
-            }
-        }, wordDuration + transitionDelay);
-    }, 300);
+        preloader.classList.add('complete');
+        document.body.classList.remove('loading');
+        document.body.classList.add('loaded');
+        setTimeout(() => { preloader.style.display = 'none'; }, 500);
+    }, 1500);
 }
 
 // =====================================================
@@ -407,6 +363,75 @@ function initScrollAnimations() {
 
         labelObserver.observe(label);
     });
+}
+
+// =====================================================
+// BENTO PHOTO SLIDER — auto-advance + dot navigation
+// =====================================================
+function initBentoSlider() {
+    const slider = document.getElementById('bentoSlider');
+    if (!slider) return;
+
+    const slides = slider.querySelectorAll('.bento-slide');
+    const dots = document.querySelectorAll('.bento-slide-dot');
+    if (slides.length < 2) return;
+
+    let current = 0;
+    let timer;
+
+    function goTo(idx) {
+        slides[current].classList.remove('active');
+        dots[current]?.classList.remove('active');
+        current = idx % slides.length;
+        slides[current].classList.add('active');
+        dots[current]?.classList.add('active');
+    }
+
+    function advance() {
+        goTo(current + 1);
+    }
+
+    function startAuto() {
+        timer = setInterval(advance, 4000);
+    }
+
+    dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+            clearInterval(timer);
+            goTo(parseInt(dot.dataset.idx, 10));
+            startAuto();
+        });
+    });
+
+    slider.addEventListener('mouseenter', () => clearInterval(timer));
+    slider.addEventListener('mouseleave', startAuto);
+
+    startAuto();
+}
+
+// =====================================================
+// BADGE CARD FLIP — click to reveal image
+// =====================================================
+function initBadgeFlip() {
+    const badges = document.querySelectorAll('[data-badge]');
+    badges.forEach(card => {
+        card.addEventListener('click', () => {
+            card.classList.toggle('flipped');
+        });
+    });
+
+    if (!badges.length) return;
+
+    function hintFlip(card, delay) {
+        setTimeout(() => {
+            card.classList.add('flipped');
+            setTimeout(() => card.classList.remove('flipped'), 2000);
+        }, delay);
+    }
+
+    hintFlip(badges[0], 3000);
+    hintFlip(badges[1], 5500);
+    hintFlip(badges[2], 8000);
 }
 
 // =====================================================
