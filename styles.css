@@ -4554,6 +4554,12 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 12px;
 }
 
+.case-gallery-tight-pair {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
 /* Case Study Dark Mode */
 [data-theme="dark"] .project-hero-case .project-hero-tagline {
     color: rgba(255, 255, 255, 0.5);
