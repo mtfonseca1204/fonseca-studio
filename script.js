@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initBadgeFlip();
     updateYear();
     initCaseStudyNav();
+    initThemeCompare();
 });
 
 // =====================================================
@@ -798,6 +799,101 @@ function updateYear() {
 // =====================================================
 // CASE STUDY - Sticky side nav + active state
 // =====================================================
+// =====================================================
+// THEME COMPARE (light / dark drag slider — case studies)
+// =====================================================
+function initThemeCompare() {
+    document.querySelectorAll('[data-theme-compare]').forEach((root) => {
+        const viewport = root.querySelector('.theme-compare-viewport');
+        const clip = root.querySelector('.theme-compare-clip');
+        const baseImg = root.querySelector('.theme-compare-base');
+        const lightImg = root.querySelector('.theme-compare-top');
+        const handle = root.querySelector('.theme-compare-handle');
+        if (!viewport || !clip || !baseImg || !lightImg || !handle) return;
+
+        let pos = 0.5;
+        let dragging = false;
+        let activePointerId = null;
+
+        function syncLightSize() {
+            const w = baseImg.offsetWidth;
+            const h = baseImg.offsetHeight;
+            if (!w || !h) return;
+            lightImg.style.width = `${w}px`;
+            lightImg.style.height = `${h}px`;
+            lightImg.style.objectFit = 'contain';
+            lightImg.style.objectPosition = 'top left';
+        }
+
+        const ro = new ResizeObserver(() => syncLightSize());
+        ro.observe(viewport);
+        if (!baseImg.complete) {
+            baseImg.addEventListener('load', syncLightSize, { once: true });
+        }
+        syncLightSize();
+
+        function setPos(p) {
+            pos = Math.max(0, Math.min(1, p));
+            const pct = pos * 100;
+            clip.style.width = `${pct}%`;
+            handle.style.left = `${pct}%`;
+            const n = Math.round(pos * 100);
+            handle.setAttribute('aria-valuenow', String(n));
+        }
+
+        setPos(0.5);
+
+        function clientXToPos(clientX) {
+            const rect = viewport.getBoundingClientRect();
+            if (rect.width <= 0) return pos;
+            return (clientX - rect.left) / rect.width;
+        }
+
+        function onPointerDown(e) {
+            if (e.button !== 0) return;
+            dragging = true;
+            activePointerId = e.pointerId;
+            viewport.setPointerCapture(e.pointerId);
+            setPos(clientXToPos(e.clientX));
+        }
+
+        function onPointerMove(e) {
+            if (!dragging || e.pointerId !== activePointerId) return;
+            setPos(clientXToPos(e.clientX));
+        }
+
+        function onPointerUp(e) {
+            if (e.pointerId !== activePointerId) return;
+            dragging = false;
+            activePointerId = null;
+            try {
+                viewport.releasePointerCapture(e.pointerId);
+            } catch (_) {}
+        }
+
+        viewport.addEventListener('pointerdown', onPointerDown);
+        viewport.addEventListener('pointermove', onPointerMove);
+        viewport.addEventListener('pointerup', onPointerUp);
+        viewport.addEventListener('pointercancel', onPointerUp);
+
+        handle.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                setPos(pos - 0.05);
+            } else if (e.key === 'ArrowRight') {
+                e.preventDefault();
+                setPos(pos + 0.05);
+            } else if (e.key === 'Home') {
+                e.preventDefault();
+                setPos(0);
+            } else if (e.key === 'End') {
+                e.preventDefault();
+                setPos(1);
+            }
+        });
+    });
+}
+
 function initCaseStudyNav() {
     const sideNav = document.getElementById('caseSideNav');
     const caseContent = document.querySelector('.project-case-content');
