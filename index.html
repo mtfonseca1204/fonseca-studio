@@ -167,7 +167,7 @@
             <!-- Photo slider card -->
             <div class="bento-card bento-card--slider">
                 <div class="bento-photo-slider" id="bentoSlider">
-                    <img src="Folder for photos hero/thai.jpeg" " alt="Fonseca" class="bento-slide active">
+                    <img src="Folder for photos hero/thai.jpeg" alt="Fonseca" class="bento-slide active">
                     <img src="Folder for photos hero/arg.jpeg" alt="Fonseca" class="bento-slide">
                     <img src="Folder for photos hero/82696FF8-0EC1-4E97-984A-C4339843AAC9_1_201_a.jpeg" alt="Work" class="bento-slide">
                     <img src="Folder for photos hero/4E862F38-470A-4852-86A3-320B9C646533_1_105_c.jpeg" alt="Fonseca" class="bento-slide">
@@ -225,11 +225,13 @@
         </div>
     </section>
 
+    <main class="home-main" id="main-content">
+
     <!-- Selected Work Section -->
     <section id="work" class="work-section">
         <div class="container">
             <div class="work-header">
-                <span class="work-label">(Selected work)</span>
+                <span class="work-label">Selected work</span>
                 <a href="projects.html" class="work-see-all">
                     All projects
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -239,18 +241,26 @@
             </div>
 
             <div class="projects-grid projects-grid-home">
-                <a href="project-hedgehog-product.html" class="project-card">
-                    <div class="project-image">
-                        <img src="Hedgehog product/Covers/Cover Hedgehog main page.png" alt="Hedgehog Product" class="project-img">
-                        <div class="project-overlay">
-                            <span class="project-view">View Project</span>
+                <article class="project-card project-card--featured">
+                    <a href="project-hedgehog-product.html" class="project-card__media-link" aria-label="Hedgehog Prediction Market — open case study">
+                        <div class="project-image">
+                            <img src="Hedgehog product/Covers/Cover Hedgehog main page.png" alt="Hedgehog Prediction Market product UI" class="project-img">
+                            <div class="project-overlay">
+                                <span class="project-view">View Project</span>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                     <div class="project-info">
-                        <span class="project-name">Hedgehog Prediction Market</span>
-                        <p class="project-desc">Product design for a time-based prediction system that turns on-chain data into fast, intuitive decisions through clear states and continuous interaction loops.</p>
+                        <a href="project-hedgehog-product.html" class="project-card__title-link">
+                            <span class="project-name">Hedgehog - Prediction Market</span>
+                        </a>
+                        <p class="project-desc">End-to-end product design for a time-based prediction platform, focused on fast decision-making, clear user states, and conversion-focused interaction flows.</p>
+                        <a href="project-hedgehog-product.html" class="project-card-cta">
+                            <span>View case study</span>
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 13L13 1M13 1H1M13 1V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </a>
                     </div>
-                </a>
+                </article>
 
                 <a href="project-transparent-space.html" class="project-card">
                     <div class="project-image">
@@ -260,8 +270,8 @@
                         </div>
                     </div>
                     <div class="project-info">
-                        <span class="project-name">Transparent.space</span>
-                        <p class="project-desc">Turning complex liquidity and web3 market data into a clear, reliable product experience for decision-making.</p>
+                        <span class="project-name">Transparent.space - Market Maker</span>
+                        <p class="project-desc">Complex liquidity and Web3 market data translated into a trustworthy, executive-ready product experience for daily decisions.</p>
                     </div>
                 </a>
 
@@ -273,8 +283,8 @@
                         </div>
                     </div>
                     <div class="project-info">
-                        <span class="project-name">Transparent.space</span>
-                        <p class="project-desc">Visual identity and UI direction built for an institutional audience.</p>
+                        <span class="project-name">Transparent.space - Brand</span>
+                        <p class="project-desc">Visual identity and UI direction crafted for an institutional audience, balancing authority, clarity, and modern digital execution.</p>
                     </div>
                 </a>
 
@@ -286,21 +296,8 @@
                         </div>
                     </div>
                     <div class="project-info">
-                        <span class="project-name">Hedgehog</span>
-                        <p class="project-desc">Conversion-first waitlist landing page for an on-chain prediction product.</p>
-                    </div>
-                </a>
-
-                <a href="project-aura.html" class="project-card">
-                    <div class="project-image">
-                        <img src="AURA/Cover/Cover Aura main page.png" alt="AURA" class="project-img">
-                        <div class="project-overlay">
-                            <span class="project-view">View Project</span>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <span class="project-name">AURA</span>
-                        <p class="project-desc">Luxury-inspired brand system blending premium cues with modern digital craft.</p>
+                        <span class="project-name">Hedgehog - UI / Landing Page</span>
+                        <p class="project-desc">Conversion-first waitlist landing page that communicates value quickly and turns early traffic into qualified leads.</p>
                     </div>
                 </a>
 
@@ -312,8 +309,8 @@
                         </div>
                     </div>
                     <div class="project-info">
-                        <span class="project-name">Picnic</span>
-                        <p class="project-desc">Brand identity and key visuals designed to scale across campaigns and digital assets.</p>
+                        <span class="project-name">Picnic - Brand</span>
+                        <p class="project-desc">Brand identity and campaign-ready visual system designed to scale consistently across social, launch, and growth touchpoints.</p>
                     </div>
                 </a>
 
@@ -683,6 +680,8 @@
             </div>
         </div>
     </section>
+
+    </main>
 
     <!-- Footer -->
     <footer class="footer">

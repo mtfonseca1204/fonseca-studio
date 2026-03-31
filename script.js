@@ -191,7 +191,7 @@ function initPreloader() {
         document.body.classList.remove('loading');
         document.body.classList.add('loaded');
         setTimeout(() => { preloader.style.display = 'none'; }, 500);
-    }, 1500);
+    }, 1800);
 }
 
 // =====================================================
@@ -280,6 +280,7 @@ function initNavbarScroll() {
 function initScrollAnimations() {
     // Elements to animate
     const animateElements = document.querySelectorAll(`
+        .home-main > section,
         .section-intro,
         .section-title,
         .section-description,
@@ -295,7 +296,6 @@ function initScrollAnimations() {
         .contact-form-wrapper,
         .content-section,
         .related-card,
-        .work-header,
         .filter-bar,
         .services-list-wrapper,
         .services-video-placeholder,
@@ -312,6 +312,7 @@ function initScrollAnimations() {
     const staggerGroups = [
         '.process-steps .process-step',
         '.projects-grid .project-card',
+        '.home-main .projects-grid-home > a.project-card',
         '.services-list .service-item',
         '.related-grid .related-card'
     ];
@@ -524,18 +525,24 @@ function initSmoothScroll() {
         anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
             if (href === '#') return;
-            
-            e.preventDefault();
+
             const target = document.querySelector(href);
-            
-            if (target) {
-                const offsetTop = target.offsetTop - 80;
-                
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
-                });
-            }
+            if (!target) return;
+
+            e.preventDefault();
+
+            // offsetTop is relative to offsetParent; sections inside .home-main (position: relative)
+            // would report a wrong value — use document coordinates instead
+            const nav = document.querySelector('.navbar');
+            const navH = nav ? nav.getBoundingClientRect().height : 80;
+            const gap = 12;
+            const top =
+                target.getBoundingClientRect().top + window.scrollY - navH - gap;
+
+            window.scrollTo({
+                top: Math.max(0, top),
+                behavior: 'smooth'
+            });
         });
     });
 }
