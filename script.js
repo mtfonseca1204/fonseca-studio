@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initHeroClock();
     initHeroGrid();
     initBentoSlider();
+    initWorkProjectCarousels();
     initBadgeFlip();
     updateYear();
     initCaseStudyNav();
@@ -409,6 +410,58 @@ function initBentoSlider() {
     slider.addEventListener('mouseleave', startAuto);
 
     startAuto();
+}
+
+// =====================================================
+// HOME SELECTED WORK — cover carousels (Hedgehog, Transparent, Picnic)
+// =====================================================
+function initWorkProjectCarousels() {
+    document.querySelectorAll('[data-project-carousel]').forEach((root) => {
+        const slides = root.querySelectorAll('.project-card__slide');
+        const dots = root.querySelectorAll('.project-card__carousel-dot');
+        if (slides.length < 2) return;
+
+        let current = 0;
+        let timer;
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        function goTo(idx) {
+            const n = slides.length;
+            const next = ((idx % n) + n) % n;
+            slides[current].classList.remove('active');
+            dots[current]?.classList.remove('active');
+            dots[current]?.removeAttribute('aria-current');
+            current = next;
+            slides[current].classList.add('active');
+            dots[current]?.classList.add('active');
+            dots[current]?.setAttribute('aria-current', 'true');
+        }
+
+        function advance() {
+            goTo(current + 1);
+        }
+
+        function startAuto() {
+            clearInterval(timer);
+            if (reduceMotion) return;
+            timer = setInterval(advance, 4500);
+        }
+
+        dots.forEach((dot) => {
+            dot.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                clearInterval(timer);
+                goTo(parseInt(dot.dataset.idx, 10));
+                startAuto();
+            });
+        });
+
+        root.addEventListener('mouseenter', () => clearInterval(timer));
+        root.addEventListener('mouseleave', startAuto);
+
+        startAuto();
+    });
 }
 
 // =====================================================
