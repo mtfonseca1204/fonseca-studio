@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hedgehog — 3D motion · Fonseca Studio</title>
+    <meta name="description" content="3D motion clips and stills for Hedgehog protocol — visual exploration, separate from the product case study.">
+    <link rel="icon" type="image/svg+xml" href="Logo%20black.svg">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&family=Bebas+Neue&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body class="hh3d-body">
+    <header class="hh3d-header">
+        <a href="index.html#work" class="hh3d-header-link">← Selected work</a>
+        <a href="index.html" class="hh3d-header-logo">
+            <img src="Logo%20black.svg" alt="Fonseca Studio" class="hh3d-header-logo-img logo-light" height="32">
+            <img src="logo%20white.svg" alt="" class="hh3d-header-logo-img logo-dark" height="32">
+        </a>
+        <button type="button" class="dark-mode-toggle hh3d-theme" id="darkModeToggle" aria-label="Toggle dark mode">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M10 3V1M10 19V17M17 10H19M1 10H3M15.657 4.343L17.071 2.929M2.929 17.071L4.343 15.657M15.657 15.657L17.071 17.071M2.929 2.929L4.343 4.343M14 10C14 12.2091 12.2091 14 10 14C7.79086 14 6 12.2091 6 10C6 7.79086 7.79086 6 10 6C12.2091 6 14 7.79086 14 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+    </header>
+
+    <main class="hh3d-main">
+        <h1 class="hh3d-title">Hedgehog — 3D motion and socials</h1>
+        <p class="hh3d-lead">These assets are part of a visual study for Hedgehog, focused on motion, materiality, and depth, showcasing craft and attention to detail beyond the core product experience.</p>
+
+        <div class="hh3d-stack">
+            <div class="hh3d-piece">
+                <div class="hh3d-media">
+                    <video class="hh3d-video" autoplay muted loop playsinline controls preload="metadata" poster="Hedgehog%20/3d/shadow.png">
+                        <source src="Hedgehog /3d/0001-0140.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="hh3d-piece">
+                <div class="hh3d-media">
+                    <video class="hh3d-video" autoplay muted loop playsinline controls preload="metadata" poster="Hedgehog%20/3d/shadow.png">
+                        <source src="Hedgehog%20/3d/0101-0300.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="hh3d-piece">
+                <div class="hh3d-media">
+                    <video class="hh3d-video" autoplay muted loop playsinline controls preload="metadata" poster="Hedgehog%20/3d/shadow.png">
+                        <source src="Hedgehog /3d/0001-0250.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="hh3d-piece">
+                <div class="hh3d-media hh3d-media--still">
+                    <img src="Hedgehog%20/3d/shadow.png" alt="Hedgehog 3D render — shadow and form study" width="1920" height="1080" loading="lazy" decoding="async">
+                </div>
+            </div>
+        </div>
+
+        <p class="hh3d-foot">
+            <a href="project-hedgehog-product.html" class="hh3d-foot-link">Full product case study →</a>
+            <span class="hh3d-foot-sep" aria-hidden="true">·</span>
+            <a href="index.html#work" class="hh3d-foot-link">Back to work →</a>
+        </p>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        (function () {
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            document.querySelectorAll('.hh3d-video').forEach(function (v) {
+                v.removeAttribute('autoplay');
+                v.pause();
+            });
+        })();
+    </script>
+</body>
+</html>
