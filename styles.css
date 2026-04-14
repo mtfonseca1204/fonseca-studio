@@ -4030,11 +4030,11 @@ a.project-card:hover {
     background: var(--bg-white);
 }
 
-.about-header {
+.about-section .about-header {
     margin-bottom: 80px;
 }
 
-.about-header .section-label {
+.about-section .about-header .section-label {
     margin-bottom: 24px;
 }
 
@@ -5541,6 +5541,29 @@ a.project-card:hover {
     line-height: 1.7;
 }
 
+.projects-main {
+    background: var(--bg-white);
+    color: var(--text-dark);
+}
+
+.projects-page-intro {
+    padding: 28px 0 36px;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--bg-white);
+}
+
+.projects-page-intro .about-intro__label {
+    margin-bottom: 12px;
+}
+
+.projects-page-intro .about-intro__title {
+    margin-bottom: 16px;
+}
+
+.projects-page-intro .about-intro__body:last-child {
+    margin-bottom: 0;
+}
+
 .filter-section {
     padding: 24px 0 40px;
     background: var(--bg-white);
@@ -5908,6 +5931,11 @@ a.project-card:hover {
     background: #ffffff;
     padding: 160px 0 100px;
     color: #000000;
+}
+
+/* Case pages: slim sticky header (about-header) vs full navbar */
+.about-page .project-hero {
+    padding-top: 112px;
 }
 
 /* Case Study Hero - Oleksii Style */
@@ -7488,7 +7516,7 @@ a.project-card:hover {
     }
     
     /* About Section Mobile */
-    .about-header {
+    .about-section .about-header {
         margin-bottom: 48px;
     }
     
@@ -8250,9 +8278,9 @@ a.project-card:hover {
     display: flex;
     align-items: center;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1248px;
     margin: 0 auto;
-    padding: 0 clamp(24px, 5vw, 64px);
+    padding: 0 24px;
 }
 
 .hero-intro__column {
@@ -8807,6 +8835,46 @@ a.project-card:hover {
 .playground-card--dark {
     background: #0a0a0a;
     color: #fff;
+}
+
+/* TokenLab: flat white typographic cover (no gradient) */
+.playground-card--tokenlab {
+    background: #fff;
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+.playground-card--tokenlab .playground-card__pylon-mark {
+    color: #0a0a0a;
+}
+
+.playground-card--tokenlab .playground-card__overlay {
+    background: #fff;
+    color: #0a0a0a;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.playground-card--tokenlab .playground-card__label {
+    color: #0a0a0a;
+}
+
+.playground-card--tokenlab .playground-card__meta {
+    color: var(--text-gray);
+    opacity: 1;
+}
+
+[data-theme="dark"] .playground-card--tokenlab {
+    background: #fff;
+    border-color: rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="dark"] .playground-card--tokenlab .playground-card__pylon-mark {
+    color: #0a0a0a;
+}
+
+[data-theme="dark"] .playground-card--tokenlab .playground-card__overlay {
+    background: #fff;
+    color: #0a0a0a;
+    border-top-color: rgba(0, 0, 0, 0.1);
 }
 
 .playground-card__img {
@@ -9505,6 +9573,14 @@ a.project-card:hover {
 }
 
 [data-theme="dark"] .about-header { background: var(--bg-white); }
+
+.about-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-shrink: 0;
+    margin-left: auto;
+}
 
 .about-header-link {
     font-family: 'JetBrains Mono', monospace;

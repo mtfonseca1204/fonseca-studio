@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unimed Seguros - Fonseca</title>
     <meta name="description" content="Insurance and healthcare app redesign improving user experience for millions of beneficiaries.">
-    <link rel="icon" type="image/svg+xml" href="Logo%20black.svg">
-    <link rel="apple-touch-icon" href="Logo%20black.svg">
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+    <link rel="apple-touch-icon" href="logo.svg">
     <link rel="canonical" href="https://fonseca.studio/project-unimed-seguros.html">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://fonseca.studio/project-unimed-seguros.html">
@@ -23,45 +23,23 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
-<body>
-    <nav class="navbar navbar-dark">
-        <div class="nav-container">
-            <div class="nav-left">
-                <a href="index.html#work" class="nav-link">Work</a>
-                <a href="projects.html" class="nav-link">Projects</a>
-                <a href="about.html" class="nav-link">About</a>
-            </div>
-            <div class="nav-logo">
-                <a href="index.html">
-                    <img src="Logo black.svg" alt="Fonseca Studio" class="nav-logo-img logo-light">
-                    <img src="logo white.svg" alt="Fonseca Studio" class="nav-logo-img logo-dark">
-                </a>
-            </div>
-            <div class="nav-right">
-                <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
-                    <svg class="icon-sun" width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M10 3V1M10 19V17M17 10H19M1 10H3M15.657 4.343L17.071 2.929M2.929 17.071L4.343 15.657M15.657 15.657L17.071 17.071M2.929 2.929L4.343 4.343M14 10C14 12.2091 12.2091 14 10 14C7.79086 14 6 12.2091 6 10C6 7.79086 7.79086 6 10 6C12.2091 6 14 7.79086 14 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    <svg class="icon-moon" width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </button>
-                <a href="mailto:fonsecaa.design@gmail.com" class="nav-cta">Contact</a>
-                <button class="mobile-menu-toggle" aria-label="Toggle menu"><span></span><span></span></button>
-            </div>
+<body class="about-page">
+    <header class="about-header">
+        <a href="index.html" class="about-header-logo" aria-label="Fonseca — Home">
+            <img src="logo.svg" alt="" class="about-header-logo-img logo-light" height="32">
+            <img src="logo%20white.svg" alt="" class="about-header-logo-img logo-dark" height="32">
+        </a>
+        <div class="about-header-actions">
+            <a href="projects.html" class="about-header-link">&larr; Back to all projects</a>
+            <button type="button" class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+                <svg class="icon-sun" width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M10 3V1M10 19V17M17 10H19M1 10H3M15.657 4.343L17.071 2.929M2.929 17.071L4.343 15.657M15.657 15.657L17.071 17.071M2.929 2.929L4.343 4.343M14 10C14 12.2091 12.2091 14 10 14C7.79086 14 6 12.2091 6 10C6 7.79086 7.79086 6 10 6C12.2091 6 14 7.79086 14 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <svg class="icon-moon" width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
         </div>
-        <div class="mobile-menu">
-            <div class="mobile-menu-links">
-                <a href="index.html#work" class="mobile-link">Work</a>
-                <a href="projects.html" class="mobile-link">Projects</a>
-                <a href="about.html" class="mobile-link">About</a>
-                <a href="mailto:fonsecaa.design@gmail.com" class="mobile-link mobile-cta">Contact</a>
-            </div>
-        </div>
-    </nav>
+    </header>
 
     <section class="project-hero project-hero-case">
         <div class="container">
-            <a href="projects.html" class="back-link back-link-light">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span>All Projects</span>
-            </a>
             <p class="project-hero-tagline">Insurance / Healthcare</p>
             <h1 class="project-hero-title">Unimed Seguros</h1>
             <p class="project-hero-description">
@@ -300,7 +278,7 @@
             <div class="footer-main">
                 <div class="footer-col footer-col--brand">
                     <a href="index.html" class="footer-logo-link">
-                        <img src="Logo%20black.svg" alt="Fonseca" class="footer-logo-img logo-light" height="32">
+                        <img src="logo.svg" alt="Fonseca" class="footer-logo-img logo-light" height="32">
                         <img src="logo%20white.svg" alt="" class="footer-logo-img logo-dark" height="32">
                     </a>
                     <p class="footer-tagline">Designing digital products where strategy, systems and experience meet.</p>

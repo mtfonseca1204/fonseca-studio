@@ -426,7 +426,6 @@ function initProjectModals() {
                 'Produced 3D motion assets in Blender to elevate the brand presence across marketing touchpoints.'
             ],
             images: [
-                'Hedgehog product/1920x1080.png',
                 'Hedgehog product/1920x1200.png',
                 '1920x1200/Cover Hedgehog Hero cover.png'
             ],
