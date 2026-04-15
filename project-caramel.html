@@ -1,18 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<style id="preloader-paint">.preloader{display:none!important}html.preloader-active .preloader{display:flex!important}</style>
-<script>
-(function(){
-try{
-var r=0;
-try{var n=performance.getEntriesByType('navigation')[0];if(n&&n.type==='reload')r=1;}catch(x){}
-if(!r&&typeof performance.navigation!=='undefined'&&performance.navigation.type===1)r=1;
-if(r||sessionStorage.getItem('preloaderShown')!=='true')document.documentElement.classList.add('preloader-active');
-}catch(e){}
-})();
-</script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Caramel - Fonseca</title>
@@ -36,26 +24,6 @@ if(r||sessionStorage.getItem('preloaderShown')!=='true')document.documentElement
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body class="about-page">
-
-    <div class="preloader" id="preloader" aria-live="polite" aria-busy="true">
-        <div class="preloader-shell">
-            <header class="preloader-head">
-                <p class="preloader-index"><span class="preloader-index-num">00</span><span class="preloader-index-slash">/</span><span class="preloader-index-label">Loading</span></p>
-                <p class="preloader-loc">Rio de Janeiro</p>
-            </header>
-            <div class="preloader-body">
-                <div class="preloader-accent-bar" aria-hidden="true"></div>
-                <div class="preloader-copy">
-                    <p class="preloader-word">Fonseca</p>
-                    <p class="preloader-role">Product designer</p>
-                    <p class="preloader-lede">Strategy &middot; systems &middot; experience</p>
-                </div>
-            </div>
-            <footer class="preloader-foot">
-                <div class="preloader-line"><div class="preloader-line-fill"></div></div>
-            </footer>
-        </div>
-    </div>
 
     <header class="about-header">
         <a href="index.html" class="about-header-logo" aria-label="Fonseca — Home">

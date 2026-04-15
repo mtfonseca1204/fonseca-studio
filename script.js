@@ -586,69 +586,33 @@ function initPreloader() {
     const hasSeenPreloader = sessionStorage.getItem('preloaderShown') === 'true';
     const isReload = isPageReload();
 
-    /* Minimum time on screen so the splash is readable (load can fire almost instantly when cached). */
-    const MIN_VISIBLE_MS = 3200;
-    const FALLBACK_MS = 9000;
-    const HIDE_DELAY_MS = 520;
-
     function notifyLayoutReady() {
         requestAnimationFrame(() => {
             window.dispatchEvent(new CustomEvent('fonseca:layoutready'));
         });
     }
 
-    function skipPreloader() {
-        document.documentElement.classList.remove('preloader-active');
-        preloader.setAttribute('aria-busy', 'false');
-        preloader.classList.add('complete');
+    if (hasSeenPreloader && !isReload) {
         preloader.style.display = 'none';
+        preloader.classList.add('complete');
+        document.body.classList.remove('loading');
         document.body.classList.add('loaded');
         notifyLayoutReady();
-    }
-
-    /* In-site navigation: same tab, same session — no splash. Refresh or first open in tab: show. */
-    if (hasSeenPreloader && !isReload) {
-        skipPreloader();
         return;
     }
 
     sessionStorage.setItem('preloaderShown', 'true');
-
-    function hidePreloader() {
-        if (preloader.dataset.dismissed === '1') return;
-        preloader.dataset.dismissed = '1';
-        preloader.setAttribute('aria-busy', 'false');
-        preloader.classList.add('complete');
-        document.body.classList.add('loaded');
-        setTimeout(() => {
-            document.documentElement.classList.remove('preloader-active');
-            preloader.style.display = 'none';
-            notifyLayoutReady();
-        }, HIDE_DELAY_MS);
-    }
-
-    let dismissScheduled = false;
-    function scheduleDismiss() {
-        if (dismissScheduled) return;
-        dismissScheduled = true;
-        const elapsed = performance.now() - (Number(preloader.dataset.t0) || 0);
-        const wait = Math.max(0, MIN_VISIBLE_MS - elapsed);
-        setTimeout(hidePreloader, wait);
-    }
-
-    preloader.dataset.t0 = String(performance.now());
-    preloader.setAttribute('aria-busy', 'true');
-    document.documentElement.classList.add('preloader-active');
-
-    if (document.readyState === 'complete') {
-        scheduleDismiss();
-    } else {
-        window.addEventListener('load', scheduleDismiss, { once: true });
-    }
+    document.body.classList.add('loading');
 
     setTimeout(() => {
-        if (preloader.dataset.dismissed !== '1') scheduleDismiss();
-    }, FALLBACK_MS);
+        preloader.classList.add('complete');
+        document.body.classList.remove('loading');
+        document.body.classList.add('loaded');
+        setTimeout(() => {
+            preloader.style.display = 'none';
+            notifyLayoutReady();
+        }, 500);
+    }, 1800);
 }
 
 // =====================================================
