@@ -6232,6 +6232,91 @@ a.project-card:hover {
     display: flex;
     flex-direction: column;
     gap: 0;
+    margin: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.case-gallery-tight-pair .case-gallery-img {
+    border: none;
+    border-radius: 0;
+    margin: 0;
+    vertical-align: top;
+}
+
+[data-theme="dark"] .case-gallery-tight-pair {
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Transparent.space product — Solution pillars: aligned margins + highlighted block */
+.case-section--pillar-callout .case-section-body > p {
+    margin-bottom: 14px;
+}
+
+.case-section--pillar-callout .case-section-body > ol.case-pillars-ol {
+    counter-reset: pillar;
+    list-style: none;
+    margin: 4px 0 22px;
+    padding: 1.25rem 1.35rem 1.3rem 1.35rem;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background: rgba(255, 92, 0, 0.045);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+}
+
+.case-section--pillar-callout .case-section-body > ol.case-pillars-ol > li {
+    position: relative;
+    margin: 0 0 1rem;
+    padding: 0 0 0 2.6rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.62;
+    color: var(--text-gray);
+}
+
+.case-section--pillar-callout .case-section-body > ol.case-pillars-ol > li:last-child {
+    margin-bottom: 0;
+}
+
+.case-section--pillar-callout .case-section-body > ol.case-pillars-ol > li::before {
+    content: counter(pillar);
+    counter-increment: pillar;
+    position: absolute;
+    left: 0;
+    top: 0.12em;
+    width: 1.65rem;
+    height: 1.65rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: #ff5c00;
+    background: rgba(255, 92, 0, 0.1);
+    border-radius: 4px;
+    border: 1px solid rgba(255, 92, 0, 0.28);
+}
+
+.case-section--pillar-callout .case-section-body > ol.case-pillars-ol > li strong {
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+.case-section--pillar-callout .case-section-body > ol.case-pillars-ol + p {
+    margin-top: 0;
+}
+
+[data-theme="dark"] .case-section--pillar-callout .case-section-body > ol.case-pillars-ol {
+    background: rgba(255, 92, 0, 0.08);
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+[data-theme="dark"] .case-section--pillar-callout .case-section-body > ol.case-pillars-ol > li strong {
+    color: #f1f5f9;
 }
 
 /* Desktop + mobile side by side: same rendered height, widths from aspect ratio (tall phone + wide desktop) */
