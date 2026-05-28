@@ -15,6 +15,19 @@ document.addEventListener('DOMContentLoaded', () => {
     initThemeCompare();
 });
 
+/** Coalesce high-frequency events (scroll/resize) to one callback per animation frame */
+function rafThrottle(fn) {
+    let scheduled = false;
+    return (...args) => {
+        if (scheduled) return;
+        scheduled = true;
+        requestAnimationFrame(() => {
+            scheduled = false;
+            fn(...args);
+        });
+    };
+}
+
 // =====================================================
 // SCROLL REVEAL
 // =====================================================
@@ -104,8 +117,12 @@ function initHeroAsciiTerrain() {
     const sctx = sampleCanvas.getContext('2d', { willReadFrequently: true });
 
     const chars = ' .·:;+*%#@'.split('');
-    let w = 0; let h = 0; let step = 6; let cols = 0; let rows = 0; let time = 0; let animId;
+    let w = 0; let h = 0; let step = 6; let cols = 0; let rows = 0; let time = 0; let animId = 0;
     let lumGrid = null;
+    let animActive = false;
+    let heroInView = true;
+    let kickDebounceT = 0;
+    let lastFrameTs = 0;
 
     function buildFallbackLumGrid() {
         if (!cols || !rows || cols < 2 || rows < 2) return;
@@ -250,24 +267,64 @@ function initHeroAsciiTerrain() {
         }
     }
 
-    function loop() {
+    function stopLoop() {
+        animActive = false;
+        cancelAnimationFrame(animId);
+        animId = 0;
+    }
+
+    function loop(ts) {
+        if (!animActive || document.hidden || !heroInView) {
+            stopLoop();
+            return;
+        }
         time += 0.012;
+        /* ~30fps cap: fewer fillText passes per second on large canvases */
+        if (!reduceMotion && lastFrameTs && ts - lastFrameTs < 33) {
+            animId = requestAnimationFrame(loop);
+            return;
+        }
+        lastFrameTs = ts;
         draw();
         animId = requestAnimationFrame(loop);
     }
 
-    function kick() {
-        cancelAnimationFrame(animId);
-        if (!resize()) {
-            requestAnimationFrame(kick);
+    function startLoop() {
+        if (reduceMotion) {
+            time = 0;
+            draw();
             return;
         }
-        loop();
+        if (document.hidden || !heroInView) return;
+        stopLoop();
+        animActive = true;
+        lastFrameTs = 0;
+        animId = requestAnimationFrame(loop);
+    }
+
+    function kickNow() {
+        clearTimeout(kickDebounceT);
+        stopLoop();
+        if (!resize()) {
+            requestAnimationFrame(kickNow);
+            return;
+        }
+        if (reduceMotion) {
+            time = 0;
+            draw();
+            return;
+        }
+        startLoop();
+    }
+
+    function debouncedKick() {
+        clearTimeout(kickDebounceT);
+        kickDebounceT = setTimeout(kickNow, 72);
     }
 
     function boot() {
         requestAnimationFrame(() => {
-            requestAnimationFrame(kick);
+            requestAnimationFrame(debouncedKick);
         });
     }
 
@@ -277,37 +334,40 @@ function initHeroAsciiTerrain() {
     } else {
         boot();
     }
-    window.addEventListener('load', kick, { once: true });
 
     let layoutKickT;
     window.addEventListener('fonseca:layoutready', () => {
         clearTimeout(layoutKickT);
-        layoutKickT = setTimeout(() => {
-            cancelAnimationFrame(animId);
-            kick();
-        }, 40);
+        layoutKickT = setTimeout(debouncedKick, 40);
     });
 
     window.addEventListener('pageshow', (ev) => {
-        if (ev.persisted) kick();
+        if (ev.persisted) debouncedKick();
     });
 
     if (document.fonts && document.fonts.ready) {
-        document.fonts.ready.then(() => {
-            cancelAnimationFrame(animId);
-            kick();
-        });
+        document.fonts.ready.then(debouncedKick);
     }
 
     const heroSection = canvas.closest('.hero--intro');
+    if (heroSection && typeof IntersectionObserver !== 'undefined') {
+        const io = new IntersectionObserver((entries) => {
+            const vis = entries.some((e) => e.isIntersecting && e.intersectionRatio > 0);
+            heroInView = vis;
+            if (!vis) stopLoop();
+            else debouncedKick();
+        }, { root: null, rootMargin: '80px 0px 80px 0px', threshold: [0, 0.02, 0.1] });
+        io.observe(heroSection);
+    }
+
     let roT;
     if (heroSection && typeof ResizeObserver !== 'undefined') {
         const ro = new ResizeObserver(() => {
             clearTimeout(roT);
             roT = setTimeout(() => {
-                cancelAnimationFrame(animId);
-                if (resize()) loop();
-            }, 100);
+                stopLoop();
+                if (resize() && heroInView && !document.hidden) startLoop();
+            }, 120);
         });
         ro.observe(heroSection);
     }
@@ -315,15 +375,15 @@ function initHeroAsciiTerrain() {
     let resizeT;
     window.addEventListener('resize', () => {
         clearTimeout(resizeT);
-        resizeT = setTimeout(() => {
-            cancelAnimationFrame(animId);
-            if (resize()) loop();
-        }, 120);
+        resizeT = setTimeout(debouncedKick, 140);
     });
 
     document.addEventListener('visibilitychange', () => {
-        if (document.hidden) cancelAnimationFrame(animId);
-        else if (resize()) loop();
+        if (document.hidden) {
+            stopLoop();
+        } else if (heroInView) {
+            debouncedKick();
+        }
     });
 }
 
@@ -669,12 +729,14 @@ function initNavbarScroll() {
     if (!navbar) return;
     let lastScroll = 0;
 
-    window.addEventListener('scroll', () => {
+    const onScroll = rafThrottle(() => {
         const y = window.pageYOffset;
         navbar.classList.toggle('scrolled', y > 100);
         navbar.style.transform = (y > lastScroll && y > 500) ? 'translateY(-100%)' : 'translateY(0)';
         lastScroll = y;
     });
+
+    window.addEventListener('scroll', onScroll, { passive: true });
 }
 
 // =====================================================
@@ -725,7 +787,7 @@ function initCaseStudyNav() {
         return current;
     }
 
-    function update() {
+    const update = rafThrottle(() => {
         const cur = getCurrentSection();
         [heroNavLinks, sideNavLinks].forEach(links => {
             links.forEach(l => {
@@ -738,9 +800,9 @@ function initCaseStudyNav() {
             const y = window.scrollY;
             sideNav.classList.toggle('visible', y >= top && y <= bottom);
         }
-    }
+    });
 
-    window.addEventListener('scroll', update);
+    window.addEventListener('scroll', update, { passive: true });
     window.addEventListener('load', update);
 }
 
@@ -869,10 +931,13 @@ function initHeroGrid() {
     const bar = document.createElement('div');
     bar.classList.add('scroll-progress');
     document.body.appendChild(bar);
-    window.addEventListener('scroll', () => {
-        const pct = (document.documentElement.scrollTop / (document.documentElement.scrollHeight - document.documentElement.clientHeight)) * 100;
+    const docEl = document.documentElement;
+    const onScroll = rafThrottle(() => {
+        const denom = docEl.scrollHeight - docEl.clientHeight;
+        const pct = denom <= 0 ? 0 : (docEl.scrollTop / denom) * 100;
         bar.style.width = `${pct}%`;
     });
+    window.addEventListener('scroll', onScroll, { passive: true });
 })();
 
 // =====================================================

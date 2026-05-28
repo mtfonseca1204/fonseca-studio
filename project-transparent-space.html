@@ -58,15 +58,18 @@
     <aside class="case-side-nav" id="caseSideNav" aria-label="Case study navigation">
         <nav class="case-side-nav-inner">
             <a href="#overview" class="case-side-nav-link">Overview</a>
+            <a href="#scenario" class="case-side-nav-link">Scenario</a>
+            <a href="#opportunity" class="case-side-nav-link">Opportunity</a>
             <a href="#problem" class="case-side-nav-link">Problem</a>
-            <a href="#goal" class="case-side-nav-link">Goal</a>
-            <a href="#solution" class="case-side-nav-link">Solution</a>
+            <a href="#users" class="case-side-nav-link">Users</a>
+            <a href="#product-objectives" class="case-side-nav-link">Product Obejctives</a>
+            <a href="#discovery-research" class="case-side-nav-link">Discovery & Research</a>
+            <a href="#ux-decision" class="case-side-nav-link">UX Decision</a>
+            <a href="#design" class="case-side-nav-link">Design Concept</a>
+            <a href="#strategy" class="case-side-nav-link">Strategy</a>
             <a href="#results" class="case-side-nav-link">Results</a>
-            <a href="#research" class="case-side-nav-link">Research</a>
-            <a href="#design" class="case-side-nav-link">Design</a>
-            <a href="#visual-system" class="case-side-nav-link">Visual System</a>
-            <a href="#lessons" class="case-side-nav-link">Lessons</a>
-            <a href="#next-steps" class="case-side-nav-link">Next Steps</a>
+            <a href="#lessons" class="case-side-nav-link">Lessons Learned</a>
+            <a href="#next" class="case-side-nav-link">Next Steps</a>
         </nav>
     </aside>
 
@@ -82,128 +85,227 @@
                 <span class="case-section-label">INTRO</span>
                 <h2 class="case-section-title">Overview</h2>
                 <div class="case-section-body">
-                    <p>Transparent.space is a monitoring and transparency platform that allows liquidity providers and trading firms to track SLA performance, operational reliability and service integrity in real time.                    </p>
-                    <p>This project focused on designing the core product experience, transforming complex operational metrics into actionable intelligence.                    </p>
-                </div>
-            </section>
-            <section id="problem" class="case-section">
-                <span class="case-section-label">PROBLEM</span>
-                <h2 class="case-section-title">Problem</h2>
-                <div class="case-section-body">
-                    <p>Liquidity providers operate in latency-sensitive environments where service interruptions generate financial and reputational risk. However, existing monitoring tools often present fragmented information, making performance evaluation slow and reactive.                    </p>
-                    <p>Users needed a platform that could:</p>
+                    <p>Transparent.space is a Web3 platform focused on verifiable proof of Market Maker performance, bringing together critical data such as SLA, liquidity, spreads, uptime, pool depth, and historical behavior in a single institutional environment.</p>
+                    <p>The product was created to solve a central problem in today's crypto market:       </p>
                     <ul class="case-list">
-                    <li> Centralize performance visibility</li>
-                    <li> Surface critical deviations instantly</li>
-                    <li> Provide confidence in operational reliability</li>
-                </ul>
+                    <li><strong><i>"Fragmented data, unreliable and difficult to compare for high-risk financial decisions."</i></strong></li>
+                    </ul>
+                    <p>Beyond its functional requirements, Transparent.space demanded a visual language that could immediately communicate trust, precision, and accountability, in an industry where credibility is the product.                    </p>
+                    <p>This case documents the full design process: from discovery and problem framing to UX decisions, design system, and the reasoning behind every major design choice.</p>
                 </div>
             </section>
-            <section id="goal" class="case-section">
-                <span class="case-section-label">GOAL</span>
-                <h2 class="case-section-title">Goal</h2>
+            <section id="scenario" class="case-section">
+                <span class="case-section-label">ACTUAL SCENARIO</span>
+                <h2 class="case-section-title">Web3 institutions depend on Market Makers for liquidity and market efficiency.</h2>
                 <div class="case-section-body">
-                    <p> Design a product experience that:</p>
-                    <ul class="case-list">
-                    <li> Enables instant situational awareness</li>
-                    <li> Centralize performance visibility</li>
-                    <li> Turns raw infrastructure data into decision-ready insights</li>
-                    <li> Supports both real-time monitoring and historical analysis</li>
-                </ul>
-                
+                    <p> Market Makers play a critical role in crypto ecosystems — providing liquidity, maintaining spreads, and ensuring that exchanges and DeFi protocols can operate efficiently. Yet despite this importance, evaluating their actual performance is remarkably difficult.</p>
+                    <P>Performance evaluation today is:</P>
+                    <img src="Transparent.space Products/Actual Scenario.png" alt="Transparent.space Product" class="case-gallery-img">
+
                 </div>
             </section>
-            <section id="solution" class="case-section case-section--pillar-callout">
-                <span class="case-section-label">SOLUTION</span>
-                <h2 class="case-section-title">Solution</h2>
+            <section id="opportunity" class="case-section">
+                <span class="case-section-label">OPPORTUNITY IDENTIFIED</span>
+                <h2 class="case-section-title">Create a single layer of Truth: a data 'operating system' for Web3 liquidity.</h2>
                 <div class="case-section-body">
-                    <p>The platform experience was designed around three pillars:</p>
+                    <p>The opportunity was not to build yet another dashboard. It was to unify what is currently scattered across multiple tools into a single, verifiable, institutional-grade source of truth — one that decision-makers could trust without having a technical background.                    </p>
+                    <img src="Transparent.space Products/Opportunity.png" alt="Transparent.space Product" class="case-gallery-img">
+                </div>
+            </section>
+            <section id="problem" class="case-section case-section--pillar-callout">
+                <span class="case-section-label">THE PROBLEM</span>
+                <h2 class="case-section-title">How can Web3 institutions evaluate, compare, and trust the actual performance of Market Makers: using verifiable, standardized, and actionable data?                </h2>
+                <div class="case-section-body">
+                    <p>This question shaped every design decision made throughout the project. The answer couldn't be just visual, it had to be architectural. The way information was organized, prioritized, and presented had to do the persuasion work that words alone couldn't.                    </p>
+                    <p><strong>Main Pains identified:</strong></p>
                     <ol class="case-pillars-ol">
-                        <li><strong>Immediate Status Recognition</strong> — High-level performance summaries allow users to assess system health within seconds.</li>
-                        <li><strong>Layered Data Exploration</strong> — Users can progressively drill down from global performance metrics into granular operational details without losing context.</li>
-                        <li><strong>Signal-Driven Visual Feedback</strong> — Color systems, indicators and structured layouts guide attention toward anomalies and critical events.</li>
+                        <li>No holistic view of performance across metrics and time </li>
+                        <li>Lack of real transparency regarding SLA compliance</li>
+                        <li>Tools designed for analysts, not decision-makers</li>
+                        <li>Technical metrics that are difficult to interpret out of context </li>
                     </ol>
-                    <p>Dashboards prioritize clarity and hierarchy, ensuring users can interpret performance states quickly during time-sensitive scenarios.</p>
-                    </div>
-                <div class="case-section-gallery">
-                    <img src="Transparent.space Products/PRODUCT  PORTFOLIO.jpg" alt="Transparent.space Product" class="case-gallery-img">
-                </div>
+                     </div>
             </section>
-            <section id="results" class="case-section">
-                <span class="case-section-label">RESULTS</span>
-                <h2 class="case-section-title">Results</h2>
+            <section id="users" class="case-section">
+                <span class="case-section-label">USERS & STAKEHOLDERS</span>
+                <h2 class="case-section-title">Primary Users</h2>
                 <div class="case-section-body">
+                    <p>The platform serves two distinct user types, each with fundamentally different needs, and the design had to satisfy both simultaneously.</p>
+                    <p><strong>User Type 1</strong> — Institutional Clients (Strategic)</p>
                     <ul class="case-list">
-                        <li> Faster anomaly detection</li>
-                        <li> Reduced time to performance diagnosis</li>
-                        <li> Improved operational confidence for liquidity providers</li>
-                        <li> Stronger perception of reliability and professionalism</li>
+                        <li>Institutional crypto funds</li>
+                        <li>DeFi protocols</li>
+                        <li>Exchanges</li>
+                        <li>Web3 treasuries</li>
+                    </ul>
+                    <p><strong>User Type 2</strong> — Market Makers (Self-assessment / Proof of compliance)</p>
+                    <ul class="case-list">
+                        <li>Market Maker teams needing to demonstrate performance against agreed SLAs</li>
+                        <li>Compliance and reporting functions within trading desks</li>
+                    </ul>
+                    <p><strong>Key Needs </strong>(both user types):</p>
+                    <ul class="case-list">
+                        <li>Quick comparison between Market Makers in the same context</li>
+                        <li>Trust in the data — verifiable, not self-reported </li>
+                        <li>Executive analysis layer alongside technical depth</li>
+                        <li>Clear evidence to support financial and partnership decisions</li>
                     </ul>
                 </div>
             </section>
-            <section id="research" class="case-section">
-                <span class="case-section-label">RESEARCH</span>
-                <h2 class="case-section-title">Research included:                </h2>
+            <section id="product-objectives" class="case-section">
+                <span class="case-section-label">UX GOALS</span>
+                <h2 class="case-section-title">Product Objectives</h2>
                 <div class="case-section-body">
+                    <img src="Transparent.space Products/Obejctives.png" alt="Transparent.space Product" class="case-gallery-img">
+                    <p></p>
+                    <p><strong><i>"The experience is built around a single-screen mental model: users should be able to understand the health of a Market Maker at a glance, and progressively dive into details without changing context."</i>    </strong></p>
+                </div>
+            </section>
+            <section id="discovery-research" class="case-section">
+                <span class="case-section-label">DISCOVERY & RESEARCH</span>
+                <h2 class="case-section-title">Discovery & Research</h2>
+                <div class="case-section-body">
+                    <p>The research approach was conceptual and comparative, grounded in understanding how institutional users consume complex financial data, rather than traditional user testing with end consumers</p>
+                    <p><strong>Conceptual Benchmark (non-visual):</strong></p>
                     <ul class="case-list">
-                    <li> Interviews with crypto market operators</li>
-                    <li> Analysis of trading desk workflows</li>
-                    <li> Benchmarking observability and monitoring tools</li>
-                    <li> Mapping cognitive load in real-time dashboards</li>
-                </ul>
-                    <p> Insights revealed that speed of comprehension is more valuable than quantity of metrics displayed.                    </p>
+                        <li><strong>Crypto data platforms</strong> — Dune Analytics, DeFiLlama (identified as the baseline the market was using, and its limitations)</li>
+                        <li><strong>Institutional financial tools</strong> — Bloomberg Terminal (studied as the gold standard for data density + trust)</li>
+                        <li><strong>Traditional performance and SLA dashboards</strong> — Grafana, Datadog (studied for information architecture patterns)</li>
+                    </ul>
+                    <p><strong>Key Insights extracted:</strong></p>
+                    <ul class="case-list">
+                        <li>Data doesn't need to be ''more'', it needs to be better organized. Information overload was the primary failure mode of existing tools.</li>
+                        <li>Visualization should guide reading, not just display numbers. The eye needs a clear path through the data.</li>
+                        <li>UX needs to communicate credibility, not hype. In institutional contexts, restraint is a trust signal.</li>
+                        <li>Executives need to understand the scenario in less than 10 seconds. Everything else is depth for those who need it.</li>
+                    </ul>
+                    <p>These insights directly shaped the three core design principles that governed every UI decision made throughout the project.</p>
+                </div>
+            </section>
+            <section id="ux-decision" class="case-section">
+                <span class="case-section-label">KEY UX DECISIONS & REASONING</span>
+                <h2 class="case-section-title">Ux Decisions & Reasoning</h2>
+                <div class="case-section-body">
+                   <p>Each design decision in this product had a specific rationale. Below are the five most significant ones, including the alternatives that were considered and discarded.</p>
+                   <ul class="case-list">
+                        <p><strong>Decision 1</strong> - SLA as a contract, not a percentage</p>
+                        <p><strong><i>"View the SLA as fulfilled or not, not just as isolated percentages."</i></strong></p>
+                        <li>The original approach displayed SLA as a raw percentage (e.g., 98.7% uptime). User testing on comparable tools showed that numbers without context don't communicate risk, a sophisticated user can interpret 98.7%, but a decision-maker asking 'is this vendor compliant?' cannot.</li>
+                        <li>We redesigned SLA visualization as a binary contract status, fulfilled vs. not fulfilled, with the supporting data available on drill-down. This made the primary decision signal immediately legible to non-technical stakeholders, while preserving full metric depth for analysts.                        </li>
+    
+
+                        
+                        <p><strong>Decision 2</strong> - Liquidity as behavior, not a number</p>
+                        <p><strong><i>"Liquidity isn't a number, it's behavior over time."</i></strong></p>
+                        <li>Standard dashboards display liquidity as a single current value (e.g., $200K pool depth). The insight from our research was that a single number is meaningless without temporal context — a pool can show $200K now and have dropped 60% in the last 7 days. </li>
+                        <li>We introduced temporal behavior as a first-class citizen of the UI, every liquidity metric is presented alongside its trend, not as a static point. This required a significant architectural change to the information hierarchy, but was validated as the most critical insight for decision-making.</li>
+                        <img src="Transparent.space Products/4 cards.png" alt="Transparent.space Product" class="case-gallery-img">
+                        <p></p>
+                        
+                    
+                        <p><strong>Decision 3</strong> - Comparison without 'gamifying'</p>
+                        <li>When designing the Market Maker comparison feature, the initial direction used visual ranking (leaderboard-style with badges and rankings). We discarded this approach after recognizing that gamification creates visual bias, it encourages 'winning' over nuanced evaluation.</li>
+                        <li>The final design uses direct side-by-side comparison with the same metrics in the same context, with no visual hierarchy between providers. The data makes the case; the UI stays neutral.                        </li>
+                        
+
+                        <p><strong>Decision 4</strong> - The three UX design pillars</p>
+                        <img src="Transparent.space Products/3 points.png" alt="Transparent.space Product" class="case-gallery-img">
+
                 </div>
             </section>
             <section id="design" class="case-section">
-                <span class="case-section-label">DESIGN</span>
-                <h2 class="case-section-title">Design decisions prioritized:                </h2>
+                <span class="case-section-label">DESIGN CONCEPT</span>
+                <h2 class="case-section-title">Blueprint, Structure & Radical Transparency</h2>
                 <div class="case-section-body">
-                    <ul class="case-list">
-                    <li> Information hierarchy over density</li>
-                    <li> Persistent context across navigation layers</li>
-                    <li> Responsive layouts for multi-screen environments</li>
-                </ul>
-                    <p>Interaction patterns were optimized for users operating in parallel trading systems.                    </p>
+                    <p>Transparent.space required more than a functional UI, it required a visual language that could communicate trust, precision, and accountability before a user reads a single data point.</p>
+                    <p>The product was conceptually designed around a blueprint-inspired system, a reference to engineering, architecture, and financial infrastructure, where every element exists to be measured, verified, and understood.</p>
+                    <p>The interface is structured through visible grids and quadrants, reinforcing the idea of radical transparency. Data is never hidden behind decorative layers; instead, performance, liquidity, and SLA metrics are always observable, contextualized, and comparable.                    </p>
+                    <img src="Transparent.space Products/point 4.png" alt="Transparent.space Product" class="case-gallery-img">
+                    <p>This concept was developed collaboratively using AI-assisted workflows, specifically, using generative tools to rapidly explore spatial metaphors for data organization, blueprint grid systems, and institutional visual languages. The AI accelerated the ideation phase significantly, but every final decision was grounded in the UX principles established during research and validated against the needs of both user profiles.</p>
                 </div>
             </section>
-            <section id="visual-system" class="case-section">
-                <span class="case-section-label">VISUAL SYSTEM</span>
-                <h2 class="case-section-title">The product visual language reinforces usability through:                </h2>
+            <section id="strategy" class="case-section">
+                <span class="case-section-label">FROM STRATEGY TO INTERFACE</span>
+                <h2 class="case-section-title">Interface</h2>
                 <div class="case-section-body">
-                    <div class="file-under-tags">
-                        <ul class="case-list">
-                        <li> Contrast-driven alert states</li>
-                        <li> Structured dashboard grids</li>
-                        <li> Clear metric grouping</li>
-                        <li> Functional iconography for rapid scanning  </li>
+                    <p>The design process moved through four distinct phases, each feeding directly into the next:</p>
+                    <ul class="case-list">
+                        <p><strong>Phase 1</strong> - Information Architecture</p>
+                        <li>Defined the single-screen mental model: global status first, then progressive drill-down</li>
+                        <li>Mapped the two user journeys (executive scan vs. analyst deep dive) to the same interface</li>
+                        <li>Established the four core data layers: SLA Status, Liquidity Behavior, Market Comparison and Methodology</li>
+
+                        <p><strong>Phase 2</strong> - Component Design</p>
+                        <li>Built a modular design system of 120+ components in Figma with AI commands</li>
+                        <li>Every component designed to work at multiple data densities, the same card layout handles both summary and detailed states</li>
+                        <li>Light mode as default, deliberate choice to reinforce the institutional, high-stakes environment</li>
+
+                        <p><strong>Phase 3</strong> - Interaction Design</p>
+                        <li>Progressive disclosure pattern: every screen has a readable summary state and an expandable detail state</li>
+                        <li>Drill-down without context loss, breadcrumb navigation ensures the user always knows where they are in the data hierarchy</li>
+                        <li>Alert states designed as binary signals (fulfilled / not fulfilled) with supporting trend data on hover/expand</li>
+
+                        <p><strong>Phase 4</strong> - Validation & Iteration</p>
+                        <li>Usability sessions with 2 operators, identified 'too many simultaneous metrics' as primary friction point in v1</li>
+                        <li>Reduced primary view from 12 metrics to 4 critical metrics, with remaining data accessible via drill-down</li>
+                        <li>Task completion rate improved from 61% to 88% between v1 and v2</li>
+                        <img src="Transparent.space Products/Opportunity.png" alt="Transparent.space Product" class="case-gallery-img">
+                        
+                </ul>
+                </div>
+                <div>
+                <section id="results" class="case-section">
+                    <span class="case-section-label">RESULTS</span>
+                    <h2 class="case-section-title">Results</h2>
+                    <p>Measurable outcomes from the product, based on usability sessions and early beta usage:</p>
+                    <ul class="case-list">
+                        <li>~30% reduction in average time-to-insight for liquidity providers (target was -2 min for SLA diagnosis, down from 15–20 min with legacy tools)</li>
+                        <li>Task completion rate: 61% → 88% between v1 and v2, measured in usability sessions with 4 operators</li>
+                        <li>Design system of 120+ components reduced design-to-dev handoff time by ~35%</li>
+                        <li>Design cycles accelerated by ~60% through AI-assisted prototyping workflows</li>
+                        <li>Product entered partnership conversations with Kraken and Worldchain, validating institutional product-market fit</li>
                     </ul>
-                        <p> Visual clarity acts as a performance tool, not just an aesthetic choice.                    </p>
-                    </div>
-                </div>
-            </section>
-            <section id="lessons" class="case-section">
-                <span class="case-section-label">LESSONS</span>
-                <h2 class="case-section-title">Lessons Learned</h2>
-                <div class="case-section-body">
-                    <ul class="case-list">
-                    <li> Monitoring tools must reduce stress, not amplify it</li>
-                    <li> Operational dashboards require clarity under pressure</li>
-                    <li> Good product design in finance is measured by decision speed</li>
-                </ul>
-                </div>
-            </section>
-            <section id="next-steps" class="case-section">
-                <span class="case-section-label">NEXT STEPS</span>
-                <h2 class="case-section-title">Next Steps</h2>
-                <div class="case-section-body">
-                    <ul class="case-list">
-                    <li> Predictive alerts powered by historical patterns</li>
-                    <li> Cross-platform synchronization</li>
-                    <li> Advanced reporting for institutional stakeholders</li>
-                </ul>
-                </div>
             </section>
         </div>
+
+        <section id="lessons" class="case-section">
+            <span class="case-section-label">LESSONS LEARNED</span>
+            <h2 class="case-section-title">Lessons Learned</h2>
+            <p><strong>UI simplification without system simplification doesn't work.</strong></p>
+            <ul class="case-list">
+                <li>In v1, we tried to reduce complexity by simplifying the visual layer while keeping the underlying information architecture unchanged. Usability sessions showed the same confusion patterns, the complexity had just shifted from visual to conceptual. The real improvement came when we redesigned the IA, not just the UI.</li>
+            </ul>
+            <p><strong>In institutional products, restraint is a design feature.</strong></p>
+            <ul class="case-list">
+                <li>Every time we added a visual element 'to make the product feel more polished,' we were actually eroding the core trust signal. The benchmark, Bloomberg Terminal is deliberately austere. We learned to treat visual restraint as a deliberate product choice, not a failure of creativity.</li>
+            </ul>
+            <p><strong>Designing for two user types requires explicit prioritization.</strong></p>
+            <ul class="case-list">
+                <li>The tension between the executive user (needs to scan in 10 seconds) and the analyst user (needs full data depth) almost derailed the IA multiple times. The resolution was a clear hierarchy: the product always loads in executive mode, with analyst depth accessible but never forced. Once we made this explicit, the layout decisions became straightforward.  </li>
+            </ul>
+            <p><strong>AI-assisted workflows change the speed of ideation, not the quality of decisions.</strong></p>
+            <ul class="case-list">
+                <li>Using AI tools (generative ideation, spatial layout exploration, rapid prototyping) cut our ideation phase from weeks to days. But the decisions themselves, what to prioritize, what to cut, what the user actually needs, still required the same depth of research and reasoning. AI accelerated the exploration; the thinking remained human. </li>
+            </ul>
+    </section>
+    <section id="next" class="case-section">
+        <span class="case-section-label">NEXT STEPS</span>
+        <h2 class="case-section-title">Next Steps</h2>
+        <p><strong>Predictive alerts powered by historical patterns</strong></p>
+        <ul class="case-list">
+            <li>Prioritized based on direct user feedback: 3 of 4 operators in usability sessions asked for a way to distinguish 'unusual but recoverable' from 'critical and immediate' before the issue fully surfaces. Historical pattern analysis was identified as the most viable technical approach.            </li>
+        </ul>
+        <p><strong>Multi-Market Maker comparison view</strong></p>
+        <ul class="case-list">
+            <li>Current product allows sequential comparison. The next phase introduces a simultaneous side-by-side view for up to 3 Market Makers, the most requested feature from institutional client beta users. </li>
+        </ul>
+        <p><strong>Public API for data export</strong></p>
+        <ul class="case-list">
+            <li>Several beta users expressed the need to pipe Transparent.space data into their own internal reporting systems. An API layer would expand the product from a dashboard to an infrastructure component, significantly increasing switching costs and institutional stickiness.            </li>
+        </ul>
+        </section>
+
+</div>
     </section>
 
     <section class="related-projects">

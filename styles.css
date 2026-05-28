@@ -6217,6 +6217,23 @@ a.project-card:hover {
     display: block;
     border-radius: 8px;
     border: 1px solid var(--border-color);
+    image-rendering: auto;
+    transform-origin: center center;
+    transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.42s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .case-gallery-img:hover {
+        transform: scale(1.02);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.10);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .case-gallery-img {
+        transition: none;
+    }
 }
 
 .case-section-gallery .gallery-video,
