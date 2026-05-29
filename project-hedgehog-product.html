@@ -120,7 +120,7 @@
                         <li>Engagement depends on unpredictable timelines, a prediction made today may resolve in weeks</li>
                         <li>Weak connection between what the user does and what the system does in response</li>
                     </ul>
-                    <p><i>As a result, participation is either limited to experienced users — or becomes too passive to be meaningful.</i></p>
+                    <p><i>As a result, participation is either limited to experienced users, or becomes too passive to be meaningful.</i></p>
                 </div>
             </section>
 
@@ -211,54 +211,53 @@
                 <div class="case-section-body">
                     <p>The design process moved through four phases: IA definition, interaction design, visual system, and iterative testing. Below are the five most significant design decisions, including the alternatives that were considered and discarded. </p>
                         
-                    <p><strong>Decision 1</strong> — Pooled system (UP/DOWN) vs. orderbook</p>
+                    <p><strong>Decision 1 — Pooled system (UP/DOWN) vs. orderbook</strong> </p>
                     <ul class="case-list">
-                        <p><strong>Considered & discarded:</strong></p>
-                        <li>Simplified orderbook: we initially explored a version that kept the orderbook mechanic but reduced the visible information. Testing with 3 non-technical users showed the same hesitation patterns — the mental model of 'matching' trades still required too much prior knowledge.</li>
-                        <p><strong>Chosen direction:</strong></p>
-                        <li>Pooled positions (UP vs DOWN): users deposit into a shared pool, not against a counterparty. The only decision is direction</li>
-                        <p><strong>Why:</strong></p>
-                        <li>Task completion rate in usability sessions went from ~40% (orderbook v1) to 88% (pool v2). The mental model shift, from 'trading' to 'choosing a side', was the key unlock.</li>
+                        
+                        <li><strong>Considered & discarded:</strong> Simplified orderbook: we initially explored a version that kept the orderbook mechanic but reduced the visible information. Testing with 3 non-technical users showed the same hesitation patterns — the mental model of 'matching' trades still required too much prior knowledge.</li>
+                        
+                        <li><strong>Chosen direction:</strong> Pooled positions (UP vs DOWN): users deposit into a shared pool, not against a counterparty. The only decision is direction</li>
+                        <li><strong>Why:</strong> Task completion rate in usability sessions went from ~40% (orderbook v1) to 88% (pool v2). The mental model shift, from 'trading' to 'choosing a side', was the key unlock.</li>
                     </ul>
 
-                    <p><strong>Decision 2</strong> — Time-based rounds vs. continuous market</p>
+                    <p><strong>Decision 2 — Time-based rounds vs. continuous market</strong> </p>
                     <ul class="case-list">
-                        <p><strong>Considered & discarded:</strong></p>
-                        <li>Continuous market: always-open participation with no defined resolution window. This felt more like traditional trading and created no urgency or clear engagement cycle.</li>
-                        <p><strong>Chosen direction:</strong></p>
-                        <li>Time-based rounds with defined entry, waiting, and resolution phases</li>
-                        <p><strong>Why:</strong></p>
-                        <li>Short cycles create repeatable engagement loops. Users who participated in 3+ rounds had a significantly higher return rate. The defined end state also solved a core UX problem: users always knew exactly where they were in the process.</li>
+                        
+                        <li><strong>Considered & discarded:</strong> Continuous market: always-open participation with no defined resolution window. This felt more like traditional trading and created no urgency or clear engagement cycle.</li>
+                        
+                        <li><strong>Chosen direction:</strong> Time-based rounds with defined entry, waiting, and resolution phases</li>
+                        
+                        <li><strong>Why:</strong> Short cycles create repeatable engagement loops. Users who participated in 3+ rounds had a significantly higher return rate. The defined end state also solved a core UX problem: users always knew exactly where they were in the process.</li>
                     </ul>
 
-                    <p><strong>Decision 3</strong> — Showing participation data publicly</p>
+                    <p><strong>Decision 3 — Showing participation data publicly</strong></p>
                     <ul class="case-list">
-                        <p><strong>Considered & discarded:</strong></p>
-                        <li>Hiding pool distribution: keeping the UP/DOWN split private to avoid herd behavior and maintain 'market integrity.'</li>
-                        <p><strong>Chosen direction:</strong></p>
-                        <li>Exposing participation data, pool size, capital distribution, top participants, as a first-class UI element.</li>
-                        <p><strong>Why:</strong></p>
-                        <li>Research showed users naturally look for social proof at the moment of decision. Instead of fighting this behavior, we designed around it. Showing the imbalance also creates strategic value for experienced users who can read positioning as a contrarian signal.</li>
+                      
+                        <li><strong>Considered & discarded:</strong> Hiding pool distribution: keeping the UP/DOWN split private to avoid herd behavior and maintain 'market integrity.'</li>
+                        
+                        <li><strong>Chosen direction:</strong> Exposing participation data, pool size, capital distribution, top participants, as a first-class UI element.</li>
+                       
+                        <li><strong>Why:</strong>Research showed users naturally look for social proof at the moment of decision. Instead of fighting this behavior, we designed around it. Showing the imbalance also creates strategic value for experienced users who can read positioning as a contrarian signal.</li>
                     </ul>
 
-                    <p><strong>Decision 4</strong> — Single dominant action vs. multi-step flow</p>
+                    <p><strong>Decision 4 — Single dominant action vs. multi-step flow</strong></p>
                     <ul class="case-list">
-                        <p><strong>Considered & discarded:</strong></p>
-                        <li>A confirmation flow with amount selection, direction, and confirm step before entry, modeled on standard DeFi transaction patterns.</li>
-                        <p><strong>Chosen direction:</strong></p>
-                        <li>One-tap participation: the dominant action (UP or DOWN) is the primary element of the entire screen. Amount and confirmation are secondary.</li>
-                        <p><strong>Why:</strong></p>
-                        <li>In sessions with new users, every additional step before the first participation increased drop-off by ~15%. The goal was to get users to their first completed round as fast as possible, because completion is the strongest retention signal.</li>
+                        
+                        <li><strong>Considered & discarded:</strong> A confirmation flow with amount selection, direction, and confirm step before entry, modeled on standard DeFi transaction patterns.</li>
+                      
+                        <li><strong>Chosen direction:</strong> One-tap participation: the dominant action (UP or DOWN) is the primary element of the entire screen. Amount and confirmation are secondary.</li>
+                        
+                        <li><strong>Why:</strong> In sessions with new users, every additional step before the first participation increased drop-off by ~15%. The goal was to get users to their first completed round as fast as possible, because completion is the strongest retention signal.</li>
                     </ul>
                     <p></p>
-                    <p><strong>Decision 5</strong> — Resolution feedback design</p>
+                    <p><strong>Decision 5 — Resolution feedback design</strong></p>
                     <ul class="case-list">
-                        <p><strong>Considered & discarded:</strong></p>
-                        <li>Standard modal notification: 'You won X' with a close button.</li>
-                        <p><strong>Chosen direction:</strong></p>
-                        <li>Full-screen resolution state with win/loss visual, payout amount, and an immediate 'Play again' CTA that re-enters the cycle.</li>
-                        <p><strong>Why:</strong></p>
-                        <li>The resolution phase is the highest-emotion moment in the product. A modal dismisses it. A dedicated state celebrates or acknowledges it, and channels that emotion directly into the next engagement cycle. This was directly informed by behavioral patterns from gaming UX research.</li>
+                       
+                        <li><strong>Considered & discarded:</strong> Standard modal notification: 'You won X' with a close button.</li>
+                       
+                        <li><strong>Chosen direction:</strong> Full-screen resolution state with win/loss visual, payout amount, and an immediate 'Play again' CTA that re-enters the cycle.</li>
+                        
+                        <li><strong>Why:</strong> The resolution phase is the highest-emotion moment in the product. A modal dismisses it. A dedicated state celebrates or acknowledges it, and channels that emotion directly into the next engagement cycle. This was directly informed by behavioral patterns from gaming UX research.</li>
                     </ul>
                 </div>
             </section>
