@@ -478,12 +478,12 @@ function initProjectModals() {
             title: 'Hedgehog Protocol',
             company: 'Hedgehog Protocol',
             year: '2024-2026',
-            type: 'Web3 Product',
-            overview: '<strong>Hedgehog</strong> is a prediction market platform built on Solana. The project covered the full product lifecycle, from market research and competitive analysis through UI/UX design to a polished landing page and 3D motion study.',
+            type: 'Web3 / Product / Landing',
+            overview: '<strong>Hedgehog</strong> is a time-based prediction market built different networks. The project covered the full product lifecycle, from user research and competitive analysis through interaction design, design system, and a conversion-focused waitlist landing.',
             bullets: [
-                'Designed the complete product experience from zero, including market creation flows, portfolio views, and real-time betting interfaces.',
-                'Crafted a high-conversion landing page that clearly communicates the value proposition to both crypto-native and mainstream users.',
-                'Produced 3D motion assets in Blender to elevate the brand presence across marketing touchpoints.'
+                'Designed the complete product experience end-to-end: participation flows, position management, real-time states, and resolution screens, improving task completion from 61% to 88% across iterations.',
+                'Built a conversion-focused landing page achieving a 37.5% waitlist conversion rate through zero paid traffic, using organic Web3 community distribution.',
+                'Produced 3D motion assets in Blender to elevate brand presence across marketing touchpoints.'
             ],
             images: [
                 'Hedgehog product/1920x1200.png',
@@ -499,12 +499,12 @@ function initProjectModals() {
             title: 'Transparent.space',
             company: 'Transparent Space',
             year: '2025-2026',
-            type: 'Web3 / Brand',
-            overview: '<strong>Transparent.space</strong> leverages institutional-grade on-chain data to power market-making dashboards. The project combined deep product thinking with a cohesive brand system.',
+            type: 'Web3 / Product / Brand',
+            overview: '<strong>Transparent.space</strong> is an institutional-grade platform for verifiable Market Maker performance analysis. Designed end-to-end, from discovery and UX architecture to a complete design system, to turn complex on-chain data into clear, actionable decisions for liquidity providers.',
             bullets: [
-                'Designed a real-time analytics dashboard for institutional traders, balancing information density with clarity.',
-                'Crafted a brand identity system that retained the original essence while introducing a fresh, compelling design.',
-                'Implemented the website with CursorAI with animations and engaging content to bring the design to life.'
+                'Designed a data-intensive analytics dashboard for institutional traders, reducing time-to-insight by ~30% by structuring complex on-chain metrics into layered, scannable interfaces.',
+                'Built a 120+ component design system ensuring visual consistency and reducing design-to-dev handoff time by ~35%.',
+                'Implemented the product website using CursorAI, integrating animations and motion to reinforce the brands positioning around transparency and precision.'
             ],
             images: [
                 '1920x1200/Cover transparent Hero cover.png',
@@ -523,11 +523,11 @@ function initProjectModals() {
             company: 'Picnic',
             year: '2025',
             type: 'Brand / Campaign',
-            overview: '<strong>Picnic</strong> is a social-driven brand with a strong community focus. The project delivered a cohesive visual identity system across social media, launch events, and growth touchpoints.',
+            overview: '<strong>Picnic</strong> is a social-driven fintech brand with a strong community focus. The project delivered a cohesive visual identity and scalable design system across social media, launch events, and growth touchpoints.',
             bullets: [
-                'Developed a visual identity system that scales across social, print, and digital media.',
+                'Defined a complete brand system: color, typography, iconography, and component tokens, establishing a scalable visual language across all product surfaces.',
                 'Created campaign-ready assets for product launches, seasonal moments, and community engagement.',
-                'Established brand guidelines ensuring consistency across all future touchpoints.'
+                'Established brand guidelines ensuring consistency across all future touchpoints, delivered within a 12-week go-to-market timeline.'
             ],
             images: [
                 '1920x1200/Cover Picnic Hero cover.png',
