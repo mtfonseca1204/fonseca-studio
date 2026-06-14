@@ -25,24 +25,42 @@
 </head>
 <body class="about-page">
 
-    <header class="about-header">
-        <a href="index.html" class="about-header-logo" aria-label="Fonseca — Home">
-            <img src="logo.svg" alt="" class="about-header-logo-img logo-light" height="32">
-            <img src="logo%20white.svg" alt="" class="about-header-logo-img logo-dark" height="32">
-        </a>
-        <div class="about-header-actions">
-            <a href="projects.html" class="about-header-link">&larr; Back to all projects</a>
-            <button type="button" class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
-                <svg class="icon-sun" width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M10 3V1M10 19V17M17 10H19M1 10H3M15.657 4.343L17.071 2.929M2.929 17.071L4.343 15.657M15.657 15.657L17.071 17.071M2.929 2.929L4.343 4.343M14 10C14 12.2091 12.2091 14 10 14C7.79086 14 6 12.2091 6 10C6 7.79086 7.79086 6 10 6C12.2091 6 14 7.79086 14 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <svg class="icon-moon" width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="index.html" class="nav-logo">
+                    <img src="logo.svg" alt="Fonseca" class="nav-logo-img logo-light">
+                    <img src="logo white.svg" alt="Fonseca" class="nav-logo-img logo-dark">
+                </a>
+            </div>
+            <div class="nav-center">
+                <a href="index.html#work" class="nav-link"><span class="nav-num">01</span> Work</a>
+                <a href="projects.html" class="nav-link"><span class="nav-num">02</span> Projects</a>
+                <a href="about.html" class="nav-link"><span class="nav-num">03</span> About</a>
+            </div>
+            <div class="nav-right">
+                <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+                    <svg class="icon-sun" width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M10 3V1M10 19V17M17 10H19M1 10H3M15.657 4.343L17.071 2.929M2.929 17.071L4.343 15.657M15.657 15.657L17.071 17.071M2.929 2.929L4.343 4.343M14 10C14 12.2091 12.2091 14 10 14C7.79086 14 6 12.2091 6 10C6 7.79086 7.79086 6 10 6C12.2091 6 14 7.79086 14 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <svg class="icon-moon" width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <a href="mailto:fonsecaa.design@gmail.com" class="nav-cta">Contact</a>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu"><span></span><span></span></button>
+            </div>
         </div>
-    </header>
+        <div class="mobile-menu">
+            <div class="mobile-menu-links">
+                <a href="index.html#work" class="mobile-link">Work</a>
+                <a href="projects.html" class="mobile-link">Projects</a>
+                <a href="about.html" class="mobile-link">About</a>
+                <a href="mailto:fonsecaa.design@gmail.com" class="mobile-link mobile-cta">Contact</a>
+            </div>
+        </div>
+    </nav>
 
     <section class="project-hero project-hero-case">
-        <div class="container">
-            <p class="project-hero-tagline">Bakery / Vegan Food</p>
-            <h1 class="project-hero-title">NØRA</h1>
+        <div class="container container-narrow">
+            <p class="project-hero-tagline">CASE STUDY · FOOD & BEVERAGE · BRAND IDENTITY</p>
+            <h1 class="project-hero-title">NØRA · Brand</h1>
             <p class="project-hero-description">
                 NØRA Bakery is a vegan bakery built around simplicity and care. Good food should be honest, well made, and inclusive. Recipes are plant-based by design, with real ingredients and slow processes. At NØRA, everyone belongs and everything starts from the base.
             </p>
@@ -58,13 +76,13 @@
     <aside class="case-side-nav" id="caseSideNav" aria-label="Case study navigation">
         <nav class="case-side-nav-inner">
             <a href="#overview" class="case-side-nav-link">Overview</a>
+            <a href="#my-role" class="case-side-nav-link">My Role</a>
             <a href="#problem" class="case-side-nav-link">Problem</a>
-            <a href="#goal" class="case-side-nav-link">Goal</a>
             <a href="#solution" class="case-side-nav-link">Solution</a>
-            <a href="#results" class="case-side-nav-link">Results</a>
+            <a href="#key-decisions" class="case-side-nav-link">Key Decisions</a>
             <a href="#research" class="case-side-nav-link">Research</a>
             <a href="#design" class="case-side-nav-link">Design</a>
-            <a href="#visual-system" class="case-side-nav-link">Visual System</a>
+            <a href="#results" class="case-side-nav-link">Results</a>
             <a href="#lessons" class="case-side-nav-link">Lessons</a>
             <a href="#next-steps" class="case-side-nav-link">Next Steps</a>
         </nav>
@@ -76,154 +94,228 @@
         </div>
     </section>
 
-    <section class="project-case-content">
+    <section class="project-case-content case-editorial">
         <div class="container container-narrow">
             <section id="overview" class="case-section">
                 <span class="case-section-label">INTRO</span>
                 <h2 class="case-section-title">Overview</h2>
-                <div class="case-section-body">
-                <p>NORA Bakery is an artisanal bakery brand that blends traditional craft with contemporary elegance. This project involved developing a complete brand identity and a digital presence that reflects the bakery’s philosophy: handcrafted quality, sensory warmth, and a timeless yet modern sensibility.</p>   
-                <p>The work spanned:</p>
-                <ul class="case-list">
-                    <li>Visual identity system</li>
-                    <li>Brand narrative and positioning</li>
-                    <li>Landing page and digital collateral</li>
-                    <li>Packaging mood and visual direction</li>
-                  </ul>
+                <div class="case-brief" role="region" aria-label="Project summary">
+                    <div class="case-brief__stat-band">
+                        <div class="case-brief__stat-main">
+                            <span class="case-brief__stat-value">4<span class="case-brief__stat-unit"></span></span>
+                            <span class="case-brief__stat-caption">Deliverables: identity, narrative, landing page, packaging direction</span>
+                        </div>
+                        <div class="case-brief__stat-compare">
+                            <div class="case-brief__compare-item">
+                                <span class="case-brief__compare-label">Brand feeling</span>
+                                <span class="case-brief__compare-value case-brief__compare-value--accent">Warm craft</span>
+                            </div>
+                            <div class="case-brief__compare-item">
+                                <span class="case-brief__compare-label">Positioning</span>
+                                <span class="case-brief__compare-value">Premium vegan</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="case-brief__grid">
+                        <article class="case-brief__card">
+                            <h3 class="case-brief__card-label">Problem</h3>
+                            <p class="case-brief__card-text">NØRA entered a competitive local market where bakeries relied on <mark class="case-brief__hl">generic visuals and uninspired positioning</mark>. The brand needed craft authenticity without bakery clichés.</p>
+                        </article>
+                        <article class="case-brief__card">
+                            <h3 class="case-brief__card-label">Solution</h3>
+                            <p class="case-brief__card-text">A craft-centric identity with <mark class="case-brief__hl">earth tones, custom typography, and sensory-rich textures</mark> that extend from packaging to digital. <span class="case-brief__flow">Heritage cues → modern clarity → emotional credibility</span></p>
+                        </article>
+                        <article class="case-brief__card case-brief__card--result">
+                            <h3 class="case-brief__card-label">Result</h3>
+                            <p class="case-brief__card-text">Strong visual reception, <span class="case-brief__inline-stat">increased landing page engagement</span>, and a scalable system across digital, print, and physical environments.</p>
+                        </article>
+                    </div>
                 </div>
                 <div class="case-section-gallery">
-                    <img src="NORA/3.png" alt="NORA" class="case-gallery-img">
+                    <img src="NORA/3.png" alt="NØRA brand identity overview" class="case-gallery-img" decoding="async">
                 </div>
             </section>
+
+            <section id="my-role" class="case-section">
+                <span class="case-section-label">MY ROLE</span>
+                <h2 class="case-section-title">Brand Designer: craft a vegan bakery that feels real, not generic</h2>
+                <div class="case-section-body case-prose-stack">
+                    <p class="case-prose-lead">NØRA Bakery is built around simplicity and care. Good food should be honest, well made, and inclusive. My role was to translate that philosophy into a complete brand identity and digital presence.</p>
+                    <p>The work spanned visual identity, brand narrative, a landing page, and packaging direction. Every decision reinforced handcrafted quality, sensory warmth, and a timeless yet modern sensibility.</p>
+                    <div class="case-spec-grid">
+                        <div class="case-spec-item"><p><strong>Visual identity:</strong> Logo, color palette, typography, and mood built around textures like linen, woodgrain, and natural light.</p></div>
+                        <div class="case-spec-item"><p><strong>Brand narrative:</strong> Positioning that tells a story, not just sells pastries. Plant-based by design, inclusive by intent.</p></div>
+                        <div class="case-spec-item"><p><strong>Digital presence:</strong> Landing page with emphasis on sensory experience, longer scroll depth, and newsletter engagement.</p></div>
+                        <div class="case-spec-item"><p><strong>Packaging direction:</strong> Visual mood and system foundations for future physical applications.</p></div>
+                    </div>
+                    <p class="case-prose-kicker"><strong>The brand had to feel tactile and sincere online, not just represent a bakery from a distance.</strong></p>
+                </div>
+            </section>
+
             <section id="problem" class="case-section">
-                <span class="case-section-label">PROBLEM</span>
-                <h2 class="case-section-title">Problem</h2>
-                <div class="case-section-body">
-                    <p>NORA entered a competitive local market where many bakeries relied on generic visuals and uninspired positioning. The core challenge was to convey craft authenticity and premium experience through a visual language that feels both warm and elevated without resorting to overused bakery clichés.</p>
-                    <p>Additionally, the digital touchpoints needed to extend the brand cohesively online while supporting future campaigns and community engagement.</p>
+                <span class="case-section-label">THE PROBLEM</span>
+                <h2 class="case-section-title">Another bakery wasn't an option</h2>
+                <div class="case-section-body case-prose-stack">
+                    <p class="case-prose-lead">NØRA entered a competitive local market where many bakeries relied on generic visuals and uninspired positioning. The core challenge was to convey craft authenticity and premium experience through a visual language that feels both warm and elevated.</p>
+                    <p>Digital touchpoints needed to extend the brand cohesively online while supporting future campaigns and community engagement. Overused bakery clichés would have undermined the vegan, Scandinavian-inspired positioning from the start.</p>
+                    <p class="case-prose-kicker"><strong>Heritage cues plus modern clarity was the formula. Keep scrolling to see how it took shape.</strong></p>
                 </div>
             </section>
-            <section id="goal" class="case-section">
-                <span class="case-section-label">GOAL</span>
-                <h2 class="case-section-title">The project aimed to:</h2>
-                <div class="case-section-body">
-                    <ul class="case-list">
-                        <li>Establish a differentiated brand identity that tells a story — not just sells pastries                        </li>
-                        <li>Create a flexible visual system adaptable to physical and digital applications</li>
-                        <li>Build an engaging online presence through a landing page with emphasis on sensory experience and narrative</li>
-                        <li>Set a foundation for future engagement campaigns (e.g., seasonal offerings, newsletter signups)</li>
-                    </ul>
-                
-                </div>
-            </section>
+
             <section id="solution" class="case-section">
-                <span class="case-section-label">SOLUTION</span>
-                <h2 class="case-section-title">The design strategy centered around craft-centric storytelling and sensory resonance, with a visual system that balances warmth with refined simplicity.                </h2>
-                <div class="case-section-body">
-                    <p>Brand Identity</p>
+                <span class="case-section-label">THE SOLUTION</span>
+                <h2 class="case-section-title">Craft-centric storytelling with sensory resonance</h2>
+                <div class="case-section-body case-prose-stack">
+                    <p class="case-prose-lead">The project aimed to establish a differentiated brand identity, create a flexible visual system for physical and digital use, build an engaging online presence, and set a foundation for seasonal campaigns and newsletter growth.</p>
+                    <p>The design strategy centered on craft-centric storytelling with a visual system that balances warmth and refined simplicity:</p>
                     <ul class="case-list">
-                        <li> Logo & Symbol – Custom typography combining subtle craft cues with modern restraint</li>
-                        <li>Color Palette – Earth tones and warm neutrals that evoke ingredients, oven glow and artisanal materials</li>
-                        <li>Typography – Elegant yet grounded type choices that feel readable and premium</li>
-                        <li>Vibe & Mood – A visual language inspired by textures (linen, woodgrain, flour dust) and natural light</li>
+                        <li><strong>Logo and symbol:</strong> Custom typography combining subtle craft cues with modern restraint</li>
+                        <li><strong>Color palette:</strong> Earth tones and warm neutrals that evoke ingredients, oven glow, and artisanal materials</li>
+                        <li><strong>Typography:</strong> Elegant yet grounded type choices that feel readable and premium</li>
+                        <li><strong>Vibe and mood:</strong> Textures like linen, woodgrain, and flour dust under natural light</li>
                     </ul>
                     <p>This identity system was designed to be flexible, memorable, and rooted in the emotional experience of artisan bakery.</p>
-                </div>
-                <div class="case-section-gallery">
-                    <img src="NORA/2.png" alt="NORA" class="case-gallery-img">
-                    <img src="NORA/4.png" alt="NORA" class="case-gallery-img">
-                    <img src="NORA/5.png" alt="NORA" class="case-gallery-img">
-                    <img src="NORA/6.png" alt="NORA" class="case-gallery-img">
-                    <img src="NORA/7.png" alt="NORA" class="case-gallery-img">
-                    <img src="NORA/8.png" alt="NORA" class="case-gallery-img">
-                    <img src="NORA/9.png" alt="NORA" class="case-gallery-img">
-                    <img src="NORA/10.png" alt="NORA" class="case-gallery-img">
-                </div>
-            </section>
-            <section id="results" class="case-section">
-                <span class="case-section-label">RESULTS</span>
-                <h2 class="case-section-title">Results</h2>
-                <div class="case-section-body">
-                    <ul class="case-list">
-                        <li>Strong visual reception from early users and clients, consistent praise for warmth and premium feeling</li>
-                        <li>Increased visitor engagement on the landing page, longer scroll depth and time on page</li>
-                        <li>Newsletter opt-in engagement that positioned the brand for future seasonal marketing</li>
-                        <li>A scalable brand system that works across digital, print and physical environments</li>
-                    </ul>
-                    <p>The identity and digital presence succeeded at creating a brand that feels real, tactile and sincere, not just another bakery.</p>
+                    <div class="case-section-gallery">
+                        <img src="NORA/2.png" alt="NØRA logo and typography" class="case-gallery-img" decoding="async">
+                        <img src="NORA/4.png" alt="NØRA color palette" class="case-gallery-img" decoding="async">
+                        <img src="NORA/5.png" alt="NØRA brand applications" class="case-gallery-img" decoding="async">
+                        <img src="NORA/6.png" alt="NØRA packaging direction" class="case-gallery-img" decoding="async">
+                        <img src="NORA/7.png" alt="NØRA digital collateral" class="case-gallery-img" decoding="async">
+                        <img src="NORA/8.png" alt="NØRA landing page" class="case-gallery-img" decoding="async">
+                        <img src="NORA/9.png" alt="NØRA brand system" class="case-gallery-img" decoding="async">
+                        <img src="NORA/10.png" alt="NØRA visual identity range" class="case-gallery-img" decoding="async">
+                    </div>
+                    <p class="case-prose-kicker"><strong>Natural palettes, custom typography, and sensory photography styling. One consistent expression across every touchpoint.</strong></p>
                 </div>
             </section>
-            <section id="research" class="case-section">
-                <span class="case-section-label">RESEARCH</span>
-                <h2 class="case-section-title">Brand and design decisions were informed by:                </h2>
-                <div class="case-section-body">
-                    <ul class="case-list">
-                        <li>Artisanal bakery culture and craft food trends</li>
-                        <li>Competitor analysis, identifying gaps in emotional storytelling</li>
-                        <li>Sensory branding studies (how imagery and color evoke smell, taste, and feel)</li>
-                        <li>Local audience behavior and expectations for premium food brands                        </li>
-                    </ul>
-                  
-                  
-                    <p>Key takeaway: heritage cues + modern clarity = emotional credibility.</p>
-                </div>
-            </section>
-            <section id="design" class="case-section">
-                <span class="case-section-label">DESIGN</span>
-                <h2 class="case-section-title">Design principles focused on:</h2>
-                <div class="case-section-body">
-                    <ul class="case-list">
-                        <li>Balance between craft warmth and refined elegance</li>
-                        <li>Hierarchy that supports comfort and readability</li>
-                        <li>Visual pacing that evokes sensory experience</li>
-                        <li>Modularity for future expansions (menus, events, seasonal drops)                        </li>
-                    </ul>
-                <p>The system was built to feel both handcrafted and digitally fluent.</p>
-                
-                </div>
-            </section>
-            <section id="visual-system" class="case-section">
-                <span class="case-section-label">VISUAL SYSTEM</span>
-                <h2 class="case-section-title">The visual system reinforces brand positioning through:</h2>
-                <div class="case-section-body">
-                    <div class="file-under-tags">
-                        <ul class="case-list">
-                            <li>Natural palettes</li>
-                            <li>Custom typography</li>
-                            <li>Sensory-rich photography styling</li>
-                            <li>Clear grids that support clear narrative flow  </li>
-                        </ul>
-                    <p>Together, these elements form a consistent expression of the NORA brand across all touchpoints.</p>
 
+            <section id="key-decisions" class="case-section">
+                <span class="case-section-label">KEY DECISIONS</span>
+                <h2 class="case-section-title">Three choices that defined NØRA</h2>
+                <div class="case-section-body">
+                    <div class="case-key-decisions">
+                        <article class="case-key-decision">
+                            <h3 class="case-key-decision__title">Sensory storytelling over product shots alone</h3>
+                            <p class="case-key-decision__text">Competitors showed pastries. NØRA needed to evoke smell, taste, and feel through imagery and color. Sensory branding studies shaped every visual decision.</p>
+                        </article>
+                        <article class="case-key-decision">
+                            <h3 class="case-key-decision__title">Heritage cues with modern restraint</h3>
+                            <p class="case-key-decision__text">Artisanal bakery culture informed the craft direction, but the typography and grid stayed clean and contemporary. Heritage plus modern clarity equals emotional credibility.</p>
+                        </article>
+                        <article class="case-key-decision">
+                            <h3 class="case-key-decision__title">Digital that feels physical</h3>
+                            <p class="case-key-decision__text">The landing page was designed so the online experience felt like the physical brand, not a separate marketing layer. Texture, pacing, and narrative flow carried the same warmth.</p>
+                        </article>
                     </div>
                 </div>
             </section>
-            <section id="lessons" class="case-section">
-                <span class="case-section-label">LESSONS</span>
-                <h2 class="case-section-title">Lessons Learned</h2>
-                <div class="case-section-body">
-                    
+
+            <section id="research" class="case-section">
+                <span class="case-section-label">RESEARCH</span>
+                <h2 class="case-section-title">Understanding the gap in emotional storytelling</h2>
+                <div class="case-section-body case-prose-stack">
+                    <p class="case-prose-lead">Brand and design decisions were informed by artisanal bakery culture, competitor analysis, sensory branding studies, and local audience expectations for premium food brands.</p>
                     <ul class="case-list">
-                        <li>Sensory storytelling deepens user engagement beyond functional copy</li>
-                        <li>Emotional connection is as important as visual clarity in premium food brands</li>
-                        <li>Digital presence must feel like the physical brand, not just represent it</li>
+                        <li>Artisanal bakery culture and craft food trends</li>
+                        <li>Competitor analysis, identifying gaps in emotional storytelling</li>
+                        <li>Sensory branding studies: how imagery and color evoke smell, taste, and feel</li>
+                        <li>Local audience behavior and expectations for premium food brands</li>
                     </ul>
-                
+                    <p>Key takeaway: heritage cues plus modern clarity creates emotional credibility.</p>
                 </div>
             </section>
+
+            <section id="design" class="case-section">
+                <span class="case-section-label">DESIGN</span>
+                <h2 class="case-section-title">Handcrafted warmth, digitally fluent</h2>
+                <div class="case-section-body case-prose-stack">
+                    <p class="case-prose-lead">The visual system reinforces brand positioning through natural palettes, custom typography, sensory-rich photography styling, and clear grids that support narrative flow.</p>
+                    <div class="case-principle-grid">
+                        <div class="case-principle-item">
+                            <p><strong>Craft warmth, refined elegance</strong></p>
+                            <p>Balance between artisanal feeling and premium restraint in every composition.</p>
+                        </div>
+                        <div class="case-principle-item">
+                            <p><strong>Comfort and readability</strong></p>
+                            <p>Hierarchy that supports easy scanning without losing the premium tone.</p>
+                        </div>
+                        <div class="case-principle-item">
+                            <p><strong>Sensory visual pacing</strong></p>
+                            <p>Layouts that evoke the experience of being in the bakery, not just viewing products.</p>
+                        </div>
+                        <div class="case-principle-item">
+                            <p><strong>Modular expansion</strong></p>
+                            <p>Built for menus, events, and seasonal drops without redesigning from scratch.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="results" class="case-section">
+                <span class="case-section-label">RESULTS</span>
+                <h2 class="case-section-title">A brand that feels real, not generic</h2>
+                <div class="case-section-body">
+                    <details class="case-details" open>
+                        <summary class="case-details__summary">Project outcomes</summary>
+                        <div class="case-details__body">
+                            <div class="case-challenge-grid">
+                                <div class="case-metric-item"><p><strong>Strong visual reception:</strong> Consistent praise for warmth and premium feeling from early users and clients.</p></div>
+                                <div class="case-metric-item"><p><strong>Landing page engagement:</strong> Longer scroll depth and time on page compared to generic bakery templates.</p></div>
+                                <div class="case-metric-item"><p><strong>Newsletter foundation:</strong> Opt-in engagement positioned the brand for future seasonal marketing.</p></div>
+                                <div class="case-metric-item"><p><strong>Scalable system:</strong> Works across digital, print, and physical environments.</p></div>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+            </section>
+
+            <section id="lessons" class="case-section">
+                <span class="case-section-label">WHAT I LEARNED</span>
+                <h2 class="case-section-title">Lessons Learned</h2>
+                <div class="case-section-body">
+                    <blockquote class="case-callout case-callout--lesson">
+                        <p>In premium food brands, emotional connection is as important as visual clarity. Sensory storytelling deepens engagement far beyond functional copy.</p>
+                    </blockquote>
+                    <details class="case-details">
+                        <summary class="case-details__summary">Full lessons from the project</summary>
+                        <div class="case-details__body">
+                            <div class="case-lesson-stack">
+                                <div class="case-lesson-item">
+                                    <p><strong>Sensory storytelling deepens engagement.</strong></p>
+                                    <p>Imagery and color that evoke taste and texture outperform product-only photography for premium food positioning.</p>
+                                </div>
+                                <div class="case-lesson-item">
+                                    <p><strong>Digital must feel like the physical brand.</strong></p>
+                                    <p>Online presence can't just represent the bakery. It has to carry the same tactile sincerity.</p>
+                                </div>
+                                <div class="case-lesson-item">
+                                    <p><strong>Modularity pays off early.</strong></p>
+                                    <p>Building for seasonal campaigns and newsletter growth from the start avoids redesign cycles later.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+            </section>
+
             <section id="next-steps" class="case-section">
                 <span class="case-section-label">NEXT STEPS</span>
-                <h2 class="case-section-title">Next Steps</h2>
+                <h2 class="case-section-title">Growing the brand beyond launch</h2>
                 <div class="case-section-body">
-                    
-                    <ul class="case-list">
-                
-                        <li>Expand into seasonal campaigns and digital newsletters</li>
-                        <li>Develop packaging systems based on the visual identity</li>
-                        <li>Create social media templates and content direction</li>
-                    </ul>
-                
-                
+                    <div class="case-next-grid">
+                        <div class="case-next-item">
+                            <p><strong>Seasonal campaigns and newsletters</strong></p>
+                            <p>Expand into recurring digital content using the established visual system and narrative tone.</p>
+                        </div>
+                        <div class="case-next-item">
+                            <p><strong>Packaging systems</strong></p>
+                            <p>Develop physical packaging based on the visual identity and mood direction already in place.</p>
+                        </div>
+                        <div class="case-next-item">
+                            <p><strong>Social media templates</strong></p>
+                            <p>Create content direction and reusable templates for ongoing community engagement.</p>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
@@ -233,7 +325,7 @@
         <div class="container">
             <div class="related-header">
                 <h2>Latest Works</h2>
-                <a href="projects.html" class="see-more-link">See more clicking here <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H1M13 1V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                <a href="projects.html" class="see-more-link">View all projects <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H1M13 1V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
             </div>
             <div class="related-grid">
                 <a href="project-transparent-space.html" class="related-card"><div class="related-image"><img src="1920x1200/Cover transparent Hero cover.png" alt="Transparent.space" class="related-img"></div><div class="related-info"><span class="related-name">Transparent.space</span><span class="related-location">(Product Design)</span></div></a>

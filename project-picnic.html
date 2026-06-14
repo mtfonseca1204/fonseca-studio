@@ -25,165 +25,197 @@
 </head>
 <body class="about-page">
 
-    <header class="about-header">
-        <a href="index.html" class="about-header-logo" aria-label="Fonseca — Home">
-            <img src="logo.svg" alt="" class="about-header-logo-img logo-light" height="32">
-            <img src="logo%20white.svg" alt="" class="about-header-logo-img logo-dark" height="32">
-        </a>
-        <div class="about-header-actions">
-            <a href="projects.html" class="about-header-link">&larr; Back to all projects</a>
-            <button type="button" class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
-                <svg class="icon-sun" width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M10 3V1M10 19V17M17 10H19M1 10H3M15.657 4.343L17.071 2.929M2.929 17.071L4.343 15.657M15.657 15.657L17.071 17.071M2.929 2.929L4.343 4.343M14 10C14 12.2091 12.2091 14 10 14C7.79086 14 6 12.2091 6 10C6 7.79086 7.79086 6 10 6C12.2091 6 14 7.79086 14 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <svg class="icon-moon" width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="index.html" class="nav-logo">
+                    <img src="logo.svg" alt="Fonseca" class="nav-logo-img logo-light">
+                    <img src="logo white.svg" alt="Fonseca" class="nav-logo-img logo-dark">
+                </a>
+            </div>
+            <div class="nav-center">
+                <a href="index.html#work" class="nav-link"><span class="nav-num">01</span> Work</a>
+                <a href="projects.html" class="nav-link"><span class="nav-num">02</span> Projects</a>
+                <a href="about.html" class="nav-link"><span class="nav-num">03</span> About</a>
+            </div>
+            <div class="nav-right">
+                <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+                    <svg class="icon-sun" width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M10 3V1M10 19V17M17 10H19M1 10H3M15.657 4.343L17.071 2.929M2.929 17.071L4.343 15.657M15.657 15.657L17.071 17.071M2.929 2.929L4.343 4.343M14 10C14 12.2091 12.2091 14 10 14C7.79086 14 6 12.2091 6 10C6 7.79086 7.79086 6 10 6C12.2091 6 14 7.79086 14 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <svg class="icon-moon" width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <a href="mailto:fonsecaa.design@gmail.com" class="nav-cta">Contact</a>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu"><span></span><span></span></button>
+            </div>
         </div>
-    </header>
+        <div class="mobile-menu">
+            <div class="mobile-menu-links">
+                <a href="index.html#work" class="mobile-link">Work</a>
+                <a href="projects.html" class="mobile-link">Projects</a>
+                <a href="about.html" class="mobile-link">About</a>
+                <a href="mailto:fonsecaa.design@gmail.com" class="mobile-link mobile-cta">Contact</a>
+            </div>
+        </div>
+    </nav>
 
-    <!-- Project Hero - Oleksii Style -->
     <section class="project-hero project-hero-case">
-        <div class="container">
-            <p class="project-hero-tagline">Fintech, Web3, Digital Payments</p>
-            
-            <h1 class="project-hero-title">Picnic</h1>
-            
+        <div class="container container-narrow">
+            <p class="project-hero-tagline">CASE STUDY · FINTECH · BRAND IDENTITY</p>
+            <h1 class="project-hero-title">Picnic · Brand</h1>
             <p class="project-hero-description">
                 Brand positioning and visual identity system for Picnic, a Brazilian fintech that eliminates hidden fees from international spending through digital dollars and blockchain technology.
             </p>
-
-            <!-- Case Study Metadata - Oleksii Style -->
             <div class="project-case-meta">
-                <div class="case-meta-item">
-                    <span class="case-meta-label">MY ROLE</span>
-                    <span class="case-meta-value">Brand Designer</span>
-                </div>
-                <div class="case-meta-item">
-                    <span class="case-meta-label">DURATION</span>
-                    <span class="case-meta-value">8 Weeks</span>
-                </div>
-                <div class="case-meta-item">
-                    <span class="case-meta-label">TEAM</span>
-                    <span class="case-meta-value">Myself (Design), Picnic Team</span>
-                </div>
-                <div class="case-meta-item">
-                    <span class="case-meta-label">SCOPE</span>
-                    <span class="case-meta-value">Key Visual, Brand Guidelines, Social Templates</span>
-                </div>
+                <div class="case-meta-item"><span class="case-meta-label">MY ROLE</span><span class="case-meta-value">Brand Designer</span></div>
+                <div class="case-meta-item"><span class="case-meta-label">YEAR</span><span class="case-meta-value">2025</span></div>
+                <div class="case-meta-item"><span class="case-meta-label">TEAM</span><span class="case-meta-value">Myself (Design), Picnic Team</span></div>
+                <div class="case-meta-item"><span class="case-meta-label">SCOPE</span><span class="case-meta-value">Key Visual · Brand Guidelines · Social Templates</span></div>
             </div>
         </div>
     </section>
 
-    <!-- Sticky Side Nav - appears when scrolling through sections -->
     <aside class="case-side-nav" id="caseSideNav" aria-label="Case study navigation">
         <nav class="case-side-nav-inner">
             <a href="#overview" class="case-side-nav-link">Overview</a>
+            <a href="#my-role" class="case-side-nav-link">My Role</a>
             <a href="#problem" class="case-side-nav-link">Problem</a>
-            <a href="#goal" class="case-side-nav-link">Goal</a>
             <a href="#solution" class="case-side-nav-link">Solution</a>
-            <a href="#results" class="case-side-nav-link">Results</a>
+            <a href="#key-decisions" class="case-side-nav-link">Key Decisions</a>
             <a href="#research" class="case-side-nav-link">Research</a>
             <a href="#design" class="case-side-nav-link">Design</a>
-            <a href="#visual-system" class="case-side-nav-link">Visual System</a>
+            <a href="#results" class="case-side-nav-link">Results</a>
             <a href="#lessons" class="case-side-nav-link">Lessons</a>
             <a href="#next-steps" class="case-side-nav-link">Next Steps</a>
         </nav>
     </aside>
 
-    <!-- Project Cover Image -->
     <section class="project-cover">
         <div class="project-cover-image">
             <img src="1920x1200/Cover Picnic Hero cover.png" alt="Picnic Project Cover" class="cover-img">
         </div>
     </section>
 
-    <!-- Case Study Content - Structured Sections -->
-    <section class="project-case-content">
+    <section class="project-case-content case-editorial">
         <div class="container container-narrow">
-            
-            <!-- Overview -->
+
             <section id="overview" class="case-section">
                 <span class="case-section-label">INTRO</span>
                 <h2 class="case-section-title">Overview</h2>
-                <div class="case-section-body">
-                    <p>Picnic approached me with a challenge: build a visual identity system that could translate their promise of transparency and savings into a cohesive visual language across every touchpoint.</p>
-                    <p>Picnic is a Brazilian fintech that eliminates hidden fees from international spending through digital dollars and blockchain technology. The brand needed to communicate transparency, simplicity, and trust—values at the core of their mission to make global payments accessible to everyone.</p>
-                    <p>We developed a flexible Key Visual system designed for scale: social media templates, communication assets, and brand guidelines that empower the team to maintain consistency across Instagram, in-app, and digital campaigns.</p>
+                <div class="case-brief" role="region" aria-label="Project summary">
+                    <div class="case-brief__stat-band">
+                        <div class="case-brief__stat-main">
+                            <span class="case-brief__stat-value">3<span class="case-brief__stat-unit">+</span></span>
+                            <span class="case-brief__stat-caption">Touchpoints unified: social, in-app, and campaigns</span>
+                        </div>
+                        <div class="case-brief__stat-compare">
+                            <div class="case-brief__compare-item">
+                                <span class="case-brief__compare-label">Core value</span>
+                                <span class="case-brief__compare-value case-brief__compare-value--accent">Transparency</span>
+                            </div>
+                            <div class="case-brief__compare-item">
+                                <span class="case-brief__compare-label">Brand tone</span>
+                                <span class="case-brief__compare-value">Approachable</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="case-brief__grid">
+                        <article class="case-brief__card">
+                            <h3 class="case-brief__card-label">Problem</h3>
+                            <p class="case-brief__card-text">Picnic needed a Key Visual system that could translate their promise of <mark class="case-brief__hl">transparency and savings</mark> into a cohesive visual language. Without defined standards, each touchpoint looked different and brand recognition suffered.</p>
+                        </article>
+                        <article class="case-brief__card">
+                            <h3 class="case-brief__card-label">Solution</h3>
+                            <p class="case-brief__card-text">I built a flexible Key Visual system with <mark class="case-brief__hl">guidelines, social templates, and communication assets</mark> the team could apply with autonomy. <span class="case-brief__flow">Approachable → credible → consistent</span></p>
+                        </article>
+                        <article class="case-brief__card case-brief__card--result">
+                            <h3 class="case-brief__card-label">Result</h3>
+                            <p class="case-brief__card-text">Complete Key Visual system delivered on time for launch. Social templates reduced design time and gave the Picnic team <span class="case-brief__inline-stat">confidence to apply the brand</span> across every channel.</p>
+                        </article>
+                    </div>
                 </div>
                 <div class="case-section-gallery">
-                    <img src="Picnic/1.png" alt="Picnic Project" class="case-gallery-img">
-                    <img src="Picnic/2.png" alt="Picnic Project" class="case-gallery-img">
-                    <img src="Picnic/3.png" alt="Picnic Project" class="case-gallery-img">
+                    <img src="Picnic/1.png" alt="Picnic brand identity overview" class="case-gallery-img" decoding="async">
+                    <img src="Picnic/2.png" alt="Picnic Key Visual system" class="case-gallery-img" decoding="async">
+                    <img src="Picnic/3.png" alt="Picnic brand applications" class="case-gallery-img" decoding="async">
                 </div>
             </section>
 
-            <!-- Problem -->
+            <section id="my-role" class="case-section">
+                <span class="case-section-label">MY ROLE</span>
+                <h2 class="case-section-title">Brand Designer: translate transparency into a system the team could run</h2>
+                <div class="case-section-body case-prose-stack">
+                    <p class="case-prose-lead">Picnic is a Brazilian fintech that eliminates hidden fees from international spending through digital dollars and blockchain technology. My job was to turn that promise into a visual language that felt approachable, fresh, and credible across every touchpoint.</p>
+                    <p>I worked with the Picnic team and Head of Design Rafael Queiroz to deliver a Key Visual system built for scale: social templates, communication assets, and brand guidelines that anyone on the team could apply correctly.</p>
+                    <div class="case-spec-grid">
+                        <div class="case-spec-item"><p><strong>Key Visual system:</strong> Flexible compositions, patterns, and graphic elements that work across formats without losing brand recognition.</p></div>
+                        <div class="case-spec-item"><p><strong>Brand guidelines:</strong> Typography, color, imagery, and usage rules documented for long-term consistency.</p></div>
+                        <div class="case-spec-item"><p><strong>Social templates:</strong> Instagram, LinkedIn, and campaign formats ready for the marketing team to deploy.</p></div>
+                        <div class="case-spec-item"><p><strong>Communication assets:</strong> Email headers, in-app graphics, and digital banners aligned with the same visual logic.</p></div>
+                    </div>
+                    <p class="case-prose-kicker"><strong>The system had to empower the team, not depend on me for every asset. That's what we built.</strong></p>
+                </div>
+            </section>
+
             <section id="problem" class="case-section">
-                <span class="case-section-label">PROBLEM</span>
-                <h2 class="case-section-title">Problem</h2>
-                <div class="case-section-body">
-                    <p>Picnic needed a Key Visual system that could translate their promise of transparency and savings into a cohesive visual language. The challenge was to create an identity that feels approachable and fresh—breaking away from the cold, corporate aesthetic typical of traditional banks—while maintaining the credibility expected from a fintech handling international transactions.</p>
+                <span class="case-section-label">THE PROBLEM</span>
+                <h2 class="case-section-title">A fintech brand stuck between corporate cold and creative chaos</h2>
+                <div class="case-section-body case-prose-stack">
+                    <p class="case-prose-lead">Picnic needed a Key Visual system that could translate their promise of transparency and savings into a cohesive visual language. The challenge was to feel approachable and fresh while maintaining the credibility expected from a fintech handling international transactions.</p>
                     <p>Without a defined system, the team faced inconsistency across social media, campaigns, and product touchpoints. Each designer or marketer interpreted the brand differently, leading to a fragmented presence that diluted brand recognition.</p>
+                    <p class="case-prose-kicker"><strong>Breaking away from corporate blues was the starting point. Keep scrolling to see what replaced them.</strong></p>
                 </div>
             </section>
 
-            <!-- Goal -->
-            <section id="goal" class="case-section">
-                <span class="case-section-label">GOAL</span>
-                <h2 class="case-section-title">Goal</h2>
-                <div class="case-section-body">
-                    <p>Design and deliver a robust visual identity that empowers the Picnic team to create consistent, on-brand content with autonomy and precision. The system needed to support:</p>
-                    <ul class="case-list">
-                        <li><strong>Brand Recognition:</strong> A distinct visual language that stands out in the fintech space</li>
-                        <li><strong>Key Visual Templates:</strong> Social media assets, campaign creatives, and communication templates</li>
-                        <li><strong>Scalability:</strong> Guidelines flexible enough for future product launches and marketing initiatives</li>
-                        <li><strong>Team Empowerment:</strong> Clear standards so anyone can apply the brand correctly</li>
-                    </ul>
-                </div>
-            </section>
-
-            <!-- Solution -->
             <section id="solution" class="case-section">
-                <span class="case-section-label">SOLUTION</span>
-                <h2 class="case-section-title">Solution</h2>
-                <div class="case-section-body">
-                    <p>I built a full Key Visual system with key deliverables:</p>
+                <span class="case-section-label">THE SOLUTION</span>
+                <h2 class="case-section-title">A Key Visual system built for recognition, scale, and team autonomy</h2>
+                <div class="case-section-body case-prose-stack">
+                    <p class="case-prose-lead">The goal was a robust visual identity that empowers the Picnic team to create consistent, on-brand content with autonomy and precision. The system needed distinct recognition, scalable templates, and clear standards anyone could follow.</p>
+                    <p>I built a full Key Visual system with four core deliverables:</p>
                     <ul class="case-list">
-                        <li><strong>Visual Identity Guidelines</strong> — Typography, color, and composition rules</li>
-                        <li><strong>Social Media Templates</strong> — Instagram, LinkedIn, and campaign formats</li>
-                        <li><strong>Communication Assets</strong> — Email headers, in-app graphics, and digital banners</li>
-                        <li><strong>Brand Application Examples</strong> — Reference library for the team</li>
+                        <li><strong>Visual Identity Guidelines:</strong> Typography, color, and composition rules</li>
+                        <li><strong>Social Media Templates:</strong> Instagram, LinkedIn, and campaign formats</li>
+                        <li><strong>Communication Assets:</strong> Email headers, in-app graphics, and digital banners</li>
+                        <li><strong>Brand Application Examples:</strong> Reference library for the team</li>
                     </ul>
-                    <p>The result is a brand presence that feels modern, trustworthy, and distinctly Picnic—whether on Instagram, in-app, or across digital campaigns.</p>
-                </div>
-                <div class="case-section-gallery">
-                    <img src="Picnic/4.png" alt="Picnic Key Visual" class="case-gallery-img">
-                    <img src="Picnic/5.png" alt="Picnic Key Visual" class="case-gallery-img">
-                    <img src="Picnic/6.png" alt="Picnic Key Visual" class="case-gallery-img">
-                    <img src="Picnic/7.png" alt="Picnic Key Visual" class="case-gallery-img">
-                    <img src="Picnic/8.png" alt="Picnic Key Visual" class="case-gallery-img">
-                    <img src="Picnic/9.png" alt="Picnic Key Visual" class="case-gallery-img">
+                    <p>The result is a brand presence that feels modern, trustworthy, and distinctly Picnic, whether on Instagram, in-app, or across digital campaigns.</p>
+                    <div class="case-section-gallery">
+                        <img src="Picnic/4.png" alt="Picnic Key Visual compositions" class="case-gallery-img" decoding="async">
+                        <img src="Picnic/5.png" alt="Picnic social media templates" class="case-gallery-img" decoding="async">
+                        <img src="Picnic/6.png" alt="Picnic brand guidelines" class="case-gallery-img" decoding="async">
+                        <img src="Picnic/7.png" alt="Picnic campaign assets" class="case-gallery-img" decoding="async">
+                        <img src="Picnic/8.png" alt="Picnic communication templates" class="case-gallery-img" decoding="async">
+                        <img src="Picnic/9.png" alt="Picnic brand applications" class="case-gallery-img" decoding="async">
+                    </div>
+                    <p class="case-prose-kicker"><strong>Templates and examples matter more than abstract rules. The team needed to see how to apply the system, not just read about it.</strong></p>
                 </div>
             </section>
 
-            <!-- Results -->
-            <section id="results" class="case-section">
-                <span class="case-section-label">RESULTS</span>
-                <h2 class="case-section-title">Results</h2>
+            <section id="key-decisions" class="case-section">
+                <span class="case-section-label">KEY DECISIONS</span>
+                <h2 class="case-section-title">Three choices that shaped the identity</h2>
                 <div class="case-section-body">
-                    <ul class="case-list">
-                        <li>Delivered a complete Key Visual system and brand guidelines on time, meeting the launch deadline</li>
-                        <li>Created social media templates that reduced design time and improved consistency across channels</li>
-                        <li>Established a scalable system that supports future campaigns and product expansions</li>
-                        <li>The Picnic team now applies the brand with confidence—"His ability to understand not just what we needed, but why we needed it, made all the difference" — <em>Rafael Queiroz, Head of Design, Picnic</em></li>
-                    </ul>
+                    <div class="case-key-decisions">
+                        <article class="case-key-decision">
+                            <h3 class="case-key-decision__title">Approachable over corporate</h3>
+                            <p class="case-key-decision__text">Traditional banks lean on cold blues and stock imagery. Picnic needed to break that pattern while still earning trust for international transactions. The visual language balances warmth with fintech credibility.</p>
+                        </article>
+                        <article class="case-key-decision">
+                            <h3 class="case-key-decision__title">Templates before abstract rules</h3>
+                            <p class="case-key-decision__text">Brand guidelines only work when teams can see them applied. Social templates, email headers, and in-app graphics became the primary teaching tool. Examples carried more weight than theory.</p>
+                        </article>
+                        <article class="case-key-decision">
+                            <h3 class="case-key-decision__title">Built for team autonomy</h3>
+                            <p class="case-key-decision__text">Every asset was designed so marketers and designers could create on-brand content without waiting on a single person. Scalable guidelines, not one-off designs.</p>
+                        </article>
+                    </div>
                 </div>
             </section>
 
-            <!-- Research -->
             <section id="research" class="case-section">
                 <span class="case-section-label">RESEARCH</span>
-                <h2 class="case-section-title">Research</h2>
-                <div class="case-section-body">
-                    <p>Before designing, I focused on:</p>
+                <h2 class="case-section-title">Understanding fintech positioning before picking colors</h2>
+                <div class="case-section-body case-prose-stack">
+                    <p class="case-prose-lead">Before designing, I focused on competitive context, existing brand materials, and alignment with the Picnic team on priorities and approval workflows.</p>
                     <ul class="case-list">
                         <li>Studying fintech brand positioning from Nubank, C6 Bank, and international players like Revolut and Wise</li>
                         <li>Reviewing Picnic's existing brand materials, positioning docs, and competitor landscape</li>
@@ -193,73 +225,108 @@
                 </div>
             </section>
 
-            <!-- Design -->
             <section id="design" class="case-section">
                 <span class="case-section-label">DESIGN</span>
-                <h2 class="case-section-title">Design</h2>
-                <div class="case-section-body">
-                    <p>The design process included:</p>
-                    <ul class="case-list">
-                        <li>Visual exploration balancing approachability with fintech credibility</li>
-                        <li>Iteration on key visual motifs—patterns, compositions, and graphic elements</li>
-                        <li>Template creation for social, email, and in-app formats</li>
-                        <li>Brand guidelines documentation for typography, color, imagery, and usage rules</li>
-                    </ul>
-                </div>
-            </section>
-
-            <!-- Visual System (File Under) -->
-            <section id="visual-system" class="case-section">
-                <span class="case-section-label">VISUAL SYSTEM</span>
-                <h2 class="case-section-title">Visual System</h2>
-                <div class="case-section-body">
-                    <p>Components and assets delivered:</p>
-                    <div class="file-under-tags">
-                        <span>Key Visual</span>
-                        <span>Visual Identity</span>
-                        <span>Social Media</span>
-                        <span>Brand Guidelines</span>
-                        <span>Fintech</span>
-                        <span>Web3</span>
+                <h2 class="case-section-title">One visual system across every surface</h2>
+                <div class="case-section-body case-prose-stack">
+                    <p class="case-prose-lead">The design process balanced approachability with fintech credibility through visual exploration, template creation, and documented guidelines.</p>
+                    <div class="case-principle-grid">
+                        <div class="case-principle-item">
+                            <p><strong>Visual exploration</strong></p>
+                            <p>Balancing approachability with the credibility expected from a fintech handling international transactions.</p>
+                        </div>
+                        <div class="case-principle-item">
+                            <p><strong>Key visual motifs</strong></p>
+                            <p>Patterns, compositions, and graphic elements iterated until they worked at social, email, and in-app scale.</p>
+                        </div>
+                        <div class="case-principle-item">
+                            <p><strong>Template library</strong></p>
+                            <p>Social, email, and in-app formats built as reusable starting points, not one-off designs.</p>
+                        </div>
+                        <div class="case-principle-item">
+                            <p><strong>Documented guidelines</strong></p>
+                            <p>Typography, color, imagery, and usage rules so the team could maintain consistency without designer dependency.</p>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Lessons -->
-            <section id="lessons" class="case-section">
-                <span class="case-section-label">LESSONS</span>
-                <h2 class="case-section-title">Lessons Learned</h2>
+            <section id="results" class="case-section">
+                <span class="case-section-label">RESULTS</span>
+                <h2 class="case-section-title">A system the team could run from day one</h2>
                 <div class="case-section-body">
-                    <ul class="case-list">
-                        <li><strong>Clear briefs save time:</strong> Early alignment on "why" and "who" accelerated the visual exploration phase</li>
-                        <li><strong>Brand guidelines must be practical:</strong> Templates and examples matter more than abstract rules—teams need to see how to apply the system</li>
-                        <li><strong>Fintech can be fresh:</strong> Breaking away from corporate blues and stock imagery creates distinct, memorable brands</li>
-                    </ul>
+                    <details class="case-details" open>
+                        <summary class="case-details__summary">Project outcomes</summary>
+                        <div class="case-details__body">
+                            <div class="case-challenge-grid">
+                                <div class="case-metric-item"><p><strong>On-time delivery:</strong> Complete Key Visual system and brand guidelines delivered for the launch deadline.</p></div>
+                                <div class="case-metric-item"><p><strong>Faster social production:</strong> Templates reduced design time and improved consistency across channels.</p></div>
+                                <div class="case-metric-item"><p><strong>Scalable foundation:</strong> System supports future campaigns and product expansions.</p></div>
+                                <div class="case-metric-item"><p><strong>Team confidence:</strong> "His ability to understand not just what we needed, but why we needed it, made all the difference." Rafael Queiroz, Head of Design, Picnic</p></div>
+                            </div>
+                        </div>
+                    </details>
                 </div>
             </section>
 
-            <!-- Next Steps -->
+            <section id="lessons" class="case-section">
+                <span class="case-section-label">WHAT I LEARNED</span>
+                <h2 class="case-section-title">Lessons Learned</h2>
+                <div class="case-section-body">
+                    <blockquote class="case-callout case-callout--lesson">
+                        <p>Fintech brands don't have to look like banks. Breaking away from corporate blues and stock imagery creates distinct, memorable identities that still earn trust when the product delivers.</p>
+                    </blockquote>
+                    <details class="case-details">
+                        <summary class="case-details__summary">Full lessons from the project</summary>
+                        <div class="case-details__body">
+                            <div class="case-lesson-stack">
+                                <div class="case-lesson-item">
+                                    <p><strong>Clear briefs save time.</strong></p>
+                                    <p>Early alignment on "why" and "who" accelerated the visual exploration phase.</p>
+                                </div>
+                                <div class="case-lesson-item">
+                                    <p><strong>Brand guidelines must be practical.</strong></p>
+                                    <p>Templates and examples matter more than abstract rules. Teams need to see how to apply the system.</p>
+                                </div>
+                                <div class="case-lesson-item">
+                                    <p><strong>Systems beat one-off designs.</strong></p>
+                                    <p>Building for team autonomy from the start means the brand stays consistent long after the project ends.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+            </section>
+
             <section id="next-steps" class="case-section">
                 <span class="case-section-label">NEXT STEPS</span>
-                <h2 class="case-section-title">Next Steps</h2>
+                <h2 class="case-section-title">Scaling the system forward</h2>
                 <div class="case-section-body">
-                    <ul class="case-list">
-                        <li>Expand template library for new campaign formats and product launches</li>
-                        <li>Explore motion and animation guidelines for video content and social</li>
-                        <li>Consider extending the system for product UI and in-app experiences</li>
-                    </ul>
+                    <div class="case-next-grid">
+                        <div class="case-next-item">
+                            <p><strong>Expand template library</strong></p>
+                            <p>New campaign formats and product launch assets as Picnic grows into additional markets.</p>
+                        </div>
+                        <div class="case-next-item">
+                            <p><strong>Motion and animation guidelines</strong></p>
+                            <p>Structured motion rules for video content and social, aligned with the Key Visual system.</p>
+                        </div>
+                        <div class="case-next-item">
+                            <p><strong>Product UI extension</strong></p>
+                            <p>Carry the brand system into in-app experiences for full touchpoint consistency.</p>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
     </section>
 
-    <!-- Related Projects -->
     <section class="related-projects">
         <div class="container">
             <div class="related-header">
                 <h2>Latest Works</h2>
                 <a href="projects.html" class="see-more-link">
-                    See more clicking here
+                    View all projects
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                         <path d="M1 13L13 1M13 1H1M13 1V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -307,7 +374,6 @@
         </div>
     </section>
 
-    <!-- Contact CTA -->
     <section class="project-cta-minimal">
         <div class="container">
             <span class="cta-label-minimal">(Contact)</span>

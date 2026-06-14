@@ -25,26 +25,44 @@
 </head>
 <body class="about-page">
 
-    <header class="about-header">
-        <a href="index.html" class="about-header-logo" aria-label="Fonseca — Home">
-            <img src="logo.svg" alt="" class="about-header-logo-img logo-light" height="32">
-            <img src="logo%20white.svg" alt="" class="about-header-logo-img logo-dark" height="32">
-        </a>
-        <div class="about-header-actions">
-            <a href="projects.html" class="about-header-link">&larr; Back to all projects</a>
-            <button type="button" class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
-                <svg class="icon-sun" width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M10 3V1M10 19V17M17 10H19M1 10H3M15.657 4.343L17.071 2.929M2.929 17.071L4.343 15.657M15.657 15.657L17.071 17.071M2.929 2.929L4.343 4.343M14 10C14 12.2091 12.2091 14 10 14C7.79086 14 6 12.2091 6 10C6 7.79086 7.79086 6 10 6C12.2091 6 14 7.79086 14 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <svg class="icon-moon" width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="index.html" class="nav-logo">
+                    <img src="logo.svg" alt="Fonseca" class="nav-logo-img logo-light">
+                    <img src="logo white.svg" alt="Fonseca" class="nav-logo-img logo-dark">
+                </a>
+            </div>
+            <div class="nav-center">
+                <a href="index.html#work" class="nav-link"><span class="nav-num">01</span> Work</a>
+                <a href="projects.html" class="nav-link"><span class="nav-num">02</span> Projects</a>
+                <a href="about.html" class="nav-link"><span class="nav-num">03</span> About</a>
+            </div>
+            <div class="nav-right">
+                <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+                    <svg class="icon-sun" width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M10 3V1M10 19V17M17 10H19M1 10H3M15.657 4.343L17.071 2.929M2.929 17.071L4.343 15.657M15.657 15.657L17.071 17.071M2.929 2.929L4.343 4.343M14 10C14 12.2091 12.2091 14 10 14C7.79086 14 6 12.2091 6 10C6 7.79086 7.79086 6 10 6C12.2091 6 14 7.79086 14 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <svg class="icon-moon" width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <a href="mailto:fonsecaa.design@gmail.com" class="nav-cta">Contact</a>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu"><span></span><span></span></button>
+            </div>
         </div>
-    </header>
+        <div class="mobile-menu">
+            <div class="mobile-menu-links">
+                <a href="index.html#work" class="mobile-link">Work</a>
+                <a href="projects.html" class="mobile-link">Projects</a>
+                <a href="about.html" class="mobile-link">About</a>
+                <a href="mailto:fonsecaa.design@gmail.com" class="mobile-link mobile-cta">Contact</a>
+            </div>
+        </div>
+    </nav>
 
     <section class="project-hero project-hero-case">
-        <div class="container">
-            <p class="project-hero-tagline">Jewelry / Luxury</p>
-            <h1 class="project-hero-title">AURA</h1>
+        <div class="container container-narrow">
+            <p class="project-hero-tagline">CASE STUDY · LUXURY · BRAND IDENTITY</p>
+            <h1 class="project-hero-title">AURA · Brand</h1>
             <p class="project-hero-description">
-                AURA is a jewelry brand built around presence, contrast, and self-expression. Luxury is not about excess but intention, form, and attitude. The pieces are designed to feel bold yet intimate—sculptural objects that interact with the body and amplify individuality. At AURA, jewelry is a statement of identity, tension, and quiet power.
+                AURA is a jewelry brand built around presence, contrast, and self-expression. Luxury is not about excess but intention, form, and attitude. The pieces are designed to feel bold yet intimate, sculptural objects that interact with the body and amplify individuality. At AURA, jewelry is a statement of identity, tension, and quiet power.
             </p>
             <div class="project-case-meta">
                 <div class="case-meta-item"><span class="case-meta-label">MY ROLE</span><span class="case-meta-value">Brand Designer</span></div>
@@ -58,12 +76,14 @@
     <aside class="case-side-nav" id="caseSideNav" aria-label="Case study navigation">
         <nav class="case-side-nav-inner">
             <a href="#overview" class="case-side-nav-link">Overview</a>
+            <a href="#my-role" class="case-side-nav-link">My Role</a>
             <a href="#problem" class="case-side-nav-link">Problem</a>
-            <a href="#goal" class="case-side-nav-link">Goal</a>
             <a href="#solution" class="case-side-nav-link">Solution</a>
-            <a href="#results" class="case-side-nav-link">Design Applications</a>
-            <a href="#research" class="case-side-nav-link">Results</a>
-            <a href="#design" class="case-side-nav-link">Design Principles</a>
+            <a href="#key-decisions" class="case-side-nav-link">Key Decisions</a>
+            <a href="#research" class="case-side-nav-link">Research</a>
+            <a href="#design" class="case-side-nav-link">Design</a>
+            <a href="#results" class="case-side-nav-link">Results</a>
+            <a href="#lessons" class="case-side-nav-link">Lessons</a>
             <a href="#next-steps" class="case-side-nav-link">Next Steps</a>
         </nav>
     </aside>
@@ -74,140 +94,228 @@
         </div>
     </section>
 
-    <section class="project-case-content">
+    <section class="project-case-content case-editorial">
         <div class="container container-narrow">
             <section id="overview" class="case-section">
                 <span class="case-section-label">INTRO</span>
                 <h2 class="case-section-title">Overview</h2>
-                <div class="case-section-body">
-                    <p> AURA is a luxury jewelry brand that blends minimalist elegance with a brooding, dark sensibility crafted for individuals who value refined mystery and understated luxury.</p>
-                    <p>This brand work focused on creating a distinct visual identity that positions AURA within the premium jewelry category while giving it a unique tone: beauty with an edge.</p>
+                <div class="case-brief" role="region" aria-label="Project summary">
+                    <div class="case-brief__stat-band">
+                        <div class="case-brief__stat-main">
+                            <span class="case-brief__stat-value">4<span class="case-brief__stat-unit"></span></span>
+                            <span class="case-brief__stat-caption">Touchpoints: identity, packaging, digital, editorial</span>
+                        </div>
+                        <div class="case-brief__stat-compare">
+                            <div class="case-brief__compare-item">
+                                <span class="case-brief__compare-label">Brand concept</span>
+                                <span class="case-brief__compare-value case-brief__compare-value--accent">Elegant shadow</span>
+                            </div>
+                            <div class="case-brief__compare-item">
+                                <span class="case-brief__compare-label">Positioning</span>
+                                <span class="case-brief__compare-value">Quiet luxury</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="case-brief__grid">
+                        <article class="case-brief__card">
+                            <h3 class="case-brief__card-label">Problem</h3>
+                            <p class="case-brief__card-text">Luxury jewelry identities rely on <mark class="case-brief__hl">classic motifs that feel overly traditional</mark>. AURA needed premium positioning with a dark, contemplative voice, not gothic cliché.</p>
+                        </article>
+                        <article class="case-brief__card">
+                            <h3 class="case-brief__card-label">Solution</h3>
+                            <p class="case-brief__card-text">Visual identity built on <mark class="case-brief__hl">dark palette, high-contrast typography, and generous negative space</mark>. Luxury through restraint, not ornamentation. <span class="case-brief__flow">Restraint → contrast → quiet power</span></p>
+                        </article>
+                        <article class="case-brief__card case-brief__card--result">
+                            <h3 class="case-brief__card-label">Result</h3>
+                            <p class="case-brief__card-text">Distinctive identity with <span class="case-brief__inline-stat">flexibility for future product lines</span> and clear differentiation from traditional jewelry branding tropes.</p>
+                        </article>
+                    </div>
                 </div>
                 <div class="case-section-gallery">
-                    <img src="AURA/2.png" alt="AURA" class="case-gallery-img">
+                    <img src="AURA/2.png" alt="AURA brand identity overview" class="case-gallery-img" decoding="async">
                 </div>
             </section>
+
+            <section id="my-role" class="case-section">
+                <span class="case-section-label">MY ROLE</span>
+                <h2 class="case-section-title">Brand Designer: luxury through restraint, not decoration</h2>
+                <div class="case-section-body case-prose-stack">
+                    <p class="case-prose-lead">AURA is a jewelry brand built around presence, contrast, and self-expression. Luxury is not about excess but intention, form, and attitude. As Brand Designer, I owned naming, brand identity, and the full visual system.</p>
+                    <p>The work focused on creating a distinct visual identity that positions AURA within the premium jewelry category while giving it a unique tone: beauty with an edge. Pieces designed to feel bold yet intimate, amplifying individuality through sculptural form.</p>
+                    <div class="case-spec-grid">
+                        <div class="case-spec-item"><p><strong>Naming and positioning:</strong> AURA as a statement of identity, tension, and quiet power in the luxury jewelry space.</p></div>
+                        <div class="case-spec-item"><p><strong>Visual identity:</strong> Dark palette, high-contrast typography, and a signature mark that feels poised and restrained.</p></div>
+                        <div class="case-spec-item"><p><strong>Design applications:</strong> Logo lockups, packaging, digital presence, and editorial brand materials.</p></div>
+                        <div class="case-spec-item"><p><strong>Visual system:</strong> Flexible foundation for future product lines, campaigns, and collection releases.</p></div>
+                    </div>
+                    <p class="case-prose-kicker"><strong>This identity doesn't shout luxury. It asserts it with quiet confidence.</strong></p>
+                </div>
+            </section>
+
             <section id="problem" class="case-section">
-                <span class="case-section-label">PROBLEM</span>
-                <h2 class="case-section-title">In the luxury jewelry segment, many identities rely on classic motifs that can feel overly traditional or decorative. AURA’s vision was to stand apart  grounded in high craftsmanship and minimalist perfection, but with a dark, contemplative voice.</h2>
-                <div class="case-section-body">
-                    <p>The challenge was to build a visual identity that:                    </p>
-                    <ul class="case-list">
-                        <li>Signals premium positioning</li>
-                        <li>Feels luxurious without being ornate</li>
-                        <li>Evokes dark romance not gothic cliché</li>
-                        <li>Translates across identity, packaging, and digital touchpoints</li>
-                      </ul>    
-                
+                <span class="case-section-label">THE PROBLEM</span>
+                <h2 class="case-section-title">Luxury jewelry branding stuck in tradition</h2>
+                <div class="case-section-body case-prose-stack">
+                    <p class="case-prose-lead">In the luxury jewelry segment, many identities rely on classic motifs that can feel overly traditional or decorative. AURA's vision was to stand apart: grounded in high craftsmanship and minimalist perfection, but with a dark, contemplative voice.</p>
+                    <p>The challenge was to build a visual identity that signals premium positioning, feels luxurious without being ornate, evokes dark romance not gothic cliché, and translates across identity, packaging, and digital touchpoints.</p>
+                    <p class="case-prose-kicker"><strong>Restraint over ornamentation was the starting principle. Keep scrolling to see how it shaped every surface.</strong></p>
                 </div>
             </section>
-            <section id="goal" class="case-section">
-                <span class="case-section-label">GOAL</span>
-                <h2 class="case-section-title">Craft a brand identity system that:                </h2>
-                <div class="case-section-body">
-                    <ul class="case-list">
-                        <li>Establishes AURA as a luxury jewelry name</li>
-                        <li>Conveys depth, mystique, and restraint</li>
-                        <li>Uses refined visual language to differentiate from typical jewelry branding</li>
-                        <li>Sets a foundation for product presentation, packaging, and storytelling</li>
-                      </ul>    
-                
-                </div>
-            </section>
+
             <section id="solution" class="case-section">
-                <span class="case-section-label">SOLUTION</span>
-                <h2 class="case-section-title">The visual identity gelled around a concept of elegant shadow and refined stillness:                </h2>
-                <div class="case-section-body">
-                    <p>Visual Approach  </p>
+                <span class="case-section-label">THE SOLUTION</span>
+                <h2 class="case-section-title">Elegant shadow and refined stillness</h2>
+                <div class="case-section-body case-prose-stack">
+                    <p class="case-prose-lead">The goal was to establish AURA as a luxury jewelry name, convey depth and mystique through restraint, differentiate from typical jewelry branding, and set a foundation for product presentation and storytelling.</p>
+                    <p>The visual identity gelled around elegant shadow and refined stillness:</p>
                     <ul class="case-list">
-                        <li>Dark Palette: Deep, rich tones combined with elegant neutrals to signal premium quality</li> 
-                        <li>Typography: High-contrast serif and elegant sans-serif pairings to balance timeless refinement with contemporary poise</li> 
-                        <li>Negative Space: Generous use of space to reinforce minimalism and elevate product focus</li> 
-                        <li>Logo & Symbol: A subtly distinctive mark that feels like a signature — poised, restrained, and luxurious</li> 
-                    </ul> 
-
-                    <p>Brand Feeling </p>
-                    <p>AURA’s visual language embraces: </p>
-                    <ul class="case-list">
-                        <li>Quiet power</li> 
-                        <li>Modern refinement</li> 
-                        <li>Meticulous craftsmanship</li> 
-                        <li>Subtle intensity</li> 
-                    </ul> 
-                
-                <p>This identity system doesn’t shout luxury — it asserts it with quiet confidence.</p>
-                
-      
-                
-                </div>
-                <div class="case-section-gallery">
-                    <img src="AURA/1.png" alt="AURA" class="case-gallery-img">
-                    <img src="AURA/3.png" alt="AURA" class="case-gallery-img">
-                    <img src="AURA/4.png" alt="AURA" class="case-gallery-img">
-                    <img src="AURA/5.png" alt="AURA" class="case-gallery-img">
-                    <img src="AURA/6.png" alt="AURA" class="case-gallery-img">
-                    <img src="AURA/7.png" alt="AURA" class="case-gallery-img">
-                    <img src="AURA/8.png" alt="AURA" class="case-gallery-img">
-                    <img src="AURA/9.png" alt="AURA" class="case-gallery-img">
-                    <img src="AURA/10.png" alt="AURA" class="case-gallery-img">
-                    <img src="AURA/11.png" alt="AURA" class="case-gallery-img">
-                    <img src="AURA/12.png" alt="AURA" class="case-gallery-img">
-                    <img src="AURA/13.png" alt="AURA" class="case-gallery-img">
-                    <img src="AURA/14.png" alt="AURA" class="case-gallery-img">
-                    <img src="AURA/15.png" alt="AURA" class="case-gallery-img">
+                        <li><strong>Dark palette:</strong> Deep, rich tones combined with elegant neutrals to signal premium quality</li>
+                        <li><strong>Typography:</strong> High-contrast serif and elegant sans-serif pairings balancing timeless refinement with contemporary poise</li>
+                        <li><strong>Negative space:</strong> Generous use of space to reinforce minimalism and elevate product focus</li>
+                        <li><strong>Logo and symbol:</strong> A subtly distinctive mark that feels like a signature: poised, restrained, and luxurious</li>
+                    </ul>
+                    <p>AURA's visual language embraces quiet power, modern refinement, meticulous craftsmanship, and subtle intensity. The identity extends coherently into logo lockups, jewelry packaging, digital presence, and editorial brand materials.</p>
+                    <div class="case-section-gallery">
+                        <img src="AURA/1.png" alt="AURA logo and mark" class="case-gallery-img" decoding="async">
+                        <img src="AURA/3.png" alt="AURA typography system" class="case-gallery-img" decoding="async">
+                        <img src="AURA/4.png" alt="AURA color palette" class="case-gallery-img" decoding="async">
+                        <img src="AURA/5.png" alt="AURA packaging applications" class="case-gallery-img" decoding="async">
+                        <img src="AURA/6.png" alt="AURA digital presence" class="case-gallery-img" decoding="async">
+                        <img src="AURA/7.png" alt="AURA brand materials" class="case-gallery-img" decoding="async">
+                        <img src="AURA/8.png" alt="AURA editorial elements" class="case-gallery-img" decoding="async">
+                        <img src="AURA/9.png" alt="AURA visual system" class="case-gallery-img" decoding="async">
+                        <img src="AURA/10.png" alt="AURA brand applications" class="case-gallery-img" decoding="async">
+                        <img src="AURA/11.png" alt="AURA identity range" class="case-gallery-img" decoding="async">
+                        <img src="AURA/12.png" alt="AURA packaging design" class="case-gallery-img" decoding="async">
+                        <img src="AURA/13.png" alt="AURA brand collateral" class="case-gallery-img" decoding="async">
+                        <img src="AURA/14.png" alt="AURA visual language" class="case-gallery-img" decoding="async">
+                        <img src="AURA/15.png" alt="AURA brand system overview" class="case-gallery-img" decoding="async">
+                    </div>
+                    <p class="case-prose-kicker"><strong>Every touchpoint feels considered, intentional, and luxurious. Contrast and space do the work decoration used to.</strong></p>
                 </div>
             </section>
-            <section id="results" class="case-section">
-                <span class="case-section-label">DESIGN APPLICATIONS</span>
-                <h2 class="case-section-title">The identity extends coherently into:</h2>
+
+            <section id="key-decisions" class="case-section">
+                <span class="case-section-label">KEY DECISIONS</span>
+                <h2 class="case-section-title">Three choices that defined AURA</h2>
                 <div class="case-section-body">
-                    <ul class="case-list">
-                        <li>Logo lockups and signage</li> 
-                        <li>Jewelry packaging — dark touchpoints with premium materials</li> 
-                        <li>Digital presence — elegant layouts that prioritize imagery and mood</li> 
-                        <li>Brand materials — editorial elements that reinforce narrative and tone</li> 
-                    </ul> 
-
-                    <p>The overall visual system ensures that every touchpoint feels considered, intentional, and luxurious.  </p>
-
+                    <div class="case-key-decisions">
+                        <article class="case-key-decision">
+                            <h3 class="case-key-decision__title">Restraint over ornamentation</h3>
+                            <p class="case-key-decision__text">Luxury through simplicity, not decorative excess. Every element earns its place. Ornamentation would have diluted the dark, contemplative positioning.</p>
+                        </article>
+                        <article class="case-key-decision">
+                            <h3 class="case-key-decision__title">Dark romance, not gothic cliché</h3>
+                            <p class="case-key-decision__text">Deep tones and shadow create mystique without falling into predictable gothic jewelry tropes. The palette signals premium quality through richness, not drama.</p>
+                        </article>
+                        <article class="case-key-decision">
+                            <h3 class="case-key-decision__title">Negative space as luxury signal</h3>
+                            <p class="case-key-decision__text">Generous space elevates product focus and reinforces minimalism. In jewelry branding, what you leave out communicates as much as what you include.</p>
+                        </article>
+                    </div>
                 </div>
             </section>
+
             <section id="research" class="case-section">
-                <span class="case-section-label">RESULTS</span>
-                <h2 class="case-section-title">Results</h2>
-                <div class="case-section-body">
-                    <ul class="case-list">
-                        <li>A distinctive brand identity that elevates AURA in a crowded category</li> 
-                        <li>A visual system with flexibility and longevity for future product lines</li> 
-                        <li>A refined, premium aura that supports storytelling and experiential design</li> 
-                        <li>Clear differentiation from traditional jewelry branding tropes</li> 
-                    </ul> 
+                <span class="case-section-label">RESEARCH</span>
+                <h2 class="case-section-title">Finding the gap between tradition and edge</h2>
+                <div class="case-section-body case-prose-stack">
+                    <p class="case-prose-lead">Research focused on the luxury jewelry landscape: identifying where traditional branding felt decorative or predictable, and where minimalist competitors lacked the dark sensibility AURA needed.</p>
+                    <p>The positioning opportunity was clear: high craftsmanship and minimalist perfection with a contemplative voice. Premium without ornate, bold without loud.</p>
                 </div>
             </section>
+
             <section id="design" class="case-section">
-                <span class="case-section-label">DESIGN PRINCIPLES</span>
-                <h2 class="case-section-title">Design Principles</h2>
+                <span class="case-section-label">DESIGN</span>
+                <h2 class="case-section-title">Focus over distraction</h2>
+                <div class="case-section-body case-prose-stack">
+                    <p class="case-prose-lead">Design principles centered on restraint, contrast, and impact through simplicity.</p>
+                    <div class="case-principle-grid">
+                        <div class="case-principle-item">
+                            <p><strong>Restraint over ornamentation</strong></p>
+                            <p>Luxury through simplicity. Every visual element must justify its presence.</p>
+                        </div>
+                        <div class="case-principle-item">
+                            <p><strong>Contrast over decoration</strong></p>
+                            <p>Shadows, space, and tone create depth without decorative clutter.</p>
+                        </div>
+                        <div class="case-principle-item">
+                            <p><strong>Focus over distraction</strong></p>
+                            <p>Minimal visual noise, maximal impact. Product and mood lead every composition.</p>
+                        </div>
+                        <div class="case-principle-item">
+                            <p><strong>System longevity</strong></p>
+                            <p>Built for future product lines, seasonal campaigns, and collection releases.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="results" class="case-section">
+                <span class="case-section-label">RESULTS</span>
+                <h2 class="case-section-title">A distinct voice in a crowded category</h2>
                 <div class="case-section-body">
-                    
-                    <ul class="case-list">
-                        <li>Restraint over ornamentation — luxury through simplicity</li> 
-                        <li>Contrast over decoration — shadows, space, tone</li> 
-                        <li>Focus over distraction — minimal visual noise, maximal impact</li> 
-                    </ul> 
-                
+                    <details class="case-details" open>
+                        <summary class="case-details__summary">Project outcomes</summary>
+                        <div class="case-details__body">
+                            <div class="case-challenge-grid">
+                                <div class="case-metric-item"><p><strong>Distinctive identity:</strong> Elevates AURA in a crowded luxury jewelry category.</p></div>
+                                <div class="case-metric-item"><p><strong>Flexible system:</strong> Visual foundation with longevity for future product lines.</p></div>
+                                <div class="case-metric-item"><p><strong>Premium aura:</strong> Refined positioning that supports storytelling and experiential design.</p></div>
+                                <div class="case-metric-item"><p><strong>Clear differentiation:</strong> Stands apart from traditional jewelry branding tropes.</p></div>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+            </section>
+
+            <section id="lessons" class="case-section">
+                <span class="case-section-label">WHAT I LEARNED</span>
+                <h2 class="case-section-title">Lessons Learned</h2>
+                <div class="case-section-body">
+                    <blockquote class="case-callout case-callout--lesson">
+                        <p>In luxury branding, what you leave out communicates as much as what you include. Restraint isn't minimalism for its own sake. It's a deliberate signal of confidence.</p>
+                    </blockquote>
+                    <details class="case-details">
+                        <summary class="case-details__summary">Full lessons from the project</summary>
+                        <div class="case-details__body">
+                            <div class="case-lesson-stack">
+                                <div class="case-lesson-item">
+                                    <p><strong>Dark doesn't mean gothic.</strong></p>
+                                    <p>Rich tones and shadow create mystique without falling into predictable category tropes.</p>
+                                </div>
+                                <div class="case-lesson-item">
+                                    <p><strong>Negative space is a luxury tool.</strong></p>
+                                    <p>Generous space elevates product focus and signals premium positioning more effectively than decoration.</p>
+                                </div>
+                                <div class="case-lesson-item">
+                                    <p><strong>Identity systems need room to grow.</strong></p>
+                                    <p>Building for future product lines and campaigns from the start avoids visual drift as the brand expands.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
                 </div>
             </section>
 
             <section id="next-steps" class="case-section">
                 <span class="case-section-label">NEXT STEPS</span>
-                <h2 class="case-section-title">Next Steps</h2>
+                <h2 class="case-section-title">Expanding the brand forward</h2>
                 <div class="case-section-body">
-                    
-                    <ul class="case-list">
-                        <li>Expand into digital product showcases and editorial storytelling</li> 
-                        <li>Develop e-commerce oriented visual language</li> 
-                        <li>Craft campaign visuals for seasonal or collection releases</li> 
-                    </ul> 
+                    <div class="case-next-grid">
+                        <div class="case-next-item">
+                            <p><strong>Digital product showcases</strong></p>
+                            <p>Editorial storytelling and immersive product presentation built on the established visual language.</p>
+                        </div>
+                        <div class="case-next-item">
+                            <p><strong>E-commerce visual language</strong></p>
+                            <p>Develop shopping-oriented layouts that maintain the dark, contemplative brand tone.</p>
+                        </div>
+                        <div class="case-next-item">
+                            <p><strong>Seasonal campaign visuals</strong></p>
+                            <p>Collection releases and campaign assets using the flexible identity system.</p>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
@@ -217,7 +325,7 @@
         <div class="container">
             <div class="related-header">
                 <h2>Latest Works</h2>
-                <a href="projects.html" class="see-more-link">See more clicking here <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H1M13 1V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                <a href="projects.html" class="see-more-link">View all projects <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H1M13 1V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
             </div>
             <div class="related-grid">
                 <a href="project-transparent-space.html" class="related-card"><div class="related-image"><img src="1920x1200/Cover transparent Hero cover.png" alt="Transparent.space" class="related-img"></div><div class="related-info"><span class="related-name">Transparent.space</span><span class="related-location">(Product Design)</span></div></a>

@@ -10,12 +10,12 @@
     <link rel="canonical" href="https://fonseca.studio/project-hedgehog.html">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://fonseca.studio/project-hedgehog.html">
-    <meta property="og:title" content="Hedgehog Landing & Waitlist — Fonseca Studio">
+    <meta property="og:title" content="Hedgehog Landing & Waitlist | Fonseca Studio">
     <meta property="og:description" content="Conversion-focused landing page and waitlist design for Hedgehog, a Web3 prediction market.">
     <meta property="og:image" content="https://fonseca.studio/1920x1200/Cover%20Hedgehog%20Hero%20cover.png">
     <meta property="og:site_name" content="Fonseca Studio">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Hedgehog Landing & Waitlist — Fonseca Studio">
+    <meta name="twitter:title" content="Hedgehog Landing & Waitlist | Fonseca Studio">
     <meta name="twitter:description" content="Conversion-focused landing page and waitlist design for Hedgehog, a Web3 prediction market.">
     <meta name="twitter:image" content="https://fonseca.studio/1920x1200/Cover%20Hedgehog%20Hero%20cover.png">
     <link rel="stylesheet" href="styles.css">
@@ -25,32 +25,50 @@
 </head>
 <body class="about-page">
 
-    <header class="about-header">
-        <a href="index.html" class="about-header-logo" aria-label="Fonseca — Home">
-            <img src="logo.svg" alt="" class="about-header-logo-img logo-light" height="32">
-            <img src="logo%20white.svg" alt="" class="about-header-logo-img logo-dark" height="32">
-        </a>
-        <div class="about-header-actions">
-            <a href="projects.html" class="about-header-link">&larr; Back to all projects</a>
-            <button type="button" class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
-                <svg class="icon-sun" width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M10 3V1M10 19V17M17 10H19M1 10H3M15.657 4.343L17.071 2.929M2.929 17.071L4.343 15.657M15.657 15.657L17.071 17.071M2.929 2.929L4.343 4.343M14 10C14 12.2091 12.2091 14 10 14C7.79086 14 6 12.2091 6 10C6 7.79086 7.79086 6 10 6C12.2091 6 14 7.79086 14 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <svg class="icon-moon" width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="index.html" class="nav-logo">
+                    <img src="logo.svg" alt="Fonseca" class="nav-logo-img logo-light">
+                    <img src="logo white.svg" alt="Fonseca" class="nav-logo-img logo-dark">
+                </a>
+            </div>
+            <div class="nav-center">
+                <a href="index.html#work" class="nav-link"><span class="nav-num">01</span> Work</a>
+                <a href="projects.html" class="nav-link"><span class="nav-num">02</span> Projects</a>
+                <a href="about.html" class="nav-link"><span class="nav-num">03</span> About</a>
+            </div>
+            <div class="nav-right">
+                <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+                    <svg class="icon-sun" width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M10 3V1M10 19V17M17 10H19M1 10H3M15.657 4.343L17.071 2.929M2.929 17.071L4.343 15.657M15.657 15.657L17.071 17.071M2.929 2.929L4.343 4.343M14 10C14 12.2091 12.2091 14 10 14C7.79086 14 6 12.2091 6 10C6 7.79086 7.79086 6 10 6C12.2091 6 14 7.79086 14 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <svg class="icon-moon" width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <a href="mailto:fonsecaa.design@gmail.com" class="nav-cta">Contact</a>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu"><span></span><span></span></button>
+            </div>
         </div>
-    </header>
+        <div class="mobile-menu">
+            <div class="mobile-menu-links">
+                <a href="index.html#work" class="mobile-link">Work</a>
+                <a href="projects.html" class="mobile-link">Projects</a>
+                <a href="about.html" class="mobile-link">About</a>
+                <a href="mailto:fonsecaa.design@gmail.com" class="mobile-link mobile-cta">Contact</a>
+            </div>
+        </div>
+    </nav>
 
     <section class="project-hero project-hero-case">
-        <div class="container">
-            <p class="project-hero-tagline">Web3 / Prediction Market</p>
-            <h1 class="project-hero-title">Hedgehog</h1>
+        <div class="container container-narrow">
+            <p class="project-hero-tagline">CASE STUDY · WEB3 · CONVERSION DESIGN</p>
+            <h1 class="project-hero-title">Hedgehog · Waitlist Landing Page</h1>
             <p class="project-hero-description">
                 The landing page was designed as a conversion-first experience to capture early demand for Hedgehog’s upcoming product. The goal was to guide users from understanding the value → building trust → taking action, reducing friction across the entire journey.
             </p>
             <div class="project-case-meta">
                 <div class="case-meta-item"><span class="case-meta-label">MY ROLE</span><span class="case-meta-value">Product Designer</span></div>
                 <div class="case-meta-item"><span class="case-meta-label">YEAR</span><span class="case-meta-value">2025</span></div>
-                <div class="case-meta-item"><span class="case-meta-label">TEAM</span><span class="case-meta-value">Myself</span></div>
-                <div class="case-meta-item"><span class="case-meta-label">SCOPE</span><span class="case-meta-value">UX/UI Design / Landing Page</span></div>
+                <div class="case-meta-item"><span class="case-meta-label">TEAM</span><span class="case-meta-value">Myself(Solo)</span></div>
+                <div class="case-meta-item"><span class="case-meta-label">SCOPE</span><span class="case-meta-value">Landing page · Waitlist funnel · Conversion architecture</span></div>
             </div>
         </div>
     </section>
@@ -58,11 +76,13 @@
     <aside class="case-side-nav" id="caseSideNav" aria-label="Case study navigation">
         <nav class="case-side-nav-inner">
             <a href="#overview" class="case-side-nav-link">Overview</a>
-            <a href="#scenario" class="case-side-nav-link">Actual Scenario</a>
+            <a href="#my-role" class="case-side-nav-link">My Role</a>
             <a href="#problem" class="case-side-nav-link">Problem</a>
-            <a href="#research" class="case-side-nav-link">Research/Benchmarking</a>
+            <a href="#scenario" class="case-side-nav-link">Scenario</a>
             <a href="#solution" class="case-side-nav-link">Solution</a>
-            <a href="#design" class="case-side-nav-link">Visual Design</a>
+            <a href="#key-decisions" class="case-side-nav-link">Key Decisions</a>
+            <a href="#research" class="case-side-nav-link">Research</a>
+            <a href="#design" class="case-side-nav-link">Design</a>
             <a href="#results" class="case-side-nav-link">Results</a>
             <a href="#looping" class="case-side-nav-link">Looping</a>
             <a href="#lessons" class="case-side-nav-link">Lessons</a>
@@ -72,284 +92,362 @@
 
     <section class="project-cover">
         <div class="project-cover-image">
-            <img src="1920x1200/Cover Hedgehog Hero cover.png" alt="Hedgehog Project Cover" class="cover-img">
-        </div>
+            <video src="Hedgehog /Hedgehog-waitlist.mp4" autoplay muted loop playsinline class="case-gallery-img"></video>
+            </div>
     </section>
 
-    <section class="project-case-content">
+    <section class="project-case-content case-editorial">
         <div class="container container-narrow">
             <section id="overview" class="case-section">
                 <span class="case-section-label">INTRO</span>
                 <h2 class="case-section-title">Overview</h2>
-                <div class="case-section-body">
-                    <p>Before a product ships, it needs validation. Hedgehog's landing page was not just a marketing asset, it was the first real test of whether the product concept could communicate itself clearly enough to convert strangers into committed early adopters.</p>
-                    <p>The design challenge was specific: present an unreleased, technically complex Web3 prediction market to a professional and institutional audience, and convince them to join a waitlist before they'd seen a single screen of the actual product.</p>
-                    <ul class="case-list">
-                        <li><strong>This case documents the conversion architecture behind the page:</strong> The research that informed it, the structural decisions made at each section, the alternatives that were discarded, and what the results told us about product-market fit before launch.</li>
-                    </ul>
+                <div class="case-brief" role="region" aria-label="Project summary">
+                    <div class="case-brief__stat-band">
+                        <div class="case-brief__stat-main">
+                            <span class="case-brief__stat-value" aria-label="37.5 percent">37.5<span class="case-brief__stat-unit">%</span></span>
+                            <span class="case-brief__stat-caption">Waitlist conversion rate</span>
+                        </div>
+                        <div class="case-brief__stat-compare">
+                            <div class="case-brief__compare-item">
+                                <span class="case-brief__compare-label">B2B / Web3 benchmark</span>
+                                <span class="case-brief__compare-value">2 to 8%</span>
+                            </div>
+                            <div class="case-brief__compare-item">
+                                <span class="case-brief__compare-label">Paid traffic</span>
+                                <span class="case-brief__compare-value case-brief__compare-value--accent">Zero</span>
+                            </div>
+                        </div>
                     </div>
+                    <div class="case-brief__grid">
+                        <article class="case-brief__card">
+                            <h3 class="case-brief__card-label">Problem</h3>
+                            <p class="case-brief__card-text">Hedgehog was <mark class="case-brief__hl">pre-launch</mark>. <mark class="case-brief__hl">No product, no screenshots, no users</mark>. We needed <mark class="case-brief__hl">institutional crypto users</mark>, a skeptical audience, to sign up for something they <mark class="case-brief__hl">couldn't see yet</mark>.</p>
+                        </article>
+                        <article class="case-brief__card">
+                            <h3 class="case-brief__card-label">Solution</h3>
+                            <p class="case-brief__card-text">We built a <mark class="case-brief__hl">trust-first funnel</mark>: earn credibility before asking for anything. <span class="case-brief__flow">Value signal → credibility → mechanics → conversion</span>. <mark class="case-brief__hl">No hard sell until trust was built</mark>.</p>
+                        </article>
+                        <article class="case-brief__card case-brief__card--result">
+                            <h3 class="case-brief__card-label">Result</h3>
+                            <p class="case-brief__card-text"><span class="case-brief__inline-stat">37.5%</span> waitlist conversion. Industry benchmark: <span class="case-brief__inline-stat case-brief__inline-stat--sm">2 to 8%</span>. <mark class="case-brief__hl">Zero paid traffic</mark>, fully organic.</p>
+                        </article>
+                    </div>
+                </div>
                 <div class="case-section-gallery">
-                    <video src="Hedgehog /Hedgehog-waitlist.mp4" autoplay muted loop playsinline class="case-gallery-img"></video>
+                    <div class="case-bento-videos" aria-label="Landing page micro-interactions">
+                        <div class="case-bento-videos__cell">
+                            <video src="Hedgehog /button_light.mov" autoplay muted loop playsinline class="case-gallery-img case-bento-videos__media" aria-label="Button light interaction"></video>
+                        </div>
+                        <div class="case-bento-videos__cell">
+                            <video src="Hedgehog /rolling.mov" autoplay muted loop playsinline class="case-gallery-img case-bento-videos__media" aria-label="Rolling animation"></video>
+                        </div>
+                    </div>
                 </div>
             </section>
-            <section id="scenario" class="case-section">
-                <span class="case-section-label">ACTUAL SCENARIO</span>
-                <h2 class="case-section-title">A new Web3 product needs early adopters. The product doesn't exist yet.</h2>
-                <div class="case-section-body">
-                <p>Hedgehog was pre-launch. There were no product screenshots, no live demos, no user testimonials, and no track record. The only assets available were: a compelling concept, a credible team, and a clear problem worth solving.</p>    
-                <p>The standard approach, feature lists, product screenshots, social proof, wasn't available. The page had to do something harder: make people believe in what the product would be, based entirely on how clearly and credibly it communicated the problem and the promise.</p>
-                <ul class="case-list">
-                    <P><strong>The conversion context:</strong></P>
-                    <li><strong>Target audience:</strong>  institutional users and experienced DeFi participants, skeptical by nature, high bar for credibility.</li>
-                    <li><strong>Product stage:</strong> pre-launch, no live product, no existing user base</li>
-                    <li><strong>Channel:</strong> organic only, Discord communities, Twitter/X, Web3 developer networks, no paid traffic                    </li>
-                    <li><strong>Conversion goal:</strong> waitlist sign-up as the single measurable action</li>
-                    <li><strong>Validation goal:</strong> test product positioning and messaging before committing to full build</li>
-                </ul>
-            </div>
+
+            <section id="my-role" class="case-section">
+                <span class="case-section-label">MY ROLE</span>
+                <h2 class="case-section-title">Product Designer: turning nothing into a 37.5% conversion rate</h2>
+                <div class="case-section-body case-prose-stack">
+                    <p class="case-prose-lead">Hedgehog had no product to show. No screenshots, no demo, no user base. My job was to design a landing page that made institutional crypto users trust enough to leave their email anyway.</p>
+                    <p>As the sole Product Designer, I owned the full conversion architecture: research, page structure, copy direction, visual language, and the reasoning behind every section. This wasn't a marketing page with a signup form. It was the first product experience, and the first proof that the idea had market fit.</p>
+                    <div class="case-spec-grid">
+                        <div class="case-spec-item"><p><strong>Conversion architecture:</strong> Designed the four-stage funnel: value, trust, mechanics, conversion. Each section earned the right to ask for the email.</p></div>
+                        <div class="case-spec-item"><p><strong>Research & benchmarking:</strong> Studied institutional SaaS launches, Web3 products, and waitlist funnels to define what builds trust before a CTA.</p></div>
+                        <div class="case-spec-item"><p><strong>Visual & copy direction:</strong> Institutional tone, no hype, no unfinished UI mockups. Concept visuals and strong copy outperformed placeholder screens.</p></div>
+                        <div class="case-spec-item"><p><strong>Product loop:</strong> Used landing page behavior data to shape the product's IA, onboarding copy, and first usability cohort.</p></div>
+                    </div>
+                    <p class="case-prose-kicker"><strong>When there's nothing to show, design has to do the selling. Trust becomes the product.</strong></p>
+                </div>
             </section>
+
             <section id="problem" class="case-section">
                 <span class="case-section-label">THE PROBLEM</span>
-                <h2 class="case-section-title">How do you convert a skeptical, institutional audience on a product they can't see yet? </h2>
+                <h2 class="case-section-title">How do you convert skeptics on a product they can't see?</h2>
+                <div class="case-section-body case-prose-stack">
+                    <p class="case-prose-lead">The audience is institutional and professional crypto users. They bounce at anything that feels premature, salesy, or unfinished.</p>
+                    <p>Before they share an email, they need to believe the product is real and that the team actually understands the problem.</p>
+                    <p class="case-prose-kicker"><strong>Most landing pages ask too early. We flipped it: earn trust first, convert last.</strong></p>
+                </div>
+            </section>
+            <section id="scenario" class="case-section case-section--context">
+                <span class="case-section-label">ACTUAL SCENARIO</span>
+                <h2 class="case-section-title">No product. No proof. Still need early adopters.</h2>
                 <div class="case-section-body">
-                    <p>This was the core design problem, and it's fundamentally different from a standard landing page brief. Most conversion design works by showing the product. Here, the design had to do the persuasion work that the product itself couldn't yet do.                    </p>
-                    <p><strong><i>"In institutional and professional contexts, users convert best when trust, context and clarity are established before asking for contact or commitment."</i></strong></p>
-                    <ul class="case-list">
-                        <p>Specific challenges:</p>
-                <li>Communicating professionalism for a product not yet publicly released, without overpromising</li>    
-                <li>Institutional users expect precision and context before engaging, consumer conversion patterns don't apply</li>
-                <li>The product concept (on-chain prediction markets) requires explanation before it creates desire, it's not a self-evident value proposition</li>
-                <li>Driving high-intent waitlist sign-ups, not casual email captures, quality of conversion mattered as much as volume</li>
-            </ul>
+                    <div class="case-lede">
+                        <p>Hedgehog was pre-launch. No screenshots, no live demo, no testimonials, no track record. All we had was a strong concept, a credible team, and a problem worth solving.</p>
+                        <p>The usual playbook (feature lists, product shots, social proof) wasn't available. The page had to make people believe in what the product would become, using only words, structure, and tone.</p>
+                    </div>
+                    <div>
+                        <p class="case-spec-heading"><strong>The conversion context:</strong></p>
+                        <div class="case-spec-grid">
+                            <div class="case-spec-item"><p><strong>Audience:</strong> institutional users and experienced DeFi participants. Skeptical by default.</p></div>
+                            <div class="case-spec-item"><p><strong>Stage:</strong> pre-launch. No live product, no user base.</p></div>
+                            <div class="case-spec-item"><p><strong>Channel:</strong> organic only. Discord, Twitter/X, Web3 dev networks. Zero paid traffic.</p></div>
+                            <div class="case-spec-item"><p><strong>Goal:</strong> waitlist sign-up as the single measurable action.</p></div>
+                            <div class="case-spec-item"><p><strong>Validation:</strong> test positioning and messaging before the full build.</p></div>
+                        </div>
+                    </div>
+                    <p class="case-prose-kicker"><strong>That's the starting point. Here's how we designed the page to convert anyway.</strong></p>
+                </div>
+            </section>
+            <section id="solution" class="case-section">
+                <span class="case-section-label">THE SOLUTION</span>
+                <h2 class="case-section-title">Four stages. Trust first, conversion last.</h2>
+                <div class="case-section-body">
+                    <div class="case-stages case-stages--v3">
+                        <article class="case-stage-v3">
+                            <div class="case-stage-v3__head">
+                                <span class="case-stage-v3__num">01</span>
+                                <div>
+                                    <h3 class="case-stage-v3__title">Hero: frame the value, don't oversell</h3>
+                                    <p class="case-stage-v3__copy">Clear proposition, institutional tone, no hype. CTA present but not forced. No UI mockups: unfinished screens signal "not ready" to this audience. We used concept visuals instead.</p>
+                                </div>
+                            </div>
+                            <div class="case-section-gallery">
+                                <img src="Hedgehog /Frame4.png" alt="Hedgehog hero section" class="case-gallery-img">
+                            </div>
+                        </article>
+                        <article class="case-stage-v3">
+                            <div class="case-stage-v3__head">
+                                <span class="case-stage-v3__num">02</span>
+                                <div>
+                                    <h3 class="case-stage-v3__title">Trust layer: earn credibility</h3>
+                                    <p class="case-stage-v3__copy">Problem framing that matches the user's reality. On-chain focus signals technical depth. Sections on SLA, governance, and system integrity: the questions institutional users ask that consumer products ignore.</p>
+                                </div>
+                            </div>
+                            <div class="case-section-gallery case-section-gallery--pair">
+                                <img src="Hedgehog /frame5.png" alt="Hedgehog trust section" class="case-gallery-img">
+                                <img src="Hedgehog /frame6.png" alt="Hedgehog differentiation section" class="case-gallery-img">
+                            </div>
+                        </article>
+                        <article class="case-stage-v3">
+                            <div class="case-stage-v3__head">
+                                <span class="case-stage-v3__num">03</span>
+                                <div>
+                                    <h3 class="case-stage-v3__title">Mechanics: make it believable</h3>
+                                    <p class="case-stage-v3__copy">3-step explanation: what it is, how it works, why it's different. Accurate but not overwhelming. Enough to believe, not enough to audit. Full docs linked for those who want depth.</p>
+                                </div>
+                            </div>
+                            <p class="case-stage-v3__note">Users who read this section converted at significantly higher rates. This is the trust inflection point.</p>
+                            <div class="case-section-gallery case-section-gallery--pair">
+                                <img src="Hedgehog /frame7.png" alt="Hedgehog mechanics section" class="case-gallery-img">
+                                <img src="Hedgehog /frame8.png" alt="Hedgehog product mechanics" class="case-gallery-img">
+                            </div>
+                        </article>
+                        <article class="case-stage-v3">
+                            <div class="case-stage-v3__head">
+                                <span class="case-stage-v3__num">04</span>
+                                <div>
+                                    <h3 class="case-stage-v3__title">Conversion: close at peak intent</h3>
+                                    <p class="case-stage-v3__copy">Repeated CTAs with evolving microcopy: awareness → intent → commitment. Email only: every extra field dropped conversion. Segmentation moved to onboarding.</p>
+                                </div>
+                            </div>
+                            <div class="case-section-gallery">
+                                <div class="case-gallery-tight-pair">
+                                    <img src="Hedgehog /Frame9.png" alt="Hedgehog CTA section" class="case-gallery-img">
+                                    <img src="Hedgehog /frame10.png" alt="Hedgehog footer conversion" class="case-gallery-img">
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    <p class="case-prose-kicker"><strong>Four stages. One funnel. Trust first, email last.</strong></p>
+                </div>
+            </section>
+            <section id="key-decisions" class="case-section">
+                <span class="case-section-label">KEY DECISIONS</span>
+                <h2 class="case-section-title">Three choices that drove 37.5% conversion</h2>
+                <div class="case-section-body">
+                    <div class="case-key-decisions">
+                        <article class="case-key-decision">
+                            <h3 class="case-key-decision__title">No UI mockups</h3>
+                            <p class="case-key-decision__text">Placeholder screens signal "not ready." Concept visuals plus strong copy outperformed UI mockups. Users who saw no product stayed longer and converted more.</p>
+                        </article>
+                        <article class="case-key-decision">
+                            <h3 class="case-key-decision__title">Email only in the form</h3>
+                            <p class="case-key-decision__text">Each extra field dropped conversion. Segmentation happens in onboarding, where context is better and response rates are higher.</p>
+                        </article>
+                        <article class="case-key-decision">
+                            <h3 class="case-key-decision__title">The page as a research tool</h3>
+                            <p class="case-key-decision__text">Behavioral data (which sections held attention, where users dropped) shaped the product's IA and onboarding copy. The landing page was the first usability test of the value proposition.</p>
+                        </article>
+                    </div>
                 </div>
             </section>
             <section id="research" class="case-section">
                 <span class="case-section-label">RESEARCH & BENCHMARKING</span>
-                <h2 class="case-section-title">Researchs</h2>
+                <h2 class="case-section-title">We studied what makes institutional users trust a page</h2>
                 <div class="case-section-body">
-                    <p>The research focused on understanding how comparable products in institutional and Web3 contexts build trust and drive conversion before launch. Three reference categories were analyzed:</p>
-                    <p><strong>Category 1 — Institutional SaaS / FinTech launch pages</strong></p>
-                    <ul class="case-list">
-                      <li><strong>Studied:</strong> Brex, Ramp, Mercury (early launch pages), Stripe (initial launch)</li>
-                      <li><strong>Pattern identified:</strong> trust hierarchy before conversion, these pages establish credibility (team, backers, problem framing) in the first two sections before showing any product or CTA</li>
-                      <li><strong>Applied:</strong> Hedgehog's page was structured to earn credibility before asking for the email</li>
-                    </ul>    
-
-                    <p><strong>Category 2 — Web3 / DeFi product launches</strong></p>
-                    <ul class="case-list">
-                      <li><strong>Studied:</strong> Polymarket launch, Aave early site, Uniswap v3 announcement, Blur NFT marketplace</li>
-                      <li><strong>Pattern identified:</strong> on-chain credibility signals matter more than traditional social proof, the community wants to know the team is technical and the mechanics are sound</li>
-                      <li><strong>Applied:</strong> the copy explicitly addressed on-chain mechanics, governance, and system integrity, not just the user benefit</li>
-                    </ul>  
-
-                    <p><strong>Category 3 — Waitlist-driven acquisition funnels</strong></p>
-                    <ul class="case-list">
-                      <li><strong>Studied:</strong> Linear (product launch), Superhuman (invitation-only model), Notion (early waitlist), Phantom wallet launch.</li>
-                      <li><strong>Pattern identified:</strong> exclusivity framing + benefit clarity = highest conversion in professional waitlists. Users need to understand what they're getting early access to before they value the exclusivity.</li>
-                      <li><strong>Applied:</strong> the waitlist CTA was framed around early access benefit, not just 'sign up'</li>
-                    </ul>  
-
-                    <p><strong>Key insight driving the architecture:</strong></p>
-                    <p><strong><i>In professional contexts, the conversion funnel is: Understand → Believe → Trust → Act. Most landing pages skip to 'Act' too early. This one was structured to earn each stage before advancing to the next.</i></strong></p>
-
-                </div>
-            
-            </section>
-            <section id="solution" class="case-section">
-                <span class="case-section-label">SOLUTION</span>
-                <h2 class="case-section-title">Solution Finds </h2>
-                <div class="case-section-body">
-                    <p><strong>Stage 1 — Hero: Value Signal + Immediate Action</strong></p>
-                    <p><strong>The hero had one job:</strong> make the right person immediately understand what Hedgehog is and why it matters to them. Not everyone, just the right person. Institutional clarity was more valuable than broad appeal.</p>
-                        <ul class="case-list">
-                        <li>Clear articulation of Hedgehog's core value proposition in one sentence</li>
-                        <li>Institutional tone, no hype, no crypto slang, no promises of returns</li>
-                        <li>Primary CTA (Join Waitlist) placed above the fold, for users who already understand the space and don't need convincing</li>
-                        <li>No product screenshots, intentional. A placeholder image or mockup of an unreleased product signals 'not ready.' We showed concept, not UI.</li>
-                    </ul>
-                    <div class="case-section-gallery">
-                        <div class="case-section-gallery">
-                             <img src="Hedgehog /Frame4.png" alt="Hedgehog" class="case-gallery-img"> 
-                            </div>
-
-                        <ul class="case-list">
-                            <li><strong>Hero decision:</strong> 'Show concept, not UI'</li>
-                            <li><strong>Considered & discarded:</strong> Including early-stage UI mockups to give users a sense of the product. </li>
-                            <li><strong>Choosen direction:</strong> Showing visual metaphors and brand language only, no product screens.</li>
-                            <li><strong>Why:</strong>  In usability review, placeholder UI created skepticism ('is this real?') rather than confidence. Institutional users are trained to read unfinished UI as 'not ready.' Concept visuals with strong copy outperformed UI mockups in the scroll depth data, users who saw no UI stayed longer and converted more.                            </li>
-                        </ul>
-                        <ul class="case-list">
-                        <p><strong>Stage 2 — Trust & Context: Credibility Layer</strong></p>
-                        <p>After the hero, the user's implicit question is: 'Why should I believe this?' This section answered that question before it became a reason to leave.</p>
-                        <ul class="case-list">
-                        <li>Problem framing aligned with the user's reality, not the product's perspective</li>
-                        <li>Differentiation through on-chain focus, signaling technical credibility to a technical audience</li>
-                        <li>Sections addressing reliability, governance, and system integrity, the concerns institutional users have that consumer products ignore</li>
-                        </ul>
-                        <div class="case-section-gallery">
-                            <div class="case-section-gallery">
-                                 <img src="Hedgehog /frame5.png" alt="Hedgehog" class="case-gallery-img"> 
-                                 <img src="Hedgehog /frame6.png" alt="Hedgehog" class="case-gallery-img"> 
-                                </ul>
-                                <ul class="case-list">    
-                        <p><strong>Stage 3 — System Explanation: Make the Mechanics Clear</strong></p>
-                        <p>Before a professional user converts on an unfamiliar product, they need to understand how it works. Not every detail, but enough to believe it's real and sound.</p>
-                        <p>This section explained the prediction mechanics (time-based rounds, pool system, on-chain resolution) in language that was technically accurate but not overwhelming. The goal was informed consent, not feature education.</p>
-                        <ul class="case-list">
-                            <li><strong>Hero decision:</strong> how much is enough?</li>
-                            <li><strong>Considered & discarded:</strong> A full mechanics explanation with diagrams and on-chain flow documentation, similar to a whitepaper section.</li>
-                            <li><strong>Choosen direction:</strong> A simplified 3-step explanation with emphasis on what the user does, not how the system works internally.</li>
-                            <li><strong>Why:</strong> User research on comparable DeFi products showed that explanation sections longer than 200 words before conversion had diminishing returns, users skimmed or left. The goal was enough to believe, not enough to audit. Technical depth was linked to a documentation page for users who wanted it.</li>
-                        </ul>
-                        <div class="case-section-gallery">
-                            <div class="case-section-gallery">
-                                 <img src="Hedgehog /frame7.png" alt="Hedgehog" class="case-gallery-img"> 
-                                 <img src="Hedgehog /frame8.png" alt="Hedgehog" class="case-gallery-img"> 
-                            
-                                </ul>
-                                <ul class="case-list">
-                        <p><strong>Stage 4 — Action Reinforcement: Conversion Loops</strong></p>
-                        <p>By Stage 4, users who are still reading have already formed intent. The design task here was to remove every remaining reason not to convert.</p>
-                        <ul class="case-list">
-                            <li>Repeated CTAs with evolving microcopy, the language shifts from awareness ('Learn more') to intent ('Get early access') to commitment ('Join the waitlist')</li>
-                            <li>Social proof and performance signals, community size, early participant signals, ecosystem credibility                            </li>
-                            <li>Secondary CTA in footer for late-stage conversion, captures users who read the entire page before deciding</li>
-                            <li>Short, frictionless waitlist form, email only, no additional fields</li>
-                        </ul>
-                        
-                            <div class="case-section-gallery">
-                                <div class="case-gallery-tight-pair">
-                                    <img src="Hedgehog /Frame9.png" alt="Hedgehog" class="case-gallery-img">
-                                    <img src="Hedgehog /frame10.png" alt="Hedgehog" class="case-gallery-img">
-                                </div>
-                            
-
+                    <p>Before designing a single section, I analyzed how comparable products in institutional and Web3 contexts build trust and drive conversion before launch.</p>
+                    <div class="case-research-stack">
+                        <article class="case-research-card">
+                            <p class="case-research-card__title"><strong>Institutional SaaS / FinTech launches</strong></p>
                             <ul class="case-list">
-                            <li><strong>Hero decision:</strong> how many?</li>
-                            <li><strong>Considered & discarded:</strong> Name + Email + 'How did you hear about us?', standard waitlist form for segmentation.</li>
-                            <li><strong>Choosen direction:</strong> Email only</li>
-                            <li><strong>Why:</strong> Every additional field reduces conversion rate. For a product validation goal, email volume and conversion rate matter more than segmentation data at this stage. Segmentation was deferred to the onboarding email sequence, where response rates are higher and context is clearer.</li>
-                        </ul>    
-                    </ul>
+                                <li><strong>Studied:</strong> Brex, Ramp, Mercury, Stripe (early launch pages)</li>
+                                <li><strong>Learned:</strong> credibility first (team, backers, problem framing) before any product or CTA</li>
+                                <li><strong>Applied:</strong> Hedgehog earned trust before asking for the email</li>
+                            </ul>
+                        </article>
+                        <article class="case-research-card">
+                            <p class="case-research-card__title"><strong>Web3 / DeFi product launches</strong></p>
+                            <ul class="case-list">
+                                <li><strong>Studied:</strong> Polymarket, Aave, Uniswap v3, Blur</li>
+                                <li><strong>Learned:</strong> on-chain credibility matters more than traditional social proof</li>
+                                <li><strong>Applied:</strong> copy addressed mechanics, governance, and system integrity</li>
+                            </ul>
+                        </article>
+                        <article class="case-research-card">
+                            <p class="case-research-card__title"><strong>Waitlist-driven funnels</strong></p>
+                            <ul class="case-list">
+                                <li><strong>Studied:</strong> Linear, Superhuman, Notion, Phantom wallet</li>
+                                <li><strong>Learned:</strong> users need to understand the benefit before they value exclusivity</li>
+                                <li><strong>Applied:</strong> waitlist CTA framed around early access, not just "sign up"</li>
+                            </ul>
+                        </article>
+                    </div>
+                    <div>
+                        <p class="case-block-heading"><strong>Key insight driving the architecture:</strong></p>
+                        <blockquote class="case-callout case-callout--insight"><p><strong><i>The funnel is: Understand → Believe → Trust → Act. Most pages skip to Act. This one earned each step first.</i></strong></p></blockquote>
+                    </div>
                 </div>
             </section>
             <section id="design" class="case-section">
                 <span class="case-section-label">VISUAL DESIGN DECISIONS</span>
-                <h2 class="case-section-title">Design</h2>
+                <h2 class="case-section-title">Designed to feel like a tool, not a crypto hype page</h2>
                 <div class="case-section-body">
-                    <p>The visual language was designed as a direct extension of the conversion strategy, every aesthetic choice had a functional rationale.                    </p>
-                    <ul class="case-list">
-                        <p><strong>Institutional typography for clarity and authority</strong></p>
-                        <li>The typeface and sizing choices were deliberately serious, no playful display fonts, no crypto-aesthetic gradients. Institutional users pattern-match credibility from visual signals before reading a word. The typography needed to pass a one-second credibility test.                        </li>
-                    </ul>
-
-                    <ul class="case-list">
-                        <p><strong>Restrained color palette</strong></p>
-                        <li>The palette used dark backgrounds with high-contrast highlights, consistent with professional financial tools and institutional Web3 products. The goal was to feel like a tool, not a consumer app. Color was reserved for CTAs and system states, not decoration</li>
-                    </ul>
-                    
-                    <ul class="case-list">
-                        <p><strong>Information hierarchy with clear section anchors</strong></p>
-                        <li>Each section had a single dominant message and a clear visual hierarchy from heading to supporting copy to CTA. This supported scan-driven behavior, institutional users read in F-patterns, and the layout was designed around that reality.</li>
-                    </ul>
-
-                    <ul class="case-list">
-                        <p><strong>Spacing as a trust signal</strong></p>
-                        <li>Generous whitespace was a deliberate choice. Dense layouts signal rushed execution. In institutional contexts, restraint and breathing room communicate confidence,  the product doesn't need to oversell itself by filling every pixel.</li>
-                    </ul>
-
-
+                    <p>Every visual choice served the conversion strategy. Nothing decorative. Nothing that eroded trust.</p>
+                    <div class="case-principle-grid">
+                        <div class="case-principle-item">
+                            <p><strong>Institutional typography for clarity and authority</strong></p>
+                            <p>Serious typography, no playful fonts, no crypto gradients. Institutional users judge credibility in one second. The type had to pass that test.</p>
+                        </div>
+                        <div class="case-principle-item">
+                            <p><strong>Restrained color palette</strong></p>
+                            <p>Dark backgrounds, high-contrast highlights. Feels like a financial tool, not a consumer app. Color reserved for CTAs only.</p>
+                        </div>
+                        <div class="case-principle-item">
+                            <p><strong>Information hierarchy with clear section anchors</strong></p>
+                            <p>One dominant message per section. Clear path from heading to copy to CTA. Built for F-pattern scanning.</p>
+                        </div>
+                        <div class="case-principle-item">
+                            <p><strong>Spacing as a trust signal</strong></p>
+                            <p>Generous whitespace signals confidence. Dense layouts signal rush. Restraint was deliberate, not lazy.</p>
+                        </div>
+                    </div>
                 </div>
             </section>
             <section id="results" class="case-section">
                 <span class="case-section-label">RESULTS</span>
-                <h2 class="case-section-title">Results finds</h2>
-                 <div class="case-section-body">
-                    <p>The page was distributed organically through Discord communities, Twitter/X, and Web3 developer networks, zero paid traffic.</p>
-               
-                    <ul class="case-list">
-                        <p><strong>Conversion performance:</strong></p>
-                        <li><strong>Waitlist conversion rate:</strong> 37.5%, the average for B2B/Web3 waitlist pages is 2–8% for cold traffic. 37.5% from organic, community-sourced traffic indicates strong message-market fit.</li>
-                        <li><strong>CTA engagement:</strong> consistent interaction across hero (above-the-fold) and footer CTAs, confirming the two-CTA architecture was effective for both fast-deciders and thorough readers</li>
-                        <li><strong>Scroll depth:</strong> high retention through the trust and mechanics sections, users weren't bouncing at the explanation layer, validating the decision to include system transparency                        </li>
-                         </ul>
-
-                         <ul class="case-list">
-                            <p><strong>Product validation signals:</strong></p>
-                            <li>Engagement patterns indicated qualified interest, not casual curiosity. Users who signed up had spent meaningful time on the page before converting.</li>
-                            <li>The waitlist served as the acquisition layer for the product beta, users who signed up were segmented by engagement level and onboarded in priority order</li>
-                            <li>Conversion data directly informed product communication decisions,  the sections with highest engagement shaped the onboarding copy and product UI microcopy</li>
-                             </ul>
-
-                    <p><strong><i>The landing page wasn't just a marketing asset, it was the first usability test of the product's value proposition. The 37.5% conversion rate was the earliest product-market fit signal the team had.</i></strong></p>
-                
+                <h2 class="case-section-title">The numbers backed the design</h2>
+                <div class="case-section-body">
+                    <div class="case-big-stats">
+                        <article class="case-big-stat">
+                            <span class="case-big-stat__value">37.5<span class="case-big-stat__unit">%</span></span>
+                            <p class="case-big-stat__label">waitlist conversion · benchmark: 2 to 8%</p>
+                        </article>
+                        <article class="case-big-stat">
+                            <span class="case-big-stat__value">0</span>
+                            <p class="case-big-stat__label">paid traffic · fully organic via Discord and Twitter</p>
+                        </article>
+                        <article class="case-big-stat case-big-stat--word">
+                            <span class="case-big-stat__value">High</span>
+                            <p class="case-big-stat__label">scroll depth through trust and mechanics before conversion</p>
+                        </article>
+                    </div>
+                    <details class="case-details">
+                        <summary class="case-details__summary">Conversion performance & validation signals</summary>
+                        <div class="case-details__body">
+                            <p>The page was distributed organically through Discord communities, Twitter/X, and Web3 developer networks, zero paid traffic.</p>
+                            <div class="case-metrics-group">
+                                <p class="case-block-heading"><strong>Conversion performance:</strong></p>
+                                <div class="case-challenge-grid">
+                                    <div class="case-metric-item"><p><strong>Waitlist conversion:</strong> 37.5%. B2B/Web3 benchmark is 2 to 8% for cold traffic. Organic community traffic at 37.5% signals strong message-market fit.</p></div>
+                                    <div class="case-metric-item"><p><strong>CTA engagement:</strong> consistent interaction across hero (above-the-fold) and footer CTAs, confirming the two-CTA architecture was effective for both fast-deciders and thorough readers</p></div>
+                                    <div class="case-metric-item"><p><strong>Scroll depth:</strong> high retention through the trust and mechanics sections, users weren't bouncing at the explanation layer, validating the decision to include system transparency                        </p></div>
+                                </div>
+                            </div>
+                            <div class="case-metrics-group">
+                                <p class="case-block-heading"><strong>Product validation signals:</strong></p>
+                                <div class="case-challenge-grid">
+                                    <div class="case-metric-item"><p>Engagement patterns indicated qualified interest, not casual curiosity. Users who signed up had spent meaningful time on the page before converting.</p></div>
+                                    <div class="case-metric-item"><p>The waitlist served as the acquisition layer for the product beta, users who signed up were segmented by engagement level and onboarded in priority order</p></div>
+                                    <div class="case-metric-item"><p>Conversion data directly informed product communication decisions,  the sections with highest engagement shaped the onboarding copy and product UI microcopy</p></div>
+                                </div>
+                            </div>
+                            <blockquote class="case-callout case-callout--insight"><p><strong><i>This wasn't just marketing. It was the first usability test of the product's value proposition. 37.5% was the earliest product-market fit signal the team had.</i></strong></p></blockquote>
+                        </div>
+                    </details>
                 </div>
             </section>
             <section id="looping" class="case-section">
                 <span class="case-section-label">LANDING TO PRODUCT</span>
-                <h2 class="case-section-title">Looping </h2>
+                <h2 class="case-section-title">From landing page to product</h2>
                 <div class="case-section-body">
-                    <p>The relationship between the landing page and the product was intentional and designed from the start, not treated as two separate projects.</p>
-                    <div class="file-under-tags">
+                    <p>The landing page and the product were designed as one system, not two separate projects.</p>
+                    <div class="case-loop-panel">
                         <ul class="case-list">
                             <li>The copy and framing on the landing page directly shaped the onboarding language in the product, ensuring continuity between the promise and the experience.</li>
                             <li>The 3-step mechanics explanation on the landing page was the basis for the in-product onboarding tooltip sequence.</li>
                             <li>Conversion signals from the landing (which sections had highest engagement) were used as research input for the product's information hierarchy, confirming that users cared most about the pool mechanics and on-chain resolution.</li>
                             <li>Waitlist users served as the first cohort for usability testing, because they had already demonstrated comprehension of the product concept, their feedback on the product was significantly more actionable than cold user recruitment would have been.</li>
-                        </ul>   
+                        </ul>
                     </div>
                 </div>
             </section>
             <section id="lessons" class="case-section">
-                <span class="case-section-label">LESSONS</span>
+                <span class="case-section-label">WHAT I LEARNED</span>
                 <h2 class="case-section-title">Lessons Learned</h2>
                 <div class="case-section-body">
-                    <ul class="case-list">
-                        <p><strong>Institutional audiences respond to clarity, not flash.</strong></p>
-                        <li>Every time we added a visual element to 'make the page more exciting,' we were actually eroding the trust signal. The highest-converting version of the page was also the most restrained one. The benchmark, financial and institutional SaaS products, is deliberately austere. We learned to treat visual restraint as a deliberate product choice, not a failure of creativity.</li>
-                    </ul>      
-
-                    <ul class="case-list">
-                        <p><strong>Conversion in professional pages requires trust signals before CTAs.</strong></p>
-                        <li>The first version of the page placed the primary CTA in the hero with minimal context. Conversion rate was significantly lower. Adding a credibility and context layer before the CTA,  and moving the CTA to repeat at the end of that layer, was the single highest-impact structural change. Users needed to believe before they would act.</li>
-                    </ul>  
-
-                    <ul class="case-list">
-                        <p><strong>Explaining the mechanics is a conversion feature, not a liability.</strong></p>
-                        <li>The initial hypothesis was that a long mechanics explanation would increase drop-off. The data showed the opposite: users who reached the mechanics section had higher conversion rates than those who bounced earlier. Understanding the system reduced anxiety and increased commitment. For technical products, clarity about how something works is a trust signal, not a hurdle.</li>
-                    </ul> 
-
-                    <ul class="case-list">
-                        <p><strong>The landing page is a research artifact.</strong></p>
-                        <li>The most valuable outcome of the landing page wasn't the waitlist emails, it was the behavioral data. Which sections held attention, which CTAs got clicked, which copy drove the most engagement. This data was treated as primary research input for the product design process. Building the landing page before the product was one of the best research investments the team made.</li>
-                    </ul> 
-                
-                
+                    <blockquote class="case-callout case-callout--lesson">
+                        <p>In institutional contexts, conversion comes after trust, not before. Every time we pushed the CTA earlier, performance dropped. Restraint was the strategy.</p>
+                    </blockquote>
+                    <details class="case-details">
+                        <summary class="case-details__summary">Full lessons from the project</summary>
+                        <div class="case-details__body">
+                            <div class="case-lesson-stack">
+                                <div class="case-lesson-item">
+                                    <p><strong>Institutional audiences respond to clarity, not flash.</strong></p>
+                                    <p>Every time we added a visual element to 'make the page more exciting,' we were actually eroding the trust signal. The highest-converting version of the page was also the most restrained one. The benchmark, financial and institutional SaaS products, is deliberately austere. We learned to treat visual restraint as a deliberate product choice, not a failure of creativity.</p>
+                                </div>
+                                <div class="case-lesson-item">
+                                    <p><strong>Conversion in professional pages requires trust signals before CTAs.</strong></p>
+                                    <p>The first version of the page placed the primary CTA in the hero with minimal context. Conversion rate was significantly lower. Adding a credibility and context layer before the CTA,  and moving the CTA to repeat at the end of that layer, was the single highest-impact structural change. Users needed to believe before they would act.</p>
+                                </div>
+                                <div class="case-lesson-item">
+                                    <p><strong>Explaining the mechanics is a conversion feature, not a liability.</strong></p>
+                                    <p>The initial hypothesis was that a long mechanics explanation would increase drop-off. The data showed the opposite: users who reached the mechanics section had higher conversion rates than those who bounced earlier. Understanding the system reduced anxiety and increased commitment. For technical products, clarity about how something works is a trust signal, not a hurdle.</p>
+                                </div>
+                                <div class="case-lesson-item">
+                                    <p><strong>The landing page is a research artifact.</strong></p>
+                                    <p>The most valuable outcome of the landing page wasn't the waitlist emails, it was the behavioral data. Which sections held attention, which CTAs got clicked, which copy drove the most engagement. This data was treated as primary research input for the product design process. Building the landing page before the product was one of the best research investments the team made.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
                 </div>
             </section>
             <section id="next-steps" class="case-section">
                 <span class="case-section-label">NEXT STEPS</span>
                 <h2 class="case-section-title">Next Steps</h2>
                 <div class="case-section-body">
-                    <ul class="case-list">
-                        <p><strong>A/B test headline microcopy variations</strong></p>
-                        <li>The hero headline was not tested, it was the team's best first hypothesis. With a validated conversion rate baseline, the next step is testing alternative framings of the core value proposition. Even a 5-point improvement in the headline conversion rate would compound significantly at scale.</li>
-                    </ul> 
-
-                    <ul class="case-list">
-                        <p><strong>Segment waitlist users for tailored onboarding flows</strong></p>
-                        <li>The current waitlist is unsegmented. Based on behavioral signals from the page (which sections users engaged with longest), users can be segmented into: institutional/professional (high scroll depth on mechanics sections) vs. consumer/enthusiast (high engagement with product concept sections). Each segment warrants a different onboarding sequence.</li>
-                    </ul> 
-
-                    <ul class="case-list">
-                        <p><strong>Integrate early user feedback into landing copy refinement</strong></p>
-                        <li>The first cohort of beta users, recruited through the waitlist, now has direct product experience. Their feedback on the gap between what the landing page promised and what the product delivered is the highest-quality input available for a second iteration of the page.</li>
-                    </ul> 
-
-                    <ul class="case-list">
-                        <p><strong>Add tracking to measure engagement path and drop-offs</strong></p>
-                        <li>Current data covers macro metrics (conversion rate, scroll depth). Heatmap and session recording data would identify the specific micro-drop-off points within sections, enabling surgical copy and layout improvements rather than broad structural changes.</li>
-                    </ul> 
+                    <div class="case-next-grid">
+                        <div class="case-next-item">
+                            <p><strong>A/B test headline microcopy variations</strong></p>
+                            <p>The hero headline was not tested, it was the team's best first hypothesis. With a validated conversion rate baseline, the next step is testing alternative framings of the core value proposition. Even a 5-point improvement in the headline conversion rate would compound significantly at scale.</p>
+                        </div>
+                        <div class="case-next-item">
+                            <p><strong>Segment waitlist users for tailored onboarding flows</strong></p>
+                            <p>The current waitlist is unsegmented. Based on behavioral signals from the page (which sections users engaged with longest), users can be segmented into: institutional/professional (high scroll depth on mechanics sections) vs. consumer/enthusiast (high engagement with product concept sections). Each segment warrants a different onboarding sequence.</p>
+                        </div>
+                        <div class="case-next-item">
+                            <p><strong>Integrate early user feedback into landing copy refinement</strong></p>
+                            <p>The first cohort of beta users, recruited through the waitlist, now has direct product experience. Their feedback on the gap between what the landing page promised and what the product delivered is the highest-quality input available for a second iteration of the page.</p>
+                        </div>
+                        <div class="case-next-item">
+                            <p><strong>Add tracking to measure engagement path and drop-offs</strong></p>
+                            <p>Current data covers macro metrics (conversion rate, scroll depth). Heatmap and session recording data would identify the specific micro-drop-off points within sections, enabling surgical copy and layout improvements rather than broad structural changes.</p>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
@@ -359,7 +457,7 @@
         <div class="container">
             <div class="related-header">
                 <h2>Latest Works</h2>
-                <a href="projects.html" class="see-more-link">See more clicking here <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H1M13 1V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                <a href="projects.html" class="see-more-link">View all projects <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H1M13 1V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
             </div>
             <div class="related-grid">
                 <a href="project-transparent-space.html" class="related-card"><div class="related-image"><img src="1920x1200/Cover transparent Hero cover.png" alt="Transparent.space" class="related-img"></div><div class="related-info"><span class="related-name">Transparent.space</span><span class="related-location">(Product Design)</span></div></a>
@@ -385,7 +483,7 @@
                     <p class="hero-intro__index footer-v3__index">
                         <span class="hero-intro__index-num">04</span><span class="hero-intro__index-slash">/</span><span class="hero-intro__index-label">Colophon</span>
                     </p>
-                    <a href="index.html" class="footer-logo-link" aria-label="Fonseca — Home">
+                    <a href="index.html" class="footer-logo-link" aria-label="Fonseca Home">
                         <img src="logo.svg" alt="" class="footer-logo-img logo-light" height="32">
                         <img src="logo%20white.svg" alt="" class="footer-logo-img logo-dark" height="32">
                     </a>

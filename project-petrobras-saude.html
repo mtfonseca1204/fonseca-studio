@@ -25,24 +25,42 @@
 </head>
 <body class="about-page">
 
-    <header class="about-header">
-        <a href="index.html" class="about-header-logo" aria-label="Fonseca — Home">
-            <img src="logo.svg" alt="" class="about-header-logo-img logo-light" height="32">
-            <img src="logo%20white.svg" alt="" class="about-header-logo-img logo-dark" height="32">
-        </a>
-        <div class="about-header-actions">
-            <a href="projects.html" class="about-header-link">&larr; Back to all projects</a>
-            <button type="button" class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
-                <svg class="icon-sun" width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M10 3V1M10 19V17M17 10H19M1 10H3M15.657 4.343L17.071 2.929M2.929 17.071L4.343 15.657M15.657 15.657L17.071 17.071M2.929 2.929L4.343 4.343M14 10C14 12.2091 12.2091 14 10 14C7.79086 14 6 12.2091 6 10C6 7.79086 7.79086 6 10 6C12.2091 6 14 7.79086 14 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <svg class="icon-moon" width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="index.html" class="nav-logo">
+                    <img src="logo.svg" alt="Fonseca" class="nav-logo-img logo-light">
+                    <img src="logo white.svg" alt="Fonseca" class="nav-logo-img logo-dark">
+                </a>
+            </div>
+            <div class="nav-center">
+                <a href="index.html#work" class="nav-link"><span class="nav-num">01</span> Work</a>
+                <a href="projects.html" class="nav-link"><span class="nav-num">02</span> Projects</a>
+                <a href="about.html" class="nav-link"><span class="nav-num">03</span> About</a>
+            </div>
+            <div class="nav-right">
+                <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+                    <svg class="icon-sun" width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M10 3V1M10 19V17M17 10H19M1 10H3M15.657 4.343L17.071 2.929M2.929 17.071L4.343 15.657M15.657 15.657L17.071 17.071M2.929 2.929L4.343 4.343M14 10C14 12.2091 12.2091 14 10 14C7.79086 14 6 12.2091 6 10C6 7.79086 7.79086 6 10 6C12.2091 6 14 7.79086 14 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <svg class="icon-moon" width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <a href="mailto:fonsecaa.design@gmail.com" class="nav-cta">Contact</a>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu"><span></span><span></span></button>
+            </div>
         </div>
-    </header>
+        <div class="mobile-menu">
+            <div class="mobile-menu-links">
+                <a href="index.html#work" class="mobile-link">Work</a>
+                <a href="projects.html" class="mobile-link">Projects</a>
+                <a href="about.html" class="mobile-link">About</a>
+                <a href="mailto:fonsecaa.design@gmail.com" class="mobile-link mobile-cta">Contact</a>
+            </div>
+        </div>
+    </nav>
 
     <section class="project-hero project-hero-case">
-        <div class="container">
-            <p class="project-hero-tagline">Healthcare / Corporate</p>
-            <h1 class="project-hero-title">Petrobras Saúde</h1>
+        <div class="container container-narrow">
+            <p class="project-hero-tagline">CASE STUDY · HEALTHCARE · PRODUCT DESIGN</p>
+            <h1 class="project-hero-title">Petrobras Saúde · Telemedicine Platform</h1>
             <p class="project-hero-description">
                 Petrobras Saúde is the corporate healthcare plan for Petrobras employees and their families, serving hundreds of thousands of beneficiaries across Brazil. The platform redesign focused on modernizing the digital experience, delivered during COVID-19 with user research, beneficiary needs, and provider search at the center.
             </p>
@@ -58,12 +76,12 @@
     <aside class="case-side-nav" id="caseSideNav" aria-label="Case study navigation">
         <nav class="case-side-nav-inner">
             <a href="#overview" class="case-side-nav-link">Overview</a>
+            <a href="#my-role" class="case-side-nav-link">My Role</a>
             <a href="#problem" class="case-side-nav-link">Problem</a>
-            <a href="#goal" class="case-side-nav-link">Goal</a>
             <a href="#solution" class="case-side-nav-link">Solution</a>
+            <a href="#key-decisions" class="case-side-nav-link">Key Decisions</a>
             <a href="#research" class="case-side-nav-link">Research</a>
             <a href="#design" class="case-side-nav-link">Design</a>
-            <a href="#visual-system" class="case-side-nav-link">Branding & Visual System</a>
             <a href="#results" class="case-side-nav-link">Results</a>
             <a href="#lessons" class="case-side-nav-link">Lessons</a>
             <a href="#next-steps" class="case-side-nav-link">Next Steps</a>
@@ -76,174 +94,240 @@
         </div>
     </section>
 
-    <section class="project-case-content">
+    <section class="project-case-content case-editorial">
         <div class="container container-narrow">
             <section id="overview" class="case-section">
                 <span class="case-section-label">INTRO</span>
                 <h2 class="case-section-title">Overview</h2>
-                <div class="case-section-body">
-                <p>Saúde Petrobras is a telemedicine system designed to support the health needs of Petrobras employees and dependents during the COVID-19 era. The platform was created to provide remote medical consultation, symptom tracking, and health guidance at a time when in-person healthcare access was limited and safety concerns were paramount.</p> 
-                <p>This project combined UX research, digital health workflows, and service design to deliver a trusted and accessible telehealth experience for a large institutional user base.</p>
+                <div class="case-brief" role="region" aria-label="Project summary">
+                    <div class="case-brief__stat-band">
+                        <div class="case-brief__stat-main">
+                            <span class="case-brief__stat-value">100<span class="case-brief__stat-unit">K+</span></span>
+                            <span class="case-brief__stat-caption">Beneficiaries across Brazil's corporate healthcare plan</span>
+                        </div>
+                        <div class="case-brief__stat-compare">
+                            <div class="case-brief__compare-item">
+                                <span class="case-brief__compare-label">Timeline</span>
+                                <span class="case-brief__compare-value case-brief__compare-value--accent">COVID-19 era</span>
+                            </div>
+                            <div class="case-brief__compare-item">
+                                <span class="case-brief__compare-label">Focus</span>
+                                <span class="case-brief__compare-value">Telemedicine access</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="case-brief__grid">
+                        <article class="case-brief__card">
+                            <h3 class="case-brief__card-label">Problem</h3>
+                            <p class="case-brief__card-text">When the pandemic began, <mark class="case-brief__hl">physical clinics faced capacity challenges and infection risks</mark>. Existing health systems felt fragmented, intimidating, or unfriendly to remote care users.</p>
+                        </article>
+                        <article class="case-brief__card">
+                            <h3 class="case-brief__card-label">Solution</h3>
+                            <p class="case-brief__card-text">Telemedicine platform built around <mark class="case-brief__hl">clarity, empathy, and accessibility</mark>. Symptom triage, remote consultations, and a resource hub in one simple experience. <span class="case-brief__flow">Describe → triage → consult → guidance</span></p>
+                        </article>
+                        <article class="case-brief__card case-brief__card--result">
+                            <h3 class="case-brief__card-label">Result</h3>
+                            <p class="case-brief__card-text">Improved remote health access during critical pandemic periods with <span class="case-brief__inline-stat">higher consultation completion rates</span> attributed to clear, guided UI flows.</p>
+                        </article>
+                    </div>
                 </div>
                 <div class="case-section-gallery">
-                    <img src="Petrobras/9.png" alt="Petrobras Saúde" class="case-gallery-img">
+                    <img src="Petrobras/9.png" alt="Petrobras Saúde telemedicine platform" class="case-gallery-img" decoding="async">
                 </div>
             </section>
-            <section id="problem" class="case-section">
-                <span class="case-section-label">PROBLEM</span>
-                <h2 class="case-section-title">When the pandemic began, traditional healthcare channels faced capacity challenges, risks of infection, and logistical barriers. Petrobras needed a solution that:                </h2>
-                <div class="case-section-body">
-                
-                    <ul class="case-list">
-                        <li>Reduced pressure on physical health clinics</li>
-                        <li>Allowed employees to access medical support remotely</li>
-                        <li>Provided clear health guidance specific to COVID-19 symptoms and risk factors</li>
-                        <li>Felt reliable and trustworthy for a broad user audience (non-medical and medical alike)</li>
-                      </ul>    
-                      <p>Existing health systems were often fragmented, intimidating, or unfriendly to users unfamiliar with remote care platforms.</p>
-                
-                </div>
-            </section>
-            <section id="goal" class="case-section">
-                <span class="case-section-label">GOAL</span>
-                <h2 class="case-section-title">Design a easy-to-use telemedicine platform that:</h2>
-                <div class="case-section-body">
-                   
-                    <ul class="case-list">
-                        <li>Enables remote access to medical professionals</li>
-                        <li>Provides clear direction for COVID-related concerns</li>
-                        <li>Reduces user stress and uncertainty in symptom evaluation</li>
-                        <li>Works intuitively for users of all tech proficiency levels</li>
-                      </ul>    
-                      <p>Institutional goals also included improved health outcomes and reduced clinic overload.</p>
 
+            <section id="my-role" class="case-section">
+                <span class="case-section-label">MY ROLE</span>
+                <h2 class="case-section-title">UX/UI Designer: telehealth for a workforce under stress</h2>
+                <div class="case-section-body case-prose-stack">
+                    <p class="case-prose-lead">Petrobras Saúde is the corporate healthcare plan for Petrobras employees and their families, serving hundreds of thousands of beneficiaries across Brazil. The platform redesign focused on modernizing the digital experience during COVID-19 with user research and beneficiary needs at the center.</p>
+                    <p>Working with Karla Granadeiro, I combined UX research, digital health workflows, and service design to deliver a trusted and accessible telehealth experience for a large institutional user base.</p>
+                    <div class="case-spec-grid">
+                        <div class="case-spec-item"><p><strong>UX research:</strong> Telehealth usage trends, employee interviews, pain point mapping, and usability testing on prototype flows.</p></div>
+                        <div class="case-spec-item"><p><strong>Workflow design:</strong> Symptom triage, remote consultation scheduling, and resource hub flows designed step by step.</p></div>
+                        <div class="case-spec-item"><p><strong>Interface design:</strong> Straightforward language, modular screens, and reassuring visual cues for moments of health concern.</p></div>
+                        <div class="case-spec-item"><p><strong>Visual system:</strong> Institutional trust aligned with Petrobras brand values, calm UI, and accessibility for diverse skill levels.</p></div>
+                    </div>
+                    <p class="case-prose-kicker"><strong>During a health crisis, clarity beats complexity. Every screen had to reduce stress, not add to it.</strong></p>
                 </div>
             </section>
+
+            <section id="problem" class="case-section">
+                <span class="case-section-label">THE PROBLEM</span>
+                <h2 class="case-section-title">Pandemic pressure on a system built for in-person care</h2>
+                <div class="case-section-body case-prose-stack">
+                    <p class="case-prose-lead">When the pandemic began, traditional healthcare channels faced capacity challenges, risks of infection, and logistical barriers. Petrobras needed a solution that reduced pressure on physical clinics, allowed employees to access medical support remotely, and provided clear health guidance specific to COVID-19 symptoms and risk factors.</p>
+                    <p>Existing health systems were often fragmented, intimidating, or unfriendly to users unfamiliar with remote care platforms. The platform had to feel reliable and trustworthy for a broad user audience, both medical and non-medical.</p>
+                    <p class="case-prose-kicker"><strong>Users wanted reassurance, not complexity. Keep scrolling to see how the flows were structured.</strong></p>
+                </div>
+            </section>
+
             <section id="solution" class="case-section">
-                <span class="case-section-label">SOLUTION</span>
-                <h2 class="case-section-title">The Saúde Petrobras telemedicine experience was designed around clarity, empathy, and accessibility.                </h2>
-                <div class="case-section-body">
-                    <p>Key Components</p>
+                <span class="case-section-label">THE SOLUTION</span>
+                <h2 class="case-section-title">Clarity, empathy, and accessibility in every interaction</h2>
+                <div class="case-section-body case-prose-stack">
+                    <p class="case-prose-lead">The goal was to enable remote access to medical professionals, provide clear direction for COVID-related concerns, reduce user stress in symptom evaluation, and work intuitively for users of all tech proficiency levels.</p>
+                    <p>The Saúde Petrobras telemedicine experience was designed around four key components:</p>
                     <ul class="case-list">
-                        <li>Symptom Triage Flow – Simple guided steps to help users describe health concerns and prioritize urgency</li>
-                        <li>Remote Consultation Interface – Easy scheduling and live interaction with medical professionals</li>
-                        <li>Resource & Guidance Hub – Centralized health information, FAQs, and personalized recommendations</li>
-                        <li>Mobile-Friendly Experience – Support for on-the-go access during urgent needs</li>
-                      </ul>    
-                      <p>The user experience was intentionally simple so that even first-time telemedicine users could navigate without confusion. The interface focused on clear language, progressive disclosure, and trust signals (doctor availability, session confirmations, and secure UI cues).</p>
-                
-                </div>
-                <div class="case-section-gallery">
-                    <img src="Petrobras/7.png" alt="Petrobras Saúde" class="case-gallery-img">
-                    <img src="Petrobras/8.png" alt="Petrobras Saúde" class="case-gallery-img">
-                    <img src="Petrobras/10.png" alt="Petrobras Saúde" class="case-gallery-img">
+                        <li><strong>Symptom triage flow:</strong> Simple guided steps to help users describe health concerns and prioritize urgency</li>
+                        <li><strong>Remote consultation interface:</strong> Easy scheduling and live interaction with medical professionals</li>
+                        <li><strong>Resource and guidance hub:</strong> Centralized health information, FAQs, and personalized recommendations</li>
+                        <li><strong>Mobile-friendly experience:</strong> Support for on-the-go access during urgent needs</li>
+                    </ul>
+                    <p>The user experience was intentionally simple so that even first-time telemedicine users could navigate without confusion. Clear language, progressive disclosure, and trust signals at every step.</p>
+                    <div class="case-section-gallery">
+                        <img src="Petrobras/7.png" alt="Petrobras Saúde symptom triage flow" class="case-gallery-img" decoding="async">
+                        <img src="Petrobras/8.png" alt="Petrobras Saúde consultation interface" class="case-gallery-img" decoding="async">
+                        <img src="Petrobras/10.png" alt="Petrobras Saúde resource hub" class="case-gallery-img" decoding="async">
+                    </div>
+                    <p class="case-prose-kicker"><strong>Institutional goals included improved health outcomes and reduced clinic overload. The UX had to serve both.</strong></p>
                 </div>
             </section>
-        
+
+            <section id="key-decisions" class="case-section">
+                <span class="case-section-label">KEY DECISIONS</span>
+                <h2 class="case-section-title">Three choices that shaped the platform</h2>
+                <div class="case-section-body">
+                    <div class="case-key-decisions">
+                        <article class="case-key-decision">
+                            <h3 class="case-key-decision__title">Reassurance over medical jargon</h3>
+                            <p class="case-key-decision__text">Research revealed users wanted clear next steps, not medical jargon, and quick access without long waiting periods. Plain language and progressive disclosure replaced dense information screens.</p>
+                        </article>
+                        <article class="case-key-decision">
+                            <h3 class="case-key-decision__title">Step-by-step triage, not dashboard overload</h3>
+                            <p class="case-key-decision__text">Modular screens guide users step by step through symptom evaluation. Minimal cognitive load at every interaction, especially critical during moments of health concern.</p>
+                        </article>
+                        <article class="case-key-decision">
+                            <h3 class="case-key-decision__title">Institutional trust with human warmth</h3>
+                            <p class="case-key-decision__text">Visual system aligned with Petrobras brand values while staying calm and approachable. Soft contrasts, clear typography, and consistency across health flows to reduce user anxiety.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
             <section id="research" class="case-section">
                 <span class="case-section-label">RESEARCH</span>
-                <h2 class="case-section-title">Design decisions were informed by:</h2>
-                <div class="case-section-body">
-                   
-                    <ul class="case-list">
-                        <li>Analysis of telehealth usage trends during COVID-19</li>
-                        <li>User interviews with employees familiar with existing health systems</li>
-                        <li>Mapping of pain points in traditional medical appointment flows</li>
-                        <li>Usability testing on prototype flows</li>
-                      </ul>    
-
-                      <p>Research revealed that users wanted:</p>
-                      <ul class="case-list">
-                        <li>Reassurance, not complexity</li>
-                        <li>Clear next steps, not medical jargon</li>
-                        <li>Quick access, not long waiting periods</li>
-                      </ul>   
-                      <p>These insights shaped the product’s simplicity and clarity focus.</p>
-                
+                <h2 class="case-section-title">What employees needed during a health crisis</h2>
+                <div class="case-section-body case-prose-stack">
+                    <p class="case-prose-lead">Design decisions were informed by telehealth usage trends during COVID-19, user interviews with employees familiar with existing health systems, pain point mapping in traditional appointment flows, and usability testing on prototype flows.</p>
+                    <div class="case-research-stack">
+                        <article class="case-research-card">
+                            <p class="case-research-card__title"><strong>What users wanted</strong></p>
+                            <ul class="case-list">
+                                <li>Reassurance, not complexity</li>
+                                <li>Clear next steps, not medical jargon</li>
+                                <li>Quick access, not long waiting periods</li>
+                            </ul>
+                        </article>
+                    </div>
+                    <p>These insights shaped the product's simplicity and clarity focus.</p>
                 </div>
             </section>
+
             <section id="design" class="case-section">
                 <span class="case-section-label">DESIGN</span>
-                <h2 class="case-section-title">The interface was designed with:</h2>
-                <div class="case-section-body">
-                
-                    <ul class="case-list">
-                      <li>Straightforward language and plain visuals</li>
-                      <li>Modular screens that guide step by step</li>
-                      <li>Minimal cognitive load at every interaction</li>
-                      <li>Progressive health guidance embedded into each flow</li>
-                    </ul>   
-                    <p>Special care was taken to reduce stress in moments of health concern through predictable structure, clear feedback, and reassuring visual cues.</p>
-                
+                <h2 class="case-section-title">Reducing stress in moments of health concern</h2>
+                <div class="case-section-body case-prose-stack">
+                    <p class="case-prose-lead">The interface was designed with straightforward language, modular step-by-step screens, minimal cognitive load, and progressive health guidance embedded into each flow.</p>
+                    <div class="case-principle-grid">
+                        <div class="case-principle-item">
+                            <p><strong>Institutional trust</strong></p>
+                            <p>Alignment with Petrobras brand values through calm, professional visual language.</p>
+                        </div>
+                        <div class="case-principle-item">
+                            <p><strong>Approachable UI</strong></p>
+                            <p>Soft contrasts and clear typography that feel human, not bureaucratic.</p>
+                        </div>
+                        <div class="case-principle-item">
+                            <p><strong>Accessibility first</strong></p>
+                            <p>Readability and usability for diverse user skill levels across the beneficiary base.</p>
+                        </div>
+                        <div class="case-principle-item">
+                            <p><strong>Flow consistency</strong></p>
+                            <p>Same visual logic across triage, consultation, and guidance to reduce disorientation.</p>
+                        </div>
+                    </div>
                 </div>
             </section>
-            <section id="visual-system" class="case-section">
-                <span class="case-section-label">BRANDING & VISUAL SYSTEM</span>
-                <h2 class="case-section-title">Although functional, the visual system supported:</h2>
-                <div class="case-section-body">
-                    <div class="file-under-tags">
-                        <ul class="case-list">
-                            <li>Institutional trust (alignment with Petrobras brand values)</li>
-                            <li>Calm, approachable UI (soft contrasts, clear typography)</li>
-                            <li>Readability and accessibility for diverse user skill levels</li>
-                            <li>Consistency across health flows, helping reduce user anxiety</li>
-                          </ul>   
-                          <p>The overall aesthetic was institutional, empathetic, and functional — balancing corporate clarity with human-centric design.</p>
 
-                       </div>
-                </div>
-            </section>
             <section id="results" class="case-section">
                 <span class="case-section-label">RESULTS</span>
-                <h2 class="case-section-title">Impact & Outcomes                </h2>
+                <h2 class="case-section-title">Telemedicine that earned trust during a crisis</h2>
                 <div class="case-section-body">
-                    <ul class="case-list">
-                        <li>Improved remote health access for employees during critical pandemic periods</li>
-                        <li>Positive feedback on ease of use, especially from first-time telemedicine users</li>
-                        <li>Reduced clinic burden, enabling in-person services to focus on critical care</li>
-                        <li>Higher consultation completion rates, attributed to clear, guided UI flows                        </li>
-                    </ul>
-                    <p>The platform helped position telemedicine as a trusted option within a historically in-person healthcare system.</p>
+                    <details class="case-details" open>
+                        <summary class="case-details__summary">Impact and outcomes</summary>
+                        <div class="case-details__body">
+                            <div class="case-challenge-grid">
+                                <div class="case-metric-item"><p><strong>Improved remote health access:</strong> Employees accessed care during critical pandemic periods without visiting clinics.</p></div>
+                                <div class="case-metric-item"><p><strong>Positive ease-of-use feedback:</strong> Especially from first-time telemedicine users.</p></div>
+                                <div class="case-metric-item"><p><strong>Reduced clinic burden:</strong> In-person services could focus on critical care.</p></div>
+                                <div class="case-metric-item"><p><strong>Higher completion rates:</strong> Clear, guided UI flows improved consultation completion.</p></div>
+                            </div>
+                        </div>
+                    </details>
                 </div>
             </section>
-
 
             <section id="lessons" class="case-section">
-                <span class="case-section-label">LESSONS</span>
+                <span class="case-section-label">WHAT I LEARNED</span>
                 <h2 class="case-section-title">Lessons Learned</h2>
                 <div class="case-section-body">
-                    
-                    <ul class="case-list">
-                        <li>Clarity beats complexity, especially during health crises</li>
-                        <li>Healthcare UX must reduce cognitive load while increasing confidence</li>
-                        <li>Institutional systems benefit from empathetic, human-centered language</li>
-                    </ul>
-                
+                    <blockquote class="case-callout case-callout--lesson">
+                        <p>Clarity beats complexity, especially during health crises. Healthcare UX must reduce cognitive load while increasing confidence.</p>
+                    </blockquote>
+                    <details class="case-details">
+                        <summary class="case-details__summary">Full lessons from the project</summary>
+                        <div class="case-details__body">
+                            <div class="case-lesson-stack">
+                                <div class="case-lesson-item">
+                                    <p><strong>Crisis UX demands simplicity.</strong></p>
+                                    <p>When users are worried about their health, every extra decision point increases abandonment.</p>
+                                </div>
+                                <div class="case-lesson-item">
+                                    <p><strong>Trust signals are functional, not decorative.</strong></p>
+                                    <p>Doctor availability, session confirmations, and secure UI cues matter as much as the consultation itself.</p>
+                                </div>
+                                <div class="case-lesson-item">
+                                    <p><strong>Institutional systems need human language.</strong></p>
+                                    <p>Empathetic, human-centered copy bridges the gap between corporate healthcare and personal health anxiety.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
                 </div>
             </section>
+
             <section id="next-steps" class="case-section">
                 <span class="case-section-label">NEXT STEPS</span>
-                <h2 class="case-section-title">Further improvements could include:
-                </h2>
+                <h2 class="case-section-title">Further improvements</h2>
                 <div class="case-section-body">
-                    
-                    <ul class="case-list">
-                        <li>Expanded health tracking dashboards</li>
-                        <li>Personalized recommendations based on user history</li>
-                        <li>Mobile app version for on-the-go support</li>
-                        <li>Integration with vaccination and preventative care services</li>
-                    </ul>
-
+                    <div class="case-next-grid">
+                        <div class="case-next-item">
+                            <p><strong>Health tracking dashboards</strong></p>
+                            <p>Expanded monitoring and history views for ongoing health management.</p>
+                        </div>
+                        <div class="case-next-item">
+                            <p><strong>Personalized recommendations</strong></p>
+                            <p>Guidance based on user history and preventative care patterns.</p>
+                        </div>
+                        <div class="case-next-item">
+                            <p><strong>Mobile app expansion</strong></p>
+                            <p>Dedicated on-the-go support for urgent health needs.</p>
+                        </div>
+                        <div class="case-next-item">
+                            <p><strong>Preventative care integration</strong></p>
+                            <p>Vaccination and wellness services connected to the telemedicine platform.</p>
+                        </div>
+                    </div>
                 </div>
-            </section>
-        </div>
+            </section>        </div>
     </section>
 
     <section class="related-projects">
         <div class="container">
             <div class="related-header">
                 <h2>Latest Works</h2>
-                <a href="projects.html" class="see-more-link">See more clicking here <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H1M13 1V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                <a href="projects.html" class="see-more-link">View all projects <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H1M13 1V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
             </div>
             <div class="related-grid">
                 <a href="project-transparent-space.html" class="related-card"><div class="related-image"><img src="1920x1200/Cover transparent Hero cover.png" alt="Transparent.space" class="related-img"></div><div class="related-info"><span class="related-name">Transparent.space</span><span class="related-location">(Product Design)</span></div></a>

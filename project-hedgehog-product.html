@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hedgehog Product - Fonseca</title>
-    <meta name="description" content="Product design case study for Hedgehog, a Web3 prediction market platform across desktop and mobile.">
+    <meta name="description" content="Product design case study for Hedgehog, a Web3 prediction market with pooled UP/DOWN rounds on desktop and mobile.">
     <link rel="icon" type="image/svg+xml" href="logo.svg">
     <link rel="apple-touch-icon" href="logo.svg">
     <link rel="canonical" href="https://fonseca.studio/project-hedgehog-product.html">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://fonseca.studio/project-hedgehog-product.html">
-    <meta property="og:title" content="Hedgehog Prediction Market — Fonseca Studio">
-    <meta property="og:description" content="Product design case study for Hedgehog, a Web3 prediction market platform — desktop and mobile.">
+    <meta property="og:title" content="Hedgehog Prediction Market | Fonseca Studio">
+    <meta property="og:description" content="Product design case study for Hedgehog, a Web3 prediction market with pooled UP/DOWN rounds on desktop and mobile.">
     <meta property="og:image" content="https://fonseca.studio/Hedgehog%20product/1920x1080.png">
     <meta property="og:site_name" content="Fonseca Studio">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Hedgehog Prediction Market — Fonseca Studio">
-    <meta name="twitter:description" content="Product design case study for Hedgehog, a Web3 prediction market platform — desktop and mobile.">
+    <meta name="twitter:title" content="Hedgehog Prediction Market | Fonseca Studio">
+    <meta name="twitter:description" content="Product design case study for Hedgehog, a Web3 prediction market with pooled UP/DOWN rounds on desktop and mobile.">
     <meta name="twitter:image" content="https://fonseca.studio/Hedgehog%20product/1920x1080.png">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,32 +25,50 @@
 </head>
 <body class="about-page">
 
-    <header class="about-header">
-        <a href="index.html" class="about-header-logo" aria-label="Fonseca — Home">
-            <img src="logo.svg" alt="" class="about-header-logo-img logo-light" height="32">
-            <img src="logo%20white.svg" alt="" class="about-header-logo-img logo-dark" height="32">
-        </a>
-        <div class="about-header-actions">
-            <a href="projects.html" class="about-header-link">&larr; Back to all projects</a>
-            <button type="button" class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
-                <svg class="icon-sun" width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M10 3V1M10 19V17M17 10H19M1 10H3M15.657 4.343L17.071 2.929M2.929 17.071L4.343 15.657M15.657 15.657L17.071 17.071M2.929 2.929L4.343 4.343M14 10C14 12.2091 12.2091 14 10 14C7.79086 14 6 12.2091 6 10C6 7.79086 7.79086 6 10 6C12.2091 6 14 7.79086 14 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <svg class="icon-moon" width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="index.html" class="nav-logo">
+                    <img src="logo.svg" alt="Fonseca" class="nav-logo-img logo-light">
+                    <img src="logo white.svg" alt="Fonseca" class="nav-logo-img logo-dark">
+                </a>
+            </div>
+            <div class="nav-center">
+                <a href="index.html#work" class="nav-link"><span class="nav-num">01</span> Work</a>
+                <a href="projects.html" class="nav-link"><span class="nav-num">02</span> Projects</a>
+                <a href="about.html" class="nav-link"><span class="nav-num">03</span> About</a>
+            </div>
+            <div class="nav-right">
+                <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+                    <svg class="icon-sun" width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M10 3V1M10 19V17M17 10H19M1 10H3M15.657 4.343L17.071 2.929M2.929 17.071L4.343 15.657M15.657 15.657L17.071 17.071M2.929 2.929L4.343 4.343M14 10C14 12.2091 12.2091 14 10 14C7.79086 14 6 12.2091 6 10C6 7.79086 7.79086 6 10 6C12.2091 6 14 7.79086 14 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <svg class="icon-moon" width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <a href="mailto:fonsecaa.design@gmail.com" class="nav-cta">Contact</a>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu"><span></span><span></span></button>
+            </div>
         </div>
-    </header>
+        <div class="mobile-menu">
+            <div class="mobile-menu-links">
+                <a href="index.html#work" class="mobile-link">Work</a>
+                <a href="projects.html" class="mobile-link">Projects</a>
+                <a href="about.html" class="mobile-link">About</a>
+                <a href="mailto:fonsecaa.design@gmail.com" class="mobile-link mobile-cta">Contact</a>
+            </div>
+        </div>
+    </nav>
 
     <section class="project-hero project-hero-case">
-        <div class="container">
-            <p class="project-hero-tagline">Web3 / Product / UX/UI</p>
-            <h1 class="project-hero-title">Hedgehog - Prediction Market Product</h1>
+        <div class="container container-narrow">
+            <p class="project-hero-tagline">CASE STUDY · WEB3 · PRODUCT DESIGN</p>
+            <h1 class="project-hero-title">Hedgehog · Prediction Market</h1>
             <p class="project-hero-description">
-                Hedgehog is a time-based prediction product that transforms on-chain signals into simple, fast decisions, removing the complexity of traditional market interactions.
+                Prediction markets were built for traders. I redesigned one for everyone else.
             </p>
             <div class="project-case-meta">
-                <div class="case-meta-item"><span class="case-meta-label">MY ROLE</span><span class="case-meta-value">Product Designer</span></div>
-                <div class="case-meta-item"><span class="case-meta-label">YEAR</span><span class="case-meta-value">2026</span></div>
-                <div class="case-meta-item"><span class="case-meta-label">TEAM</span><span class="case-meta-value">Myself</span></div>
-                <div class="case-meta-item"><span class="case-meta-label">SCOPE</span><span class="case-meta-value">Product Design / UX/UI</span></div>
+                <div class="case-meta-item"><span class="case-meta-label">MY ROLE</span><span class="case-meta-value">Founding Product Designer</span></div>
+                <div class="case-meta-item"><span class="case-meta-label">YEAR</span><span class="case-meta-value">2024 to 2026</span></div>
+                <div class="case-meta-item"><span class="case-meta-label">TEAM</span><span class="case-meta-value">Myself (solo)</span></div>
+                <div class="case-meta-item"><span class="case-meta-label">SCOPE</span><span class="case-meta-value">Product · Prediction Market </span></div>
             </div>
         </div>
     </section>
@@ -58,35 +76,94 @@
     <aside class="case-side-nav" id="caseSideNav" aria-label="Case study navigation">
         <nav class="case-side-nav-inner">
             <a href="#overview" class="case-side-nav-link">Overview</a>
-            <a href="#scenario" class="case-side-nav-link">Actual Scenario</a>
-            <a href="#opportunity" class="case-side-nav-link">Opportunity</a>
+            <a href="#my-role" class="case-side-nav-link">My Role</a>
             <a href="#problem" class="case-side-nav-link">Problem</a>
-            <a href="#user" class="case-side-nav-link">Users</a>
-            <a href="#discovery" class="case-side-nav-link">Discovery</a>
-            <a href="#design" class="case-side-nav-link">Desgin</a>
-            <a href="#Solution" class="case-side-nav-link">Solution</a>
-            <a href="#design-system" class="case-side-nav-link">Design System</a>
+            <a href="#solution" class="case-side-nav-link">Solution</a>
+            <a href="#key-decisions" class="case-side-nav-link">Key Decisions</a>
+            <a href="#research" class="case-side-nav-link">Research</a>
+            <a href="#design" class="case-side-nav-link">Design</a>
             <a href="#results" class="case-side-nav-link">Results</a>
-            <a href="#lessons" class="case-side-nav-link">Lessons Learned</a>
-            <a href="#next" class="case-side-nav-link">Next Steps</a>
+            <a href="#looping" class="case-side-nav-link">Landing Loop</a>
+            <a href="#lessons" class="case-side-nav-link">Lessons</a>
+            <a href="#next-steps" class="case-side-nav-link">Next Steps</a>
         </nav>
     </aside>
 
     <section class="project-cover">
         <div class="project-cover-image">
-            <img src="Hedgehog product/1920x1080.png" alt="Hedgehog Product Cover" class="cover-img">
+            <video src="Hedgehog product/product_calling.mp4" autoplay muted loop playsinline class="case-gallery-img"></video>
         </div>
     </section>
 
-    <section class="project-case-content">
+    <section class="project-case-content case-editorial">
         <div class="container container-narrow">
             <section id="overview" class="case-section">
                 <span class="case-section-label">INTRO</span>
                 <h2 class="case-section-title">Overview</h2>
-                <div class="case-section-body">
-                    <p>Hedgehog is an on-chain prediction product that transforms complex blockchain signals into fast, repeatable decision loops. Instead of relying on real-world events or traditional trading mechanics, the product focuses on on-chain metrics, funding rates, fees, block activity, allowing users to participate in short, time-based prediction rounds. </p>
-                    <p>I led the product design end-to-end: owning the system logic, information architecture, interaction flows, design system, and interface delivery across desktop and mobile. My primary challenge was translating mechanics that are inherently technical and abstract into an experience that feels immediate, legible, and engaging, even for users without a trading background. </p>
-                    <p>This case documents not just what was built, but why: the research behind the decisions, the paths that were considered and discarded, and what we learned along the way. </p>
+                <div class="case-brief" role="region" aria-label="Project summary">
+                    <div class="case-brief__stat-band">
+                        <div class="case-brief__stat-main">
+                            <span class="case-brief__stat-value" aria-label="40 to 88 percent">40<span class="case-brief__stat-unit">→</span>88<span class="case-brief__stat-unit">%</span></span>
+                            <span class="case-brief__stat-caption">Task completion · orderbook to pool model</span>
+                        </div>
+                        <div class="case-brief__stat-compare">
+                            <div class="case-brief__compare-item">
+                                <span class="case-brief__compare-label">Time to first action</span>
+                                <span class="case-brief__compare-value case-brief__compare-value--accent">8s → under 2s</span>
+                            </div>
+                            <div class="case-brief__compare-item">
+                                <span class="case-brief__compare-label">Waitlist conversion</span>
+                                <span class="case-brief__compare-value">37.5%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="case-brief__grid">
+                        <article class="case-brief__card">
+                            <h3 class="case-brief__card-label">Problem</h3>
+                            <p class="case-brief__card-text">Crypto prediction markets existed, but required users to understand <mark class="case-brief__hl">orderbooks, liquidity pools, and spread mechanics</mark> before placing a single bet. Participation was stuck at experienced traders only.</p>
+                        </article>
+                        <article class="case-brief__card">
+                            <h3 class="case-brief__card-label">Solution</h3>
+                            <p class="case-brief__card-text">We replaced the orderbook with a <mark class="case-brief__hl">pooled UP/DOWN system</mark> built around one question: UP or DOWN? Short time windows, immediate outcomes, one dominant action at all times. <span class="case-brief__flow">Enter → wait → resolve → repeat</span></p>
+                        </article>
+                        <article class="case-brief__card case-brief__card--result">
+                            <h3 class="case-brief__card-label">Result</h3>
+                            <p class="case-brief__card-text">Task completion <span class="case-brief__inline-stat">40→88%</span>. First action from <span class="case-brief__inline-stat">8s to under 2s</span>. Waitlist converted at <span class="case-brief__inline-stat">37.5%</span> with <mark class="case-brief__hl">zero paid traffic</mark>.</p>
+                        </article>
+                    </div>
+                </div>
+                <div class="case-section-gallery" aria-label="Product walkthrough">
+                    <video src="Hedgehog product/Product.mov" autoplay muted loop playsinline class="case-gallery-img" aria-label="Hedgehog product video"></video>
+                    <img src="Hedgehog product/screens.png" alt="Hedgehog product screens" class="case-gallery-img" decoding="async">
+                    <img src="Hedgehog product/payment.png" alt="Hedgehog payment flow" class="case-gallery-img" decoding="async">
+                    <img src="Hedgehog product/modals.png" alt="Hedgehog modal states" class="case-gallery-img" decoding="async">
+                    <img src="Hedgehog product/how it works.png" alt="Hedgehog how it works" class="case-gallery-img" decoding="async">
+                    <img src="Hedgehog product/win lose.png" alt="Hedgehog win and lose resolution states" class="case-gallery-img" decoding="async">
+                </div>
+            </section>
+
+            <section id="my-role" class="case-section">
+                <span class="case-section-label">MY ROLE</span>
+                <h2 class="case-section-title">Founding Product Designer: I rebuilt the product, not just the UI</h2>
+                <div class="case-section-body case-prose-stack">
+                    <p class="case-prose-lead">Hedgehog turns on-chain signals into short prediction rounds anyone can join. As the solo Founding Product Designer, I owned everything from the participation model to the pixels on screen.</p>
+                    <p>I wasn't brought in to polish mockups. I killed the orderbook, designed the four-state product loop, built a 120+ component system, and shipped desktop and mobile end-to-end. When users were confused, we changed the mental model first. The UI followed.</p>
+                    <div class="case-spec-grid">
+                        <div class="case-spec-item"><p><strong>Participation model:</strong> Replaced orderbook with pooled UP/DOWN. Task completion went from 40% to 88%.</p></div>
+                        <div class="case-spec-item"><p><strong>Four-state loop:</strong> Decision, participation, waiting, resolution. Each state has one job in the cycle.</p></div>
+                        <div class="case-spec-item"><p><strong>Design system:</strong> 120+ components in Figma with CursorAI. Handoff time reduced by ~35%. Three major releases shipped.</p></div>
+                        <div class="case-spec-item"><p><strong>Dual audience:</strong> Learnable in 30 seconds for newcomers. Enough depth for experienced DeFi users.</p></div>
+                    </div>
+                    <p class="case-prose-kicker"><strong>Founding product design means owning the mechanics, the loop, the system, and the proof it works.</strong></p>
+                </div>
+            </section>
+
+            <section id="problem" class="case-section">
+                <span class="case-section-label">THE PROBLEM</span>
+                <h2 class="case-section-title">Non-traders couldn't enter prediction markets.</h2>
+                <div class="case-section-body case-prose-stack">
+                    <p class="case-prose-lead">Every existing platform (Polymarket, Augur, Drift) made users understand the financial infrastructure before engaging with it. Orderbooks. Counterparties. Spread mechanics.</p>
+                    <p>The result wasn't lack of interest. It was an interface that made people feel unqualified to press a button.</p>
                     <div class="theme-compare" data-theme-compare role="region" aria-label="Main page light and dark comparison">
                         <div class="theme-compare-viewport">
                             <img src="Hedgehog product/Imgs/Main Page dark.png" alt="" class="theme-compare-base" decoding="async">
@@ -103,337 +180,301 @@
                             <span>Dark</span>
                         </div>
                     </div>
-                </div>
-            </section>
-
-            <section id="scenario" class="case-section">
-                <span class="case-section-label">ACTUAL SCENARIO</span>
-                <h2 class="case-section-title">Prediction markets exist. Participation doesn't scale.                </h2>
-                <div class="case-section-body">
-                    <p>The crypto prediction market space has been growing, Polymarket, Augur, and various DeFi protocols have proven the concept. But engagement is consistently limited to experienced users: people who understand orderbooks, liquidity mechanics, and on-chain concepts.</p>
-                    <p>The fundamental problem isn't that people don't want to predict. It's that every existing platform asks users to understand the system before they can engage with it.                    </p>
-                    <ul class="case-list">
-                        <p><strong>Current landscape problems:</strong></p>
-                        <li>Interfaces rely heavily on orderbooks and trading concepts that most users never learned</li>
-                        <li>Decision-making is slowed by excessive information density, charts, spreads, order queues</li>
-                        <li>Feedback loops are long and tied to external events (elections, sports, price targets)</li>
-                        <li>Engagement depends on unpredictable timelines, a prediction made today may resolve in weeks</li>
-                        <li>Weak connection between what the user does and what the system does in response</li>
-                    </ul>
-                    <p><i>As a result, participation is either limited to experienced users, or becomes too passive to be meaningful.</i></p>
-                </div>
-            </section>
-
-            <section id="opportunity" class="case-section">
-                <span class="case-section-label">OPPORTUNITY</span>
-                <h2 class="case-section-title">Opportunity Identified</h2>
-                <div class="case-section-body">
-                    <p>On-chain data moves continuously and is verifiable by anyone. Funding rates, transaction fees, block activity, these signals fluctuate in real time and are not tied to external events that require waiting days or weeks for resolution.</p>
-                    <p><strong><i>The opportunity: build a prediction product around on-chain signals, with short time windows, so participation is simple, cycles are fast, and outcomes are immediate.</i></strong></p>
-                    <p>This wasn't about building a simpler version of an existing product. It was about rethinking what participation in a prediction market could feel like if it was designed for engagement rather than financial sophistication.                    </p>
-                </div>
-            </section>
-
-            <section id="problem" class="case-section">
-                <span class="case-section-label">THE PROBLEM</span>
-                <h2 class="case-section-title">How do you make on-chain prediction participation accessible, fast, and meaningful without removing the integrity of the underlying system?</h2>
-                 <div class="case-section-body">
-                    <ul class="case-list">
-                    <p>This was the design challenge. Not just 'simplify the UI,' but redesign the participation model itself so that the mechanics are learnable in seconds and the experience feels rewarding from the very first round.                </p>
-                    
-                    <p><strong>Main pains to solve:</strong></p>
-                    <li>High cognitive load for non-expert users, too many concepts required before first participation                    </li>
-                    <li>Slow feedback loops, existing platforms offer no immediate gratification cycle</li>
-                    <li>Lack of continuous engagement, users drop off after one or two experiences</li>
-                    <li>Weak mental model, users can't easily understand how the system works or why they won/lost</li>
-                    <li>No clear dominant action, interfaces offer too many choices at the moment of decision</li>
-                </ul>
-                </div>
-             
-            </section>
-
-            <section id="user" class="case-section">
-                <span class="case-section-label">USERS & CONTEXT</span>
-                <h2 class="case-section-title">Two user types, one interface</h2>
-                <div class="case-section-body">
-                    <ul class="case-list">
-                        <p>The product needed to serve two distinct user profiles simultaneously, and the tension between them shaped most of the design decisions.</p>
-                        <p><strong>User Type 1 </strong>— Curious newcomer</p>
-                        <li>Interested in crypto but not a trader</li>
-                        <li>Has heard of prediction markets but never participated</li>
-                        <li>Needs: immediate understanding of what to do, low risk of 'doing it wrong,' fast feedback</li>
-                        <li>Drops off if the first experience requires more than 30 seconds of orientation</li>
-                   
-                        <p><strong>User Type 2 </strong>— Experienced DeFi participant</p>
-                        <li>Understands on-chain mechanics, funding rates, liquidity</li>
-                        <li>Looking for fast engagement cycles, not long-term position management</li>
-                        <li>Needs: visible participation data, position imbalance signals, clear pool mechanics</li>
-                        <li>Will disengage if the product feels too simplified or lacks depth</li>
-                   
-                   <p><i><strong>''The design challenge: make it simple enough for the newcomer without feeling shallow to the experienced user. The solution was progressive disclosure, simple surface, accessible depth.''</strong></i></p>
-                   
-                    </ul>
-                </div>
-            </section>
-
-            <section id="discovery" class="case-section">
-                <span class="case-section-label">RESEARCH</span>
-                <h2 class="case-section-title">Discovery & Research </h2>
-                <div class="case-section-body">
-                    <p>The research approach combined competitive analysis, behavioral benchmarking, and pattern analysis from analogous products, focusing on understanding why existing prediction and trading interfaces fail to scale engagement beyond experienced users.                    </p>
-                    <ul class="case-list">
-                        <p>Competitive benchmarking, 6 platforms analyzed:</p>
-                        <li><strong>Polymarket</strong> — strong event coverage, but interface requires familiarity with orderbooks and liquidity pools</li>
-                        <li><strong>Augur</strong> — decentralized and powerful, but onboarding friction is high; participation requires multiple steps before first prediction</li>
-                        <li><strong>Drift Protocol </strong> — excellent for experienced DeFi users, but information density is overwhelming for newcomers                        </li>
-                        <li><strong>Binance Predictions</strong> — closest to the fast-cycle model we were targeting; studied for engagement pattern reference                        </li>
-                        <li><strong>Azuro</strong> — good sportsbook UX but tied to real-world events with long resolution timelines</li>
-                        <li><strong>Limitless</strong> — interesting mechanics but unclear dominant action at the moment of participation </li>
-                       
-                    </ul>
-
-                    <p>Key insights extracted:</p>
-                        <ul class="case-list">
-                        <li><strong>Insight 1</strong> :Users struggle with trading mechanics, orderbooks, liquidity, spreads. Not because they're unintelligent, but because these systems were built for financial professionals.</li>
-                        <li><strong>Insight 2</strong> :Decision-making is slowed by excessive information. The more options and data visible at the moment of decision, the longer users hesitate, and the higher the drop-off.</li>
-                        <li><strong>Insight 3</strong> :Most systems lack clear feedback loops. Users don't understand what happened after their prediction resolves, win/loss communication is buried or delayed.</li>
-                        <li><strong>Insight 4</strong> :Participation data is a decision signal. Users naturally look at what other participants are doing. Most platforms hide this or present it in a way that requires interpretation.</li>
-                        <li><strong>Insight 5</strong> :Short cycles create habit. Products with fast, repeatable engagement loops (think: daily games, streaks, immediate outcomes) show significantly higher retention than those with long-term prediction timelines</li>
-                            <p>These insights converged on a clear direction: reduce participation to one decision, shorten the cycle, make outcomes immediate, and expose behavior (not just data) as a decision signal.                            </p>
-                        
-                    </ul>
-                </div>
-            </section>
-
-            <section id="design" class="case-section">
-                <span class="case-section-label">DESIGN</span>
-                <h2 class="case-section-title">Process & Key Design Decisions</h2>
-                <div class="case-section-body">
-                    <p>The design process moved through four phases: IA definition, interaction design, visual system, and iterative testing. Below are the five most significant design decisions, including the alternatives that were considered and discarded. </p>
-                        
-                    <p><strong>Decision 1 — Pooled system (UP/DOWN) vs. orderbook</strong> </p>
-                    <ul class="case-list">
-                        
-                        <li><strong>Considered & discarded:</strong> Simplified orderbook: we initially explored a version that kept the orderbook mechanic but reduced the visible information. Testing with 3 non-technical users showed the same hesitation patterns — the mental model of 'matching' trades still required too much prior knowledge.</li>
-                        
-                        <li><strong>Chosen direction:</strong> Pooled positions (UP vs DOWN): users deposit into a shared pool, not against a counterparty. The only decision is direction</li>
-                        <li><strong>Why:</strong> Task completion rate in usability sessions went from ~40% (orderbook v1) to 88% (pool v2). The mental model shift, from 'trading' to 'choosing a side', was the key unlock.</li>
-                    </ul>
-
-                    <p><strong>Decision 2 — Time-based rounds vs. continuous market</strong> </p>
-                    <ul class="case-list">
-                        
-                        <li><strong>Considered & discarded:</strong> Continuous market: always-open participation with no defined resolution window. This felt more like traditional trading and created no urgency or clear engagement cycle.</li>
-                        
-                        <li><strong>Chosen direction:</strong> Time-based rounds with defined entry, waiting, and resolution phases</li>
-                        
-                        <li><strong>Why:</strong> Short cycles create repeatable engagement loops. Users who participated in 3+ rounds had a significantly higher return rate. The defined end state also solved a core UX problem: users always knew exactly where they were in the process.</li>
-                    </ul>
-
-                    <p><strong>Decision 3 — Showing participation data publicly</strong></p>
-                    <ul class="case-list">
-                      
-                        <li><strong>Considered & discarded:</strong> Hiding pool distribution: keeping the UP/DOWN split private to avoid herd behavior and maintain 'market integrity.'</li>
-                        
-                        <li><strong>Chosen direction:</strong> Exposing participation data, pool size, capital distribution, top participants, as a first-class UI element.</li>
-                       
-                        <li><strong>Why:</strong>Research showed users naturally look for social proof at the moment of decision. Instead of fighting this behavior, we designed around it. Showing the imbalance also creates strategic value for experienced users who can read positioning as a contrarian signal.</li>
-                    </ul>
-
-                    <p><strong>Decision 4 — Single dominant action vs. multi-step flow</strong></p>
-                    <ul class="case-list">
-                        
-                        <li><strong>Considered & discarded:</strong> A confirmation flow with amount selection, direction, and confirm step before entry, modeled on standard DeFi transaction patterns.</li>
-                      
-                        <li><strong>Chosen direction:</strong> One-tap participation: the dominant action (UP or DOWN) is the primary element of the entire screen. Amount and confirmation are secondary.</li>
-                        
-                        <li><strong>Why:</strong> In sessions with new users, every additional step before the first participation increased drop-off by ~15%. The goal was to get users to their first completed round as fast as possible, because completion is the strongest retention signal.</li>
-                    </ul>
-                    <p></p>
-                    <p><strong>Decision 5 — Resolution feedback design</strong></p>
-                    <ul class="case-list">
-                       
-                        <li><strong>Considered & discarded:</strong> Standard modal notification: 'You won X' with a close button.</li>
-                       
-                        <li><strong>Chosen direction:</strong> Full-screen resolution state with win/loss visual, payout amount, and an immediate 'Play again' CTA that re-enters the cycle.</li>
-                        
-                        <li><strong>Why:</strong> The resolution phase is the highest-emotion moment in the product. A modal dismisses it. A dedicated state celebrates or acknowledges it, and channels that emotion directly into the next engagement cycle. This was directly informed by behavioral patterns from gaming UX research.</li>
-                    </ul>
+                    <p class="case-prose-kicker"><strong>Before this screen, chaos. After it, one question: UP or DOWN?</strong></p>
                 </div>
             </section>
 
             <section id="solution" class="case-section">
-                <span class="case-section-label">SOLUTION</span>
-                <h2 class="case-section-title">The Four Products States</h2>
+                <span class="case-section-label">THE SOLUTION</span>
+                <h2 class="case-section-title">One decision. Short cycle. Immediate outcome.</h2>
                 <div class="case-section-body">
-                    <p>The product is structured as a continuous loop across four states. Each state was designed with a specific emotional and functional goal. Every screen exists to move the user efficiently to the next state in the loop.</p>
-                    <p><strong><i>The loop: Enter position → Wait for resolution → Receive outcome → Enter next position.</i></strong></p>
-
-                    <div class="case-section-body">
-                        <div class="case-section-gallery">
-                            <div class="case-gallery-breakout">
-                                <div class="case-gallery-duo">
-                            <img src="Hedgehog product/Imgs/Main Page.png" alt="Hedgehog desktop front state" class="case-gallery-img case-gallery-duo-desktop">
-                            <img src="Hedgehog product/Imgs/Mobile_front.png" alt="Hedgehog mobile front state" class="case-gallery-img case-gallery-duo-mobile">
-                        </div>
-                    </div>
-
-                        <p><strong>Front State — The Moment of Decision</strong></p>
-                        <p>The entire interface is organized around a single question: UP or DOWN? The dominant price display, the 'price to beat' reference, and the two action buttons occupy the visual center. All secondary information, round timer, pool stats, historical data, is present but visually subordinate. The user never has to search for what to do.</p>
-                        <ul class="case-list">
-                            <li><strong>Design rationale:</strong>In early versions, we had 6 data points visible at this state. Through usability testing, we reduced to 3 primary elements (price, reference, actions) with secondary data accessible via scroll. This single change reduced average time-to-first-action from 8 seconds to under 2 seconds.</li>
-                        </ul>
-                        
-                        <div class="case-section-body">
+                    <p class="case-prose-lead">No orderbooks. No counterparties. No liquidity knowledge required. Users choose UP or DOWN. The round closes. The result is immediate. One dominant action at all times, everything else is secondary.</p>
+                    <div class="case-stages case-stages--v3">
+                        <article class="case-stage-v3">
+                            <div class="case-stage-v3__head">
+                                <span class="case-stage-v3__num">01</span>
+                                <div>
+                                    <h3 class="case-stage-v3__title">Decision: the moment of choice</h3>
+                                    <p class="case-stage-v3__copy">The entire interface answers one question: UP or DOWN? In v1 we showed 6 data points. We cut to 3: price, reference, and the two action buttons. Time-to-first-action dropped from 8 seconds to under 2.</p>
+                                </div>
+                            </div>
                             <div class="case-section-gallery">
                                 <div class="case-gallery-breakout">
                                     <div class="case-gallery-duo">
-                            <img src="Hedgehog product/Imgs/Desktop_ Leaderboard.png" alt="Hedgehog desktop front state" class="case-gallery-img case-gallery-duo-desktop">
-                            <img src="Hedgehog product/Imgs/Mobile_ Leaderboard.png" alt="Hedgehog mobile front state" class="case-gallery-img case-gallery-duo-mobile">
-                        </div>
-                    </div>
-
-                        <p><strong>Participation State — Social Proof as Signal</strong></p>
-                        <p>Instead of abstract market data, the product exposes participation directly: top participants, capital distribution, position imbalance (UP vs DOWN). This turns passive data into an active decision-making input. experienced users can read the imbalance as a contrarian signal, while newcomers use it as social validation.</p>
-                        <ul class="case-list">
-                            <li><strong>Key design decision:</strong>We debated whether showing this data would create herd behavior. The counterargumen and the one we validated, was that users already look for this information elsewhere. Building it into the product gives us control over how it's presented, and prevents users from leaving the experience to find it.</li>
-                           </ul>
-                           <div class="case-section-body">
+                                        <img src="Hedgehog product/Imgs/Main Page.png" alt="Hedgehog front state desktop" class="case-gallery-img case-gallery-duo-desktop">
+                                        <img src="Hedgehog product/Imgs/Mobile_front.png" alt="Hedgehog front state mobile" class="case-gallery-img case-gallery-duo-mobile">
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="case-stage-v3">
+                            <div class="case-stage-v3__head">
+                                <span class="case-stage-v3__num">02</span>
+                                <div>
+                                    <h3 class="case-stage-v3__title">Participation: social proof as signal</h3>
+                                    <p class="case-stage-v3__copy">We exposed the UP/DOWN pool split publicly. Experienced users read it as a contrarian signal. New users use it as validation. Either way, it keeps people inside the product instead of searching elsewhere.</p>
+                                </div>
+                            </div>
                             <div class="case-section-gallery">
                                 <div class="case-gallery-breakout">
                                     <div class="case-gallery-duo">
-                            <img src="Hedgehog product/Imgs/Desktop_Waiting.png" alt="Hedgehog desktop front state" class="case-gallery-img case-gallery-duo-desktop">
-                            <img src="Hedgehog product/Imgs/Mobile_Waiting.png" alt="Hedgehog mobile front state" class="case-gallery-img case-gallery-duo-mobile">
-                        </div>
-                    </div>
-
-                        <p><strong>Waiting State — Transparency Under Tension</strong></p>
-                        <p>After entering a position, the user waits for resolution. This phase required its own design attention: the waiting state needed to communicate progress without creating anxiety, and maintain engagement without allowing new entries. Countdown timers, clear system state labels, and locked-but-visible position data were the primary design solutions.                        </p>
-                        <ul class="case-list">
-                            <li><strong>Trade-off documented:</strong>Short cycles increase engagement but reduce depth of analysis. We accepted this trade-off deliberately,  Hedgehog is not a research product. It's a participation product. Users who want deep analysis have other tools; our job is to make participation fast and rewarding.</li>
-                           </ul>
-                           <div class="case-section-body">
+                                        <img src="Hedgehog product/Imgs/Desktop_ Leaderboard.png" alt="Hedgehog participation state desktop" class="case-gallery-img case-gallery-duo-desktop">
+                                        <img src="Hedgehog product/Imgs/Mobile_ Leaderboard.png" alt="Hedgehog participation state mobile" class="case-gallery-img case-gallery-duo-mobile">
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="case-stage-v3">
+                            <div class="case-stage-v3__head">
+                                <span class="case-stage-v3__num">03</span>
+                                <div>
+                                    <h3 class="case-stage-v3__title">Waiting: transparency without anxiety</h3>
+                                    <p class="case-stage-v3__copy">After entering a position, the user waits for resolution. Countdown timer, locked position visible, no new entries. A system state most products ignore, designed to communicate progress without creating anxiety.</p>
+                                </div>
+                            </div>
                             <div class="case-section-gallery">
                                 <div class="case-gallery-breakout">
                                     <div class="case-gallery-duo">
-                            <img src="Hedgehog product/Imgs/Desktop_win.png" alt="Hedgehog desktop front state" class="case-gallery-img case-gallery-duo-desktop">
-                            <img src="Hedgehog product/Imgs/Mobile_win.png" alt="Hedgehog mobile front state" class="case-gallery-img case-gallery-duo-mobile">
-                        </div>
+                                        <img src="Hedgehog product/Imgs/Desktop_Waiting.png" alt="Hedgehog waiting state desktop" class="case-gallery-img case-gallery-duo-desktop">
+                                        <img src="Hedgehog product/Imgs/Mobile_Waiting.png" alt="Hedgehog waiting state mobile" class="case-gallery-img case-gallery-duo-mobile">
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="case-stage-v3">
+                            <div class="case-stage-v3__head">
+                                <span class="case-stage-v3__num">04</span>
+                                <div>
+                                    <h3 class="case-stage-v3__title">Resolution: close the loop, trigger the next</h3>
+                                    <p class="case-stage-v3__copy">v1 was a modal: "You won X." One tap to close. Retention was low. We replaced it with a full-screen state: result, payout, play again. Designed around the emotional peak of the cycle. Single highest-impact change for repeat engagement.</p>
+                                </div>
+                            </div>
+                            <div class="case-section-gallery">
+                                <div class="case-gallery-breakout">
+                                    <div class="case-gallery-duo">
+                                        <img src="Hedgehog product/Imgs/Desktop_win.png" alt="Hedgehog resolution state desktop" class="case-gallery-img case-gallery-duo-desktop">
+                                        <img src="Hedgehog product/Imgs/Mobile_win.png" alt="Hedgehog resolution state mobile" class="case-gallery-img case-gallery-duo-mobile">
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
                     </div>
-                        
-                        <p><strong>Resolution State — Close the Loop, Trigger the Next</strong></p>
-                        <p>The win/loss resolution phase is the highest-emotion moment in the product. The design amplifies positive outcomes and acknowledges negative ones, neither dismissing nor dwelling. The immediate 'Cash Out' or 'Play Again' CTA routes that emotional energy into the next action. This was the single highest-impact design decision for retention.</p>
-                        <ul class="case-list">
-                            <li><strong>Product thinking:</strong>This state was designed not just to inform, but to reinforce behavior. Immediate feedback + visual reward + direct next action = the core loop that drives repeat participation. Every element of this screen was tested for emotional resonance, not just functional clarity.</li>
-                        </ul>
+                    <p class="case-prose-kicker"><strong>Enter → wait → resolve → repeat. Four states. One loop. That's the product.</strong></p>
                 </div>
             </section>
 
-            <section id="design-system" class="case-section">
-                <span class="case-section-label">DESIGN SYSTEM</span>
-                <h2 class="case-section-title">Visual Language </h2>
+            <section id="key-decisions" class="case-section">
+                <span class="case-section-label">KEY DECISIONS</span>
+                <h2 class="case-section-title">Three choices that unlocked 88% completion</h2>
                 <div class="case-section-body">
-                    <p>The visual system was built to support the product's core principle: clarity under pressure. Prediction markets involve money, time pressure, and uncertainty, the interface can't add visual noise on top of that.                    </p>
-                    <p><strong>Core principles:</strong></p>
-                    <ul class="case-list">
-                        <li>Strong contrast to highlight primary actions, the UP/DOWN buttons are always the highest-contrast element on screen</li>
-                        <li>Minimalist layout, every element is either decision-critical or supporting context. Nothing decorative.</li>
-                        <li>Consistent spacing and grid for readability across states, users should never feel disoriented when transitioning between phases                        </li>
-                        <li>Numbers and states over decoration, the product communicates through data, not illustration</li>
-                        <li>Dark mode as default, reinforces the high-stakes, real-time nature of the product; also reduces eye strain during extended sessions                        </li>
-                    </ul>
+                    <div class="case-key-decisions">
+                        <article class="case-key-decision">
+                            <h3 class="case-key-decision__title">Killed the orderbook</h3>
+                            <p class="case-key-decision__text">We tested a simplified orderbook first. Same drop-off, same confusion, just fewer columns. The problem wasn't visual. It was the mental model. Switching to pools made the experience learnable in 30 seconds.</p>
+                        </article>
+                        <article class="case-key-decision">
+                            <h3 class="case-key-decision__title">Made participation data public</h3>
+                            <p class="case-key-decision__text">Early versions hid the UP/DOWN split. Users left the product to find it on Twitter. We built it in. It became one of the most engaged-with features in the product.</p>
+                        </article>
+                        <article class="case-key-decision">
+                            <h3 class="case-key-decision__title">Replaced the modal with a full screen</h3>
+                            <p class="case-key-decision__text">A modal dismisses the emotion. A full screen channels it into the next action. Immediate feedback + visual reward + direct CTA = the retention loop.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
 
-                    <p><strong>Design system scope:</strong></p>
+            <section id="research" class="case-section">
+                <span class="case-section-label">DISCOVERY & RESEARCH</span>
+                <h2 class="case-section-title">We studied why prediction markets don't scale</h2>
+                <div class="case-section-body">
+                    <p>Competitive analysis across 6 platforms (Polymarket, Augur, Drift, Binance Predictions, Azuro, Limitless) revealed the same pattern: interfaces built for financial professionals, not curious participants.</p>
+                    <div class="case-research-stack">
+                        <article class="case-research-card">
+                            <p class="case-research-card__title"><strong>What we learned</strong></p>
+                            <ul class="case-list">
+                                <li>Trading mechanics (orderbooks, spreads) block non-experts before the first bet</li>
+                                <li>More data at decision time = more hesitation = more drop-off</li>
+                                <li>Long resolution timelines kill engagement loops</li>
+                                <li>Users naturally look at what others are doing. Hiding it sends them elsewhere</li>
+                                <li>Short, repeatable cycles create habit. Long waits don't</li>
+                            </ul>
+                        </article>
+                    </div>
+                    <blockquote class="case-callout case-callout--insight"><p><strong><i>One decision. Shorten the cycle. Make outcomes immediate. Expose behavior, not just data. That was the design direction.</i></strong></p></blockquote>
+                    <details class="case-details">
+                        <summary class="case-details__summary">Users, audience tension & full benchmark notes</summary>
+                        <div class="case-details__body">
+                            <p class="case-block-heading"><strong>Two user types, one interface:</strong></p>
+                            <div class="case-challenge-grid">
+                                <div class="case-spec-item"><p><strong>Curious newcomer:</strong> interested in crypto but not a trader. Needs to understand what to do in under 30 seconds. Drops off if orientation takes longer.</p></div>
+                                <div class="case-spec-item"><p><strong>Experienced DeFi user:</strong> wants fast cycles and visible pool mechanics. Disengages if the product feels too shallow.</p></div>
+                            </div>
+                            <p class="case-block-heading"><strong>Platform benchmark:</strong></p>
+                            <ul class="case-list">
+                                <li><strong>Polymarket:</strong> strong events, requires orderbook familiarity</li>
+                                <li><strong>Augur:</strong> powerful but high onboarding friction</li>
+                                <li><strong>Drift:</strong> excellent for experts, overwhelming for newcomers</li>
+                                <li><strong>Binance Predictions:</strong> closest fast-cycle reference we studied</li>
+                                <li><strong>Azuro:</strong> good UX but tied to long-resolution events</li>
+                                <li><strong>Limitless:</strong> interesting mechanics but unclear primary action</li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+            </section>
+
+            <section id="design" class="case-section">
+                <span class="case-section-label">DESIGN SYSTEM</span>
+                <h2 class="case-section-title">Clarity under pressure</h2>
+                <div class="case-section-body">
+                    <p>Prediction involves money, time pressure, and uncertainty. The interface can't add noise on top of that.</p>
+                    <div class="case-principle-grid">
+                        <div class="case-principle-item">
+                            <p><strong>One dominant action</strong></p>
+                            <p>UP/DOWN buttons are always the highest-contrast element on screen. Everything else supports the decision.</p>
+                        </div>
+                        <div class="case-principle-item">
+                            <p><strong>Numbers over decoration</strong></p>
+                            <p>The product communicates through data and states, not illustration. Every element is decision-critical or supporting context.</p>
+                        </div>
+                        <div class="case-principle-item">
+                            <p><strong>Consistent grid across states</strong></p>
+                            <p>Users never feel disoriented moving between decision, waiting, and resolution. Same spacing, same hierarchy.</p>
+                        </div>
+                        <div class="case-principle-item">
+                            <p><strong>Dark mode as default</strong></p>
+                            <p>Reinforces the real-time, high-stakes nature of the product. Reduces eye strain during extended sessions.</p>
+                        </div>
+                    </div>
+                    <p class="case-block-heading"><strong>System scope:</strong></p>
                     <ul class="case-list">
                         <li>120+ components built in Figma across desktop and mobile</li>
-                        <li>4 core product states fully documented (front, participation, waiting, resolution)</li>
-                        <li>Full responsive coverage, every screen designed and tested at mobile breakpoints</li>
-                        <li>AI-assisted workflows used for rapid iteration across visual exploration phases, reduced ideation cycles by ~40%</li>
-                      </ul>
+                        <li>4 core product states fully documented</li>
+                        <li>Full responsive coverage at every breakpoint</li>
+                        <li>AI-assisted workflows reduced ideation cycles by ~40%</li>
+                    </ul>
                 </div>
             </section>
 
             <section id="results" class="case-section">
                 <span class="case-section-label">RESULTS</span>
-                <h2 class="case-section-title">Measured outcomes across usability testing, early beta behavior, and product performance: </h2>
+                <h2 class="case-section-title">The numbers backed every decision</h2>
                 <div class="case-section-body">
-                    <P><strong>Product performance:</strong></P>
-                    <ul class="case-list">
-                        <li>Task completion rate: 40% (v1, orderbook model) → 88% (v2, pool model), measured in usability sessions</li>
-                        <li>Average time-to-first-action: 8 seconds (v1) → under 2 seconds (v2),  after reducing primary screen to 3 elements</li>
-                        <li>3+ rounds completed in a session correlated strongly with return visits, establishing the target engagement benchmark for the team</li>
-                    </ul>
-                    <P><strong>Landing page validation:</strong></P>
-                    <ul class="case-list">
-                        <li>Waitlist conversion rate: 35%, average for B2B/Web3 waitlist pages is 2–8%; this was achieved with zero paid traffic through organic distribution in Discord and Twitter communities</li>
-                        <li>High scroll depth and consistent CTA engagement throughout the page indicated qualified interest, not casual traffic</li>
-                        <li>User behavior patterns showed clear anticipation of the product loop, validating both the concept and the communication</li>
-                    </ul>
-                    <P><strong>Design system impact:</strong></P>
-                    <ul class="case-list">
-                        <li>120+ component design system reduced design-to-dev handoff time by ~35%</li>
-                        <li>3 major product releases shipped across the engagement period</li>
-                        <li>Full desktop + mobile coverage delivered within sprint timelines</li>
-                    </ul>
+                    <div class="case-big-stats">
+                        <article class="case-big-stat">
+                            <span class="case-big-stat__value">40<span class="case-big-stat__unit">→</span>88<span class="case-big-stat__unit">%</span></span>
+                            <p class="case-big-stat__label">task completion in usability testing</p>
+                        </article>
+                        <article class="case-big-stat">
+                            <span class="case-big-stat__value">8<span class="case-big-stat__unit">→</span>2<span class="case-big-stat__unit">s</span></span>
+                            <p class="case-big-stat__label">time to first action after cutting to 3 elements</p>
+                        </article>
+                        <article class="case-big-stat">
+                            <span class="case-big-stat__value">37.5<span class="case-big-stat__unit">%</span></span>
+                            <p class="case-big-stat__label">waitlist conversion · zero paid traffic</p>
+                        </article>
+                    </div>
+                    <details class="case-details">
+                        <summary class="case-details__summary">Full metrics & delivery impact</summary>
+                        <div class="case-details__body">
+                            <div class="case-metrics-group">
+                                <p class="case-block-heading"><strong>Product performance:</strong></p>
+                                <div class="case-challenge-grid">
+                                    <div class="case-metric-item"><p><strong>Task completion:</strong> 40% (v1, orderbook) to 88% (v2, pool model) in usability sessions.</p></div>
+                                    <div class="case-metric-item"><p><strong>Time to first action:</strong> 8 seconds to under 2 seconds after reducing primary screen to 3 elements.</p></div>
+                                    <div class="case-metric-item"><p><strong>Retention signal:</strong> users who complete 3+ rounds in a session strongly correlate with return visits.</p></div>
+                                    <div class="case-metric-item"><p><strong>Drop-off per step:</strong> every extra step before first participation increased drop-off by ~15%.</p></div>
+                                </div>
+                            </div>
+                            <div class="case-metrics-group">
+                                <p class="case-block-heading"><strong>Design & delivery:</strong></p>
+                                <div class="case-challenge-grid">
+                                    <div class="case-metric-item"><p><strong>Design system:</strong> 120+ components reduced design-to-dev handoff by ~35%.</p></div>
+                                    <div class="case-metric-item"><p><strong>Releases:</strong> 3 major product releases shipped across desktop and mobile.</p></div>
+                                    <div class="case-metric-item"><p><strong>Waitlist:</strong> 37.5% conversion, fully organic via Discord and Twitter. B2B/Web3 benchmark: 2 to 8%.</p></div>
+                                </div>
+                            </div>
+                            <blockquote class="case-callout case-callout--insight"><p><strong><i>We didn't benchmark against other prediction UIs. We benchmarked against the 8 seconds it took someone to feel confident enough to press UP or DOWN.</i></strong></p></blockquote>
+                        </div>
+                    </details>
+                </div>
+            </section>
+
+            <section id="looping" class="case-section">
+                <span class="case-section-label">LANDING TO PRODUCT</span>
+                <h2 class="case-section-title">The waitlist became the first product test</h2>
+                <div class="case-section-body">
+                    <p>The landing page and the product were designed as one system. The <a href="project-hedgehog.html">waitlist case study</a> converted at 37.5% with zero paid traffic. That audience became the first usability cohort.</p>
+                    <div class="case-loop-panel">
+                        <ul class="case-list">
+                            <li>Landing page copy and mechanics explanation shaped in-product onboarding tooltips.</li>
+                            <li>Scroll depth on the landing validated which concepts users cared about most (pool mechanics, on-chain resolution).</li>
+                            <li>Waitlist users who already understood the concept gave significantly more actionable product feedback than cold recruitment.</li>
+                            <li>Behavioral data from the landing directly informed the four-state loop architecture.</li>
+                        </ul>
+                    </div>
+                    <p class="case-prose-kicker"><strong>The landing page wasn't marketing. It was the first usability test of the product loop.</strong></p>
                 </div>
             </section>
 
             <section id="lessons" class="case-section">
-                <span class="case-section-label">LESSONS LEARNED</span>
-                <h2 class="case-section-title">Lessons</h2>
+                <span class="case-section-label">WHAT I LEARNED</span>
+                <h2 class="case-section-title">Lessons Learned</h2>
                 <div class="case-section-body">
-                    <p><strong>UI simplification without system simplification doesn't work.</strong></p>
-                    <ul class="case-list">
-                        <li>In v1, we tried to reduce complexity by simplifying the visual layer while keeping the orderbook structure intact. Usability sessions showed the same drop-off patterns. The problem wasn't visual, it was conceptual. The improvement came when we changed the underlying mechanics (pools instead of orderbooks), not just the presentation. Lesson: when users are confused, look at the mental model before looking at the UI.                        </li>
-                    </ul>
-                    <p><strong>Showing behavior is more powerful than showing data.</strong></p>
-                    <ul class="case-list">
-                        <li>The leaderboard and participation distribution screens were almost cut in early product reviews, they felt 'gamey' and potentially manipulative. We kept them because research showed users naturally seek this information. The result was one of the most engaged-with features in the product. Lesson: design around actual user behavior, not idealized user behavior.                        </li>
-                    </ul>
-                    <p><strong>The resolution phase is the product's most important screen.</strong></p>
-                    <ul class="case-list">
-                    <li>We spent the least design time on the win/loss state in v1, it was a modal. Adding a dedicated resolution screen with clear visual feedback and a direct next-action CTA was the single highest-impact change for repeat engagement. Lesson: the emotional peaks of a product deserve proportional design investment.                    </li>  
-                    </ul>
-                    <p><strong>Progressive disclosure requires explicit prioritization decisions.</strong></p>
-                    <ul class="case-list">
-                        <li>The tension between the newcomer (needs simplicity) and the experienced user (needs depth) almost derailed the IA multiple times. The resolution was a clear rule: the product always loads in simple mode, with depth accessible but never forced. Every time we violated this rule in a sprint, usability metrics dropped. Lesson: establish your IA hierarchy explicitly and defend it.</li>
-                     </ul>
-                     <p><strong>AI-assisted workflows change the speed of exploration, not the quality of decisions.</strong></p>
-                    <ul class="case-list">
-                        <li>Using AI tools for rapid prototyping and visual exploration cut our ideation phases significantly. But the decisions themselves, what to prioritize, what to cut, what the user actually needs, required the same depth of reasoning. AI accelerated the surface; the thinking remained human.</li>
-                        </ul>
+                    <blockquote class="case-callout case-callout--lesson">
+                        <p>When users are confused, look at the mental model before touching the UI. Simplifying visually without changing the underlying logic just moves the confusion. It doesn't remove it.</p>
+                    </blockquote>
+                    <details class="case-details">
+                        <summary class="case-details__summary">Full lessons from the project</summary>
+                        <div class="case-details__body">
+                            <div class="case-lesson-stack">
+                                <div class="case-lesson-item">
+                                    <p><strong>UI simplification without system simplification doesn't work.</strong></p>
+                                    <p>v1 tried to reduce complexity visually while keeping the orderbook. Same drop-off patterns. The fix was pools, not prettier columns.</p>
+                                </div>
+                                <div class="case-lesson-item">
+                                    <p><strong>Showing behavior is more powerful than showing data.</strong></p>
+                                    <p>The leaderboard was almost cut for feeling "gamey." It became one of the most engaged-with features. Design around actual behavior, not idealized behavior.</p>
+                                </div>
+                                <div class="case-lesson-item">
+                                    <p><strong>The resolution screen is the product's most important moment.</strong></p>
+                                    <p>We spent the least time on win/loss in v1. Making it a full-screen state with a direct "Play again" CTA was the single highest-impact retention change.</p>
+                                </div>
+                                <div class="case-lesson-item">
+                                    <p><strong>Progressive disclosure needs explicit rules.</strong></p>
+                                    <p>The product always loads in simple mode. Depth is accessible but never forced. Every time we violated that rule, usability metrics dropped.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
                 </div>
             </section>
 
-
-            <section id="next" class="case-section">
+            <section id="next-steps" class="case-section">
                 <span class="case-section-label">NEXT STEPS</span>
                 <h2 class="case-section-title">Next Steps</h2>
                 <div class="case-section-body">
-                    <p><strong>Expand available prediction markets (more on-chain metrics)</strong></p>
-                    <ul class="case-list">
-                    <li>Prioritized based on direct user feedback: the most common request from active users was for more metric options beyond funding rate. Retention data also showed that users who had access to 3+ market types participated significantly more than single-market users, indicating variety as the primary long-term retention driver.                    </li>    
-                    </ul>
-                    <p><strong>Onboarding flow for first-time participants</strong></p>
-                    <ul class="case-list">
-                    <li>Data from beta showed ~30% of new users completed their first round without guidance, but only ~15% came back for a second. A targeted first-round onboarding experience, explaining the pool mechanic once, clearly, is the highest-leverage intervention for newcomer retention.                    </li>    
-                    </ul>
-                    <p><strong>Advanced analytics for experienced users</strong></p>
-                    <ul class="case-list">
-                    <li>Experienced users consistently asked for historical performance data and round-by-round analytics. This is the depth layer that keeps sophisticated users engaged long-term. Priority sequenced after onboarding, as the newcomer retention problem has higher volume impact.                    </li>
-                    </ul>
-                    <p><strong>Social and competitive mechanics</strong></p>
-                    <ul class="case-list">
-                    <li>Early behavioral signals, users checking the leaderboard before entering, referencing other participants' positions, point toward social engagement as an organic growth vector. A lightweight social layer (persistent leaderboard, season rankings, shareable outcomes) would formalize what users are already doing informally.</li>    
-                    </ul>
+                    <div class="case-next-grid">
+                        <div class="case-next-item">
+                            <p><strong>Onboarding for first-time participants</strong></p>
+                            <p>~30% of new users complete their first round without guidance, but only ~15% return for a second. A one-time pool mechanic explanation is the highest-leverage retention fix.</p>
+                        </div>
+                        <div class="case-next-item">
+                            <p><strong>More on-chain metrics</strong></p>
+                            <p>Most requested feature from active users. Users with access to 3+ market types participate significantly more than single-market users.</p>
+                        </div>
+                        <div class="case-next-item">
+                            <p><strong>Advanced analytics for experienced users</strong></p>
+                            <p>Historical performance data and round-by-round analytics. The depth layer that keeps sophisticated users engaged long-term.</p>
+                        </div>
+                        <div class="case-next-item">
+                            <p><strong>Social and competitive mechanics</strong></p>
+                            <p>Users already check the leaderboard before entering. Persistent rankings and shareable outcomes would formalize what they're doing informally.</p>
+                        </div>
+                    </div>
                 </div>
             </section>
-
-
-
-
-
-
         </div>
     </section>
 
@@ -441,13 +482,13 @@
         <div class="container">
             <div class="related-header">
                 <h2>Latest Works</h2>
-                <a href="projects.html" class="see-more-link">See more clicking here <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H1M13 1V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                <a href="projects.html" class="see-more-link">View all projects <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H1M13 1V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
             </div>
             <div class="related-grid">
+                <a href="project-hedgehog.html" class="related-card"><div class="related-image"><img src="1920x1200/Cover Hedgehog Hero cover.png" alt="Hedgehog Landing" class="related-img"></div><div class="related-info"><span class="related-name">Hedgehog Waitlist</span><span class="related-location">(Web3)</span></div></a>
                 <a href="project-transparent-space.html" class="related-card"><div class="related-image"><img src="1920x1200/Cover transparent Hero cover.png" alt="Transparent.space" class="related-img"></div><div class="related-info"><span class="related-name">Transparent.space</span><span class="related-location">(Product)</span></div></a>
-                <a href="project-hedgehog.html" class="related-card"><div class="related-image"><img src="1920x1200/Cover Hedgehog Hero cover.png" alt="Hedgehog Landing" class="related-img"></div><div class="related-info"><span class="related-name">Hedgehog Landing</span><span class="related-location">(Web3)</span></div></a>
                 <a href="project-picnic.html" class="related-card"><div class="related-image"><img src="1920x1200/Cover Picnic Hero cover.png" alt="Picnic" class="related-img"></div><div class="related-info"><span class="related-name">Picnic</span><span class="related-location">(Branding)</span></div></a>
-                <a href="project-nora.html" class="related-card"><div class="related-image"><img src="NORA/COVER/Cover nora main page.png" alt="NORA" class="related-img"></div><div class="related-info"><span class="related-name">NORA</span><span class="related-location">(Branding)</span></div></a>
+                <a href="project-nora.html" class="related-card"><div class="related-image"><img src="NORA/COVER/Cover nora main page.png" alt="NORA" class="related-img"></div><div class="related-info"><span class="related-name">NØRA</span><span class="related-location">(Branding)</span></div></a>
             </div>
         </div>
     </section>
@@ -467,7 +508,7 @@
                     <p class="hero-intro__index footer-v3__index">
                         <span class="hero-intro__index-num">04</span><span class="hero-intro__index-slash">/</span><span class="hero-intro__index-label">Colophon</span>
                     </p>
-                    <a href="index.html" class="footer-logo-link" aria-label="Fonseca — Home">
+                    <a href="index.html" class="footer-logo-link" aria-label="Fonseca Home">
                         <img src="logo.svg" alt="" class="footer-logo-img logo-light" height="32">
                         <img src="logo%20white.svg" alt="" class="footer-logo-img logo-dark" height="32">
                     </a>

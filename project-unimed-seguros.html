@@ -25,26 +25,44 @@
 </head>
 <body class="about-page">
 
-    <header class="about-header">
-        <a href="index.html" class="about-header-logo" aria-label="Fonseca — Home">
-            <img src="logo.svg" alt="" class="about-header-logo-img logo-light" height="32">
-            <img src="logo%20white.svg" alt="" class="about-header-logo-img logo-dark" height="32">
-        </a>
-        <div class="about-header-actions">
-            <a href="projects.html" class="about-header-link">&larr; Back to all projects</a>
-            <button type="button" class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
-                <svg class="icon-sun" width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M10 3V1M10 19V17M17 10H19M1 10H3M15.657 4.343L17.071 2.929M2.929 17.071L4.343 15.657M15.657 15.657L17.071 17.071M2.929 2.929L4.343 4.343M14 10C14 12.2091 12.2091 14 10 14C7.79086 14 6 12.2091 6 10C6 7.79086 7.79086 6 10 6C12.2091 6 14 7.79086 14 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <svg class="icon-moon" width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="index.html" class="nav-logo">
+                    <img src="logo.svg" alt="Fonseca" class="nav-logo-img logo-light">
+                    <img src="logo white.svg" alt="Fonseca" class="nav-logo-img logo-dark">
+                </a>
+            </div>
+            <div class="nav-center">
+                <a href="index.html#work" class="nav-link"><span class="nav-num">01</span> Work</a>
+                <a href="projects.html" class="nav-link"><span class="nav-num">02</span> Projects</a>
+                <a href="about.html" class="nav-link"><span class="nav-num">03</span> About</a>
+            </div>
+            <div class="nav-right">
+                <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+                    <svg class="icon-sun" width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M10 3V1M10 19V17M17 10H19M1 10H3M15.657 4.343L17.071 2.929M2.929 17.071L4.343 15.657M15.657 15.657L17.071 17.071M2.929 2.929L4.343 4.343M14 10C14 12.2091 12.2091 14 10 14C7.79086 14 6 12.2091 6 10C6 7.79086 7.79086 6 10 6C12.2091 6 14 7.79086 14 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <svg class="icon-moon" width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <a href="mailto:fonsecaa.design@gmail.com" class="nav-cta">Contact</a>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu"><span></span><span></span></button>
+            </div>
         </div>
-    </header>
+        <div class="mobile-menu">
+            <div class="mobile-menu-links">
+                <a href="index.html#work" class="mobile-link">Work</a>
+                <a href="projects.html" class="mobile-link">Projects</a>
+                <a href="about.html" class="mobile-link">About</a>
+                <a href="mailto:fonsecaa.design@gmail.com" class="mobile-link mobile-cta">Contact</a>
+            </div>
+        </div>
+    </nav>
 
     <section class="project-hero project-hero-case">
-        <div class="container">
-            <p class="project-hero-tagline">Insurance / Healthcare</p>
-            <h1 class="project-hero-title">Unimed Seguros</h1>
+        <div class="container container-narrow">
+            <p class="project-hero-tagline">CASE STUDY · HEALTHCARE · PRODUCT DESIGN</p>
+            <h1 class="project-hero-title">Unimed Seguros · Telemedicine App</h1>
             <p class="project-hero-description">
-                Unimed Seguros is the insurance arm of Unimed, Brazil's largest healthcare cooperative network. The mobile app redesign aimed to simplify insurance management and healthcare access for millions of users—delivered during the COVID-19 timeline, with user research and a strong focus on accessibility and usability.
+                Unimed Seguros is the insurance arm of Unimed, Brazil's largest healthcare cooperative network. The mobile app redesign aimed to simplify insurance management and healthcare access for millions of users, delivered during the COVID-19 timeline, with user research and a strong focus on accessibility and usability.
             </p>
             <div class="project-case-meta">
                 <div class="case-meta-item"><span class="case-meta-label">MY ROLE</span><span class="case-meta-value">Product Designer</span></div>
@@ -58,12 +76,12 @@
     <aside class="case-side-nav" id="caseSideNav" aria-label="Case study navigation">
         <nav class="case-side-nav-inner">
             <a href="#overview" class="case-side-nav-link">Overview</a>
+            <a href="#my-role" class="case-side-nav-link">My Role</a>
             <a href="#problem" class="case-side-nav-link">Problem</a>
-            <a href="#goal" class="case-side-nav-link">Goal</a>
             <a href="#solution" class="case-side-nav-link">Solution</a>
+            <a href="#key-decisions" class="case-side-nav-link">Key Decisions</a>
             <a href="#research" class="case-side-nav-link">Research</a>
             <a href="#design" class="case-side-nav-link">Design</a>
-            <a href="#visual-system" class="case-side-nav-link">Branding & Visual System</a>
             <a href="#results" class="case-side-nav-link">Results</a>
             <a href="#lessons" class="case-side-nav-link">Lessons</a>
             <a href="#next-steps" class="case-side-nav-link">Next Steps</a>
@@ -76,186 +94,244 @@
         </div>
     </section>
 
-    <section class="project-case-content">
+    <section class="project-case-content case-editorial">
         <div class="container container-narrow">
             <section id="overview" class="case-section">
                 <span class="case-section-label">INTRO</span>
                 <h2 class="case-section-title">Overview</h2>
-                <div class="case-section-body">
-                <p>Unimed Seguros is a telemedicine platform designed to provide remote medical consultations and health services for users within the Unimed Seguros ecosystem. Built to offer accessible virtual care, the app empowers users to connect with doctors, manage appointments, and receive medical support directly from their devices especially useful for users who needed reliable care beyond physical clinics.                </p>    
-                <p>This project involved UX research, workflow design, and user-centric interface design in an institutional healthcare environment.</p>
+                <div class="case-brief" role="region" aria-label="Project summary">
+                    <div class="case-brief__stat-band">
+                        <div class="case-brief__stat-main">
+                            <span class="case-brief__stat-value">M<span class="case-brief__stat-unit">+</span></span>
+                            <span class="case-brief__stat-caption">Beneficiaries served across Brazil's largest healthcare cooperative</span>
+                        </div>
+                        <div class="case-brief__stat-compare">
+                            <div class="case-brief__compare-item">
+                                <span class="case-brief__compare-label">Timeline</span>
+                                <span class="case-brief__compare-value case-brief__compare-value--accent">COVID-19 era</span>
+                            </div>
+                            <div class="case-brief__compare-item">
+                                <span class="case-brief__compare-label">Focus</span>
+                                <span class="case-brief__compare-value">Remote care access</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="case-brief__grid">
+                        <article class="case-brief__card">
+                            <h3 class="case-brief__card-label">Problem</h3>
+                            <p class="case-brief__card-text">Healthcare systems faced <mark class="case-brief__hl">accessibility barriers, scheduling complexity, and fragmented service delivery</mark>. Remote care was becoming necessary, but existing apps felt generic or untrustworthy.</p>
+                        </article>
+                        <article class="case-brief__card">
+                            <h3 class="case-brief__card-label">Solution</h3>
+                            <p class="case-brief__card-text">Telemedicine app structured around <mark class="case-brief__hl">clarity, consistency, and care</mark>. Guided appointment flows, consultation interface, and health history in one predictable experience. <span class="case-brief__flow">Sign in → schedule → consult → follow up</span></p>
+                        </article>
+                        <article class="case-brief__card case-brief__card--result">
+                            <h3 class="case-brief__card-label">Result</h3>
+                            <p class="case-brief__card-text">Improved remote care access, <span class="case-brief__inline-stat">higher engagement in scheduling flows</span>, and positive user feedback on ease and reassurance.</p>
+                        </article>
+                    </div>
                 </div>
                 <div class="case-section-gallery">
-                    <img src="Unimed/1.png" alt="Unimed Seguros" class="case-gallery-img">
-                    <img src="Unimed/2.png" alt="Unimed Seguros" class="case-gallery-img">
+                    <img src="Unimed/1.png" alt="Unimed Seguros telemedicine app" class="case-gallery-img" decoding="async">
+                    <img src="Unimed/2.png" alt="Unimed Seguros app screens" class="case-gallery-img" decoding="async">
                 </div>
             </section>
-            <section id="problem" class="case-section">
-                <span class="case-section-label">PROBLEM</span>
-                <h2 class="case-section-title">Healthcare systems often faced barriers around accessibility, scheduling complexity, and fragmented service delivery, especially when remote care was becoming a necessary alternative to physical appointments.                </h2>
-                <div class="case-section-body">
-                    
-                    <p>Unimed needed a solution that could:                    </p>
-                    <ul class="case-list">
-                        <li>Simplify remote access to healthcare professionals</li>
-                        <li>Provide structured consultation flows with clear user guidance</li>
-                        <li>Maintain credibility and trust through every user interaction</li>
-                        <li>Work intuitively for a broad audience with varying levels of tech literacy</li>
-                      </ul>    
-                <p>Existing options in the app market were either too generic or lacked the tailored experience needed for a large institutional user group.</p>
-                
-                </div>
-            </section>
-            <section id="goal" class="case-section">
-                <span class="case-section-label">GOAL</span>
-                <h2 class="case-section-title">Design a telemedicine app that:</h2>
-                <div class="case-section-body">
-                
-                    <ul class="case-list">
-                        <li>Enables users to book and manage virtual consultations</li>
-                        <li>Makes remote medical access feel as trustworthy as in-person care</li>
-                        <li>Supports a seamless UX from login to consultation completion</li>
-                        <li>Reduces complexity and anxiety around healthcare decisions</li>
-                      </ul>  
-                <p>The app needed to feel institutional and reliable, while still being easy for users to navigate and understand.</p>
-                
-                </div>
-            </section>
-            <section id="solution" class="case-section">
-                <span class="case-section-label">SOLUTION</span>
-                <h2 class="case-section-title">The Unimed Seguros telemedicine app was structured around clarity, consistency, and care.</h2>
-                <div class="case-section-body">
-                    <p>Core Experience                    </p>
-                    <ul class="case-list">
-                        <li>Easy Appointment Flow — from symptom description to scheduling and confirmation</li>
-                        <li>Consultation Interface — video/chat with medical professionals</li>
-                        <li>Health Guidance & History — centralized access to past consultations and recommendations</li>
-                        <li>Clear Navigation — low friction from sign-in to consultation</li>
-                      </ul>  
-                <p>Every interaction was designed to feel supportive and predictable — addressing a common user concern: “Will this actually work when I need it?”</p>
-                
-                </div>
-                <div class="case-section-gallery">
-                    <img src="Unimed/4.png" alt="Unimed Seguros" class="case-gallery-img">
-                    <img src="Unimed/5.png" alt="Unimed Seguros" class="case-gallery-img">
-                    <img src="Unimed/6.png" alt="Unimed Seguros" class="case-gallery-img">
-                    <img src="Unimed/7.png" alt="Unimed Seguros" class="case-gallery-img">
-                    <img src="Unimed/8.png" alt="Unimed Seguros" class="case-gallery-img">
-                </div>
-            </section>
-            <section id="research" class="case-section">
-                <span class="case-section-label">RESEARCH</span>
-                <h2 class="case-section-title">Design decisions were informed by:                </h2>
-                <div class="case-section-body">
-                    
-                    <ul class="case-list">
-                        <li>Analysis of existing telemedicine behaviors</li>
-                        <li>Surveys and interviews with users seeking remote consultation</li>
-                        <li>Identification of pain points around digital health confidence</li>
-                        <li>Benchmarking against other healthcare apps with remote features</li>
-                    </ul>
 
-                    <p>Key user insights:</p>
-                    <ul class="case-list">
-                        <li>Users wanted clear next steps, not overwhelming options</li>
-                        <li>Health urgency increases stress — so UI needed to reduce cognitive load</li>
-                        <li>Trust and clarity mattered more than flashy visuals</li>
-                    </ul>
-                    <p>These insights helped shape a workflow where every tap feels safe and purposeful.</p>
-                
-                
+            <section id="my-role" class="case-section">
+                <span class="case-section-label">MY ROLE</span>
+                <h2 class="case-section-title">Product Designer: telemedicine that feels trustworthy, not intimidating</h2>
+                <div class="case-section-body case-prose-stack">
+                    <p class="case-prose-lead">Unimed Seguros is the insurance arm of Unimed, Brazil's largest healthcare cooperative network. The mobile app redesign aimed to simplify insurance management and healthcare access for millions of users, delivered during the COVID-19 timeline with user research and a strong focus on accessibility.</p>
+                    <p>Working with Karla Granadeiro, I owned UX research, workflow design, and user-centric interface design in an institutional healthcare environment where trust and clarity matter more than visual flair.</p>
+                    <div class="case-spec-grid">
+                        <div class="case-spec-item"><p><strong>UX research:</strong> Surveys, interviews, and telemedicine behavior analysis to identify pain points around digital health confidence.</p></div>
+                        <div class="case-spec-item"><p><strong>Workflow design:</strong> Structured consultation flows from symptom description to scheduling, confirmation, and follow-up.</p></div>
+                        <div class="case-spec-item"><p><strong>Interface design:</strong> Screens prioritizing readable information, clear actions, and consistent visual cues.</p></div>
+                        <div class="case-spec-item"><p><strong>Design system:</strong> Neutral color system, accessible typography, and functional iconography aligned with institutional healthcare values.</p></div>
+                    </div>
+                    <p class="case-prose-kicker"><strong>In health products, clarity and predictability matter more than bells and whistles. Every tap had to feel safe and purposeful.</strong></p>
                 </div>
             </section>
-            <section id="design" class="case-section">
-                <span class="case-section-label">DESIGN</span>
-                <h2 class="case-section-title">The interface was designed with:</h2>
-                <div class="case-section-body">
-                   
-                    <ul class="case-list">
-                        <li>Minimal cognitive effort</li>
-                        <li>Functional clarity in every screen</li>
-                        <li>Predictable guidance through health flows</li>
-                        <li>Accessible language for users of all tech levels</li>
-                    </ul>
-                    <p>Screens prioritized readable information, clear actions, and consistent visual cues. Ensuring users always understood where they were in the process.</p>
-                
-                
+
+            <section id="problem" class="case-section">
+                <span class="case-section-label">THE PROBLEM</span>
+                <h2 class="case-section-title">Remote care was necessary. The experience wasn't ready.</h2>
+                <div class="case-section-body case-prose-stack">
+                    <p class="case-prose-lead">Healthcare systems often faced barriers around accessibility, scheduling complexity, and fragmented service delivery, especially when remote care was becoming a necessary alternative to physical appointments.</p>
+                    <p>Unimed needed a solution that could simplify remote access to healthcare professionals, provide structured consultation flows with clear user guidance, maintain credibility through every interaction, and work intuitively for a broad audience with varying levels of tech literacy.</p>
+                    <p>Existing options in the app market were either too generic or lacked the tailored experience needed for a large institutional user group.</p>
+                    <p class="case-prose-kicker"><strong>Health urgency increases stress. The UI needed to reduce cognitive load, not add to it.</strong></p>
                 </div>
             </section>
-            <section id="visual-system" class="case-section">
-                <span class="case-section-label">BRANDING & VISUAL SYSTEM</span>
-                <h2 class="case-section-title">The UI adopted visual elements aligned with institutional healthcare:</h2>
+
+            <section id="solution" class="case-section">
+                <span class="case-section-label">THE SOLUTION</span>
+                <h2 class="case-section-title">Clarity, consistency, and care in every flow</h2>
+                <div class="case-section-body case-prose-stack">
+                    <p class="case-prose-lead">The goal was to enable virtual consultations, make remote medical access feel as trustworthy as in-person care, support a seamless UX from login to consultation completion, and reduce complexity and anxiety around healthcare decisions.</p>
+                    <p>The Unimed Seguros telemedicine app was structured around four core experience pillars:</p>
+                    <ul class="case-list">
+                        <li><strong>Easy appointment flow:</strong> From symptom description to scheduling and confirmation</li>
+                        <li><strong>Consultation interface:</strong> Video and chat with medical professionals</li>
+                        <li><strong>Health guidance and history:</strong> Centralized access to past consultations and recommendations</li>
+                        <li><strong>Clear navigation:</strong> Low friction from sign-in to consultation</li>
+                    </ul>
+                    <p>Every interaction was designed to feel supportive and predictable, addressing a common user concern: "Will this actually work when I need it?"</p>
+                    <div class="case-section-gallery">
+                        <img src="Unimed/4.png" alt="Unimed Seguros appointment flow" class="case-gallery-img" decoding="async">
+                        <img src="Unimed/5.png" alt="Unimed Seguros consultation interface" class="case-gallery-img" decoding="async">
+                        <img src="Unimed/6.png" alt="Unimed Seguros health history" class="case-gallery-img" decoding="async">
+                        <img src="Unimed/7.png" alt="Unimed Seguros navigation" class="case-gallery-img" decoding="async">
+                        <img src="Unimed/8.png" alt="Unimed Seguros app screens" class="case-gallery-img" decoding="async">
+                    </div>
+                    <p class="case-prose-kicker"><strong>Trust and clarity mattered more than flashy visuals. The interface had to feel institutional and reliable while staying easy to navigate.</strong></p>
+                </div>
+            </section>
+
+            <section id="key-decisions" class="case-section">
+                <span class="case-section-label">KEY DECISIONS</span>
+                <h2 class="case-section-title">Three choices that shaped the experience</h2>
                 <div class="case-section-body">
-                    <div class="file-under-tags">
-                       
-                        <ul class="case-list">
-                            <li>Neutral color system — calming and professional</li>
-                            <li>Clear typography — readable and accessible</li>
-                            <li>Functional iconography — supportive visual cues</li>
-                            <li>Hierarchy based on clarity — important elements stand out without noise</li>
-                        </ul>
-                        <p>The result was a system that felt trustworthy and dependable, aligning with Unimed’s core values.</p>
-                    
-                    
+                    <div class="case-key-decisions">
+                        <article class="case-key-decision">
+                            <h3 class="case-key-decision__title">Clear next steps over overwhelming options</h3>
+                            <p class="case-key-decision__text">Research showed users wanted clear next steps, not a menu of possibilities. Every screen guides toward one primary action. Health urgency increases stress, so cognitive load had to stay low.</p>
+                        </article>
+                        <article class="case-key-decision">
+                            <h3 class="case-key-decision__title">Institutional trust through visual restraint</h3>
+                            <p class="case-key-decision__text">Neutral colors, accessible typography, and functional iconography aligned with Unimed's core values. The UI adopted visual elements that feel calming and professional, not trendy or decorative.</p>
+                        </article>
+                        <article class="case-key-decision">
+                            <h3 class="case-key-decision__title">Predictable guidance through health flows</h3>
+                            <p class="case-key-decision__text">Users always understood where they were in the process. Consistent visual cues and readable information hierarchy reduced anxiety at every step from sign-in to consultation completion.</p>
+                        </article>
                     </div>
                 </div>
             </section>
 
+            <section id="research" class="case-section">
+                <span class="case-section-label">RESEARCH</span>
+                <h2 class="case-section-title">Users wanted reassurance, not complexity</h2>
+                <div class="case-section-body case-prose-stack">
+                    <p class="case-prose-lead">Design decisions were informed by analysis of telemedicine behaviors, surveys and interviews with users seeking remote consultation, pain point identification around digital health confidence, and benchmarking against other healthcare apps.</p>
+                    <div class="case-research-stack">
+                        <article class="case-research-card">
+                            <p class="case-research-card__title"><strong>Key user insights</strong></p>
+                            <ul class="case-list">
+                                <li>Users wanted clear next steps, not overwhelming options</li>
+                                <li>Health urgency increases stress, so UI needed to reduce cognitive load</li>
+                                <li>Trust and clarity mattered more than flashy visuals</li>
+                            </ul>
+                        </article>
+                    </div>
+                    <p>These insights helped shape a workflow where every tap feels safe and purposeful.</p>
+                </div>
+            </section>
+
+            <section id="design" class="case-section">
+                <span class="case-section-label">DESIGN</span>
+                <h2 class="case-section-title">Functional clarity in every screen</h2>
+                <div class="case-section-body case-prose-stack">
+                    <p class="case-prose-lead">The interface was designed with minimal cognitive effort, functional clarity, predictable guidance through health flows, and accessible language for users of all tech levels.</p>
+                    <div class="case-principle-grid">
+                        <div class="case-principle-item">
+                            <p><strong>Neutral color system</strong></p>
+                            <p>Calming and professional tones aligned with institutional healthcare expectations.</p>
+                        </div>
+                        <div class="case-principle-item">
+                            <p><strong>Accessible typography</strong></p>
+                            <p>Readable type at every size. Important elements stand out without visual noise.</p>
+                        </div>
+                        <div class="case-principle-item">
+                            <p><strong>Functional iconography</strong></p>
+                            <p>Supportive visual cues that reinforce actions, not decorate screens.</p>
+                        </div>
+                        <div class="case-principle-item">
+                            <p><strong>Clarity-based hierarchy</strong></p>
+                            <p>Important elements stand out. Everything else supports the primary health action.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             <section id="results" class="case-section">
                 <span class="case-section-label">RESULTS</span>
-                <h2 class="case-section-title">Results</h2>
+                <h2 class="case-section-title">Remote care that felt human and accessible</h2>
                 <div class="case-section-body">
-                    <ul class="case-list">
-                        <li>Improved remote care access — users could consult doctors without visiting physical clinics</li>
-                        <li>Higher engagement — clear, guided flows reduced drop-offs in scheduling</li>
-                        <li>Positive user feedback — users reported the app felt easy and reassuring</li>
-                        <li>Stronger institutional trust — the experience reinforced Unimed Seguros as a supportive healthcare partner</li>
-                    </ul>
-                    <p>The app helped reduce barriers to care and demonstrated how a well-designed UX can make healthcare feel human and accessible.</p>
+                    <details class="case-details" open>
+                        <summary class="case-details__summary">Project outcomes</summary>
+                        <div class="case-details__body">
+                            <div class="case-challenge-grid">
+                                <div class="case-metric-item"><p><strong>Improved remote care access:</strong> Users could consult doctors without visiting physical clinics.</p></div>
+                                <div class="case-metric-item"><p><strong>Higher engagement:</strong> Clear, guided flows reduced drop-offs in scheduling.</p></div>
+                                <div class="case-metric-item"><p><strong>Positive user feedback:</strong> Users reported the app felt easy and reassuring.</p></div>
+                                <div class="case-metric-item"><p><strong>Stronger institutional trust:</strong> The experience reinforced Unimed Seguros as a supportive healthcare partner.</p></div>
+                            </div>
+                        </div>
+                    </details>
                 </div>
             </section>
-
-
-
-
 
             <section id="lessons" class="case-section">
-                <span class="case-section-label">LESSONS</span>
+                <span class="case-section-label">WHAT I LEARNED</span>
                 <h2 class="case-section-title">Lessons Learned</h2>
                 <div class="case-section-body">
-                    <ul class="case-list">
-                        <li>In health products, clarity and predictability matter more than bells and whistles</li>
-                        <li>UX that reduces anxiety directly improves engagement</li>
-                        <li>Institutional products benefit from empathy-driven design language</li>
-                         </ul>
-                
-                
+                    <blockquote class="case-callout case-callout--lesson">
+                        <p>In health products, clarity and predictability matter more than bells and whistles. UX that reduces anxiety directly improves engagement.</p>
+                    </blockquote>
+                    <details class="case-details">
+                        <summary class="case-details__summary">Full lessons from the project</summary>
+                        <div class="case-details__body">
+                            <div class="case-lesson-stack">
+                                <div class="case-lesson-item">
+                                    <p><strong>Clarity beats complexity in healthcare.</strong></p>
+                                    <p>Users under health stress need predictable structure, not feature-rich dashboards.</p>
+                                </div>
+                                <div class="case-lesson-item">
+                                    <p><strong>Anxiety reduction is an engagement metric.</strong></p>
+                                    <p>When users feel reassured at each step, they complete flows they would otherwise abandon.</p>
+                                </div>
+                                <div class="case-lesson-item">
+                                    <p><strong>Institutional products need empathy-driven language.</strong></p>
+                                    <p>Accessible copy and calm visuals reinforce trust as much as the underlying service quality.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
                 </div>
             </section>
+
             <section id="next-steps" class="case-section">
                 <span class="case-section-label">NEXT STEPS</span>
-                <h2 class="case-section-title">Future enhancements could include:</h2>
+                <h2 class="case-section-title">Future enhancements</h2>
                 <div class="case-section-body">
-                    <ul class="case-list">
-                        <li>Real-time status tracking for appointments</li>
-                        <li>Expanded symptom triage and self-care tools</li>
-                        <li>Integration with health records and prescriptions</li>
-                        <li>Personalized reminders and wellness planning features</li>
-                         </ul>  
-                
-                
-                
+                    <div class="case-next-grid">
+                        <div class="case-next-item">
+                            <p><strong>Real-time appointment tracking</strong></p>
+                            <p>Status updates that reduce uncertainty while users wait for consultations.</p>
+                        </div>
+                        <div class="case-next-item">
+                            <p><strong>Expanded symptom triage</strong></p>
+                            <p>Self-care tools and guided evaluation for common health concerns.</p>
+                        </div>
+                        <div class="case-next-item">
+                            <p><strong>Health records integration</strong></p>
+                            <p>Centralized access to prescriptions and medical history across consultations.</p>
+                        </div>
+                        <div class="case-next-item">
+                            <p><strong>Wellness planning features</strong></p>
+                            <p>Personalized reminders and preventative care guidance.</p>
+                        </div>
+                    </div>
                 </div>
-            </section>
-        </div>
+            </section>        </div>
     </section>
 
     <section class="related-projects">
         <div class="container">
             <div class="related-header">
                 <h2>Latest Works</h2>
-                <a href="projects.html" class="see-more-link">See more clicking here <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H1M13 1V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                <a href="projects.html" class="see-more-link">View all projects <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H1M13 1V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
             </div>
             <div class="related-grid">
                 <a href="project-transparent-space.html" class="related-card"><div class="related-image"><img src="1920x1200/Cover transparent Hero cover.png" alt="Transparent.space" class="related-img"></div><div class="related-info"><span class="related-name">Transparent.space</span><span class="related-location">(Product Design)</span></div></a>

@@ -25,24 +25,42 @@
 </head>
 <body class="about-page">
 
-    <header class="about-header">
-        <a href="index.html" class="about-header-logo" aria-label="Fonseca — Home">
-            <img src="logo.svg" alt="" class="about-header-logo-img logo-light" height="32">
-            <img src="logo%20white.svg" alt="" class="about-header-logo-img logo-dark" height="32">
-        </a>
-        <div class="about-header-actions">
-            <a href="projects.html" class="about-header-link">&larr; Back to all projects</a>
-            <button type="button" class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
-                <svg class="icon-sun" width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M10 3V1M10 19V17M17 10H19M1 10H3M15.657 4.343L17.071 2.929M2.929 17.071L4.343 15.657M15.657 15.657L17.071 17.071M2.929 2.929L4.343 4.343M14 10C14 12.2091 12.2091 14 10 14C7.79086 14 6 12.2091 6 10C6 7.79086 7.79086 6 10 6C12.2091 6 14 7.79086 14 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <svg class="icon-moon" width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="index.html" class="nav-logo">
+                    <img src="logo.svg" alt="Fonseca" class="nav-logo-img logo-light">
+                    <img src="logo white.svg" alt="Fonseca" class="nav-logo-img logo-dark">
+                </a>
+            </div>
+            <div class="nav-center">
+                <a href="index.html#work" class="nav-link"><span class="nav-num">01</span> Work</a>
+                <a href="projects.html" class="nav-link"><span class="nav-num">02</span> Projects</a>
+                <a href="about.html" class="nav-link"><span class="nav-num">03</span> About</a>
+            </div>
+            <div class="nav-right">
+                <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+                    <svg class="icon-sun" width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M10 3V1M10 19V17M17 10H19M1 10H3M15.657 4.343L17.071 2.929M2.929 17.071L4.343 15.657M15.657 15.657L17.071 17.071M2.929 2.929L4.343 4.343M14 10C14 12.2091 12.2091 14 10 14C7.79086 14 6 12.2091 6 10C6 7.79086 7.79086 6 10 6C12.2091 6 14 7.79086 14 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <svg class="icon-moon" width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <a href="mailto:fonsecaa.design@gmail.com" class="nav-cta">Contact</a>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu"><span></span><span></span></button>
+            </div>
         </div>
-    </header>
+        <div class="mobile-menu">
+            <div class="mobile-menu-links">
+                <a href="index.html#work" class="mobile-link">Work</a>
+                <a href="projects.html" class="mobile-link">Projects</a>
+                <a href="about.html" class="mobile-link">About</a>
+                <a href="mailto:fonsecaa.design@gmail.com" class="mobile-link mobile-cta">Contact</a>
+            </div>
+        </div>
+    </nav>
 
     <section class="project-hero project-hero-case">
-        <div class="container">
-            <p class="project-hero-tagline">Web3 / Meme Coins</p>
-            <h1 class="project-hero-title">Caramel</h1>
+        <div class="container container-narrow">
+            <p class="project-hero-tagline">CASE STUDY · WEB3 · PRODUCT DESIGN</p>
+            <h1 class="project-hero-title">Caramel · Meme Coin Platform</h1>
             <p class="project-hero-description">
                 Caramel is a meme coin creation platform built on the LaChain network. Inspired by the pump.fun model, it makes launching tokens simple, fast, and accessible. The UX removes friction from creation so communities can turn ideas into on-chain assets in minutes.
             </p>
@@ -58,12 +76,13 @@
     <aside class="case-side-nav" id="caseSideNav" aria-label="Case study navigation">
         <nav class="case-side-nav-inner">
             <a href="#overview" class="case-side-nav-link">Overview</a>
+            <a href="#my-role" class="case-side-nav-link">My Role</a>
             <a href="#problem" class="case-side-nav-link">Problem</a>
-            <a href="#goal" class="case-side-nav-link">Goal</a>
             <a href="#solution" class="case-side-nav-link">Solution</a>
+            <a href="#key-decisions" class="case-side-nav-link">Key Decisions</a>
             <a href="#research" class="case-side-nav-link">Research</a>
             <a href="#design" class="case-side-nav-link">Design</a>
-            <a href="#visual-system" class="case-side-nav-link">Results</a>
+            <a href="#results" class="case-side-nav-link">Results</a>
             <a href="#lessons" class="case-side-nav-link">Lessons</a>
             <a href="#next-steps" class="case-side-nav-link">Next Steps</a>
         </nav>
@@ -75,136 +94,218 @@
         </div>
     </section>
 
-    <section class="project-case-content">
+    <section class="project-case-content case-editorial">
         <div class="container container-narrow">
             <section id="overview" class="case-section">
                 <span class="case-section-label">INTRO</span>
                 <h2 class="case-section-title">Overview</h2>
-                <div class="case-section-body">
-                    <p>Caramel is a meme coin creation platform built on the LaChain network, inspired by the pump.fun model and designed to remove friction from token launches. The project was created with a clear objective: make on-chain creation accessible to anyone, regardless of prior blockchain experience.                    </p>
-                    <p>Developed during BlockchainRio 2024, Caramel combined product thinking, UX strategy, branding, and interface design into a lightweight launch experience focused on clarity, speed, and accessibility.</p>
+                <div class="case-brief" role="region" aria-label="Project summary">
+                    <div class="case-brief__stat-band">
+                        <div class="case-brief__stat-main">
+                            <span class="case-brief__stat-value">2024</span>
+                            <span class="case-brief__stat-caption">Built and presented at BlockchainRio 2024</span>
+                        </div>
+                        <div class="case-brief__stat-compare">
+                            <div class="case-brief__compare-item">
+                                <span class="case-brief__compare-label">Network</span>
+                                <span class="case-brief__compare-value case-brief__compare-value--accent">LaChain</span>
+                            </div>
+                            <div class="case-brief__compare-item">
+                                <span class="case-brief__compare-label">Model reference</span>
+                                <span class="case-brief__compare-value">pump.fun</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="case-brief__grid">
+                        <article class="case-brief__card">
+                            <h3 class="case-brief__card-label">Problem</h3>
+                            <p class="case-brief__card-text">Launching tokens on-chain still feels <mark class="case-brief__hl">overly technical</mark> for most users. Wallet interactions and blockchain knowledge create friction instead of excitement.</p>
+                        </article>
+                        <article class="case-brief__card">
+                            <h3 class="case-brief__card-label">Solution</h3>
+                            <p class="case-brief__card-text">A frictionless token creation experience on LaChain with <mark class="case-brief__hl">step-by-step flows, guided patterns, and transparent smart contract interactions</mark>. <span class="case-brief__flow">Idea → create → launch → on-chain</span></p>
+                        </article>
+                        <article class="case-brief__card case-brief__card--result">
+                            <h3 class="case-brief__card-label">Result</h3>
+                            <p class="case-brief__card-text">Award-winning concept at BlockchainRio 2024. Validated that <span class="case-brief__inline-stat">strong UX makes blockchain creation accessible</span> without losing on-chain credibility.</p>
+                        </article>
+                    </div>
                 </div>
                 <div class="case-section-gallery">
-                    <img src="Caramel/caramel page.png" alt="Caramel" class="case-gallery-img">
+                    <img src="Caramel/caramel page.png" alt="Caramel meme coin platform" class="case-gallery-img" decoding="async">
                 </div>
             </section>
+
+            <section id="my-role" class="case-section">
+                <span class="case-section-label">MY ROLE</span>
+                <h2 class="case-section-title">Product Designer: make on-chain creation feel like a consumer product</h2>
+                <div class="case-section-body case-prose-stack">
+                    <p class="case-prose-lead">Caramel is a meme coin creation platform on LaChain, inspired by pump.fun. As Product Designer, I owned UX strategy, interface design, and branding for a hackathon-built product focused on clarity, speed, and accessibility.</p>
+                    <p>Developed during BlockchainRio 2024 with developer Bruno Eleodo, the project combined product thinking, UX strategy, branding, and interface design into a lightweight launch experience.</p>
+                    <div class="case-spec-grid">
+                        <div class="case-spec-item"><p><strong>UX strategy:</strong> Reduced cognitive load through simple step-by-step flows and clear interface patterns for first-time users.</p></div>
+                        <div class="case-spec-item"><p><strong>Product design:</strong> Fast launch interactions inspired by consumer-grade UX, not developer tooling.</p></div>
+                        <div class="case-spec-item"><p><strong>Branding:</strong> Playful, internet-native visual language structured enough to support product trust.</p></div>
+                        <div class="case-spec-item"><p><strong>On-chain transparency:</strong> Smart contract interactions that abstract complexity without hiding how the system works.</p></div>
+                    </div>
+                    <p class="case-prose-kicker"><strong>Simplifying blockchain UX is not about removing depth. It's about removing unnecessary friction.</strong></p>
+                </div>
+            </section>
+
             <section id="problem" class="case-section">
-                <span class="case-section-label">PROBLEM</span>
-                <h2 class="case-section-title">Problem</h2>
-                <div class="case-section-body">
-                    <p>Launching tokens on-chain still feels overly technical for most users. Existing flows often require too many decisions, unfamiliar wallet interactions, and a level of blockchain knowledge that creates unnecessary friction.</p>
+                <span class="case-section-label">THE PROBLEM</span>
+                <h2 class="case-section-title">Token launches still feel like developer tools</h2>
+                <div class="case-section-body case-prose-stack">
+                    <p class="case-prose-lead">Launching tokens on-chain still feels overly technical for most users. Existing flows often require too many decisions, unfamiliar wallet interactions, and a level of blockchain knowledge that creates unnecessary friction.</p>
                     <p>For people interested in experimenting, building communities, or launching cultural internet-native assets, the process can feel intimidating instead of exciting.</p>
+                    <p class="case-prose-kicker"><strong>The gap wasn't interest. It was the interface. Keep scrolling to see how we closed it.</strong></p>
                 </div>
             </section>
-            <section id="goal" class="case-section">
-                <span class="case-section-label">GOAL</span>
-                <h2 class="case-section-title">Design a platform that simplifies meme coin creation without making the product feel superficial or untrustworthy.                </h2>
-                <div class="case-section-body">
-                    <p>The goal was to:                   </p>
-                    <ul class="case-list">
-                        <li>Reduce the complexity of token creation</li>
-                        <li>Make the experience intuitive for non-technical users</li>
-                        <li>Create a fast and lightweight flow from idea to launch</li>
-                        <li>Balance ease of use with transparency around on-chain actions</li>
-                      </ul>   
-                
-                </div>
-            </section>
+
             <section id="solution" class="case-section">
-                <span class="case-section-label">SOLUTION</span>
-                <h2 class="case-section-title">Caramel was designed as a frictionless token creation experience, where users can create, launch, and interact with meme coins in just a few clicks.                </h2>
-                <div class="case-section-body">
-                   
-                    <p>The product approach focused on: </p>
+                <span class="case-section-label">THE SOLUTION</span>
+                <h2 class="case-section-title">Frictionless creation without losing on-chain credibility</h2>
+                <div class="case-section-body case-prose-stack">
+                    <p class="case-prose-lead">The goal was to reduce complexity, make the experience intuitive for non-technical users, create a fast flow from idea to launch, and balance ease of use with transparency around on-chain actions.</p>
+                    <p>Caramel was designed as a frictionless token creation experience where users can create, launch, and interact with meme coins in just a few clicks:</p>
                     <ul class="case-list">
                         <li>Simple step-by-step flows to reduce cognitive load</li>
                         <li>Clear interface patterns to guide first-time users</li>
                         <li>Fast launch interactions inspired by consumer-grade UX</li>
                         <li>Transparent smart contract interactions that abstract complexity without hiding how the system works</li>
-                      </ul>  
-                      <p>Instead of overwhelming users with technical steps, Caramel turns token creation into a more approachable and understandable process, while still preserving the feeling of being truly on-chain.</p>
-                
-                </div>
-                <div class="case-section-gallery">
-                    <img src="Caramel/frames.png" alt="Caramel" class="case-gallery-img">
+                    </ul>
+                    <p>Instead of overwhelming users with technical steps, Caramel turns token creation into a more approachable process while preserving the feeling of being truly on-chain.</p>
+                    <div class="case-section-gallery">
+                        <img src="Caramel/frames.png" alt="Caramel token launch flow" class="case-gallery-img" decoding="async">
+                    </div>
+                    <p class="case-prose-kicker"><strong>Approachable, lightweight, community-driven. Structured enough to earn trust.</strong></p>
                 </div>
             </section>
-            <section id="results" class="case-section">
-                <span class="case-section-label">RESEARCH</span>
-                <h2 class="case-section-title">Research</h2>
+
+            <section id="key-decisions" class="case-section">
+                <span class="case-section-label">KEY DECISIONS</span>
+                <h2 class="case-section-title">Three choices that shaped the product</h2>
                 <div class="case-section-body">
-                    <P>The research process combined market analysis, competitive references, and quick user validation during the hackathon cycle.</P>
-                    <P>The main insight was clear: users were interested in launching meme coins, but existing tools often felt too complex, confusing, or inaccessible for beginners. This reinforced the need for a product experience centered on clarity, trust, and immediate usability.</P>
+                    <div class="case-key-decisions">
+                        <article class="case-key-decision">
+                            <h3 class="case-key-decision__title">Step-by-step over dashboard complexity</h3>
+                            <p class="case-key-decision__text">Instead of exposing every on-chain parameter at once, the flow guides users through one decision at a time. Reduced form complexity and guided interaction patterns kept first-time users moving forward.</p>
+                        </article>
+                        <article class="case-key-decision">
+                            <h3 class="case-key-decision__title">Transparency without technical overload</h3>
+                            <p class="case-key-decision__text">Smart contract interactions were abstracted for clarity, but never hidden. Users understood what was happening on-chain without needing to parse raw contract data.</p>
+                        </article>
+                        <article class="case-key-decision">
+                            <h3 class="case-key-decision__title">Playful branding, structured product</h3>
+                            <p class="case-key-decision__text">Meme culture informed the visual language, but the interface stayed clean and hierarchical. Approachable rather than intimidating, without losing credibility.</p>
+                        </article>
+                    </div>
                 </div>
             </section>
+
             <section id="research" class="case-section">
-                <span class="case-section-label">DESIGN</span>
-                <h2 class="case-section-title">The design direction prioritized a lightweight and intuitive interface, influenced by products that reduce friction through strong visual hierarchy and minimal decision-making.                </h2>
-                <div class="case-section-body">
-                  
-                    <p>Key principles included:</p>
-                    <ul class="case-list">
-                        <li>Intuitive onboarding for first-time users</li>
-                        <li>Reduced form complexity</li>
-                        <li>Guided interaction patterns</li>
-                        <li>Quick comprehension of each step in the launch flow</li>
-                      </ul>  
-                      <p>The interface was built to feel immediate and simple, while still aligned with the speed and energy of crypto-native products.</p>
-                     
-                
-                
+                <span class="case-section-label">RESEARCH</span>
+                <h2 class="case-section-title">Users wanted to launch. The tools weren't built for them.</h2>
+                <div class="case-section-body case-prose-stack">
+                    <p class="case-prose-lead">The research process combined market analysis, competitive references, and quick user validation during the hackathon cycle.</p>
+                    <p>The main insight was clear: users were interested in launching meme coins, but existing tools often felt too complex, confusing, or inaccessible for beginners. This reinforced the need for a product experience centered on clarity, trust, and immediate usability.</p>
                 </div>
             </section>
+
             <section id="design" class="case-section">
-                <span class="case-section-label">BRANDING</span>
-                <h2 class="case-section-title">Caramel’s branding explored a more playful and internet-native visual language, aligned with meme culture but structured enough to support product trust.                </h2>
-                <div class="case-section-body">
-                   <P>The identity helped position the platform as:</P>
-                    <ul class="case-list">
-                        <li>Approachable rather than intimidating</li>
-                        <li>Lightweight rather than overly technical</li>
-                        <li>Community-driven rather than purely transactional</li>
-                      </ul>  
-                      <p>This balance was important to make the experience feel accessible without losing credibility.</p>
-                     
-                
-                
+                <span class="case-section-label">DESIGN</span>
+                <h2 class="case-section-title">Lightweight interface, crypto-native energy</h2>
+                <div class="case-section-body case-prose-stack">
+                    <p class="case-prose-lead">The design direction prioritized a lightweight and intuitive interface, influenced by products that reduce friction through strong visual hierarchy and minimal decision-making.</p>
+                    <div class="case-principle-grid">
+                        <div class="case-principle-item">
+                            <p><strong>Intuitive onboarding</strong></p>
+                            <p>First-time users guided through each step with clear feedback and minimal jargon.</p>
+                        </div>
+                        <div class="case-principle-item">
+                            <p><strong>Reduced form complexity</strong></p>
+                            <p>Only essential fields visible at each stage. No parameter overload.</p>
+                        </div>
+                        <div class="case-principle-item">
+                            <p><strong>Guided interaction patterns</strong></p>
+                            <p>Consumer-grade UX patterns adapted for on-chain actions.</p>
+                        </div>
+                        <div class="case-principle-item">
+                            <p><strong>Internet-native branding</strong></p>
+                            <p>Playful visual language aligned with meme culture but structured for product trust.</p>
+                        </div>
+                    </div>
                 </div>
             </section>
-            <section id="visual-system" class="case-section">
+
+            <section id="results" class="case-section">
                 <span class="case-section-label">RESULTS</span>
-                <h2 class="case-section-title">Results</h2>
+                <h2 class="case-section-title">Award-winning proof that UX unlocks on-chain access</h2>
                 <div class="case-section-body">
-                    <div class="file-under-tags">
-                       
-                    <p>Caramel was developed and presented during BlockchainRio 2024, where it stood out as an award-winning concept.                    </p>
-                    <p>More importantly, the project demonstrated how strong UX can make blockchain creation flows feel significantly more accessible. It validated the idea that meme coin creation does not need to be confusing or overly technical to remain on-chain and trustworthy.</p>
-                   
-                </div>
+                    <details class="case-details" open>
+                        <summary class="case-details__summary">Project outcomes</summary>
+                        <div class="case-details__body">
+                            <div class="case-challenge-grid">
+                                <div class="case-metric-item"><p><strong>BlockchainRio 2024:</strong> Developed and presented during the event, standing out as an award-winning concept.</p></div>
+                                <div class="case-metric-item"><p><strong>Accessibility validated:</strong> Demonstrated how strong UX makes blockchain creation flows feel significantly more accessible.</p></div>
+                                <div class="case-metric-item"><p><strong>On-chain credibility preserved:</strong> Meme coin creation does not need to be confusing or overly technical to remain on-chain and trustworthy.</p></div>
+                            </div>
+                        </div>
+                    </details>
                 </div>
             </section>
+
             <section id="lessons" class="case-section">
-                <span class="case-section-label">LESSONS</span>
+                <span class="case-section-label">WHAT I LEARNED</span>
                 <h2 class="case-section-title">Lessons Learned</h2>
                 <div class="case-section-body">
-                    
-                <p>Caramel reinforced an important product principle: simplifying blockchain UX is not about removing depth, but about removing unnecessary friction.                </p>
-                <p>It also showed how product design can translate complex infrastructure into experiences that feel fast, clear, and culturally relevant.</p>
-
+                    <blockquote class="case-callout case-callout--lesson">
+                        <p>Simplifying blockchain UX is not about removing depth, but about removing unnecessary friction. Product design can translate complex infrastructure into experiences that feel fast, clear, and culturally relevant.</p>
+                    </blockquote>
+                    <details class="case-details">
+                        <summary class="case-details__summary">Full lessons from the project</summary>
+                        <div class="case-details__body">
+                            <div class="case-lesson-stack">
+                                <div class="case-lesson-item">
+                                    <p><strong>Friction kills experimentation.</strong></p>
+                                    <p>Users interested in meme coins weren't blocked by the idea. They were blocked by wallet interactions and unfamiliar flows.</p>
+                                </div>
+                                <div class="case-lesson-item">
+                                    <p><strong>Abstraction needs boundaries.</strong></p>
+                                    <p>Hiding complexity entirely erodes trust. Showing enough to understand without overwhelming is the balance.</p>
+                                </div>
+                                <div class="case-lesson-item">
+                                    <p><strong>Hackathon speed forces clarity.</strong></p>
+                                    <p>Limited time meant every screen had to earn its place. That constraint produced a sharper product than endless iteration would have.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
                 </div>
             </section>
+
             <section id="next-steps" class="case-section">
                 <span class="case-section-label">NEXT STEPS</span>
-                <h2 class="case-section-title">The next evolution of Caramel could include:</h2>
+                <h2 class="case-section-title">Where Caramel could grow</h2>
                 <div class="case-section-body">
-                    
-                    <ul class="case-list">
-                        <li>Richer launch customization</li>
-                        <li>Community features around token creation</li>
-                        <li>Improved onboarding for first-time wallet users</li>
-                        <li>Stronger post-launch token management flows</li>
-                      </ul>  
-                
+                    <div class="case-next-grid">
+                        <div class="case-next-item">
+                            <p><strong>Richer launch customization</strong></p>
+                            <p>More options for token parameters without reintroducing the complexity the core flow was designed to remove.</p>
+                        </div>
+                        <div class="case-next-item">
+                            <p><strong>Community features</strong></p>
+                            <p>Social mechanics around token creation to reinforce the community-driven positioning.</p>
+                        </div>
+                        <div class="case-next-item">
+                            <p><strong>First-time wallet onboarding</strong></p>
+                            <p>Improved flows for users who have never connected a wallet before.</p>
+                        </div>
+                        <div class="case-next-item">
+                            <p><strong>Post-launch management</strong></p>
+                            <p>Stronger flows for managing tokens after the initial creation moment.</p>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
@@ -214,7 +315,7 @@
         <div class="container">
             <div class="related-header">
                 <h2>Latest Works</h2>
-                <a href="projects.html" class="see-more-link">See more clicking here <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H1M13 1V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                <a href="projects.html" class="see-more-link">View all projects <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H1M13 1V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
             </div>
             <div class="related-grid">
                 <a href="project-transparent-space.html" class="related-card"><div class="related-image"><img src="1920x1200/Cover transparent Hero cover.png" alt="Transparent.space" class="related-img"></div><div class="related-info"><span class="related-name">Transparent.space</span><span class="related-location">(Product Design)</span></div></a>

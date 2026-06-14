@@ -6,34 +6,94 @@
     <title>About &mdash; Fonseca</title>
     <meta name="description" content="Matheus Fonseca is a senior product designer based in Rio de Janeiro, specializing in Web3, healthcare and enterprise products.">
     <link rel="icon" type="image/svg+xml" href="logo.svg">
+    <link rel="apple-touch-icon" href="logo.svg">
+    <link rel="canonical" href="https://fonseca.studio/about.html">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fonseca.studio/about.html">
+    <meta property="og:title" content="About — Matheus Fonseca">
+    <meta property="og:description" content="Senior product designer based in Rio de Janeiro. Web3, healthcare, and enterprise products from discovery to hand-off.">
+    <meta property="og:image" content="https://fonseca.studio/Profile%20img%20att.png">
+    <meta property="og:site_name" content="Fonseca Studio">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="About — Matheus Fonseca">
+    <meta name="twitter:description" content="Senior product designer based in Rio de Janeiro. Web3, healthcare, and enterprise products.">
+    <meta name="twitter:image" content="https://fonseca.studio/Profile%20img%20att.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="preload" href="wave2-kanagawa.png" as="image" type="image/png">
 </head>
 <body class="about-page">
 
-    <header class="about-header">
-        <a href="index.html" class="about-header-logo" aria-label="Fonseca — Home">
-            <img src="logo.svg" alt="" class="about-header-logo-img logo-light" height="32">
-            <img src="logo%20white.svg" alt="" class="about-header-logo-img logo-dark" height="32">
-        </a>
-        <div class="about-header-actions">
-            <a href="index.html" class="about-header-link">&larr; Back to home</a>
-            <button type="button" class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
-                <svg class="icon-sun" width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M10 3V1M10 19V17M17 10H19M1 10H3M15.657 4.343L17.071 2.929M2.929 17.071L4.343 15.657M15.657 15.657L17.071 17.071M2.929 2.929L4.343 4.343M14 10C14 12.2091 12.2091 14 10 14C7.79086 14 6 12.2091 6 10C6 7.79086 7.79086 6 10 6C12.2091 6 14 7.79086 14 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <svg class="icon-moon" width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
+    <img id="heroAsciiSrc" class="hero-ascii-src" src="wave2-kanagawa.png" alt="" width="626" height="417" decoding="async">
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="index.html" class="nav-logo">
+                    <img src="logo.svg" alt="Fonseca" class="nav-logo-img logo-light">
+                    <img src="logo white.svg" alt="Fonseca" class="nav-logo-img logo-dark">
+                </a>
+            </div>
+            <div class="nav-center">
+                <a href="index.html#work" class="nav-link"><span class="nav-num">01</span> Work</a>
+                <a href="projects.html" class="nav-link"><span class="nav-num">02</span> Projects</a>
+                <a href="about.html" class="nav-link"><span class="nav-num">03</span> About</a>
+            </div>
+            <div class="nav-right">
+                <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+                    <svg class="icon-sun" width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M10 3V1M10 19V17M17 10H19M1 10H3M15.657 4.343L17.071 2.929M2.929 17.071L4.343 15.657M15.657 15.657L17.071 17.071M2.929 2.929L4.343 4.343M14 10C14 12.2091 12.2091 14 10 14C7.79086 14 6 12.2091 6 10C6 7.79086 7.79086 6 10 6C12.2091 6 14 7.79086 14 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <svg class="icon-moon" width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <a href="mailto:fonsecaa.design@gmail.com" class="nav-cta">Contact</a>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu"><span></span><span></span></button>
+            </div>
         </div>
-    </header>
+        <div class="mobile-menu">
+            <div class="mobile-menu-links">
+                <a href="index.html#work" class="mobile-link">Work</a>
+                <a href="projects.html" class="mobile-link">Projects</a>
+                <a href="about.html" class="mobile-link">About</a>
+                <a href="mailto:fonsecaa.design@gmail.com" class="mobile-link mobile-cta">Contact</a>
+            </div>
+        </div>
+    </nav>
 
     <main class="about-main">
+        <section class="about-hero">
+            <canvas id="heroAsciiTerrain" class="about-ascii-bg" aria-hidden="true"></canvas>
+            <div class="about-hero__inner">
         <section class="about-intro">
             <div class="about-intro__text">
                 <span class="about-intro__label">About</span>
                 <h1 class="about-intro__title">I don't just design interfaces.<br>I solve <span class="about-intro__strike">problems.</span></h1>
                 <p class="about-intro__body">I'm Matheus Fonseca, a UX/UI &amp; Product Designer based in Rio de Janeiro, Brazil. I specialize in turning complex systems into clear, intuitive experiences that drive real outcomes. From Web3 platforms to healthcare products, I design with a focus on usability, clarity, and meaningful impact.</p>
                 <p class="about-intro__body">I don't just deliver interfaces. I structure products. I've designed complex systems across Web3, working from zero to one and translating technical concepts into usable, scalable experiences. My work has been recognized through hackathon wins at ETHSamba 2023 (ETH) and Blockchain Rio 2024 (Ripio) / 2025 (BASE).</p>
+
+                <div class="trust-bar trust-bar--compact" aria-label="Trusted by">
+                    <div class="trust-bar-inner trust-bar-inner--compact">
+                        <span class="trust-bar-label">Trusted by</span>
+                        <div class="trust-bar-logos">
+                            <div class="trust-bar-track">
+                                <img src="logos to carosel/Frame 18.svg" alt="Hedgehog" class="trust-bar-logo">
+                                <img src="logos to carosel/Frame 2147228587.svg" alt="Agent Arena" class="trust-bar-logo">
+                                <img src="logos to carosel/Logo-Gest%C3%A3o-de-Sa%C3%BAde.svg" alt="Gestao de Saude" class="trust-bar-logo">
+                                <img src="logos to carosel/logo.svg" alt="Picnic" class="trust-bar-logo">
+                                <img src="logos to carosel/Vector-1.svg" alt="Petrobras Saude" class="trust-bar-logo">
+                                <img src="logos to carosel/Vector.svg" alt="Unimed Seguros" class="trust-bar-logo">
+                                <img src="logos to carosel/Transparent.space.png" alt="Transparent Space" class="trust-bar-logo">
+                                <img src="logos to carosel/Frame 18.svg" alt="Hedgehog" class="trust-bar-logo">
+                                <img src="logos to carosel/Frame 2147228587.svg" alt="Agent Arena" class="trust-bar-logo">
+                                <img src="logos to carosel/Logo-Gest%C3%A3o-de-Sa%C3%BAde.svg" alt="Gestao de Saude" class="trust-bar-logo">
+                                <img src="logos to carosel/logo.svg" alt="Picnic" class="trust-bar-logo">
+                                <img src="logos to carosel/Vector-1.svg" alt="Petrobras Saude" class="trust-bar-logo">
+                                <img src="logos to carosel/Vector.svg" alt="Unimed Seguros" class="trust-bar-logo">
+                                <img src="logos to carosel/Transparent.space.png" alt="Transparent Space" class="trust-bar-logo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="about-intro__photo">
                 <img src="Profile img att.png" alt="Matheus Fonseca" class="about-intro__photo-img">
@@ -48,6 +108,8 @@
                 <img src="Folder for photos hero/4E862F38-470A-4852-86A3-320B9C646533_1_105_c.jpeg" alt="" loading="lazy" decoding="async">
                 <img src="Folder for photos hero/flu.jpeg" alt="" loading="lazy" decoding="async">
                 <img src="Folder for photos hero/food.jpeg" alt="" loading="lazy" decoding="async">
+            </div>
+        </section>
             </div>
         </section>
 
@@ -110,6 +172,47 @@
             </div>
         </section>
     </main>
+
+    <footer class="footer footer--v3">
+        <div class="footer-v3__inner">
+            <div class="footer-v3__main">
+                <div class="footer-v3__col footer-v3__col--brand">
+                    <p class="hero-intro__index footer-v3__index">
+                        <span class="hero-intro__index-num">04</span><span class="hero-intro__index-slash">/</span><span class="hero-intro__index-label">Colophon</span>
+                    </p>
+                    <a href="index.html" class="footer-logo-link" aria-label="Fonseca — Home">
+                        <img src="logo.svg" alt="" class="footer-logo-img logo-light" height="32">
+                        <img src="logo%20white.svg" alt="" class="footer-logo-img logo-dark" height="32">
+                    </a>
+                    <p class="hero-intro__bio footer-v3__tagline">Designing digital products where strategy, systems and experience meet.</p>
+                    <p class="hero-intro__hint footer-v3__avail"><span class="status-dot" aria-hidden="true"></span><span>Open to select projects</span></p>
+                </div>
+                <nav class="footer-v3__col footer-v3__col--nav" aria-label="Footer">
+                    <p class="hero-intro__role footer-v3__col-head">Navigate</p>
+                    <div class="footer-v3__links">
+                        <a href="index.html#work">Work</a>
+                        <a href="about.html">About</a>
+                        <a href="index.html#testimonials">Clients</a>
+                        <a href="projects.html">All projects</a>
+                    </div>
+                </nav>
+                <div class="footer-v3__col footer-v3__col--social">
+                    <p class="hero-intro__role footer-v3__col-head">Connect</p>
+                    <div class="footer-v3__links">
+                        <a href="mailto:fonsecaa.design@gmail.com">fonsecaa.design@gmail.com</a>
+                        <a href="https://www.linkedin.com/in/maths-fonseca/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                        <a href="https://www.behance.net/maths-fonseca" target="_blank" rel="noopener noreferrer">Behance</a>
+                        <a href="https://x.com/0xFonseca" target="_blank" rel="noopener noreferrer">X / Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom footer-v3__bottom">
+                <p>&copy; <span id="current-year">2026</span> Matheus Fonseca &middot; Rio de Janeiro, Brazil</p>
+                <span class="footer-coords">22&deg;54' S &middot; 43&deg;12' W</span>
+                <a href="#" class="footer-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Back to top &uarr;</a>
+            </div>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
