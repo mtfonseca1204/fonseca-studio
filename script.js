@@ -648,11 +648,9 @@ function initWorkProjectCarousels() {
 }
 
 // =====================================================
-// WORK CARD — optional hover preview on desktop; links always navigate on first click
+// WORK CARD — first click selects + updates preview; second click navigates
 // =====================================================
 function initWorkCardLinkPreview() {
-    const hasFineHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-
     document.querySelectorAll('.work-card').forEach((card) => {
         const links = [...card.querySelectorAll('.work-card__link-row')];
         const carousel = card.querySelector('[data-project-carousel]');
@@ -719,15 +717,29 @@ function initWorkCardLinkPreview() {
             syncNavHref(link);
         }
 
-        if (hasFineHover) {
-            links.forEach((link) => {
-                link.addEventListener('mouseenter', () => setActiveLink(link));
-            });
+        function findLinkForHref(href) {
+            if (!href) return null;
+            return links.find((row) => row.getAttribute('href') === href) || null;
+        }
+
+        function handleTwoStepNav(e, anchor) {
+            const href = anchor.getAttribute('href');
+            const matchingLink = findLinkForHref(href);
+            if (matchingLink?.classList.contains('is-active')) return;
+            e.preventDefault();
+            if (matchingLink) setActiveLink(matchingLink);
         }
 
         links.forEach((link) => {
-            link.addEventListener('focus', () => setActiveLink(link));
+            link.addEventListener('click', (e) => {
+                if (link.classList.contains('is-active')) return;
+                e.preventDefault();
+                setActiveLink(link);
+            });
         });
+
+        if (thumbLink) thumbLink.addEventListener('click', (e) => handleTwoStepNav(e, thumbLink));
+        if (expand) expand.addEventListener('click', (e) => handleTwoStepNav(e, expand));
 
         dots.forEach((dot) => {
             dot.addEventListener('click', (e) => {
@@ -739,8 +751,7 @@ function initWorkCardLinkPreview() {
             });
         });
 
-        if (links.length) setActiveLink(links[0]);
-        else syncSlideMedia(0);
+        syncSlideMedia(0);
     });
 }
 
