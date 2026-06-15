@@ -811,7 +811,7 @@ function initProjectModals() {
                 'Implemented the product website using CursorAI, integrating animations and motion to reinforce the brands positioning around transparency and precision.'
             ],
             images: [
-                'Transparent.space Products/Opportunity.png',
+                'Transparent.space Products/Dashboard.png',
                 '1920x1200/Cover transparent Hero cover-1.png',
                 'Transparent UI/1.png',
                 'Transparent UI/3.png',
