@@ -783,11 +783,11 @@ function initProjectModals() {
             company: 'Hedgehog Protocol',
             year: '2024-2026',
             type: 'Web3 / Product / Landing',
-            overview: '<strong>Hedgehog</strong> is a time-based prediction market built different networks. The project covered the full product lifecycle, from user research and competitive analysis through interaction design, design system, and a conversion-focused waitlist landing.',
+            overview: '<strong>Hedgehog</strong> is a Web3 prediction market spanning product UX and a conversion-focused waitlist landing. 15,000+ users joined the product waitlist at 37.5% conversion from a 40K+ organic community across X (14.6K) and Telegram (14K), with $0 paid traffic.',
             bullets: [
-                'Designed the complete product experience end-to-end: participation flows, position management, real-time states, and resolution screens, improving task completion from 61% to 88% across iterations.',
-                'Built a conversion-focused landing page achieving a 37.5% waitlist conversion rate through zero paid traffic, using organic Web3 community distribution.',
-                'Produced 3D motion assets in Blender to elevate brand presence across marketing touchpoints.'
+                'Waitlist landing: 15,000+ product sign-ups at 37.5% conversion from a 40K+ organic community (X, Telegram, Discord, Web3 networks). Industry benchmark: 2 to 8%. Zero paid acquisition.',
+                'Product usability: task completion improved from 61% to 88% across iterations. Time to first action dropped from 8s to under 2s.',
+                '3D motion assets produced in Blender for organic social distribution across X and Telegram.'
             ],
             images: [
                 'Hedgehog product/1920x1200.png',
@@ -811,7 +811,7 @@ function initProjectModals() {
                 'Implemented the product website using CursorAI, integrating animations and motion to reinforce the brands positioning around transparency and precision.'
             ],
             images: [
-                '1920x1200/Cover transparent Hero cover.png',
+                'Transparent.space Products/Opportunity.png',
                 '1920x1200/Cover transparent Hero cover-1.png',
                 'Transparent UI/1.png',
                 'Transparent UI/3.png',
