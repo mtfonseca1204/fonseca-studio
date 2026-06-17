@@ -9797,7 +9797,7 @@ a.project-card:hover {
     align-items: center;
     text-align: center;
     gap: clamp(18px, 2.6vh, 26px);
-    max-width: 46rem;
+    max-width: 56rem;
     margin: 0 auto;
 }
 
@@ -9854,9 +9854,10 @@ a.project-card:hover {
     font-family: 'Inter', sans-serif;
     font-size: 16.5px;
     font-weight: 450;
-    line-height: 1.7;
+    line-height: 1.65;
     color: var(--text-gray);
-    margin: 0 0 14px;
+    margin: 0 auto 14px;
+    max-width: 54rem;
 }
 
 .hero-intro__lede {
