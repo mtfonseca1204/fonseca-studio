@@ -22,11 +22,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <link rel="preload" href="wave2-kanagawa.png" as="image" type="image/png">
 </head>
 <body class="about-page">
-
-    <img id="heroAsciiSrc" class="hero-ascii-src" src="wave2-kanagawa.png" alt="" width="626" height="417" decoding="async">
 
     <nav class="navbar">
         <div class="nav-container">
@@ -38,31 +35,32 @@
             </div>
             <div class="nav-center">
                 <a href="index.html#work" class="nav-link"><span class="nav-num">01</span> Work</a>
-                <a href="projects.html" class="nav-link"><span class="nav-num">02</span> Projects</a>
-                <a href="about.html" class="nav-link"><span class="nav-num">03</span> About</a>
+                <a href="fun.html" class="nav-link"><span class="nav-num">02</span> Fun</a>
+                <a href="about.html" class="nav-link nav-link--active" aria-current="page"><span class="nav-num">03</span> About</a>
+                <a href="MatheusFonsecaCV.pdf" target="_blank" rel="noopener noreferrer" class="nav-link"><span class="nav-num">04</span> Resume</a>
             </div>
             <div class="nav-right">
                 <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
                     <svg class="icon-sun" width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M10 3V1M10 19V17M17 10H19M1 10H3M15.657 4.343L17.071 2.929M2.929 17.071L4.343 15.657M15.657 15.657L17.071 17.071M2.929 2.929L4.343 4.343M14 10C14 12.2091 12.2091 14 10 14C7.79086 14 6 12.2091 6 10C6 7.79086 7.79086 6 10 6C12.2091 6 14 7.79086 14 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     <svg class="icon-moon" width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </button>
-                <a href="mailto:fonsecaa.design@gmail.com" class="nav-cta">Contact</a>
+                <a href="#" data-copy-email class="nav-cta">Contact</a>
                 <button class="mobile-menu-toggle" aria-label="Toggle menu"><span></span><span></span></button>
             </div>
         </div>
         <div class="mobile-menu">
             <div class="mobile-menu-links">
                 <a href="index.html#work" class="mobile-link">Work</a>
-                <a href="projects.html" class="mobile-link">Projects</a>
+                <a href="fun.html" class="mobile-link">Fun</a>
                 <a href="about.html" class="mobile-link">About</a>
-                <a href="mailto:fonsecaa.design@gmail.com" class="mobile-link mobile-cta">Contact</a>
+                <a href="MatheusFonsecaCV.pdf" target="_blank" rel="noopener noreferrer" class="mobile-link">Resume</a>
+                <a href="#" data-copy-email class="mobile-link mobile-cta">Contact</a>
             </div>
         </div>
     </nav>
 
     <main class="about-main">
         <section class="about-hero">
-            <canvas id="heroAsciiTerrain" class="about-ascii-bg" aria-hidden="true"></canvas>
             <div class="about-hero__inner">
         <section class="about-intro">
             <div class="about-intro__text">
@@ -164,7 +162,7 @@
 
         <section class="about-contact">
             <p class="about-contact__lead">Have a project in mind?</p>
-            <a href="mailto:fonsecaa.design@gmail.com" class="about-contact__cta">fonsecaa.design@gmail.com</a>
+            <a href="#" data-copy-email class="about-contact__cta">fonsecaa.design@gmail.com</a>
             <div class="about-contact__social">
                 <a href="https://www.linkedin.com/in/maths-fonseca/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                 <a href="https://www.behance.net/maths-fonseca" target="_blank" rel="noopener noreferrer">Behance</a>
@@ -177,9 +175,6 @@
         <div class="footer-v3__inner">
             <div class="footer-v3__main">
                 <div class="footer-v3__col footer-v3__col--brand">
-                    <p class="hero-intro__index footer-v3__index">
-                        <span class="hero-intro__index-num">04</span><span class="hero-intro__index-slash">/</span><span class="hero-intro__index-label">Colophon</span>
-                    </p>
                     <a href="index.html" class="footer-logo-link" aria-label="Fonseca — Home">
                         <img src="logo.svg" alt="" class="footer-logo-img logo-light" height="32">
                         <img src="logo%20white.svg" alt="" class="footer-logo-img logo-dark" height="32">
@@ -191,15 +186,15 @@
                     <p class="hero-intro__role footer-v3__col-head">Navigate</p>
                     <div class="footer-v3__links">
                         <a href="index.html#work">Work</a>
-                        <a href="about.html">About</a>
+                                                <a href="fun.html">Fun</a>
+<a href="about.html">About</a>
                         <a href="index.html#testimonials">Clients</a>
-                        <a href="projects.html">All projects</a>
                     </div>
                 </nav>
                 <div class="footer-v3__col footer-v3__col--social">
                     <p class="hero-intro__role footer-v3__col-head">Connect</p>
                     <div class="footer-v3__links">
-                        <a href="mailto:fonsecaa.design@gmail.com">fonsecaa.design@gmail.com</a>
+                        <a href="#" data-copy-email>fonsecaa.design@gmail.com</a>
                         <a href="https://www.linkedin.com/in/maths-fonseca/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                         <a href="https://www.behance.net/maths-fonseca" target="_blank" rel="noopener noreferrer">Behance</a>
                         <a href="https://x.com/0xFonseca" target="_blank" rel="noopener noreferrer">X / Twitter</a>

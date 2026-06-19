@@ -18,10 +18,10 @@
     <meta name="twitter:title" content="AURA Jewelry Brand — Fonseca Studio">
     <meta name="twitter:description" content="Luxury jewelry brand identity built around presence, contrast, and self-expression.">
     <meta name="twitter:image" content="https://fonseca.studio/Profile%20img%20att.png">
-    <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body class="about-page">
 
@@ -35,31 +35,33 @@
             </div>
             <div class="nav-center">
                 <a href="index.html#work" class="nav-link"><span class="nav-num">01</span> Work</a>
-                <a href="projects.html" class="nav-link"><span class="nav-num">02</span> Projects</a>
+                <a href="fun.html" class="nav-link"><span class="nav-num">02</span> Fun</a>
                 <a href="about.html" class="nav-link"><span class="nav-num">03</span> About</a>
+                <a href="MatheusFonsecaCV.pdf" target="_blank" rel="noopener noreferrer" class="nav-link"><span class="nav-num">04</span> Resume</a>
             </div>
             <div class="nav-right">
                 <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
                     <svg class="icon-sun" width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M10 3V1M10 19V17M17 10H19M1 10H3M15.657 4.343L17.071 2.929M2.929 17.071L4.343 15.657M15.657 15.657L17.071 17.071M2.929 2.929L4.343 4.343M14 10C14 12.2091 12.2091 14 10 14C7.79086 14 6 12.2091 6 10C6 7.79086 7.79086 6 10 6C12.2091 6 14 7.79086 14 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     <svg class="icon-moon" width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </button>
-                <a href="mailto:fonsecaa.design@gmail.com" class="nav-cta">Contact</a>
+                <a href="#" data-copy-email class="nav-cta">Contact</a>
                 <button class="mobile-menu-toggle" aria-label="Toggle menu"><span></span><span></span></button>
             </div>
         </div>
         <div class="mobile-menu">
             <div class="mobile-menu-links">
                 <a href="index.html#work" class="mobile-link">Work</a>
-                <a href="projects.html" class="mobile-link">Projects</a>
+                <a href="fun.html" class="mobile-link">Fun</a>
                 <a href="about.html" class="mobile-link">About</a>
-                <a href="mailto:fonsecaa.design@gmail.com" class="mobile-link mobile-cta">Contact</a>
+                <a href="MatheusFonsecaCV.pdf" target="_blank" rel="noopener noreferrer" class="mobile-link">Resume</a>
+                <a href="#" data-copy-email class="mobile-link mobile-cta">Contact</a>
             </div>
         </div>
     </nav>
 
     <section class="project-hero project-hero-case">
         <div class="container container-narrow">
-            <p class="project-hero-tagline">CASE STUDY · LUXURY · BRAND IDENTITY</p>
+            <p class="project-hero-tagline">LUXURY · BRAND IDENTITY</p>
             <h1 class="project-hero-title">AURA · Brand</h1>
             <p class="project-hero-description">
                 AURA is a jewelry brand built around presence, contrast, and self-expression. Luxury is not about excess but intention, form, and attitude. The pieces are designed to feel bold yet intimate, sculptural objects that interact with the body and amplify individuality. At AURA, jewelry is a statement of identity, tension, and quiet power.
@@ -73,7 +75,7 @@
         </div>
     </section>
 
-    <aside class="case-side-nav" id="caseSideNav" aria-label="Case study navigation">
+    <aside class="case-side-nav" id="caseSideNav" aria-label="Project navigation">
         <nav class="case-side-nav-inner">
             <a href="#overview" class="case-side-nav-link">Overview</a>
             <a href="#my-role" class="case-side-nav-link">My Role</a>
@@ -321,26 +323,19 @@
         </div>
     </section>
 
-    <section class="related-projects">
+    <section class="related-projects related-projects--selected-work" aria-labelledby="selected-work-heading">
         <div class="container">
-            <div class="related-header">
-                <h2>Latest Works</h2>
-                <a href="projects.html" class="see-more-link">View all projects <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H1M13 1V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <header class="section-head section-head--plain">
+                <h2 class="section-title" id="selected-work-heading">Selected Work</h2>
+                <span class="section-rule"></span>
+            </header>
+            <div class="related-grid related-grid--work">
+                <a href="project-hedgehog-product.html" class="related-card"><div class="related-image"><img src="Hedgehog product/Covers/Cover Hedgehog Hero cover.png" alt="Hedgehog prediction market product" class="related-img" loading="lazy" decoding="async"></div><div class="related-info"><span class="related-name">Hedgehog</span><span class="related-location">Prediction Market</span></div></a>
+                <a href="project-hedgehog.html" class="related-card"><div class="related-image"><img src="Hedgehog /Hedgehog/Cover Hedgehog Hero cover.png" alt="Hedgehog waitlist landing page" class="related-img" loading="lazy" decoding="async"></div><div class="related-info"><span class="related-name">Hedgehog</span><span class="related-location">Waitlist Conversion</span></div></a>
+                <a href="project-transparent-space.html" class="related-card"><div class="related-image"><img src="Transparent.space Products/Dashboard.png" alt="Transparent.space product dashboard" class="related-img" loading="lazy" decoding="async"></div><div class="related-info"><span class="related-name">Transparent.space</span><span class="related-location">Dashboard</span></div></a>
+                <a href="project-petrobras-saude.html" class="related-card"><div class="related-image"><img src="Petrobras/Cover/Cover petro Hero cover.png" alt="Petrobras Saúde corporate health platform" class="related-img" loading="lazy" decoding="async"></div><div class="related-info"><span class="related-name">Petrobras Saúde</span><span class="related-location">Healthcare Platform</span></div></a>
+                <a href="project-unimed-seguros.html" class="related-card"><div class="related-image"><img src="Unimed/Cover/Cover unimed all projects.png" alt="Unimed Seguros app redesign" class="related-img" loading="lazy" decoding="async"></div><div class="related-info"><span class="related-name">Unimed Seguros</span><span class="related-location">Insurance App</span></div></a>
             </div>
-            <div class="related-grid">
-                <a href="project-transparent-space.html" class="related-card"><div class="related-image"><img src="1920x1200/Cover transparent Hero cover.png" alt="Transparent.space" class="related-img"></div><div class="related-info"><span class="related-name">Transparent.space</span><span class="related-location">(Product Design)</span></div></a>
-                <a href="project-transparent-space-brand.html" class="related-card"><div class="related-image"><img src="1920x1200/Cover transparent Hero cover-1.png" alt="Transparent.space" class="related-img"></div><div class="related-info"><span class="related-name">Transparent.space</span><span class="related-location">(Branding)</span></div></a>
-                <a href="project-hedgehog.html" class="related-card"><div class="related-image"><img src="1920x1200/Cover Hedgehog Hero cover.png" alt="Hedgehog" class="related-img"></div><div class="related-info"><span class="related-name">Hedgehog</span><span class="related-location">(Web3)</span></div></a>
-                <a href="project-picnic.html" class="related-card"><div class="related-image"><img src="1920x1200/Cover Picnic Hero cover.png" alt="Picnic" class="related-img"></div><div class="related-info"><span class="related-name">Picnic</span><span class="related-location">(Branding)</span></div></a>
-            </div>
-        </div>
-    </section>
-
-    <section class="project-cta-minimal">
-        <div class="container">
-            <span class="cta-label-minimal">(Contact)</span>
-            <h2 class="cta-title-minimal">Let's create something together</h2>
-            <a href="mailto:fonsecaa.design@gmail.com" class="cta-link-minimal">Let's Talk <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 16L16 4M16 4H6M16 4V14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
     </section>
 
@@ -348,9 +343,6 @@
         <div class="footer-v3__inner">
             <div class="footer-v3__main">
                 <div class="footer-v3__col footer-v3__col--brand">
-                    <p class="hero-intro__index footer-v3__index">
-                        <span class="hero-intro__index-num">04</span><span class="hero-intro__index-slash">/</span><span class="hero-intro__index-label">Colophon</span>
-                    </p>
                     <a href="index.html" class="footer-logo-link" aria-label="Fonseca — Home">
                         <img src="logo.svg" alt="" class="footer-logo-img logo-light" height="32">
                         <img src="logo%20white.svg" alt="" class="footer-logo-img logo-dark" height="32">
@@ -362,15 +354,15 @@
                     <p class="hero-intro__role footer-v3__col-head">Navigate</p>
                     <div class="footer-v3__links">
                         <a href="index.html#work">Work</a>
-                        <a href="about.html">About</a>
+                                                <a href="fun.html">Fun</a>
+<a href="about.html">About</a>
                         <a href="index.html#testimonials">Clients</a>
-                        <a href="projects.html">All projects</a>
                     </div>
                 </nav>
                 <div class="footer-v3__col footer-v3__col--social">
                     <p class="hero-intro__role footer-v3__col-head">Connect</p>
                     <div class="footer-v3__links">
-                        <a href="mailto:fonsecaa.design@gmail.com">fonsecaa.design@gmail.com</a>
+                        <a href="#" data-copy-email>fonsecaa.design@gmail.com</a>
                         <a href="https://www.linkedin.com/in/maths-fonseca/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                         <a href="https://www.behance.net/maths-fonseca" target="_blank" rel="noopener noreferrer">Behance</a>
                         <a href="https://x.com/0xFonseca" target="_blank" rel="noopener noreferrer">X / Twitter</a>

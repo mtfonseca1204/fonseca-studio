@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    initPreloader();
+    document.body.classList.add('loaded');
+    requestAnimationFrame(() => {
+        window.dispatchEvent(new CustomEvent('fonseca:layoutready'));
+    });
     initDarkMode();
     initMobileMenu();
     initNavbarScroll();
@@ -17,6 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initCaseImageLightbox();
     initLinkPrefetch();
     initLazyBelowFoldMedia();
+    // FonsecaLLM is temporarily disabled. To reactivate, uncomment the line below.
+    // initFonsecaLLM();
 });
 
 // =====================================================
@@ -550,8 +555,8 @@ function initHeroAsciiTerrain() {
 const HERO_EMAIL = 'fonsecaa.design@gmail.com';
 
 function initHeroCopyEmail() {
-    const hint = document.querySelector('.hero-intro__hint');
-    if (!hint) return;
+    const triggers = [...document.querySelectorAll('[data-copy-email]')];
+    if (!triggers.length) return;
 
     function showEmailCopiedToast() {
         let toast = document.getElementById('emailCopyToast');
@@ -573,17 +578,43 @@ function initHeroCopyEmail() {
         }, 2800);
     }
 
-    function copyHeroEmail() {
-        if (!navigator.clipboard?.writeText) return;
+    function markCopied(trigger) {
+        trigger.classList.add('is-copied');
+        const action = trigger.querySelector('.hero-intro__email-action');
+        const prev = action?.textContent?.trim() || 'Copy';
+        if (action) action.textContent = 'Copied';
+        clearTimeout(markCopied._resetT);
+        markCopied._resetT = setTimeout(() => {
+            trigger.classList.remove('is-copied');
+            if (action) action.textContent = prev;
+        }, 2200);
+    }
+
+    function copyHeroEmail(trigger) {
+        const onSuccess = () => {
+            showEmailCopiedToast();
+            if (trigger) markCopied(trigger);
+        };
+        if (!navigator.clipboard?.writeText) {
+            onSuccess();
+            return;
+        }
         navigator.clipboard.writeText(HERO_EMAIL)
-            .then(showEmailCopiedToast)
+            .then(onSuccess)
             .catch(() => {});
     }
 
-    hint.addEventListener('click', (e) => {
-        if (e.target.closest('a[href^="mailto:"]')) return;
-        e.preventDefault();
-        copyHeroEmail();
+    triggers.forEach((trigger) => {
+        if (!trigger.hasAttribute('aria-label')) {
+            trigger.setAttribute('aria-label', 'Copy email address');
+        }
+        if (trigger.tagName === 'A' && !trigger.getAttribute('role')) {
+            trigger.setAttribute('role', 'button');
+        }
+        trigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            copyHeroEmail(trigger);
+        });
     });
 
     document.addEventListener('keydown', (e) => {
@@ -595,7 +626,7 @@ function initHeroCopyEmail() {
         if (e.key !== 'c' && e.key !== 'C') return;
         if (e.metaKey || e.ctrlKey || e.altKey) return;
         e.preventDefault();
-        copyHeroEmail();
+        copyHeroEmail(triggers[0]);
     });
 }
 
@@ -660,6 +691,7 @@ function initWorkCardLinkPreview() {
         const expand = card.querySelector('.work-card__expand');
         if (!slides.length) return;
 
+        const multiLink = links.length > 1;
         let currentSlide = 0;
 
         function syncSlideMedia(activeIdx) {
@@ -700,12 +732,15 @@ function initWorkCardLinkPreview() {
             const mediaSub = card.querySelector('.work-card__media-label span');
             if (mediaLabel && label) mediaLabel.textContent = label;
             if (mediaSub) {
+                const client = card.querySelector('.work-card__client')?.textContent?.trim();
                 const cardName = card.querySelector('.work-card__name')?.textContent?.trim();
-                if (cardName) mediaSub.textContent = cardName;
+                if (client) mediaSub.textContent = client;
+                else if (cardName) mediaSub.textContent = cardName;
             }
         }
 
         function setActiveLink(link) {
+            if (!multiLink) return;
             links.forEach((row) => {
                 row.classList.remove('is-active');
                 row.removeAttribute('aria-current');
@@ -723,6 +758,7 @@ function initWorkCardLinkPreview() {
         }
 
         function handleTwoStepNav(e, anchor) {
+            if (!multiLink) return;
             const href = anchor.getAttribute('href');
             const matchingLink = findLinkForHref(href);
             if (matchingLink?.classList.contains('is-active')) return;
@@ -732,7 +768,7 @@ function initWorkCardLinkPreview() {
 
         links.forEach((link) => {
             link.addEventListener('click', (e) => {
-                if (link.classList.contains('is-active')) return;
+                if (!multiLink || link.classList.contains('is-active')) return;
                 e.preventDefault();
                 setActiveLink(link);
             });
@@ -794,7 +830,7 @@ function initProjectModals() {
                 '1920x1200/Cover Hedgehog Hero cover.png'
             ],
             links: [
-                { label: 'Product case study', href: 'project-hedgehog-product.html', primary: true },
+                { label: 'View product', href: 'project-hedgehog-product.html', primary: true },
                 { label: 'Landing page', href: 'project-hedgehog.html' },
                 { label: '3D motion', href: 'hedgehog-3d.html' }
             ]
@@ -818,7 +854,7 @@ function initProjectModals() {
                 'Transparent UI/5.png'
             ],
             links: [
-                { label: 'Product case study', href: 'project-transparent-space.html', primary: true },
+                { label: 'View product', href: 'project-transparent-space.html', primary: true },
                 { label: 'Brand system', href: 'project-transparent-space-brand.html' }
             ]
         },
@@ -841,7 +877,7 @@ function initProjectModals() {
                 'Picnic/9.png'
             ],
             links: [
-                { label: 'Brand case study', href: 'project-picnic.html', primary: true }
+                { label: 'View brand', href: 'project-picnic.html', primary: true }
             ]
         }
     };
@@ -932,53 +968,6 @@ function initProjectModals() {
             open(btn.dataset.openModal);
         });
     });
-}
-
-// =====================================================
-// PRELOADER
-// =====================================================
-function initPreloader() {
-    const preloader = document.getElementById('preloader');
-    if (!preloader) return;
-
-    function isPageReload() {
-        try {
-            const nav = performance.getEntriesByType('navigation')[0];
-            if (nav && nav.type === 'reload') return true;
-        } catch (e) { /* ignore */ }
-        return typeof performance.navigation !== 'undefined' && performance.navigation.type === 1;
-    }
-
-    const hasSeenPreloader = sessionStorage.getItem('preloaderShown') === 'true';
-    const isReload = isPageReload();
-
-    function notifyLayoutReady() {
-        requestAnimationFrame(() => {
-            window.dispatchEvent(new CustomEvent('fonseca:layoutready'));
-        });
-    }
-
-    if (hasSeenPreloader && !isReload) {
-        preloader.style.display = 'none';
-        preloader.classList.add('complete');
-        document.body.classList.remove('loading');
-        document.body.classList.add('loaded');
-        notifyLayoutReady();
-        return;
-    }
-
-    sessionStorage.setItem('preloaderShown', 'true');
-    document.body.classList.add('loading');
-
-    setTimeout(() => {
-        preloader.classList.add('complete');
-        document.body.classList.remove('loading');
-        document.body.classList.add('loaded');
-        setTimeout(() => {
-            preloader.style.display = 'none';
-            notifyLayoutReady();
-        }, 500);
-    }, 1800);
 }
 
 // =====================================================
@@ -1073,7 +1062,7 @@ function updateYear() {
 }
 
 // =====================================================
-// CASE STUDY NAV
+// PROJECT PAGE NAV
 // =====================================================
 function initCaseStudyNav() {
     const sideNav = document.getElementById('caseSideNav');
@@ -1250,7 +1239,318 @@ function initHeroGrid() {
 // PAGE LOAD
 // =====================================================
 window.addEventListener('load', () => {
-    if (!document.getElementById('preloader')) {
-        document.body.classList.add('loaded');
-    }
+    document.body.classList.add('loaded');
 });
+
+// =====================================================
+// FONSECA LLM — AI portfolio assistant
+// =====================================================
+function initFonsecaLLM() {
+    if (document.querySelector('.fllm-launcher')) return;
+
+    const SUGGESTIONS = [
+        'What makes your design approach unique?',
+        'What projects have you worked on?',
+        'How do you balance design and strategy?',
+        'Are you available for freelance work?',
+    ];
+
+    const GREETING = "Hey — I'm Matheus' assistant. Ask me about his work, process, or availability. What would you like to know?";
+
+    // ---- build DOM ----
+    const launcher = document.createElement('button');
+    launcher.type = 'button';
+    launcher.className = 'fllm-launcher';
+    launcher.setAttribute('aria-label', 'Open FonsecaLLM, the AI assistant');
+    launcher.innerHTML =
+        '<span class="fllm-launcher__spark" aria-hidden="true"><span class="fllm-launcher__dot"></span></span>' +
+        '<span class="fllm-launcher__label">FonsecaLLM</span>';
+
+    const overlay = document.createElement('div');
+    overlay.className = 'fllm-overlay';
+
+    const panel = document.createElement('div');
+    panel.className = 'fllm-panel';
+    panel.setAttribute('role', 'dialog');
+    panel.setAttribute('aria-modal', 'true');
+    panel.setAttribute('aria-label', 'FonsecaLLM chat');
+    panel.innerHTML = `
+        <div class="fllm-panel__head">
+            <span class="fllm-panel__avatar" aria-hidden="true">F</span>
+            <span class="fllm-panel__id">
+                <span class="fllm-panel__name">FonsecaLLM</span>
+                <span class="fllm-panel__status">Online · usually replies instantly</span>
+            </span>
+            <button type="button" class="fllm-panel__close" aria-label="Close chat">
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </button>
+        </div>
+        <div class="fllm-body" id="fllmBody">
+            <p class="fllm-intro__title">Ask me anything.</p>
+            <div class="fllm-suggestions" id="fllmSuggestions"></div>
+        </div>
+        <div class="fllm-foot">
+            <div class="fllm-quote-chip" id="fllmQuoteChip">
+                <span class="fllm-quote-chip__mark" aria-hidden="true">&ldquo;</span>
+                <span class="fllm-quote-chip__text" id="fllmQuoteText"></span>
+                <button type="button" class="fllm-quote-chip__remove" id="fllmQuoteRemove" aria-label="Remove quote">&times;</button>
+            </div>
+            <form class="fllm-composer" id="fllmForm">
+                <textarea class="fllm-input" id="fllmInput" rows="1" placeholder="Ask me anything…" aria-label="Message"></textarea>
+                <button type="submit" class="fllm-send" id="fllmSend" aria-label="Send message">
+                    <svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M10 16V4M10 4L5 9M10 4l5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+            </form>
+            <p class="fllm-disclaimer">AI assistant · may be imperfect. For anything important, email fonsecaa.design@gmail.com</p>
+        </div>`;
+
+    const quoteBtn = document.createElement('button');
+    quoteBtn.type = 'button';
+    quoteBtn.className = 'fllm-quote-btn';
+    quoteBtn.innerHTML = '<span aria-hidden="true">&ldquo;</span> Ask about this';
+
+    document.body.appendChild(launcher);
+    document.body.appendChild(overlay);
+    document.body.appendChild(panel);
+    document.body.appendChild(quoteBtn);
+
+    // ---- refs ----
+    const body = panel.querySelector('#fllmBody');
+    const suggestionsWrap = panel.querySelector('#fllmSuggestions');
+    const form = panel.querySelector('#fllmForm');
+    const input = panel.querySelector('#fllmInput');
+    const sendBtn = panel.querySelector('#fllmSend');
+    const closeBtn = panel.querySelector('.fllm-panel__close');
+    const quoteChip = panel.querySelector('#fllmQuoteChip');
+    const quoteChipText = panel.querySelector('#fllmQuoteText');
+    const quoteChipRemove = panel.querySelector('#fllmQuoteRemove');
+
+    // ---- state ----
+    const messages = [];       // {role, content} sent to API
+    let pendingQuote = '';     // highlighted quote awaiting a question
+    let isSending = false;
+    let greeted = false;
+    let lastFocused = null;
+
+    // ---- render suggestions ----
+    SUGGESTIONS.forEach((q) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'fllm-suggest';
+        btn.textContent = q;
+        btn.addEventListener('click', () => {
+            input.value = q;
+            sendMessage();
+        });
+        suggestionsWrap.appendChild(btn);
+    });
+
+    function clearIntro() {
+        const intro = body.querySelector('.fllm-intro__title');
+        const sugg = body.querySelector('.fllm-suggestions');
+        if (intro) intro.remove();
+        if (sugg) sugg.remove();
+    }
+
+    function escapeHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+    }
+
+    // linkify emails + urls inside an already-escaped string
+    function formatReply(text) {
+        let safe = escapeHtml(text);
+        safe = safe.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
+        safe = safe.replace(/([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/g, '<a href="mailto:$1">$1</a>');
+        return safe;
+    }
+
+    function addBubble(role, text) {
+        clearIntro();
+        const el = document.createElement('div');
+        el.className = 'fllm-msg ' + (role === 'user' ? 'fllm-msg--user' : 'fllm-msg--bot');
+        el.innerHTML = role === 'user' ? escapeHtml(text) : formatReply(text);
+        body.appendChild(el);
+        body.scrollTop = body.scrollHeight;
+        return el;
+    }
+
+    function showTyping() {
+        const el = document.createElement('div');
+        el.className = 'fllm-typing';
+        el.innerHTML = '<span></span><span></span><span></span>';
+        body.appendChild(el);
+        body.scrollTop = body.scrollHeight;
+        return el;
+    }
+
+    // ---- quote chip ----
+    function setQuote(text) {
+        pendingQuote = (text || '').trim();
+        if (pendingQuote) {
+            quoteChipText.textContent = pendingQuote;
+            quoteChip.classList.add('is-visible');
+            input.placeholder = 'Ask about this quote…';
+        } else {
+            quoteChip.classList.remove('is-visible');
+            input.placeholder = 'Ask me anything…';
+        }
+    }
+    quoteChipRemove.addEventListener('click', () => setQuote(''));
+
+    // ---- open / close ----
+    function openPanel(prefillQuote) {
+        lastFocused = document.activeElement;
+        document.body.classList.add('fllm-open');
+        if (prefillQuote) setQuote(prefillQuote);
+        if (!greeted) {
+            greeted = true;
+            setTimeout(() => addBubble('bot', GREETING), 150);
+        }
+        setTimeout(() => input.focus(), 320);
+    }
+
+    function closePanel() {
+        document.body.classList.remove('fllm-open');
+        if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+    }
+
+    launcher.addEventListener('click', () => openPanel());
+    closeBtn.addEventListener('click', closePanel);
+    overlay.addEventListener('click', closePanel);
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && document.body.classList.contains('fllm-open')) closePanel();
+    });
+
+    // ---- input autosize ----
+    input.addEventListener('input', () => {
+        input.style.height = 'auto';
+        input.style.height = Math.min(input.scrollHeight, 120) + 'px';
+    });
+    input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            sendMessage();
+        }
+    });
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        sendMessage();
+    });
+
+    // ---- send ----
+    async function sendMessage() {
+        const text = input.value.trim();
+        if ((!text && !pendingQuote) || isSending) return;
+
+        const quoteForThisTurn = pendingQuote;
+        const displayText = text || 'Tell me about this.';
+        addBubble('user', quoteForThisTurn ? `“${quoteForThisTurn}”\n\n${displayText}` : displayText);
+
+        messages.push({ role: 'user', content: text || 'Tell me more about this.' });
+        input.value = '';
+        input.style.height = 'auto';
+        setQuote('');
+
+        isSending = true;
+        sendBtn.disabled = true;
+        const typing = showTyping();
+
+        let reply;
+        try {
+            reply = await fetchReply(messages, quoteForThisTurn);
+        } catch (err) {
+            reply = localFallback(text, quoteForThisTurn);
+        }
+        typing.remove();
+        addBubble('bot', reply);
+        messages.push({ role: 'assistant', content: reply });
+
+        isSending = false;
+        sendBtn.disabled = false;
+        input.focus();
+    }
+
+    async function fetchReply(history, quote) {
+        const res = await fetch('/api/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ messages: history, quote }),
+        });
+        if (!res.ok) throw new Error('bad status ' + res.status);
+        const data = await res.json();
+        if (!data || !data.reply) throw new Error('no reply');
+        return data.reply;
+    }
+
+    // client-side fallback when the API isn't reachable (e.g. opened as a local file)
+    function localFallback(userText, quote) {
+        const t = (userText || '').toLowerCase();
+        const has = (...w) => w.some((x) => t.includes(x));
+        if (quote && !userText) return "Happy to talk about that line — what would you like to know? You can also email fonsecaa.design@gmail.com.";
+        if (has('available', 'hire', 'freelance', 'work with', 'contact', 'email', 'budget', 'rate')) return "Yes — I'm open to select projects and available for remote work worldwide. Best to email fonsecaa.design@gmail.com or connect on LinkedIn (/in/maths-fonseca).";
+        if (has('hedgehog', 'prediction', 'orderbook', 'waitlist')) return "At Hedgehog I reworked how people predict on-chain — from orderbooks to pooled UP/DOWN positions — taking task completion from 40% to 88% and time-to-first-action from ~8s to under 2s, and built the landing page that drove 15,000+ waitlist sign-ups with zero paid spend.";
+        if (has('transparent', 'market maker', 'liquidity', 'b2b', 'dashboard')) return "At Transparent.space I'm Founding Product Designer — I built a B2B dashboard from zero that makes market-maker performance impossible to hide, lifting task completion from 61% to 88%.";
+        if (has('petrobras', 'unimed', 'health', 'insurance', 'telemedicine')) return "In healthcare I redesigned Petrobras Saúde's telemedicine platform for 50,000+ employees and Unimed Seguros' insurance app, both with a focus on clarity under real-world urgency.";
+        if (has('approach', 'process', 'unique', 'different', 'balance', 'strategy', 'philosophy')) return "I don't just design interfaces — I structure products. I start from the real problem and the system behind it, then turn complexity into something clear and usable, from discovery to hand-off.";
+        if (has('project', 'work', 'portfolio', 'experience')) return "Selected work: Hedgehog (Web3 prediction market), Transparent.space (B2B market-maker dashboard), Petrobras Saúde and Unimed Seguros (healthcare), plus brand work for Picnic and Agent Arena. Want detail on any one?";
+        if (has('skill', 'tool', 'figma', 'stack')) return "My toolkit: Figma, Photoshop, Illustrator, prototyping, user research, design systems, website and strategy design — with a strong Web3/DeFi specialization.";
+        if (has('hello', 'hi', 'hey', 'oi', 'ola')) return "Hey! I'm Matheus — a product designer across Web3/DeFi, healthcare and enterprise. Ask me about my projects, process, or availability.";
+        return "I'm Matheus' assistant — I can talk about his projects, process, skills, or availability. For anything specific, email fonsecaa.design@gmail.com.";
+    }
+
+    // =================================================
+    // Highlight-to-ask: floating "Ask about this" button
+    // =================================================
+    let quoteBtnTimer = null;
+
+    function hideQuoteBtn() {
+        quoteBtn.classList.remove('is-visible');
+    }
+
+    function onSelection() {
+        if (document.body.classList.contains('fllm-open')) return;
+        const sel = window.getSelection();
+        if (!sel || sel.isCollapsed) { hideQuoteBtn(); return; }
+        const text = sel.toString().trim();
+        if (text.length < 12 || text.length > 600) { hideQuoteBtn(); return; }
+
+        // ignore selections inside the panel/launcher itself
+        const anchorNode = sel.anchorNode;
+        if (anchorNode && quoteBtn.contains(anchorNode)) return;
+
+        let rect;
+        try { rect = sel.getRangeAt(0).getBoundingClientRect(); } catch (e) { return; }
+        if (!rect || (!rect.width && !rect.height)) { hideQuoteBtn(); return; }
+
+        const btnW = quoteBtn.offsetWidth || 130;
+        let left = window.scrollX + rect.left + rect.width / 2 - btnW / 2;
+        left = Math.max(window.scrollX + 8, Math.min(left, window.scrollX + document.documentElement.clientWidth - btnW - 8));
+        const top = window.scrollY + rect.top - 46;
+
+        quoteBtn.style.left = left + 'px';
+        quoteBtn.style.top = (top < window.scrollY ? window.scrollY + rect.bottom + 10 : top) + 'px';
+        quoteBtn.dataset.quote = text;
+        quoteBtn.classList.add('is-visible');
+    }
+
+    document.addEventListener('mouseup', () => {
+        clearTimeout(quoteBtnTimer);
+        quoteBtnTimer = setTimeout(onSelection, 10);
+    });
+    document.addEventListener('selectionchange', () => {
+        const sel = window.getSelection();
+        if (!sel || sel.isCollapsed) hideQuoteBtn();
+    });
+    window.addEventListener('scroll', hideQuoteBtn, { passive: true });
+
+    quoteBtn.addEventListener('mousedown', (e) => e.preventDefault()); // keep selection
+    quoteBtn.addEventListener('click', () => {
+        const q = quoteBtn.dataset.quote || '';
+        hideQuoteBtn();
+        const sel = window.getSelection();
+        if (sel) sel.removeAllRanges();
+        openPanel(q);
+    });
+}

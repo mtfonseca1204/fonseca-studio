@@ -25,7 +25,7 @@
         "name": "Matheus Fonseca",
         "jobTitle": "Senior Product Designer",
         "url": "https://fonseca.studio/",
-        "email": "mailto:fonsecaa.design@gmail.com",
+        "email": "fonsecaa.design@gmail.com",
         "knowsAbout": ["Web3", "DeFi", "Product Design", "UX Design", "Design Systems"],
         "address": {
             "@type": "PostalAddress",
@@ -40,21 +40,6 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<script>
-(function(){try{var r=0;try{var n=performance.getEntriesByType('navigation')[0];if(n&&n.type==='reload')r=1;}catch(x){}
-if(!r&&typeof performance.navigation!=='undefined'&&performance.navigation.type===1)r=1;
-if(r||sessionStorage.getItem('preloaderShown')!=='true')document.body.classList.add('loading');
-}catch(e){}})();
-</script>
-
-    <div class="preloader" id="preloader">
-        <div class="preloader-inner">
-            <div class="preloader-name" id="preloaderName">Matheus Fonseca</div>
-            <div class="preloader-sub">Senior Product Designer</div>
-            <div class="preloader-line"><div class="preloader-line-fill"></div></div>
-        </div>
-    </div>
-
     <!-- Nav -->
     <nav class="navbar">
         <div class="nav-container">
@@ -66,46 +51,44 @@ if(r||sessionStorage.getItem('preloaderShown')!=='true')document.body.classList.
             </div>
             <div class="nav-center">
                 <a href="#work" class="nav-link"><span class="nav-num">01</span> Work</a>
-                <a href="projects.html" class="nav-link"><span class="nav-num">02</span> Projects</a>
+                <a href="fun.html" class="nav-link"><span class="nav-num">02</span> Fun</a>
                 <a href="about.html" class="nav-link"><span class="nav-num">03</span> About</a>
+                <a href="MatheusFonsecaCV.pdf" target="_blank" rel="noopener noreferrer" class="nav-link"><span class="nav-num">04</span> Resume</a>
             </div>
             <div class="nav-right">
                 <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
                     <svg class="icon-sun" width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M10 3V1M10 19V17M17 10H19M1 10H3M15.657 4.343L17.071 2.929M2.929 17.071L4.343 15.657M15.657 15.657L17.071 17.071M2.929 2.929L4.343 4.343M14 10C14 12.2091 12.2091 14 10 14C7.79086 14 6 12.2091 6 10C6 7.79086 7.79086 6 10 6C12.2091 6 14 7.79086 14 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     <svg class="icon-moon" width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </button>
-                <a href="mailto:fonsecaa.design@gmail.com" class="nav-cta">Contact</a>
+                <a href="#" data-copy-email class="nav-cta">Contact</a>
                 <button class="mobile-menu-toggle" aria-label="Toggle menu"><span></span><span></span></button>
             </div>
         </div>
         <div class="mobile-menu">
             <div class="mobile-menu-links">
                 <a href="#work" class="mobile-link">Work</a>
-                <a href="projects.html" class="mobile-link">Projects</a>
+                <a href="fun.html" class="mobile-link">Fun</a>
                 <a href="about.html" class="mobile-link">About</a>
-                <a href="mailto:fonsecaa.design@gmail.com" class="mobile-link mobile-cta">Contact</a>
+                <a href="MatheusFonsecaCV.pdf" target="_blank" rel="noopener noreferrer" class="mobile-link">Resume</a>
+                <a href="#" data-copy-email class="mobile-link mobile-cta">Contact</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero -->
     <section id="home" class="hero hero--intro">
-        <div class="hero-intro">
+        <div class="container hero-intro">
             <div class="hero-intro__column">
-                <p class="hero-intro__index" data-anim="fade"><span class="hero-intro__index-num">00</span><span class="hero-intro__index-slash">/</span><span class="hero-intro__index-label">Introduction</span></p>
                 <div class="hero-intro__main">
-                    <h1 class="hero-intro__name" data-anim="title">Matheus Fonseca</h1>
-                    <p class="hero-intro__role" data-anim="fade">Product Designer </p>
-                    <p class="hero-intro__bio" data-anim="fade">I design fintech and Web3 products that make hard things feel simple. From B2B institutional dashboards to B2C apps built for everyday users. AI helps me think faster, craft is what makes it worth shipping. 3x Hackathon winner, and still obsessed with the details that most people skip.</p>
-                    <p class="hero-intro__lede" data-anim="fade">Discovery &rarr; AI &rarr; Systems &rarr; Hand-off. Craft that holds up in production.</p>
-                    <div class="hero-intro__ctas" data-anim="fade">
-                        <a href="#work" class="hero-cta hero-cta--primary">Selected work <span class="hero-cta__arrow">&darr;</span></a>
-                        <a href="about.html" class="hero-cta hero-cta--ghost">About me <span class="hero-cta__arrow">&rarr;</span></a>
-                    </div>
-                    <p class="hero-intro__hint" data-anim="fade">
-                        <span class="hero-intro__hint-keys"><kbd>C</kbd></span> to copy email &middot;
-                        <a href="mailto:fonsecaa.design@gmail.com" class="hero-intro__hint-link">Send a message</a>
-                    </p>
+                    <h1 class="hero-intro__name" data-anim="title">
+                        <span class="hero-intro__name-line">Matheus</span>
+                        <span class="hero-intro__name-line">Fonseca</span>
+                    </h1>
+                    <p class="hero-intro__bio" data-anim="fade">Hi, I&rsquo;m a Product Designer with roots in Art Direction and 5+ years building and shaping digital products. Available for remote work worldwide.</p>
+                    <button type="button" class="hero-intro__email" data-copy-email data-anim="fade" aria-label="Copy email address">
+                        <span class="hero-intro__email-label">fonsecaa.design@gmail.com</span>
+                        <span class="hero-intro__email-action" aria-hidden="true">Copy</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -116,59 +99,28 @@ if(r||sessionStorage.getItem('preloaderShown')!=='true')document.body.classList.
     <!-- 01 Work -->
     <section id="work" class="section-work">
         <div class="container">
-            <header class="section-head" data-anim="fade">
-                <span class="section-num">01</span>
+            <header class="section-head section-head--plain" data-anim="fade">
                 <h2 class="section-title">Selected Work</h2>
                 <span class="section-rule"></span>
-                <a href="projects.html" class="section-link">All projects &nearr;</a>
+                <a href="fun.html" class="section-link">Fun &amp; side projects &nearr;</a>
             </header>
-
             <div class="work-grid">
-                <article class="work-card" data-anim="card">
+                <article class="work-card work-card--direct" data-anim="card">
                     <div class="work-card__info">
-                        <span class="work-card__index">01</span>
-                        <h3 class="work-card__name">Hedgehog</h3>
+                        <h3 class="work-card__name">Orderbooks Out, One Tap In: Redesigning How People Predict On-Chain</h3>
                         <div class="work-card__meta">
+                            <span class="work-card__client">Hedgehog</span>
                             <span class="work-card__year">2024/2026</span>
                             <span class="work-card__role">Product Designer</span>
                         </div>
-                        <p class="work-card__desc">Web3 prediction market from product UX to waitlist funnel. 15,000+ users joined the product waitlist at 37.5% conversion from a 40K+ organic community across X (14.6K) and Telegram (14K), with $0 paid traffic. Product task completion improved from 61% to 88%.</p>
-                        <div class="work-card__links">
-                            <a href="project-hedgehog-product.html" class="work-card__link-row" data-slide-idx="0">
-                                <span class="work-card__link-main">
-                                    <strong>Prediction Market</strong>
-                                    <span>product design, ux, ui</span>
-                                </span>
-                                <span class="work-card__link-arrow" aria-hidden="true">&nearr;</span>
-                            </a>
-                            <a href="project-hedgehog.html" class="work-card__link-row" data-slide-idx="1">
-                                <span class="work-card__link-main">
-                                    <strong>Waitlist Conversion</strong>
-                                    <span>web3, landing, conversion</span>
-                                </span>
-                                <span class="work-card__link-arrow" aria-hidden="true">&nearr;</span>
-                            </a>
-                            <a href="hedgehog-3d.html" class="work-card__link-row" data-slide-idx="2">
-                                <span class="work-card__link-main">
-                                    <strong>Plus - 3D motion for socials</strong>
-                                    <span>motion, 3d</span>
-                                </span>
-                                <span class="work-card__link-arrow" aria-hidden="true">&nearr;</span>
-                            </a>
-                        </div>
+                        <p class="work-card__desc">Hedgehog's core product asked users to understand orderbooks before they could make a single prediction. I redesigned the participation model itself, from order-matching to pooled UP/DOWN positions, cutting task completion failure in half (40% → 88%) and time-to-first-action from 8 seconds to under 2.</p>
+                        <a href="project-hedgehog-product.html" class="work-card__action">View the project <span class="work-card__action-arrow" aria-hidden="true">&nearr;</span></a>
                     </div>
                     <div class="work-card__media">
-                        <a href="project-hedgehog-product.html" class="work-card__thumb-link" aria-label="Open Hedgehog product case study">
+                        <a href="project-hedgehog-product.html" class="work-card__thumb-link" aria-label="Open Hedgehog product">
                         <div class="work-card__thumb" data-project-carousel>
                             <div class="project-card__slides">
                                 <video class="project-card__slide project-card__slide--video project-card__slide--cover project-card__slide--crop-in active" src="Hedgehog product/product_thumb.mov" autoplay muted loop playsinline aria-label="Hedgehog product preview"></video>
-                                <video class="project-card__slide project-card__slide--video project-card__slide--cover" src="Hedgehog /Hedgehog-waitlist.mp4" autoplay muted loop playsinline aria-label="Hedgehog waitlist landing preview"></video>
-                                <video class="project-card__slide project-card__slide--video project-card__slide--cover" src="Hedgehog /3d/0001-0140.mp4" autoplay muted loop playsinline aria-label="Hedgehog 3D motion preview"></video>
-                            </div>
-                            <div class="project-card__carousel-dots" role="tablist" aria-label="Hedgehog project previews">
-                                <button type="button" class="project-card__carousel-dot active" data-idx="0" role="tab" aria-label="Product case study" aria-selected="true"></button>
-                                <button type="button" class="project-card__carousel-dot" data-idx="1" role="tab" aria-label="Landing page" aria-selected="false"></button>
-                                <button type="button" class="project-card__carousel-dot" data-idx="2" role="tab" aria-label="3D motion" aria-selected="false"></button>
                             </div>
                             <div class="work-card__media-tags">
                                 <span class="work-card__pill">Web3</span>
@@ -178,47 +130,57 @@ if(r||sessionStorage.getItem('preloaderShown')!=='true')document.body.classList.
                         </a>
                         <div class="work-card__media-foot">
                             <span class="work-card__media-label"><strong>Prediction Market</strong><span>Hedgehog</span></span>
-                            <a href="project-hedgehog-product.html" class="work-card__expand" aria-label="Open Hedgehog project"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M4 16L16 4M16 4H6M16 4V14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                            <a href="project-hedgehog-product.html" class="work-card__expand" aria-label="Open Hedgehog product"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M4 16L16 4M16 4H6M16 4V14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
                         </div>
                     </div>
                 </article>
 
-                <article class="work-card" data-anim="card">
+                <article class="work-card work-card--direct" data-anim="card">
                     <div class="work-card__info">
-                        <span class="work-card__index">02</span>
-                        <h3 class="work-card__name">Transparent.space</h3>
+                        <h3 class="work-card__name">37.5% Conversion, Zero Paid Spend: Engineering Trust Before the Product Existed</h3>
                         <div class="work-card__meta">
+                            <span class="work-card__client">Hedgehog</span>
+                            <span class="work-card__year">2024/2026</span>
+                            <span class="work-card__role">Landing &amp; Growth</span>
+                        </div>
+                        <p class="work-card__desc">A conversion-first landing page for an unreleased Web3 prediction market, turned 40K+ organic followers into 15,000+ qualified waitlist sign-ups by building institutional trust before asking for a single&nbsp;click.</p>
+                        <a href="project-hedgehog.html" class="work-card__action">View the project <span class="work-card__action-arrow" aria-hidden="true">&nearr;</span></a>
+                    </div>
+                    <div class="work-card__media">
+                        <a href="project-hedgehog.html" class="work-card__thumb-link" aria-label="Open Hedgehog waitlist">
+                        <div class="work-card__thumb" data-project-carousel>
+                            <div class="project-card__slides">
+                                <video class="project-card__slide project-card__slide--video project-card__slide--cover active" src="Hedgehog /Hedgehog-waitlist.mp4" autoplay muted loop playsinline aria-label="Hedgehog waitlist landing preview"></video>
+                            </div>
+                            <div class="work-card__media-tags">
+                                <span class="work-card__pill">Web3</span>
+                                <span class="work-card__pill">Product</span>
+                            </div>
+                        </div>
+                        </a>
+                        <div class="work-card__media-foot">
+                            <span class="work-card__media-label"><strong>Waitlist Conversion</strong><span>Hedgehog</span></span>
+                            <a href="project-hedgehog.html" class="work-card__expand" aria-label="Open Hedgehog waitlist"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M4 16L16 4M16 4H6M16 4V14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="work-card work-card--direct" data-anim="card">
+                    <div class="work-card__info">
+                        <h3 class="work-card__name">Making Market Maker Performance Impossible to Hide</h3>
+                        <div class="work-card__meta">
+                            <span class="work-card__client">Transparent.space</span>
                             <span class="work-card__year">2025/2026</span>
                             <span class="work-card__role">Founding Product Designer</span>
                         </div>
-                        <p class="work-card__desc">Founding Product Designer for an institutional B2B Web3 platform that helps liquidity providers evaluate Market Maker performance. Designed end-to-end, from discovery and UX architecture to a full design system. Task completion improved from 61% to 88% across product iterations.</p>
-                        <div class="work-card__links">
-                            <a href="project-transparent-space.html" class="work-card__link-row" data-slide-idx="0">
-                                <span class="work-card__link-main">
-                                    <strong>Dashboard to market makers</strong>
-                                    <span>product design, ux</span>
-                                </span>
-                                <span class="work-card__link-arrow" aria-hidden="true">&nearr;</span>
-                            </a>
-                            <a href="project-transparent-space-brand.html" class="work-card__link-row" data-slide-idx="1">
-                                <span class="work-card__link-main">
-                                    <strong>Brand/Visual system</strong>
-                                    <span>branding, ui</span>
-                                </span>
-                                <span class="work-card__link-arrow" aria-hidden="true">&nearr;</span>
-                            </a>
-                        </div>
+                        <p class="work-card__desc">As Founding Product Designer, built a B2B dashboard from zero that gives liquidity providers real visibility into MM performance, discovery to design system, with task completion climbing from 61%&nbsp;to&nbsp;88%.</p>
+                        <a href="project-transparent-space.html" class="work-card__action">View the project <span class="work-card__action-arrow" aria-hidden="true">&nearr;</span></a>
                     </div>
                     <div class="work-card__media">
-                        <a href="project-transparent-space.html" class="work-card__thumb-link" aria-label="Open Transparent.space product case study">
+                        <a href="project-transparent-space.html" class="work-card__thumb-link" aria-label="Open Transparent.space">
                         <div class="work-card__thumb" data-project-carousel>
                             <div class="project-card__slides">
                                 <img class="project-card__slide active" src="Transparent.space Products/Dashboard.png" alt="Transparent.space product dashboard">
-                                <img class="project-card__slide" src="1920x1200/Cover transparent Hero cover-1.png" alt="Transparent.space brand">
-                            </div>
-                            <div class="project-card__carousel-dots">
-                                <button type="button" class="project-card__carousel-dot active" data-idx="0"></button>
-                                <button type="button" class="project-card__carousel-dot" data-idx="1"></button>
                             </div>
                             <div class="work-card__media-tags">
                                 <span class="work-card__pill">Web3</span>
@@ -228,52 +190,67 @@ if(r||sessionStorage.getItem('preloaderShown')!=='true')document.body.classList.
                         </a>
                         <div class="work-card__media-foot">
                             <span class="work-card__media-label"><strong>Dashboard to market makers</strong><span>Transparent.space</span></span>
-                            <a href="project-transparent-space.html" class="work-card__expand" aria-label="Open Transparent.space project"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M4 16L16 4M16 4H6M16 4V14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                            <a href="project-transparent-space.html" class="work-card__expand" aria-label="Open Transparent.space"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M4 16L16 4M16 4H6M16 4V14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
                         </div>
                     </div>
                 </article>
 
-                <article class="work-card" data-anim="card">
+                <article class="work-card work-card--direct" data-anim="card">
                     <div class="work-card__info">
-                        <span class="work-card__index">03</span>
-                        <h3 class="work-card__name">Picnic</h3>
+                        <h3 class="work-card__name">Simplifying Healthcare for 50,000+ Employees</h3>
                         <div class="work-card__meta">
-                            <span class="work-card__year">2025</span>
-                            <span class="work-card__role">Brand Designer</span>
+                            <span class="work-card__client">Petrobras Saúde</span>
+                            <span class="work-card__year">2022/2023</span>
+                            <span class="work-card__role">Product Designer</span>
                         </div>
-                        <p class="work-card__desc">Brand identity and scalable visual system for an early-stage startup, covering color, typography, iconography, and component tokens. Delivered across a 6-week timeline to support a go-to-market launch.</p>
-                        <div class="work-card__links">
-                            <a href="project-picnic.html" class="work-card__link-row" data-slide-idx="0">
-                                <span class="work-card__link-main">
-                                    <strong>Brand/Visual system</strong>
-                                    <span>branding, campaign</span>
-                                </span>
-                                <span class="work-card__link-arrow" aria-hidden="true">&nearr;</span>
-                            </a>
-                        </div>
+                        <p class="work-card__desc">Petrobras Saúde's platform was functional but outdated, creating friction at the exact moment users needed healthcare fastest. Researched across three distinct beneficiary segments, active employees, retirees, dependents, and design the platform under COVID-19 urgency, without sacrificing usability for speed.</p>
+                        <a href="project-petrobras-saude.html" class="work-card__action">View the project <span class="work-card__action-arrow" aria-hidden="true">&nearr;</span></a>
                     </div>
                     <div class="work-card__media">
-                        <a href="project-picnic.html" class="work-card__thumb-link" aria-label="Open Picnic brand case study">
+                        <a href="project-petrobras-saude.html" class="work-card__thumb-link" aria-label="Open Petrobras Saúde">
                         <div class="work-card__thumb" data-project-carousel>
                             <div class="project-card__slides">
-                                <img class="project-card__slide active" src="1920x1200/Cover Picnic Hero cover.png" alt="Picnic brand">
-                                <img class="project-card__slide" src="Picnic/7.png" alt="Picnic visual">
-                                <img class="project-card__slide" src="Picnic/5.png" alt="Picnic overview">
-                            </div>
-                            <div class="project-card__carousel-dots">
-                                <button type="button" class="project-card__carousel-dot active" data-idx="0"></button>
-                                <button type="button" class="project-card__carousel-dot" data-idx="1"></button>
-                                <button type="button" class="project-card__carousel-dot" data-idx="2"></button>
+                                <video class="project-card__slide project-card__slide--video project-card__slide--cover active" src="Petrobras/Tutorial%20de%20acesso%20aos%20servi%C3%A7os%20do%20Programa%20Cuidar%20Gest%C3%A3o%20de%20Sa%C3%BAde%20-%20Sa%C3%BAde%20Petrobras%20%281080p%29.mp4" autoplay muted loop playsinline aria-label="Petrobras Saúde platform preview"></video>
                             </div>
                             <div class="work-card__media-tags">
-                                <span class="work-card__pill">Brand</span>
-                                <span class="work-card__pill">Campaign</span>
+                                <span class="work-card__pill">Healthcare</span>
+                                <span class="work-card__pill">Enterprise</span>
                             </div>
                         </div>
                         </a>
                         <div class="work-card__media-foot">
-                            <span class="work-card__media-label"><strong>Brand case study</strong><span>Picnic</span></span>
-                            <a href="project-picnic.html" class="work-card__expand" aria-label="Open Picnic project"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M4 16L16 4M16 4H6M16 4V14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                            <span class="work-card__media-label"><strong>Telemedicine Platform</strong><span>Petrobras Saúde</span></span>
+                            <a href="project-petrobras-saude.html" class="work-card__expand" aria-label="Open Petrobras Saúde"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M4 16L16 4M16 4H6M16 4V14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="work-card work-card--direct" data-anim="card">
+                    <div class="work-card__info">
+                        <h3 class="work-card__name">Insurance Without the Anxiety</h3>
+                        <div class="work-card__meta">
+                            <span class="work-card__client">Unimed Seguros</span>
+                            <span class="work-card__year">2021/2022</span>
+                            <span class="work-card__role">Product Designer</span>
+                        </div>
+                        <p class="work-card__desc">Seguros Unimed's platform was functional but opaque, leaving users guessing about coverage at the worst possible time. Researched across customer profiles with varying digital literacy and insurance needs, then designed and shipped on an accelerated timeline during COVID-19, prioritizing transparency over feature complexity.</p>
+                        <a href="project-unimed-seguros.html" class="work-card__action">View the project <span class="work-card__action-arrow" aria-hidden="true">&nearr;</span></a>
+                    </div>
+                    <div class="work-card__media">
+                        <a href="project-unimed-seguros.html" class="work-card__thumb-link" aria-label="Open Unimed Seguros">
+                        <div class="work-card__thumb" data-project-carousel>
+                            <div class="project-card__slides">
+                                <img class="project-card__slide active" src="Unimed/Cover/Cover unimed all projects.png" alt="Unimed Seguros app redesign">
+                            </div>
+                            <div class="work-card__media-tags">
+                                <span class="work-card__pill">Healthcare</span>
+                                <span class="work-card__pill">Mobile</span>
+                            </div>
+                        </div>
+                        </a>
+                        <div class="work-card__media-foot">
+                            <span class="work-card__media-label"><strong>Telemedicine App</strong><span>Unimed Seguros</span></span>
+                            <a href="project-unimed-seguros.html" class="work-card__expand" aria-label="Open Unimed Seguros"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M4 16L16 4M16 4H6M16 4V14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
                         </div>
                     </div>
                 </article>
@@ -281,43 +258,10 @@ if(r||sessionStorage.getItem('preloaderShown')!=='true')document.body.classList.
         </div>
     </section>
 
-    <!-- 02 Personal Projects -->
-    <section id="personal" class="section-playground">
-        <div class="container">
-            <header class="section-head" data-anim="fade">
-                <span class="section-num">02</span>
-                <h2 class="section-title">Personal Projects</h2>
-                <span class="section-rule"></span>
-            </header>
-            <div class="playground-row">
-                <a href="https://tokenlab-gold.vercel.app/" target="_blank" rel="noopener noreferrer" class="playground-card playground-card--tokenlab" data-anim="card">
-                    <div class="playground-card__pylon">
-                        <span class="playground-card__pylon-mark">TOKENLAB</span>
-                    </div>
-                    <div class="playground-card__overlay">
-                        <span class="playground-card__label">TokenLab</span>
-                        <span class="playground-card__meta">Design toolkit &middot; AI</span>
-                    </div>
-                </a>
-                <a href="https://pylon-app-production.up.railway.app/" target="_blank" rel="noopener noreferrer" class="playground-card playground-card--dark" data-anim="card">
-                    <div class="playground-card__pylon">
-                        <span class="playground-card__pylon-mark">PYLON</span>
-                        <span class="playground-card__pylon-sub">x402 gateway &middot; Base &middot; USDC</span>
-                    </div>
-                    <div class="playground-card__overlay">
-                        <span class="playground-card__label">Pylon</span>
-                        <span class="playground-card__meta">Web3 infra &middot; Payments</span>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- 03 Clients -->
+    <!-- Clients -->
     <section id="testimonials" class="section-testimonials">
         <div class="container">
-            <header class="section-head" data-anim="fade">
-                <span class="section-num">03</span>
+            <header class="section-head section-head--plain" data-anim="fade">
                 <h2 class="section-title">Clients</h2>
                 <span class="section-rule"></span>
             </header>
@@ -391,9 +335,6 @@ if(r||sessionStorage.getItem('preloaderShown')!=='true')document.body.classList.
         <div class="footer-v3__inner">
             <div class="footer-v3__main">
                 <div class="footer-v3__col footer-v3__col--brand">
-                    <p class="hero-intro__index footer-v3__index">
-                        <span class="hero-intro__index-num">04</span><span class="hero-intro__index-slash">/</span><span class="hero-intro__index-label">Colophon</span>
-                    </p>
                     <a href="#home" class="footer-logo-link" aria-label="Fonseca — Home">
                         <img src="logo.svg" alt="" class="footer-logo-img logo-light" height="32">
                         <img src="logo%20white.svg" alt="" class="footer-logo-img logo-dark" height="32">
@@ -405,15 +346,14 @@ if(r||sessionStorage.getItem('preloaderShown')!=='true')document.body.classList.
                     <p class="hero-intro__role footer-v3__col-head">Navigate</p>
                     <div class="footer-v3__links">
                         <a href="#work">Work</a>
+                        <a href="fun.html">Fun</a>
                         <a href="about.html">About</a>
-                        <a href="#testimonials">Clients</a>
-                        <a href="projects.html">All projects</a>
                     </div>
                 </nav>
                 <div class="footer-v3__col footer-v3__col--social">
                     <p class="hero-intro__role footer-v3__col-head">Connect</p>
                     <div class="footer-v3__links">
-                        <a href="mailto:fonsecaa.design@gmail.com">fonsecaa.design@gmail.com</a>
+                        <a href="#" data-copy-email>fonsecaa.design@gmail.com</a>
                         <a href="https://www.linkedin.com/in/maths-fonseca/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                         <a href="https://www.behance.net/maths-fonseca" target="_blank" rel="noopener noreferrer">Behance</a>
                         <a href="https://x.com/0xFonseca" target="_blank" rel="noopener noreferrer">X / Twitter</a>
