@@ -7157,6 +7157,14 @@ a.project-card:hover {
     width: 100%;
 }
 
+.case-overview-media {
+    gap: 24px;
+}
+
+.case-overview-media .case-bento-videos {
+    gap: 24px;
+}
+
 .case-bento-videos__cell {
     position: relative;
     flex: 1 1 0;
@@ -10727,6 +10735,21 @@ video.project-card__slide.project-card__slide--crop-in {
 /* Match Hedgehog product UI gradient in letterbox areas */
 .work-card__thumb:has(video.project-card__slide) {
     background: linear-gradient(165deg, #d4ebe0 0%, #e8f3ec 38%, #f2f1ed 72%, #f8f7f4 100%);
+}
+
+.work-card__thumb--video-light:has(video.project-card__slide) {
+    background: #ffffff;
+}
+
+.work-card__thumb--video-light video.project-card__slide {
+    object-fit: contain;
+    object-position: center center;
+    transform: scale(0.92);
+    transform-origin: center center;
+}
+
+.work-card:hover .work-card__thumb--video-light video.project-card__slide.active:not(.project-card__slide--crop-in) {
+    transform: scale(0.94);
 }
 
 .work-card:hover img.project-card__slide.active {
