@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initCaseImageLightbox();
     initLinkPrefetch();
     initLazyBelowFoldMedia();
+    initLazyWorkCardVideos();
     // FonsecaLLM is temporarily disabled. To reactivate, uncomment the line below.
     // initFonsecaLLM();
 });
@@ -52,6 +53,60 @@ function initLazyBelowFoldMedia() {
     document.querySelectorAll('.case-section-gallery img, .project-case-content img:not(.cover-img)').forEach((img) => {
         if (!img.hasAttribute('loading')) img.loading = 'lazy';
         if (!img.hasAttribute('decoding')) img.decoding = 'async';
+    });
+    document.querySelectorAll('.case-section-gallery video, .project-case-content .case-section-body video').forEach((video) => {
+        if (!video.hasAttribute('preload')) video.preload = 'none';
+    });
+}
+
+// =====================================================
+// PERFORMANCE — defer work-card video downloads until visible
+// =====================================================
+function initLazyWorkCardVideos() {
+    const videos = [...document.querySelectorAll('.work-card video')];
+    if (!videos.length) return;
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function ensureSrc(video) {
+        const src = video.dataset.src;
+        if (!src || video.getAttribute('src')) return;
+        video.src = src;
+        video.removeAttribute('data-src');
+    }
+
+    function shouldPlay(video) {
+        if (reduceMotion) return false;
+        const slide = video.closest('.project-card__slide');
+        return !slide || slide.classList.contains('active');
+    }
+
+    function playVideo(video) {
+        if (!shouldPlay(video)) return;
+        ensureSrc(video);
+        video.play().catch(() => {});
+    }
+
+    function pauseVideo(video) {
+        video.pause();
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            const video = entry.target;
+            if (entry.isIntersecting) playVideo(video);
+            else pauseVideo(video);
+        });
+    }, { rootMargin: '120px 0px', threshold: 0.1 });
+
+    videos.forEach((video) => {
+        video.autoplay = false;
+        if (!video.hasAttribute('preload')) video.preload = 'none';
+        if (video.getAttribute('src') && !video.dataset.src) {
+            video.dataset.src = video.getAttribute('src');
+            video.removeAttribute('src');
+        }
+        observer.observe(video);
     });
 }
 
@@ -696,11 +751,17 @@ function initWorkCardLinkPreview() {
 
         function syncSlideMedia(activeIdx) {
             slides.forEach((slide, i) => {
-                if (slide.tagName !== 'VIDEO') return;
-                if (i === activeIdx) slide.play().catch(() => {});
-                else {
-                    slide.pause();
-                    slide.currentTime = 0;
+                const video = slide.tagName === 'VIDEO' ? slide : slide.querySelector('video');
+                if (!video) return;
+                if (i === activeIdx) {
+                    if (video.dataset.src && !video.getAttribute('src')) {
+                        video.src = video.dataset.src;
+                        video.removeAttribute('data-src');
+                    }
+                    video.play().catch(() => {});
+                } else {
+                    video.pause();
+                    video.currentTime = 0;
                 }
             });
         }
@@ -787,7 +848,7 @@ function initWorkCardLinkPreview() {
             });
         });
 
-        syncSlideMedia(0);
+        syncSlideMedia(currentSlide);
     });
 }
 
