@@ -13605,7 +13605,7 @@ a.work-card__expand { text-decoration: none; cursor: pointer; }
    ===================================================== */
 .fllm-quote-btn {
     position: fixed;
-    z-index: 1400;
+    z-index: 10050;
     display: inline-flex;
     align-items: center;
     gap: 10px;
@@ -13669,7 +13669,7 @@ a.work-card__expand { text-decoration: none; cursor: pointer; }
 .fllm-overlay {
     position: fixed;
     inset: 0;
-    z-index: 1250;
+    z-index: 10040;
     background: rgba(15, 23, 42, 0.05);
     opacity: 0;
     pointer-events: none;
@@ -13685,7 +13685,7 @@ body.fllm-open .fllm-overlay {
     position: fixed;
     top: 0;
     right: 0;
-    z-index: 1260;
+    z-index: 10060;
     display: flex;
     flex-direction: column;
     width: clamp(380px, 27vw, 520px);

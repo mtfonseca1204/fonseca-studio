@@ -1764,6 +1764,8 @@ function initFonsecaLLM() {
 
     let selectedQuote = '';
     let selectionTimer = null;
+    let selectionHideTimer = null;
+    let lastQuoteShownAt = 0;
     let lastFocused = null;
 
     function createParagraph(text) {
@@ -1897,7 +1899,9 @@ function initFonsecaLLM() {
     }
 
     function hideQuoteBtn() {
+        clearTimeout(selectionHideTimer);
         quoteBtn.classList.remove('is-visible');
+        delete quoteBtn.dataset.quote;
     }
 
     function positionQuoteBtn(event, rect) {
@@ -1942,11 +1946,32 @@ function initFonsecaLLM() {
         quoteBtn.dataset.quote = text;
         positionQuoteBtn(event, rect);
         quoteBtn.classList.add('is-visible');
+        lastQuoteShownAt = Date.now();
+        clearTimeout(selectionHideTimer);
     }
 
     function scheduleQuoteBtn(event) {
         clearTimeout(selectionTimer);
+        clearTimeout(selectionHideTimer);
         selectionTimer = window.setTimeout(() => showQuoteBtn(event), 20);
+    }
+
+    function scheduleHideQuoteBtn() {
+        clearTimeout(selectionHideTimer);
+        selectionHideTimer = window.setTimeout(() => {
+            if (document.body.classList.contains('fllm-open')) return;
+
+            const selection = window.getSelection();
+            const liveText = selection?.toString()?.trim() || '';
+            if (liveText.length >= MIN_SELECTION_LENGTH) return;
+
+            // Keep the pill clickable briefly after the browser clears the highlight.
+            if (quoteBtn.classList.contains('is-visible') && quoteBtn.dataset.quote) {
+                if (Date.now() - lastQuoteShownAt < 500) return;
+            }
+
+            hideQuoteBtn();
+        }, 100);
     }
 
     closeBtn.addEventListener('click', closePanel);
@@ -1962,13 +1987,25 @@ function initFonsecaLLM() {
         }
     });
     document.addEventListener('mouseup', scheduleQuoteBtn);
+    document.addEventListener('pointerup', scheduleQuoteBtn);
     document.addEventListener('touchend', scheduleQuoteBtn);
     document.addEventListener('selectionchange', () => {
         const selection = window.getSelection();
-        if (!selection || selection.isCollapsed) hideQuoteBtn();
+        if (!selection || selection.isCollapsed) {
+            scheduleHideQuoteBtn();
+            return;
+        }
+        scheduleQuoteBtn(null);
     });
-    window.addEventListener('scroll', hideQuoteBtn, { passive: true });
-    window.addEventListener('resize', hideQuoteBtn);
+    document.addEventListener('click', (event) => {
+        if (quoteBtn.contains(event.target)) return;
+        if (panel.contains(event.target)) return;
+        if (document.body.classList.contains('fllm-open')) return;
+        if (!quoteBtn.classList.contains('is-visible')) return;
+        scheduleHideQuoteBtn();
+    });
+    window.addEventListener('scroll', () => scheduleHideQuoteBtn(), { passive: true });
+    window.addEventListener('resize', () => scheduleHideQuoteBtn());
 
     quoteBtn.addEventListener('mousedown', (event) => event.preventDefault());
     quoteBtn.addEventListener('click', () => {
