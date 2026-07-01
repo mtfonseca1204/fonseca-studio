@@ -44,8 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initLinkPrefetch();
     initLazyBelowFoldMedia();
     initLazyWorkCardVideos();
-    // FonsecaLLM is temporarily disabled. To reactivate, uncomment the line below.
-    // initFonsecaLLM();
+    initFonsecaLLM();
 });
 
 // =====================================================
@@ -1668,311 +1667,315 @@ window.addEventListener('load', () => {
 // FONSECA LLM — AI portfolio assistant
 // =====================================================
 function initFonsecaLLM() {
-    if (document.querySelector('.fllm-launcher')) return;
+    if (document.querySelector('.fllm-panel')) return;
 
-    const SUGGESTIONS = [
-        'What makes your design approach unique?',
-        'What projects have you worked on?',
-        'How do you balance design and strategy?',
-        'Are you available for freelance work?',
+    const MIN_SELECTION_LENGTH = 3;
+    const MAX_SELECTION_LENGTH = 500;
+    const TOOLTIP_OFFSET = 54;
+    const FAQS = [
+        {
+            question: 'How does Matheus approach product strategy?',
+            answer: [
+                'He starts by making the problem and constraints explicit, then turns them into a clear product direction, prototype, and handoff path.',
+                'The work usually blends discovery, UX structure, visual systems, and launch-ready product thinking.'
+            ],
+        },
+        {
+            question: 'What projects has he worked on?',
+            answer: [
+                'Selected work includes Hedgehog, Transparent.space, Petrobras Saúde, Unimed Seguros, Picnic, AURA, NØRA, and Caramel.',
+                'The portfolio spans fintech, Web3, healthcare, enterprise products, and brand systems.'
+            ],
+        },
+        {
+            question: 'What makes his design style different?',
+            answer: [
+                'Matheus tends to make complex systems feel simple without flattening the product logic behind them.',
+                'His work combines strong art direction, systems thinking, and practical UX details for teams that need to ship.'
+            ],
+        },
+        {
+            question: 'Is he available for new work?',
+            answer: [
+                'Yes, for selected product design, brand, and interface projects.',
+                'The best next step is emailing fonsecaa.design@gmail.com with the context, timeline, and what you want to build.'
+            ],
+        },
     ];
-
-    const GREETING = "Hey — I'm Matheus' assistant. Ask me about his work, process, or availability. What would you like to know?";
-
-    // ---- build DOM ----
-    const launcher = document.createElement('button');
-    launcher.type = 'button';
-    launcher.className = 'fllm-launcher';
-    launcher.setAttribute('aria-label', 'Open FonsecaLLM, the AI assistant');
-    launcher.innerHTML =
-        '<span class="fllm-launcher__spark" aria-hidden="true"><span class="fllm-launcher__dot"></span></span>' +
-        '<span class="fllm-launcher__label">FonsecaLLM</span>';
 
     const overlay = document.createElement('div');
     overlay.className = 'fllm-overlay';
+    overlay.setAttribute('aria-hidden', 'true');
 
-    const panel = document.createElement('div');
+    const panel = document.createElement('aside');
     panel.className = 'fllm-panel';
     panel.setAttribute('role', 'dialog');
     panel.setAttribute('aria-modal', 'true');
-    panel.setAttribute('aria-label', 'FonsecaLLM chat');
+    panel.setAttribute('aria-hidden', 'true');
+    panel.setAttribute('aria-label', 'FonsecaLLM FAQ panel');
     panel.innerHTML = `
         <div class="fllm-panel__head">
-            <span class="fllm-panel__avatar" aria-hidden="true">F</span>
-            <span class="fllm-panel__id">
-                <span class="fllm-panel__name">FonsecaLLM</span>
-                <span class="fllm-panel__status">Online · usually replies instantly</span>
-            </span>
-            <button type="button" class="fllm-panel__close" aria-label="Close chat">
-                <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-            </button>
-        </div>
-        <div class="fllm-body" id="fllmBody">
-            <p class="fllm-intro__title">Ask me anything.</p>
-            <div class="fllm-suggestions" id="fllmSuggestions"></div>
-        </div>
-        <div class="fllm-foot">
-            <div class="fllm-quote-chip" id="fllmQuoteChip">
-                <span class="fllm-quote-chip__mark" aria-hidden="true">&ldquo;</span>
-                <span class="fllm-quote-chip__text" id="fllmQuoteText"></span>
-                <button type="button" class="fllm-quote-chip__remove" id="fllmQuoteRemove" aria-label="Remove quote">&times;</button>
-            </div>
-            <form class="fllm-composer" id="fllmForm">
-                <textarea class="fllm-input" id="fllmInput" rows="1" placeholder="Ask me anything…" aria-label="Message"></textarea>
-                <button type="submit" class="fllm-send" id="fllmSend" aria-label="Send message">
-                    <svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M10 16V4M10 4L5 9M10 4l5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="fllm-panel__brand">FonsecaLLM</span>
+            <span class="fllm-panel__info" aria-hidden="true">i</span>
+            <div class="fllm-panel__actions">
+                <button type="button" class="fllm-panel__icon-btn" data-fllm-reset aria-label="Reset panel">
+                    <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M5.2 6.2A6.2 6.2 0 1 1 4 10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M5.2 6.2H2.4V3.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </button>
-            </form>
-            <p class="fllm-disclaimer">AI assistant · may be imperfect. For anything important, email fonsecaa.design@gmail.com</p>
+                <button type="button" class="fllm-panel__icon-btn" data-fllm-close aria-label="Close panel">
+                    <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                </button>
+            </div>
+        </div>
+        <div class="fllm-panel__content">
+            <div class="fllm-panel__spark" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2.8l1.7 5.1 5.1 1.7-5.1 1.7-1.7 5.1-1.7-5.1-5.1-1.7 5.1-1.7L12 2.8Z" fill="currentColor"/></svg>
+            </div>
+            <h2 class="fllm-panel__title">Hey, ask away.</h2>
+            <div class="fllm-selected-quote" data-fllm-quote hidden>
+                <div class="fllm-selected-quote__head">
+                    <span>Selected text</span>
+                    <button type="button" data-fllm-clear-quote aria-label="Clear selected text">&times;</button>
+                </div>
+                <p data-fllm-quote-text></p>
+            </div>
+            <div class="fllm-faq" data-fllm-faq></div>
         </div>`;
 
     const quoteBtn = document.createElement('button');
     quoteBtn.type = 'button';
     quoteBtn.className = 'fllm-quote-btn';
-    quoteBtn.innerHTML = '<span aria-hidden="true">&ldquo;</span> Ask about this';
+    quoteBtn.setAttribute('aria-label', 'Ask AI about selected text');
+    quoteBtn.innerHTML = `
+        <span class="fllm-quote-btn__spark" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2.8l1.7 5.1 5.1 1.7-5.1 1.7-1.7 5.1-1.7-5.1-5.1-1.7 5.1-1.7L12 2.8Z" fill="currentColor"/></svg>
+        </span>
+        <span>Ask AI</span>`;
 
-    document.body.appendChild(launcher);
     document.body.appendChild(overlay);
     document.body.appendChild(panel);
     document.body.appendChild(quoteBtn);
 
-    // ---- refs ----
-    const body = panel.querySelector('#fllmBody');
-    const suggestionsWrap = panel.querySelector('#fllmSuggestions');
-    const form = panel.querySelector('#fllmForm');
-    const input = panel.querySelector('#fllmInput');
-    const sendBtn = panel.querySelector('#fllmSend');
-    const closeBtn = panel.querySelector('.fllm-panel__close');
-    const quoteChip = panel.querySelector('#fllmQuoteChip');
-    const quoteChipText = panel.querySelector('#fllmQuoteText');
-    const quoteChipRemove = panel.querySelector('#fllmQuoteRemove');
+    const faqWrap = panel.querySelector('[data-fllm-faq]');
+    const closeBtn = panel.querySelector('[data-fllm-close]');
+    const resetBtn = panel.querySelector('[data-fllm-reset]');
+    const quoteCard = panel.querySelector('[data-fllm-quote]');
+    const quoteText = panel.querySelector('[data-fllm-quote-text]');
+    const clearQuoteBtn = panel.querySelector('[data-fllm-clear-quote]');
 
-    // ---- state ----
-    const messages = [];       // {role, content} sent to API
-    let pendingQuote = '';     // highlighted quote awaiting a question
-    let isSending = false;
-    let greeted = false;
+    let selectedQuote = '';
+    let selectionTimer = null;
     let lastFocused = null;
 
-    // ---- render suggestions ----
-    SUGGESTIONS.forEach((q) => {
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'fllm-suggest';
-        btn.textContent = q;
-        btn.addEventListener('click', () => {
-            input.value = q;
-            sendMessage();
+    function createParagraph(text) {
+        const paragraph = document.createElement('p');
+        paragraph.textContent = text;
+        return paragraph;
+    }
+
+    function truncateText(text, maxLength) {
+        const trimmedText = text.trim();
+        if (trimmedText.length <= maxLength) return trimmedText;
+        return trimmedText.slice(0, maxLength - 3).trim() + '...';
+    }
+
+    function setQuote(text) {
+        selectedQuote = truncateText(text || '', MAX_SELECTION_LENGTH);
+        quoteCard.hidden = !selectedQuote;
+        quoteText.textContent = selectedQuote;
+    }
+
+    function clearQuote() {
+        selectedQuote = '';
+        quoteCard.hidden = true;
+        quoteText.textContent = '';
+    }
+
+    function setFaqExpanded(item, expanded) {
+        const button = item.querySelector('.fllm-faq__question');
+        const answer = item.querySelector('.fllm-faq__answer');
+        item.classList.toggle('is-open', expanded);
+        button.setAttribute('aria-expanded', String(expanded));
+        answer.hidden = !expanded;
+    }
+
+    function closeAllFaqs() {
+        faqWrap.querySelectorAll('.fllm-faq__item').forEach((item) => {
+            setFaqExpanded(item, false);
         });
-        suggestionsWrap.appendChild(btn);
+    }
+
+    FAQS.forEach((faq, index) => {
+        const item = document.createElement('div');
+        const answerId = `fllm-answer-${index}`;
+        item.className = 'fllm-faq__item';
+
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'fllm-faq__question';
+        button.setAttribute('aria-expanded', 'false');
+        button.setAttribute('aria-controls', answerId);
+        button.innerHTML = `
+            <span class="fllm-faq__arrow" aria-hidden="true">&#8618;</span>
+            <span class="fllm-faq__label"></span>
+            <span class="fllm-faq__chevron" aria-hidden="true"></span>`;
+        button.querySelector('.fllm-faq__label').textContent = faq.question;
+
+        const answer = document.createElement('div');
+        answer.className = 'fllm-faq__answer';
+        answer.id = answerId;
+        answer.hidden = true;
+        faq.answer.forEach((text) => answer.appendChild(createParagraph(text)));
+
+        button.addEventListener('click', () => {
+            const isExpanded = button.getAttribute('aria-expanded') === 'true';
+            closeAllFaqs();
+            if (!isExpanded) setFaqExpanded(item, true);
+        });
+
+        item.appendChild(button);
+        item.appendChild(answer);
+        faqWrap.appendChild(item);
     });
 
-    function clearIntro() {
-        const intro = body.querySelector('.fllm-intro__title');
-        const sugg = body.querySelector('.fllm-suggestions');
-        if (intro) intro.remove();
-        if (sugg) sugg.remove();
-    }
-
-    function escapeHtml(str) {
-        const div = document.createElement('div');
-        div.textContent = str;
-        return div.innerHTML;
-    }
-
-    // linkify emails + urls inside an already-escaped string
-    function formatReply(text) {
-        let safe = escapeHtml(text);
-        safe = safe.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
-        safe = safe.replace(/([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/g, '<a href="mailto:$1">$1</a>');
-        return safe;
-    }
-
-    function addBubble(role, text) {
-        clearIntro();
-        const el = document.createElement('div');
-        el.className = 'fllm-msg ' + (role === 'user' ? 'fllm-msg--user' : 'fllm-msg--bot');
-        el.innerHTML = role === 'user' ? escapeHtml(text) : formatReply(text);
-        body.appendChild(el);
-        body.scrollTop = body.scrollHeight;
-        return el;
-    }
-
-    function showTyping() {
-        const el = document.createElement('div');
-        el.className = 'fllm-typing';
-        el.innerHTML = '<span></span><span></span><span></span>';
-        body.appendChild(el);
-        body.scrollTop = body.scrollHeight;
-        return el;
-    }
-
-    // ---- quote chip ----
-    function setQuote(text) {
-        pendingQuote = (text || '').trim();
-        if (pendingQuote) {
-            quoteChipText.textContent = pendingQuote;
-            quoteChip.classList.add('is-visible');
-            input.placeholder = 'Ask about this quote…';
-        } else {
-            quoteChip.classList.remove('is-visible');
-            input.placeholder = 'Ask me anything…';
-        }
-    }
-    quoteChipRemove.addEventListener('click', () => setQuote(''));
-
-    // ---- open / close ----
-    function openPanel(prefillQuote) {
+    function openPanel(quote) {
         lastFocused = document.activeElement;
+        if (quote) setQuote(quote);
         document.body.classList.add('fllm-open');
-        if (prefillQuote) setQuote(prefillQuote);
-        if (!greeted) {
-            greeted = true;
-            setTimeout(() => addBubble('bot', GREETING), 150);
-        }
-        setTimeout(() => input.focus(), 320);
+        overlay.setAttribute('aria-hidden', 'false');
+        panel.setAttribute('aria-hidden', 'false');
+        window.setTimeout(() => closeBtn.focus(), 260);
     }
 
     function closePanel() {
         document.body.classList.remove('fllm-open');
+        overlay.setAttribute('aria-hidden', 'true');
+        panel.setAttribute('aria-hidden', 'true');
         if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
     }
 
-    launcher.addEventListener('click', () => openPanel());
-    closeBtn.addEventListener('click', closePanel);
-    overlay.addEventListener('click', closePanel);
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && document.body.classList.contains('fllm-open')) closePanel();
-    });
+    function resetPanel() {
+        clearQuote();
+        closeAllFaqs();
+    }
 
-    // ---- input autosize ----
-    input.addEventListener('input', () => {
-        input.style.height = 'auto';
-        input.style.height = Math.min(input.scrollHeight, 120) + 'px';
-    });
-    input.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' && !e.shiftKey) {
-            e.preventDefault();
-            sendMessage();
-        }
-    });
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        sendMessage();
-    });
+    function getElementFromNode(node) {
+        if (!node) return null;
+        if (node.nodeType === Node.ELEMENT_NODE) return node;
+        return node.parentElement;
+    }
 
-    // ---- send ----
-    async function sendMessage() {
-        const text = input.value.trim();
-        if ((!text && !pendingQuote) || isSending) return;
+    function isSelectionInsideAssistant(selection) {
+        const anchorEl = getElementFromNode(selection.anchorNode);
+        const focusEl = getElementFromNode(selection.focusNode);
+        const selectedElements = [anchorEl, focusEl].filter(Boolean);
+        return selectedElements.some((el) => panel.contains(el) || quoteBtn.contains(el));
+    }
 
-        const quoteForThisTurn = pendingQuote;
-        const displayText = text || 'Tell me about this.';
-        addBubble('user', quoteForThisTurn ? `“${quoteForThisTurn}”\n\n${displayText}` : displayText);
-
-        messages.push({ role: 'user', content: text || 'Tell me more about this.' });
-        input.value = '';
-        input.style.height = 'auto';
-        setQuote('');
-
-        isSending = true;
-        sendBtn.disabled = true;
-        const typing = showTyping();
-
-        let reply;
+    function getSelectionRect(selection) {
         try {
-            reply = await fetchReply(messages, quoteForThisTurn);
+            const range = selection.getRangeAt(0);
+            const rect = range.getBoundingClientRect();
+            if (rect.width || rect.height) return rect;
+            const rects = range.getClientRects();
+            if (rects.length) return rects[0];
         } catch (err) {
-            reply = localFallback(text, quoteForThisTurn);
+            return null;
         }
-        typing.remove();
-        addBubble('bot', reply);
-        messages.push({ role: 'assistant', content: reply });
-
-        isSending = false;
-        sendBtn.disabled = false;
-        input.focus();
+        return null;
     }
 
-    async function fetchReply(history, quote) {
-        const res = await fetch('/api/chat', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ messages: history, quote }),
-        });
-        if (!res.ok) throw new Error('bad status ' + res.status);
-        const data = await res.json();
-        if (!data || !data.reply) throw new Error('no reply');
-        return data.reply;
+    function getPointerPoint(event) {
+        if (!event) return null;
+        if (event.changedTouches && event.changedTouches.length) {
+            return {
+                x: event.changedTouches[0].clientX,
+                y: event.changedTouches[0].clientY,
+            };
+        }
+        if (typeof event.clientX !== 'number') return null;
+        return { x: event.clientX, y: event.clientY };
     }
-
-    // client-side fallback when the API isn't reachable (e.g. opened as a local file)
-    function localFallback(userText, quote) {
-        const t = (userText || '').toLowerCase();
-        const has = (...w) => w.some((x) => t.includes(x));
-        if (quote && !userText) return "Happy to talk about that line — what would you like to know? You can also email fonsecaa.design@gmail.com.";
-        if (has('available', 'hire', 'freelance', 'work with', 'contact', 'email', 'budget', 'rate')) return "Yes — I'm open to select projects and available for remote work worldwide. Best to email fonsecaa.design@gmail.com or connect on LinkedIn (/in/maths-fonseca).";
-        if (has('hedgehog', 'prediction', 'orderbook', 'waitlist')) return "At Hedgehog I reworked how people predict on-chain — from orderbooks to pooled UP/DOWN positions — taking task completion from 40% to 88% and time-to-first-action from ~8s to under 2s, and built the landing page that drove 15,000+ waitlist sign-ups with zero paid spend.";
-        if (has('transparent', 'market maker', 'liquidity', 'b2b', 'dashboard')) return "At Transparent.space I'm Founding Product Designer — I built a B2B dashboard from zero that makes market-maker performance impossible to hide, lifting task completion from 61% to 88%.";
-        if (has('petrobras', 'unimed', 'health', 'insurance', 'telemedicine')) return "In healthcare I redesigned Petrobras Saúde's telemedicine platform for 50,000+ employees and Unimed Seguros' insurance app, both with a focus on clarity under real-world urgency.";
-        if (has('approach', 'process', 'unique', 'different', 'balance', 'strategy', 'philosophy')) return "I don't just design interfaces — I structure products. I start from the real problem and the system behind it, then turn complexity into something clear and usable, from discovery to hand-off.";
-        if (has('project', 'work', 'portfolio', 'experience')) return "Selected work: Hedgehog (Web3 prediction market), Transparent.space (B2B market-maker dashboard), Petrobras Saúde and Unimed Seguros (healthcare), plus brand work for Picnic and Agent Arena. Want detail on any one?";
-        if (has('skill', 'tool', 'figma', 'stack')) return "My toolkit: Figma, Photoshop, Illustrator, prototyping, user research, design systems, website and strategy design — with a strong Web3/DeFi specialization.";
-        if (has('hello', 'hi', 'hey', 'oi', 'ola')) return "Hey! I'm Matheus — a product designer across Web3/DeFi, healthcare and enterprise. Ask me about my projects, process, or availability.";
-        return "I'm Matheus' assistant — I can talk about his projects, process, skills, or availability. For anything specific, email fonsecaa.design@gmail.com.";
-    }
-
-    // =================================================
-    // Highlight-to-ask: floating "Ask about this" button
-    // =================================================
-    let quoteBtnTimer = null;
 
     function hideQuoteBtn() {
         quoteBtn.classList.remove('is-visible');
     }
 
-    function onSelection() {
-        if (document.body.classList.contains('fllm-open')) return;
-        const sel = window.getSelection();
-        if (!sel || sel.isCollapsed) { hideQuoteBtn(); return; }
-        const text = sel.toString().trim();
-        if (text.length < 12 || text.length > 600) { hideQuoteBtn(); return; }
+    function positionQuoteBtn(event, rect) {
+        const point = getPointerPoint(event);
+        const centerX = point ? point.x : rect.left + rect.width / 2;
+        const centerY = point ? point.y : rect.top;
+        const buttonWidth = quoteBtn.offsetWidth || 128;
+        const viewportWidth = document.documentElement.clientWidth;
+        const maxLeft = viewportWidth - buttonWidth - 12;
+        let left = centerX - buttonWidth / 2;
+        let top = centerY - TOOLTIP_OFFSET;
 
-        // ignore selections inside the panel/launcher itself
-        const anchorNode = sel.anchorNode;
-        if (anchorNode && quoteBtn.contains(anchorNode)) return;
-
-        let rect;
-        try { rect = sel.getRangeAt(0).getBoundingClientRect(); } catch (e) { return; }
-        if (!rect || (!rect.width && !rect.height)) { hideQuoteBtn(); return; }
-
-        const btnW = quoteBtn.offsetWidth || 130;
-        let left = window.scrollX + rect.left + rect.width / 2 - btnW / 2;
-        left = Math.max(window.scrollX + 8, Math.min(left, window.scrollX + document.documentElement.clientWidth - btnW - 8));
-        const top = window.scrollY + rect.top - 46;
+        left = Math.max(12, Math.min(left, maxLeft));
+        if (top < 12) top = rect.bottom + 12;
 
         quoteBtn.style.left = left + 'px';
-        quoteBtn.style.top = (top < window.scrollY ? window.scrollY + rect.bottom + 10 : top) + 'px';
+        quoteBtn.style.top = top + 'px';
+    }
+
+    function showQuoteBtn(event) {
+        if (document.body.classList.contains('fllm-open')) return;
+
+        const selection = window.getSelection();
+        if (!selection || selection.isCollapsed) {
+            hideQuoteBtn();
+            return;
+        }
+
+        const text = selection.toString().trim();
+        const invalidLength = text.length < MIN_SELECTION_LENGTH || text.length > MAX_SELECTION_LENGTH;
+        if (invalidLength || isSelectionInsideAssistant(selection)) {
+            hideQuoteBtn();
+            return;
+        }
+
+        const rect = getSelectionRect(selection);
+        if (!rect) {
+            hideQuoteBtn();
+            return;
+        }
+
         quoteBtn.dataset.quote = text;
+        positionQuoteBtn(event, rect);
         quoteBtn.classList.add('is-visible');
     }
 
-    document.addEventListener('mouseup', () => {
-        clearTimeout(quoteBtnTimer);
-        quoteBtnTimer = setTimeout(onSelection, 10);
+    function scheduleQuoteBtn(event) {
+        clearTimeout(selectionTimer);
+        selectionTimer = window.setTimeout(() => showQuoteBtn(event), 20);
+    }
+
+    closeBtn.addEventListener('click', closePanel);
+    resetBtn.addEventListener('click', resetPanel);
+    clearQuoteBtn.addEventListener('click', clearQuote);
+    overlay.addEventListener('click', closePanel);
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && document.body.classList.contains('fllm-open')) closePanel();
+        if (event.key === 'Escape') hideQuoteBtn();
+        if (event.shiftKey && ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(event.key)) {
+            scheduleQuoteBtn(event);
+        }
     });
+    document.addEventListener('mouseup', scheduleQuoteBtn);
+    document.addEventListener('touchend', scheduleQuoteBtn);
     document.addEventListener('selectionchange', () => {
-        const sel = window.getSelection();
-        if (!sel || sel.isCollapsed) hideQuoteBtn();
+        const selection = window.getSelection();
+        if (!selection || selection.isCollapsed) hideQuoteBtn();
     });
     window.addEventListener('scroll', hideQuoteBtn, { passive: true });
+    window.addEventListener('resize', hideQuoteBtn);
 
-    quoteBtn.addEventListener('mousedown', (e) => e.preventDefault()); // keep selection
+    quoteBtn.addEventListener('mousedown', (event) => event.preventDefault());
     quoteBtn.addEventListener('click', () => {
-        const q = quoteBtn.dataset.quote || '';
+        const quote = quoteBtn.dataset.quote || '';
         hideQuoteBtn();
-        const sel = window.getSelection();
-        if (sel) sel.removeAllRanges();
-        openPanel(q);
+        const selection = window.getSelection();
+        if (selection) selection.removeAllRanges();
+        openPanel(quote);
     });
 }
