@@ -1,5 +1,21 @@
+(function initPageFromNavEarly() {
+    if (!document.referrer) return;
+    try {
+        if (new URL(document.referrer).origin === location.origin) {
+            document.documentElement.classList.add('page-from-nav');
+        }
+    } catch (_) {}
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
-    document.body.classList.add('loaded');
+    const coldFade = initPageEnter();
+    if (coldFade) {
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => document.body.classList.add('loaded'));
+        });
+    } else {
+        document.body.classList.add('loaded');
+    }
     requestAnimationFrame(() => {
         window.dispatchEvent(new CustomEvent('fonseca:layoutready'));
     });
@@ -7,7 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
     initNavbarScroll();
     initSmoothScroll();
+    initClientsCarousel();
     initScrollReveal();
+    initEditorialScroll();
+    revealHeroOnLoad();
     initHeroAsciiTerrain();
     initHeroCopyEmail();
     initWorkProjectCarousels();
@@ -16,6 +35,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initTestimonialReadMore();
     updateYear();
     initCaseStudyNav();
+    initNavMotion();
+    initCaseStudyMotion();
+    initCaseStudyMagazine();
+    initPageTransitions();
     initThemeCompare();
     initCaseImageLightbox();
     initLinkPrefetch();
@@ -56,6 +79,22 @@ function initLazyBelowFoldMedia() {
     });
     document.querySelectorAll('.case-section-gallery video, .project-case-content .case-section-body video').forEach((video) => {
         if (!video.hasAttribute('preload')) video.preload = 'none';
+    });
+
+    const reduceMotion = prefersReducedMotion();
+    document.querySelectorAll('video[autoplay]').forEach((video) => {
+        if (reduceMotion) {
+            video.removeAttribute('autoplay');
+            video.pause();
+            return;
+        }
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) video.play().catch(() => {});
+                else video.pause();
+            });
+        }, { threshold: 0.2, rootMargin: '80px 0px' });
+        io.observe(video);
     });
 }
 
@@ -124,6 +163,67 @@ function rafThrottle(fn) {
 }
 
 // =====================================================
+// PAGE ENTER + TRANSITIONS
+// =====================================================
+function prefersReducedMotion() {
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
+function isSameOriginReferrer() {
+    if (!document.referrer) return false;
+    try {
+        return new URL(document.referrer).origin === location.origin;
+    } catch (_) {
+        return false;
+    }
+}
+
+function supportsNavViewTransitions() {
+    return typeof CSS !== 'undefined' && CSS.supports('selector(::view-transition-old(root))');
+}
+
+function initPageEnter() {
+    if (prefersReducedMotion() || isSameOriginReferrer() || document.documentElement.classList.contains('page-from-nav')) {
+        return false;
+    }
+    const navType = performance.getEntriesByType('navigation')[0]?.type;
+    if (navType && navType !== 'navigate') return false;
+    document.body.classList.add('page-init-fade');
+    return true;
+}
+
+function initPageTransitions() {
+    if (prefersReducedMotion()) return;
+
+    document.addEventListener('click', (e) => {
+        if (supportsNavViewTransitions()) return;
+
+        const link = e.target.closest('a[href]');
+        if (!link || link.target === '_blank' || e.defaultPrevented) return;
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+        const href = link.getAttribute('href');
+        if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:')) return;
+
+        let url;
+        try {
+            url = new URL(href, location.origin);
+        } catch (_) {
+            return;
+        }
+        if (url.origin !== location.origin) return;
+        if (url.pathname === location.pathname && url.hash) return;
+        if (/\.(pdf|zip|png|jpe?g|webp|mov|mp4)$/i.test(url.pathname)) return;
+
+        e.preventDefault();
+        document.body.classList.add('page-leaving');
+        window.setTimeout(() => {
+            window.location.href = url.href;
+        }, 260);
+    }, { capture: true });
+}
+
+// =====================================================
 // SCROLL REVEAL
 // =====================================================
 function initScrollReveal() {
@@ -132,11 +232,72 @@ function initScrollReveal() {
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('in-view');
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+            }
         });
-    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.12, rootMargin: '0px 0px -56px 0px' });
 
     els.forEach(el => observer.observe(el));
+}
+
+function initEditorialScroll() {
+    const isProjectCase = Boolean(document.querySelector('.project-case-content'));
+    const blocks = [
+        '.about-skills-section',
+        '.about-services-section',
+        '.about-contact',
+        '.about-photos',
+        '.fun-magazine-chapter',
+        '.hh3d-piece'
+    ];
+    if (!isProjectCase) {
+        blocks.push('.related-projects', '.case-section', '.case-brief', '.case-callout');
+    }
+
+    const els = document.querySelectorAll(blocks.join(','));
+    if (!els.length) return;
+
+    els.forEach((el, i) => {
+        el.classList.add('editorial-scroll');
+        el.style.setProperty('--editorial-i', String(i % 6));
+    });
+
+    if (prefersReducedMotion()) {
+        els.forEach((el) => el.classList.add('in-view'));
+        return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.14, rootMargin: '0px 0px -48px 0px' });
+
+    els.forEach((el) => observer.observe(el));
+}
+
+function revealHeroOnLoad() {
+    const hero = document.querySelector('.hero--intro');
+    if (!hero) return;
+
+    const items = hero.querySelectorAll('[data-anim]');
+    if (!items.length) return;
+
+    if (prefersReducedMotion()) {
+        items.forEach((el) => el.classList.add('in-view'));
+        return;
+    }
+
+    items.forEach((el, i) => {
+        el.style.setProperty('--hero-reveal-i', String(i));
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => el.classList.add('in-view'));
+        });
+    });
 }
 
 // =====================================================
@@ -147,6 +308,11 @@ function initTestimonialReadMore() {
     if (!root) return;
 
     const cards = Array.from(root.querySelectorAll('.testimonial-card'));
+
+    function syncCarouselPause() {
+        const anyExpanded = cards.some((card) => card.classList.contains('testimonial-card--expanded'));
+        root.classList.toggle('clients-carousel--paused', anyExpanded);
+    }
 
     function measureCard(card) {
         const p = card.querySelector('.testimonial-card__text');
@@ -170,13 +336,15 @@ function initTestimonialReadMore() {
 
     cards.forEach((card) => {
         const btn = card.querySelector('.testimonial-card__read-more');
-        btn?.addEventListener('click', () => {
+        btn?.addEventListener('click', (e) => {
+            e.stopPropagation();
             const expanding = !card.classList.contains('testimonial-card--expanded');
             card.classList.toggle('testimonial-card--expanded', expanding);
             const p = card.querySelector('.testimonial-card__text');
             if (p) p.classList.toggle('testimonial-card__text--clamped', !expanding);
             btn.setAttribute('aria-expanded', expanding ? 'true' : 'false');
             btn.textContent = expanding ? 'Read less' : 'Read more';
+            syncCarouselPause();
         });
     });
 
@@ -199,9 +367,80 @@ function initTestimonialReadMore() {
 }
 
 // =====================================================
+// CLIENTS — entrance + velocity-based marquee
+// =====================================================
+function initClientsCarousel() {
+    const section = document.querySelector('.section-testimonials');
+    if (!section) return;
+
+    const track = section.querySelector('.testimonials-track');
+    if (!track) return;
+
+    const syncDuration = () => {
+        const halfWidth = track.scrollWidth / 2;
+        if (halfWidth <= 0) return;
+        const pxPerSecond = window.matchMedia('(max-width: 768px)').matches ? 36 : 44;
+        track.style.setProperty('--clients-marquee-duration', `${halfWidth / pxPerSecond}s`);
+    };
+
+    const activate = () => {
+        if (section.classList.contains('clients-carousel--ready')) return;
+        syncDuration();
+        section.classList.add('clients-carousel--ready');
+        section.querySelectorAll('.section-head [data-anim]').forEach((el) => {
+            el.classList.add('in-view');
+        });
+    };
+
+    if (prefersReducedMotion()) {
+        section.classList.add('clients-carousel--ready', 'clients-carousel--static');
+        section.querySelectorAll('.section-head [data-anim]').forEach((el) => {
+            el.classList.add('in-view');
+        });
+        return;
+    }
+
+    syncDuration();
+
+    let resizeT;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeT);
+        resizeT = window.setTimeout(syncDuration, 150);
+    });
+    window.addEventListener('fonseca:layoutready', syncDuration);
+    if (document.fonts?.ready) {
+        document.fonts.ready.then(syncDuration);
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                activate();
+                observer.disconnect();
+            }
+        });
+    }, { threshold: 0.15, rootMargin: '0px 0px -48px 0px' });
+
+    observer.observe(section);
+
+    if (section.getBoundingClientRect().top < window.innerHeight * 0.85) {
+        requestAnimationFrame(activate);
+    }
+}
+
+// =====================================================
 // CASE-STUDY MEDIA — centered expand button + lightbox
 // =====================================================
 function initCaseImageLightbox() {
+    const run = () => setupCaseImageLightbox();
+    if (typeof requestIdleCallback === 'function') {
+        requestIdleCallback(run, { timeout: 1500 });
+    } else {
+        setTimeout(run, 120);
+    }
+}
+
+function setupCaseImageLightbox() {
     const mediaEls = Array.from(document.querySelectorAll('.case-gallery-img'));
     if (!mediaEls.length) return;
 
@@ -304,8 +543,14 @@ function initCaseImageLightbox() {
 // HERO — Kanagawa wave image → ASCII with wave motion
 // =====================================================
 function initHeroAsciiTerrain() {
-    const canvas = document.getElementById('heroAsciiTerrain');
-    const img = document.getElementById('heroAsciiSrc');
+    document.querySelectorAll('.hero-ascii-terrain').forEach((canvas) => {
+        initSingleHeroAscii(canvas);
+    });
+}
+
+function initSingleHeroAscii(canvas) {
+    const img = canvas.closest('section, .about-hero')?.querySelector('.hero-ascii-src')
+        || document.getElementById('heroAsciiSrc');
     if (!canvas) return;
     const fullBleed = canvas.classList.contains('about-ascii-bg');
     const ctx = canvas.getContext('2d');
@@ -566,7 +811,7 @@ function initHeroAsciiTerrain() {
         document.fonts.ready.then(debouncedKick);
     }
 
-    const heroSection = canvas.closest('.hero--intro, .about-hero');
+    const heroSection = canvas.closest('.hero--intro, .about-hero, .project-hero-case, .fun-page-intro, .editorial-hero');
     if (heroSection && typeof IntersectionObserver !== 'undefined') {
         const io = new IntersectionObserver((entries) => {
             const vis = entries.some((e) => e.isIntersecting && e.intersectionRatio > 0);
@@ -1147,19 +1392,135 @@ function initCaseStudyNav() {
         const cur = getCurrentSection();
         [heroNavLinks, sideNavLinks].forEach(links => {
             links.forEach(l => {
-                l.classList.toggle('active', l.getAttribute('href') === '#' + cur);
+                const isActive = l.getAttribute('href') === '#' + cur;
+                l.classList.toggle('active', isActive);
+                if (isActive) l.setAttribute('aria-current', 'true');
+                else l.removeAttribute('aria-current');
             });
         });
         if (sideNav) {
             const top = caseContent.offsetTop - 150;
             const bottom = caseContent.offsetTop + caseContent.offsetHeight - 300;
             const y = window.scrollY;
-            sideNav.classList.toggle('visible', y >= top && y <= bottom);
+            const show = y >= top && y <= bottom;
+            sideNav.classList.toggle('visible', show);
+            sideNav.classList.toggle('case-side-nav--revealed', show);
         }
     });
 
     window.addEventListener('scroll', update, { passive: true });
     window.addEventListener('load', update);
+}
+
+// =====================================================
+// NAV — animated icons + entrance (all pages)
+// =====================================================
+const CASE_SECTION_ICON_HTML = {
+    overview: '<g class="motion-icon__layers"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></g>',
+    context: '<g class="motion-icon__alert"><circle cx="12" cy="12" r="10"/><line class="motion-icon__alert-dot" x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></g>',
+    approach: '<g class="motion-icon__user"><circle cx="12" cy="7" r="4"/><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/></g>',
+    decisions: '<g class="motion-icon__key"><circle cx="7.5" cy="15.5" r="5.5"/><path d="M21 2l-9.6 9.6"/><path class="motion-icon__key-bit" d="M15.5 7.5l3 3L22 7l-3-3"/></g>',
+    reflection: '<g class="motion-icon__books"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></g>',
+    system: '<g class="motion-icon__pen"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></g>',
+    'my-role': '<g class="motion-icon__user"><circle cx="12" cy="7" r="4"/><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/></g>',
+    problem: '<g class="motion-icon__alert"><circle cx="12" cy="12" r="10"/><line class="motion-icon__alert-dot" x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></g>',
+    scenario: '<g class="motion-icon__book"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></g>',
+    solution: '<g class="motion-icon__star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></g>',
+    'key-decisions': '<g class="motion-icon__key"><circle cx="7.5" cy="15.5" r="5.5"/><path d="M21 2l-9.6 9.6"/><path class="motion-icon__key-bit" d="M15.5 7.5l3 3L22 7l-3-3"/></g>',
+    research: '<g class="motion-icon__search"><circle cx="11" cy="11" r="8"/><line class="motion-icon__search-handle" x1="21" y1="21" x2="16.65" y2="16.65"/></g>',
+    design: '<g class="motion-icon__pen"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></g>',
+    results: '<g class="motion-icon__chart"><line class="motion-icon__bar motion-icon__bar--3" x1="18" y1="20" x2="18" y2="10"/><line class="motion-icon__bar motion-icon__bar--2" x1="12" y1="20" x2="12" y2="4"/><line class="motion-icon__bar motion-icon__bar--1" x1="6" y1="20" x2="6" y2="14"/></g>',
+    lessons: '<g class="motion-icon__books"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></g>',
+    'next-steps': '<g class="motion-icon__arrow"><line x1="5" y1="12" x2="19" y2="12"/><polyline class="motion-icon__arrow-head" points="12 5 19 12 12 19"/></g>',
+};
+
+const HEADER_NAV_ICON_RULES = [
+    { key: 'work', match: (a) => /#work|index\.html$/.test(a.getAttribute('href') || '') || a.getAttribute('href') === '#work', html: '<g class="motion-icon__briefcase"><rect x="2" y="7" width="20" height="14" rx="2"/><path class="motion-icon__briefcase-lid" d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></g>' },
+    { key: 'creative', match: (a) => (a.getAttribute('href') || '').includes('fun.html'), html: '<g class="motion-icon__sparkles"><path class="motion-icon__spark-main" d="M12 3l1.4 4.3L17.5 9l-3.6 1.2L12 14.5 10.1 10.2 6.5 9l4.1-1.7z"/><path class="motion-icon__spark-mini" d="M5 19l.8 1.6L7.4 20l-.9 1.6.9 1.6-1.6-.6-.9 1.6"/></g>' },
+    { key: 'about', match: (a) => (a.getAttribute('href') || '').includes('about.html'), html: '<g class="motion-icon__profile"><circle class="motion-icon__profile-head" cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></g>' },
+    { key: 'resume', match: (a) => (a.getAttribute('href') || '').includes('.pdf'), html: '<g class="motion-icon__doc"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line class="motion-icon__doc-line motion-icon__doc-line--1" x1="16" y1="13" x2="8" y2="13"/><line class="motion-icon__doc-line motion-icon__doc-line--2" x1="16" y1="17" x2="8" y2="17"/></g>' },
+];
+
+function createMotionIcon(iconKey, svgInner) {
+    const span = document.createElement('span');
+    span.className = `nav-motion-icon nav-motion-icon--${iconKey}`;
+    span.setAttribute('aria-hidden', 'true');
+    span.innerHTML = `<svg class="motion-icon__svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">${svgInner}</svg>`;
+    return span;
+}
+
+function wrapLinkLabel(link, iconKey, svgInner, linkClass) {
+    if (link.querySelector('.nav-motion-icon')) return;
+    const labelText = link.textContent.trim();
+    link.textContent = '';
+    link.classList.add(linkClass);
+    const label = document.createElement('span');
+    label.className = linkClass.includes('case-side-nav') ? 'case-side-nav-label' : 'nav-motion-label';
+    label.textContent = labelText;
+    link.append(createMotionIcon(iconKey, svgInner), label);
+}
+
+function prependNavIcon(link, iconKey, svgInner, linkClass) {
+    if (link.querySelector('.nav-motion-icon')) return;
+    link.classList.add(linkClass);
+    link.insertBefore(createMotionIcon(iconKey, svgInner), link.firstChild);
+}
+
+function initNavMotion() {
+    const navbar = document.querySelector('.navbar');
+    if (!navbar) return;
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    navbar.classList.add('navbar--nav-motion');
+
+    navbar.querySelectorAll('.nav-center .nav-link, .mobile-menu-links .mobile-link:not(.mobile-cta)').forEach((link, i) => {
+        const rule = HEADER_NAV_ICON_RULES.find((r) => r.match(link));
+        if (!rule) return;
+        prependNavIcon(link, rule.key, rule.html, 'nav-link--motion');
+        link.style.setProperty('--nav-motion-i', String(i));
+    });
+
+    if (!reduceMotion) {
+        requestAnimationFrame(() => navbar.classList.add('navbar--entered'));
+    }
+}
+
+function initCaseStudyMotion() {
+    const caseContent = document.querySelector('.project-case-content');
+    if (!caseContent) return;
+
+    const reduceMotion = prefersReducedMotion();
+    document.body.classList.add('project-case-page');
+
+    const sideNav = document.getElementById('caseSideNav');
+    sideNav?.querySelectorAll('.case-side-nav-link').forEach((link, i) => {
+        const id = (link.getAttribute('href') || '').replace('#', '');
+        const iconKey = CASE_SECTION_ICON_HTML[id] ? id : 'overview';
+        const html = CASE_SECTION_ICON_HTML[id] || CASE_SECTION_ICON_HTML.overview;
+        wrapLinkLabel(link, iconKey, html, 'case-side-nav-link--motion');
+        link.style.setProperty('--nav-motion-i', String(i));
+    });
+
+    if (reduceMotion) return;
+
+    const heroItems = document.querySelectorAll('.project-hero-case .container > *');
+    heroItems.forEach((el, i) => {
+        el.classList.add('case-motion', 'case-motion--hero');
+        el.style.setProperty('--case-motion-i', String(i));
+    });
+
+    requestAnimationFrame(() => {
+        heroItems.forEach((el) => el.classList.add('in-view'));
+    });
+}
+
+// =====================================================
+// CASE STUDY — magazine layout variants
+// =====================================================
+function initCaseStudyMagazine() {
+    document.querySelectorAll('.case-gallery-tight-pair').forEach((pair) => {
+        pair.closest('.case-section-gallery')?.classList.add('case-section-gallery--linear');
+    });
 }
 
 // =====================================================

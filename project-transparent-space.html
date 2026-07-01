@@ -23,7 +23,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="about-page">
+<body class="editorial-site project-case-page">
 
     <nav class="navbar">
         <div class="nav-container">
@@ -37,7 +37,7 @@
                 <a href="index.html#work" class="nav-link"><span class="nav-num">01</span> Work</a>
                 <a href="fun.html" class="nav-link"><span class="nav-num">02</span> Creative Side</a>
                 <a href="about.html" class="nav-link"><span class="nav-num">03</span> About</a>
-                <a href="MatheusFonsecaCV.pdf?v=20260629?v=20260629" target="_blank" rel="noopener noreferrer" class="nav-link"><span class="nav-num">04</span> Resume</a>
+                <a href="MatheusFonsecaCV.pdf?v=20260629" target="_blank" rel="noopener noreferrer" class="nav-link"><span class="nav-num">04</span> Resume</a>
             </div>
             <div class="nav-right">
                 <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
@@ -53,7 +53,7 @@
                 <a href="index.html#work" class="mobile-link">Work</a>
                 <a href="fun.html" class="mobile-link">Creative Side</a>
                 <a href="about.html" class="mobile-link">About</a>
-                <a href="MatheusFonsecaCV.pdf?v=20260629?v=20260629" target="_blank" rel="noopener noreferrer" class="mobile-link">Resume</a>
+                <a href="MatheusFonsecaCV.pdf?v=20260629" target="_blank" rel="noopener noreferrer" class="mobile-link">Resume</a>
                 <a href="#" data-copy-email class="mobile-link mobile-cta">Contact</a>
             </div>
         </div>
@@ -64,12 +64,12 @@
             <p class="project-hero-tagline">WEB3 · INSTITUTIONAL PRODUCT DESIGN</p>
             <h1 class="project-hero-title">Transparent.space</h1>
             <p class="project-hero-description">
-                Transparent.space is a Web3 platform focused on verifiable proof of Market Maker performance, bringing together critical data such as SLA, liquidity, spreads, uptime, pool depth, and historical behavior in a single institutional environment.
+                Desk operators spent 20 minutes to spot an SLA breach. I redesigned the platform so they get a yes/no answer in under two.
             </p>
             <div class="project-case-meta">
                 <div class="case-meta-item"><span class="case-meta-label">MY ROLE</span><span class="case-meta-value">Founding Product Designer</span></div>
                 <div class="case-meta-item"><span class="case-meta-label">YEAR</span><span class="case-meta-value">2025 to 2026</span></div>
-                <div class="case-meta-item"><span class="case-meta-label">TEAM</span><span class="case-meta-value">Matheus (Design) · Pedro A. (PM) </span></div>
+                <div class="case-meta-item"><span class="case-meta-label">TEAM</span><span class="case-meta-value">Matheus (Design) · Pedro A. (PM)</span></div>
                 <div class="case-meta-item"><span class="case-meta-label">SCOPE</span><span class="case-meta-value">Product Design · Information Architecture · Design System</span></div>
             </div>
         </div>
@@ -77,17 +77,14 @@
 
     <aside class="case-side-nav" id="caseSideNav" aria-label="Project navigation">
         <nav class="case-side-nav-inner">
-            <a href="#overview" class="case-side-nav-link">Overview</a>
-            <a href="#my-role" class="case-side-nav-link">My Role</a>
-            <a href="#problem" class="case-side-nav-link">Problem</a>
-            <a href="#scenario" class="case-side-nav-link">Scenario</a>
-            <a href="#solution" class="case-side-nav-link">Solution</a>
-            <a href="#key-decisions" class="case-side-nav-link">Key Decisions</a>
-            <a href="#research" class="case-side-nav-link">Research</a>
-            <a href="#design" class="case-side-nav-link">Design</a>
-            <a href="#results" class="case-side-nav-link">Results</a>
-            <a href="#lessons" class="case-side-nav-link">Lessons</a>
-            <a href="#next-steps" class="case-side-nav-link">Next Steps</a>
+            <p class="case-side-nav__summary">Summary</p>
+            <a href="#overview" class="case-side-nav-link">At a glance</a>
+            <a href="#context" class="case-side-nav-link">Situation</a>
+            <a href="#approach" class="case-side-nav-link">Process</a>
+            <a href="#solution" class="case-side-nav-link">The work</a>
+            <a href="#decisions" class="case-side-nav-link">Choices</a>
+            <a href="#results" class="case-side-nav-link">Impact</a>
+            <a href="#reflection" class="case-side-nav-link">Ahead</a>
         </nav>
     </aside>
 
@@ -99,9 +96,15 @@
 
     <section class="project-case-content case-editorial">
         <div class="container container-narrow">
+            <div class="case-scan" aria-label="Project summary for quick reading">
+                <article class="case-scan__line"><span class="case-scan__label">My role</span><span class="case-scan__text">Founding Product Designer. <strong>IA, flows, UX,</strong> and a 120+ component system from zero.</span></article>
+                <article class="case-scan__line"><span class="case-scan__label">The problem</span><span class="case-scan__text">Desk operators spent <strong>15 to 20 minutes hunting SLA breaches</strong> across spreadsheets and dashboards.</span></article>
+                <article class="case-scan__line"><span class="case-scan__label">What changed</span><span class="case-scan__text"><strong>One-screen diagnosis in under two minutes.</strong> Task completion 61&rarr;88%.</span></article>
+            </div>
+
             <section id="overview" class="case-section">
-                <span class="case-section-label">INTRO</span>
-                <h2 class="case-section-title">Overview</h2>
+                <span class="case-section-label">At a glance</span>
+                <h2 class="case-section-title">The short version</h2>
                 <div class="case-brief" role="region" aria-label="Project summary">
                     <div class="case-brief__stat-band">
                         <div class="case-brief__stat-main">
@@ -122,98 +125,62 @@
                     <div class="case-brief__grid">
                         <article class="case-brief__card">
                             <h3 class="case-brief__card-label">Problem</h3>
-                            <p class="case-brief__card-text">Institutions managing <mark class="case-brief__hl">millions in crypto liquidity</mark> had no reliable way to check if their Market Makers (the firms that keep markets liquid) were actually performing. When a service agreement was breached, teams took <mark class="case-brief__hl">15 to 20 minutes</mark> to find the problem, jumping between spreadsheets and disconnected dashboards.</p>
+                            <p class="case-brief__card-text">Desk operators spent <mark class="case-brief__hl">15 to 20 minutes</mark> hunting SLA breaches across spreadsheets and disconnected dashboards.</p>
                         </article>
                         <article class="case-brief__card">
                             <h3 class="case-brief__card-label">Solution</h3>
-                            <p class="case-brief__card-text">We designed a <mark class="case-brief__hl">single-screen platform</mark> where SLA status, liquidity trends, and historical performance are visible at a glance, with full detail one click away. <span class="case-brief__flow">Status first → data second → drill-down on demand</span>.</p>
+                            <p class="case-brief__card-text"><mark class="case-brief__hl">Single-screen platform</mark>: SLA status, liquidity trends, and history at a glance. <span class="case-brief__flow">Status first &rarr; data second &rarr; drill-down on demand</span></p>
                         </article>
                         <article class="case-brief__card case-brief__card--result">
                             <h3 class="case-brief__card-label">Result</h3>
-                            <p class="case-brief__card-text"><span class="case-brief__inline-stat">~30%</span> faster to find answers in testing. Task completion went from <span class="case-brief__inline-stat">61→88%</span>. The product opened early partnership conversations with <mark class="case-brief__hl">Kraken</mark> and <mark class="case-brief__hl">Worldchain</mark>.</p>
+                            <p class="case-brief__card-text"><mark class="case-brief__hl">61→88% task completion</mark>, ~30% faster time-to-insight. <a href="#results" class="case-inline-link">Impact</a> below.</p>
                         </article>
                     </div>
                 </div>
-                <div class="case-section-gallery case-overview-media">
-                    <img src="Transparent.space Products/New imgs/Solution 1.png" alt="Transparent.space single-screen platform overview" class="case-gallery-img">
-                    <div class="case-bento-videos" aria-label="Overview detail gallery">
-                        <div class="case-bento-videos__cell">
-                            <img src="Transparent.space Products/New imgs/overview 1.png" alt="Transparent.space overview detail 1" class="case-gallery-img case-bento-videos__media">
-                        </div>
-                        <div class="case-bento-videos__cell">
-                            <img src="Transparent.space Products/New imgs/overview 2.png" alt="Transparent.space overview detail 2" class="case-gallery-img case-bento-videos__media">
-                        </div>
+                <div class="case-section-gallery case-overview-media" aria-label="Platform overview">
+                    <img src="Transparent.space Products/New imgs/Solution 1.png" alt="Transparent.space single-screen platform overview" class="case-gallery-img" loading="lazy" decoding="async">
+                    <div class="case-section-gallery case-section-gallery--pair case-overview-pair">
+                        <img src="Transparent.space Products/New imgs/overview 1.png" alt="Transparent.space overview detail: SLA status and liquidity" class="case-gallery-img" loading="lazy" decoding="async">
+                        <img src="Transparent.space Products/New imgs/overview 2.png" alt="Transparent.space overview detail: market comparison view" class="case-gallery-img" loading="lazy" decoding="async">
                     </div>
                 </div>
             </section>
 
-            <section id="my-role" class="case-section">
-                <span class="case-section-label">MY ROLE</span>
-                <h2 class="case-section-title">Founding Product Designer: building the product from zero</h2>
-                <div class="case-section-body case-prose-stack">
-                    <p class="case-prose-lead">I joined Transparent.space before there was a product. No screens, no design system, no shared language between business and engineering. Just a hard problem and a small team trying to solve it.</p>
-                    <p>As Founding Product Designer, I wasn't handed a brief and told to make it look good. I helped define what the product should be: what users see first, what data matters most, and how complex financial information becomes something a desk operator reads in seconds and an analyst trusts down to the number.</p>
-                    <div class="case-spec-grid">
-                        <div class="case-spec-item"><p><strong>Product direction:</strong> Shaped IA, user flows, and core UX decisions alongside the PM and engineering lead, from first wireframe to validated v2.</p></div>
-                        <div class="case-spec-item"><p><strong>Design system:</strong> Built 120+ modular components in Figma so design and dev shared one language from day one.</p></div>
-                        <div class="case-spec-item"><p><strong>Validation loops:</strong> Ran usability sessions, cut what didn't work, and measured impact: 61% to 88% task completion between v1 and v2.</p></div>
-                        <div class="case-spec-item"><p><strong>Visual language:</strong> Defined the blueprint-inspired system that signals precision and trust before anyone reads a data point.</p></div>
-                    </div>
-                    <p class="case-prose-kicker"><strong>Founding design means owning the full arc: problem, structure, interface, system, and proof that it works.</strong></p>
-                </div>
-            </section>
-
-            <section id="problem" class="case-section">
-                <span class="case-section-label">THE PROBLEM</span>
-                <h2 class="case-section-title">15 to 20 minutes to find a problem that costs money every second.</h2>
-                <div class="case-section-body case-prose-stack">
-                    <p class="case-prose-lead">Picture this: a service agreement gets breached. The operations team opens Dune, pulls a spreadsheet, checks a manual report. Fifteen to twenty minutes later, they finally know what went wrong. In fast-moving markets, every minute has a price.</p>
-                    <p>And it wasn't just about emergencies. Day to day, institutions had no standard way to compare Market Makers side by side. The data lived everywhere, was often self-reported, and was hard to verify.</p>
-                    <p class="case-prose-kicker"><strong>The real enemy wasn't missing data. It was data in the wrong places, in the wrong format, at the wrong time.</strong></p>
-                </div>
-            </section>
-
-            <section id="scenario" class="case-section case-section--context">
-                <span class="case-section-label">ACTUAL SCENARIO</span>
-                <h2 class="case-section-title">Market Makers keep crypto moving. Nobody could prove they were doing their job.</h2>
+            <section id="context" class="case-section">
+                <span class="case-section-label">The situation</span>
+                <h2 class="case-section-title">15 to 20 minutes to find a breach that costs money every second</h2>
                 <div class="case-section-body">
-                    <div class="case-lede">
-                        <p>Market Makers are the firms that provide liquidity to crypto markets: they keep spreads tight, pools deep, and exchanges running. Institutions depend on them completely. But measuring whether they're actually delivering? That was another story.</p>
-                        <p class="case-spec-heading"><strong>Performance evaluation today is:</strong></p>
-                        <ul class="case-list">
-                            <li><strong>Fragmented</strong> (Dune, DeFiLlama, proprietary dashboards, manual reports)</li>
-                            <li><strong>Poorly standardized</strong></li>
-                            <li><strong>Difficult to audit and compare</strong></li>
-                        </ul>
+                    <div class="case-prose-stack">
+                        <p class="case-prose-lead">When an SLA breaks, operators jump between Dune, spreadsheets, and manual reports. It takes 15 to 20 minutes to find the problem. Performance data was fragmented across tools with no single view to compare Market Makers side by side.</p>
+                        <p>Every minute of delay costs money. Transparent.space needed to answer one question first: is this Market Maker healthy right now? Everything else could wait behind a deliberate drill-down.</p>
                     </div>
                     <div class="case-section-gallery">
-                        <img src="Transparent.space Products/New imgs/Discovery research.png" alt="Discovery research: fragmented performance evaluation across tools" class="case-gallery-img">
+                        <img src="Transparent.space Products/New imgs/Discovery research.png" alt="Discovery research: fragmented performance evaluation across tools" class="case-gallery-img" loading="lazy" decoding="async">
                     </div>
-                    <div>
-                        <p class="case-spec-heading"><strong>What users told us hurt most:</strong></p>
-                        <div class="case-spec-grid">
-                            <div class="case-spec-item"><p><strong>No single view</strong> of performance across time and metrics</p></div>
-                            <div class="case-spec-item"><p><strong>No real proof</strong> that SLA agreements were being met</p></div>
-                            <div class="case-spec-item"><p><strong>Built for analysts</strong>, not for the people making decisions</p></div>
-                            <div class="case-spec-item"><p><strong>Numbers without context</strong>, hard to read, harder to act on</p></div>
-                        </div>
-                    </div>
-                    <p class="case-prose-kicker"><strong>That's the gap Transparent.space was built to close. Keep scrolling to see how.</strong></p>
+                </div>
+            </section>
+
+            <section id="approach" class="case-section">
+                <span class="case-section-label">How I worked</span>
+                <h2 class="case-section-title">Founding design from zero, with PM and engineering</h2>
+                <div class="case-section-body case-prose-stack">
+                    <p class="case-prose-lead">Joined before there was a product. Shaped IA, flows, and core UX from first wireframe to validated v2.</p>
+                    <p>Benchmarked Dune, Bloomberg, Grafana, Datadog: users need the right data in the right order, not more data. v1 feedback: &ldquo;I don&rsquo;t know where to start.&rdquo; Built 120+ modular components so design and dev shared one language.</p>
                 </div>
             </section>
 
             <section id="solution" class="case-section">
-                <span class="case-section-label">THE SOLUTION</span>
-                <h2 class="case-section-title">One screen. One source of truth. Under 2 minutes.</h2>
+                <span class="case-section-label">What we built</span>
+                <h2 class="case-section-title">One screen. Status first. Drill-down on demand.</h2>
                 <div class="case-section-body">
-                    <p class="case-prose-lead">One screen. See the full picture. Drill down only when you need to. We designed so a manager gets the answer in seconds, and an analyst gets the depth without losing their place.</p>
+                    <p class="case-prose-lead">One question drives the layout: &ldquo;Is this Market Maker healthy right now?&rdquo; Executives scan in seconds. Analysts get depth without losing their place.</p>
                     <div class="case-stages case-stages--v3">
                         <article class="case-stage-v3">
                             <div class="case-stage-v3__head">
                                 <span class="case-stage-v3__num">01</span>
                                 <div>
-                                    <h3 class="case-stage-v3__title">Information Architecture: answer the big question first</h3>
-                                    <p class="case-stage-v3__copy">We started with one question: "Is this Market Maker healthy right now?" Everything else is secondary. We mapped two journeys (quick executive scan and deep analyst review) onto the same screen. Four data layers: SLA Status, Liquidity Behavior, Market Comparison, and Methodology.</p>
+                                    <h3 class="case-stage-v3__title">Information Architecture</h3>
+                                    <p class="case-stage-v3__copy">Two journeys (executive scan and analyst review) on one screen. Four layers: SLA Status, Liquidity Behavior, Market Comparison, Methodology.</p>
                                 </div>
                             </div>
                             <div class="case-section-gallery">
@@ -224,8 +191,8 @@
                             <div class="case-stage-v3__head">
                                 <span class="case-stage-v3__num">02</span>
                                 <div>
-                                    <h3 class="case-stage-v3__title">Component Design: 120+ pieces, one system</h3>
-                                    <p class="case-stage-v3__copy">Built a modular design system of 120+ components in Figma. Same card works as a quick summary or a detailed view. Light mode by default: clean, serious, built for high-stakes decisions.</p>
+                                    <h3 class="case-stage-v3__title">Component Design</h3>
+                                    <p class="case-stage-v3__copy">120+ modular components in Figma. Same card works as summary or detail. Light mode by default: clean, serious, built for high-stakes decisions.</p>
                                 </div>
                             </div>
                             <div class="case-section-gallery">
@@ -236,8 +203,8 @@
                             <div class="case-stage-v3__head">
                                 <span class="case-stage-v3__num">03</span>
                                 <div>
-                                    <h3 class="case-stage-v3__title">Interaction Design: go deeper without getting lost</h3>
-                                    <p class="case-stage-v3__copy">Every screen has a simple summary view and an expandable detail view. Breadcrumbs show where you are. Alerts are clear: agreement fulfilled or not fulfilled, with trend data available on expand.</p>
+                                    <h3 class="case-stage-v3__title">Interaction Design</h3>
+                                    <p class="case-stage-v3__copy">Summary view and expandable detail on every screen. Breadcrumbs show position. Alerts read fulfilled or not fulfilled, with trend data on expand.</p>
                                 </div>
                             </div>
                             <div class="case-section-gallery">
@@ -248,36 +215,34 @@
                             <div class="case-stage-v3__head">
                                 <span class="case-stage-v3__num">04</span>
                                 <div>
-                                    <h3 class="case-stage-v3__title">Validation: cut the noise, keep what matters</h3>
-                                    <p class="case-stage-v3__copy">v1 showed 12 metrics at once. Two operators told us: "I don't know where to start." We cut to 4 critical metrics on the main view and moved the rest behind drill-down. In v2 with 4 operators, task completion went from 61% to 88%. Finding the status got 40% faster.</p>
+                                    <h3 class="case-stage-v3__title">Validation</h3>
+                                    <p class="case-stage-v3__copy">v1 showed 12 metrics at once. We cut to 4 on the main view and moved the rest behind drill-down. Target: SLA diagnosis under 2 minutes.</p>
                                 </div>
                             </div>
-                            <p class="case-stage-v3__note">The goal: find an SLA problem in under 2 minutes. Legacy tools took 15 to 20.</p>
                             <div class="case-section-gallery">
                                 <img src="Transparent.space Products/New imgs/Solution 04.png" alt="Solution 4: validation metrics and simplified dashboard view" class="case-gallery-img">
                             </div>
                         </article>
                     </div>
-                    <p class="case-prose-kicker"><strong>Four stages. One screen. Here's exactly how we built it.</strong></p>
                 </div>
             </section>
 
-            <section id="key-decisions" class="case-section">
-                <span class="case-section-label">KEY DECISIONS</span>
-                <h2 class="case-section-title">Three choices that changed everything</h2>
+            <section id="decisions" class="case-section">
+                <span class="case-section-label">Key choices</span>
+                <h2 class="case-section-title">Three tradeoffs that shaped the experience</h2>
                 <div class="case-section-body">
                     <div class="case-key-decisions">
                         <article class="case-key-decision">
-                            <h3 class="case-key-decision__title">SLA: yes or no, not maybe</h3>
-                            <p class="case-key-decision__text">98.7% uptime sounds fine. But did the Market Maker meet the agreement or not? We replaced confusing percentages with a clear answer: fulfilled or not fulfilled. Executives get it in seconds. Analysts still get the full breakdown one level down.</p>
+                            <h3 class="case-key-decision__title">Binary SLA over percentage nuance</h3>
+                            <p class="case-key-decision__text">We considered showing uptime percentages front and center. Operators needed a yes/no answer first. We chose fulfilled or not fulfilled at the top, with full breakdown one level down.</p>
                         </article>
                         <article class="case-key-decision">
-                            <h3 class="case-key-decision__title">Show the trend, not just the number</h3>
-                            <p class="case-key-decision__text">A $200K pool depth means nothing if you don't know where it's heading. We made direction the hero: every metric shows whether it's rising, falling, or stable. A number in motion tells a story a static number never will.</p>
+                            <h3 class="case-key-decision__title">Trend direction over static numbers</h3>
+                            <p class="case-key-decision__text">We considered absolute values as the hero metric. A $200K pool depth means nothing without direction. We chose rising, falling, or stable as the primary read.</p>
                         </article>
                         <article class="case-key-decision">
                             <h3 class="case-key-decision__title">4 metrics, not 12</h3>
-                            <p class="case-key-decision__text">More data isn't better data. v1 overwhelmed users. Two operators said it plainly: "I don't know where to start." We kept 4 metrics up front and hid the rest behind drill-down. Status identification got 40% faster.</p>
+                            <p class="case-key-decision__text">We considered density to signal completeness. v1 overwhelmed users. We chose 4 critical metrics up front and hid the rest behind drill-down.</p>
                         </article>
                     </div>
                     <div class="case-section-gallery">
@@ -286,185 +251,29 @@
                 </div>
             </section>
 
-            <section id="research" class="case-section">
-                <span class="case-section-label">DISCOVERY & RESEARCH</span>
-                <h2 class="case-section-title">We studied the best, then built something better</h2>
-                <div class="case-section-body">
-                    <p>We couldn't run traditional user research at scale. Instead, we studied how the best tools in finance and crypto organize complex data, and what makes institutional users trust a screen in under 10 seconds.</p>
-                    <div class="case-research-stack">
-                        <article class="case-research-card">
-                            <p class="case-research-card__title"><strong>Crypto data platforms</strong></p>
-                            <ul class="case-list">
-                                <li><strong>Studied:</strong> Dune Analytics, DeFiLlama. The tools teams already used, and where they fell short.</li>
-                                <li><strong>Learned:</strong> too much data, badly organized, spread across too many places</li>
-                            </ul>
-                        </article>
-                        <article class="case-research-card">
-                            <p class="case-research-card__title"><strong>Institutional financial tools</strong></p>
-                            <ul class="case-list">
-                                <li><strong>Studied:</strong> Bloomberg Terminal. The benchmark for density, trust, and professional tone.</li>
-                                <li><strong>Learned:</strong> executives decide in 10 seconds; analysts need depth without a separate product</li>
-                            </ul>
-                        </article>
-                        <article class="case-research-card">
-                            <p class="case-research-card__title"><strong>Performance & SLA dashboards</strong></p>
-                            <ul class="case-list">
-                                <li><strong>Studied:</strong> Grafana, Datadog. How monitoring tools structure alerts and status.</li>
-                                <li><strong>Learned:</strong> charts should guide the eye, not just display numbers</li>
-                            </ul>
-                        </article>
-                    </div>
-                    <div class="case-section-gallery">
-                        <img src="Transparent.space Products/New imgs/Discovery research.png" alt="Discovery research across crypto data and institutional finance tools" class="case-gallery-img">
-                    </div>
-                    <blockquote class="case-callout case-callout--insight"><p><strong><i>Users don't need more data. They need the right data, in the right order, with the right level of trust. In institutional products, looking serious is part of the product.</i></strong></p></blockquote>
-                    <details class="case-details">
-                        <summary class="case-details__summary">Users, stakeholders & product objectives</summary>
-                        <div class="case-details__body">
-                            <p class="case-block-heading"><strong>Primary users:</strong></p>
-                            <div class="case-challenge-grid">
-                                <div class="case-spec-item"><p><strong>Institutional Clients:</strong> crypto funds, DeFi protocols, exchanges, Web3 treasuries. Need quick comparison, verifiable data, and an executive analysis layer.</p></div>
-                                <div class="case-spec-item"><p><strong>Market Makers:</strong> trading desks needing to demonstrate SLA compliance. Need self-assessment tools and proof of performance against agreed SLAs.</p></div>
-                            </div>
-                            <p class="case-block-heading"><strong>Product objectives:</strong></p>
-                            <ul class="case-list">
-                                <li>Create a single layer of truth: a data operating system for Web3 liquidity</li>
-                                <li>Enable comparison without gamification: neutral side-by-side, no leaderboard bias</li>
-                                <li>Single-screen mental model: understand health at a glance, dive deeper without changing context</li>
-                            </ul>
-                        </div>
-                    </details>
-                </div>
-            </section>
-
-            <section id="design" class="case-section">
-                <span class="case-section-label">DESIGN CONCEPT</span>
-                <h2 class="case-section-title">Designed to feel like infrastructure, not a startup dashboard</h2>
-                <div class="case-section-body">
-                    <p>Before anyone reads a number, the product has to feel credible. We built a blueprint-inspired visual system: precise grids, clear structure, nothing decorative. It reads like engineering documentation, not a crypto landing page.</p>
-                    <div class="case-principle-grid">
-                        <div class="case-principle-item">
-                            <p><strong>Intentional Simplicity</strong></p>
-                            <p>Every pixel earns its place. The main screen answers one question: is this Market Maker healthy? Everything else waits behind a click.</p>
-                        </div>
-                        <div class="case-principle-item">
-                            <p><strong>Strict Hierarchy</strong></p>
-                            <p>Status before numbers. Yes/no before percentages. Trend before absolute value. The layout tells your eye where to go.</p>
-                        </div>
-                        <div class="case-principle-item">
-                            <p><strong>Visual Neutrality</strong></p>
-                            <p>No rankings. No badges. No colors pushing you toward a "winner." Same metrics, same layout, neutral comparison. The data speaks.</p>
-                        </div>
-                        <div class="case-principle-item">
-                            <p><strong>Radical Transparency</strong></p>
-                            <p>Grids and quadrants make everything visible. Nothing hidden behind decoration. If it matters, you can see it and compare it.</p>
-                        </div>
-                    </div>
-                    <div class="case-section-gallery case-section-gallery--pair">
-                        <video src="Transparent.space Products/New imgs/Demo_showcase.mov" autoplay muted loop playsinline class="case-gallery-img" aria-label="Transparent.space product demo showcase"></video>
-                        <video src="Transparent.space Products/New imgs/granuled.mov" autoplay muted loop playsinline class="case-gallery-img" aria-label="Transparent.space granular UI motion"></video>
-                    </div>
-                </div>
-            </section>
-
             <section id="results" class="case-section">
-                <span class="case-section-label">RESULTS</span>
-                <h2 class="case-section-title">The numbers backed the design</h2>
+                <span class="case-section-label">What changed</span>
+                <h2 class="case-section-title">Validated with operators: early institutional traction</h2>
                 <div class="case-section-body">
-                    <div class="case-big-stats">
-                        <article class="case-big-stat">
-                            <span class="case-big-stat__value">~30<span class="case-big-stat__unit">%</span></span>
-                            <p class="case-big-stat__label">faster to find answers in usability testing</p>
-                        </article>
-                        <article class="case-big-stat">
-                            <span class="case-big-stat__value">61<span class="case-big-stat__unit">→</span>88<span class="case-big-stat__unit">%</span></span>
-                            <p class="case-big-stat__label">task completion in v2 sessions (4 operators)</p>
-                        </article>
-                        <article class="case-big-stat">
-                            <span class="case-big-stat__value">2</span>
-                            <p class="case-big-stat__label">early partnership conversations with Kraken and Worldchain</p>
-                        </article>
+                    <div class="case-prose-stack">
+                        <p>Usability sessions with 4 desk operators showed <strong>61→88% task completion</strong> between v1 and v2. Cutting the primary view from 12 metrics to 4 delivered <strong>40% faster time-to-status</strong>, moving SLA diagnosis toward the under-2-minute target we set during validation.</p>
+                        <p>Early conversations with Kraken and Worldchain validated institutional traction. Outcomes were measured in operator sessions, not vanity metrics: users could scan health in seconds and drill into liquidity trends without losing their place.</p>
                     </div>
-                    <details class="case-details">
-                        <summary class="case-details__summary">Full metrics & operational impact</summary>
-                        <div class="case-details__body">
-                            <div class="case-metrics-group">
-                                <p class="case-block-heading"><strong>Product performance:</strong></p>
-                                <div class="case-challenge-grid">
-                                    <div class="case-metric-item"><p><strong>Time-to-insight:</strong> ~30% reduction measured in usability sessions. Target: SLA diagnosis under 2 min, down from 15 to 20 min with legacy tools (Dune, spreadsheets, manual reports).</p></div>
-                                    <div class="case-metric-item"><p><strong>Task completion:</strong> 61% to 88% between v1 and v2, measured in usability sessions with 4 operators.</p></div>
-                                    <div class="case-metric-item"><p><strong>Metric reduction:</strong> primary view cut from 12 metrics to 4 critical metrics. Time-to-status identification dropped 40%.</p></div>
-                                </div>
-                            </div>
-                            <div class="case-metrics-group">
-                                <p class="case-block-heading"><strong>Design & delivery:</strong></p>
-                                <div class="case-challenge-grid">
-                                    <div class="case-metric-item"><p><strong>Design system:</strong> 120+ components reduced design-to-dev handoff time by ~35%.</p></div>
-                                    <div class="case-metric-item"><p><strong>AI-assisted workflows:</strong> design cycles accelerated by ~60% through AI-assisted prototyping.</p></div>
-                                    <div class="case-metric-item"><p><strong>Market validation:</strong> product entered early partnership conversations with Kraken and Worldchain, signaling institutional product-market fit.</p></div>
-                                </div>
-                            </div>
-                            <blockquote class="case-callout case-callout--insight"><p><strong><i>We didn't benchmark against other dashboards. We benchmarked against the 15 to 20 minutes teams wasted every time something broke. That's what we designed to eliminate.</i></strong></p></blockquote>
-                        </div>
-                    </details>
+                    <div class="case-section-gallery case-section-gallery--linear case-results-media" aria-label="Product in motion">
+                        <video src="Transparent.space Products/New imgs/Demo_showcase.mov" autoplay muted loop playsinline class="case-gallery-img case-gallery-img--edge-crop" aria-label="Transparent.space full product demo"></video>
+                        <video src="Transparent.space Products/New imgs/granuled.mov" autoplay muted loop playsinline class="case-gallery-img case-gallery-img--edge-crop" aria-label="Transparent.space granular interaction and drill-down"></video>
+                    </div>
                 </div>
             </section>
 
-            <section id="lessons" class="case-section">
-                <span class="case-section-label">WHAT I LEARNED</span>
-                <h2 class="case-section-title">Lessons Learned</h2>
+            <section id="reflection" class="case-section">
+                <span class="case-section-label">Looking ahead</span>
+                <h2 class="case-section-title">What I&rsquo;d carry forward</h2>
                 <div class="case-section-body">
                     <blockquote class="case-callout case-callout--lesson">
-                        <p>In institutional products, looking polished can actually hurt trust. Every time we added something "to make it feel better," users trusted it less. Restraint wasn't a limitation. It was the strategy.</p>
+                        <p>In institutional products, restraint is the strategy. UI simplification without IA simplification just shifts confusion to a different screen.</p>
                     </blockquote>
-                    <details class="case-details">
-                        <summary class="case-details__summary">Full lessons from the project</summary>
-                        <div class="case-details__body">
-                            <div class="case-lesson-stack">
-                                <div class="case-lesson-item">
-                                    <p><strong>UI simplification without system simplification doesn't work.</strong></p>
-                                    <p>In v1, we tried to reduce complexity by simplifying the visual layer while keeping the underlying IA unchanged. Usability sessions showed the same confusion patterns. The complexity had just shifted from visual to conceptual. The real improvement came when we redesigned the IA, not just the UI.</p>
-                                </div>
-                                <div class="case-lesson-item">
-                                    <p><strong>Designing for two user types requires explicit prioritization.</strong></p>
-                                    <p>The tension between the executive user (scan in 10 seconds) and the analyst user (full data depth) almost derailed the IA multiple times. The resolution: the product always loads in executive mode, with analyst depth accessible but never forced.</p>
-                                </div>
-                                <div class="case-lesson-item">
-                                    <p><strong>Comparison without gamification is harder, and more honest.</strong></p>
-                                    <p>Leaderboard-style ranking was discarded after recognizing gamification creates visual bias. Side-by-side comparison with neutral UI forces users to evaluate nuance, not chase rankings.</p>
-                                </div>
-                                <div class="case-lesson-item">
-                                    <p><strong>AI-assisted workflows change the speed of ideation, not the quality of decisions.</strong></p>
-                                    <p>AI tools cut our ideation phase from weeks to days (~60% faster cycles). But what to prioritize, what to cut, and what the user actually needs still required the same depth of research and reasoning.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </details>
-                </div>
-            </section>
-
-            <section id="next-steps" class="case-section">
-                <span class="case-section-label">NEXT STEPS</span>
-                <h2 class="case-section-title">Next Steps</h2>
-                <div class="case-section-body">
-                    <div class="case-next-grid">
-                        <div class="case-next-item">
-                            <p><strong>Predictive alerts powered by historical patterns</strong></p>
-                            <p>3 of 4 operators asked for alerts that distinguish "this looks bad but will recover" from "this needs action now," before the problem fully hits.</p>
-                        </div>
-                        <div class="case-next-item">
-                            <p><strong>Multi-Market Maker comparison view</strong></p>
-                            <p>Today users compare one Market Maker at a time. Next: side-by-side view for up to 3, the most requested feature from beta users.</p>
-                        </div>
-                        <div class="case-next-item">
-                            <p><strong>Public API for data export</strong></p>
-                            <p>Several beta users need to pipe Transparent.space data into internal reporting systems. An API layer expands the product from dashboard to infrastructure component.</p>
-                        </div>
-                        <div class="case-next-item">
-                            <p><strong>Expanded partnership pipeline</strong></p>
-                            <p>Building on Kraken and Worldchain conversations: formalizing integration requirements and onboarding flows for institutional deployment.</p>
-                        </div>
-                    </div>
+                    <p><strong>Next:</strong> Predictive alerts before breaches fully hit; side-by-side comparison for up to 3 Market Makers.</p>
                 </div>
             </section>
         </div>
@@ -473,6 +282,7 @@
     <section class="related-projects related-projects--selected-work" aria-labelledby="selected-work-heading">
         <div class="container">
             <header class="section-head section-head--plain">
+                <span class="section-num">01</span>
                 <h2 class="section-title" id="selected-work-heading">Selected Work</h2>
                 <span class="section-rule"></span>
             </header>

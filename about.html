@@ -23,7 +23,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="about-page">
+<body class="about-page editorial-site">
 
     <nav class="navbar">
         <div class="nav-container">
@@ -59,15 +59,16 @@
         </div>
     </nav>
 
-    <main class="about-main">
+    <main class="about-main editorial-surface">
         <section class="about-hero">
+            <canvas class="hero-ascii-terrain about-ascii-bg" aria-hidden="true"></canvas>
             <div class="about-hero__inner">
         <section class="about-intro">
             <div class="about-intro__text">
-                <span class="about-intro__label">About</span>
-                <h1 class="about-intro__title">I don't just design interfaces.<br>I solve <span class="about-intro__strike">problems.</span></h1>
-                <p class="about-intro__body">I'm Matheus Fonseca, a UX/UI &amp; Product Designer based in Rio de Janeiro, Brazil. I specialize in turning complex systems into clear, intuitive experiences that drive real outcomes. From Web3 platforms to healthcare products, I design with a focus on usability, clarity, and meaningful impact.</p>
-                <p class="about-intro__body">I don't just deliver interfaces. I structure products. I've designed complex systems across Web3, working from zero to one and translating technical concepts into usable, scalable experiences. My work has been recognized through hackathon wins at ETHSamba 2023 (ETH) and Blockchain Rio 2024 (Ripio) / 2025 (BASE).</p>
+                <span class="about-intro__label"><span class="section-num">03</span> About</span>
+                <h1 class="about-intro__title" data-anim="title">I don't just design interfaces.<br>I solve <span class="about-intro__strike">problems.</span></h1>
+                <p class="about-intro__body" data-anim="fade">I'm Matheus Fonseca, a UX/UI &amp; Product Designer based in Rio de Janeiro, Brazil. I specialize in turning complex systems into clear, intuitive experiences that drive real outcomes. From Web3 platforms to healthcare products, I design with a focus on usability, clarity, and meaningful impact.</p>
+                <p class="about-intro__body" data-anim="fade">I don't just deliver interfaces. I structure products. I've designed complex systems across Web3, working from zero to one and translating technical concepts into usable, scalable experiences. My work has been recognized through hackathon wins at ETHSamba 2023 (ETH) and Blockchain Rio 2024 (Ripio) / 2025 (BASE).</p>
 
                 <div class="trust-bar trust-bar--compact" aria-label="Trusted by">
                     <div class="trust-bar-inner trust-bar-inner--compact">
@@ -111,52 +112,75 @@
             </div>
         </section>
 
-        <section class="about-skills-section">
-            <h2 class="about-skills__heading">Tools &amp; Skills</h2>
-            <div class="about-skills__tags">
-                <span>Figma</span>
-                <span>Photoshop</span>
-                <span>Illustrator</span>
-                <span>Prototyping</span>
-                <span>User Research</span>
-                <span>Design Systems</span>
-                <span>Website Design</span>
-                <span>Strategy Design</span>
-                <span>Web3 / DeFi</span>
+        <section class="about-skills-section editorial-scroll" data-anim="fade">
+            <header class="about-section-head">
+                <span class="about-section-head__index">A</span>
+                <h2 class="about-section-head__title">Tools &amp; Skills</h2>
+            </header>
+            <div class="about-skills__grid">
+                <article class="about-skills__card">
+                    <h3 class="about-skills__card-label">Product &amp; UI</h3>
+                    <ul class="about-skills__list">
+                        <li>Figma</li>
+                        <li>Prototyping</li>
+                        <li>Design Systems</li>
+                        <li>Website Design</li>
+                    </ul>
+                </article>
+                <article class="about-skills__card">
+                    <h3 class="about-skills__card-label">Visual &amp; Brand</h3>
+                    <ul class="about-skills__list">
+                        <li>Photoshop</li>
+                        <li>Illustrator</li>
+                        <li>Strategy Design</li>
+                    </ul>
+                </article>
+                <article class="about-skills__card">
+                    <h3 class="about-skills__card-label">Research</h3>
+                    <ul class="about-skills__list">
+                        <li>User Research</li>
+                        <li>Usability Testing</li>
+                        <li>Journey Mapping</li>
+                    </ul>
+                </article>
+                <article class="about-skills__card">
+                    <h3 class="about-skills__card-label">Domains</h3>
+                    <ul class="about-skills__list">
+                        <li>Web3 / DeFi</li>
+                        <li>Healthcare</li>
+                        <li>Fintech</li>
+                        <li>Enterprise SaaS</li>
+                    </ul>
+                </article>
             </div>
         </section>
 
-        <section class="about-services-section">
-            <h2 class="about-services__heading">Services</h2>
-            <div class="about-services__list">
-                <div class="about-services__item">
+        <section class="about-services-section editorial-scroll" data-anim="fade">
+            <header class="about-section-head">
+                <span class="about-section-head__index">B</span>
+                <h2 class="about-section-head__title">Services</h2>
+            </header>
+            <div class="about-services__grid">
+                <article class="about-services__card">
                     <span class="about-services__num">01</span>
-                    <div>
-                        <h3>Brand Strategy</h3>
-                        <p>Research, competitive mapping, audience insights, naming, messaging, and architecture that guide design and go to market.</p>
-                    </div>
-                </div>
-                <div class="about-services__item">
+                    <h3>Brand Strategy</h3>
+                    <p>Research, competitive mapping, audience insights, naming, messaging, and architecture that guide design and go to market.</p>
+                </article>
+                <article class="about-services__card">
                     <span class="about-services__num">02</span>
-                    <div>
-                        <h3>Visual Identity</h3>
-                        <p>Distinctive identities paired with a precise system of type, color, imagery, motion, and iconography.</p>
-                    </div>
-                </div>
-                <div class="about-services__item">
+                    <h3>Visual Identity</h3>
+                    <p>Distinctive identities paired with a precise system of type, color, imagery, motion, and iconography.</p>
+                </article>
+                <article class="about-services__card">
                     <span class="about-services__num">03</span>
-                    <div>
-                        <h3>UX/UI Design</h3>
-                        <p>From research and wireframes to polished interfaces &mdash; products that solve real problems across all devices.</p>
-                    </div>
-                </div>
-                <div class="about-services__item">
+                    <h3>UX/UI Design</h3>
+                    <p>From research and wireframes to polished interfaces &mdash; products that solve real problems across all devices.</p>
+                </article>
+                <article class="about-services__card">
                     <span class="about-services__num">04</span>
-                    <div>
-                        <h3>Systems &amp; Guidelines</h3>
-                        <p>Components, templates, and usage rules that keep your brand and product sharp at every scale.</p>
-                    </div>
-                </div>
+                    <h3>Systems &amp; Guidelines</h3>
+                    <p>Components, templates, and usage rules that keep your brand and product sharp at every scale.</p>
+                </article>
             </div>
         </section>
 

@@ -23,7 +23,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="about-page fun-page">
+<body class="about-page fun-page editorial-site">
 
     <nav class="navbar">
         <div class="nav-container">
@@ -59,11 +59,13 @@
         </div>
     </nav>
 
-    <main class="fun-main">
-        <section class="fun-page-intro" aria-labelledby="fun-page-title">
+    <main class="fun-main editorial-surface">
+        <section class="fun-page-intro editorial-hero" aria-labelledby="fun-page-title">
+            <canvas class="hero-ascii-terrain" aria-hidden="true"></canvas>
             <div class="container">
-                <h1 id="fun-page-title" class="fun-page-intro__title">Hackathons, brand side quests, and tools I wish existed.</h1>
-                <p class="fun-page-intro__lede">Between client work I ship experiments, identity systems, and hackathon projects.</p>
+                <p class="fun-page-intro__index" data-anim="fade"><span class="section-num">02</span> Creative Side</p>
+                <h1 id="fun-page-title" class="fun-page-intro__title" data-anim="title">Hackathons, brand side quests, and tools I wish existed.</h1>
+                <p class="fun-page-intro__lede" data-anim="fade">Between client work I ship experiments, identity systems, and hackathon projects.</p>
             </div>
         </section>
 
@@ -71,7 +73,7 @@
             <div class="container">
                 <div class="fun-magazine">
 
-                    <div class="fun-magazine-chapter">
+                    <div class="fun-magazine-chapter fun-magazine-chapter--motion">
                         <p class="fun-magazine-chapter__label">Motion</p>
                         <div class="fun-magazine-chapter__grid">
                             <a href="hedgehog-3d.html" class="fun-magazine-card fun-magazine-card--wide">
@@ -84,7 +86,7 @@
                         </div>
                     </div>
 
-                    <div class="fun-magazine-chapter">
+                    <div class="fun-magazine-chapter fun-magazine-chapter--brand">
                         <p class="fun-magazine-chapter__label">Brand</p>
                         <div class="fun-magazine-chapter__grid">
                             <a href="project-transparent-space-brand.html" class="fun-magazine-card">
@@ -121,7 +123,7 @@
                         </div>
                     </div>
 
-                    <div class="fun-magazine-chapter">
+                    <div class="fun-magazine-chapter fun-magazine-chapter--hackathons">
                         <p class="fun-magazine-chapter__label">Hackathons</p>
                         <div class="fun-magazine-chapter__grid">
                             <a href="https://web3thunder.finance/" target="_blank" rel="noopener noreferrer" class="fun-magazine-card">
@@ -152,7 +154,7 @@
                         </div>
                     </div>
 
-                    <div class="fun-magazine-chapter">
+                    <div class="fun-magazine-chapter fun-magazine-chapter--personal">
                         <p class="fun-magazine-chapter__label">Personal</p>
                         <div class="fun-magazine-chapter__grid">
                             <a href="https://tokenlab-gold.vercel.app/" target="_blank" rel="noopener noreferrer" class="fun-magazine-card fun-magazine-card--wide">
