@@ -1664,6 +1664,345 @@ window.addEventListener('load', () => {
 });
 
 // =====================================================
+// FONSECA LLM — portfolio knowledge + search
+// =====================================================
+const FLLM_PROJECTS = [
+    {
+        id: 'hedgehog-product',
+        title: 'Hedgehog · Prediction Market',
+        client: 'Hedgehog',
+        url: 'project-hedgehog-product.html',
+        category: ['Web3', 'Product'],
+        impactScore: 95,
+        summary: 'Redesigned a Web3 prediction market from orderbook literacy to pooled UP/DOWN rounds so anyone could participate in one tap.',
+        metrics: ['40% → 88% task completion', '8s → under 2s time to first action', '~35% faster design-to-dev handoff via 120+ components'],
+        keywords: ['hedgehog', 'prediction', 'market', 'web3', 'defi', 'orderbook', 'pool', 'product', 'trading', 'on-chain', 'impact', 'metric'],
+    },
+    {
+        id: 'hedgehog-waitlist',
+        title: 'Hedgehog · Waitlist',
+        client: 'Hedgehog',
+        url: 'project-hedgehog.html',
+        category: ['Web3', 'Growth'],
+        impactScore: 88,
+        summary: 'Built a trust-first landing page before the product existed, turning organic crypto audiences into qualified waitlist sign-ups.',
+        metrics: ['37.5% waitlist conversion with zero paid spend', '15,000+ qualified sign-ups from 40K+ organic followers', '2–8% B2B/Web3 benchmark beaten by ~5×'],
+        keywords: ['hedgehog', 'waitlist', 'landing', 'conversion', 'growth', 'web3', 'trust', 'signup'],
+    },
+    {
+        id: 'transparent-space',
+        title: 'Transparent.space',
+        client: 'Transparent.space',
+        url: 'project-transparent-space.html',
+        category: ['Web3', 'Enterprise'],
+        impactScore: 85,
+        summary: 'As Founding Product Designer, built a B2B dashboard from zero so liquidity providers could see market-maker performance in one screen.',
+        metrics: ['61% → 88% task completion', '~30% faster time-to-insight', '15–20 min SLA hunts reduced to at-a-glance status'],
+        keywords: ['transparent', 'dashboard', 'market maker', 'b2b', 'web3', 'liquidity', 'sla', 'institutional'],
+    },
+    {
+        id: 'petrobras',
+        title: 'Petrobras Saúde',
+        client: 'Petrobras Saúde',
+        url: 'project-petrobras-saude.html',
+        category: ['Healthcare', 'Enterprise'],
+        impactScore: 75,
+        summary: 'Designed a triage-first telehealth platform for Petrobras employees during COVID, researched across three beneficiary segments.',
+        metrics: ['50,000+ employees served', 'Shipped at COVID peak under urgency', 'Calm, guided path: describe → triage → consult'],
+        keywords: ['petrobras', 'healthcare', 'telehealth', 'telemedicine', 'enterprise', 'covid', 'triage', 'employees'],
+    },
+    {
+        id: 'unimed',
+        title: 'Unimed Seguros',
+        client: 'Unimed Seguros',
+        url: 'project-unimed-seguros.html',
+        category: ['Healthcare', 'Mobile'],
+        impactScore: 70,
+        summary: 'Redesigned insurance telemedicine flows to reduce anxiety with clarity before features for beneficiaries with mixed digital literacy.',
+        metrics: ['40K+ beneficiaries', 'Improved scheduling completion during COVID', 'One predictable path: sign in → schedule → consult'],
+        keywords: ['unimed', 'insurance', 'healthcare', 'telemedicine', 'mobile', 'scheduling', 'covid'],
+    },
+    {
+        id: 'picnic',
+        title: 'Picnic · Brand',
+        client: 'Picnic',
+        url: 'project-picnic.html',
+        category: ['Fintech', 'Brand'],
+        impactScore: 45,
+        summary: 'Built a Key Visual system with templates and guidelines so Picnic could ship consistent brand across social, in-app, and campaigns.',
+        metrics: ['Templates cut social production time', 'Cohesive identity for launch', 'Team could run channels autonomously'],
+        keywords: ['picnic', 'brand', 'identity', 'fintech', 'visual', 'social', 'templates'],
+    },
+    {
+        id: 'transparent-brand',
+        title: 'Transparent.space · Brand',
+        client: 'Transparent.space',
+        url: 'project-transparent-space-brand.html',
+        category: ['Web3', 'Brand'],
+        impactScore: 50,
+        summary: 'Created a blueprint-inspired visual identity so institutional Web3 users could trust the product in the first 3 seconds.',
+        metrics: ['Cohesive system across product, website, and marketing', 'Precision type and grids as trust signals', 'Foundation ready to scale with new modules'],
+        keywords: ['transparent', 'brand', 'identity', 'web3', 'institutional', 'blueprint'],
+    },
+    {
+        id: 'caramel',
+        title: 'Caramel',
+        client: 'Caramel',
+        url: 'project-caramel.html',
+        category: ['Web3', 'Product'],
+        impactScore: 48,
+        summary: 'Concept for on-chain token launches with a step-by-step LaChain flow that makes smart contract steps transparent for first-time creators.',
+        metrics: ['Award-winning concept at Blockchain Rio 2024', 'Accessible on-chain creation without losing credibility', 'Idea → create → launch → on-chain flow'],
+        keywords: ['caramel', 'web3', 'token', 'launch', 'blockchain', 'lachain', 'hackathon'],
+    },
+    {
+        id: 'aura',
+        title: 'AURA · Brand',
+        client: 'AURA',
+        url: 'project-aura.html',
+        category: ['Luxury', 'Brand'],
+        impactScore: 38,
+        summary: 'Luxury jewelry identity using dark palette, high-contrast type, and restraint instead of ornate tradition.',
+        metrics: ['Distinct positioning vs traditional jewelry tropes', 'Flexible system for future product lines', 'Premium through negative space'],
+        keywords: ['aura', 'luxury', 'jewelry', 'brand', 'identity'],
+    },
+    {
+        id: 'nora',
+        title: 'NØRA · Brand',
+        client: 'NØRA',
+        url: 'project-nora.html',
+        category: ['Food', 'Brand'],
+        impactScore: 36,
+        summary: 'Craft-centric bakery identity with earth tones and custom type, built for digital, print, and physical touchpoints.',
+        metrics: ['Increased landing engagement', 'Scalable system across channels', 'Strong visual reception in a competitive local market'],
+        keywords: ['nora', 'bakery', 'brand', 'food', 'craft', 'identity'],
+    },
+];
+
+const FLLM_SEARCH_SUGGESTIONS = [
+    'Which project had the biggest impact?',
+    'Web3 projects',
+    'Healthcare work',
+];
+
+function normalizeFllmText(value) {
+    return String(value || '')
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^\w\s%+./-]/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+}
+
+function tokenizeFllmQuery(query) {
+    const stop = new Set(['the', 'and', 'for', 'with', 'that', 'this', 'from', 'have', 'has', 'had', 'what', 'which', 'does', 'did', 'about', 'matheus', 'fonseca', 'project', 'projects', 'work', 'his', 'he', 'she', 'they', 'are', 'was', 'were', 'can', 'how']);
+    return normalizeFllmText(query)
+        .split(' ')
+        .filter((token) => token.length > 2 && !stop.has(token));
+}
+
+function scoreFllmProject(project, tokens) {
+    const haystack = normalizeFllmText([
+        project.title,
+        project.client,
+        project.summary,
+        ...(project.metrics || []),
+        ...(project.keywords || []),
+        ...(project.category || []),
+    ].join(' '));
+
+    let score = 0;
+    tokens.forEach((token) => {
+        if (haystack.includes(token)) score += token.length > 5 ? 4 : 2;
+    });
+    return score;
+}
+
+function filterFllmProjects(predicate) {
+    return FLLM_PROJECTS.filter(predicate).sort((a, b) => b.impactScore - a.impactScore);
+}
+
+function fllmProjectLinks(projects, limit = 3) {
+    return projects.slice(0, limit).map((project) => ({
+        label: `View ${project.title} →`,
+        url: project.url,
+    }));
+}
+
+function answerFllmSearch(query, faqs) {
+    const raw = query.trim();
+    if (!raw) return null;
+
+    const norm = normalizeFllmText(raw);
+    const tokens = tokenizeFllmQuery(raw);
+
+    const impactIntent = /\b(biggest|largest|highest|most|strongest|best|greatest|top)\b/.test(norm)
+        && /\b(impact|result|metric|outcome|improvement|success|performance|numbers)\b/.test(norm);
+    const listIntent = /\b(list|show|all|selected)\b/.test(norm) && /\b(project|work|case|portfolio)\b/.test(norm);
+    const web3Intent = /\b(web3|defi|crypto|blockchain|on-chain|prediction|market maker)\b/.test(norm);
+    const healthcareIntent = /\b(health|healthcare|telehealth|telemedicine|insurance|medical|hospital)\b/.test(norm);
+    const brandIntent = /\b(brand|identity|visual|logo|key visual)\b/.test(norm);
+    const contactIntent = /\b(contact|email|hire|available|availability|freelance|work together|reach)\b/.test(norm);
+    const approachIntent = /\b(approach|strategy|process|method|how does he|how do you)\b/.test(norm);
+
+    if (impactIntent) {
+        const ranked = filterFllmProjects(() => true);
+        const top = ranked[0];
+        const second = ranked[1];
+        return {
+            title: 'Highest measurable impact',
+            paragraphs: [
+                `Based on documented case study metrics, ${top.title} shows the strongest product impact: ${top.metrics.slice(0, 2).join('; ')}.`,
+                second ? `Also strong: ${second.title} — ${second.metrics[0]}.` : '',
+            ].filter(Boolean),
+            links: fllmProjectLinks(ranked, 3),
+        };
+    }
+
+    if (listIntent) {
+        const ranked = filterFllmProjects(() => true);
+        return {
+            title: 'Selected work',
+            paragraphs: [
+                'Matheus has shipped product and brand work across Web3, healthcare, enterprise, and fintech.',
+                ranked.slice(0, 5).map((p) => `${p.title}: ${p.metrics[0]}.`).join(' '),
+            ],
+            links: fllmProjectLinks(ranked, 5),
+        };
+    }
+
+    if (web3Intent) {
+        const matches = filterFllmProjects((p) => p.category.includes('Web3') || normalizeFllmText(p.keywords.join(' ')).includes('web3'));
+        return {
+            title: 'Web3 & DeFi work',
+            paragraphs: matches.map((p) => `${p.title} — ${p.summary}`),
+            links: fllmProjectLinks(matches, 4),
+        };
+    }
+
+    if (healthcareIntent) {
+        const matches = filterFllmProjects((p) => p.category.includes('Healthcare'));
+        return {
+            title: 'Healthcare projects',
+            paragraphs: matches.map((p) => `${p.title}: ${p.metrics[0]}. ${p.summary}`),
+            links: fllmProjectLinks(matches, 2),
+        };
+    }
+
+    if (brandIntent) {
+        const matches = filterFllmProjects((p) => p.category.includes('Brand'));
+        return {
+            title: 'Brand & identity work',
+            paragraphs: matches.map((p) => `${p.title} — ${p.summary}`),
+            links: fllmProjectLinks(matches, 4),
+        };
+    }
+
+    if (contactIntent) {
+        return {
+            title: 'Availability & contact',
+            paragraphs: [
+                'Yes — Matheus is open to selected product design, brand, and interface projects, remote worldwide.',
+                'Best next step: email fonsecaa.design@gmail.com with context, timeline, and what you want to build.',
+            ],
+            links: [{ label: 'Copy email from homepage →', url: 'index.html#home' }],
+        };
+    }
+
+    if (approachIntent) {
+        const faq = faqs.find((item) => normalizeFllmText(item.question).includes('strategy'));
+        if (faq) {
+            return {
+                title: faq.question,
+                paragraphs: faq.answer,
+                links: [{ label: 'See Hedgehog product case →', url: 'project-hedgehog-product.html' }],
+            };
+        }
+    }
+
+    const scored = FLLM_PROJECTS
+        .map((project) => ({ project, score: scoreFllmProject(project, tokens) }))
+        .filter((entry) => entry.score > 0)
+        .sort((a, b) => b.score - a.score || b.project.impactScore - a.project.impactScore);
+
+    if (scored.length) {
+        const best = scored[0].project;
+        const related = scored.slice(1, 3).map((entry) => entry.project);
+        return {
+            title: best.title,
+            paragraphs: [
+                best.summary,
+                `Key results: ${best.metrics.join('; ')}.`,
+                related.length ? `Related: ${related.map((p) => p.title).join(', ')}.` : '',
+            ].filter(Boolean),
+            links: fllmProjectLinks([best, ...related], 3),
+        };
+    }
+
+    const faqMatch = faqs.find((item) => {
+        const haystack = normalizeFllmText([item.question, ...(item.answer || [])].join(' '));
+        return tokens.some((token) => haystack.includes(token));
+    });
+
+    if (faqMatch) {
+        return {
+            title: faqMatch.question,
+            paragraphs: faqMatch.answer,
+            links: fllmProjectLinks(filterFllmProjects(() => true), 2),
+        };
+    }
+
+    return {
+        title: 'Try a more specific question',
+        paragraphs: [
+            'I can answer from Matheus\'s case studies — impact metrics, industries, and project summaries.',
+            'Examples: "Which project had the biggest impact?", "Web3 projects", or "Petrobras healthcare".',
+        ],
+        links: fllmProjectLinks(filterFllmProjects(() => true), 3),
+    };
+}
+
+function renderFllmSearchResult(container, result) {
+    container.replaceChildren();
+    if (!result) {
+        container.hidden = true;
+        return;
+    }
+
+    container.hidden = false;
+    const wrap = document.createElement('article');
+    wrap.className = 'fllm-search-result';
+
+    const title = document.createElement('h3');
+    title.className = 'fllm-search-result__title';
+    title.textContent = result.title;
+    wrap.appendChild(title);
+
+    result.paragraphs.forEach((text) => {
+        const paragraph = document.createElement('p');
+        paragraph.className = 'fllm-search-result__text';
+        paragraph.textContent = text;
+        wrap.appendChild(paragraph);
+    });
+
+    if (result.links?.length) {
+        const links = document.createElement('div');
+        links.className = 'fllm-search-result__links';
+        result.links.forEach(({ label, url }) => {
+            const anchor = document.createElement('a');
+            anchor.href = url;
+            anchor.className = 'fllm-search-link';
+            anchor.textContent = label;
+            links.appendChild(anchor);
+        });
+        wrap.appendChild(links);
+    }
+
+    container.appendChild(wrap);
+}
+
+// =====================================================
 // FONSECA LLM — AI portfolio assistant
 // =====================================================
 function initFonsecaLLM() {
@@ -1731,6 +2070,17 @@ function initFonsecaLLM() {
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2.8l1.7 5.1 5.1 1.7-5.1 1.7-1.7 5.1-1.7-5.1-5.1-1.7 5.1-1.7L12 2.8Z" fill="currentColor"/></svg>
             </div>
             <h2 class="fllm-panel__title">Hey, ask away.</h2>
+            <form class="fllm-search" data-fllm-search>
+                <label class="fllm-search__label" for="fllm-search-input">Search portfolio</label>
+                <div class="fllm-search__field">
+                    <input type="search" id="fllm-search-input" class="fllm-search__input" placeholder="Which project had the biggest impact?" autocomplete="off" enterkeyhint="search">
+                    <button type="submit" class="fllm-search__submit" aria-label="Search portfolio">
+                        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="5.5" stroke="currentColor" stroke-width="1.6"/><path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                    </button>
+                </div>
+            </form>
+            <div class="fllm-search-suggestions" data-fllm-suggestions></div>
+            <div class="fllm-search-results" data-fllm-results hidden></div>
             <div class="fllm-selected-quote" data-fllm-quote hidden>
                 <div class="fllm-selected-quote__head">
                     <span>Selected text</span>
@@ -1751,11 +2101,33 @@ function initFonsecaLLM() {
         </span>
         <span>Ask AI</span>`;
 
+    const launcher = document.createElement('button');
+    launcher.type = 'button';
+    launcher.className = 'fllm-launcher';
+    launcher.setAttribute('aria-label', 'Open Ask AI assistant');
+    launcher.setAttribute('aria-haspopup', 'dialog');
+    launcher.innerHTML = `
+        <span class="fllm-launcher__spark" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2.8l1.7 5.1 5.1 1.7-5.1 1.7-1.7 5.1-1.7-5.1-5.1-1.7 5.1-1.7L12 2.8Z" fill="currentColor"/></svg>
+        </span>
+        <span class="fllm-launcher__label">Ask AI</span>`;
+
     document.body.appendChild(overlay);
     document.body.appendChild(panel);
     document.body.appendChild(quoteBtn);
+    document.body.appendChild(launcher);
+
+    const title = panel.querySelector('.fllm-panel__title');
+    const hint = document.createElement('p');
+    hint.className = 'fllm-panel__hint';
+    hint.textContent = 'Search project impact and details, or highlight text on the page to ask about a quote.';
+    title.insertAdjacentElement('afterend', hint);
 
     const faqWrap = panel.querySelector('[data-fllm-faq]');
+    const searchForm = panel.querySelector('[data-fllm-search]');
+    const searchInput = panel.querySelector('#fllm-search-input');
+    const searchResults = panel.querySelector('[data-fllm-results]');
+    const suggestionsWrap = panel.querySelector('[data-fllm-suggestions]');
     const closeBtn = panel.querySelector('[data-fllm-close]');
     const resetBtn = panel.querySelector('[data-fllm-reset]');
     const quoteCard = panel.querySelector('[data-fllm-quote]');
@@ -1845,7 +2217,10 @@ function initFonsecaLLM() {
         document.body.classList.add('fllm-open');
         overlay.setAttribute('aria-hidden', 'false');
         panel.setAttribute('aria-hidden', 'false');
-        window.setTimeout(() => closeBtn.focus(), 260);
+        window.setTimeout(() => {
+            if (quote && closeBtn) closeBtn.focus();
+            else if (searchInput) searchInput.focus();
+        }, 260);
     }
 
     function closePanel() {
@@ -1858,7 +2233,33 @@ function initFonsecaLLM() {
     function resetPanel() {
         clearQuote();
         closeAllFaqs();
+        if (searchInput) searchInput.value = '';
+        renderFllmSearchResult(searchResults, null);
     }
+
+    function runFllmSearch() {
+        const query = searchInput?.value?.trim() || '';
+        if (!query) {
+            renderFllmSearchResult(searchResults, null);
+            return;
+        }
+        closeAllFaqs();
+        renderFllmSearchResult(searchResults, answerFllmSearch(query, FAQS));
+        searchResults.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    FLLM_SEARCH_SUGGESTIONS.forEach((label) => {
+        const chip = document.createElement('button');
+        chip.type = 'button';
+        chip.className = 'fllm-search-suggestion';
+        chip.textContent = label;
+        chip.addEventListener('click', () => {
+            searchInput.value = label;
+            runFllmSearch();
+            searchInput.focus();
+        });
+        suggestionsWrap.appendChild(chip);
+    });
 
     function getElementFromNode(node) {
         if (!node) return null;
@@ -1870,7 +2271,10 @@ function initFonsecaLLM() {
         const anchorEl = getElementFromNode(selection.anchorNode);
         const focusEl = getElementFromNode(selection.focusNode);
         const selectedElements = [anchorEl, focusEl].filter(Boolean);
-        return selectedElements.some((el) => panel.contains(el) || quoteBtn.contains(el));
+        return selectedElements.some((el) => {
+            if (panel.contains(el) || quoteBtn.contains(el) || launcher.contains(el)) return true;
+            return false;
+        });
     }
 
     function getSelectionRect(selection) {
@@ -1978,6 +2382,10 @@ function initFonsecaLLM() {
     resetBtn.addEventListener('click', resetPanel);
     clearQuoteBtn.addEventListener('click', clearQuote);
     overlay.addEventListener('click', closePanel);
+    searchForm?.addEventListener('submit', (event) => {
+        event.preventDefault();
+        runFllmSearch();
+    });
 
     document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape' && document.body.classList.contains('fllm-open')) closePanel();
@@ -1999,6 +2407,7 @@ function initFonsecaLLM() {
     });
     document.addEventListener('click', (event) => {
         if (quoteBtn.contains(event.target)) return;
+        if (launcher.contains(event.target)) return;
         if (panel.contains(event.target)) return;
         if (document.body.classList.contains('fllm-open')) return;
         if (!quoteBtn.classList.contains('is-visible')) return;
@@ -2014,5 +2423,11 @@ function initFonsecaLLM() {
         const selection = window.getSelection();
         if (selection) selection.removeAllRanges();
         openPanel(quote);
+    });
+
+    launcher.addEventListener('click', () => {
+        hideQuoteBtn();
+        clearQuote();
+        openPanel();
     });
 }

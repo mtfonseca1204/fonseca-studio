@@ -13708,6 +13708,15 @@ body.fllm-open .fllm-panel {
     transform: translateX(0);
 }
 
+body.editorial-site .fllm-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: auto;
+    bottom: auto;
+    z-index: 10060;
+}
+
 .fllm-panel__head {
     display: flex;
     align-items: center;
@@ -13797,7 +13806,237 @@ body.fllm-open .fllm-panel {
     font-size: clamp(26px, 2.2vw, 36px);
     font-weight: 700;
     line-height: 1.05;
+    letter-spacing: -0.03em;
     color: var(--text-primary);
+}
+
+.fllm-panel__hint {
+    margin: -16px 0 26px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--text-gray);
+}
+
+.fllm-panel__content:has(.fllm-search) .fllm-panel__spark {
+    margin-bottom: 28px;
+}
+
+.fllm-search {
+    margin-bottom: 14px;
+}
+
+.fllm-search__label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.fllm-search__field {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 6px 6px 16px;
+    background: var(--bg-light);
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.fllm-search__field:focus-within {
+    border-color: rgba(255, 92, 0, 0.45);
+    box-shadow: 0 0 0 3px rgba(255, 92, 0, 0.1);
+}
+
+.fllm-search__input {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.3;
+    color: var(--text-primary);
+    background: transparent;
+    border: 0;
+    outline: none;
+}
+
+.fllm-search__input::placeholder {
+    color: var(--text-light);
+}
+
+.fllm-search__submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    color: #ffffff;
+    background: #FF5C00;
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.fllm-search__submit:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 18px rgba(255, 92, 0, 0.28);
+}
+
+.fllm-search__submit:focus-visible {
+    outline: 2px solid #FF5C00;
+    outline-offset: 2px;
+}
+
+.fllm-search-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 22px;
+}
+
+.fllm-search-suggestion {
+    padding: 8px 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    line-height: 1.3;
+    color: var(--text-gray);
+    background: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.fllm-search-suggestion:hover,
+.fllm-search-suggestion:focus-visible {
+    color: #FF5C00;
+    border-color: rgba(255, 92, 0, 0.35);
+    background: rgba(255, 92, 0, 0.06);
+}
+
+.fllm-search-results {
+    margin-bottom: 24px;
+}
+
+.fllm-search-result {
+    padding: 18px 18px 16px;
+    background: var(--bg-light);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+}
+
+.fllm-search-result__title {
+    margin: 0 0 12px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+}
+
+.fllm-search-result__text {
+    margin: 0 0 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-gray);
+}
+
+.fllm-search-result__text:last-of-type {
+    margin-bottom: 14px;
+}
+
+.fllm-search-result__links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.fllm-search-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #FF5C00;
+    transition: opacity 0.2s ease;
+}
+
+.fllm-search-link:hover {
+    opacity: 0.75;
+}
+
+.fllm-search-link:focus-visible {
+    outline: 2px solid #FF5C00;
+    outline-offset: 3px;
+}
+
+/* Persistent Ask AI launcher */
+.fllm-launcher {
+    position: fixed;
+    right: clamp(16px, 3vw, 28px);
+    bottom: clamp(16px, 3vw, 28px);
+    z-index: 10045;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px 14px 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #ffffff;
+    background: #FF5C00;
+    border: 0;
+    border-radius: 999px;
+    cursor: pointer;
+    box-shadow: 0 14px 32px rgba(255, 92, 0, 0.3);
+    transition:
+        opacity 0.22s ease,
+        transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.22s ease;
+}
+
+.fllm-launcher:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 38px rgba(255, 92, 0, 0.38);
+}
+
+.fllm-launcher:focus-visible {
+    outline: 2px solid #FF5C00;
+    outline-offset: 4px;
+}
+
+body.fllm-open .fllm-launcher {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(8px) scale(0.96);
+}
+
+.fllm-launcher__spark {
+    display: inline-flex;
+    width: 18px;
+    height: 18px;
+}
+
+.fllm-launcher__label {
+    line-height: 1;
 }
 
 .fllm-selected-quote {
@@ -13972,10 +14211,18 @@ body.fllm-open .fllm-panel {
         padding: 12px 18px 12px 15px;
         font-size: 15px;
     }
+
+    .fllm-launcher {
+        right: 16px;
+        bottom: 16px;
+        padding: 12px 16px 12px 14px;
+        font-size: 11px;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
     .fllm-quote-btn,
+    .fllm-launcher,
     .fllm-overlay,
     .fllm-panel,
     .fllm-panel__icon-btn,
@@ -14056,7 +14303,7 @@ body.editorial-site > .navbar,
 body.editorial-site > main,
 body.editorial-site > section,
 body.editorial-site > footer,
-body.editorial-site > aside:not(.case-side-nav) {
+body.editorial-site > aside:not(.case-side-nav):not(.fllm-panel) {
     position: relative;
     z-index: 1;
 }
