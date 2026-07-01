@@ -15570,3 +15570,83 @@ body.project-case-page .case-section-gallery .case-img-zoom:has(> video.case-gal
     object-fit: contain;
     transform: none;
 }
+
+/* =====================================================
+   HOMEPAGE — classic hero (deploy baseline, no editorial)
+   ===================================================== */
+body:not(.editorial-site) .hero--intro::before {
+    display: none;
+}
+
+body:not(.editorial-site) .hero.hero--intro {
+    min-height: auto;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: clamp(92px, 10vh, 108px) 0 clamp(28px, 3.5vh, 36px);
+    background: var(--bg-white);
+    isolation: auto;
+}
+
+[data-theme="dark"] body:not(.editorial-site) .hero.hero--intro {
+    background: #0a0a0a;
+}
+
+body:not(.editorial-site) .hero-intro {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+body:not(.editorial-site) .hero-intro__column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: clamp(14px, 2vh, 18px);
+    max-width: 52rem;
+    width: 100%;
+}
+
+body:not(.editorial-site) .hero-intro__main {
+    gap: clamp(16px, 2.2vh, 22px);
+}
+
+body:not(.editorial-site) .hero-intro__name {
+    font-size: clamp(2.75rem, 8vw, 4.75rem);
+    line-height: 0.92;
+    letter-spacing: -0.045em;
+}
+
+body:not(.editorial-site) .hero-intro__name-line--accent,
+body:not(.editorial-site) .hero-intro__name-dot,
+body:not(.editorial-site) .hero-intro__bio-mark,
+body:not(.editorial-site) .hero-intro__eyebrow,
+body:not(.editorial-site) .hero-intro__aside,
+body:not(.editorial-site) .hero-intro__head {
+    display: none;
+}
+
+body:not(.editorial-site) .hero-intro__bio {
+    font-size: clamp(16px, 1.5vw, 18px);
+    font-weight: 500;
+    line-height: 1.55;
+    color: var(--text-body);
+    max-width: 42rem;
+    border: none;
+    padding: 0;
+}
+
+@media (max-width: 768px) {
+    body:not(.editorial-site) .hero.hero--intro {
+        padding: 88px 0 28px;
+    }
+
+    body:not(.editorial-site) .hero-intro__column {
+        max-width: none;
+        gap: 12px;
+    }
+
+    body:not(.editorial-site) .hero-intro__main {
+        gap: 16px;
+    }
+}
