@@ -1,5 +1,21 @@
+(function initPageFromNavEarly() {
+    if (!document.referrer) return;
+    try {
+        if (new URL(document.referrer).origin === location.origin) {
+            document.documentElement.classList.add('page-from-nav');
+        }
+    } catch (_) {}
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
-    document.body.classList.add('loaded');
+    const coldFade = initPageEnter();
+    if (coldFade) {
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => document.body.classList.add('loaded'));
+        });
+    } else {
+        document.body.classList.add('loaded');
+    }
     requestAnimationFrame(() => {
         window.dispatchEvent(new CustomEvent('fonseca:layoutready'));
     });
@@ -7,7 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
     initNavbarScroll();
     initSmoothScroll();
+    initClientsCarousel();
     initScrollReveal();
+    initEditorialScroll();
+    revealHeroOnLoad();
     initHeroAsciiTerrain();
     initHeroCopyEmail();
     initWorkProjectCarousels();
@@ -16,13 +35,16 @@ document.addEventListener('DOMContentLoaded', () => {
     initTestimonialReadMore();
     updateYear();
     initCaseStudyNav();
+    initNavMotion();
+    initCaseStudyMotion();
+    initCaseStudyMagazine();
+    initPageTransitions();
     initThemeCompare();
     initCaseImageLightbox();
     initLinkPrefetch();
     initLazyBelowFoldMedia();
     initLazyWorkCardVideos();
-    // FonsecaLLM is temporarily disabled. To reactivate, uncomment the line below.
-    // initFonsecaLLM();
+    initFonsecaLLM();
 });
 
 // =====================================================
@@ -56,6 +78,22 @@ function initLazyBelowFoldMedia() {
     });
     document.querySelectorAll('.case-section-gallery video, .project-case-content .case-section-body video').forEach((video) => {
         if (!video.hasAttribute('preload')) video.preload = 'none';
+    });
+
+    const reduceMotion = prefersReducedMotion();
+    document.querySelectorAll('video[autoplay]').forEach((video) => {
+        if (reduceMotion) {
+            video.removeAttribute('autoplay');
+            video.pause();
+            return;
+        }
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) video.play().catch(() => {});
+                else video.pause();
+            });
+        }, { threshold: 0.2, rootMargin: '80px 0px' });
+        io.observe(video);
     });
 }
 
@@ -124,6 +162,67 @@ function rafThrottle(fn) {
 }
 
 // =====================================================
+// PAGE ENTER + TRANSITIONS
+// =====================================================
+function prefersReducedMotion() {
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
+function isSameOriginReferrer() {
+    if (!document.referrer) return false;
+    try {
+        return new URL(document.referrer).origin === location.origin;
+    } catch (_) {
+        return false;
+    }
+}
+
+function supportsNavViewTransitions() {
+    return typeof CSS !== 'undefined' && CSS.supports('selector(::view-transition-old(root))');
+}
+
+function initPageEnter() {
+    if (prefersReducedMotion() || isSameOriginReferrer() || document.documentElement.classList.contains('page-from-nav')) {
+        return false;
+    }
+    const navType = performance.getEntriesByType('navigation')[0]?.type;
+    if (navType && navType !== 'navigate') return false;
+    document.body.classList.add('page-init-fade');
+    return true;
+}
+
+function initPageTransitions() {
+    if (prefersReducedMotion()) return;
+
+    document.addEventListener('click', (e) => {
+        if (supportsNavViewTransitions()) return;
+
+        const link = e.target.closest('a[href]');
+        if (!link || link.target === '_blank' || e.defaultPrevented) return;
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+        const href = link.getAttribute('href');
+        if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:')) return;
+
+        let url;
+        try {
+            url = new URL(href, location.origin);
+        } catch (_) {
+            return;
+        }
+        if (url.origin !== location.origin) return;
+        if (url.pathname === location.pathname && url.hash) return;
+        if (/\.(pdf|zip|png|jpe?g|webp|mov|mp4)$/i.test(url.pathname)) return;
+
+        e.preventDefault();
+        document.body.classList.add('page-leaving');
+        window.setTimeout(() => {
+            window.location.href = url.href;
+        }, 260);
+    }, { capture: true });
+}
+
+// =====================================================
 // SCROLL REVEAL
 // =====================================================
 function initScrollReveal() {
@@ -132,11 +231,72 @@ function initScrollReveal() {
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('in-view');
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+            }
         });
-    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.12, rootMargin: '0px 0px -56px 0px' });
 
     els.forEach(el => observer.observe(el));
+}
+
+function initEditorialScroll() {
+    const isProjectCase = Boolean(document.querySelector('.project-case-content'));
+    const blocks = [
+        '.about-skills-section',
+        '.about-services-section',
+        '.about-contact',
+        '.about-photos',
+        '.fun-magazine-chapter',
+        '.hh3d-piece'
+    ];
+    if (!isProjectCase) {
+        blocks.push('.related-projects', '.case-section', '.case-brief', '.case-callout');
+    }
+
+    const els = document.querySelectorAll(blocks.join(','));
+    if (!els.length) return;
+
+    els.forEach((el, i) => {
+        el.classList.add('editorial-scroll');
+        el.style.setProperty('--editorial-i', String(i % 6));
+    });
+
+    if (prefersReducedMotion()) {
+        els.forEach((el) => el.classList.add('in-view'));
+        return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.14, rootMargin: '0px 0px -48px 0px' });
+
+    els.forEach((el) => observer.observe(el));
+}
+
+function revealHeroOnLoad() {
+    const hero = document.querySelector('.hero--intro');
+    if (!hero) return;
+
+    const items = hero.querySelectorAll('[data-anim]');
+    if (!items.length) return;
+
+    if (prefersReducedMotion()) {
+        items.forEach((el) => el.classList.add('in-view'));
+        return;
+    }
+
+    items.forEach((el, i) => {
+        el.style.setProperty('--hero-reveal-i', String(i));
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => el.classList.add('in-view'));
+        });
+    });
 }
 
 // =====================================================
@@ -147,6 +307,11 @@ function initTestimonialReadMore() {
     if (!root) return;
 
     const cards = Array.from(root.querySelectorAll('.testimonial-card'));
+
+    function syncCarouselPause() {
+        const anyExpanded = cards.some((card) => card.classList.contains('testimonial-card--expanded'));
+        root.classList.toggle('clients-carousel--paused', anyExpanded);
+    }
 
     function measureCard(card) {
         const p = card.querySelector('.testimonial-card__text');
@@ -170,13 +335,15 @@ function initTestimonialReadMore() {
 
     cards.forEach((card) => {
         const btn = card.querySelector('.testimonial-card__read-more');
-        btn?.addEventListener('click', () => {
+        btn?.addEventListener('click', (e) => {
+            e.stopPropagation();
             const expanding = !card.classList.contains('testimonial-card--expanded');
             card.classList.toggle('testimonial-card--expanded', expanding);
             const p = card.querySelector('.testimonial-card__text');
             if (p) p.classList.toggle('testimonial-card__text--clamped', !expanding);
             btn.setAttribute('aria-expanded', expanding ? 'true' : 'false');
             btn.textContent = expanding ? 'Read less' : 'Read more';
+            syncCarouselPause();
         });
     });
 
@@ -199,9 +366,80 @@ function initTestimonialReadMore() {
 }
 
 // =====================================================
+// CLIENTS — entrance + velocity-based marquee
+// =====================================================
+function initClientsCarousel() {
+    const section = document.querySelector('.section-testimonials');
+    if (!section) return;
+
+    const track = section.querySelector('.testimonials-track');
+    if (!track) return;
+
+    const syncDuration = () => {
+        const halfWidth = track.scrollWidth / 2;
+        if (halfWidth <= 0) return;
+        const pxPerSecond = window.matchMedia('(max-width: 768px)').matches ? 36 : 44;
+        track.style.setProperty('--clients-marquee-duration', `${halfWidth / pxPerSecond}s`);
+    };
+
+    const activate = () => {
+        if (section.classList.contains('clients-carousel--ready')) return;
+        syncDuration();
+        section.classList.add('clients-carousel--ready');
+        section.querySelectorAll('.section-head [data-anim]').forEach((el) => {
+            el.classList.add('in-view');
+        });
+    };
+
+    if (prefersReducedMotion()) {
+        section.classList.add('clients-carousel--ready', 'clients-carousel--static');
+        section.querySelectorAll('.section-head [data-anim]').forEach((el) => {
+            el.classList.add('in-view');
+        });
+        return;
+    }
+
+    syncDuration();
+
+    let resizeT;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeT);
+        resizeT = window.setTimeout(syncDuration, 150);
+    });
+    window.addEventListener('fonseca:layoutready', syncDuration);
+    if (document.fonts?.ready) {
+        document.fonts.ready.then(syncDuration);
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                activate();
+                observer.disconnect();
+            }
+        });
+    }, { threshold: 0.15, rootMargin: '0px 0px -48px 0px' });
+
+    observer.observe(section);
+
+    if (section.getBoundingClientRect().top < window.innerHeight * 0.85) {
+        requestAnimationFrame(activate);
+    }
+}
+
+// =====================================================
 // CASE-STUDY MEDIA — centered expand button + lightbox
 // =====================================================
 function initCaseImageLightbox() {
+    const run = () => setupCaseImageLightbox();
+    if (typeof requestIdleCallback === 'function') {
+        requestIdleCallback(run, { timeout: 1500 });
+    } else {
+        setTimeout(run, 120);
+    }
+}
+
+function setupCaseImageLightbox() {
     const mediaEls = Array.from(document.querySelectorAll('.case-gallery-img'));
     if (!mediaEls.length) return;
 
@@ -304,8 +542,14 @@ function initCaseImageLightbox() {
 // HERO — Kanagawa wave image → ASCII with wave motion
 // =====================================================
 function initHeroAsciiTerrain() {
-    const canvas = document.getElementById('heroAsciiTerrain');
-    const img = document.getElementById('heroAsciiSrc');
+    document.querySelectorAll('.hero-ascii-terrain').forEach((canvas) => {
+        initSingleHeroAscii(canvas);
+    });
+}
+
+function initSingleHeroAscii(canvas) {
+    const img = canvas.closest('section, .about-hero')?.querySelector('.hero-ascii-src')
+        || document.getElementById('heroAsciiSrc');
     if (!canvas) return;
     const fullBleed = canvas.classList.contains('about-ascii-bg');
     const ctx = canvas.getContext('2d');
@@ -566,7 +810,7 @@ function initHeroAsciiTerrain() {
         document.fonts.ready.then(debouncedKick);
     }
 
-    const heroSection = canvas.closest('.hero--intro, .about-hero');
+    const heroSection = canvas.closest('.hero--intro, .about-hero, .project-hero-case, .fun-page-intro, .editorial-hero');
     if (heroSection && typeof IntersectionObserver !== 'undefined') {
         const io = new IntersectionObserver((entries) => {
             const vis = entries.some((e) => e.isIntersecting && e.intersectionRatio > 0);
@@ -1147,19 +1391,135 @@ function initCaseStudyNav() {
         const cur = getCurrentSection();
         [heroNavLinks, sideNavLinks].forEach(links => {
             links.forEach(l => {
-                l.classList.toggle('active', l.getAttribute('href') === '#' + cur);
+                const isActive = l.getAttribute('href') === '#' + cur;
+                l.classList.toggle('active', isActive);
+                if (isActive) l.setAttribute('aria-current', 'true');
+                else l.removeAttribute('aria-current');
             });
         });
         if (sideNav) {
             const top = caseContent.offsetTop - 150;
             const bottom = caseContent.offsetTop + caseContent.offsetHeight - 300;
             const y = window.scrollY;
-            sideNav.classList.toggle('visible', y >= top && y <= bottom);
+            const show = y >= top && y <= bottom;
+            sideNav.classList.toggle('visible', show);
+            sideNav.classList.toggle('case-side-nav--revealed', show);
         }
     });
 
     window.addEventListener('scroll', update, { passive: true });
     window.addEventListener('load', update);
+}
+
+// =====================================================
+// NAV — animated icons + entrance (all pages)
+// =====================================================
+const CASE_SECTION_ICON_HTML = {
+    overview: '<g class="motion-icon__layers"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></g>',
+    context: '<g class="motion-icon__alert"><circle cx="12" cy="12" r="10"/><line class="motion-icon__alert-dot" x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></g>',
+    approach: '<g class="motion-icon__user"><circle cx="12" cy="7" r="4"/><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/></g>',
+    decisions: '<g class="motion-icon__key"><circle cx="7.5" cy="15.5" r="5.5"/><path d="M21 2l-9.6 9.6"/><path class="motion-icon__key-bit" d="M15.5 7.5l3 3L22 7l-3-3"/></g>',
+    reflection: '<g class="motion-icon__books"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></g>',
+    system: '<g class="motion-icon__pen"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></g>',
+    'my-role': '<g class="motion-icon__user"><circle cx="12" cy="7" r="4"/><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/></g>',
+    problem: '<g class="motion-icon__alert"><circle cx="12" cy="12" r="10"/><line class="motion-icon__alert-dot" x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></g>',
+    scenario: '<g class="motion-icon__book"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></g>',
+    solution: '<g class="motion-icon__star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></g>',
+    'key-decisions': '<g class="motion-icon__key"><circle cx="7.5" cy="15.5" r="5.5"/><path d="M21 2l-9.6 9.6"/><path class="motion-icon__key-bit" d="M15.5 7.5l3 3L22 7l-3-3"/></g>',
+    research: '<g class="motion-icon__search"><circle cx="11" cy="11" r="8"/><line class="motion-icon__search-handle" x1="21" y1="21" x2="16.65" y2="16.65"/></g>',
+    design: '<g class="motion-icon__pen"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></g>',
+    results: '<g class="motion-icon__chart"><line class="motion-icon__bar motion-icon__bar--3" x1="18" y1="20" x2="18" y2="10"/><line class="motion-icon__bar motion-icon__bar--2" x1="12" y1="20" x2="12" y2="4"/><line class="motion-icon__bar motion-icon__bar--1" x1="6" y1="20" x2="6" y2="14"/></g>',
+    lessons: '<g class="motion-icon__books"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></g>',
+    'next-steps': '<g class="motion-icon__arrow"><line x1="5" y1="12" x2="19" y2="12"/><polyline class="motion-icon__arrow-head" points="12 5 19 12 12 19"/></g>',
+};
+
+const HEADER_NAV_ICON_RULES = [
+    { key: 'work', match: (a) => /#work|index\.html$/.test(a.getAttribute('href') || '') || a.getAttribute('href') === '#work', html: '<g class="motion-icon__briefcase"><rect x="2" y="7" width="20" height="14" rx="2"/><path class="motion-icon__briefcase-lid" d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></g>' },
+    { key: 'creative', match: (a) => (a.getAttribute('href') || '').includes('fun.html'), html: '<g class="motion-icon__sparkles"><path class="motion-icon__spark-main" d="M12 3l1.4 4.3L17.5 9l-3.6 1.2L12 14.5 10.1 10.2 6.5 9l4.1-1.7z"/><path class="motion-icon__spark-mini" d="M5 19l.8 1.6L7.4 20l-.9 1.6.9 1.6-1.6-.6-.9 1.6"/></g>' },
+    { key: 'about', match: (a) => (a.getAttribute('href') || '').includes('about.html'), html: '<g class="motion-icon__profile"><circle class="motion-icon__profile-head" cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></g>' },
+    { key: 'resume', match: (a) => (a.getAttribute('href') || '').includes('.pdf'), html: '<g class="motion-icon__doc"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line class="motion-icon__doc-line motion-icon__doc-line--1" x1="16" y1="13" x2="8" y2="13"/><line class="motion-icon__doc-line motion-icon__doc-line--2" x1="16" y1="17" x2="8" y2="17"/></g>' },
+];
+
+function createMotionIcon(iconKey, svgInner) {
+    const span = document.createElement('span');
+    span.className = `nav-motion-icon nav-motion-icon--${iconKey}`;
+    span.setAttribute('aria-hidden', 'true');
+    span.innerHTML = `<svg class="motion-icon__svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">${svgInner}</svg>`;
+    return span;
+}
+
+function wrapLinkLabel(link, iconKey, svgInner, linkClass) {
+    if (link.querySelector('.nav-motion-icon')) return;
+    const labelText = link.textContent.trim();
+    link.textContent = '';
+    link.classList.add(linkClass);
+    const label = document.createElement('span');
+    label.className = linkClass.includes('case-side-nav') ? 'case-side-nav-label' : 'nav-motion-label';
+    label.textContent = labelText;
+    link.append(createMotionIcon(iconKey, svgInner), label);
+}
+
+function prependNavIcon(link, iconKey, svgInner, linkClass) {
+    if (link.querySelector('.nav-motion-icon')) return;
+    link.classList.add(linkClass);
+    link.insertBefore(createMotionIcon(iconKey, svgInner), link.firstChild);
+}
+
+function initNavMotion() {
+    const navbar = document.querySelector('.navbar');
+    if (!navbar) return;
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    navbar.classList.add('navbar--nav-motion');
+
+    navbar.querySelectorAll('.nav-center .nav-link, .mobile-menu-links .mobile-link:not(.mobile-cta)').forEach((link, i) => {
+        const rule = HEADER_NAV_ICON_RULES.find((r) => r.match(link));
+        if (!rule) return;
+        prependNavIcon(link, rule.key, rule.html, 'nav-link--motion');
+        link.style.setProperty('--nav-motion-i', String(i));
+    });
+
+    if (!reduceMotion) {
+        requestAnimationFrame(() => navbar.classList.add('navbar--entered'));
+    }
+}
+
+function initCaseStudyMotion() {
+    const caseContent = document.querySelector('.project-case-content');
+    if (!caseContent) return;
+
+    const reduceMotion = prefersReducedMotion();
+    document.body.classList.add('project-case-page');
+
+    const sideNav = document.getElementById('caseSideNav');
+    sideNav?.querySelectorAll('.case-side-nav-link').forEach((link, i) => {
+        const id = (link.getAttribute('href') || '').replace('#', '');
+        const iconKey = CASE_SECTION_ICON_HTML[id] ? id : 'overview';
+        const html = CASE_SECTION_ICON_HTML[id] || CASE_SECTION_ICON_HTML.overview;
+        wrapLinkLabel(link, iconKey, html, 'case-side-nav-link--motion');
+        link.style.setProperty('--nav-motion-i', String(i));
+    });
+
+    if (reduceMotion) return;
+
+    const heroItems = document.querySelectorAll('.project-hero-case .container > *');
+    heroItems.forEach((el, i) => {
+        el.classList.add('case-motion', 'case-motion--hero');
+        el.style.setProperty('--case-motion-i', String(i));
+    });
+
+    requestAnimationFrame(() => {
+        heroItems.forEach((el) => el.classList.add('in-view'));
+    });
+}
+
+// =====================================================
+// CASE STUDY — magazine layout variants
+// =====================================================
+function initCaseStudyMagazine() {
+    document.querySelectorAll('.case-gallery-tight-pair').forEach((pair) => {
+        pair.closest('.case-section-gallery')?.classList.add('case-section-gallery--linear');
+    });
 }
 
 // =====================================================
@@ -1304,314 +1664,770 @@ window.addEventListener('load', () => {
 });
 
 // =====================================================
+// FONSECA LLM — portfolio knowledge + search
+// =====================================================
+const FLLM_PROJECTS = [
+    {
+        id: 'hedgehog-product',
+        title: 'Hedgehog · Prediction Market',
+        client: 'Hedgehog',
+        url: 'project-hedgehog-product.html',
+        category: ['Web3', 'Product'],
+        impactScore: 95,
+        summary: 'Redesigned a Web3 prediction market from orderbook literacy to pooled UP/DOWN rounds so anyone could participate in one tap.',
+        metrics: ['40% → 88% task completion', '8s → under 2s time to first action', '~35% faster design-to-dev handoff via 120+ components'],
+        keywords: ['hedgehog', 'prediction', 'market', 'web3', 'defi', 'orderbook', 'pool', 'product', 'trading', 'on-chain', 'impact', 'metric'],
+    },
+    {
+        id: 'hedgehog-waitlist',
+        title: 'Hedgehog · Waitlist',
+        client: 'Hedgehog',
+        url: 'project-hedgehog.html',
+        category: ['Web3', 'Growth'],
+        impactScore: 88,
+        summary: 'Built a trust-first landing page before the product existed, turning organic crypto audiences into qualified waitlist sign-ups.',
+        metrics: ['37.5% waitlist conversion with zero paid spend', '15,000+ qualified sign-ups from 40K+ organic followers', '2–8% B2B/Web3 benchmark beaten by ~5×'],
+        keywords: ['hedgehog', 'waitlist', 'landing', 'conversion', 'growth', 'web3', 'trust', 'signup'],
+    },
+    {
+        id: 'transparent-space',
+        title: 'Transparent.space',
+        client: 'Transparent.space',
+        url: 'project-transparent-space.html',
+        category: ['Web3', 'Enterprise'],
+        impactScore: 85,
+        summary: 'As Founding Product Designer, built a B2B dashboard from zero so liquidity providers could see market-maker performance in one screen.',
+        metrics: ['61% → 88% task completion', '~30% faster time-to-insight', '15–20 min SLA hunts reduced to at-a-glance status'],
+        keywords: ['transparent', 'dashboard', 'market maker', 'b2b', 'web3', 'liquidity', 'sla', 'institutional'],
+    },
+    {
+        id: 'petrobras',
+        title: 'Petrobras Saúde',
+        client: 'Petrobras Saúde',
+        url: 'project-petrobras-saude.html',
+        category: ['Healthcare', 'Enterprise'],
+        impactScore: 75,
+        summary: 'Designed a triage-first telehealth platform for Petrobras employees during COVID, researched across three beneficiary segments.',
+        metrics: ['50,000+ employees served', 'Shipped at COVID peak under urgency', 'Calm, guided path: describe → triage → consult'],
+        keywords: ['petrobras', 'healthcare', 'telehealth', 'telemedicine', 'enterprise', 'covid', 'triage', 'employees'],
+    },
+    {
+        id: 'unimed',
+        title: 'Unimed Seguros',
+        client: 'Unimed Seguros',
+        url: 'project-unimed-seguros.html',
+        category: ['Healthcare', 'Mobile'],
+        impactScore: 70,
+        summary: 'Redesigned insurance telemedicine flows to reduce anxiety with clarity before features for beneficiaries with mixed digital literacy.',
+        metrics: ['40K+ beneficiaries', 'Improved scheduling completion during COVID', 'One predictable path: sign in → schedule → consult'],
+        keywords: ['unimed', 'insurance', 'healthcare', 'telemedicine', 'mobile', 'scheduling', 'covid'],
+    },
+    {
+        id: 'picnic',
+        title: 'Picnic · Brand',
+        client: 'Picnic',
+        url: 'project-picnic.html',
+        category: ['Fintech', 'Brand'],
+        impactScore: 45,
+        summary: 'Built a Key Visual system with templates and guidelines so Picnic could ship consistent brand across social, in-app, and campaigns.',
+        metrics: ['Templates cut social production time', 'Cohesive identity for launch', 'Team could run channels autonomously'],
+        keywords: ['picnic', 'brand', 'identity', 'fintech', 'visual', 'social', 'templates'],
+    },
+    {
+        id: 'transparent-brand',
+        title: 'Transparent.space · Brand',
+        client: 'Transparent.space',
+        url: 'project-transparent-space-brand.html',
+        category: ['Web3', 'Brand'],
+        impactScore: 50,
+        summary: 'Created a blueprint-inspired visual identity so institutional Web3 users could trust the product in the first 3 seconds.',
+        metrics: ['Cohesive system across product, website, and marketing', 'Precision type and grids as trust signals', 'Foundation ready to scale with new modules'],
+        keywords: ['transparent', 'brand', 'identity', 'web3', 'institutional', 'blueprint'],
+    },
+    {
+        id: 'caramel',
+        title: 'Caramel',
+        client: 'Caramel',
+        url: 'project-caramel.html',
+        category: ['Web3', 'Product'],
+        impactScore: 48,
+        summary: 'Concept for on-chain token launches with a step-by-step LaChain flow that makes smart contract steps transparent for first-time creators.',
+        metrics: ['Award-winning concept at Blockchain Rio 2024', 'Accessible on-chain creation without losing credibility', 'Idea → create → launch → on-chain flow'],
+        keywords: ['caramel', 'web3', 'token', 'launch', 'blockchain', 'lachain', 'hackathon'],
+    },
+    {
+        id: 'aura',
+        title: 'AURA · Brand',
+        client: 'AURA',
+        url: 'project-aura.html',
+        category: ['Luxury', 'Brand'],
+        impactScore: 38,
+        summary: 'Luxury jewelry identity using dark palette, high-contrast type, and restraint instead of ornate tradition.',
+        metrics: ['Distinct positioning vs traditional jewelry tropes', 'Flexible system for future product lines', 'Premium through negative space'],
+        keywords: ['aura', 'luxury', 'jewelry', 'brand', 'identity'],
+    },
+    {
+        id: 'nora',
+        title: 'NØRA · Brand',
+        client: 'NØRA',
+        url: 'project-nora.html',
+        category: ['Food', 'Brand'],
+        impactScore: 36,
+        summary: 'Craft-centric bakery identity with earth tones and custom type, built for digital, print, and physical touchpoints.',
+        metrics: ['Increased landing engagement', 'Scalable system across channels', 'Strong visual reception in a competitive local market'],
+        keywords: ['nora', 'bakery', 'brand', 'food', 'craft', 'identity'],
+    },
+];
+
+const FLLM_SEARCH_SUGGESTIONS = [
+    'Which project had the biggest impact?',
+    'Web3 projects',
+    'Healthcare work',
+];
+
+function normalizeFllmText(value) {
+    return String(value || '')
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^\w\s%+./-]/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+}
+
+function tokenizeFllmQuery(query) {
+    const stop = new Set(['the', 'and', 'for', 'with', 'that', 'this', 'from', 'have', 'has', 'had', 'what', 'which', 'does', 'did', 'about', 'matheus', 'fonseca', 'project', 'projects', 'work', 'his', 'he', 'she', 'they', 'are', 'was', 'were', 'can', 'how']);
+    return normalizeFllmText(query)
+        .split(' ')
+        .filter((token) => token.length > 2 && !stop.has(token));
+}
+
+function scoreFllmProject(project, tokens) {
+    const haystack = normalizeFllmText([
+        project.title,
+        project.client,
+        project.summary,
+        ...(project.metrics || []),
+        ...(project.keywords || []),
+        ...(project.category || []),
+    ].join(' '));
+
+    let score = 0;
+    tokens.forEach((token) => {
+        if (haystack.includes(token)) score += token.length > 5 ? 4 : 2;
+    });
+    return score;
+}
+
+function filterFllmProjects(predicate) {
+    return FLLM_PROJECTS.filter(predicate).sort((a, b) => b.impactScore - a.impactScore);
+}
+
+function fllmProjectLinks(projects, limit = 3) {
+    return projects.slice(0, limit).map((project) => ({
+        label: `View ${project.title} →`,
+        url: project.url,
+    }));
+}
+
+function answerFllmSearch(query, faqs) {
+    const raw = query.trim();
+    if (!raw) return null;
+
+    const norm = normalizeFllmText(raw);
+    const tokens = tokenizeFllmQuery(raw);
+
+    const impactIntent = /\b(biggest|largest|highest|most|strongest|best|greatest|top)\b/.test(norm)
+        && /\b(impact|result|metric|outcome|improvement|success|performance|numbers)\b/.test(norm);
+    const listIntent = /\b(list|show|all|selected)\b/.test(norm) && /\b(project|work|case|portfolio)\b/.test(norm);
+    const web3Intent = /\b(web3|defi|crypto|blockchain|on-chain|prediction|market maker)\b/.test(norm);
+    const healthcareIntent = /\b(health|healthcare|telehealth|telemedicine|insurance|medical|hospital)\b/.test(norm);
+    const brandIntent = /\b(brand|identity|visual|logo|key visual)\b/.test(norm);
+    const contactIntent = /\b(contact|email|hire|available|availability|freelance|work together|reach)\b/.test(norm);
+    const approachIntent = /\b(approach|strategy|process|method|how does he|how do you)\b/.test(norm);
+
+    if (impactIntent) {
+        const ranked = filterFllmProjects(() => true);
+        const top = ranked[0];
+        const second = ranked[1];
+        return {
+            title: 'Highest measurable impact',
+            paragraphs: [
+                `Based on documented case study metrics, ${top.title} shows the strongest product impact: ${top.metrics.slice(0, 2).join('; ')}.`,
+                second ? `Also strong: ${second.title} — ${second.metrics[0]}.` : '',
+            ].filter(Boolean),
+            links: fllmProjectLinks(ranked, 3),
+        };
+    }
+
+    if (listIntent) {
+        const ranked = filterFllmProjects(() => true);
+        return {
+            title: 'Selected work',
+            paragraphs: [
+                'Matheus has shipped product and brand work across Web3, healthcare, enterprise, and fintech.',
+                ranked.slice(0, 5).map((p) => `${p.title}: ${p.metrics[0]}.`).join(' '),
+            ],
+            links: fllmProjectLinks(ranked, 5),
+        };
+    }
+
+    if (web3Intent) {
+        const matches = filterFllmProjects((p) => p.category.includes('Web3') || normalizeFllmText(p.keywords.join(' ')).includes('web3'));
+        return {
+            title: 'Web3 & DeFi work',
+            paragraphs: matches.map((p) => `${p.title} — ${p.summary}`),
+            links: fllmProjectLinks(matches, 4),
+        };
+    }
+
+    if (healthcareIntent) {
+        const matches = filterFllmProjects((p) => p.category.includes('Healthcare'));
+        return {
+            title: 'Healthcare projects',
+            paragraphs: matches.map((p) => `${p.title}: ${p.metrics[0]}. ${p.summary}`),
+            links: fllmProjectLinks(matches, 2),
+        };
+    }
+
+    if (brandIntent) {
+        const matches = filterFllmProjects((p) => p.category.includes('Brand'));
+        return {
+            title: 'Brand & identity work',
+            paragraphs: matches.map((p) => `${p.title} — ${p.summary}`),
+            links: fllmProjectLinks(matches, 4),
+        };
+    }
+
+    if (contactIntent) {
+        return {
+            title: 'Availability & contact',
+            paragraphs: [
+                'Yes — Matheus is open to selected product design, brand, and interface projects, remote worldwide.',
+                'Best next step: email fonsecaa.design@gmail.com with context, timeline, and what you want to build.',
+            ],
+            links: [{ label: 'Copy email from homepage →', url: 'index.html#home' }],
+        };
+    }
+
+    if (approachIntent) {
+        const faq = faqs.find((item) => normalizeFllmText(item.question).includes('strategy'));
+        if (faq) {
+            return {
+                title: faq.question,
+                paragraphs: faq.answer,
+                links: [{ label: 'See Hedgehog product case →', url: 'project-hedgehog-product.html' }],
+            };
+        }
+    }
+
+    const scored = FLLM_PROJECTS
+        .map((project) => ({ project, score: scoreFllmProject(project, tokens) }))
+        .filter((entry) => entry.score > 0)
+        .sort((a, b) => b.score - a.score || b.project.impactScore - a.project.impactScore);
+
+    if (scored.length) {
+        const best = scored[0].project;
+        const related = scored.slice(1, 3).map((entry) => entry.project);
+        return {
+            title: best.title,
+            paragraphs: [
+                best.summary,
+                `Key results: ${best.metrics.join('; ')}.`,
+                related.length ? `Related: ${related.map((p) => p.title).join(', ')}.` : '',
+            ].filter(Boolean),
+            links: fllmProjectLinks([best, ...related], 3),
+        };
+    }
+
+    const faqMatch = faqs.find((item) => {
+        const haystack = normalizeFllmText([item.question, ...(item.answer || [])].join(' '));
+        return tokens.some((token) => haystack.includes(token));
+    });
+
+    if (faqMatch) {
+        return {
+            title: faqMatch.question,
+            paragraphs: faqMatch.answer,
+            links: fllmProjectLinks(filterFllmProjects(() => true), 2),
+        };
+    }
+
+    return {
+        title: 'Try a more specific question',
+        paragraphs: [
+            'I can answer from Matheus\'s case studies — impact metrics, industries, and project summaries.',
+            'Examples: "Which project had the biggest impact?", "Web3 projects", or "Petrobras healthcare".',
+        ],
+        links: fllmProjectLinks(filterFllmProjects(() => true), 3),
+    };
+}
+
+function renderFllmSearchResult(container, result) {
+    container.replaceChildren();
+    if (!result) {
+        container.hidden = true;
+        return;
+    }
+
+    container.hidden = false;
+    const wrap = document.createElement('article');
+    wrap.className = 'fllm-search-result';
+
+    const title = document.createElement('h3');
+    title.className = 'fllm-search-result__title';
+    title.textContent = result.title;
+    wrap.appendChild(title);
+
+    result.paragraphs.forEach((text) => {
+        const paragraph = document.createElement('p');
+        paragraph.className = 'fllm-search-result__text';
+        paragraph.textContent = text;
+        wrap.appendChild(paragraph);
+    });
+
+    if (result.links?.length) {
+        const links = document.createElement('div');
+        links.className = 'fllm-search-result__links';
+        result.links.forEach(({ label, url }) => {
+            const anchor = document.createElement('a');
+            anchor.href = url;
+            anchor.className = 'fllm-search-link';
+            anchor.textContent = label;
+            links.appendChild(anchor);
+        });
+        wrap.appendChild(links);
+    }
+
+    container.appendChild(wrap);
+}
+
+// =====================================================
 // FONSECA LLM — AI portfolio assistant
 // =====================================================
 function initFonsecaLLM() {
-    if (document.querySelector('.fllm-launcher')) return;
+    if (document.querySelector('.fllm-panel')) return;
 
-    const SUGGESTIONS = [
-        'What makes your design approach unique?',
-        'What projects have you worked on?',
-        'How do you balance design and strategy?',
-        'Are you available for freelance work?',
+    const MIN_SELECTION_LENGTH = 3;
+    const MAX_SELECTION_LENGTH = 500;
+    const TOOLTIP_OFFSET = 54;
+    const FAQS = [
+        {
+            question: 'How does Matheus approach product strategy?',
+            answer: [
+                'He starts by making the problem and constraints explicit, then turns them into a clear product direction, prototype, and handoff path.',
+                'The work usually blends discovery, UX structure, visual systems, and launch-ready product thinking.'
+            ],
+        },
+        {
+            question: 'What projects has he worked on?',
+            answer: [
+                'Selected work includes Hedgehog, Transparent.space, Petrobras Saúde, Unimed Seguros, Picnic, AURA, NØRA, and Caramel.',
+                'The portfolio spans fintech, Web3, healthcare, enterprise products, and brand systems.'
+            ],
+        },
+        {
+            question: 'What makes his design style different?',
+            answer: [
+                'Matheus tends to make complex systems feel simple without flattening the product logic behind them.',
+                'His work combines strong art direction, systems thinking, and practical UX details for teams that need to ship.'
+            ],
+        },
+        {
+            question: 'Is he available for new work?',
+            answer: [
+                'Yes, for selected product design, brand, and interface projects.',
+                'The best next step is emailing fonsecaa.design@gmail.com with the context, timeline, and what you want to build.'
+            ],
+        },
     ];
-
-    const GREETING = "Hey — I'm Matheus' assistant. Ask me about his work, process, or availability. What would you like to know?";
-
-    // ---- build DOM ----
-    const launcher = document.createElement('button');
-    launcher.type = 'button';
-    launcher.className = 'fllm-launcher';
-    launcher.setAttribute('aria-label', 'Open FonsecaLLM, the AI assistant');
-    launcher.innerHTML =
-        '<span class="fllm-launcher__spark" aria-hidden="true"><span class="fllm-launcher__dot"></span></span>' +
-        '<span class="fllm-launcher__label">FonsecaLLM</span>';
 
     const overlay = document.createElement('div');
     overlay.className = 'fllm-overlay';
+    overlay.setAttribute('aria-hidden', 'true');
 
-    const panel = document.createElement('div');
+    const panel = document.createElement('aside');
     panel.className = 'fllm-panel';
     panel.setAttribute('role', 'dialog');
     panel.setAttribute('aria-modal', 'true');
-    panel.setAttribute('aria-label', 'FonsecaLLM chat');
+    panel.setAttribute('aria-hidden', 'true');
+    panel.setAttribute('aria-label', 'FonsecaLLM FAQ panel');
     panel.innerHTML = `
         <div class="fllm-panel__head">
-            <span class="fllm-panel__avatar" aria-hidden="true">F</span>
-            <span class="fllm-panel__id">
-                <span class="fllm-panel__name">FonsecaLLM</span>
-                <span class="fllm-panel__status">Online · usually replies instantly</span>
-            </span>
-            <button type="button" class="fllm-panel__close" aria-label="Close chat">
-                <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-            </button>
-        </div>
-        <div class="fllm-body" id="fllmBody">
-            <p class="fllm-intro__title">Ask me anything.</p>
-            <div class="fllm-suggestions" id="fllmSuggestions"></div>
-        </div>
-        <div class="fllm-foot">
-            <div class="fllm-quote-chip" id="fllmQuoteChip">
-                <span class="fllm-quote-chip__mark" aria-hidden="true">&ldquo;</span>
-                <span class="fllm-quote-chip__text" id="fllmQuoteText"></span>
-                <button type="button" class="fllm-quote-chip__remove" id="fllmQuoteRemove" aria-label="Remove quote">&times;</button>
-            </div>
-            <form class="fllm-composer" id="fllmForm">
-                <textarea class="fllm-input" id="fllmInput" rows="1" placeholder="Ask me anything…" aria-label="Message"></textarea>
-                <button type="submit" class="fllm-send" id="fllmSend" aria-label="Send message">
-                    <svg width="17" height="17" viewBox="0 0 20 20" fill="none"><path d="M10 16V4M10 4L5 9M10 4l5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="fllm-panel__brand">FonsecaLLM</span>
+            <span class="fllm-panel__info" aria-hidden="true">i</span>
+            <div class="fllm-panel__actions">
+                <button type="button" class="fllm-panel__icon-btn" data-fllm-reset aria-label="Reset panel">
+                    <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M5.2 6.2A6.2 6.2 0 1 1 4 10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M5.2 6.2H2.4V3.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </button>
+                <button type="button" class="fllm-panel__icon-btn" data-fllm-close aria-label="Close panel">
+                    <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                </button>
+            </div>
+        </div>
+        <div class="fllm-panel__content">
+            <div class="fllm-panel__spark" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2.8l1.7 5.1 5.1 1.7-5.1 1.7-1.7 5.1-1.7-5.1-5.1-1.7 5.1-1.7L12 2.8Z" fill="currentColor"/></svg>
+            </div>
+            <h2 class="fllm-panel__title">Hey, ask away.</h2>
+            <form class="fllm-search" data-fllm-search>
+                <label class="fllm-search__label" for="fllm-search-input">Search portfolio</label>
+                <div class="fllm-search__field">
+                    <input type="search" id="fllm-search-input" class="fllm-search__input" placeholder="Which project had the biggest impact?" autocomplete="off" enterkeyhint="search">
+                    <button type="submit" class="fllm-search__submit" aria-label="Search portfolio">
+                        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="5.5" stroke="currentColor" stroke-width="1.6"/><path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                    </button>
+                </div>
             </form>
-            <p class="fllm-disclaimer">AI assistant · may be imperfect. For anything important, email fonsecaa.design@gmail.com</p>
+            <div class="fllm-search-suggestions" data-fllm-suggestions></div>
+            <div class="fllm-search-results" data-fllm-results hidden></div>
+            <div class="fllm-selected-quote" data-fllm-quote hidden>
+                <div class="fllm-selected-quote__head">
+                    <span>Selected text</span>
+                    <button type="button" data-fllm-clear-quote aria-label="Clear selected text">&times;</button>
+                </div>
+                <p data-fllm-quote-text></p>
+            </div>
+            <div class="fllm-faq" data-fllm-faq></div>
         </div>`;
 
     const quoteBtn = document.createElement('button');
     quoteBtn.type = 'button';
     quoteBtn.className = 'fllm-quote-btn';
-    quoteBtn.innerHTML = '<span aria-hidden="true">&ldquo;</span> Ask about this';
+    quoteBtn.setAttribute('aria-label', 'Ask AI about selected text');
+    quoteBtn.innerHTML = `
+        <span class="fllm-quote-btn__spark" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2.8l1.7 5.1 5.1 1.7-5.1 1.7-1.7 5.1-1.7-5.1-5.1-1.7 5.1-1.7L12 2.8Z" fill="currentColor"/></svg>
+        </span>
+        <span>Ask AI</span>`;
 
-    document.body.appendChild(launcher);
+    const launcher = document.createElement('button');
+    launcher.type = 'button';
+    launcher.className = 'fllm-launcher';
+    launcher.setAttribute('aria-label', 'Open Ask AI assistant');
+    launcher.setAttribute('aria-haspopup', 'dialog');
+    launcher.innerHTML = `
+        <span class="fllm-launcher__spark" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2.8l1.7 5.1 5.1 1.7-5.1 1.7-1.7 5.1-1.7-5.1-5.1-1.7 5.1-1.7L12 2.8Z" fill="currentColor"/></svg>
+        </span>
+        <span class="fllm-launcher__label">Ask AI</span>`;
+
     document.body.appendChild(overlay);
     document.body.appendChild(panel);
     document.body.appendChild(quoteBtn);
+    document.body.appendChild(launcher);
 
-    // ---- refs ----
-    const body = panel.querySelector('#fllmBody');
-    const suggestionsWrap = panel.querySelector('#fllmSuggestions');
-    const form = panel.querySelector('#fllmForm');
-    const input = panel.querySelector('#fllmInput');
-    const sendBtn = panel.querySelector('#fllmSend');
-    const closeBtn = panel.querySelector('.fllm-panel__close');
-    const quoteChip = panel.querySelector('#fllmQuoteChip');
-    const quoteChipText = panel.querySelector('#fllmQuoteText');
-    const quoteChipRemove = panel.querySelector('#fllmQuoteRemove');
+    const title = panel.querySelector('.fllm-panel__title');
+    const hint = document.createElement('p');
+    hint.className = 'fllm-panel__hint';
+    hint.textContent = 'Search project impact and details, or highlight text on the page to ask about a quote.';
+    title.insertAdjacentElement('afterend', hint);
 
-    // ---- state ----
-    const messages = [];       // {role, content} sent to API
-    let pendingQuote = '';     // highlighted quote awaiting a question
-    let isSending = false;
-    let greeted = false;
+    const faqWrap = panel.querySelector('[data-fllm-faq]');
+    const searchForm = panel.querySelector('[data-fllm-search]');
+    const searchInput = panel.querySelector('#fllm-search-input');
+    const searchResults = panel.querySelector('[data-fllm-results]');
+    const suggestionsWrap = panel.querySelector('[data-fllm-suggestions]');
+    const closeBtn = panel.querySelector('[data-fllm-close]');
+    const resetBtn = panel.querySelector('[data-fllm-reset]');
+    const quoteCard = panel.querySelector('[data-fllm-quote]');
+    const quoteText = panel.querySelector('[data-fllm-quote-text]');
+    const clearQuoteBtn = panel.querySelector('[data-fllm-clear-quote]');
+
+    let selectedQuote = '';
+    let selectionTimer = null;
+    let selectionHideTimer = null;
+    let lastQuoteShownAt = 0;
     let lastFocused = null;
 
-    // ---- render suggestions ----
-    SUGGESTIONS.forEach((q) => {
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'fllm-suggest';
-        btn.textContent = q;
-        btn.addEventListener('click', () => {
-            input.value = q;
-            sendMessage();
+    function createParagraph(text) {
+        const paragraph = document.createElement('p');
+        paragraph.textContent = text;
+        return paragraph;
+    }
+
+    function truncateText(text, maxLength) {
+        const trimmedText = text.trim();
+        if (trimmedText.length <= maxLength) return trimmedText;
+        return trimmedText.slice(0, maxLength - 3).trim() + '...';
+    }
+
+    function setQuote(text) {
+        selectedQuote = truncateText(text || '', MAX_SELECTION_LENGTH);
+        quoteCard.hidden = !selectedQuote;
+        quoteText.textContent = selectedQuote;
+    }
+
+    function clearQuote() {
+        selectedQuote = '';
+        quoteCard.hidden = true;
+        quoteText.textContent = '';
+    }
+
+    function setFaqExpanded(item, expanded) {
+        const button = item.querySelector('.fllm-faq__question');
+        const answer = item.querySelector('.fllm-faq__answer');
+        item.classList.toggle('is-open', expanded);
+        button.setAttribute('aria-expanded', String(expanded));
+        answer.hidden = !expanded;
+    }
+
+    function closeAllFaqs() {
+        faqWrap.querySelectorAll('.fllm-faq__item').forEach((item) => {
+            setFaqExpanded(item, false);
         });
-        suggestionsWrap.appendChild(btn);
+    }
+
+    FAQS.forEach((faq, index) => {
+        const item = document.createElement('div');
+        const answerId = `fllm-answer-${index}`;
+        item.className = 'fllm-faq__item';
+
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'fllm-faq__question';
+        button.setAttribute('aria-expanded', 'false');
+        button.setAttribute('aria-controls', answerId);
+        button.innerHTML = `
+            <span class="fllm-faq__arrow" aria-hidden="true">&#8618;</span>
+            <span class="fllm-faq__label"></span>
+            <span class="fllm-faq__chevron" aria-hidden="true"></span>`;
+        button.querySelector('.fllm-faq__label').textContent = faq.question;
+
+        const answer = document.createElement('div');
+        answer.className = 'fllm-faq__answer';
+        answer.id = answerId;
+        answer.hidden = true;
+        faq.answer.forEach((text) => answer.appendChild(createParagraph(text)));
+
+        button.addEventListener('click', () => {
+            const isExpanded = button.getAttribute('aria-expanded') === 'true';
+            closeAllFaqs();
+            if (!isExpanded) setFaqExpanded(item, true);
+        });
+
+        item.appendChild(button);
+        item.appendChild(answer);
+        faqWrap.appendChild(item);
     });
 
-    function clearIntro() {
-        const intro = body.querySelector('.fllm-intro__title');
-        const sugg = body.querySelector('.fllm-suggestions');
-        if (intro) intro.remove();
-        if (sugg) sugg.remove();
-    }
-
-    function escapeHtml(str) {
-        const div = document.createElement('div');
-        div.textContent = str;
-        return div.innerHTML;
-    }
-
-    // linkify emails + urls inside an already-escaped string
-    function formatReply(text) {
-        let safe = escapeHtml(text);
-        safe = safe.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
-        safe = safe.replace(/([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/g, '<a href="mailto:$1">$1</a>');
-        return safe;
-    }
-
-    function addBubble(role, text) {
-        clearIntro();
-        const el = document.createElement('div');
-        el.className = 'fllm-msg ' + (role === 'user' ? 'fllm-msg--user' : 'fllm-msg--bot');
-        el.innerHTML = role === 'user' ? escapeHtml(text) : formatReply(text);
-        body.appendChild(el);
-        body.scrollTop = body.scrollHeight;
-        return el;
-    }
-
-    function showTyping() {
-        const el = document.createElement('div');
-        el.className = 'fllm-typing';
-        el.innerHTML = '<span></span><span></span><span></span>';
-        body.appendChild(el);
-        body.scrollTop = body.scrollHeight;
-        return el;
-    }
-
-    // ---- quote chip ----
-    function setQuote(text) {
-        pendingQuote = (text || '').trim();
-        if (pendingQuote) {
-            quoteChipText.textContent = pendingQuote;
-            quoteChip.classList.add('is-visible');
-            input.placeholder = 'Ask about this quote…';
-        } else {
-            quoteChip.classList.remove('is-visible');
-            input.placeholder = 'Ask me anything…';
-        }
-    }
-    quoteChipRemove.addEventListener('click', () => setQuote(''));
-
-    // ---- open / close ----
-    function openPanel(prefillQuote) {
+    function openPanel(quote) {
         lastFocused = document.activeElement;
+        if (quote) setQuote(quote);
         document.body.classList.add('fllm-open');
-        if (prefillQuote) setQuote(prefillQuote);
-        if (!greeted) {
-            greeted = true;
-            setTimeout(() => addBubble('bot', GREETING), 150);
-        }
-        setTimeout(() => input.focus(), 320);
+        overlay.setAttribute('aria-hidden', 'false');
+        panel.setAttribute('aria-hidden', 'false');
+        window.setTimeout(() => {
+            if (quote && closeBtn) closeBtn.focus();
+            else if (searchInput) searchInput.focus();
+        }, 260);
     }
 
     function closePanel() {
         document.body.classList.remove('fllm-open');
+        overlay.setAttribute('aria-hidden', 'true');
+        panel.setAttribute('aria-hidden', 'true');
         if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
     }
 
-    launcher.addEventListener('click', () => openPanel());
-    closeBtn.addEventListener('click', closePanel);
-    overlay.addEventListener('click', closePanel);
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && document.body.classList.contains('fllm-open')) closePanel();
-    });
-
-    // ---- input autosize ----
-    input.addEventListener('input', () => {
-        input.style.height = 'auto';
-        input.style.height = Math.min(input.scrollHeight, 120) + 'px';
-    });
-    input.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' && !e.shiftKey) {
-            e.preventDefault();
-            sendMessage();
-        }
-    });
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        sendMessage();
-    });
-
-    // ---- send ----
-    async function sendMessage() {
-        const text = input.value.trim();
-        if ((!text && !pendingQuote) || isSending) return;
-
-        const quoteForThisTurn = pendingQuote;
-        const displayText = text || 'Tell me about this.';
-        addBubble('user', quoteForThisTurn ? `“${quoteForThisTurn}”\n\n${displayText}` : displayText);
-
-        messages.push({ role: 'user', content: text || 'Tell me more about this.' });
-        input.value = '';
-        input.style.height = 'auto';
-        setQuote('');
-
-        isSending = true;
-        sendBtn.disabled = true;
-        const typing = showTyping();
-
-        let reply;
-        try {
-            reply = await fetchReply(messages, quoteForThisTurn);
-        } catch (err) {
-            reply = localFallback(text, quoteForThisTurn);
-        }
-        typing.remove();
-        addBubble('bot', reply);
-        messages.push({ role: 'assistant', content: reply });
-
-        isSending = false;
-        sendBtn.disabled = false;
-        input.focus();
+    function resetPanel() {
+        clearQuote();
+        closeAllFaqs();
+        if (searchInput) searchInput.value = '';
+        renderFllmSearchResult(searchResults, null);
     }
 
-    async function fetchReply(history, quote) {
-        const res = await fetch('/api/chat', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ messages: history, quote }),
+    function runFllmSearch() {
+        const query = searchInput?.value?.trim() || '';
+        if (!query) {
+            renderFllmSearchResult(searchResults, null);
+            return;
+        }
+        closeAllFaqs();
+        renderFllmSearchResult(searchResults, answerFllmSearch(query, FAQS));
+        searchResults.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    FLLM_SEARCH_SUGGESTIONS.forEach((label) => {
+        const chip = document.createElement('button');
+        chip.type = 'button';
+        chip.className = 'fllm-search-suggestion';
+        chip.textContent = label;
+        chip.addEventListener('click', () => {
+            searchInput.value = label;
+            runFllmSearch();
+            searchInput.focus();
         });
-        if (!res.ok) throw new Error('bad status ' + res.status);
-        const data = await res.json();
-        if (!data || !data.reply) throw new Error('no reply');
-        return data.reply;
+        suggestionsWrap.appendChild(chip);
+    });
+
+    function getElementFromNode(node) {
+        if (!node) return null;
+        if (node.nodeType === Node.ELEMENT_NODE) return node;
+        return node.parentElement;
     }
 
-    // client-side fallback when the API isn't reachable (e.g. opened as a local file)
-    function localFallback(userText, quote) {
-        const t = (userText || '').toLowerCase();
-        const has = (...w) => w.some((x) => t.includes(x));
-        if (quote && !userText) return "Happy to talk about that line — what would you like to know? You can also email fonsecaa.design@gmail.com.";
-        if (has('available', 'hire', 'freelance', 'work with', 'contact', 'email', 'budget', 'rate')) return "Yes — I'm open to select projects and available for remote work worldwide. Best to email fonsecaa.design@gmail.com or connect on LinkedIn (/in/maths-fonseca).";
-        if (has('hedgehog', 'prediction', 'orderbook', 'waitlist')) return "At Hedgehog I reworked how people predict on-chain — from orderbooks to pooled UP/DOWN positions — taking task completion from 40% to 88% and time-to-first-action from ~8s to under 2s, and built the landing page that drove 15,000+ waitlist sign-ups with zero paid spend.";
-        if (has('transparent', 'market maker', 'liquidity', 'b2b', 'dashboard')) return "At Transparent.space I'm Founding Product Designer — I built a B2B dashboard from zero that makes market-maker performance impossible to hide, lifting task completion from 61% to 88%.";
-        if (has('petrobras', 'unimed', 'health', 'insurance', 'telemedicine')) return "In healthcare I redesigned Petrobras Saúde's telemedicine platform for 50,000+ employees and Unimed Seguros' insurance app, both with a focus on clarity under real-world urgency.";
-        if (has('approach', 'process', 'unique', 'different', 'balance', 'strategy', 'philosophy')) return "I don't just design interfaces — I structure products. I start from the real problem and the system behind it, then turn complexity into something clear and usable, from discovery to hand-off.";
-        if (has('project', 'work', 'portfolio', 'experience')) return "Selected work: Hedgehog (Web3 prediction market), Transparent.space (B2B market-maker dashboard), Petrobras Saúde and Unimed Seguros (healthcare), plus brand work for Picnic and Agent Arena. Want detail on any one?";
-        if (has('skill', 'tool', 'figma', 'stack')) return "My toolkit: Figma, Photoshop, Illustrator, prototyping, user research, design systems, website and strategy design — with a strong Web3/DeFi specialization.";
-        if (has('hello', 'hi', 'hey', 'oi', 'ola')) return "Hey! I'm Matheus — a product designer across Web3/DeFi, healthcare and enterprise. Ask me about my projects, process, or availability.";
-        return "I'm Matheus' assistant — I can talk about his projects, process, skills, or availability. For anything specific, email fonsecaa.design@gmail.com.";
+    function isSelectionInsideAssistant(selection) {
+        const anchorEl = getElementFromNode(selection.anchorNode);
+        const focusEl = getElementFromNode(selection.focusNode);
+        const selectedElements = [anchorEl, focusEl].filter(Boolean);
+        return selectedElements.some((el) => {
+            if (panel.contains(el) || quoteBtn.contains(el) || launcher.contains(el)) return true;
+            return false;
+        });
     }
 
-    // =================================================
-    // Highlight-to-ask: floating "Ask about this" button
-    // =================================================
-    let quoteBtnTimer = null;
+    function getSelectionRect(selection) {
+        try {
+            const range = selection.getRangeAt(0);
+            const rect = range.getBoundingClientRect();
+            if (rect.width || rect.height) return rect;
+            const rects = range.getClientRects();
+            if (rects.length) return rects[0];
+        } catch (err) {
+            return null;
+        }
+        return null;
+    }
+
+    function getPointerPoint(event) {
+        if (!event) return null;
+        if (event.changedTouches && event.changedTouches.length) {
+            return {
+                x: event.changedTouches[0].clientX,
+                y: event.changedTouches[0].clientY,
+            };
+        }
+        if (typeof event.clientX !== 'number') return null;
+        return { x: event.clientX, y: event.clientY };
+    }
 
     function hideQuoteBtn() {
+        clearTimeout(selectionHideTimer);
         quoteBtn.classList.remove('is-visible');
+        delete quoteBtn.dataset.quote;
     }
 
-    function onSelection() {
-        if (document.body.classList.contains('fllm-open')) return;
-        const sel = window.getSelection();
-        if (!sel || sel.isCollapsed) { hideQuoteBtn(); return; }
-        const text = sel.toString().trim();
-        if (text.length < 12 || text.length > 600) { hideQuoteBtn(); return; }
+    function positionQuoteBtn(event, rect) {
+        const point = getPointerPoint(event);
+        const centerX = point ? point.x : rect.left + rect.width / 2;
+        const centerY = point ? point.y : rect.top;
+        const buttonWidth = quoteBtn.offsetWidth || 128;
+        const viewportWidth = document.documentElement.clientWidth;
+        const maxLeft = viewportWidth - buttonWidth - 12;
+        let left = centerX - buttonWidth / 2;
+        let top = centerY - TOOLTIP_OFFSET;
 
-        // ignore selections inside the panel/launcher itself
-        const anchorNode = sel.anchorNode;
-        if (anchorNode && quoteBtn.contains(anchorNode)) return;
-
-        let rect;
-        try { rect = sel.getRangeAt(0).getBoundingClientRect(); } catch (e) { return; }
-        if (!rect || (!rect.width && !rect.height)) { hideQuoteBtn(); return; }
-
-        const btnW = quoteBtn.offsetWidth || 130;
-        let left = window.scrollX + rect.left + rect.width / 2 - btnW / 2;
-        left = Math.max(window.scrollX + 8, Math.min(left, window.scrollX + document.documentElement.clientWidth - btnW - 8));
-        const top = window.scrollY + rect.top - 46;
+        left = Math.max(12, Math.min(left, maxLeft));
+        if (top < 12) top = rect.bottom + 12;
 
         quoteBtn.style.left = left + 'px';
-        quoteBtn.style.top = (top < window.scrollY ? window.scrollY + rect.bottom + 10 : top) + 'px';
-        quoteBtn.dataset.quote = text;
-        quoteBtn.classList.add('is-visible');
+        quoteBtn.style.top = top + 'px';
     }
 
-    document.addEventListener('mouseup', () => {
-        clearTimeout(quoteBtnTimer);
-        quoteBtnTimer = setTimeout(onSelection, 10);
-    });
-    document.addEventListener('selectionchange', () => {
-        const sel = window.getSelection();
-        if (!sel || sel.isCollapsed) hideQuoteBtn();
-    });
-    window.addEventListener('scroll', hideQuoteBtn, { passive: true });
+    function showQuoteBtn(event) {
+        if (document.body.classList.contains('fllm-open')) return;
 
-    quoteBtn.addEventListener('mousedown', (e) => e.preventDefault()); // keep selection
+        const selection = window.getSelection();
+        if (!selection || selection.isCollapsed) {
+            hideQuoteBtn();
+            return;
+        }
+
+        const text = selection.toString().trim();
+        const invalidLength = text.length < MIN_SELECTION_LENGTH || text.length > MAX_SELECTION_LENGTH;
+        if (invalidLength || isSelectionInsideAssistant(selection)) {
+            hideQuoteBtn();
+            return;
+        }
+
+        const rect = getSelectionRect(selection);
+        if (!rect) {
+            hideQuoteBtn();
+            return;
+        }
+
+        quoteBtn.dataset.quote = text;
+        positionQuoteBtn(event, rect);
+        quoteBtn.classList.add('is-visible');
+        lastQuoteShownAt = Date.now();
+        clearTimeout(selectionHideTimer);
+    }
+
+    function scheduleQuoteBtn(event) {
+        clearTimeout(selectionTimer);
+        clearTimeout(selectionHideTimer);
+        selectionTimer = window.setTimeout(() => showQuoteBtn(event), 20);
+    }
+
+    function scheduleHideQuoteBtn() {
+        clearTimeout(selectionHideTimer);
+        selectionHideTimer = window.setTimeout(() => {
+            if (document.body.classList.contains('fllm-open')) return;
+
+            const selection = window.getSelection();
+            const liveText = selection?.toString()?.trim() || '';
+            if (liveText.length >= MIN_SELECTION_LENGTH) return;
+
+            // Keep the pill clickable briefly after the browser clears the highlight.
+            if (quoteBtn.classList.contains('is-visible') && quoteBtn.dataset.quote) {
+                if (Date.now() - lastQuoteShownAt < 500) return;
+            }
+
+            hideQuoteBtn();
+        }, 100);
+    }
+
+    closeBtn.addEventListener('click', closePanel);
+    resetBtn.addEventListener('click', resetPanel);
+    clearQuoteBtn.addEventListener('click', clearQuote);
+    overlay.addEventListener('click', closePanel);
+    searchForm?.addEventListener('submit', (event) => {
+        event.preventDefault();
+        runFllmSearch();
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && document.body.classList.contains('fllm-open')) closePanel();
+        if (event.key === 'Escape') hideQuoteBtn();
+        if (event.shiftKey && ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(event.key)) {
+            scheduleQuoteBtn(event);
+        }
+    });
+    document.addEventListener('mouseup', scheduleQuoteBtn);
+    document.addEventListener('pointerup', scheduleQuoteBtn);
+    document.addEventListener('touchend', scheduleQuoteBtn);
+    document.addEventListener('selectionchange', () => {
+        const selection = window.getSelection();
+        if (!selection || selection.isCollapsed) {
+            scheduleHideQuoteBtn();
+            return;
+        }
+        scheduleQuoteBtn(null);
+    });
+    document.addEventListener('click', (event) => {
+        if (quoteBtn.contains(event.target)) return;
+        if (launcher.contains(event.target)) return;
+        if (panel.contains(event.target)) return;
+        if (document.body.classList.contains('fllm-open')) return;
+        if (!quoteBtn.classList.contains('is-visible')) return;
+        scheduleHideQuoteBtn();
+    });
+    window.addEventListener('scroll', () => scheduleHideQuoteBtn(), { passive: true });
+    window.addEventListener('resize', () => scheduleHideQuoteBtn());
+
+    quoteBtn.addEventListener('mousedown', (event) => event.preventDefault());
     quoteBtn.addEventListener('click', () => {
-        const q = quoteBtn.dataset.quote || '';
+        const quote = quoteBtn.dataset.quote || '';
         hideQuoteBtn();
-        const sel = window.getSelection();
-        if (sel) sel.removeAllRanges();
-        openPanel(q);
+        const selection = window.getSelection();
+        if (selection) selection.removeAllRanges();
+        openPanel(quote);
+    });
+
+    launcher.addEventListener('click', () => {
+        hideQuoteBtn();
+        clearQuote();
+        openPanel();
     });
 }
