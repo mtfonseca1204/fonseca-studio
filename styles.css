@@ -14147,9 +14147,11 @@ body.editorial-site .fllm-panel {
 .fllm-panel__content {
     flex: 1;
     min-height: 0;
+    min-width: 0;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
     padding: clamp(28px, 5vh, 72px) 28px 16px;
 }
 
@@ -14160,7 +14162,9 @@ body.editorial-site .fllm-panel {
 .fllm-panel__chat-zone {
     flex: 1;
     min-height: 120px;
+    min-width: 0;
     margin-top: 16px;
+    overflow-x: hidden;
     overflow-y: auto;
     scroll-behavior: smooth;
 }
@@ -14174,7 +14178,9 @@ body.editorial-site .fllm-panel {
     flex-direction: column;
     gap: 12px;
     min-height: 100%;
+    min-width: 0;
     justify-content: flex-end;
+    overflow-x: hidden;
 }
 
 .fllm-chat:empty {
@@ -14521,8 +14527,15 @@ body.fllm-open .fllm-launcher {
     flex-direction: column;
     gap: 6px;
     flex-shrink: 0;
+    min-width: 0;
     max-height: min(36vh, 280px);
+    overflow-x: hidden;
     overflow-y: auto;
+}
+
+.fllm-faq__label {
+    min-width: 0;
+    overflow-wrap: anywhere;
 }
 
 .fllm-faq__item {
@@ -14531,7 +14544,7 @@ body.fllm-open .fllm-launcher {
 
 .fllm-faq__question {
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto minmax(0, 1fr) auto;
     align-items: center;
     gap: 10px;
     width: 100%;
@@ -14602,6 +14615,8 @@ body.fllm-open .fllm-launcher {
 
 .fllm-panel__foot {
     flex-shrink: 0;
+    min-width: 0;
+    overflow: hidden;
     padding: 14px 20px 18px;
     border-top: 1px solid var(--border-color);
     background: var(--bg-white);
@@ -14609,13 +14624,15 @@ body.fllm-open .fllm-launcher {
 
 .fllm-msg {
     max-width: 92%;
+    min-width: 0;
     padding: 11px 14px;
     font-family: 'Inter', sans-serif;
     font-size: 14px;
     line-height: 1.55;
     border-radius: 14px;
     white-space: pre-wrap;
-    word-wrap: break-word;
+    overflow-wrap: anywhere;
+    word-break: break-word;
     animation: fllmMsgIn 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -14649,6 +14666,8 @@ body.fllm-open .fllm-launcher {
     flex-direction: column;
     gap: 8px;
     max-width: 100%;
+    min-width: 0;
+    overflow: hidden;
 }
 
 .fllm-msg__title {
@@ -14665,6 +14684,8 @@ body.fllm-open .fllm-launcher {
     font-size: 13.5px;
     line-height: 1.55;
     color: var(--text-body);
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 .fllm-msg__links {
@@ -14705,6 +14726,7 @@ body.fllm-open .fllm-launcher {
     display: flex;
     align-items: flex-end;
     gap: 8px;
+    min-width: 0;
     padding: 7px 7px 7px 14px;
     background: var(--bg-white);
     border: 1px solid var(--border-color);
@@ -14719,6 +14741,7 @@ body.fllm-open .fllm-launcher {
 
 .fllm-input {
     flex: 1;
+    min-width: 0;
     border: none;
     outline: none;
     resize: none;
