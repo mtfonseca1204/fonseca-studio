@@ -37,9 +37,29 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260708">
+    <link rel="stylesheet" href="styles.css?v=20260722">
+    <style>
+        #site-splash{position:fixed;inset:0;z-index:10060;display:flex;align-items:center;justify-content:center;background:#fafaf9;opacity:1;transition:opacity .45s cubic-bezier(.16,1,.3,1),visibility .45s}
+        html[data-theme="dark"] #site-splash{background:#0a0a0a}
+        #site-splash.site-splash--hide{opacity:0;visibility:hidden;pointer-events:none}
+    </style>
+    <script>
+        (function () {
+            try {
+                if (localStorage.getItem('theme') === 'dark') {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                }
+            } catch (_) {}
+        })();
+    </script>
 </head>
-<body class="editorial-site">
+<body class="editorial-site home-page">
+    <div id="site-splash" class="site-splash" role="status" aria-live="polite" aria-label="Loading portfolio">
+        <div class="site-splash__inner">
+            <svg class="site-splash__logo" viewBox="0 0 275 275" fill="none" aria-hidden="true"><path d="M137.5 0L146.445 115.904L234.727 40.2728L159.096 128.555L275 137.5L159.096 146.445L234.727 234.727L146.445 159.096L137.5 275L128.555 159.096L40.2728 234.727L115.904 146.445L0 137.5L115.904 128.555L40.2728 40.2728L128.555 115.904L137.5 0Z" fill="currentColor"/></svg>
+            <p class="site-splash__name">Matheus Fonseca</p>
+        </div>
+    </div>
     <!-- Nav -->
     <nav class="navbar">
         <div class="nav-container">
@@ -53,7 +73,7 @@
                 <a href="#work" class="nav-link"><span class="nav-num">01</span> Work</a>
                 <a href="fun.html" class="nav-link"><span class="nav-num">02</span> Creative Side</a>
                 <a href="about.html" class="nav-link"><span class="nav-num">03</span> About</a>
-                <a href="MatheusFonsecaCV.pdf?v=20260629" target="_blank" rel="noopener noreferrer" class="nav-link"><span class="nav-num">04</span> Resume</a>
+                <a href="MatheusFonsecaCV.pdf?v=20260703" target="_blank" rel="noopener noreferrer" class="nav-link"><span class="nav-num">04</span> Resume</a>
             </div>
             <div class="nav-right">
                 <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
@@ -69,7 +89,7 @@
                 <a href="#work" class="mobile-link">Work</a>
                 <a href="fun.html" class="mobile-link">Creative Side</a>
                 <a href="about.html" class="mobile-link">About</a>
-                <a href="MatheusFonsecaCV.pdf?v=20260629" target="_blank" rel="noopener noreferrer" class="mobile-link">Resume</a>
+                <a href="MatheusFonsecaCV.pdf?v=20260703" target="_blank" rel="noopener noreferrer" class="mobile-link">Resume</a>
                 <a href="#" data-copy-email class="mobile-link mobile-cta">Contact</a>
             </div>
         </div>
@@ -79,19 +99,18 @@
     <section id="home" class="hero hero--intro">
         <canvas class="hero-ascii-terrain" aria-hidden="true"></canvas>
         <div class="container hero-intro">
-            <header class="section-head section-head--plain hero-intro__head" data-anim="fade">
-                <span class="section-num">00</span>
-                <span class="section-title">Intro</span>
-            </header>
             <div class="hero-intro__layout">
                 <div class="hero-intro__column">
                     <div class="hero-intro__main">
-                        <p class="hero-intro__eyebrow" data-anim="fade">Senior Product Designer · Rio de Janeiro, Brazil</p>
-                        <h1 class="hero-intro__name" data-anim="title">
-                            <span class="hero-intro__name-line">Matheus</span>
-                            <span class="hero-intro__name-line hero-intro__name-line--accent">Fonseca<span class="hero-intro__name-dot" aria-hidden="true">.</span></span>
+                        <h1 class="hero-intro__name" data-anim="title" aria-label="Matheus Fonseca">
+                            <span class="hero-intro__name-line">
+                                <span class="hero-intro__typewriter" data-typewriter="Matheus"></span>
+                            </span>
+                            <span class="hero-intro__name-line hero-intro__name-line--accent">
+                                <span class="hero-intro__typewriter" data-typewriter="Fonseca"></span><span class="hero-intro__name-dot" aria-hidden="true">.</span>
+                            </span>
                         </h1>
-                        <p class="hero-intro__bio" data-anim="fade"><span class="hero-intro__bio-mark" aria-hidden="true"></span>Hi, I&rsquo;m a Product Designer with roots in Art Direction and 5+ years building and shaping digital products. Available for remote work worldwide.</p>
+                        <p class="hero-intro__bio" data-anim="fade"><span class="hero-intro__bio-mark" aria-hidden="true"></span><span class="hero-intro__bio-text">Hi, I&rsquo;m a Product Designer with roots in Art Direction and 5+ years building and shaping digital products. <span class="hero-intro__bio-avail">Available for remote work worldwide.</span></span></p>
                         <button type="button" class="hero-intro__email" data-copy-email data-anim="fade" aria-label="Copy email address">
                             <span class="hero-intro__email-label">fonsecaa.design@gmail.com</span>
                             <span class="hero-intro__email-action" aria-hidden="true">Copy</span>
@@ -99,7 +118,7 @@
                     </div>
                 </div>
                 <aside class="hero-intro__aside" data-anim="fade" aria-label="Status">
-                    <p class="hero-intro__status"><span class="status-dot" aria-hidden="true"></span><span>Open to select projects</span></p>
+                    <p class="hero-intro__status"><span class="status-dot" aria-hidden="true"></span><span>Open to Projects</span></p>
                     <p class="hero-intro__coords">22&deg;54&prime; S &middot; 43&deg;12&prime; W</p>
                 </aside>
             </div>
@@ -117,166 +136,80 @@
                 <span class="section-rule"></span>
                 <a href="fun.html" class="section-link">Creative Side &nearr;</a>
             </header>
-            <div class="work-grid">
-                <article class="work-card work-card--direct" data-anim="card">
-                    <div class="work-card__info">
-                        <h3 class="work-card__name">Orderbooks Out, One Tap In: Redesigning How People Predict On-Chain</h3>
-                        <div class="work-card__meta">
-                            <span class="work-card__client">Hedgehog</span>
-                            <span class="work-card__year">2024/2026</span>
-                            <span class="work-card__role">Product Designer</span>
-                        </div>
-                        <p class="work-card__desc">Hedgehog's core product asked users to understand orderbooks before they could make a single prediction. I redesigned the participation model itself, from order-matching to pooled UP/DOWN positions, cutting task completion failure in half (40% → 88%) and time-to-first-action from 8 seconds to under 2.</p>
-                        <a href="project-hedgehog-product.html" class="work-card__action">View the project <span class="work-card__action-arrow" aria-hidden="true">&nearr;</span></a>
-                    </div>
-                    <div class="work-card__media">
-                        <a href="project-hedgehog-product.html" class="work-card__thumb-link" aria-label="Open Hedgehog product">
-                        <div class="work-card__thumb" data-project-carousel>
-                            <div class="project-card__slides">
-                                <video class="project-card__slide project-card__slide--video project-card__slide--cover project-card__slide--crop-in active" data-src="Hedgehog product/product_thumb.mov" muted loop playsinline preload="none" aria-label="Hedgehog product preview"></video>
-                            </div>
-                            <div class="work-card__media-tags">
-                                <span class="work-card__pill">Web3</span>
-                                <span class="work-card__pill">Product</span>
+            <div class="work-grid work-grid--portfolio">
+                <article class="work-card work-card--portfolio" data-anim="card">
+                    <a href="project-hedgehog-product.html" class="work-card__link">
+                        <div class="work-card__media">
+                            <div class="work-card__thumb" data-project-carousel>
+                                <div class="project-card__slides">
+                                    <video class="project-card__slide project-card__slide--video project-card__slide--cover project-card__slide--crop-in active" data-src="Hedgehog product/product_thumb.mov" muted loop playsinline preload="none" aria-label="Hedgehog product preview"></video>
+                                </div>
                             </div>
                         </div>
-                        </a>
-                        <div class="work-card__media-foot">
-                            <span class="work-card__media-label"><strong>Prediction Market</strong><span>Hedgehog</span></span>
-                            <a href="project-hedgehog-product.html" class="work-card__expand" aria-label="Open Hedgehog product"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M4 16L16 4M16 4H6M16 4V14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                        <div class="work-card__info">
+                            <h3 class="work-card__name">Turning prediction curiosity into participation</h3>
+                            <p class="work-card__meta-line">Hedgehog · Prediction Market · 2024–2026</p>
                         </div>
-                    </div>
+                    </a>
                 </article>
 
-                <article class="work-card work-card--direct" data-anim="card">
-                    <div class="work-card__info">
-                        <h3 class="work-card__name">37.5% Conversion, Zero Paid Spend: Engineering Trust Before the Product Existed</h3>
-                        <div class="work-card__meta">
-                            <span class="work-card__client">Hedgehog</span>
-                            <span class="work-card__year">2024/2026</span>
-                            <span class="work-card__role">Landing &amp; Growth</span>
-                        </div>
-                        <p class="work-card__desc">A conversion-first landing page for an unreleased Web3 prediction market, turned 40K+ organic followers into 15,000+ qualified waitlist sign-ups by building institutional trust before asking for a single&nbsp;click.</p>
-                        <a href="project-hedgehog.html" class="work-card__action">View the project <span class="work-card__action-arrow" aria-hidden="true">&nearr;</span></a>
-                    </div>
-                    <div class="work-card__media">
-                        <a href="project-hedgehog.html" class="work-card__thumb-link" aria-label="Open Hedgehog waitlist">
-                        <div class="work-card__thumb" data-project-carousel>
-                            <div class="project-card__slides">
-                                <video class="project-card__slide project-card__slide--video project-card__slide--cover active" data-src="Hedgehog /Hedgehog-waitlist.mp4" muted loop playsinline preload="none" aria-label="Hedgehog waitlist landing preview"></video>
-                            </div>
-                            <div class="work-card__media-tags">
-                                <span class="work-card__pill">Web3</span>
-                                <span class="work-card__pill">Product</span>
+                <article class="work-card work-card--portfolio" data-anim="card">
+                    <a href="project-hedgehog.html" class="work-card__link">
+                        <div class="work-card__media">
+                            <div class="work-card__thumb" data-project-carousel>
+                                <div class="project-card__slides">
+                                    <video class="project-card__slide project-card__slide--video project-card__slide--cover active" data-src="Hedgehog /Hedgehog-waitlist.mp4" muted loop playsinline preload="none" aria-label="Hedgehog waitlist landing preview"></video>
+                                </div>
                             </div>
                         </div>
-                        </a>
-                        <div class="work-card__media-foot">
-                            <span class="work-card__media-label"><strong>Waitlist Conversion</strong><span>Hedgehog</span></span>
-                            <a href="project-hedgehog.html" class="work-card__expand" aria-label="Open Hedgehog waitlist"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M4 16L16 4M16 4H6M16 4V14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                        <div class="work-card__info">
+                            <h3 class="work-card__name">Credibility before the product existed</h3>
+                            <p class="work-card__meta-line">Hedgehog · Waitlist · 2025</p>
                         </div>
-                    </div>
+                    </a>
                 </article>
 
-                <article class="work-card work-card--direct" data-anim="card">
-                    <div class="work-card__info">
-                        <h3 class="work-card__name">Making Market Maker Performance Impossible to Hide</h3>
-                        <div class="work-card__meta">
-                            <span class="work-card__client">Transparent.space</span>
-                            <span class="work-card__year">2025/2026</span>
-                            <span class="work-card__role">Founding Product Designer</span>
-                        </div>
-                        <p class="work-card__desc">As Founding Product Designer, built a B2B dashboard from zero that gives liquidity providers real visibility into MM performance, discovery to design system, with task completion climbing from 61%&nbsp;to&nbsp;88%.</p>
-                        <a href="project-transparent-space.html" class="work-card__action">View the project <span class="work-card__action-arrow" aria-hidden="true">&nearr;</span></a>
-                    </div>
-                    <div class="work-card__media">
-                        <a href="project-transparent-space.html" class="work-card__thumb-link" aria-label="Open Transparent.space">
-                        <div class="work-card__thumb work-card__thumb--video-light" data-project-carousel>
-                            <div class="project-card__slides">
-                                <video class="project-card__slide project-card__slide--video active" data-src="Transparent.space Products/New imgs/Demo_showcase.mov" muted loop playsinline preload="none" aria-label="Transparent.space product demo"></video>
-                            </div>
-                            <div class="work-card__media-tags">
-                                <span class="work-card__pill">Web3</span>
-                                <span class="work-card__pill">Product</span>
+                <article class="work-card work-card--portfolio" data-anim="card">
+                    <a href="project-transparent-space.html" class="work-card__link">
+                        <div class="work-card__media">
+                            <div class="work-card__thumb work-card__thumb--video-light" data-project-carousel>
+                                <div class="project-card__slides">
+                                    <video class="project-card__slide project-card__slide--video active" data-src="Transparent.space Products/New imgs/Demo_showcase.mov" muted loop playsinline preload="none" aria-label="Transparent.space product demo"></video>
+                                </div>
                             </div>
                         </div>
-                        </a>
-                        <div class="work-card__media-foot">
-                            <span class="work-card__media-label"><strong>Dashboard to market makers</strong><span>Transparent.space</span></span>
-                            <a href="project-transparent-space.html" class="work-card__expand" aria-label="Open Transparent.space"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M4 16L16 4M16 4H6M16 4V14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                        <div class="work-card__info">
+                            <h3 class="work-card__name">From twenty minutes of cross-checking to thirty seconds of certainty</h3>
+                            <p class="work-card__meta-line">Transparent.space · Market Maker Dashboard · 2025</p>
                         </div>
-                    </div>
+                    </a>
                 </article>
 
-                <article class="work-card work-card--direct" data-anim="card">
-                    <div class="work-card__info">
-                        <h3 class="work-card__name">Simplifying Healthcare for 50,000+ Employees</h3>
-                        <div class="work-card__meta">
-                            <span class="work-card__client">Petrobras Saúde</span>
-                            <span class="work-card__year">2022/2023</span>
-                            <span class="work-card__role">Product Designer</span>
-                        </div>
-                        <p class="work-card__desc">Petrobras employees needed care without visiting a clinic during COVID. I researched across three beneficiary segments and designed a triage-first telehealth platform: fast to ship, calm to use.</p>
-                        <a href="project-petrobras-saude.html" class="work-card__action">View the project <span class="work-card__action-arrow" aria-hidden="true">&nearr;</span></a>
-                    </div>
-                    <div class="work-card__media">
-                        <a href="project-petrobras-saude.html" class="work-card__thumb-link" aria-label="Open Petrobras Saúde">
-                        <div class="work-card__thumb" data-project-carousel>
-                            <div class="project-card__slides">
-                                <video class="project-card__slide project-card__slide--video project-card__slide--cover active" data-src="Petrobras/Tutorial%20de%20acesso%20aos%20servi%C3%A7os%20do%20Programa%20Cuidar%20Gest%C3%A3o%20de%20Sa%C3%BAde%20-%20Sa%C3%BAde%20Petrobras%20%281080p%29.mp4" muted loop playsinline preload="none" aria-label="Petrobras Saúde platform preview"></video>
-                            </div>
-                            <div class="work-card__media-tags">
-                                <span class="work-card__pill">Healthcare</span>
-                                <span class="work-card__pill">Enterprise</span>
+                <article class="work-card work-card--portfolio" data-anim="card">
+                    <a href="project-unimed-seguros.html" class="work-card__link">
+                        <div class="work-card__media">
+                            <div class="work-card__thumb" data-project-carousel>
+                                <div class="project-card__slides">
+                                    <img class="project-card__slide active" src="Unimed/Cover/Cover unimed all projects.png" alt="Unimed Seguros app redesign">
+                                </div>
                             </div>
                         </div>
-                        </a>
-                        <div class="work-card__media-foot">
-                            <span class="work-card__media-label"><strong>Telemedicine Platform</strong><span>Petrobras Saúde</span></span>
-                            <a href="project-petrobras-saude.html" class="work-card__expand" aria-label="Open Petrobras Saúde"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M4 16L16 4M16 4H6M16 4V14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                        <div class="work-card__info">
+                            <h3 class="work-card__name">In healthcare, the barrier isn&rsquo;t usability, it&rsquo;s trust</h3>
+                            <p class="work-card__meta-line">Unimed Seguros · Telemedicine · 2021–2022</p>
                         </div>
-                    </div>
-                </article>
-
-                <article class="work-card work-card--direct" data-anim="card">
-                    <div class="work-card__info">
-                        <h3 class="work-card__name">Insurance Without the Anxiety</h3>
-                        <div class="work-card__meta">
-                            <span class="work-card__client">Unimed Seguros</span>
-                            <span class="work-card__year">2021/2022</span>
-                            <span class="work-card__role">Product Designer</span>
-                        </div>
-                        <p class="work-card__desc">During COVID, beneficiaries needed remote care they could trust. I redesigned scheduling and consultation flows to reduce anxiety, not add features.</p>
-                        <a href="project-unimed-seguros.html" class="work-card__action">View the project <span class="work-card__action-arrow" aria-hidden="true">&nearr;</span></a>
-                    </div>
-                    <div class="work-card__media">
-                        <a href="project-unimed-seguros.html" class="work-card__thumb-link" aria-label="Open Unimed Seguros">
-                        <div class="work-card__thumb" data-project-carousel>
-                            <div class="project-card__slides">
-                                <img class="project-card__slide active" src="Unimed/Cover/Cover unimed all projects.png" alt="Unimed Seguros app redesign">
-                            </div>
-                            <div class="work-card__media-tags">
-                                <span class="work-card__pill">Healthcare</span>
-                                <span class="work-card__pill">Mobile</span>
-                            </div>
-                        </div>
-                        </a>
-                        <div class="work-card__media-foot">
-                            <span class="work-card__media-label"><strong>Telemedicine App</strong><span>Unimed Seguros</span></span>
-                            <a href="project-unimed-seguros.html" class="work-card__expand" aria-label="Open Unimed Seguros"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M4 16L16 4M16 4H6M16 4V14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-                        </div>
-                    </div>
+                    </a>
                 </article>
             </div>
         </div>
     </section>
 
-    <!-- Clients -->
+    <!-- Testimonials -->
     <section id="testimonials" class="section-testimonials">
         <div class="container">
             <header class="section-head section-head--plain" data-anim="fade">
                 <span class="section-num">02</span>
-                <h2 class="section-title">Clients</h2>
+                <h2 class="section-title">Testimonials</h2>
                 <span class="section-rule"></span>
             </header>
         </div>
@@ -353,20 +286,20 @@
                         <img src="logo.svg" alt="" class="footer-logo-img logo-light" height="32">
                         <img src="logo%20white.svg" alt="" class="footer-logo-img logo-dark" height="32">
                     </a>
-                    <p class="hero-intro__bio footer-v3__tagline">Designing digital products where strategy, systems and experience meet.</p>
-                    <p class="hero-intro__hint footer-v3__avail"><span class="status-dot" aria-hidden="true"></span><span>Open to select projects</span></p>
+                    <p class="footer-v3__tagline">Product designer turning complex systems into clear, trustworthy experiences.</p>
+                    <p class="footer-v3__avail"><span class="status-dot" aria-hidden="true"></span><span>Open to select projects</span></p>
                 </div>
                 <nav class="footer-v3__col footer-v3__col--nav" aria-label="Footer">
-                    <p class="hero-intro__role footer-v3__col-head">Navigate</p>
+                    <p class="footer-v3__col-head">Navigate</p>
                     <div class="footer-v3__links">
                         <a href="#work">Work</a>
                         <a href="fun.html">Creative Side</a>
                         <a href="about.html">About</a>
-                        <a href="#testimonials">Clients</a>
+                        <a href="#testimonials">Testimonials</a>
                     </div>
                 </nav>
                 <div class="footer-v3__col footer-v3__col--social">
-                    <p class="hero-intro__role footer-v3__col-head">Connect</p>
+                    <p class="footer-v3__col-head">Connect</p>
                     <div class="footer-v3__links">
                         <a href="#" data-copy-email>fonsecaa.design@gmail.com</a>
                         <a href="https://www.linkedin.com/in/maths-fonseca/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -422,6 +355,6 @@
         </div>
     </div>
 
-    <script src="script.js?v=20260708"></script>
+    <script src="script.js?v=20260723"></script>
 </body>
 </html>

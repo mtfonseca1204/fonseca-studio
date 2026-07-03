@@ -21,12 +21,11 @@ RECOGNITION
 - Hackathon wins: ETHSamba 2023 (Ethereum), Blockchain Rio 2024 (Ripio), Blockchain Rio 2025 (BASE).
 
 SELECTED WORK
-1) Hedgehog — Product Designer (2024–2026). Redesigned the participation model of a Web3 prediction market from order-matching/orderbooks to pooled UP/DOWN positions. Task completion went 40% -> 88% and time-to-first-action dropped from ~8s to under 2s.
-2) Hedgehog — Landing & Growth (2024–2026). Conversion-first landing page for an unreleased Web3 prediction market. Turned 40K+ organic followers into 15,000+ qualified waitlist sign-ups (~37.5% conversion) with zero paid spend, by building institutional trust first.
-3) Transparent.space — Founding Product Designer (2025–2026). Built a B2B dashboard from zero giving liquidity providers real visibility into market-maker (MM) performance; discovery to design system. Task completion climbed 61% -> 88%.
-4) Petrobras Saúde — Product Designer (2022–2023). Redesigned a telemedicine/healthcare platform for 50,000+ employees across three beneficiary segments (active employees, retirees, dependents) under COVID-19 urgency.
-5) Unimed Seguros — Product Designer (2021–2022). Redesigned an insurance/telemedicine app prioritizing transparency over feature complexity for users with varying digital literacy.
-- Other work & side projects: Picnic (brand/visual identity), Agent Arena (v1 UX/UI), plus concept/side projects AURA, NORA, and Caramel.
+1) Hedgehog — Prediction Market, Product Designer (2024–2026). Turning prediction curiosity into participation: replaced order-matching/orderbooks with pooled UP/DOWN rounds and five-minute cycles. Closed beta with 100 waitlist users; 100% understood mechanics by round two. Time to first action dropped from ~10s to under 2–4s. 120+ components; ~35% faster handoff.
+2) Hedgehog — Waitlist & Landing, Product Designer (2024–2026). Credibility before the product existed: institutional waitlist with a three-layer funnel (understand → trust → act) and live community on X, Telegram, and Discord. 15,000+ sign-ups at 37.5% conversion with zero paid traffic; 40K+ organic community.
+3) Transparent.space — Founding Product Designer (2025–2026). From twenty minutes of cross-checking to thirty seconds of certainty: unified B2B dashboard with binary SLA, liquidity over time, and neutral Market Maker comparison. Task completion 61% → 88%; ~20 min → under 30s to check a data point. Validated with Worldchain and Kraken.
+4) Unimed Seguros — Product Designer (2021–2022). In healthcare, the barrier is trust, not usability: trust-first telemedicine for 40K+ beneficiaries with four pillars, dedicated onboarding for 60+ users, and 24/7 in-app support during COVID. ~50K consultations/month; <30% no-show; 80%+ in-app chat retention.
+- Creative Side & other work: Picnic (brand/visual identity), AURA, NØRA, Caramel, Agent Arena, and more.
 
 SERVICES
 - Brand Strategy: research, competitive mapping, audience insights, naming, messaging, architecture.
@@ -75,13 +74,16 @@ function fallbackReply(userText = '', quote = '') {
     return `Yes — I'm open to select projects and available for remote work worldwide. The best way to start is an email to fonsecaa.design@gmail.com, or connect on LinkedIn (/in/maths-fonseca).`;
   }
   if (has('hedgehog', 'prediction', 'orderbook', 'waitlist')) {
-    return `At Hedgehog I redesigned how people predict on-chain — moving from orderbooks to pooled UP/DOWN positions, which took task completion from 40% to 88% and time-to-first-action from ~8s to under 2s. I also designed the conversion-first landing page that turned 40K+ followers into 15,000+ waitlist sign-ups with zero paid spend.`;
+    return `At Hedgehog I redesigned how people predict on-chain, moving from orderbooks to pooled UP/DOWN rounds with five-minute cycles. In a closed beta with 100 waitlist users, 100% understood the mechanics by round two and time to first action dropped from ~10s to under 2–4s. I also designed the institutional waitlist landing that turned 40K+ organic followers into 15,000+ sign-ups at 37.5% conversion with zero paid spend.`;
   }
   if (has('transparent', 'market maker', 'liquidity', 'b2b', 'dashboard')) {
-    return `Transparent.space is where I'm Founding Product Designer — I built a B2B dashboard from zero that makes market-maker performance impossible to hide for liquidity providers. Task completion climbed from 61% to 88%, from discovery through the design system.`;
+    return `At Transparent.space I'm Founding Product Designer. I built a B2B dashboard from zero that cuts cross-checking from ~20 minutes to under 30 seconds per data point, with binary SLA, liquidity over time, and neutral Market Maker comparison. Task completion climbed from 61% to 88%, validated with Worldchain and Kraken.`;
   }
-  if (has('petrobras', 'unimed', 'healthcare', 'health', 'insurance', 'telemedicine')) {
-    return `In healthcare I redesigned Petrobras Saúde's telemedicine platform for 50,000+ employees across three beneficiary segments under COVID-19 urgency, and Unimed Seguros' insurance app with a focus on transparency for users with varying digital literacy.`;
+  if (has('unimed', 'healthcare', 'health', 'insurance', 'telemedicine')) {
+    return `At Unimed Seguros I led a trust-first telemedicine app for 40K+ beneficiaries during COVID: four pillars, dedicated onboarding for 60+ users, and 24/7 in-app support. The result was ~50K consultations per month with under 30% no-show and 80%+ in-app chat retention.`;
+  }
+  if (has('petrobras')) {
+    return `Petrobras Saúde isn't in my current featured portfolio, but I'm happy to discuss healthcare work in detail. My featured case is Unimed Seguros: trust-first telemedicine for 40K+ beneficiaries with strong retention and no-show metrics during COVID.`;
   }
   if (has('web3', 'defi', 'crypto', 'blockchain', 'on-chain', 'onchain')) {
     return `Web3/DeFi is a big part of my work — Hedgehog and Transparent.space, plus hackathon wins at ETHSamba 2023, Blockchain Rio 2024 (Ripio) and 2025 (BASE). I'm good at translating dense, technical systems into something people can actually use.`;
@@ -90,7 +92,7 @@ function fallbackReply(userText = '', quote = '') {
     return `I don't just design interfaces — I structure products. I start from the real problem and the system behind it, then turn complexity into something clear and usable, balancing strategy with craft from discovery to hand-off. My art-direction roots keep the work visually sharp.`;
   }
   if (has('project', 'work', 'portfolio', 'case', 'experience', 'done')) {
-    return `Selected work: Hedgehog (Web3 prediction market — product + growth), Transparent.space (B2B market-maker dashboard), Petrobras Saúde and Unimed Seguros (healthcare), plus brand work like Picnic and Agent Arena. Want detail on any one of them?`;
+    return `Featured work: Hedgehog prediction market (product + waitlist), Transparent.space (B2B market-maker dashboard), and Unimed Seguros (trust-first telemedicine). Creative Side includes Picnic, AURA, NØRA, and Caramel. Want detail on any one of them?`;
   }
   if (has('skill', 'tool', 'figma', 'stack', 'design system')) {
     return `My toolkit: Figma, Photoshop, Illustrator, plus prototyping, user research, design systems, website and strategy design — with a strong Web3/DeFi specialization.`;
@@ -98,7 +100,7 @@ function fallbackReply(userText = '', quote = '') {
   if (has('who are you', 'about you', 'yourself', 'bio', 'background')) {
     return `I'm Matheus Fonseca, a UX/UI & Product Designer in Rio de Janeiro with roots in art direction and 5+ years building digital products — mostly across Web3/DeFi, healthcare and enterprise.`;
   }
-  return `I'm Matheus' assistant — I can talk about his projects (Hedgehog, Transparent.space, Petrobras Saúde, Unimed Seguros), his process, skills, or availability. What would you like to know? For anything specific, email fonsecaa.design@gmail.com.`;
+  return `I'm Matheus' assistant. I can talk about his featured projects (Hedgehog, Transparent.space, Unimed Seguros), his process, skills, or availability. What would you like to know? For anything specific, email fonsecaa.design@gmail.com.`;
 }
 
 export default async function handler(req, res) {

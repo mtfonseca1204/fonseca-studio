@@ -8,13 +8,16 @@
 })();
 
 document.addEventListener('DOMContentLoaded', () => {
+    const splashActive = initSiteSplash();
     const coldFade = initPageEnter();
-    if (coldFade) {
-        requestAnimationFrame(() => {
-            requestAnimationFrame(() => document.body.classList.add('loaded'));
-        });
-    } else {
-        document.body.classList.add('loaded');
+    if (!splashActive) {
+        if (coldFade) {
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => document.body.classList.add('loaded'));
+            });
+        } else {
+            document.body.classList.add('loaded');
+        }
     }
     requestAnimationFrame(() => {
         window.dispatchEvent(new CustomEvent('fonseca:layoutready'));
@@ -27,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollReveal();
     initEditorialScroll();
     revealHeroOnLoad();
+    initTypewriter();
     initHeroAsciiTerrain();
     initHeroCopyEmail();
     initWorkProjectCarousels();
@@ -78,6 +82,8 @@ function initLazyBelowFoldMedia() {
     });
     document.querySelectorAll('.case-section-gallery video, .project-case-content .case-section-body video').forEach((video) => {
         if (!video.hasAttribute('preload')) video.preload = 'none';
+        const rate = parseFloat(video.dataset.playbackRate);
+        if (!Number.isNaN(rate) && rate > 0) video.playbackRate = rate;
     });
 
     const reduceMotion = prefersReducedMotion();
@@ -87,10 +93,14 @@ function initLazyBelowFoldMedia() {
             video.pause();
             return;
         }
+        const rate = parseFloat(video.dataset.playbackRate);
+        if (!Number.isNaN(rate) && rate > 0) video.playbackRate = rate;
         const io = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
-                if (entry.isIntersecting) video.play().catch(() => {});
-                else video.pause();
+                if (entry.isIntersecting) {
+                    if (!Number.isNaN(rate) && rate > 0) video.playbackRate = rate;
+                    video.play().catch(() => {});
+                } else video.pause();
             });
         }, { threshold: 0.2, rootMargin: '80px 0px' });
         io.observe(video);
@@ -181,13 +191,113 @@ function supportsNavViewTransitions() {
     return typeof CSS !== 'undefined' && CSS.supports('selector(::view-transition-old(root))');
 }
 
-function initPageEnter() {
-    if (prefersReducedMotion() || isSameOriginReferrer() || document.documentElement.classList.contains('page-from-nav')) {
-        return false;
+function isHomepage() {
+    return document.body.classList.contains('home-page');
+}
+
+function isHomePath(pathname) {
+    const path = (pathname || '/').replace(/\/$/, '') || '/';
+    const base = path.split('/').pop() || '';
+    return path === '/' || base === 'index.html';
+}
+
+const FONSECA_HOME_SPLASH_KEY = 'fonseca:home-splash';
+
+function markHomeSplashForNextLoad() {
+    try {
+        sessionStorage.setItem(FONSECA_HOME_SPLASH_KEY, '1');
+    } catch (_) {}
+}
+
+function getHomeSplashMode() {
+    if (prefersReducedMotion()) return null;
+    if (!isHomepage()) return null;
+
+    const navType = performance.getEntriesByType('navigation')[0]?.type;
+    if (navType === 'back_forward') return null;
+
+    try {
+        if (sessionStorage.getItem(FONSECA_HOME_SPLASH_KEY) === '1') {
+            sessionStorage.removeItem(FONSECA_HOME_SPLASH_KEY);
+            return 'nav';
+        }
+    } catch (_) {}
+
+    if (!isSameOriginReferrer() && !document.documentElement.classList.contains('page-from-nav')) {
+        return 'cold';
     }
+
+    return null;
+}
+
+function shouldUseColdIntro() {
+    if (prefersReducedMotion()) return false;
+    if (isSameOriginReferrer()) return false;
+    if (document.documentElement.classList.contains('page-from-nav')) return false;
     const navType = performance.getEntriesByType('navigation')[0]?.type;
     if (navType && navType !== 'navigate') return false;
+    return true;
+}
+
+function initPageEnter() {
+    if (!shouldUseColdIntro()) return false;
+    if (document.getElementById('site-splash') && isHomepage()) return false;
     document.body.classList.add('page-init-fade');
+    return true;
+}
+
+function initSiteSplash() {
+    const splash = document.getElementById('site-splash');
+    if (!splash || !isHomepage()) {
+        splash?.remove();
+        return false;
+    }
+
+    const splashMode = getHomeSplashMode();
+    if (!splashMode) {
+        splash.remove();
+        return false;
+    }
+
+    document.body.classList.add('page-init-fade', 'has-splash');
+
+    const MIN_MS = splashMode === 'nav' ? 480 : 720;
+    const MAX_MS = splashMode === 'nav' ? 1400 : 2000;
+    const started = performance.now();
+
+    function dismissSplash() {
+        const remaining = Math.max(0, MIN_MS - (performance.now() - started));
+
+        window.setTimeout(() => {
+            splash.classList.add('site-splash--hide');
+            document.body.classList.add('loaded');
+
+            const removeSplash = () => splash.remove();
+            splash.addEventListener('transitionend', removeSplash, { once: true });
+            window.setTimeout(removeSplash, 520);
+        }, remaining);
+    }
+
+    const readiness = Promise.all([
+        document.fonts && document.fonts.ready ? document.fonts.ready.catch(() => {}) : Promise.resolve(),
+        new Promise((resolve) => {
+            if (document.readyState === 'complete') resolve();
+            else window.addEventListener('load', resolve, { once: true });
+        }),
+    ]);
+
+    Promise.race([
+        readiness,
+        new Promise((resolve) => window.setTimeout(resolve, MAX_MS)),
+    ]).then(dismissSplash);
+
+    window.addEventListener('pageshow', (event) => {
+        if (!event.persisted) return;
+        splash.remove();
+        document.body.classList.add('loaded');
+        document.body.classList.remove('has-splash', 'page-init-fade');
+    }, { once: true });
+
     return true;
 }
 
@@ -195,8 +305,6 @@ function initPageTransitions() {
     if (prefersReducedMotion()) return;
 
     document.addEventListener('click', (e) => {
-        if (supportsNavViewTransitions()) return;
-
         const link = e.target.closest('a[href]');
         if (!link || link.target === '_blank' || e.defaultPrevented) return;
         if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
@@ -213,6 +321,12 @@ function initPageTransitions() {
         if (url.origin !== location.origin) return;
         if (url.pathname === location.pathname && url.hash) return;
         if (/\.(pdf|zip|png|jpe?g|webp|mov|mp4)$/i.test(url.pathname)) return;
+
+        if (isHomePath(url.pathname)) {
+            markHomeSplashForNextLoad();
+        }
+
+        if (supportsNavViewTransitions()) return;
 
         e.preventDefault();
         document.body.classList.add('page-leaving');
@@ -243,8 +357,6 @@ function initScrollReveal() {
 function initEditorialScroll() {
     const isProjectCase = Boolean(document.querySelector('.project-case-content'));
     const blocks = [
-        '.about-skills-section',
-        '.about-services-section',
         '.about-contact',
         '.about-photos',
         '.fun-magazine-chapter',
@@ -296,6 +408,35 @@ function revealHeroOnLoad() {
         requestAnimationFrame(() => {
             requestAnimationFrame(() => el.classList.add('in-view'));
         });
+    });
+}
+
+function initTypewriter() {
+    const writers = [...document.querySelectorAll('[data-typewriter]')];
+    if (!writers.length) return;
+
+    if (prefersReducedMotion()) {
+        writers.forEach((el) => {
+            el.textContent = el.dataset.typewriter || '';
+        });
+        return;
+    }
+
+    const charDelay = 68;
+    const lineGap = 220;
+    let cursor = 320;
+
+    writers.forEach((el) => {
+        const text = el.dataset.typewriter || '';
+        el.textContent = '';
+
+        text.split('').forEach((char, charIndex) => {
+            window.setTimeout(() => {
+                el.textContent += char;
+            }, cursor + charIndex * charDelay);
+        });
+
+        cursor += text.length * charDelay + lineGap;
     });
 }
 
@@ -1373,33 +1514,56 @@ function initCaseStudyNav() {
     const sideNav = document.getElementById('caseSideNav');
     const caseContent = document.querySelector('.project-case-content');
     const sections = document.querySelectorAll('.case-section');
+    const scan = document.getElementById('case-scan');
     const heroNav = document.getElementById('projectCaseNav');
     if (!caseContent || !sections.length) return;
 
     const heroNavLinks = heroNav ? heroNav.querySelectorAll('.case-nav-link') : [];
-    const sideNavLinks = sideNav ? sideNav.querySelectorAll('.case-side-nav-link') : [];
+    const sideNavLinks = sideNav ? sideNav.querySelectorAll('.case-side-nav-link:not(.case-side-nav-link--summary)') : [];
+    const summaryLink = sideNav?.querySelector('.case-side-nav-link--summary');
 
-    function getCurrentSection() {
-        let current = '';
-        const scrollY = window.scrollY + 200;
-        sections.forEach(s => { if (scrollY >= s.offsetTop) current = s.id; });
-        if (!current && sections.length) current = sections[0].id;
+    function sectionTop(el) {
+        return el.getBoundingClientRect().top + window.scrollY;
+    }
+
+    function getActiveNavId() {
+        const marker = window.scrollY + Math.min(window.innerHeight * 0.35, 280);
+
+        if (scan && sections.length) {
+            const firstSectionTop = sectionTop(sections[0]);
+            if (marker < firstSectionTop - 80) return 'case-scan';
+        }
+
+        let current = sections[0].id;
+        sections.forEach((section) => {
+            if (marker >= sectionTop(section) - 140) current = section.id;
+        });
         return current;
     }
 
-    const update = rafThrottle(() => {
-        const cur = getCurrentSection();
-        [heroNavLinks, sideNavLinks].forEach(links => {
-            links.forEach(l => {
-                const isActive = l.getAttribute('href') === '#' + cur;
-                l.classList.toggle('active', isActive);
-                if (isActive) l.setAttribute('aria-current', 'true');
-                else l.removeAttribute('aria-current');
-            });
+    function setLinkState(links, activeId) {
+        links.forEach((link) => {
+            const href = link.getAttribute('href') || '';
+            const isActive = href === '#' + activeId;
+            link.classList.toggle('active', isActive);
+            if (isActive) link.setAttribute('aria-current', 'true');
+            else link.removeAttribute('aria-current');
         });
+    }
+
+    const update = rafThrottle(() => {
+        const cur = getActiveNavId();
+        setLinkState(heroNavLinks, cur);
+        setLinkState(sideNavLinks, cur);
+        if (summaryLink) {
+            const isSummary = cur === 'case-scan';
+            summaryLink.classList.toggle('active', isSummary);
+            if (isSummary) summaryLink.setAttribute('aria-current', 'true');
+            else summaryLink.removeAttribute('aria-current');
+        }
         if (sideNav) {
-            const top = caseContent.offsetTop - 150;
-            const bottom = caseContent.offsetTop + caseContent.offsetHeight - 300;
+            const top = caseContent.getBoundingClientRect().top + window.scrollY - 150;
+            const bottom = top + caseContent.offsetHeight - 300;
             const y = window.scrollY;
             const show = y >= top && y <= bottom;
             sideNav.classList.toggle('visible', show);
@@ -1407,8 +1571,25 @@ function initCaseStudyNav() {
         }
     });
 
+    sideNav?.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener('click', (e) => {
+            const hash = link.getAttribute('href');
+            if (!hash || hash === '#') return;
+            const target = document.querySelector(hash);
+            if (!target) return;
+            e.preventDefault();
+            const offset = 96;
+            const top = target.getBoundingClientRect().top + window.scrollY - offset;
+            window.scrollTo({
+                top,
+                behavior: prefersReducedMotion() ? 'auto' : 'smooth',
+            });
+        });
+    });
+
     window.addEventListener('scroll', update, { passive: true });
     window.addEventListener('load', update);
+    window.addEventListener('resize', update);
 }
 
 // =====================================================
@@ -1423,14 +1604,19 @@ const CASE_SECTION_ICON_HTML = {
     system: '<g class="motion-icon__pen"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></g>',
     'my-role': '<g class="motion-icon__user"><circle cx="12" cy="7" r="4"/><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/></g>',
     problem: '<g class="motion-icon__alert"><circle cx="12" cy="12" r="10"/><line class="motion-icon__alert-dot" x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></g>',
+    why: '<g class="motion-icon__audience"><circle class="motion-icon__audience-a" cx="9" cy="8" r="3"/><circle class="motion-icon__audience-b" cx="16" cy="9" r="2.5"/><path d="M4 20c0-3 2.5-5 5-5s5 2 5 5"/><path d="M13 20c0-2.2 1.6-4 3.5-4.2"/></g>',
     scenario: '<g class="motion-icon__book"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></g>',
-    solution: '<g class="motion-icon__star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></g>',
+    solution: '<g class="motion-icon__bulb"><path d="M9 18h6"/><path d="M10 22h4"/><path class="motion-icon__bulb-glass" d="M12 2a7 7 0 017 7c0 2.8-1.6 4.3-3 5.8-.8.8-1.2 1.6-1.3 2.2H9.3c-.1-.6-.5-1.4-1.3-2.2C6.6 13.3 5 11.8 5 9a7 7 0 017-7z"/></g>',
     'key-decisions': '<g class="motion-icon__key"><circle cx="7.5" cy="15.5" r="5.5"/><path d="M21 2l-9.6 9.6"/><path class="motion-icon__key-bit" d="M15.5 7.5l3 3L22 7l-3-3"/></g>',
     research: '<g class="motion-icon__search"><circle cx="11" cy="11" r="8"/><line class="motion-icon__search-handle" x1="21" y1="21" x2="16.65" y2="16.65"/></g>',
     design: '<g class="motion-icon__pen"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></g>',
+    validation: '<g class="motion-icon__validate"><circle cx="12" cy="12" r="10"/><polyline class="motion-icon__check-mark" points="8 12 11 15 16 9"/></g>',
     results: '<g class="motion-icon__chart"><line class="motion-icon__bar motion-icon__bar--3" x1="18" y1="20" x2="18" y2="10"/><line class="motion-icon__bar motion-icon__bar--2" x1="12" y1="20" x2="12" y2="4"/><line class="motion-icon__bar motion-icon__bar--1" x1="6" y1="20" x2="6" y2="14"/></g>',
+    impact: '<g class="motion-icon__trend"><polyline class="motion-icon__trend-line" points="3 17 9 11 13 15 21 5"/><polyline class="motion-icon__trend-arrow" points="15 5 21 5 21 11"/></g>',
     lessons: '<g class="motion-icon__books"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></g>',
     'next-steps': '<g class="motion-icon__arrow"><line x1="5" y1="12" x2="19" y2="12"/><polyline class="motion-icon__arrow-head" points="12 5 19 12 12 19"/></g>',
+    next: '<g class="motion-icon__arrow"><line x1="5" y1="12" x2="19" y2="12"/><polyline class="motion-icon__arrow-head" points="12 5 19 12 12 19"/></g>',
+    summary: '<g class="motion-icon__compass"><circle cx="12" cy="12" r="10"/><polygon class="motion-icon__compass-needle" points="12 6 14 14 12 12 10 14"/></g>',
 };
 
 const HEADER_NAV_ICON_RULES = [
@@ -1492,24 +1678,74 @@ function initCaseStudyMotion() {
     document.body.classList.add('project-case-page');
 
     const sideNav = document.getElementById('caseSideNav');
+    const summaryEl = sideNav?.querySelector('.case-side-nav__summary');
+    if (summaryEl && !summaryEl.querySelector('.nav-motion-icon')) {
+        summaryEl.classList.add('case-side-nav__summary--motion');
+        if (summaryEl.tagName === 'A') summaryEl.classList.add('case-side-nav-link--motion');
+        const summaryLabel = summaryEl.textContent.trim();
+        summaryEl.textContent = '';
+        const summaryText = document.createElement('span');
+        summaryText.className = 'case-side-nav__summary-text';
+        summaryText.textContent = summaryLabel;
+        summaryEl.append(createMotionIcon('summary', CASE_SECTION_ICON_HTML.summary), summaryText);
+    }
+
     sideNav?.querySelectorAll('.case-side-nav-link').forEach((link, i) => {
         const id = (link.getAttribute('href') || '').replace('#', '');
         const iconKey = CASE_SECTION_ICON_HTML[id] ? id : 'overview';
-        const html = CASE_SECTION_ICON_HTML[id] || CASE_SECTION_ICON_HTML.overview;
+        const html = CASE_SECTION_ICON_HTML[iconKey];
         wrapLinkLabel(link, iconKey, html, 'case-side-nav-link--motion');
         link.style.setProperty('--nav-motion-i', String(i));
     });
 
-    if (reduceMotion) return;
+    const motionTargets = [];
 
     const heroItems = document.querySelectorAll('.project-hero-case .container > *');
     heroItems.forEach((el, i) => {
         el.classList.add('case-motion', 'case-motion--hero');
         el.style.setProperty('--case-motion-i', String(i));
+        motionTargets.push(el);
     });
+
+    document.querySelectorAll('.project-case-meta--after-cover .case-meta-item').forEach((el, i) => {
+        el.classList.add('case-motion', 'case-motion--meta');
+        el.style.setProperty('--case-motion-i', String(i));
+        motionTargets.push(el);
+    });
+
+    caseContent.querySelectorAll('.case-scan__line').forEach((el, i) => {
+        el.classList.add('case-motion', 'case-motion--scan-line');
+        el.style.setProperty('--case-motion-i', String(i));
+        motionTargets.push(el);
+    });
+
+    caseContent.querySelectorAll('.case-section').forEach((section, i) => {
+        section.classList.add('case-motion', 'case-motion--section');
+        section.style.setProperty('--case-motion-i', String(i % 6));
+        motionTargets.push(section);
+    });
+
+    if (reduceMotion) {
+        motionTargets.forEach((el) => el.classList.add('in-view'));
+        return;
+    }
 
     requestAnimationFrame(() => {
         heroItems.forEach((el) => el.classList.add('in-view'));
+    });
+
+    const motionObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('in-view');
+            motionObserver.unobserve(entry.target);
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    motionTargets.forEach((el) => {
+        if (!el.classList.contains('case-motion--hero')) {
+            motionObserver.observe(el);
+        }
     });
 }
 
@@ -1666,6 +1902,8 @@ window.addEventListener('load', () => {
 // =====================================================
 // FONSECA LLM — portfolio knowledge + search
 // =====================================================
+const FLLM_MAIN_WORK_IDS = new Set(['hedgehog-product', 'hedgehog-waitlist', 'transparent-space', 'unimed']);
+
 const FLLM_PROJECTS = [
     {
         id: 'hedgehog-product',
@@ -1674,53 +1912,42 @@ const FLLM_PROJECTS = [
         url: 'project-hedgehog-product.html',
         category: ['Web3', 'Product'],
         impactScore: 95,
-        summary: 'Redesigned a Web3 prediction market from orderbook literacy to pooled UP/DOWN rounds so anyone could participate in one tap.',
-        metrics: ['40% → 88% task completion', '8s → under 2s time to first action', '~35% faster design-to-dev handoff via 120+ components'],
-        keywords: ['hedgehog', 'prediction', 'market', 'web3', 'defi', 'orderbook', 'pool', 'product', 'trading', 'on-chain', 'impact', 'metric'],
+        summary: 'Turning prediction curiosity into participation: replaced orderbooks with pooled UP/DOWN rounds and five-minute cycles. Closed beta with 100 waitlist users; everyone understood mechanics by round two.',
+        metrics: ['~10s → under 2–4s time to first action', '100% of beta users understood mechanics by round two', '120+ components · ~35% faster handoff', 'Desktop and mobile designed from day one'],
+        keywords: ['hedgehog', 'prediction', 'market', 'web3', 'defi', 'orderbook', 'pool', 'product', 'trading', 'on-chain', 'impact', 'metric', 'participation'],
     },
     {
         id: 'hedgehog-waitlist',
-        title: 'Hedgehog · Waitlist',
+        title: 'Hedgehog · Waitlist & Landing',
         client: 'Hedgehog',
         url: 'project-hedgehog.html',
         category: ['Web3', 'Growth'],
         impactScore: 88,
-        summary: 'Built a trust-first landing page before the product existed, turning organic crypto audiences into qualified waitlist sign-ups.',
-        metrics: ['37.5% waitlist conversion with zero paid spend', '15,000+ qualified sign-ups from 40K+ organic followers', '2–8% B2B/Web3 benchmark beaten by ~5×'],
-        keywords: ['hedgehog', 'waitlist', 'landing', 'conversion', 'growth', 'web3', 'trust', 'signup'],
+        summary: 'Credibility before the product existed: institutional waitlist landing with a three-layer funnel (understand → trust → act) and a live community engine on X, Telegram, and Discord.',
+        metrics: ['15,000+ waitlist sign-ups · 37.5% conversion vs. 2–8% benchmark', '40K+ organic community: X 14.6K · Telegram 14K · Discord', 'Zero paid traffic; same audience later fed the product beta'],
+        keywords: ['hedgehog', 'waitlist', 'landing', 'conversion', 'growth', 'web3', 'trust', 'signup', 'institutional'],
     },
     {
         id: 'transparent-space',
-        title: 'Transparent.space',
+        title: 'Transparent.space · Market Maker Dashboard',
         client: 'Transparent.space',
         url: 'project-transparent-space.html',
         category: ['Web3', 'Enterprise'],
         impactScore: 85,
-        summary: 'As Founding Product Designer, built a B2B dashboard from zero so liquidity providers could see market-maker performance in one screen.',
-        metrics: ['61% → 88% task completion', '~30% faster time-to-insight', '15–20 min SLA hunts reduced to at-a-glance status'],
-        keywords: ['transparent', 'dashboard', 'market maker', 'b2b', 'web3', 'liquidity', 'sla', 'institutional'],
-    },
-    {
-        id: 'petrobras',
-        title: 'Petrobras Saúde',
-        client: 'Petrobras Saúde',
-        url: 'project-petrobras-saude.html',
-        category: ['Healthcare', 'Enterprise'],
-        impactScore: 75,
-        summary: 'Designed a triage-first telehealth platform for Petrobras employees during COVID, researched across three beneficiary segments.',
-        metrics: ['50,000+ employees served', 'Shipped at COVID peak under urgency', 'Calm, guided path: describe → triage → consult'],
-        keywords: ['petrobras', 'healthcare', 'telehealth', 'telemedicine', 'enterprise', 'covid', 'triage', 'employees'],
+        summary: 'From twenty minutes of cross-checking to thirty seconds of certainty: unified B2B dashboard with binary SLA, liquidity over time, sidebar filters, and neutral Market Maker comparison. Validated with Worldchain and Kraken.',
+        metrics: ['61% → 88% task completion across 4 operators, multiple rounds', '~20 min → under 30s to check a data point (client-reported)', '120+ components · ~35% faster handoff · ~6 months zero to delivery', 'Worldchain and Kraken as production clients'],
+        keywords: ['transparent', 'dashboard', 'market maker', 'b2b', 'web3', 'liquidity', 'sla', 'institutional', 'worldchain', 'kraken', 'penalty'],
     },
     {
         id: 'unimed',
-        title: 'Unimed Seguros',
+        title: 'Unimed Seguros · Telemedicine App',
         client: 'Unimed Seguros',
         url: 'project-unimed-seguros.html',
         category: ['Healthcare', 'Mobile'],
-        impactScore: 70,
-        summary: 'Redesigned insurance telemedicine flows to reduce anxiety with clarity before features for beneficiaries with mixed digital literacy.',
-        metrics: ['40K+ beneficiaries', 'Improved scheduling completion during COVID', 'One predictable path: sign in → schedule → consult'],
-        keywords: ['unimed', 'insurance', 'healthcare', 'telemedicine', 'mobile', 'scheduling', 'covid'],
+        impactScore: 80,
+        summary: 'In healthcare, the barrier is trust, not usability: four-pillar telemedicine app for 40K+ beneficiaries with dedicated onboarding for 60+ users and 24/7 in-app support during COVID.',
+        metrics: ['40K+ primary beneficiaries · ~50K consultations/month', '<30% no-show rate during pandemic lockdowns', '80%+ in-app chat retention resolving doubts without drop-off', 'Trust-first scheduling and consultation flows'],
+        keywords: ['unimed', 'insurance', 'healthcare', 'telemedicine', 'mobile', 'scheduling', 'covid', 'trust', 'onboarding', 'beneficiaries'],
     },
     {
         id: 'picnic',
@@ -1777,12 +2004,6 @@ const FLLM_PROJECTS = [
         metrics: ['Increased landing engagement', 'Scalable system across channels', 'Strong visual reception in a competitive local market'],
         keywords: ['nora', 'bakery', 'brand', 'food', 'craft', 'identity'],
     },
-];
-
-const FLLM_SEARCH_SUGGESTIONS = [
-    'Which project had the biggest impact?',
-    'Web3 projects',
-    'Healthcare work',
 ];
 
 function normalizeFllmText(value) {
@@ -1854,35 +2075,35 @@ function answerFllmSearch(query, faqs) {
             title: 'Highest measurable impact',
             paragraphs: [
                 `Based on documented case study metrics, ${top.title} shows the strongest product impact: ${top.metrics.slice(0, 2).join('; ')}.`,
-                second ? `Also strong: ${second.title} — ${second.metrics[0]}.` : '',
+                second ? `Also strong: ${second.title}, ${second.metrics[0]}.` : '',
             ].filter(Boolean),
             links: fllmProjectLinks(ranked, 3),
         };
     }
 
     if (listIntent) {
-        const ranked = filterFllmProjects(() => true);
+        const ranked = filterFllmProjects((p) => FLLM_MAIN_WORK_IDS.has(p.id));
         return {
             title: 'Selected work',
             paragraphs: [
-                'Matheus has shipped product and brand work across Web3, healthcare, enterprise, and fintech.',
-                ranked.slice(0, 5).map((p) => `${p.title}: ${p.metrics[0]}.`).join(' '),
+                'Matheus\'s featured case studies span Web3 prediction markets, institutional B2B dashboards, and trust-first healthcare.',
+                ranked.map((p) => `${p.title}: ${p.metrics[0]}.`).join(' '),
             ],
-            links: fllmProjectLinks(ranked, 5),
+            links: fllmProjectLinks(ranked, 4),
         };
     }
 
     if (web3Intent) {
-        const matches = filterFllmProjects((p) => p.category.includes('Web3') || normalizeFllmText(p.keywords.join(' ')).includes('web3'));
+        const matches = filterFllmProjects((p) => FLLM_MAIN_WORK_IDS.has(p.id) && (p.category.includes('Web3') || normalizeFllmText(p.keywords.join(' ')).includes('web3')));
         return {
             title: 'Web3 & DeFi work',
-            paragraphs: matches.map((p) => `${p.title} — ${p.summary}`),
-            links: fllmProjectLinks(matches, 4),
+            paragraphs: matches.map((p) => `${p.title}, ${p.summary}`),
+            links: fllmProjectLinks(matches, 3),
         };
     }
 
     if (healthcareIntent) {
-        const matches = filterFllmProjects((p) => p.category.includes('Healthcare'));
+        const matches = filterFllmProjects((p) => FLLM_MAIN_WORK_IDS.has(p.id) && p.category.includes('Healthcare'));
         return {
             title: 'Healthcare projects',
             paragraphs: matches.map((p) => `${p.title}: ${p.metrics[0]}. ${p.summary}`),
@@ -1894,7 +2115,7 @@ function answerFllmSearch(query, faqs) {
         const matches = filterFllmProjects((p) => p.category.includes('Brand'));
         return {
             title: 'Brand & identity work',
-            paragraphs: matches.map((p) => `${p.title} — ${p.summary}`),
+            paragraphs: matches.map((p) => `${p.title}, ${p.summary}`),
             links: fllmProjectLinks(matches, 4),
         };
     }
@@ -1903,7 +2124,7 @@ function answerFllmSearch(query, faqs) {
         return {
             title: 'Availability & contact',
             paragraphs: [
-                'Yes — Matheus is open to selected product design, brand, and interface projects, remote worldwide.',
+                'Yes, Matheus is open to selected product design, brand, and interface projects, remote worldwide.',
                 'Best next step: email fonsecaa.design@gmail.com with context, timeline, and what you want to build.',
             ],
             links: [{ label: 'Copy email from homepage →', url: 'index.html#home' }],
@@ -1911,7 +2132,7 @@ function answerFllmSearch(query, faqs) {
     }
 
     if (approachIntent) {
-        const faq = faqs.find((item) => normalizeFllmText(item.question).includes('strategy'));
+        const faq = faqs.find((item) => normalizeFllmText(item.question).includes('approach'));
         if (faq) {
             return {
                 title: faq.question,
@@ -1949,17 +2170,17 @@ function answerFllmSearch(query, faqs) {
         return {
             title: faqMatch.question,
             paragraphs: faqMatch.answer,
-            links: fllmProjectLinks(filterFllmProjects(() => true), 2),
+            links: fllmProjectLinks(filterFllmProjects((p) => FLLM_MAIN_WORK_IDS.has(p.id)), 2),
         };
     }
 
     return {
         title: 'Try a more specific question',
         paragraphs: [
-            'I can answer from Matheus\'s case studies — impact metrics, industries, and project summaries.',
-            'Examples: "Which project had the biggest impact?", "Web3 projects", or "Petrobras healthcare".',
+            'I can answer from Matheus\'s case studies: impact metrics, industries, and project summaries.',
+            'Examples: "Which project had the biggest impact?", "Web3 projects", or "Healthcare work".',
         ],
-        links: fllmProjectLinks(filterFllmProjects(() => true), 3),
+        links: fllmProjectLinks(filterFllmProjects((p) => FLLM_MAIN_WORK_IDS.has(p.id)), 4),
     };
 }
 
@@ -2002,9 +2223,54 @@ function renderFllmSearchResult(container, result) {
     container.appendChild(wrap);
 }
 
+function fllmLocalFallback(userText = '', quote = '') {
+    const t = (userText || '').toLowerCase();
+    const has = (...words) => words.some((w) => t.includes(w));
+
+    if (quote && !userText.trim()) {
+        return 'Happy to talk about that line. What would you like to know? You can also email fonsecaa.design@gmail.com.';
+    }
+    if (has('hello', 'hi ', 'hey', 'oi', 'olá', 'ola')) {
+        return "Hey! I'm Matheus, a product designer across Web3/DeFi, healthcare, and enterprise. Ask me about my projects, process, or availability.";
+    }
+    if (has('available', 'hire', 'hiring', 'freelance', 'work with', 'contact', 'reach', 'email', 'rate', 'budget', 'project in mind')) {
+        return "Yes, I'm open to select projects and available for remote work worldwide. Best to email fonsecaa.design@gmail.com or connect on LinkedIn (/in/maths-fonseca).";
+    }
+    if (has('hedgehog', 'prediction', 'orderbook', 'waitlist')) {
+        return 'At Hedgehog I redesigned how people predict on-chain, moving from orderbooks to pooled UP/DOWN rounds. In a closed beta with 100 waitlist users, 100% understood the mechanics by round two and time to first action dropped from ~10s to under 2–4s. I also designed the waitlist landing that turned 40K+ organic followers into 15,000+ sign-ups at 37.5% conversion with zero paid spend.';
+    }
+    if (has('transparent', 'market maker', 'liquidity', 'b2b', 'dashboard')) {
+        return "At Transparent.space I'm Founding Product Designer. I built a B2B dashboard from zero that cuts cross-checking from ~20 minutes to under 30 seconds per data point, with task completion climbing from 61% to 88%, validated with Worldchain and Kraken.";
+    }
+    if (has('unimed', 'healthcare', 'health', 'insurance', 'telemedicine')) {
+        return 'At Unimed Seguros I led a trust-first telemedicine app for 40K+ beneficiaries during COVID. The result was ~50K consultations per month with under 30% no-show and 80%+ in-app chat retention.';
+    }
+    if (has('petrobras')) {
+        return "Petrobras Saúde isn't in my current featured portfolio, but I'm happy to discuss healthcare work. My featured case is Unimed Seguros: trust-first telemedicine for 40K+ beneficiaries with strong retention and no-show metrics during COVID.";
+    }
+    if (has('web3', 'defi', 'crypto', 'blockchain', 'on-chain', 'onchain')) {
+        return "Web3/DeFi is a big part of my work: Hedgehog and Transparent.space, plus hackathon wins at ETHSamba 2023, Blockchain Rio 2024 (Ripio), and 2025 (BASE). I'm good at translating dense, technical systems into something people can actually use.";
+    }
+    if (has('approach', 'process', 'philosophy', 'unique', 'different', 'how do you', 'balance', 'strategy')) {
+        return "I don't just design interfaces, I structure products. I benchmark the category, fix the mental model first, then turn complexity into something clear and usable from discovery to hand-off.";
+    }
+    if (has('project', 'work', 'portfolio', 'case', 'experience', 'done')) {
+        return 'Featured work: Hedgehog prediction market (product + waitlist), Transparent.space (B2B market-maker dashboard), and Unimed Seguros (trust-first telemedicine). Creative Side includes Picnic, AURA, NØRA, and Caramel. Want detail on any one of them?';
+    }
+    if (has('skill', 'tool', 'figma', 'stack', 'design system')) {
+        return 'My toolkit: Figma, Photoshop, Illustrator, plus prototyping, user research, design systems, website and strategy design, with a strong Web3/DeFi specialization.';
+    }
+    if (has('who are you', 'about you', 'yourself', 'bio', 'background')) {
+        return "I'm Matheus Fonseca, a UX/UI and Product Designer in Rio de Janeiro with roots in art direction and 5+ years building digital products across Web3/DeFi, healthcare, and enterprise.";
+    }
+    return "I'm Matheus' assistant. I can talk about his featured projects (Hedgehog, Transparent.space, Unimed Seguros), his process, skills, or availability. For anything specific, email fonsecaa.design@gmail.com.";
+}
+
 // =====================================================
-// FONSECA LLM — AI portfolio assistant
+// FONSECA LLM — FAQ panel + portfolio search + live chat
 // =====================================================
+const FONSECA_LOGO_MARK = '<svg class="fonseca-logo-mark" viewBox="0 0 275 275" fill="none" aria-hidden="true"><path d="M137.5 0L146.445 115.904L234.727 40.2728L159.096 128.555L275 137.5L159.096 146.445L234.727 234.727L146.445 159.096L137.5 275L128.555 159.096L40.2728 234.727L115.904 146.445L0 137.5L115.904 128.555L40.2728 40.2728L128.555 115.904L137.5 0Z" fill="currentColor"/></svg>';
+
 function initFonsecaLLM() {
     if (document.querySelector('.fllm-panel')) return;
 
@@ -2013,24 +2279,24 @@ function initFonsecaLLM() {
     const TOOLTIP_OFFSET = 54;
     const FAQS = [
         {
-            question: 'How does Matheus approach product strategy?',
+            question: 'How does Matheus approach product design?',
             answer: [
-                'He starts by making the problem and constraints explicit, then turns them into a clear product direction, prototype, and handoff path.',
-                'The work usually blends discovery, UX structure, visual systems, and launch-ready product thinking.'
+                'He benchmarks the category and makes the problem explicit before opening Figma, then fixes the mental model before polishing UI.',
+                'Recent examples: pooled UP/DOWN rounds instead of orderbooks at Hedgehog, institutional trust before conversion on the waitlist, and trust-first telemedicine flows at Unimed.'
             ],
         },
         {
-            question: 'What projects has he worked on?',
+            question: 'What selected work should I review?',
             answer: [
-                'Selected work includes Hedgehog, Transparent.space, Petrobras Saúde, Unimed Seguros, Picnic, AURA, NØRA, and Caramel.',
-                'The portfolio spans fintech, Web3, healthcare, enterprise products, and brand systems.'
+                'Hedgehog prediction market (product + waitlist), Transparent.space (B2B market maker dashboard), and Unimed Seguros (telemedicine app).',
+                'Each case follows the same structure: problem, research, solution, validation, impact, and next steps with real metrics.'
             ],
         },
         {
-            question: 'What makes his design style different?',
+            question: 'What are his strongest results?',
             answer: [
-                'Matheus tends to make complex systems feel simple without flattening the product logic behind them.',
-                'His work combines strong art direction, systems thinking, and practical UX details for teams that need to ship.'
+                'Hedgehog product: 100% of beta users understood mechanics by round two; time to first action dropped from ~10s to under 2–4s.',
+                'Hedgehog waitlist: 15,000+ sign-ups at 37.5% conversion with zero paid traffic. Transparent.space: 61% → 88% task completion; ~20 min → under 30s per data check. Unimed: ~50K consultations/month with <30% no-show.'
             ],
         },
         {
@@ -2051,7 +2317,7 @@ function initFonsecaLLM() {
     panel.setAttribute('role', 'dialog');
     panel.setAttribute('aria-modal', 'true');
     panel.setAttribute('aria-hidden', 'true');
-    panel.setAttribute('aria-label', 'FonsecaLLM FAQ panel');
+    panel.setAttribute('aria-label', 'FonsecaLLM panel');
     panel.innerHTML = `
         <div class="fllm-panel__head">
             <span class="fllm-panel__brand">FonsecaLLM</span>
@@ -2066,21 +2332,11 @@ function initFonsecaLLM() {
             </div>
         </div>
         <div class="fllm-panel__content">
-            <div class="fllm-panel__spark" aria-hidden="true">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2.8l1.7 5.1 5.1 1.7-5.1 1.7-1.7 5.1-1.7-5.1-5.1-1.7 5.1-1.7L12 2.8Z" fill="currentColor"/></svg>
+            <div class="fllm-panel__intro">
+                <div class="fllm-panel__spark" aria-hidden="true">${FONSECA_LOGO_MARK}</div>
+                <h2 class="fllm-panel__title">Hey, ask away.</h2>
             </div>
-            <h2 class="fllm-panel__title">Hey, ask away.</h2>
-            <form class="fllm-search" data-fllm-search>
-                <label class="fllm-search__label" for="fllm-search-input">Search portfolio</label>
-                <div class="fllm-search__field">
-                    <input type="search" id="fllm-search-input" class="fllm-search__input" placeholder="Which project had the biggest impact?" autocomplete="off" enterkeyhint="search">
-                    <button type="submit" class="fllm-search__submit" aria-label="Search portfolio">
-                        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="5.5" stroke="currentColor" stroke-width="1.6"/><path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-                    </button>
-                </div>
-            </form>
-            <div class="fllm-search-suggestions" data-fllm-suggestions></div>
-            <div class="fllm-search-results" data-fllm-results hidden></div>
+            <div class="fllm-faq" data-fllm-faq></div>
             <div class="fllm-selected-quote" data-fllm-quote hidden>
                 <div class="fllm-selected-quote__head">
                     <span>Selected text</span>
@@ -2088,29 +2344,35 @@ function initFonsecaLLM() {
                 </div>
                 <p data-fllm-quote-text></p>
             </div>
-            <div class="fllm-faq" data-fllm-faq></div>
+            <div class="fllm-panel__chat-zone" data-fllm-chat-zone>
+                <div class="fllm-chat" data-fllm-chat aria-live="polite"></div>
+            </div>
+        </div>
+        <div class="fllm-panel__foot">
+            <form class="fllm-composer" data-fllm-composer>
+                <textarea class="fllm-input" data-fllm-input rows="1" placeholder="Which project had the biggest impact?" aria-label="Ask Fonseca"></textarea>
+                <button type="submit" class="fllm-send" data-fllm-send aria-label="Send message">
+                    <svg width="17" height="17" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 16V4M10 4L5 9M10 4l5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+            </form>
+            <p class="fllm-disclaimer">AI assistant · may be imperfect. For anything important, email fonsecaa.design@gmail.com</p>
         </div>`;
 
     const quoteBtn = document.createElement('button');
     quoteBtn.type = 'button';
     quoteBtn.className = 'fllm-quote-btn';
-    quoteBtn.setAttribute('aria-label', 'Ask AI about selected text');
+    quoteBtn.setAttribute('aria-label', 'Ask Fonseca about selected text');
     quoteBtn.innerHTML = `
-        <span class="fllm-quote-btn__spark" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2.8l1.7 5.1 5.1 1.7-5.1 1.7-1.7 5.1-1.7-5.1-5.1-1.7 5.1-1.7L12 2.8Z" fill="currentColor"/></svg>
-        </span>
-        <span>Ask AI</span>`;
+        <span class="fllm-quote-btn__spark" aria-hidden="true">${FONSECA_LOGO_MARK}</span>
+        <span>Ask Fonseca</span>`;
 
     const launcher = document.createElement('button');
     launcher.type = 'button';
     launcher.className = 'fllm-launcher';
-    launcher.setAttribute('aria-label', 'Open Ask AI assistant');
+    launcher.setAttribute('aria-label', 'Ask Fonseca');
     launcher.setAttribute('aria-haspopup', 'dialog');
-    launcher.innerHTML = `
-        <span class="fllm-launcher__spark" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2.8l1.7 5.1 5.1 1.7-5.1 1.7-1.7 5.1-1.7-5.1-5.1-1.7 5.1-1.7L12 2.8Z" fill="currentColor"/></svg>
-        </span>
-        <span class="fllm-launcher__label">Ask AI</span>`;
+    launcher.innerHTML = FONSECA_LOGO_MARK;
+    launcher.querySelector('svg')?.classList.add('fllm-launcher__icon');
 
     document.body.appendChild(overlay);
     document.body.appendChild(panel);
@@ -2120,20 +2382,25 @@ function initFonsecaLLM() {
     const title = panel.querySelector('.fllm-panel__title');
     const hint = document.createElement('p');
     hint.className = 'fllm-panel__hint';
-    hint.textContent = 'Search project impact and details, or highlight text on the page to ask about a quote.';
+    hint.textContent = 'Ask about projects, process, or availability. Highlight text on the page to ask about a quote.';
     title.insertAdjacentElement('afterend', hint);
 
     const faqWrap = panel.querySelector('[data-fllm-faq]');
-    const searchForm = panel.querySelector('[data-fllm-search]');
-    const searchInput = panel.querySelector('#fllm-search-input');
-    const searchResults = panel.querySelector('[data-fllm-results]');
-    const suggestionsWrap = panel.querySelector('[data-fllm-suggestions]');
+    const chatZone = panel.querySelector('[data-fllm-chat-zone]');
+    const chatWrap = panel.querySelector('[data-fllm-chat]');
+    const chatForm = panel.querySelector('[data-fllm-composer]');
+    const chatInput = panel.querySelector('[data-fllm-input]');
+    const sendBtn = panel.querySelector('[data-fllm-send]');
     const closeBtn = panel.querySelector('[data-fllm-close]');
     const resetBtn = panel.querySelector('[data-fllm-reset]');
     const quoteCard = panel.querySelector('[data-fllm-quote]');
     const quoteText = panel.querySelector('[data-fllm-quote-text]');
     const clearQuoteBtn = panel.querySelector('[data-fllm-clear-quote]');
 
+    const GREETING = "Hey — I'm Matheus. Ask about my work, process, or availability.";
+    const messages = [];
+    let isSending = false;
+    let greeted = false;
     let selectedQuote = '';
     let selectionTimer = null;
     let selectionHideTimer = null;
@@ -2156,12 +2423,187 @@ function initFonsecaLLM() {
         selectedQuote = truncateText(text || '', MAX_SELECTION_LENGTH);
         quoteCard.hidden = !selectedQuote;
         quoteText.textContent = selectedQuote;
+        if (chatInput) {
+            chatInput.placeholder = selectedQuote ? 'Ask about this quote…' : 'Which project had the biggest impact?';
+        }
+    }
+
+    function isWeakSearchResult(result) {
+        return !result || result.title === 'Try a more specific question';
+    }
+
+    function searchResultToPlainText(result) {
+        const parts = [result.title, ...(result.paragraphs || [])].filter(Boolean);
+        if (result.links?.length) {
+            parts.push('Links: ' + result.links.map((link) => link.label).join(', '));
+        }
+        return parts.join('\n\n');
+    }
+
+    function addSearchBubble(result) {
+        const el = document.createElement('div');
+        el.className = 'fllm-msg fllm-msg--bot fllm-msg--rich';
+
+        const titleEl = document.createElement('strong');
+        titleEl.className = 'fllm-msg__title';
+        titleEl.textContent = result.title;
+        el.appendChild(titleEl);
+
+        result.paragraphs.forEach((text) => {
+            const paragraph = document.createElement('p');
+            paragraph.className = 'fllm-msg__text';
+            paragraph.textContent = text;
+            el.appendChild(paragraph);
+        });
+
+        if (result.links?.length) {
+            const links = document.createElement('div');
+            links.className = 'fllm-msg__links';
+            result.links.forEach(({ label, url }) => {
+                const anchor = document.createElement('a');
+                anchor.href = url;
+                anchor.className = 'fllm-search-link';
+                anchor.textContent = label;
+                links.appendChild(anchor);
+            });
+            el.appendChild(links);
+        }
+
+        chatWrap.appendChild(el);
+        scrollChatToBottom();
+        return el;
+    }
+
+    function removeTypingIndicator(typing) {
+        typing?.remove();
+    }
+
+    function escapeHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+    }
+
+    function formatChatReply(text) {
+        let safe = escapeHtml(text);
+        safe = safe.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
+        safe = safe.replace(/([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/g, '<a href="mailto:$1">$1</a>');
+        return safe;
+    }
+
+    function scrollChatToBottom() {
+        const zone = chatZone || panel.querySelector('.fllm-panel__content');
+        if (!zone) return;
+        requestAnimationFrame(() => {
+            zone.scrollTop = zone.scrollHeight;
+        });
+    }
+
+    function addBubble(role, text) {
+        const el = document.createElement('div');
+        el.className = 'fllm-msg ' + (role === 'user' ? 'fllm-msg--user' : 'fllm-msg--bot');
+        el.innerHTML = role === 'user' ? escapeHtml(text) : formatChatReply(text);
+        chatWrap.appendChild(el);
+        scrollChatToBottom();
+        return el;
+    }
+
+    function showTyping() {
+        const el = document.createElement('div');
+        el.className = 'fllm-typing';
+        el.setAttribute('role', 'status');
+        el.setAttribute('aria-label', 'Fonseca is typing');
+        el.innerHTML = '<span></span><span></span><span></span>';
+        chatWrap.appendChild(el);
+        scrollChatToBottom();
+        return el;
+    }
+
+    function setLoadingState(active) {
+        isSending = active;
+        if (sendBtn) {
+            sendBtn.disabled = active;
+            sendBtn.classList.toggle('is-loading', active);
+            sendBtn.setAttribute('aria-busy', String(active));
+        }
+        panel.classList.toggle('fllm-panel--loading', active);
+    }
+
+    async function fetchChatReply(history, quote) {
+        const res = await fetch('/api/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ messages: history, quote }),
+        });
+        if (!res.ok) throw new Error('bad status ' + res.status);
+        const data = await res.json();
+        if (!data || !data.reply) throw new Error('no reply');
+        return data.reply;
+    }
+
+    async function sendMessage() {
+        const text = chatInput?.value?.trim() || '';
+        if ((!text && !selectedQuote) || isSending) return;
+
+        const quoteForThisTurn = selectedQuote;
+        const displayText = text || 'Tell me about this.';
+        addBubble('user', quoteForThisTurn ? `“${quoteForThisTurn}”\n\n${displayText}` : displayText);
+
+        messages.push({ role: 'user', content: text || 'Tell me more about this.' });
+        chatInput.value = '';
+        chatInput.style.height = 'auto';
+        clearQuote();
+        closeAllFaqs();
+
+        if (!quoteForThisTurn && text) {
+            const localResult = answerFllmSearch(text, FAQS);
+            if (!isWeakSearchResult(localResult)) {
+                addSearchBubble(localResult);
+                messages.push({ role: 'assistant', content: searchResultToPlainText(localResult) });
+                chatInput.focus();
+                return;
+            }
+        }
+
+        setLoadingState(true);
+        const typing = showTyping();
+        let typingRemoved = false;
+
+        try {
+            let reply;
+            try {
+                reply = await fetchChatReply(messages, quoteForThisTurn);
+            } catch (err) {
+                const localResult = text ? answerFllmSearch(text, FAQS) : null;
+                if (localResult && !isWeakSearchResult(localResult)) {
+                    removeTypingIndicator(typing);
+                    typingRemoved = true;
+                    addSearchBubble(localResult);
+                    messages.push({ role: 'assistant', content: searchResultToPlainText(localResult) });
+                    return;
+                }
+                reply = fllmLocalFallback(text, quoteForThisTurn);
+            }
+
+            removeTypingIndicator(typing);
+            typingRemoved = true;
+            addBubble('bot', reply);
+            messages.push({ role: 'assistant', content: reply });
+        } finally {
+            if (!typingRemoved) removeTypingIndicator(typing);
+            setLoadingState(false);
+            chatInput.focus();
+            scrollChatToBottom();
+        }
     }
 
     function clearQuote() {
         selectedQuote = '';
         quoteCard.hidden = true;
         quoteText.textContent = '';
+        if (chatInput) {
+            chatInput.placeholder = 'Which project had the biggest impact?';
+        }
     }
 
     function setFaqExpanded(item, expanded) {
@@ -2217,9 +2659,15 @@ function initFonsecaLLM() {
         document.body.classList.add('fllm-open');
         overlay.setAttribute('aria-hidden', 'false');
         panel.setAttribute('aria-hidden', 'false');
+        if (!greeted) {
+            greeted = true;
+            window.setTimeout(() => {
+                addBubble('bot', GREETING);
+                scrollChatToBottom();
+            }, 150);
+        }
         window.setTimeout(() => {
-            if (quote && closeBtn) closeBtn.focus();
-            else if (searchInput) searchInput.focus();
+            if (chatInput) chatInput.focus();
         }, 260);
     }
 
@@ -2233,33 +2681,16 @@ function initFonsecaLLM() {
     function resetPanel() {
         clearQuote();
         closeAllFaqs();
-        if (searchInput) searchInput.value = '';
-        renderFllmSearchResult(searchResults, null);
-    }
-
-    function runFllmSearch() {
-        const query = searchInput?.value?.trim() || '';
-        if (!query) {
-            renderFllmSearchResult(searchResults, null);
-            return;
+        messages.length = 0;
+        greeted = false;
+        if (chatWrap) chatWrap.replaceChildren();
+        if (chatInput) {
+            chatInput.value = '';
+            chatInput.style.height = 'auto';
+            chatInput.placeholder = 'Which project had the biggest impact?';
         }
-        closeAllFaqs();
-        renderFllmSearchResult(searchResults, answerFllmSearch(query, FAQS));
-        searchResults.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        setLoadingState(false);
     }
-
-    FLLM_SEARCH_SUGGESTIONS.forEach((label) => {
-        const chip = document.createElement('button');
-        chip.type = 'button';
-        chip.className = 'fllm-search-suggestion';
-        chip.textContent = label;
-        chip.addEventListener('click', () => {
-            searchInput.value = label;
-            runFllmSearch();
-            searchInput.focus();
-        });
-        suggestionsWrap.appendChild(chip);
-    });
 
     function getElementFromNode(node) {
         if (!node) return null;
@@ -2382,9 +2813,21 @@ function initFonsecaLLM() {
     resetBtn.addEventListener('click', resetPanel);
     clearQuoteBtn.addEventListener('click', clearQuote);
     overlay.addEventListener('click', closePanel);
-    searchForm?.addEventListener('submit', (event) => {
+    chatForm?.addEventListener('submit', (event) => {
         event.preventDefault();
-        runFllmSearch();
+        sendMessage();
+    });
+
+    chatInput?.addEventListener('input', () => {
+        chatInput.style.height = 'auto';
+        chatInput.style.height = Math.min(chatInput.scrollHeight, 120) + 'px';
+    });
+
+    chatInput?.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' && !event.shiftKey) {
+            event.preventDefault();
+            sendMessage();
+        }
     });
 
     document.addEventListener('keydown', (event) => {
