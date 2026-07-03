@@ -10725,12 +10725,14 @@ a.project-card:hover {
     position: absolute;
     top: 0;
     right: 0;
-    width: min(58%, 720px);
+    width: min(48%, 560px);
     height: 100%;
     pointer-events: none;
-    z-index: 0;
+    z-index: 1;
     opacity: 0.42;
     mix-blend-mode: multiply;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 6%, black 88%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 6%, black 88%, transparent 100%);
 }
 
 [data-theme="dark"] .hero-ascii-terrain {
@@ -11306,7 +11308,8 @@ a.project-card:hover {
     }
 
     .hero-ascii-terrain {
-        width: 100%;
+        width: min(82%, 440px);
+        height: 100%;
         opacity: 0.22;
     }
 
@@ -15045,12 +15048,14 @@ body.editorial-site .footer-top-btn {
     position: absolute;
     top: 0;
     right: 0;
-    width: min(58%, 720px);
+    width: min(48%, 560px);
     height: 100%;
     pointer-events: none;
-    z-index: 0;
+    z-index: 1;
     opacity: 0.38;
     mix-blend-mode: multiply;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 6%, black 88%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 6%, black 88%, transparent 100%);
 }
 
 [data-theme="dark"] .editorial-hero .hero-ascii-terrain {

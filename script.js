@@ -271,6 +271,7 @@ function initSiteSplash() {
         window.setTimeout(() => {
             splash.classList.add('site-splash--hide');
             document.body.classList.add('loaded');
+            window.dispatchEvent(new CustomEvent('fonseca:layoutready'));
 
             const removeSplash = () => splash.remove();
             splash.addEventListener('transitionend', removeSplash, { once: true });
@@ -739,7 +740,7 @@ function initSingleHeroAscii(canvas) {
         const cr = cols / rows;
         let sx; let sy; let sw; let sh;
         if (ir > cr) { sh = ih; sw = sh * cr; sx = (iw - sw) / 2; sy = 0; }
-        else { sw = iw; sh = sw / cr; sx = 0; sy = (ih - sh) / 2; }
+        else { sw = iw; sh = sw / cr; sx = 0; sy = fullBleed ? (ih - sh) / 2 : 0; }
 
         sampleCanvas.width = cols;
         sampleCanvas.height = rows;
@@ -805,13 +806,15 @@ function initSingleHeroAscii(canvas) {
         if (rect.width < 8 || rect.height < 8) {
             return false;
         }
-        w = Math.floor(rect.width * 0.56);
+        w = Math.floor(rect.width * 0.46);
         h = Math.floor(rect.height);
         if (w < 8 || h < 8) return false;
         canvas.width = w * dpr;
         canvas.height = h * dpr;
         canvas.style.width = `${w}px`;
         canvas.style.height = `${h}px`;
+        canvas.style.top = '0';
+        canvas.style.bottom = 'auto';
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
         step = Math.max(5, Math.min(7, Math.floor(w / 95)));
         cols = Math.ceil(w / step);
@@ -849,9 +852,9 @@ function initSingleHeroAscii(canvas) {
                 val = Math.max(0, Math.min(1, val + wave));
 
                 const fadeL = Math.pow(Math.min(1, nx / 0.08), 1.5);
-                const fadeR = Math.pow(Math.min(1, (1 - nx) / 0.04), 1.2);
-                const fadeT = Math.pow(Math.min(1, ny / 0.12), 1.8);
-                const fadeB = Math.pow(Math.min(1, (1 - ny) / 0.06), 1.4);
+                const fadeR = Math.pow(Math.min(1, (1 - nx) / 0.06), 1.1);
+                const fadeT = 0.4 + 0.6 * Math.pow(Math.min(1, ny / 0.28), 0.85);
+                const fadeB = Math.pow(Math.min(1, (1 - ny) / 0.08), 1.2);
                 val *= fadeL * fadeR * fadeT * fadeB;
                 if (val < 0.02) continue;
 
