@@ -1297,10 +1297,10 @@ body.menu-open {
     padding-bottom: var(--breath-sm);
 }
 
-/* Homepage hero — restore vertical rhythm after navbar returned to fixed positioning */
+/* Homepage hero — match shared editorial hero rhythm */
 body.home-page.editorial-site .hero.hero--intro {
-    padding-top: calc(var(--site-nav-offset) * 2 + 2px);
-    padding-bottom: var(--breath-lg);
+    padding-top: var(--editorial-hero-top);
+    padding-bottom: var(--editorial-hero-bottom);
 }
 
 [data-theme="dark"] .hero {
@@ -5743,7 +5743,7 @@ a.project-card:hover {
 }
 
 .fun-page-intro {
-    padding: var(--hero-top-pad) 0 var(--breath-lg);
+    padding: var(--editorial-hero-top, var(--hero-top-pad)) 0 var(--editorial-hero-bottom, var(--breath-lg));
 }
 
 .fun-page-intro__title {
@@ -11337,8 +11337,13 @@ a.project-card:hover {
     }
 
     body.home-page.editorial-site .hero.hero--intro {
-        padding-top: calc(var(--site-nav-offset) * 2);
-        padding-bottom: var(--breath-md);
+        padding-top: var(--editorial-hero-top);
+        padding-bottom: var(--editorial-hero-bottom);
+    }
+
+    body.editorial-site {
+        --editorial-hero-top: calc(var(--site-nav-offset) * 2);
+        --editorial-hero-bottom: var(--breath-md);
     }
 
     .home-main {
@@ -15340,6 +15345,8 @@ body.editorial-site {
     isolation: isolate;
     --editorial-frame-radius: 6px;
     --editorial-frame-hover-shadow: 0 6px 22px rgba(0, 0, 0, 0.05);
+    --editorial-hero-top: calc(var(--site-nav-offset) * 2 + 2px);
+    --editorial-hero-bottom: var(--breath-lg);
 }
 
 body.editorial-site .fun-magazine-chapter:not(:first-child) {
