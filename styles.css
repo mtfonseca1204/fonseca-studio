@@ -1300,6 +1300,7 @@ body.menu-open {
 /* Homepage hero — restore vertical rhythm after navbar returned to fixed positioning */
 body.home-page.editorial-site .hero.hero--intro {
     padding-top: calc(var(--site-nav-offset) * 2 + 2px);
+    padding-bottom: var(--breath-lg);
 }
 
 [data-theme="dark"] .hero {
@@ -2764,6 +2765,18 @@ body.home-page.editorial-site .hero.hero--intro {
     position: relative;
     background: var(--bg-white);
     overflow-x: clip;
+    --home-section-y: var(--breath-lg);
+}
+
+.home-main > .section-work,
+.home-main > .section-motion,
+.home-main > .section-testimonials {
+    padding-block: var(--home-section-y);
+}
+
+.home-main .section-head,
+.home-main .section-head--plain {
+    margin-bottom: var(--breath-md);
 }
 
 [data-theme="dark"] .home-main {
@@ -11325,6 +11338,11 @@ a.project-card:hover {
 
     body.home-page.editorial-site .hero.hero--intro {
         padding-top: calc(var(--site-nav-offset) * 2);
+        padding-bottom: var(--breath-md);
+    }
+
+    .home-main {
+        --home-section-y: var(--breath-md);
     }
 
     .hero--intro::before {
@@ -11385,10 +11403,6 @@ a.project-card:hover {
 
     .hero-intro__name {
         font-size: clamp(2.85rem, 14vw, 4rem);
-    }
-
-    .section-work {
-        padding: var(--breath-xs) 0 var(--breath-md);
     }
 }
 
@@ -11583,15 +11597,7 @@ a.project-card:hover {
 
 /* --- Work Cards --- */
 .section-work {
-    padding: var(--breath-sm) 0 var(--breath-lg);
-}
-
-.home-main > .section-work:first-child {
-    padding-top: var(--breath-xs);
-}
-
-.home-main > .section-work:first-child .section-head--plain {
-    margin-bottom: 8px;
+    padding: var(--breath-lg) 0;
 }
 
 .work-grid {
@@ -12862,7 +12868,7 @@ body.editorial-site .motion-carousel:hover .motion-carousel__track {
 
 /* --- Testimonials / Clients --- */
 .section-testimonials {
-    padding: var(--breath-lg) 0 var(--breath-xl);
+    padding: var(--breath-lg) 0;
     background: transparent;
     overflow: visible;
 }
@@ -13211,10 +13217,6 @@ body.editorial-site .motion-carousel:hover .motion-carousel__track {
 }
 
 @media (max-width: 768px) {
-    .section-testimonials {
-        padding: 36px 0 48px;
-    }
-
     .section-testimonials .testimonials-track {
         gap: 14px;
     }
