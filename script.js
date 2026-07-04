@@ -7,6 +7,17 @@
     } catch (_) {}
 })();
 
+function deferNonCritical(fn, timeout = 2000) {
+    const run = () => {
+        try { fn(); } catch (_) {}
+    };
+    if (typeof requestIdleCallback === 'function') {
+        requestIdleCallback(run, { timeout });
+    } else {
+        window.setTimeout(run, Math.min(timeout, 320));
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const splashActive = initSiteSplash();
     const coldFade = initPageEnter();
@@ -33,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initEditorialScroll();
     revealHeroOnLoad();
     initTypewriter();
-    initHeroAsciiTerrain();
+    deferNonCritical(initHeroAsciiTerrain, 1200);
     initHeroCopyEmail();
     initWorkProjectCarousels();
     initWorkCardLinkPreview();
@@ -47,10 +58,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initPageTransitions();
     initThemeCompare();
     initCaseImageLightbox();
-    initLinkPrefetch();
+    deferNonCritical(initLinkPrefetch, 3000);
     initLazyBelowFoldMedia();
     initLazyWorkCardVideos();
-    initFonsecaLLM();
+    deferNonCritical(initFonsecaLLM, 3500);
 });
 
 // =====================================================
@@ -113,7 +124,7 @@ function initLazyBelowFoldMedia() {
 // PERFORMANCE — defer work-card video downloads until visible
 // =====================================================
 function initLazyWorkCardVideos() {
-    const videos = [...document.querySelectorAll('.work-card video')];
+    const videos = [...document.querySelectorAll('.work-card video, .fun-magazine-card__video')];
     if (!videos.length) return;
 
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -127,6 +138,7 @@ function initLazyWorkCardVideos() {
 
     function shouldPlay(video) {
         if (reduceMotion) return false;
+        if (video.classList.contains('fun-magazine-card__video')) return true;
         const slide = video.closest('.project-card__slide');
         return !slide || slide.classList.contains('active');
     }
@@ -263,8 +275,8 @@ function initSiteSplash() {
 
     document.body.classList.add('page-init-fade', 'has-splash');
 
-    const MIN_MS = splashMode === 'nav' ? 480 : 720;
-    const MAX_MS = splashMode === 'nav' ? 1400 : 2000;
+    const MIN_MS = splashMode === 'nav' ? 380 : 480;
+    const MAX_MS = splashMode === 'nav' ? 1100 : 1400;
     const started = performance.now();
 
     function dismissSplash() {
@@ -697,8 +709,11 @@ function initSingleHeroAscii(canvas) {
     if (!canvas) return;
     const fullBleed = canvas.classList.contains('about-ascii-bg');
     const ctx = canvas.getContext('2d');
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const narrow = window.matchMedia('(max-width: 768px)').matches;
+    const dpr = Math.min(window.devicePixelRatio || 1, narrow ? 1.25 : 2);
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const frameCapMs = narrow ? 66 : 50;
+    const stepBoost = narrow ? 2 : 0;
     const sampleCanvas = document.createElement('canvas');
     const sctx = sampleCanvas.getContext('2d', { willReadFrequently: true });
 
@@ -709,6 +724,26 @@ function initSingleHeroAscii(canvas) {
     let heroInView = true;
     let kickDebounceT = 0;
     let lastFrameTs = 0;
+    let scrollPauseT = 0;
+
+    function applyEdgeFade() {
+        if (!lumGrid || !cols || !rows) return;
+        for (let r = 0; r < rows; r++) {
+            for (let c = 0; c < cols; c++) {
+                const idx = r * cols + c;
+                let val = lumGrid[idx];
+                if (val < 0.02) continue;
+                const nx = c / (cols - 1 || 1);
+                const ny = r / (rows - 1 || 1);
+                const fadeL = Math.pow(Math.min(1, nx / 0.08), 1.5);
+                const fadeR = Math.pow(Math.min(1, (1 - nx) / 0.06), 1.1);
+                const fadeT = 0.4 + 0.6 * Math.pow(Math.min(1, ny / 0.28), 0.85);
+                const fadeB = Math.pow(Math.min(1, (1 - ny) / 0.08), 1.2);
+                val *= fadeL * fadeR * fadeT * fadeB;
+                lumGrid[idx] = val < 0.02 ? 0 : val;
+            }
+        }
+    }
 
     function buildFallbackLumGrid() {
         if (!cols || !rows || cols < 2 || rows < 2) return;
@@ -729,6 +764,7 @@ function initSingleHeroAscii(canvas) {
                 lumGrid[r * cols + c] = Math.min(1, v);
             }
         }
+        applyEdgeFade();
     }
 
     function rebuildLumGrid() {
@@ -810,7 +846,9 @@ function initSingleHeroAscii(canvas) {
         }
         if (peak < 0.04) {
             buildFallbackLumGrid();
+            return;
         }
+        applyEdgeFade();
     }
 
     function resize() {
@@ -826,7 +864,7 @@ function initSingleHeroAscii(canvas) {
             canvas.style.width = `${w}px`;
             canvas.style.height = `${h}px`;
             ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-            step = Math.max(6, Math.min(9, Math.floor(w / 130)));
+            step = Math.max(7, Math.min(11, Math.floor(w / 110))) + stepBoost;
             cols = Math.ceil(w / step);
             rows = Math.ceil(h / step);
             rebuildLumGrid();
@@ -851,7 +889,7 @@ function initSingleHeroAscii(canvas) {
         const stepOverride = parseInt(canvas.dataset.asciiStep, 10);
         step = stepOverride > 0
             ? stepOverride
-            : Math.max(5, Math.min(7, Math.floor(w / 95)));
+            : Math.max(6, Math.min(9, Math.floor(w / 80))) + stepBoost;
         cols = Math.ceil(w / step);
         rows = Math.ceil(h / step);
         rebuildLumGrid();
@@ -886,13 +924,6 @@ function initSingleHeroAscii(canvas) {
                            + Math.sin(nx * 12 + t * 1.4) * Math.cos(ny * 8 - t * 0.6) * 0.02;
                 val = Math.max(0, Math.min(1, val + wave));
 
-                const fadeL = Math.pow(Math.min(1, nx / 0.08), 1.5);
-                const fadeR = Math.pow(Math.min(1, (1 - nx) / 0.06), 1.1);
-                const fadeT = 0.4 + 0.6 * Math.pow(Math.min(1, ny / 0.28), 0.85);
-                const fadeB = Math.pow(Math.min(1, (1 - ny) / 0.08), 1.2);
-                val *= fadeL * fadeR * fadeT * fadeB;
-                if (val < 0.02) continue;
-
                 const ci = Math.min(chars.length - 1, Math.floor(val * chars.length));
                 if (ci === 0) continue;
 
@@ -919,8 +950,7 @@ function initSingleHeroAscii(canvas) {
             return;
         }
         time += 0.012;
-        /* ~30fps cap: fewer fillText passes per second on large canvases */
-        if (!reduceMotion && lastFrameTs && ts - lastFrameTs < 33) {
+        if (!reduceMotion && lastFrameTs && ts - lastFrameTs < frameCapMs) {
             animId = requestAnimationFrame(loop);
             return;
         }
@@ -1025,6 +1055,14 @@ function initSingleHeroAscii(canvas) {
             debouncedKick();
         }
     });
+
+    window.addEventListener('scroll', () => {
+        stopLoop();
+        clearTimeout(scrollPauseT);
+        scrollPauseT = setTimeout(() => {
+            if (heroInView && !document.hidden && !reduceMotion) startLoop();
+        }, 160);
+    }, { passive: true });
 }
 
 // =====================================================
@@ -1170,6 +1208,7 @@ function initMotionCarousel() {
     if (!slides.length) return;
 
     let current = 0;
+    let carouselInView = false;
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     function ensureVideo(slide) {
@@ -1184,6 +1223,7 @@ function initMotionCarousel() {
     }
 
     function syncPlayback() {
+        if (!carouselInView) return;
         slides.forEach((slide, i) => {
             const video = slide.querySelector('video');
             if (!video) return;
@@ -1235,6 +1275,7 @@ function initMotionCarousel() {
 
     const io = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
+            carouselInView = entry.isIntersecting;
             if (entry.isIntersecting) syncPlayback();
             else slides.forEach((slide) => slide.querySelector('video')?.pause());
         });

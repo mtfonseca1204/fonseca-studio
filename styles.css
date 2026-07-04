@@ -12896,7 +12896,6 @@ body.editorial-site .motion-carousel:hover .motion-carousel__track {
     gap: 20px;
     width: max-content;
     align-items: stretch;
-    will-change: transform;
     animation: clientsMarquee var(--clients-marquee-duration, 52s) linear infinite;
     animation-play-state: paused;
 }
@@ -12908,6 +12907,7 @@ body.editorial-site .motion-carousel:hover .motion-carousel__track {
 .section-testimonials.clients-carousel--ready .testimonials-track {
     animation-play-state: running;
     animation-delay: 0.45s;
+    will-change: transform;
 }
 
 .section-testimonials.clients-carousel--static .testimonials-track {
@@ -15319,7 +15319,14 @@ body.editorial-site {
     position: relative;
     isolation: isolate;
     --editorial-frame-radius: 6px;
-    --editorial-frame-hover-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+    --editorial-frame-hover-shadow: 0 6px 22px rgba(0, 0, 0, 0.05);
+}
+
+body.editorial-site .section-motion,
+body.editorial-site .section-testimonials,
+body.editorial-site .fun-magazine-chapter:not(:first-child) {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 520px;
 }
 
 body.editorial-site::before {
@@ -15328,6 +15335,7 @@ body.editorial-site::before {
     inset: 0;
     pointer-events: none;
     z-index: 0;
+    contain: strict;
     background:
         repeating-linear-gradient(
             90deg,
