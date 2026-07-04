@@ -1297,6 +1297,11 @@ body.menu-open {
     padding-bottom: var(--breath-sm);
 }
 
+/* Homepage hero — restore vertical rhythm after navbar returned to fixed positioning */
+body.home-page.editorial-site .hero.hero--intro {
+    padding-top: calc(var(--site-nav-offset) * 2 + 2px);
+}
+
 [data-theme="dark"] .hero {
     background: #0a0a0a;
 }
@@ -11318,6 +11323,10 @@ a.project-card:hover {
         padding-bottom: var(--breath-xs);
     }
 
+    body.home-page.editorial-site .hero.hero--intro {
+        padding-top: calc(var(--site-nav-offset) * 2);
+    }
+
     .hero--intro::before {
         opacity: 0.28;
     }
@@ -12553,6 +12562,10 @@ a.work-card__expand { text-decoration: none; cursor: pointer; }
 /* --- Motion carousel (homepage) --- */
 .section-motion {
     padding: var(--breath-lg) 0;
+}
+
+.section-motion > .container {
+    margin-bottom: var(--breath-md);
 }
 
 .section-motion__lead {
@@ -15327,8 +15340,6 @@ body.editorial-site {
     --editorial-frame-hover-shadow: 0 6px 22px rgba(0, 0, 0, 0.05);
 }
 
-body.editorial-site .section-motion,
-body.editorial-site .section-testimonials,
 body.editorial-site .fun-magazine-chapter:not(:first-child) {
     content-visibility: auto;
     contain-intrinsic-size: auto 520px;
