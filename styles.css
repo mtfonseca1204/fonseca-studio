@@ -1208,6 +1208,7 @@ h1, h2, h3, h4, h5, h6 {
     top: 80px;
     left: 0;
     right: 0;
+    z-index: 1001;
     background: var(--bg-white);
     padding: 40px;
     opacity: 0;
@@ -1215,6 +1216,10 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateY(-20px);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     border-bottom: 1px solid var(--border-color);
+}
+
+body.menu-open {
+    overflow: hidden;
 }
 
 .mobile-menu.active {
@@ -15359,13 +15364,20 @@ body.editorial-site::before {
     opacity: 0.28;
 }
 
-body.editorial-site > .navbar,
 body.editorial-site > main,
 body.editorial-site > section,
 body.editorial-site > footer,
 body.editorial-site > aside:not(.case-side-nav):not(.fllm-panel) {
     position: relative;
     z-index: 1;
+}
+
+body.editorial-site > .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
 }
 
 /* Editorial chrome — header + footer aligned with portfolio grid */
