@@ -13,9 +13,8 @@ IDENTITY
 - One-liner: A product designer who turns complex systems into clear, intuitive experiences that drive real outcomes.
 
 FOCUS / EXPERTISE
-- Web3 / DeFi, healthcare, and enterprise / B2B products.
-- Zero-to-one product design, design systems, and translating technical concepts into usable, scalable experiences.
-- Strategy, systems, and experience from discovery to hand-off.
+- Product design for complex digital products: zero-to-one, design systems, and turning dense domains into clear experiences.
+- Strategy and craft from discovery to hand-off.
 
 RECOGNITION
 - Hackathon wins: ETHSamba 2023 (Ethereum), Blockchain Rio 2024 (Ripio), Blockchain Rio 2025 (BASE).
@@ -25,7 +24,7 @@ SELECTED WORK
 2) Hedgehog — Waitlist & Landing, Product Designer (2024–2026). Credibility before the product existed: institutional waitlist with a three-layer funnel (understand → trust → act) and live community on X, Telegram, and Discord. 15,000+ sign-ups at 37.5% conversion with zero paid traffic; 40K+ organic community.
 3) Transparent.space — Founding Product Designer (2025–2026). From twenty minutes of cross-checking to thirty seconds of certainty: unified B2B dashboard with binary SLA, liquidity over time, and neutral Market Maker comparison. Task completion 61% → 88%; ~20 min → under 30s to check a data point. Validated with Worldchain and Kraken.
 4) Unimed Seguros — Product Designer (2021–2022). In healthcare, the barrier is trust, not usability: trust-first telemedicine for 40K+ beneficiaries with four pillars, dedicated onboarding for 60+ users, and 24/7 in-app support during COVID. ~50K consultations/month; <30% no-show; 80%+ in-app chat retention.
-- Creative Side & other work: Picnic (brand/visual identity), AURA, NØRA, Caramel, Agent Arena, and more.
+- Creative Side & other work: Picnic (brand/visual identity), AURA, NØRA, Agent Arena, and more.
 
 SERVICES
 - Brand Strategy: research, competitive mapping, audience insights, naming, messaging, architecture.
@@ -68,7 +67,7 @@ function fallbackReply(userText = '', quote = '') {
     return `That line is about my work. Happy to go deeper — what would you like to know about it? You can also reach me at fonsecaa.design@gmail.com.`;
   }
   if (has('hello', 'hi ', 'hey', 'oi', 'olá', 'ola')) {
-    return `Hey! I'm Matheus — a product designer working across Web3/DeFi, healthcare and enterprise. Ask me about my projects, process, or availability.`;
+    return `Hey! I'm Matheus — a senior product designer. Ask me about my projects, process, or availability.`;
   }
   if (has('available', 'hire', 'hiring', 'freelance', 'work with', 'contact', 'reach', 'email', 'rate', 'budget', 'project in mind')) {
     return `Yes — I'm open to select projects and available for remote work worldwide. The best way to start is an email to fonsecaa.design@gmail.com, or connect on LinkedIn (/in/maths-fonseca).`;
@@ -92,13 +91,13 @@ function fallbackReply(userText = '', quote = '') {
     return `I don't just design interfaces — I structure products. I start from the real problem and the system behind it, then turn complexity into something clear and usable, balancing strategy with craft from discovery to hand-off. My art-direction roots keep the work visually sharp.`;
   }
   if (has('project', 'work', 'portfolio', 'case', 'experience', 'done')) {
-    return `Featured work: Hedgehog prediction market (product + waitlist), Transparent.space (B2B market-maker dashboard), and Unimed Seguros (trust-first telemedicine). Creative Side includes Picnic, AURA, NØRA, and Caramel. Want detail on any one of them?`;
+    return `Featured work: Hedgehog prediction market (product + waitlist), Transparent.space (B2B market-maker dashboard), and Unimed Seguros (trust-first telemedicine). Creative Side includes Picnic, AURA, and NØRA. Want detail on any one of them?`;
   }
   if (has('skill', 'tool', 'figma', 'stack', 'design system')) {
-    return `My toolkit: Figma, Photoshop, Illustrator, plus prototyping, user research, design systems, website and strategy design — with a strong Web3/DeFi specialization.`;
+    return `My toolkit: Figma, Photoshop, Illustrator, prototyping, user research, design systems, and website design.`;
   }
   if (has('who are you', 'about you', 'yourself', 'bio', 'background')) {
-    return `I'm Matheus Fonseca, a UX/UI & Product Designer in Rio de Janeiro with roots in art direction and 5+ years building digital products — mostly across Web3/DeFi, healthcare and enterprise.`;
+    return `I'm Matheus Fonseca, a UX/UI & Product Designer in Rio de Janeiro with roots in art direction and 5+ years building digital products.`;
   }
   return `I'm Matheus' assistant. I can talk about his featured projects (Hedgehog, Transparent.space, Unimed Seguros), his process, skills, or availability. What would you like to know? For anything specific, email fonsecaa.design@gmail.com.`;
 }

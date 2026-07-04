@@ -27,6 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initNavbarScroll();
     initSmoothScroll();
     initClientsCarousel();
+    initMotionCarousel();
+    initVideoPlayControls();
     initScrollReveal();
     initEditorialScroll();
     revealHeroOnLoad();
@@ -738,19 +740,49 @@ function initSingleHeroAscii(canvas) {
         const ih = img.naturalHeight;
         const ir = iw / ih;
         const cr = cols / rows;
-        let sx; let sy; let sw; let sh;
-        if (ir > cr) { sh = ih; sw = sh * cr; sx = (iw - sw) / 2; sy = 0; }
-        else { sw = iw; sh = sw / cr; sx = 0; sy = fullBleed ? (ih - sh) / 2 : 0; }
+        const fit = canvas.dataset.asciiFit;
+        const zoom = Math.max(0.4, Math.min(1, parseFloat(canvas.dataset.asciiZoom || '1') || 1));
 
         sampleCanvas.width = cols;
         sampleCanvas.height = rows;
-        sctx.fillStyle = '#e8e0d0';
-        sctx.fillRect(0, 0, cols, rows);
-        try {
-            sctx.drawImage(img, sx, sy, sw, sh, 0, 0, cols, rows);
-        } catch (e) {
-            buildFallbackLumGrid();
-            return;
+
+        if (fit === 'contain') {
+            sctx.fillStyle = '#000000';
+            sctx.fillRect(0, 0, cols, rows);
+            const scale = Math.min(cols / iw, rows / ih) * zoom;
+            const dw = iw * scale;
+            const dh = ih * scale;
+            const dx = (cols - dw) * 0.5;
+            const dy = (rows - dh) * 0.5;
+            try {
+                sctx.drawImage(img, 0, 0, iw, ih, dx, dy, dw, dh);
+            } catch (e) {
+                buildFallbackLumGrid();
+                return;
+            }
+        } else {
+            let sx; let sy; let sw; let sh;
+            if (ir > cr) { sh = ih; sw = sh * cr; sx = (iw - sw) / 2; sy = 0; }
+            else { sw = iw; sh = sw / cr; sx = 0; sy = fullBleed ? (ih - sh) / 2 : 0; }
+
+            if (zoom < 1) {
+                const cx = sx + sw * 0.5;
+                const cy = sy + sh * 0.5;
+                const scale = 1 / zoom;
+                sw = Math.min(iw, sw * scale);
+                sh = Math.min(ih, sh * scale);
+                sx = Math.max(0, Math.min(iw - sw, cx - sw * 0.5));
+                sy = Math.max(0, Math.min(ih - sh, cy - sh * 0.5));
+            }
+
+            sctx.fillStyle = '#e8e0d0';
+            sctx.fillRect(0, 0, cols, rows);
+            try {
+                sctx.drawImage(img, sx, sy, sw, sh, 0, 0, cols, rows);
+            } catch (e) {
+                buildFallbackLumGrid();
+                return;
+            }
         }
         let data;
         try {
@@ -816,7 +848,10 @@ function initSingleHeroAscii(canvas) {
         canvas.style.top = '0';
         canvas.style.bottom = 'auto';
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-        step = Math.max(5, Math.min(7, Math.floor(w / 95)));
+        const stepOverride = parseInt(canvas.dataset.asciiStep, 10);
+        step = stepOverride > 0
+            ? stepOverride
+            : Math.max(5, Math.min(7, Math.floor(w / 95)));
         cols = Math.ceil(w / step);
         rows = Math.ceil(h / step);
         rebuildLumGrid();
@@ -1118,6 +1153,152 @@ function initWorkProjectCarousels() {
         root.addEventListener('mouseenter', () => clearInterval(timer));
         root.addEventListener('mouseleave', startAuto);
         startAuto();
+    });
+}
+
+// =====================================================
+// HOME — Hedgehog 3D motion carousel
+// =====================================================
+function initMotionCarousel() {
+    const root = document.querySelector('[data-motion-carousel]');
+    if (!root) return;
+
+    const slides = [...root.querySelectorAll('[data-motion-slide]')];
+    const dots = [...root.querySelectorAll('[data-motion-dot]')];
+    const prev = root.querySelector('[data-motion-prev]');
+    const next = root.querySelector('[data-motion-next]');
+    if (!slides.length) return;
+
+    let current = 0;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function ensureVideo(slide) {
+        const video = slide.querySelector('video');
+        if (!video) return null;
+        const src = video.dataset.src;
+        if (src && !video.getAttribute('src')) {
+            video.src = src;
+            video.removeAttribute('data-src');
+        }
+        return video;
+    }
+
+    function syncPlayback() {
+        slides.forEach((slide, i) => {
+            const video = slide.querySelector('video');
+            if (!video) return;
+            if (i === current) {
+                ensureVideo(slide);
+                if (!reduceMotion) video.play().catch(() => {});
+            } else {
+                video.pause();
+                video.currentTime = 0;
+            }
+        });
+    }
+
+    function goTo(idx) {
+        const n = slides.length;
+        const nextIdx = ((idx % n) + n) % n;
+        slides[current].classList.remove('active');
+        slides[current].setAttribute('aria-hidden', 'true');
+        dots[current]?.classList.remove('active');
+        dots[current]?.setAttribute('aria-selected', 'false');
+        current = nextIdx;
+        slides[current].classList.add('active');
+        slides[current].setAttribute('aria-hidden', 'false');
+        dots[current]?.classList.add('active');
+        dots[current]?.setAttribute('aria-selected', 'true');
+        syncPlayback();
+    }
+
+    slides.forEach((slide) => {
+        const video = slide.querySelector('video');
+        if (!video) return;
+        video.removeAttribute('loop');
+        video.addEventListener('ended', () => {
+            if (slide !== slides[current]) return;
+            goTo(current + 1);
+        });
+    });
+
+    prev?.addEventListener('click', () => goTo(current - 1));
+    next?.addEventListener('click', () => goTo(current + 1));
+    dots.forEach((dot) => {
+        dot.addEventListener('click', () => goTo(parseInt(dot.dataset.idx, 10)));
+    });
+
+    root.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(current - 1); }
+        else if (e.key === 'ArrowRight') { e.preventDefault(); goTo(current + 1); }
+    });
+
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) syncPlayback();
+            else slides.forEach((slide) => slide.querySelector('video')?.pause());
+        });
+    }, { threshold: 0.25, rootMargin: '40px 0px' });
+    io.observe(root);
+
+    goTo(0);
+}
+
+// =====================================================
+// VIDEO — inline play / pause controls
+// =====================================================
+const VIDEO_PLAY_SVG = '<svg width="14" height="14" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7 5.5v9l8-4.5-8-4.5z" fill="currentColor"/></svg>';
+const VIDEO_PAUSE_SVG = '<svg width="14" height="14" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7 5h2v10H7V5zm4 0h2v10h-2V5z" fill="currentColor"/></svg>';
+
+function initVideoPlayControls() {
+    const selector = [
+        'video.case-gallery-img',
+        '.hh3d-video',
+        '.motion-carousel__media video',
+        '.fun-magazine-card__video',
+        '.project-cover-image video',
+        'video.project-card__slide',
+        '.work-card video',
+    ].join(', ');
+
+    document.querySelectorAll(selector).forEach((video) => {
+        if (video.dataset.playControls === '1') return;
+        if (video.closest('.case-lightbox')) return;
+        if (video.closest('[data-motion-carousel]')) return;
+        if (document.body.classList.contains('home-page')) return;
+        video.dataset.playControls = '1';
+
+        const host = video.parentElement;
+        if (!host) return;
+        if (getComputedStyle(host).position === 'static') host.style.position = 'relative';
+
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'video-play-toggle';
+        btn.setAttribute('aria-label', video.paused ? 'Play video' : 'Pause video');
+        btn.innerHTML = video.paused ? VIDEO_PLAY_SVG : VIDEO_PAUSE_SVG;
+
+        const syncBtn = () => {
+            const paused = video.paused;
+            btn.setAttribute('aria-label', paused ? 'Play video' : 'Pause video');
+            btn.setAttribute('aria-pressed', paused ? 'false' : 'true');
+            btn.classList.toggle('is-paused', paused);
+            btn.innerHTML = paused ? VIDEO_PLAY_SVG : VIDEO_PAUSE_SVG;
+        };
+
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            if (video.paused) video.play().catch(() => {});
+            else video.pause();
+            syncBtn();
+        });
+
+        video.addEventListener('play', syncBtn);
+        video.addEventListener('pause', syncBtn);
+
+        host.appendChild(btn);
+        syncBtn();
     });
 }
 
@@ -1975,17 +2156,6 @@ const FLLM_PROJECTS = [
         keywords: ['transparent', 'brand', 'identity', 'web3', 'institutional', 'blueprint'],
     },
     {
-        id: 'caramel',
-        title: 'Caramel',
-        client: 'Caramel',
-        url: 'project-caramel.html',
-        category: ['Web3', 'Product'],
-        impactScore: 48,
-        summary: 'Concept for on-chain token launches with a step-by-step LaChain flow that makes smart contract steps transparent for first-time creators.',
-        metrics: ['Award-winning concept at Blockchain Rio 2024', 'Accessible on-chain creation without losing credibility', 'Idea → create → launch → on-chain flow'],
-        keywords: ['caramel', 'web3', 'token', 'launch', 'blockchain', 'lachain', 'hackathon'],
-    },
-    {
         id: 'aura',
         title: 'AURA · Brand',
         client: 'AURA',
@@ -2089,7 +2259,7 @@ function answerFllmSearch(query, faqs) {
         return {
             title: 'Selected work',
             paragraphs: [
-                'Matheus\'s featured case studies span Web3 prediction markets, institutional B2B dashboards, and trust-first healthcare.',
+                'Featured work spans prediction markets, B2B dashboards, telemedicine, and brand systems.',
                 ranked.map((p) => `${p.title}: ${p.metrics[0]}.`).join(' '),
             ],
             links: fllmProjectLinks(ranked, 4),
@@ -2234,7 +2404,7 @@ function fllmLocalFallback(userText = '', quote = '') {
         return 'Happy to talk about that line. What would you like to know? You can also email fonsecaa.design@gmail.com.';
     }
     if (has('hello', 'hi ', 'hey', 'oi', 'olá', 'ola')) {
-        return "Hey! I'm Matheus, a product designer across Web3/DeFi, healthcare, and enterprise. Ask me about my projects, process, or availability.";
+        return "Hey! I'm Matheus, a senior product designer. Ask me about my projects, process, or availability.";
     }
     if (has('available', 'hire', 'hiring', 'freelance', 'work with', 'contact', 'reach', 'email', 'rate', 'budget', 'project in mind')) {
         return "Yes, I'm open to select projects and available for remote work worldwide. Best to email fonsecaa.design@gmail.com or connect on LinkedIn (/in/maths-fonseca).";
@@ -2258,13 +2428,13 @@ function fllmLocalFallback(userText = '', quote = '') {
         return "I don't just design interfaces, I structure products. I benchmark the category, fix the mental model first, then turn complexity into something clear and usable from discovery to hand-off.";
     }
     if (has('project', 'work', 'portfolio', 'case', 'experience', 'done')) {
-        return 'Featured work: Hedgehog prediction market (product + waitlist), Transparent.space (B2B market-maker dashboard), and Unimed Seguros (trust-first telemedicine). Creative Side includes Picnic, AURA, NØRA, and Caramel. Want detail on any one of them?';
+        return 'Featured work: Hedgehog prediction market (product + waitlist), Transparent.space (B2B market-maker dashboard), and Unimed Seguros (trust-first telemedicine). Creative Side includes Picnic, AURA, and NØRA. Want detail on any one of them?';
     }
     if (has('skill', 'tool', 'figma', 'stack', 'design system')) {
-        return 'My toolkit: Figma, Photoshop, Illustrator, plus prototyping, user research, design systems, website and strategy design, with a strong Web3/DeFi specialization.';
+        return 'My toolkit: Figma, Photoshop, Illustrator, prototyping, user research, design systems, and website design.';
     }
     if (has('who are you', 'about you', 'yourself', 'bio', 'background')) {
-        return "I'm Matheus Fonseca, a UX/UI and Product Designer in Rio de Janeiro with roots in art direction and 5+ years building digital products across Web3/DeFi, healthcare, and enterprise.";
+        return "I'm Matheus Fonseca, a UX/UI and Product Designer in Rio de Janeiro with roots in art direction and 5+ years building digital products.";
     }
     return "I'm Matheus' assistant. I can talk about his featured projects (Hedgehog, Transparent.space, Unimed Seguros), his process, skills, or availability. For anything specific, email fonsecaa.design@gmail.com.";
 }
