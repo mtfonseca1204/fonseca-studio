@@ -1300,7 +1300,11 @@ body.menu-open {
 /* Homepage hero — match shared editorial hero rhythm */
 body.home-page.editorial-site .hero.hero--intro {
     padding-top: var(--editorial-hero-top);
-    padding-bottom: var(--editorial-hero-bottom);
+    padding-bottom: var(--breath-sm);
+}
+
+.home-main > .section-work:first-child {
+    padding-top: var(--breath-xs);
 }
 
 [data-theme="dark"] .hero {
@@ -11338,7 +11342,7 @@ a.project-card:hover {
 
     body.home-page.editorial-site .hero.hero--intro {
         padding-top: var(--editorial-hero-top);
-        padding-bottom: var(--editorial-hero-bottom);
+        padding-bottom: var(--breath-xs);
     }
 
     body.editorial-site {
