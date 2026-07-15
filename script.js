@@ -62,8 +62,251 @@ document.addEventListener('DOMContentLoaded', () => {
     deferNonCritical(initLinkPrefetch, 3000);
     initLazyBelowFoldMedia();
     initLazyWorkCardVideos();
+    initPlainTerms();
     deferNonCritical(initFonsecaLLM, 1200);
 });
+
+// =====================================================
+// PLAIN ENGLISH — hover/tap glossary on portfolio terms
+// =====================================================
+const PLAIN_GLOSSARY = [
+    ['pooled UP/DOWN rounds', 'Everyone picks up or down in one shared pot; winners split the pool.'],
+    ['orderbook literacy', 'Understanding the complex buy/sell lists traders use.'],
+    ['orderbooks', 'The complex buy/sell lists traders use, like on a stock exchange.'],
+    ['orderbook', 'The complex buy/sell list traders use, like on a stock exchange.'],
+    ['Prediction Market', 'A site where people bet on real-world outcomes, like sports or news events.'],
+    ['prediction markets', 'Sites where people bet on real-world outcomes, like sports or news events.'],
+    ['prediction market', 'A site where people bet on real-world outcomes, like sports or news events.'],
+    ['Market Maker Dashboard', 'A control panel for traders who keep markets liquid by always offering buy and sell prices.'],
+    ['Market Makers', 'Traders who keep markets liquid by always offering buy and sell prices.'],
+    ['Market Maker', 'A trader who keeps markets liquid by always offering buy and sell prices.'],
+    ['participation model', 'The rules for how users join in and take action in a product.'],
+    ['participation data', 'Public info showing what other users picked or bet.'],
+    ['cross-checking', 'Manually comparing prices and data across different tools and tabs.'],
+    ['Pre-launch Waitlist', 'A signup page before the product was built, to collect early users.'],
+    ['paid acquisition', 'Paying for ads to bring visitors to a page.'],
+    ['paid traffic', 'Visitors who found the page through paid ads.'],
+    ['institutional audience', 'Professional investors and companies, not casual users.'],
+    ['institutional credibility', 'Proof that a company is serious and trustworthy enough for professionals.'],
+    ['on-chain-focused', 'Built to work on a blockchain, with publicly verifiable records.'],
+    ['on-chain', 'Recorded on a blockchain, publicly verifiable.'],
+    ['Worldchain', "World App's blockchain network, used for on-chain finance."],
+    ['Telemedicine', 'Healthcare delivered online: video calls, chat, and digital prescriptions.'],
+    ['telemedicine', 'Healthcare delivered online: video calls, chat, and digital prescriptions.'],
+    ['telehealth', 'Healthcare delivered online: video calls, chat, and digital prescriptions.'],
+    ['care flows', 'The steps patients take to book, see a doctor, and follow up.'],
+    ['conversion', 'The share of visitors who took the action you wanted, like signing up.'],
+    ['waitlist', 'A signup list for people interested before a product launches.'],
+    ['liquidity', 'How easily an asset can be bought or sold without big price swings.'],
+    ['counterparties', 'The other side of a trade — who you buy from or sell to.'],
+    ['DeFi protocols', 'Decentralized finance apps that run on blockchains without traditional banks.'],
+    ['DeFi user', 'Someone who uses decentralized finance apps on blockchains.'],
+    ['DeFi', 'Decentralized finance: financial apps that run on blockchains without traditional banks.'],
+    ['Web3', 'The blockchain-based internet: apps built on crypto networks instead of traditional servers.'],
+    ['B2B', 'Business-to-business: products sold to companies, not individual consumers.'],
+    ['SLA', 'Service level agreement: a contract promising a minimum performance standard.'],
+    ['CTA', 'Call to action: the main button asking the user to do something, like sign up.'],
+    ['A/B tests', 'Comparing two versions of a page to see which performs better.'],
+    ['A/B test', 'Comparing two versions of a page to see which performs better.'],
+    ['social proof', 'Signals that other people trust or use something, like reviews or follower counts.'],
+    ['drill-down', 'Clicking into a summary to see more detailed information.'],
+    ['product-market fit', 'When a product clearly solves a real need that people will pay for.'],
+    ['beneficiaries', 'People covered by a health insurance plan who can use its services.'],
+    ['no-show', 'When someone books an appointment but does not attend.'],
+    ['healthtech', 'Technology products built for healthcare and medical services.'],
+    ['health cooperative', 'A member-owned organization that provides healthcare services.'],
+];
+
+const PLAIN_GLOSSARY_SORTED = [...PLAIN_GLOSSARY].sort((a, b) => b[0].length - a[0].length);
+
+function annotatePlainTermsIn(container) {
+    if (!container) return;
+
+    const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, {
+        acceptNode(node) {
+            const parent = node.parentElement;
+            if (!parent) return NodeFilter.FILTER_REJECT;
+            if (parent.closest('.plain-term')) return NodeFilter.FILTER_REJECT;
+            const tag = parent.tagName;
+            if (tag === 'A' || tag === 'SCRIPT' || tag === 'STYLE' || tag === 'SVG') return NodeFilter.FILTER_REJECT;
+            if (!node.textContent.trim()) return NodeFilter.FILTER_REJECT;
+            return NodeFilter.FILTER_ACCEPT;
+        },
+    });
+
+    const textNodes = [];
+    while (walker.nextNode()) textNodes.push(walker.currentNode);
+
+    textNodes.forEach((textNode) => {
+        let fragments = [{ type: 'text', value: textNode.textContent }];
+
+        PLAIN_GLOSSARY_SORTED.forEach(([term, plain]) => {
+            const escaped = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            const re = new RegExp(escaped, 'gi');
+            const next = [];
+
+            fragments.forEach((frag) => {
+                if (frag.type !== 'text') {
+                    next.push(frag);
+                    return;
+                }
+
+                let last = 0;
+                let match;
+                re.lastIndex = 0;
+                while ((match = re.exec(frag.value)) !== null) {
+                    if (match.index > last) {
+                        next.push({ type: 'text', value: frag.value.slice(last, match.index) });
+                    }
+                    next.push({ type: 'term', value: match[0], plain });
+                    last = match.index + match[0].length;
+                }
+                if (last < frag.value.length) {
+                    next.push({ type: 'text', value: frag.value.slice(last) });
+                }
+            });
+
+            if (next.length) fragments = next;
+        });
+
+        if (fragments.length === 1 && fragments[0].type === 'text') return;
+
+        const docFrag = document.createDocumentFragment();
+        fragments.forEach((frag) => {
+            if (frag.type === 'text') {
+                docFrag.appendChild(document.createTextNode(frag.value));
+                return;
+            }
+            const span = document.createElement('span');
+            span.className = 'plain-term';
+            span.setAttribute('data-plain', frag.plain);
+            span.textContent = frag.value;
+            docFrag.appendChild(span);
+        });
+
+        textNode.parentNode.replaceChild(docFrag, textNode);
+    });
+}
+
+function initPlainTerms() {
+    document.querySelectorAll('body.project-case-page .project-hero-case, body.project-case-page .case-editorial').forEach(annotatePlainTermsIn);
+
+    const terms = document.querySelectorAll('.plain-term[data-plain]');
+    if (!terms.length) return;
+
+    const tip = document.createElement('div');
+    tip.className = 'plain-term-tip';
+    tip.hidden = true;
+    tip.innerHTML = '<span class="plain-term-tip__label">In plain English</span><span class="plain-term-tip__text"></span>';
+    document.body.appendChild(tip);
+
+    const textEl = tip.querySelector('.plain-term-tip__text');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isTouch = window.matchMedia('(hover: none)').matches;
+    let active = null;
+    let typeTimer = null;
+    let hideTimer = null;
+
+    function positionTip(term) {
+        tip.hidden = false;
+        tip.style.visibility = 'hidden';
+        tip.classList.add('plain-term-tip--visible');
+        const rect = term.getBoundingClientRect();
+        const tipRect = tip.getBoundingClientRect();
+        const pad = 10;
+        let left = rect.left + rect.width / 2 - tipRect.width / 2;
+        left = Math.max(12, Math.min(left, window.innerWidth - tipRect.width - 12));
+
+        let top = rect.top - tipRect.height - pad;
+        tip.classList.toggle('plain-term-tip--below', top < 12);
+        if (top < 12) top = rect.bottom + pad;
+
+        tip.style.left = `${left}px`;
+        tip.style.top = `${top}px`;
+        tip.style.visibility = '';
+    }
+
+    function typeText(full) {
+        clearInterval(typeTimer);
+        tip.classList.remove('plain-term-tip--done');
+        if (reduceMotion) {
+            textEl.textContent = full;
+            tip.classList.add('plain-term-tip--done');
+            return;
+        }
+        textEl.textContent = '';
+        let i = 0;
+        typeTimer = window.setInterval(() => {
+            i += 1;
+            textEl.textContent = full.slice(0, i);
+            if (i >= full.length) {
+                clearInterval(typeTimer);
+                tip.classList.add('plain-term-tip--done');
+            }
+        }, 16);
+    }
+
+    function show(term) {
+        clearTimeout(hideTimer);
+        if (active && active !== term) hide(true);
+
+        active = term;
+        const plain = term.getAttribute('data-plain') || '';
+        tip.hidden = false;
+        typeText(plain);
+        term.classList.add('plain-term--active');
+        tip.classList.remove('plain-term-tip--visible');
+        requestAnimationFrame(() => {
+            positionTip(term);
+            requestAnimationFrame(() => tip.classList.add('plain-term-tip--visible'));
+        });
+    }
+
+    function hide(immediate) {
+        clearInterval(typeTimer);
+        clearTimeout(hideTimer);
+        const finish = () => {
+            tip.classList.remove('plain-term-tip--visible', 'plain-term-tip--done', 'plain-term-tip--below');
+            if (active) active.classList.remove('plain-term--active');
+            active = null;
+            window.setTimeout(() => {
+                if (!active) tip.hidden = true;
+            }, immediate ? 0 : 200);
+        };
+        if (immediate) finish();
+        else hideTimer = window.setTimeout(finish, 60);
+    }
+
+    terms.forEach((term) => {
+        term.addEventListener('mouseenter', () => {
+            if (!isTouch) show(term);
+        });
+        term.addEventListener('mouseleave', () => {
+            if (!isTouch) hide();
+        });
+        term.addEventListener('click', (e) => {
+            if (!isTouch) return;
+            e.preventDefault();
+            e.stopPropagation();
+            if (active === term) hide(true);
+            else show(term);
+        });
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!active) return;
+        if (e.target.closest('.plain-term') || e.target.closest('.plain-term-tip')) return;
+        hide(true);
+    });
+
+    window.addEventListener('scroll', () => {
+        if (active) positionTip(active);
+    }, { passive: true });
+
+    window.addEventListener('resize', () => {
+        if (active) positionTip(active);
+    });
+}
 
 // =====================================================
 // FAST NAV — prefetch internal pages on hover

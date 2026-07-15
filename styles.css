@@ -12257,6 +12257,133 @@ video.project-card__slide.project-card__slide--crop-in {
     }
 }
 
+/* --- Plain English terms (portfolio glossary) --- */
+.plain-term {
+    position: relative;
+    display: inline;
+    cursor: help;
+    border-bottom: 1px dotted rgba(255, 92, 0, 0.55);
+    text-decoration: none;
+    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.plain-term:hover,
+.plain-term.plain-term--active {
+    color: #ff5c00;
+    border-bottom-color: rgba(255, 92, 0, 0.85);
+    background: rgba(255, 92, 0, 0.06);
+}
+
+.work-card--portfolio:hover .plain-term:not(:hover):not(.plain-term--active) {
+    color: inherit;
+}
+
+.plain-term-tip {
+    position: fixed;
+    z-index: 10050;
+    max-width: min(280px, calc(100vw - 24px));
+    padding: 10px 12px 11px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--bg-white);
+    box-shadow: 0 10px 32px rgba(15, 23, 42, 0.12);
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(6px) scale(0.98);
+    transition: opacity 0.22s ease, transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.22s ease;
+}
+
+.plain-term-tip.plain-term-tip--visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.plain-term-tip.plain-term-tip--below {
+    transform: translateY(-6px) scale(0.98);
+}
+
+.plain-term-tip.plain-term-tip--below.plain-term-tip--visible {
+    transform: translateY(0) scale(1);
+}
+
+.plain-term-tip__label {
+    display: block;
+    margin-bottom: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #ff5c00;
+}
+
+.plain-term-tip__text {
+    display: block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.45;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+}
+
+.plain-term-tip__text::after {
+    content: '|';
+    display: inline-block;
+    margin-left: 1px;
+    color: #ff5c00;
+    animation: plain-term-caret 0.85s step-end infinite;
+}
+
+.plain-term-tip.plain-term-tip--done .plain-term-tip__text::after {
+    display: none;
+}
+
+@keyframes plain-term-caret {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+[data-theme="dark"] .plain-term-tip {
+    background: #141414;
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .plain-term-tip {
+        transition: opacity 0.15s ease, visibility 0.15s ease;
+        transform: none;
+    }
+
+    .plain-term-tip.plain-term-tip--visible,
+    .plain-term-tip.plain-term-tip--below,
+    .plain-term-tip.plain-term-tip--below.plain-term-tip--visible {
+        transform: none;
+    }
+
+    .plain-term-tip__text::after {
+        display: none;
+    }
+}
+
+@media (hover: none) {
+    .plain-term {
+        cursor: pointer;
+    }
+}
+
+body.project-case-page .plain-term {
+    border-bottom-color: rgba(255, 92, 0, 0.45);
+}
+
+body.project-case-page .plain-term:hover,
+body.project-case-page .plain-term.plain-term--active {
+    background: rgba(255, 92, 0, 0.08);
+}
+
 /* Editorial card frame — portfolio grid, magazine, related work, motion */
 body.editorial-site .fun-magazine-card__media,
 body.editorial-site .related-card .related-image,
