@@ -24,7 +24,7 @@ SELECTED WORK
 2) Hedgehog — Waitlist & Landing, Product Designer (2024–2026). Credibility before the product existed: institutional waitlist with a three-layer funnel (understand → trust → act) and live community on X, Telegram, and Discord. 15,000+ sign-ups at 37.5% conversion with zero paid traffic; 40K+ organic community.
 3) Transparent.space — Founding Product Designer (2025–2026). From twenty minutes of cross-checking to thirty seconds of certainty: unified B2B dashboard with binary SLA, liquidity over time, and neutral Market Maker comparison. Task completion 61% → 88%; ~20 min → under 30s to check a data point. Validated with Worldchain and Kraken.
 4) Unimed Seguros — Product Designer (2021–2022). In healthcare, the barrier is trust, not usability: trust-first telemedicine for 40K+ beneficiaries with four pillars, dedicated onboarding for 60+ users, and 24/7 in-app support during COVID. ~50K consultations/month; <30% no-show; 80%+ in-app chat retention.
-- Creative Side & other work: Picnic (brand/visual identity), AURA, NØRA, Agent Arena, and more.
+- Side Quests & other work: Picnic (brand/visual identity), AURA, NØRA, Agent Arena, and more.
 
 SERVICES
 - Brand Strategy: research, competitive mapping, audience insights, naming, messaging, architecture.
@@ -91,7 +91,7 @@ function fallbackReply(userText = '', quote = '') {
     return `I don't just design interfaces — I structure products. I start from the real problem and the system behind it, then turn complexity into something clear and usable, balancing strategy with craft from discovery to hand-off. My art-direction roots keep the work visually sharp.`;
   }
   if (has('project', 'work', 'portfolio', 'case', 'experience', 'done')) {
-    return `Featured work: Hedgehog prediction market (product + waitlist), Transparent.space (B2B market-maker dashboard), and Unimed Seguros (trust-first telemedicine). Creative Side includes Picnic, AURA, and NØRA. Want detail on any one of them?`;
+    return `Featured work: Hedgehog prediction market (product + waitlist), Transparent.space (B2B market-maker dashboard), and Unimed Seguros (trust-first telemedicine). Side Quests includes Picnic, AURA, and NØRA. Want detail on any one of them?`;
   }
   if (has('skill', 'tool', 'figma', 'stack', 'design system')) {
     return `My toolkit: Figma, Photoshop, Illustrator, prototyping, user research, design systems, and website design.`;

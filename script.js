@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initEditorialScroll();
     revealHeroOnLoad();
     initTypewriter();
+    initAboutPhotoCarousel();
     deferNonCritical(initHeroAsciiTerrain, 1200);
     initHeroCopyEmail();
     initWorkProjectCarousels();
@@ -61,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
     deferNonCritical(initLinkPrefetch, 3000);
     initLazyBelowFoldMedia();
     initLazyWorkCardVideos();
-    deferNonCritical(initFonsecaLLM, 3500);
+    deferNonCritical(initFonsecaLLM, 1200);
 });
 
 // =====================================================
@@ -88,15 +89,54 @@ function initLinkPrefetch() {
 // =====================================================
 // PERFORMANCE — lazy-load below-fold case media
 // =====================================================
+function playVideoFromStart(video) {
+    if (!video) return;
+    const reduceMotion = prefersReducedMotion();
+    if (reduceMotion) {
+        video.pause();
+        return;
+    }
+
+    const rate = parseFloat(video.dataset.playbackRate);
+    if (!Number.isNaN(rate) && rate > 0) video.playbackRate = rate;
+
+    let started = false;
+    const start = () => {
+        if (started) return;
+        started = true;
+        try {
+            if (video.currentTime > 0.01) video.currentTime = 0;
+        } catch (_) {}
+        video.play().catch(() => {});
+    };
+
+    if (video.readyState >= 2) {
+        start();
+        return;
+    }
+
+    video.addEventListener('loadeddata', start, { once: true });
+    video.addEventListener('canplay', start, { once: true });
+    if (video.getAttribute('src') || video.querySelector('source')) {
+        try { video.load(); } catch (_) {}
+    }
+}
+
 function initLazyBelowFoldMedia() {
     document.querySelectorAll('.case-section-gallery img, .project-case-content img:not(.cover-img)').forEach((img) => {
         if (!img.hasAttribute('loading')) img.loading = 'lazy';
         if (!img.hasAttribute('decoding')) img.decoding = 'async';
     });
+
     document.querySelectorAll('.case-section-gallery video, .project-case-content .case-section-body video').forEach((video) => {
-        if (!video.hasAttribute('preload')) video.preload = 'none';
+        if (!video.hasAttribute('preload')) video.preload = 'metadata';
         const rate = parseFloat(video.dataset.playbackRate);
         if (!Number.isNaN(rate) && rate > 0) video.playbackRate = rate;
+    });
+
+    // Cover / hero case videos — warm early and always restart from 0
+    document.querySelectorAll('.project-cover-image video, .hh3d-video').forEach((video) => {
+        if (!video.preload || video.preload === 'none') video.preload = 'auto';
     });
 
     const reduceMotion = prefersReducedMotion();
@@ -106,22 +146,18 @@ function initLazyBelowFoldMedia() {
             video.pause();
             return;
         }
-        const rate = parseFloat(video.dataset.playbackRate);
-        if (!Number.isNaN(rate) && rate > 0) video.playbackRate = rate;
         const io = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    if (!Number.isNaN(rate) && rate > 0) video.playbackRate = rate;
-                    video.play().catch(() => {});
-                } else video.pause();
+                if (entry.isIntersecting) playVideoFromStart(video);
+                else video.pause();
             });
-        }, { threshold: 0.2, rootMargin: '80px 0px' });
+        }, { threshold: 0.15, rootMargin: '200px 0px' });
         io.observe(video);
     });
 }
 
 // =====================================================
-// PERFORMANCE — defer work-card video downloads until visible
+// PERFORMANCE — warm + play work-card / magazine videos
 // =====================================================
 function initLazyWorkCardVideos() {
     const videos = [...document.querySelectorAll('.work-card video, .fun-magazine-card__video')];
@@ -134,6 +170,7 @@ function initLazyWorkCardVideos() {
         if (!src || video.getAttribute('src')) return;
         video.src = src;
         video.removeAttribute('data-src');
+        video.preload = 'auto';
     }
 
     function shouldPlay(video) {
@@ -143,33 +180,59 @@ function initLazyWorkCardVideos() {
         return !slide || slide.classList.contains('active');
     }
 
+    function warmVideo(video) {
+        ensureSrc(video);
+        try { video.load(); } catch (_) {}
+    }
+
     function playVideo(video) {
         if (!shouldPlay(video)) return;
         ensureSrc(video);
-        video.play().catch(() => {});
+        playVideoFromStart(video);
     }
 
     function pauseVideo(video) {
         video.pause();
     }
 
-    const observer = new IntersectionObserver((entries) => {
+    // Warm near the viewport; play once sufficiently visible
+    const warmer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                warmVideo(entry.target);
+                warmer.unobserve(entry.target);
+            }
+        });
+    }, { rootMargin: '480px 0px', threshold: 0.01 });
+
+    const player = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             const video = entry.target;
             if (entry.isIntersecting) playVideo(video);
             else pauseVideo(video);
         });
-    }, { rootMargin: '120px 0px', threshold: 0.1 });
+    }, { rootMargin: '160px 0px', threshold: 0.12 });
 
     videos.forEach((video) => {
         video.autoplay = false;
-        if (!video.hasAttribute('preload')) video.preload = 'none';
+        video.muted = true;
+        video.playsInline = true;
+        if (!video.hasAttribute('preload')) video.preload = 'metadata';
         if (video.getAttribute('src') && !video.dataset.src) {
             video.dataset.src = video.getAttribute('src');
             video.removeAttribute('src');
         }
-        observer.observe(video);
+        warmer.observe(video);
+        player.observe(video);
     });
+
+    // Home Selected Work is near-fold — warm those thumbs immediately
+    if (document.body.classList.contains('home-page')) {
+        videos
+            .filter((video) => video.closest('.work-card'))
+            .slice(0, 4)
+            .forEach(warmVideo);
+    }
 }
 
 /** Coalesce high-frequency events (scroll/resize) to one callback per animation frame */
@@ -373,7 +436,6 @@ function initEditorialScroll() {
     const isProjectCase = Boolean(document.querySelector('.project-case-content'));
     const blocks = [
         '.about-contact',
-        '.about-photos',
         '.fun-magazine-chapter',
         '.hh3d-piece'
     ];
@@ -430,29 +492,149 @@ function initTypewriter() {
     const writers = [...document.querySelectorAll('[data-typewriter]')];
     if (!writers.length) return;
 
+    const fill = (el) => {
+        el.textContent = el.dataset.typewriter || '';
+        el.classList.add('is-typed');
+    };
+
     if (prefersReducedMotion()) {
-        writers.forEach((el) => {
-            el.textContent = el.dataset.typewriter || '';
-        });
+        writers.forEach(fill);
         return;
     }
 
-    const charDelay = 68;
-    const lineGap = 220;
-    let cursor = 320;
-
-    writers.forEach((el) => {
+    const typeInto = (el, { charDelay = 68, startDelay = 0 } = {}) => {
+        if (el.dataset.typewriterDone === '1') return;
+        el.dataset.typewriterDone = '1';
         const text = el.dataset.typewriter || '';
         el.textContent = '';
+        el.classList.add('is-typing');
 
         text.split('').forEach((char, charIndex) => {
             window.setTimeout(() => {
                 el.textContent += char;
-            }, cursor + charIndex * charDelay);
+                if (charIndex === text.length - 1) {
+                    el.classList.remove('is-typing');
+                    el.classList.add('is-typed');
+                }
+            }, startDelay + charIndex * charDelay);
         });
 
-        cursor += text.length * charDelay + lineGap;
+        if (!text.length) {
+            el.classList.remove('is-typing');
+            el.classList.add('is-typed');
+        }
+    };
+
+    const immediate = writers.filter((el) => !el.hasAttribute('data-typewriter-view'));
+    const onView = writers.filter((el) => el.hasAttribute('data-typewriter-view'));
+
+    let cursor = 320;
+    const lineGap = 220;
+    const heroDelay = 68;
+
+    immediate.forEach((el) => {
+        const text = el.dataset.typewriter || '';
+        typeInto(el, { charDelay: heroDelay, startDelay: cursor });
+        cursor += text.length * heroDelay + lineGap;
     });
+
+    if (!onView.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            typeInto(entry.target, { charDelay: 28, startDelay: 120 });
+            observer.unobserve(entry.target);
+        });
+    }, { threshold: 0.35, rootMargin: '0px 0px -8% 0px' });
+
+    onView.forEach((el) => {
+        el.textContent = '';
+        observer.observe(el);
+    });
+}
+
+// =====================================================
+// ABOUT — lifestyle photo carousel in intro portrait slot
+// =====================================================
+function initAboutPhotoCarousel() {
+    const root = document.querySelector('[data-about-photo-carousel]');
+    if (!root) return;
+
+    const slides = [...root.querySelectorAll('.about-intro__photo-img')];
+    const progress = root.querySelector('.about-intro__photo-progress-bar');
+    if (slides.length < 2) return;
+
+    let current = 0;
+    let timer = null;
+    let inView = false;
+    let paused = false;
+    const interval = 4200;
+
+    const show = (idx) => {
+        slides[current].classList.remove('is-active');
+        current = ((idx % slides.length) + slides.length) % slides.length;
+        slides[current].classList.add('is-active');
+        if (progress) {
+            progress.style.animation = 'none';
+            // force reflow so the progress bar restarts cleanly
+            void progress.offsetWidth;
+            progress.style.animation = '';
+        }
+    };
+
+    const stop = () => {
+        if (timer) {
+            window.clearInterval(timer);
+            timer = null;
+        }
+        root.classList.remove('is-playing');
+    };
+
+    const start = () => {
+        if (prefersReducedMotion() || paused || !inView || timer) return;
+        root.classList.add('is-playing');
+        if (progress) {
+            progress.style.animation = 'none';
+            void progress.offsetWidth;
+            progress.style.animation = '';
+        }
+        timer = window.setInterval(() => show(current + 1), interval);
+    };
+
+    if (prefersReducedMotion()) {
+        slides.forEach((img, i) => img.classList.toggle('is-active', i === 0));
+        return;
+    }
+
+    root.addEventListener('mouseenter', () => {
+        paused = true;
+        stop();
+    });
+    root.addEventListener('mouseleave', () => {
+        paused = false;
+        start();
+    });
+    root.addEventListener('focusin', () => {
+        paused = true;
+        stop();
+    });
+    root.addEventListener('focusout', () => {
+        if (!root.contains(document.activeElement)) {
+            paused = false;
+            start();
+        }
+    });
+
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            inView = entry.isIntersecting;
+            if (inView) start();
+            else stop();
+        });
+    }, { threshold: 0.4 });
+
+    io.observe(root);
 }
 
 // =====================================================
@@ -677,8 +859,15 @@ function setupCaseImageLightbox() {
 
         const wrap = document.createElement('span');
         wrap.className = 'case-img-zoom';
-        el.parentNode.insertBefore(wrap, el);
-        wrap.appendChild(el);
+        const playHost = el.closest('.video-play-host');
+        const target = playHost || el;
+        const parent = target.parentNode;
+        const playBtn = parent
+            ? [...parent.children].find((child) => child.classList?.contains('video-play-toggle'))
+            : null;
+        parent.insertBefore(wrap, target);
+        wrap.appendChild(target);
+        if (playBtn) wrap.appendChild(playBtn);
 
         const btn = document.createElement('button');
         btn.type = 'button';
@@ -1218,6 +1407,7 @@ function initMotionCarousel() {
         if (src && !video.getAttribute('src')) {
             video.src = src;
             video.removeAttribute('data-src');
+            video.preload = 'auto';
         }
         return video;
     }
@@ -1229,10 +1419,10 @@ function initMotionCarousel() {
             if (!video) return;
             if (i === current) {
                 ensureVideo(slide);
-                if (!reduceMotion) video.play().catch(() => {});
+                if (!reduceMotion) playVideoFromStart(video);
             } else {
                 video.pause();
-                video.currentTime = 0;
+                try { video.currentTime = 0; } catch (_) {}
             }
         });
     }
@@ -1309,8 +1499,15 @@ function initVideoPlayControls() {
         if (document.body.classList.contains('home-page')) return;
         video.dataset.playControls = '1';
 
-        const host = video.parentElement;
-        if (!host) return;
+        // Prefer an existing tight media host; otherwise wrap the video so the
+        // control stays pinned to the frame (not a padded outer container).
+        let host = video.closest('.case-img-zoom, .hh3d-media, .motion-carousel__media, .video-play-host');
+        if (!host) {
+            host = document.createElement('div');
+            host.className = 'video-play-host';
+            video.parentNode.insertBefore(host, video);
+            host.appendChild(video);
+        }
         if (getComputedStyle(host).position === 'static') host.style.position = 'relative';
 
         const btn = document.createElement('button');
@@ -2486,7 +2683,7 @@ function fllmLocalFallback(userText = '', quote = '') {
         return "I don't just design interfaces, I structure products. I benchmark the category, fix the mental model first, then turn complexity into something clear and usable from discovery to hand-off.";
     }
     if (has('project', 'work', 'portfolio', 'case', 'experience', 'done')) {
-        return 'Featured work: Hedgehog prediction market (product + waitlist), Transparent.space (B2B market-maker dashboard), and Unimed Seguros (trust-first telemedicine). Creative Side includes Picnic, AURA, and NØRA. Want detail on any one of them?';
+        return 'Featured work: Hedgehog prediction market (product + waitlist), Transparent.space (B2B market-maker dashboard), and Unimed Seguros (trust-first telemedicine). Side Quests includes Picnic, AURA, and NØRA. Want detail on any one of them?';
     }
     if (has('skill', 'tool', 'figma', 'stack', 'design system')) {
         return 'My toolkit: Figma, Photoshop, Illustrator, prototyping, user research, design systems, and website design.';
@@ -2723,7 +2920,7 @@ function initFonsecaLLM() {
     }
 
     function scrollChatToBottom() {
-        const zone = chatZone || panel.querySelector('.fllm-panel__content');
+        const zone = panel.querySelector('.fllm-panel__content');
         if (!zone) return;
         requestAnimationFrame(() => {
             zone.scrollTop = zone.scrollHeight;
