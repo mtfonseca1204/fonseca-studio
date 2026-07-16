@@ -7,6 +7,20 @@
     } catch (_) {}
 })();
 
+// Microsoft Clarity — heatmaps, clicks, scroll, session replay
+(function initClarity() {
+    const projectId = 'xndehcxzid';
+    window.clarity = window.clarity || function () {
+        (window.clarity.q = window.clarity.q || []).push(arguments);
+    };
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.clarity.ms/tag/' + projectId;
+    const first = document.getElementsByTagName('script')[0];
+    if (first && first.parentNode) first.parentNode.insertBefore(script, first);
+    else document.head.appendChild(script);
+})();
+
 function deferNonCritical(fn, timeout = 2000) {
     const run = () => {
         try { fn(); } catch (_) {}
