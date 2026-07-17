@@ -1,16 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://fonseca.studio/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://fonseca.studio/about.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://fonseca.studio/fun.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://fonseca.studio/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fonseca.studio/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://fonseca.studio/index-pt.html"/>
+    <changefreq>weekly</changefreq><priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://fonseca.studio/index-pt.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fonseca.studio/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://fonseca.studio/index-pt.html"/>
+    <changefreq>weekly</changefreq><priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://fonseca.studio/about.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fonseca.studio/about.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://fonseca.studio/about-pt.html"/>
+    <changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://fonseca.studio/about-pt.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fonseca.studio/about.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://fonseca.studio/about-pt.html"/>
+    <changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://fonseca.studio/fun.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fonseca.studio/fun.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://fonseca.studio/fun-pt.html"/>
+    <changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://fonseca.studio/fun-pt.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fonseca.studio/fun.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://fonseca.studio/fun-pt.html"/>
+    <changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
   <url><loc>https://fonseca.studio/project-hedgehog-product.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://fonseca.studio/project-hedgehog-product-pt.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://fonseca.studio/project-hedgehog.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://fonseca.studio/project-hedgehog-pt.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://fonseca.studio/project-transparent-space.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://fonseca.studio/project-transparent-space-pt.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://fonseca.studio/project-transparent-space-brand.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://fonseca.studio/project-transparent-space-brand-pt.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://fonseca.studio/project-petrobras-saude.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fonseca.studio/project-petrobras-saude-pt.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://fonseca.studio/project-unimed-seguros.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://fonseca.studio/project-unimed-seguros-pt.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://fonseca.studio/project-picnic.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://fonseca.studio/project-picnic-pt.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://fonseca.studio/project-aura.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://fonseca.studio/project-aura-pt.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://fonseca.studio/project-nora.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://fonseca.studio/project-nora-pt.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://fonseca.studio/hedgehog-3d.html</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://fonseca.studio/hedgehog-3d-pt.html</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
 </urlset>

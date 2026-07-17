@@ -59,9 +59,34 @@ KNOWLEDGE:
 ${KNOWLEDGE}`;
 
 // --- curated fallback (used when no API key, or the API errors) ---
-function fallbackReply(userText = '', quote = '') {
+function fallbackReply(userText = '', quote = '', language = 'en') {
   const t = (userText || '').toLowerCase();
   const has = (...words) => words.some((w) => t.includes(w));
+
+  if (language === 'pt-BR') {
+    if (quote && !userText.trim()) {
+      return `Posso explicar melhor esse trecho. O que você gostaria de saber? Você também pode falar comigo em fonsecaa.design@gmail.com.`;
+    }
+    if (has('olá', 'ola', 'oi', 'bom dia', 'boa tarde')) {
+      return `Oi! Eu sou o Matheus, Product Designer sênior. Pergunte sobre meus projetos, processo ou disponibilidade.`;
+    }
+    if (has('disponível', 'disponivel', 'contratar', 'freelance', 'contato', 'email', 'orçamento', 'orcamento')) {
+      return `Sim, estou aberto a projetos selecionados e disponível para trabalho remoto no mundo todo. O melhor caminho é escrever para fonsecaa.design@gmail.com.`;
+    }
+    if (has('hedgehog', 'previsão', 'previsao', 'orderbook', 'waitlist', 'lista de espera')) {
+      return `Na Hedgehog, substituí orderbooks por rodadas agrupadas de ALTA/BAIXA. No beta fechado com 100 pessoas, 100% entenderam a mecânica até a segunda rodada, e o tempo para a primeira ação caiu de cerca de 10s para menos de 2–4s.`;
+    }
+    if (has('transparent', 'market maker', 'formador de mercado', 'liquidez', 'dashboard', 'painel')) {
+      return `Na Transparent.space, criei do zero um dashboard B2B que reduziu verificações de cerca de 20 minutos para menos de 30 segundos por dado. A conclusão de tarefas subiu de 61% para 88%, com validação de Worldchain e Kraken.`;
+    }
+    if (has('unimed', 'saúde', 'saude', 'telemedicina', 'seguro')) {
+      return `Na Unimed Seguros, liderei um app de telemedicina centrado em confiança para mais de 40 mil beneficiários durante a COVID. O produto chegou a cerca de 50 mil consultas por mês, menos de 30% de ausência e retenção superior a 80% no chat.`;
+    }
+    if (has('processo', 'abordagem', 'estratégia', 'estrategia', 'como você', 'como voce')) {
+      return `Eu não desenho apenas interfaces: estruturo produtos. Primeiro entendo o problema e o sistema por trás dele; depois transformo a complexidade em uma experiência clara, útil e visualmente forte.`;
+    }
+    return `Sou o assistente do Matheus. Posso falar sobre seus projetos em destaque, processo, habilidades ou disponibilidade. Para algo específico, escreva para fonsecaa.design@gmail.com.`;
+  }
 
   if (quote && !userText.trim()) {
     return `That line is about my work. Happy to go deeper — what would you like to know about it? You can also reach me at fonsecaa.design@gmail.com.`;
@@ -116,6 +141,7 @@ export default async function handler(req, res) {
 
   const history = Array.isArray(body.messages) ? body.messages : [];
   const quote = typeof body.quote === 'string' ? body.quote.slice(0, 1200) : '';
+  const language = body.language === 'pt-BR' ? 'pt-BR' : 'en';
   const lastUser = [...history].reverse().find((m) => m && m.role === 'user');
   const lastUserText = lastUser ? String(lastUser.content || '') : '';
 
@@ -123,11 +149,14 @@ export default async function handler(req, res) {
 
   // No key configured → curated fallback so the feature still works.
   if (!apiKey) {
-    return res.status(200).json({ reply: fallbackReply(lastUserText, quote), source: 'fallback' });
+    return res.status(200).json({ reply: fallbackReply(lastUserText, quote, language), source: 'fallback' });
   }
 
   try {
-    const messages = [{ role: 'system', content: SYSTEM_PROMPT }];
+    const languageRule = language === 'pt-BR'
+      ? '\nRespond only in natural Brazilian Portuguese unless the user explicitly requests another language.'
+      : '\nRespond in English unless the user explicitly requests another language.';
+    const messages = [{ role: 'system', content: SYSTEM_PROMPT + languageRule }];
     if (quote) {
       messages.push({
         role: 'system',
@@ -160,16 +189,16 @@ export default async function handler(req, res) {
     clearTimeout(timeout);
 
     if (!apiRes.ok) {
-      return res.status(200).json({ reply: fallbackReply(lastUserText, quote), source: 'fallback' });
+      return res.status(200).json({ reply: fallbackReply(lastUserText, quote, language), source: 'fallback' });
     }
 
     const data = await apiRes.json();
     const reply = data?.choices?.[0]?.message?.content?.trim();
     if (!reply) {
-      return res.status(200).json({ reply: fallbackReply(lastUserText, quote), source: 'fallback' });
+      return res.status(200).json({ reply: fallbackReply(lastUserText, quote, language), source: 'fallback' });
     }
     return res.status(200).json({ reply, source: 'openai' });
   } catch (err) {
-    return res.status(200).json({ reply: fallbackReply(lastUserText, quote), source: 'fallback' });
+    return res.status(200).json({ reply: fallbackReply(lastUserText, quote, language), source: 'fallback' });
   }
 }

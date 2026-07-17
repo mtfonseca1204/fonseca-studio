@@ -14074,6 +14074,26 @@ body.editorial-site .motion-carousel:hover .motion-carousel__track {
     box-shadow: none;
 }
 
+.navbar .language-toggle {
+    min-width: 103px;
+    gap: 7px;
+    padding-inline: 16px;
+    font-variant-numeric: tabular-nums;
+}
+
+.navbar .language-toggle span:not(.is-active):not(.language-toggle__sep) {
+    opacity: 0.45;
+}
+
+.navbar .language-toggle__sep {
+    opacity: 0.28;
+    font-weight: 400;
+}
+
+.navbar .language-toggle .is-active {
+    color: #ff5c00;
+}
+
 .navbar .nav-cta:hover {
     background: var(--text-dark);
     color: var(--bg-white);
@@ -14099,8 +14119,30 @@ body.editorial-site .motion-carousel:hover .motion-carousel__track {
     border-color: #fff;
 }
 
+.navbar .language-toggle:hover,
+[data-theme="dark"] .navbar .language-toggle:hover {
+    background: #ff5c00;
+    color: #fff;
+    border-color: #ff5c00;
+}
+
+.navbar .language-toggle:hover .is-active,
+[data-theme="dark"] .navbar .language-toggle:hover .is-active {
+    color: #fff;
+}
+
+.navbar .language-toggle:hover span:not(.is-active):not(.language-toggle__sep) {
+    opacity: 0.78;
+}
+
 @media (max-width: 768px) {
     .nav-center { display: none; }
+
+    .navbar .language-toggle {
+        min-width: 82px;
+        gap: 5px;
+        padding-inline: 10px;
+    }
 }
 
 /* --- Scroll-based reveal animations --- */
@@ -15957,6 +15999,10 @@ body.editorial-site .about-intro__body {
     padding-left: 16px;
 }
 
+body.editorial-site .about-intro__body ~ .about-intro__body {
+    border-left: 0;
+}
+
 body.editorial-site .about-skills__heading,
 body.editorial-site .about-services__heading {
     font-family: 'Space Grotesk', sans-serif;
@@ -16937,14 +16983,20 @@ body.project-case-page .case-key-decision__title {
 
 body.project-case-page .case-editorial mark,
 body.project-case-page .case-brief__hl {
-    background: transparent;
+    background: rgba(255, 92, 0, 0.1);
     color: var(--text-dark);
-    font-weight: 600;
-    padding: 0;
-    text-decoration: underline;
-    text-decoration-color: rgba(255, 92, 0, 0.5);
-    text-underline-offset: 0.16em;
-    text-decoration-thickness: 1px;
+    font-weight: 650;
+    padding: 0.02em 0.16em;
+    border-radius: 2px;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+    text-decoration: none;
+}
+
+[data-theme="dark"] body.project-case-page .case-editorial mark,
+[data-theme="dark"] body.project-case-page .case-brief__hl {
+    background: rgba(255, 92, 0, 0.18);
+    color: #fff;
 }
 
 body.project-case-page .case-scan__text strong,
@@ -16956,9 +17008,7 @@ body.project-case-page .case-section-body strong {
 
 body.project-case-page .case-prose-lead strong {
     font-weight: 700;
-    text-decoration: underline;
-    text-decoration-color: rgba(255, 92, 0, 0.45);
-    text-underline-offset: 0.14em;
+    text-decoration: none;
 }
 
 body.project-case-page .case-section-body.case-prose-stack > p:not(.case-prose-lead) {

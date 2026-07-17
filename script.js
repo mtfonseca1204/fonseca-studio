@@ -7,6 +7,15 @@
     } catch (_) {}
 })();
 
+const SITE_IS_PT = document.documentElement.lang.toLowerCase().startsWith('pt');
+
+function localizedPageUrl(url) {
+    if (!SITE_IS_PT || !url || /^(?:https?:|mailto:|tel:|#)/.test(url)) return url;
+    const [path, hash = ''] = url.split('#');
+    if (!path.endsWith('.html') || path.endsWith('-pt.html')) return url;
+    return path.replace(/\.html$/, '-pt.html') + (hash ? `#${hash}` : '');
+}
+
 function deferNonCritical(fn, timeout = 2000) {
     const run = () => {
         try { fn(); } catch (_) {}
@@ -63,23 +72,37 @@ document.addEventListener('DOMContentLoaded', () => {
     initLazyBelowFoldMedia();
     initLazyWorkCardVideos();
     initPlainTerms();
-    deferNonCritical(initFonsecaLLM, 1200);
 });
 
 // =====================================================
 // PLAIN ENGLISH — hover/tap glossary on portfolio terms
 // =====================================================
 const PLAIN_GLOSSARY = [
+    ['rodadas agrupadas de ALTA/BAIXA', 'Todos escolhem alta ou baixa em um único prêmio compartilhado; os vencedores dividem o valor.'],
+    ['modelo de participação', 'As regras que definem como as pessoas entram e agem em um produto.'],
+    ['dados de participação', 'Informações públicas que mostram o que outras pessoas escolheram ou apostaram.'],
+    ['verificação cruzada', 'Comparar manualmente preços e dados entre ferramentas e abas diferentes.'],
+    ['aquisição paga', 'Pagar anúncios para trazer visitantes a uma página.'],
+    ['tráfego pago', 'Visitantes que chegaram à página por anúncios pagos.'],
+    ['público institucional', 'Investidores profissionais e empresas, não usuários casuais.'],
+    ['credibilidade institucional', 'Provas de que uma empresa é séria e confiável para profissionais.'],
+    ['telemedicina', 'Atendimento de saúde on-line por videochamada, chat e receitas digitais.'],
+    ['fluxos de atendimento', 'As etapas para agendar, consultar um médico e fazer acompanhamento.'],
+    ['conversão', 'A parcela dos visitantes que realizou a ação desejada, como fazer cadastro.'],
+    ['liquidez', 'A facilidade de comprar ou vender um ativo sem causar grandes mudanças no preço.'],
+    ['contrapartes', 'O outro lado de uma negociação: de quem você compra ou para quem vende.'],
+    ['beneficiários', 'Pessoas cobertas por um plano de saúde e que podem usar seus serviços.'],
+    ['taxa de ausência', 'Quando alguém agenda uma consulta, mas não comparece.'],
     ['pooled UP/DOWN rounds', 'Everyone picks up or down in one shared pot; winners split the pool.'],
-    ['orderbook literacy', 'Understanding the complex buy/sell lists traders use.'],
-    ['orderbooks', 'The complex buy/sell lists traders use, like on a stock exchange.'],
-    ['orderbook', 'The complex buy/sell list traders use, like on a stock exchange.'],
-    ['Prediction Market', 'A site where people bet on real-world outcomes, like sports or news events.'],
-    ['prediction markets', 'Sites where people bet on real-world outcomes, like sports or news events.'],
-    ['prediction market', 'A site where people bet on real-world outcomes, like sports or news events.'],
-    ['Market Maker Dashboard', 'A control panel for traders who keep markets liquid by always offering buy and sell prices.'],
-    ['Market Makers', 'Traders who keep markets liquid by always offering buy and sell prices.'],
-    ['Market Maker', 'A trader who keeps markets liquid by always offering buy and sell prices.'],
+    ['orderbook literacy', SITE_IS_PT ? 'Entender como funcionam as listas de ordens de compra e venda usadas por traders.' : 'Understanding the complex buy/sell lists traders use.'],
+    ['orderbooks', SITE_IS_PT ? 'Listas de ordens de compra e venda, como em uma bolsa de valores.' : 'The complex buy/sell lists traders use, like on a stock exchange.'],
+    ['orderbook', SITE_IS_PT ? 'Lista de ordens de compra e venda, como em uma bolsa de valores.' : 'The complex buy/sell list traders use, like on a stock exchange.'],
+    ['Prediction Market', SITE_IS_PT ? 'Plataforma onde as pessoas apostam em resultados do mundo real, como esportes ou notícias.' : 'A site where people bet on real-world outcomes, like sports or news events.'],
+    ['prediction markets', SITE_IS_PT ? 'Plataformas onde as pessoas apostam em resultados do mundo real, como esportes ou notícias.' : 'Sites where people bet on real-world outcomes, like sports or news events.'],
+    ['prediction market', SITE_IS_PT ? 'Plataforma onde as pessoas apostam em resultados do mundo real, como esportes ou notícias.' : 'A site where people bet on real-world outcomes, like sports or news events.'],
+    ['Market Maker Dashboard', SITE_IS_PT ? 'Dashboard para quem mantém o mercado líquido oferecendo preços de compra e venda.' : 'A control panel for traders who keep markets liquid by always offering buy and sell prices.'],
+    ['Market Makers', SITE_IS_PT ? 'Operadores que mantêm o mercado líquido oferecendo preços de compra e venda continuamente.' : 'Traders who keep markets liquid by always offering buy and sell prices.'],
+    ['Market Maker', SITE_IS_PT ? 'Operador que mantém o mercado líquido oferecendo preços de compra e venda continuamente.' : 'A trader who keeps markets liquid by always offering buy and sell prices.'],
     ['participation model', 'The rules for how users join in and take action in a product.'],
     ['participation data', 'Public info showing what other users picked or bet.'],
     ['cross-checking', 'Manually comparing prices and data across different tools and tabs.'],
@@ -197,7 +220,7 @@ function initPlainTerms() {
     const tip = document.createElement('div');
     tip.className = 'plain-term-tip';
     tip.hidden = true;
-    tip.innerHTML = '<span class="plain-term-tip__label">In plain English</span><span class="plain-term-tip__text"></span>';
+    tip.innerHTML = `<span class="plain-term-tip__label">${SITE_IS_PT ? 'Em português simples' : 'In plain English'}</span><span class="plain-term-tip__text"></span>`;
     document.body.appendChild(tip);
 
     const textEl = tip.querySelector('.plain-term-tip__text');
@@ -518,7 +541,7 @@ function isHomepage() {
 function isHomePath(pathname) {
     const path = (pathname || '/').replace(/\/$/, '') || '/';
     const base = path.split('/').pop() || '';
-    return path === '/' || base === 'index.html';
+    return path === '/' || base === 'index.html' || base === 'index-pt.html';
 }
 
 const FONSECA_HOME_SPLASH_KEY = 'fonseca:home-splash';
@@ -902,7 +925,7 @@ function initTestimonialReadMore() {
 
         p.classList.remove('testimonial-card__text--clamped');
         btn.hidden = true;
-        btn.textContent = 'Read more';
+        btn.textContent = SITE_IS_PT ? 'Ler mais' : 'Read more';
         btn.setAttribute('aria-expanded', 'false');
 
         p.classList.add('testimonial-card__text--clamped');
@@ -923,7 +946,9 @@ function initTestimonialReadMore() {
             const p = card.querySelector('.testimonial-card__text');
             if (p) p.classList.toggle('testimonial-card__text--clamped', !expanding);
             btn.setAttribute('aria-expanded', expanding ? 'true' : 'false');
-            btn.textContent = expanding ? 'Read less' : 'Read more';
+            btn.textContent = expanding
+                ? (SITE_IS_PT ? 'Ler menos' : 'Read less')
+                : (SITE_IS_PT ? 'Ler mais' : 'Read more');
             syncCarouselPause();
         });
     });
@@ -1116,7 +1141,10 @@ function setupCaseImageLightbox() {
         btn.type = 'button';
         btn.className = 'case-img-zoom__btn';
         const mediaLabel = isVideo ? 'video' : 'image';
-        btn.setAttribute('aria-label', 'Expand ' + mediaLabel + (el.alt ? ': ' + el.alt : ''));
+        btn.setAttribute(
+            'aria-label',
+            (SITE_IS_PT ? 'Ampliar ' : 'Expand ') + mediaLabel + (el.alt ? ': ' + el.alt : '')
+        );
         btn.innerHTML = expandIcon;
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -1515,7 +1543,7 @@ function initHeroCopyEmail() {
             toast.setAttribute('role', 'status');
             toast.setAttribute('aria-live', 'polite');
             toast.innerHTML =
-                '<span class="email-copy-toast__label">Email copied</span>' +
+                `<span class="email-copy-toast__label">${SITE_IS_PT ? 'E-mail copiado' : 'Email copied'}</span>` +
                 `<span class="email-copy-toast__email">${HERO_EMAIL}</span>`;
             document.body.appendChild(toast);
         }
@@ -1529,8 +1557,8 @@ function initHeroCopyEmail() {
     function markCopied(trigger) {
         trigger.classList.add('is-copied');
         const action = trigger.querySelector('.hero-intro__email-action');
-        const prev = action?.textContent?.trim() || 'Copy';
-        if (action) action.textContent = 'Copied';
+        const prev = action?.textContent?.trim() || (SITE_IS_PT ? 'Copiar' : 'Copy');
+        if (action) action.textContent = SITE_IS_PT ? 'Copiado' : 'Copied';
         clearTimeout(markCopied._resetT);
         markCopied._resetT = setTimeout(() => {
             trigger.classList.remove('is-copied');
@@ -1554,7 +1582,7 @@ function initHeroCopyEmail() {
 
     triggers.forEach((trigger) => {
         if (!trigger.hasAttribute('aria-label')) {
-            trigger.setAttribute('aria-label', 'Copy email address');
+            trigger.setAttribute('aria-label', SITE_IS_PT ? 'Copiar endereço de e-mail' : 'Copy email address');
         }
         if (trigger.tagName === 'A' && !trigger.getAttribute('role')) {
             trigger.setAttribute('role', 'button');
@@ -1756,12 +1784,22 @@ function initVideoPlayControls() {
         const btn = document.createElement('button');
         btn.type = 'button';
         btn.className = 'video-play-toggle';
-        btn.setAttribute('aria-label', video.paused ? 'Play video' : 'Pause video');
+        btn.setAttribute(
+            'aria-label',
+            video.paused
+                ? (SITE_IS_PT ? 'Reproduzir vídeo' : 'Play video')
+                : (SITE_IS_PT ? 'Pausar vídeo' : 'Pause video')
+        );
         btn.innerHTML = video.paused ? VIDEO_PLAY_SVG : VIDEO_PAUSE_SVG;
 
         const syncBtn = () => {
             const paused = video.paused;
-            btn.setAttribute('aria-label', paused ? 'Play video' : 'Pause video');
+            btn.setAttribute(
+                'aria-label',
+                paused
+                    ? (SITE_IS_PT ? 'Reproduzir vídeo' : 'Play video')
+                    : (SITE_IS_PT ? 'Pausar vídeo' : 'Pause video')
+            );
             btn.setAttribute('aria-pressed', paused ? 'false' : 'true');
             btn.classList.toggle('is-paused', paused);
             btn.innerHTML = paused ? VIDEO_PLAY_SVG : VIDEO_PAUSE_SVG;
@@ -2717,8 +2755,8 @@ function filterFllmProjects(predicate) {
 
 function fllmProjectLinks(projects, limit = 3) {
     return projects.slice(0, limit).map((project) => ({
-        label: `View ${project.title} →`,
-        url: project.url,
+        label: SITE_IS_PT ? `Ver ${project.title} →` : `View ${project.title} →`,
+        url: localizedPageUrl(project.url),
     }));
 }
 
@@ -2898,6 +2936,34 @@ function fllmLocalFallback(userText = '', quote = '') {
     const t = (userText || '').toLowerCase();
     const has = (...words) => words.some((w) => t.includes(w));
 
+    if (SITE_IS_PT) {
+        if (quote && !userText.trim()) {
+            return 'Posso explicar melhor esse trecho. O que você gostaria de saber? Você também pode escrever para fonsecaa.design@gmail.com.';
+        }
+        if (has('olá', 'ola', 'oi', 'e aí', 'bom dia', 'boa tarde')) {
+            return 'Oi! Eu sou o Matheus, Product Designer sênior. Pergunte sobre meus projetos, processo ou disponibilidade.';
+        }
+        if (has('disponível', 'disponivel', 'contratar', 'freelance', 'contato', 'email', 'orçamento', 'orcamento')) {
+            return 'Sim, estou aberto a projetos selecionados e trabalho remotamente para qualquer lugar. O melhor caminho é enviar um e-mail para fonsecaa.design@gmail.com.';
+        }
+        if (has('hedgehog', 'previsão', 'previsao', 'orderbook', 'waitlist', 'lista de espera')) {
+            return 'Na Hedgehog, redesenhei a forma de prever resultados on-chain, trocando orderbooks por rodadas agrupadas de ALTA/BAIXA. No beta fechado com 100 pessoas, 100% entenderam a mecânica até a segunda rodada, e o tempo para a primeira ação caiu de cerca de 10s para menos de 2–4s.';
+        }
+        if (has('transparent', 'market maker', 'formador de mercado', 'liquidez', 'dashboard', 'painel')) {
+            return 'Na Transparent.space, sou Founding Product Designer. Criei do zero um dashboard B2B que reduziu verificações de cerca de 20 minutos para menos de 30 segundos por dado, com conclusão de tarefas subindo de 61% para 88%, validado com Worldchain e Kraken.';
+        }
+        if (has('unimed', 'saúde', 'saude', 'telemedicina', 'seguro')) {
+            return 'Na Unimed Seguros, liderei um app de telemedicina centrado em confiança para mais de 40 mil beneficiários durante a COVID. O produto chegou a cerca de 50 mil consultas por mês, menos de 30% de ausência e retenção superior a 80% no chat.';
+        }
+        if (has('processo', 'abordagem', 'estratégia', 'estrategia', 'como você', 'como voce')) {
+            return 'Eu não desenho apenas interfaces: estruturo produtos. Primeiro entendo o problema e o sistema por trás dele; depois transformo a complexidade em uma experiência clara, útil e visualmente forte.';
+        }
+        if (has('projeto', 'trabalho', 'portfólio', 'portfolio', 'case', 'experiência', 'experiencia')) {
+            return 'Trabalhos em destaque: prediction market e waitlist da Hedgehog, dashboard B2B da Transparent.space e telemedicina da Unimed Seguros. Em Side Quests também estão Picnic, AURA e NØRA.';
+        }
+        return 'Sou o assistente do Matheus. Posso falar sobre os projetos em destaque, processo, habilidades ou disponibilidade. Para algo específico, escreva para fonsecaa.design@gmail.com.';
+    }
+
     if (quote && !userText.trim()) {
         return 'Happy to talk about that line. What would you like to know? You can also email fonsecaa.design@gmail.com.';
     }
@@ -2948,7 +3014,36 @@ function initFonsecaLLM() {
     const MIN_SELECTION_LENGTH = 3;
     const MAX_SELECTION_LENGTH = 500;
     const TOOLTIP_OFFSET = 54;
-    const FAQS = [
+    const FAQS = SITE_IS_PT ? [
+        {
+            question: 'Como Matheus aborda o design de produtos?',
+            answer: [
+                'Ele compara a categoria e deixa o problema claro antes de abrir o Figma. Primeiro ajusta o modelo mental; depois refina a interface.',
+                'Exemplos recentes: rodadas agrupadas de ALTA/BAIXA no lugar de orderbooks na Hedgehog, confiança institucional antes da conversão na waitlist e fluxos de telemedicina centrados em confiança na Unimed.'
+            ],
+        },
+        {
+            question: 'Quais trabalhos em destaque devo ver?',
+            answer: [
+                'A prediction market da Hedgehog (produto + waitlist), a Transparent.space (dashboard B2B para Market Makers) e a Unimed Seguros (app de telemedicina).',
+                'Cada case apresenta problema, pesquisa, solução, validação, impacto e próximos passos com métricas reais.'
+            ],
+        },
+        {
+            question: 'Quais são os resultados mais fortes?',
+            answer: [
+                'Produto Hedgehog: 100% das pessoas entenderam a mecânica até a segunda rodada; o tempo para a primeira ação caiu de cerca de 10s para menos de 2–4s.',
+                'Waitlist Hedgehog: mais de 15 mil cadastros com conversão de 37,5% e tráfego pago zero. Transparent.space: conclusão de tarefas de 61% para 88%. Unimed: cerca de 50 mil consultas por mês.'
+            ],
+        },
+        {
+            question: 'Ele está disponível para novos projetos?',
+            answer: [
+                'Sim, para projetos selecionados de product design, marca e interfaces.',
+                'O melhor próximo passo é enviar contexto, prazo e objetivo para fonsecaa.design@gmail.com.'
+            ],
+        },
+    ] : [
         {
             question: 'How does Matheus approach product design?',
             answer: [
@@ -2988,16 +3083,16 @@ function initFonsecaLLM() {
     panel.setAttribute('role', 'dialog');
     panel.setAttribute('aria-modal', 'true');
     panel.setAttribute('aria-hidden', 'true');
-    panel.setAttribute('aria-label', 'FonsecaLLM panel');
+    panel.setAttribute('aria-label', SITE_IS_PT ? 'Painel FonsecaLLM' : 'FonsecaLLM panel');
     panel.innerHTML = `
         <div class="fllm-panel__head">
             <span class="fllm-panel__brand">FonsecaLLM</span>
             <span class="fllm-panel__info" aria-hidden="true">i</span>
             <div class="fllm-panel__actions">
-                <button type="button" class="fllm-panel__icon-btn" data-fllm-reset aria-label="Reset panel">
+                <button type="button" class="fllm-panel__icon-btn" data-fllm-reset aria-label="${SITE_IS_PT ? 'Reiniciar painel' : 'Reset panel'}">
                     <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M5.2 6.2A6.2 6.2 0 1 1 4 10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M5.2 6.2H2.4V3.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </button>
-                <button type="button" class="fllm-panel__icon-btn" data-fllm-close aria-label="Close panel">
+                <button type="button" class="fllm-panel__icon-btn" data-fllm-close aria-label="${SITE_IS_PT ? 'Fechar painel' : 'Close panel'}">
                     <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
                 </button>
             </div>
@@ -3005,13 +3100,13 @@ function initFonsecaLLM() {
         <div class="fllm-panel__content">
             <div class="fllm-panel__intro">
                 <div class="fllm-panel__spark" aria-hidden="true">${FONSECA_LOGO_MARK}</div>
-                <h2 class="fllm-panel__title">Hey, ask away.</h2>
+                <h2 class="fllm-panel__title">${SITE_IS_PT ? 'Olá, pode perguntar.' : 'Hey, ask away.'}</h2>
             </div>
             <div class="fllm-faq" data-fllm-faq></div>
             <div class="fllm-selected-quote" data-fllm-quote hidden>
                 <div class="fllm-selected-quote__head">
-                    <span>Selected text</span>
-                    <button type="button" data-fllm-clear-quote aria-label="Clear selected text">&times;</button>
+                    <span>${SITE_IS_PT ? 'Texto selecionado' : 'Selected text'}</span>
+                    <button type="button" data-fllm-clear-quote aria-label="${SITE_IS_PT ? 'Limpar texto selecionado' : 'Clear selected text'}">&times;</button>
                 </div>
                 <p data-fllm-quote-text></p>
             </div>
@@ -3021,26 +3116,26 @@ function initFonsecaLLM() {
         </div>
         <div class="fllm-panel__foot">
             <form class="fllm-composer" data-fllm-composer>
-                <textarea class="fllm-input" data-fllm-input rows="1" placeholder="Which project had the biggest impact?" aria-label="Ask Fonseca"></textarea>
-                <button type="submit" class="fllm-send" data-fllm-send aria-label="Send message">
+                <textarea class="fllm-input" data-fllm-input rows="1" placeholder="${SITE_IS_PT ? 'Qual projeto teve o maior impacto?' : 'Which project had the biggest impact?'}" aria-label="${SITE_IS_PT ? 'Perguntar ao Fonseca' : 'Ask Fonseca'}"></textarea>
+                <button type="submit" class="fllm-send" data-fllm-send aria-label="${SITE_IS_PT ? 'Enviar mensagem' : 'Send message'}">
                     <svg width="17" height="17" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 16V4M10 4L5 9M10 4l5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </button>
             </form>
-            <p class="fllm-disclaimer">AI assistant · may be imperfect. For anything important, email fonsecaa.design@gmail.com</p>
+            <p class="fllm-disclaimer">${SITE_IS_PT ? 'Assistente de IA · pode cometer erros. Para algo importante, escreva para fonsecaa.design@gmail.com' : 'AI assistant · may be imperfect. For anything important, email fonsecaa.design@gmail.com'}</p>
         </div>`;
 
     const quoteBtn = document.createElement('button');
     quoteBtn.type = 'button';
     quoteBtn.className = 'fllm-quote-btn';
-    quoteBtn.setAttribute('aria-label', 'Ask Fonseca about selected text');
+    quoteBtn.setAttribute('aria-label', SITE_IS_PT ? 'Perguntar ao Fonseca sobre o texto selecionado' : 'Ask Fonseca about selected text');
     quoteBtn.innerHTML = `
         <span class="fllm-quote-btn__spark" aria-hidden="true">${FONSECA_LOGO_MARK}</span>
-        <span>Ask Fonseca</span>`;
+        <span>${SITE_IS_PT ? 'Perguntar ao Fonseca' : 'Ask Fonseca'}</span>`;
 
     const launcher = document.createElement('button');
     launcher.type = 'button';
     launcher.className = 'fllm-launcher';
-    launcher.setAttribute('aria-label', 'Ask Fonseca');
+    launcher.setAttribute('aria-label', SITE_IS_PT ? 'Perguntar ao Fonseca' : 'Ask Fonseca');
     launcher.setAttribute('aria-haspopup', 'dialog');
     launcher.innerHTML = FONSECA_LOGO_MARK;
     launcher.querySelector('svg')?.classList.add('fllm-launcher__icon');
@@ -3053,7 +3148,9 @@ function initFonsecaLLM() {
     const title = panel.querySelector('.fllm-panel__title');
     const hint = document.createElement('p');
     hint.className = 'fllm-panel__hint';
-    hint.textContent = 'Ask about projects, process, or availability. Highlight text on the page to ask about a quote.';
+    hint.textContent = SITE_IS_PT
+        ? 'Pergunte sobre projetos, processo ou disponibilidade. Selecione um texto da página para perguntar sobre o trecho.'
+        : 'Ask about projects, process, or availability. Highlight text on the page to ask about a quote.';
     title.insertAdjacentElement('afterend', hint);
 
     const faqWrap = panel.querySelector('[data-fllm-faq]');
@@ -3068,7 +3165,9 @@ function initFonsecaLLM() {
     const quoteText = panel.querySelector('[data-fllm-quote-text]');
     const clearQuoteBtn = panel.querySelector('[data-fllm-clear-quote]');
 
-    const GREETING = "Hey — I'm Matheus. Ask about my work, process, or availability.";
+    const GREETING = SITE_IS_PT
+        ? 'Olá — eu sou o Matheus. Pergunte sobre meu trabalho, processo ou disponibilidade.'
+        : "Hey — I'm Matheus. Ask about my work, process, or availability.";
     const messages = [];
     let isSending = false;
     let greeted = false;
@@ -3095,7 +3194,9 @@ function initFonsecaLLM() {
         quoteCard.hidden = !selectedQuote;
         quoteText.textContent = selectedQuote;
         if (chatInput) {
-            chatInput.placeholder = selectedQuote ? 'Ask about this quote…' : 'Which project had the biggest impact?';
+            chatInput.placeholder = selectedQuote
+                ? (SITE_IS_PT ? 'Pergunte sobre este trecho…' : 'Ask about this quote…')
+                : (SITE_IS_PT ? 'Qual projeto teve o maior impacto?' : 'Which project had the biggest impact?');
         }
     }
 
@@ -3183,7 +3284,7 @@ function initFonsecaLLM() {
         const el = document.createElement('div');
         el.className = 'fllm-typing';
         el.setAttribute('role', 'status');
-        el.setAttribute('aria-label', 'Fonseca is typing');
+        el.setAttribute('aria-label', SITE_IS_PT ? 'Fonseca está digitando' : 'Fonseca is typing');
         el.innerHTML = '<span></span><span></span><span></span>';
         chatWrap.appendChild(el);
         scrollChatToBottom();
@@ -3204,7 +3305,7 @@ function initFonsecaLLM() {
         const res = await fetch('/api/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ messages: history, quote }),
+            body: JSON.stringify({ messages: history, quote, language: SITE_IS_PT ? 'pt-BR' : 'en' }),
         });
         if (!res.ok) throw new Error('bad status ' + res.status);
         const data = await res.json();
@@ -3217,16 +3318,16 @@ function initFonsecaLLM() {
         if ((!text && !selectedQuote) || isSending) return;
 
         const quoteForThisTurn = selectedQuote;
-        const displayText = text || 'Tell me about this.';
+        const displayText = text || (SITE_IS_PT ? 'Conte mais sobre isto.' : 'Tell me about this.');
         addBubble('user', quoteForThisTurn ? `“${quoteForThisTurn}”\n\n${displayText}` : displayText);
 
-        messages.push({ role: 'user', content: text || 'Tell me more about this.' });
+        messages.push({ role: 'user', content: text || (SITE_IS_PT ? 'Conte mais sobre isto.' : 'Tell me more about this.') });
         chatInput.value = '';
         chatInput.style.height = 'auto';
         clearQuote();
         closeAllFaqs();
 
-        if (!quoteForThisTurn && text) {
+        if (!SITE_IS_PT && !quoteForThisTurn && text) {
             const localResult = answerFllmSearch(text, FAQS);
             if (!isWeakSearchResult(localResult)) {
                 addSearchBubble(localResult);
@@ -3245,7 +3346,7 @@ function initFonsecaLLM() {
             try {
                 reply = await fetchChatReply(messages, quoteForThisTurn);
             } catch (err) {
-                const localResult = text ? answerFllmSearch(text, FAQS) : null;
+                const localResult = !SITE_IS_PT && text ? answerFllmSearch(text, FAQS) : null;
                 if (localResult && !isWeakSearchResult(localResult)) {
                     removeTypingIndicator(typing);
                     typingRemoved = true;
@@ -3273,7 +3374,7 @@ function initFonsecaLLM() {
         quoteCard.hidden = true;
         quoteText.textContent = '';
         if (chatInput) {
-            chatInput.placeholder = 'Which project had the biggest impact?';
+            chatInput.placeholder = SITE_IS_PT ? 'Qual projeto teve o maior impacto?' : 'Which project had the biggest impact?';
         }
     }
 
@@ -3358,7 +3459,7 @@ function initFonsecaLLM() {
         if (chatInput) {
             chatInput.value = '';
             chatInput.style.height = 'auto';
-            chatInput.placeholder = 'Which project had the biggest impact?';
+            chatInput.placeholder = SITE_IS_PT ? 'Qual projeto teve o maior impacto?' : 'Which project had the biggest impact?';
         }
         setLoadingState(false);
     }
