@@ -11450,10 +11450,59 @@ body.project-case-page .project-hero .container.container-narrow {
     }
 
     .fun-page-intro .hero-ascii-terrain {
-        top: 16px;
-        height: calc(100% - 16px);
-        width: min(62%, 320px);
-        opacity: 0.22;
+        top: 20px;
+        height: calc(100% - 20px);
+        width: min(42%, 220px);
+        opacity: 0.28;
+        filter: none;
+        -webkit-mask-image: linear-gradient(
+            to bottom,
+            transparent 0%,
+            #000 8%,
+            #000 52%,
+            rgba(0, 0, 0, 0.35) 72%,
+            transparent 100%
+        );
+        mask-image: linear-gradient(
+            to bottom,
+            transparent 0%,
+            #000 8%,
+            #000 52%,
+            rgba(0, 0, 0, 0.35) 72%,
+            transparent 100%
+        );
+    }
+
+    .fun-page-intro__ascii-fade {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 0;
+        width: min(42%, 220px);
+        height: calc(100% - 20px);
+        z-index: 1;
+        pointer-events: none;
+        background: linear-gradient(
+            to bottom,
+            transparent 0%,
+            transparent 48%,
+            rgba(255, 255, 255, 0.35) 72%,
+            var(--bg-white, #fff) 100%
+        );
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, transparent 40%, #000 70%, #000 100%);
+        mask-image: linear-gradient(to bottom, transparent 0%, transparent 40%, #000 70%, #000 100%);
+    }
+
+    [data-theme="dark"] .fun-page-intro__ascii-fade {
+        background: linear-gradient(
+            to bottom,
+            transparent 0%,
+            transparent 48%,
+            rgba(10, 10, 10, 0.4) 72%,
+            var(--bg-white, #0a0a0a) 100%
+        );
     }
 
     .hero-intro {
@@ -14750,7 +14799,14 @@ body::after {
     .fun-page-intro .hero-ascii-terrain {
         top: 12px;
         height: calc(100% - 12px);
-        opacity: 0.18;
+        width: min(38%, 180px);
+        opacity: 0.24;
+    }
+
+    .fun-page-intro__ascii-fade {
+        top: 12px;
+        height: calc(100% - 12px);
+        width: min(38%, 180px);
     }
 
     .section-head { flex-direction: column; align-items: flex-start; gap: 8px; }
@@ -15924,6 +15980,10 @@ body.editorial-site .footer-top-btn {
     height: calc(100% - 36px);
     filter: none;
     opacity: 0.4;
+}
+
+.fun-page-intro__ascii-fade {
+    display: none;
 }
 
 /* Scroll reveals — sharper editorial entrance */

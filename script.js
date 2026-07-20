@@ -2361,9 +2361,9 @@ const CASE_SECTION_ICON_HTML = {
 };
 
 const HEADER_NAV_ICON_RULES = [
-    { key: 'work', match: (a) => /#work|index\.html$/.test(a.getAttribute('href') || '') || a.getAttribute('href') === '#work', html: '<g class="motion-icon__briefcase"><rect x="2" y="7" width="20" height="14" rx="2"/><path class="motion-icon__briefcase-lid" d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></g>' },
-    { key: 'creative', match: (a) => (a.getAttribute('href') || '').includes('fun.html'), html: '<g class="motion-icon__sparkles"><path class="motion-icon__spark-main" d="M12 3l1.4 4.3L17.5 9l-3.6 1.2L12 14.5 10.1 10.2 6.5 9l4.1-1.7z"/><path class="motion-icon__spark-mini" d="M5 19l.8 1.6L7.4 20l-.9 1.6.9 1.6-1.6-.6-.9 1.6"/></g>' },
-    { key: 'about', match: (a) => (a.getAttribute('href') || '').includes('about.html'), html: '<g class="motion-icon__profile"><circle class="motion-icon__profile-head" cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></g>' },
+    { key: 'work', match: (a) => /#work|index(-pt)?\.html/.test(a.getAttribute('href') || '') || a.getAttribute('href') === '#work', html: '<g class="motion-icon__briefcase"><rect x="2" y="7" width="20" height="14" rx="2"/><path class="motion-icon__briefcase-lid" d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></g>' },
+    { key: 'creative', match: (a) => /fun(-pt)?\.html/.test(a.getAttribute('href') || ''), html: '<g class="motion-icon__sparkles"><path class="motion-icon__spark-main" d="M12 3l1.4 4.3L17.5 9l-3.6 1.2L12 14.5 10.1 10.2 6.5 9l4.1-1.7z"/><path class="motion-icon__spark-mini" d="M5 19l.8 1.6L7.4 20l-.9 1.6.9 1.6-1.6-.6-.9 1.6"/></g>' },
+    { key: 'about', match: (a) => /about(-pt)?\.html/.test(a.getAttribute('href') || ''), html: '<g class="motion-icon__profile"><circle class="motion-icon__profile-head" cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></g>' },
     { key: 'resume', match: (a) => (a.getAttribute('href') || '').includes('.pdf'), html: '<g class="motion-icon__doc"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line class="motion-icon__doc-line motion-icon__doc-line--1" x1="16" y1="13" x2="8" y2="13"/><line class="motion-icon__doc-line motion-icon__doc-line--2" x1="16" y1="17" x2="8" y2="17"/></g>' },
 ];
 
