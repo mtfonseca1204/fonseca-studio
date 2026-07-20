@@ -60,6 +60,17 @@
     --success-color: #ffffff;
 }
 
+/* Text selection — brand orange */
+::selection {
+    background: #ff5c00;
+    color: #fff;
+}
+
+::-moz-selection {
+    background: #ff5c00;
+    color: #fff;
+}
+
 /* =====================================================
    GLOBAL ANIMATIONS
    ===================================================== */
@@ -8289,16 +8300,9 @@ body.project-case-page .project-hero .container.container-narrow {
 
 .case-side-nav .nav-motion-icon *,
 .case-side-nav .motion-icon__svg * {
-    animation-play-state: paused;
-}
-
-.case-side-nav-link--motion:hover .nav-motion-icon *,
-.case-side-nav-link--motion.active .nav-motion-icon * {
-    animation-play-state: running;
-}
-
-.case-side-nav-link--motion.active .nav-motion-icon * {
-    animation-duration: 1.4s;
+    animation: none !important;
+    transform: none !important;
+    stroke-dashoffset: 0 !important;
 }
 
 .case-side-nav-link--motion:hover .nav-motion-icon,
@@ -8407,11 +8411,6 @@ body.project-case-page .project-hero .container.container-narrow {
 .nav-motion-icon--impact .motion-icon__trend-arrow {
     transform-origin: 18px 8px;
     animation: iconArrowNudge 1.8s ease-in-out infinite;
-}
-
-.nav-motion-icon--summary .motion-icon__compass-needle {
-    transform-origin: 12px 12px;
-    animation: iconCompassSwing 3.2s ease-in-out infinite;
 }
 
 .nav-motion-icon--solution .motion-icon__star {
@@ -10927,6 +10926,35 @@ body.project-case-page .project-hero .container.container-narrow {
     flex-direction: column;
     align-items: flex-start;
     gap: clamp(14px, 1.8vh, 18px);
+}
+
+/* Wide displays — give the intro and wave enough vertical room to scale together */
+@media (min-width: 1600px) and (min-height: 850px) {
+    body.home-page.editorial-site .hero.hero--intro {
+        min-height: clamp(580px, 62vh, 760px);
+        padding-top: clamp(190px, 15vh, 250px);
+        padding-bottom: clamp(110px, 9vh, 170px);
+    }
+
+    body.home-page .hero-ascii-terrain {
+        width: min(52%, 1180px);
+        opacity: 0.46;
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 4%, black 92%, transparent 100%);
+        mask-image: linear-gradient(to bottom, transparent 0%, black 4%, black 92%, transparent 100%);
+    }
+
+    body.home-page .hero-intro__main {
+        gap: clamp(18px, 1.5vh, 24px);
+    }
+
+    body.home-page .hero-intro__name {
+        font-size: clamp(6.25rem, 6.4vw, 7.75rem);
+    }
+
+    body.home-page .hero-intro__bio {
+        max-width: 40rem;
+        font-size: clamp(15.5px, 0.9vw, 17px);
+    }
 }
 
 .hero-intro__eyebrow {
@@ -14167,6 +14195,25 @@ body.editorial-site .motion-carousel:hover .motion-carousel__track {
 [data-anim="card"]:nth-child(3) { transition-delay: 0.2s; }
 [data-anim="card"]:nth-child(4) { transition-delay: 0.3s; }
 
+/* Sitewide grain overlay (test) — ::after so it doesn't fight editorial grid ::before */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 9997;
+    pointer-events: none;
+    opacity: 0.055;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 180px 180px;
+    mix-blend-mode: multiply;
+}
+
+[data-theme="dark"] body::after {
+    opacity: 0.12;
+    mix-blend-mode: soft-light;
+}
+
 /* --- About Page --- */
 .about-page {
     min-height: 100vh;
@@ -15816,6 +15863,12 @@ body.editorial-site .footer-top-btn {
 [data-theme="dark"] .editorial-hero .hero-ascii-terrain {
     opacity: 0.14;
     mix-blend-mode: screen;
+}
+
+/* Side Quests elephant — nudge the ASCII frame slightly down */
+.fun-page-intro .hero-ascii-terrain {
+    top: 36px;
+    height: calc(100% - 36px);
 }
 
 /* Scroll reveals — sharper editorial entrance */

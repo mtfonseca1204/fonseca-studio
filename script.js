@@ -1168,6 +1168,7 @@ function initSingleHeroAscii(canvas) {
         || document.getElementById('heroAsciiSrc');
     if (!canvas) return;
     const fullBleed = canvas.classList.contains('about-ascii-bg');
+    const calmMotion = Boolean(canvas.closest('.fun-page-intro'));
     const ctx = canvas.getContext('2d');
     const narrow = window.matchMedia('(max-width: 768px)').matches;
     const dpr = Math.min(window.devicePixelRatio || 1, narrow ? 1.25 : 2);
@@ -1182,6 +1183,7 @@ function initSingleHeroAscii(canvas) {
     let lumGrid = null;
     let animActive = false;
     let heroInView = true;
+    let expansiveLayout = false;
     let kickDebounceT = 0;
     let lastFrameTs = 0;
     let scrollPauseT = 0;
@@ -1336,7 +1338,10 @@ function initSingleHeroAscii(canvas) {
         if (rect.width < 8 || rect.height < 8) {
             return false;
         }
-        w = Math.floor(rect.width * 0.46);
+        expansiveLayout = rect.width >= 1600 && rect.height >= 540;
+        w = expansiveLayout
+            ? Math.floor(Math.min(rect.width * 0.52, Math.max(820, rect.height * 1.62)))
+            : Math.floor(rect.width * 0.46);
         h = Math.floor(rect.height);
         if (w < 8 || h < 8) return false;
         canvas.width = w * dpr;
@@ -1380,15 +1385,43 @@ function initSingleHeroAscii(canvas) {
                 const nx = c / (cols - 1 || 1);
                 const ny = r / (rows - 1 || 1);
 
-                const wave = Math.sin(nx * 6 - t * 0.9 + ny * 2) * 0.03
-                           + Math.sin(nx * 12 + t * 1.4) * Math.cos(ny * 8 - t * 0.6) * 0.02;
+                let wave;
+                let driftX = 0;
+                let driftY = 0;
+
+                if (calmMotion) {
+                    /* Original Side Quests motion — subtle shimmer only */
+                    const motionGain = expansiveLayout ? 1.75 : 1;
+                    wave = Math.sin(nx * 6 - t * 0.9 + ny * 2) * 0.03 * motionGain
+                        + Math.sin(nx * 12 + t * 1.4) * Math.cos(ny * 8 - t * 0.6) * 0.02 * motionGain;
+                    if (expansiveLayout) {
+                        driftX = Math.sin(ny * 8 + t * 1.25 + nx * 2) * step * 0.72;
+                        driftY = Math.sin(nx * 7 - t * 1.1 + ny * 3) * step * 0.52;
+                    }
+                } else {
+                    const motionGain = expansiveLayout ? 2.15 : 1.45;
+                    const swell = Math.sin(nx * 3.2 - t * 1.2 + ny * 1.7) * 0.048 * motionGain;
+                    const chop = Math.sin(nx * 11.5 + t * 1.95 + ny * 3.8)
+                        * Math.cos(ny * 9.2 - t * 1.05)
+                        * 0.032 * motionGain;
+                    const roll = Math.sin((nx * 0.9 + ny * 0.4) * 7.5 - t * 1.65) * 0.026 * motionGain;
+                    const foam = Math.sin(nx * 17 - t * 2.55 + ny * 5.5)
+                        * 0.014 * motionGain
+                        * (val > 0.42 ? 1.15 : 0.4);
+                    wave = swell + chop + roll + foam;
+                    const driftAmp = expansiveLayout ? 0.88 : 0.52;
+                    driftX = Math.sin(ny * 7.2 + t * 1.4 + nx * 2.1) * step * driftAmp
+                        + Math.cos(nx * 4.2 - t * 0.75 + ny) * step * 0.22 * driftAmp;
+                    driftY = Math.sin(nx * 6.8 - t * 1.25 + ny * 2.9) * step * (expansiveLayout ? 0.62 : 0.36)
+                        + Math.sin(ny * 5.2 + t * 0.95) * step * 0.14;
+                }
                 val = Math.max(0, Math.min(1, val + wave));
 
                 const ci = Math.min(chars.length - 1, Math.floor(val * chars.length));
                 if (ci === 0) continue;
 
-                const px = c * step + step * 0.5;
-                const py = r * step + step * 0.5;
+                const px = c * step + step * 0.5 + driftX;
+                const py = r * step + step * 0.5 + driftY;
                 const alpha = isDark
                     ? Math.min(0.95, val * 0.9 + 0.1)
                     : Math.min(0.92, val * 0.85 + 0.08);
@@ -1409,7 +1442,9 @@ function initSingleHeroAscii(canvas) {
             stopLoop();
             return;
         }
-        time += 0.012;
+        time += calmMotion
+            ? (expansiveLayout ? 0.019 : 0.012)
+            : (expansiveLayout ? 0.026 : 0.019);
         if (!reduceMotion && lastFrameTs && ts - lastFrameTs < frameCapMs) {
             animId = requestAnimationFrame(loop);
             return;
@@ -2410,7 +2445,7 @@ function initCaseStudyMotion() {
         summaryEl.append(createMotionIcon('summary', CASE_SECTION_ICON_HTML.summary), summaryText);
     }
 
-    sideNav?.querySelectorAll('.case-side-nav-link').forEach((link, i) => {
+    sideNav?.querySelectorAll('.case-side-nav-link:not(.case-side-nav-link--summary):not(.case-side-nav__summary)').forEach((link, i) => {
         const id = (link.getAttribute('href') || '').replace('#', '');
         const iconKey = CASE_SECTION_ICON_HTML[id] ? id : 'overview';
         const html = CASE_SECTION_ICON_HTML[iconKey];
