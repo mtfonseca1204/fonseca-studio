@@ -11054,6 +11054,8 @@ body.project-case-page .project-hero .container.container-narrow {
 
 @media (prefers-reduced-motion: reduce) {
     .hero-intro__name-dot,
+    .footer-v3__dot,
+    .footer--v3 .footer-logo-link .footer-logo-img,
     .hero-intro__status .status-dot {
         animation: none;
     }
@@ -13626,20 +13628,25 @@ body.editorial-site .motion-carousel:hover .motion-carousel__track {
 
 .footer-logo-img { height: 28px; width: auto; }
 
+.footer--v3 .footer-logo-link .footer-logo-img {
+    animation: fllmLauncherSpin 14s linear infinite;
+    transform-origin: center center;
+}
+
 .footer--v3 .footer-logo-img.logo-light { display: block; }
 .footer--v3 .footer-logo-img.logo-dark { display: none; }
 [data-theme="dark"] .footer--v3 .footer-logo-img.logo-light { display: none; }
 [data-theme="dark"] .footer--v3 .footer-logo-img.logo-dark { display: block; }
 
 .footer-v3__tagline {
-    margin: 0 0 10px;
+    margin: 0;
     max-width: 22rem;
     display: block;
     font-family: 'Inter', sans-serif;
     font-size: 14.5px;
     line-height: 1.55;
-    font-weight: 450;
-    color: var(--text-gray);
+    font-weight: 500;
+    color: var(--text-body);
     letter-spacing: -0.01em;
 }
 
@@ -13647,30 +13654,24 @@ body.editorial-site .motion-carousel:hover .motion-carousel__track {
     display: block;
     font-size: 14.5px;
     line-height: 1.55;
-    font-weight: 450;
-    color: var(--text-gray);
+    font-weight: 500;
+    color: var(--text-body);
     letter-spacing: -0.01em;
 }
 
+.footer-v3__dot {
+    color: #ff5c00;
+    margin-left: 0.02em;
+    display: inline-block;
+    animation: heroNameDotBlink 1.35s ease-in-out infinite;
+}
+
 .footer-v3__avail {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin: 0;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10.5px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text-light);
+    display: none;
 }
 
 .footer-v3__avail.hero-intro__hint {
-    font-size: 10.5px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text-light);
+    display: none;
 }
 
 .footer-v3__col .footer-v3__col-head {
