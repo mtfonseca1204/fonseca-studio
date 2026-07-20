@@ -1385,35 +1385,21 @@ function initSingleHeroAscii(canvas) {
                 const nx = c / (cols - 1 || 1);
                 const ny = r / (rows - 1 || 1);
 
-                let wave;
+                let wave = 0;
                 let driftX = 0;
                 let driftY = 0;
 
                 if (calmMotion) {
-                    /* Original Side Quests motion — subtle shimmer only */
-                    const motionGain = expansiveLayout ? 1.75 : 1;
-                    wave = Math.sin(nx * 6 - t * 0.9 + ny * 2) * 0.03 * motionGain
-                        + Math.sin(nx * 12 + t * 1.4) * Math.cos(ny * 8 - t * 0.6) * 0.02 * motionGain;
-                    if (expansiveLayout) {
-                        driftX = Math.sin(ny * 8 + t * 1.25 + nx * 2) * step * 0.72;
-                        driftY = Math.sin(nx * 7 - t * 1.1 + ny * 3) * step * 0.52;
-                    }
+                    /* Side Quests — static ASCII only, no motion */
+                    wave = 0;
                 } else {
-                    const motionGain = expansiveLayout ? 2.15 : 1.45;
-                    const swell = Math.sin(nx * 3.2 - t * 1.2 + ny * 1.7) * 0.048 * motionGain;
-                    const chop = Math.sin(nx * 11.5 + t * 1.95 + ny * 3.8)
-                        * Math.cos(ny * 9.2 - t * 1.05)
-                        * 0.032 * motionGain;
-                    const roll = Math.sin((nx * 0.9 + ny * 0.4) * 7.5 - t * 1.65) * 0.026 * motionGain;
-                    const foam = Math.sin(nx * 17 - t * 2.55 + ny * 5.5)
-                        * 0.014 * motionGain
-                        * (val > 0.42 ? 1.15 : 0.4);
-                    wave = swell + chop + roll + foam;
-                    const driftAmp = expansiveLayout ? 0.88 : 0.52;
-                    driftX = Math.sin(ny * 7.2 + t * 1.4 + nx * 2.1) * step * driftAmp
-                        + Math.cos(nx * 4.2 - t * 0.75 + ny) * step * 0.22 * driftAmp;
-                    driftY = Math.sin(nx * 6.8 - t * 1.25 + ny * 2.9) * step * (expansiveLayout ? 0.62 : 0.36)
-                        + Math.sin(ny * 5.2 + t * 0.95) * step * 0.14;
+                    /* Home wave — soft luminance shimmer, no char drift (avoids square jitter) */
+                    const motionGain = expansiveLayout ? 1.15 : 0.85;
+                    const swell = Math.sin(nx * 3.4 - t * 0.55 + ny * 1.5) * 0.022 * motionGain;
+                    const chop = Math.sin(nx * 9.5 + t * 0.85 + ny * 2.8)
+                        * Math.cos(ny * 7.5 - t * 0.45)
+                        * 0.012 * motionGain;
+                    wave = swell + chop;
                 }
                 val = Math.max(0, Math.min(1, val + wave));
 
@@ -1443,8 +1429,8 @@ function initSingleHeroAscii(canvas) {
             return;
         }
         time += calmMotion
-            ? (expansiveLayout ? 0.019 : 0.012)
-            : (expansiveLayout ? 0.026 : 0.019);
+            ? 0
+            : (expansiveLayout ? 0.011 : 0.008);
         if (!reduceMotion && lastFrameTs && ts - lastFrameTs < frameCapMs) {
             animId = requestAnimationFrame(loop);
             return;
@@ -1455,7 +1441,7 @@ function initSingleHeroAscii(canvas) {
     }
 
     function startLoop() {
-        if (reduceMotion) {
+        if (reduceMotion || calmMotion) {
             time = 0;
             draw();
             return;
@@ -1474,7 +1460,7 @@ function initSingleHeroAscii(canvas) {
             requestAnimationFrame(kickNow);
             return;
         }
-        if (reduceMotion) {
+        if (reduceMotion || calmMotion) {
             time = 0;
             draw();
             return;
