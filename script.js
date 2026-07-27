@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
     initNavbarScroll();
     initSmoothScroll();
-    initClientsCarousel();
+    initTestimonialsCarousel();
     initMotionCarousel();
     initVideoPlayControls();
     initScrollReveal();
@@ -59,7 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initWorkProjectCarousels();
     initWorkCardLinkPreview();
     initProjectModals();
-    initTestimonialReadMore();
     updateYear();
     initCaseStudyNav();
     initNavMotion();
@@ -78,7 +77,9 @@ document.addEventListener('DOMContentLoaded', () => {
 // PLAIN ENGLISH — hover/tap glossary on portfolio terms
 // =====================================================
 const PLAIN_GLOSSARY = [
+    ['rodadas coletivas de ALTA/BAIXA', 'Todo mundo escolhe ALTA ou BAIXA em um fundo compartilhado; quem acerta divide o prêmio.'],
     ['rodadas agrupadas de ALTA/BAIXA', 'Todos escolhem alta ou baixa em um único prêmio compartilhado; os vencedores dividem o valor.'],
+    ['literacia de orderbook', 'Entender listas complexas de compra e venda, como em uma bolsa.'],
     ['modelo de participação', 'As regras que definem como as pessoas entram e agem em um produto.'],
     ['dados de participação', 'Informações públicas que mostram o que outras pessoas escolheram ou apostaram.'],
     ['verificação cruzada', 'Comparar manualmente preços e dados entre ferramentas e abas diferentes.'],
@@ -87,13 +88,16 @@ const PLAIN_GLOSSARY = [
     ['público institucional', 'Investidores profissionais e empresas, não usuários casuais.'],
     ['credibilidade institucional', 'Provas de que uma empresa é séria e confiável para profissionais.'],
     ['telemedicina', 'Atendimento de saúde on-line por videochamada, chat e receitas digitais.'],
+    ['telessaúde', 'Atendimento de saúde online por videochamada, chat e receitas digitais.'],
     ['fluxos de atendimento', 'As etapas para agendar, consultar um médico e fazer acompanhamento.'],
-    ['conversão', 'A parcela dos visitantes que realizou a ação desejada, como fazer cadastro.'],
-    ['liquidez', 'A facilidade de comprar ou vender um ativo sem causar grandes mudanças no preço.'],
+    ['funil de três camadas', 'Três etapas na página: entender a oferta, confiar nela e entrar na waitlist.'],
+    ['SLA binário', 'Um score claro de passou/falhou para a qualidade do serviço ao longo do tempo.'],
+    ['conversão', SITE_IS_PT ? 'A parcela dos visitantes que realizou a ação desejada, como fazer cadastro.' : 'The share of visitors who took the action you wanted, like signing up.'],
+    ['liquidez', SITE_IS_PT ? 'A facilidade de comprar ou vender um ativo sem causar grandes mudanças no preço.' : 'How easily an asset can be bought or sold without big price swings.'],
     ['contrapartes', 'O outro lado de uma negociação: de quem você compra ou para quem vende.'],
     ['beneficiários', 'Pessoas cobertas por um plano de saúde e que podem usar seus serviços.'],
     ['taxa de ausência', 'Quando alguém agenda uma consulta, mas não comparece.'],
-    ['pooled UP/DOWN rounds', 'Everyone picks up or down in one shared pot; winners split the pool.'],
+    ['pooled UP/DOWN rounds', SITE_IS_PT ? 'Todo mundo escolhe alta ou baixa em um fundo compartilhado; quem acerta divide o prêmio.' : 'Everyone picks up or down in one shared pot; winners split the pool.'],
     ['orderbook literacy', SITE_IS_PT ? 'Entender como funcionam as listas de ordens de compra e venda usadas por traders.' : 'Understanding the complex buy/sell lists traders use.'],
     ['orderbooks', SITE_IS_PT ? 'Listas de ordens de compra e venda, como em uma bolsa de valores.' : 'The complex buy/sell lists traders use, like on a stock exchange.'],
     ['orderbook', SITE_IS_PT ? 'Lista de ordens de compra e venda, como em uma bolsa de valores.' : 'The complex buy/sell list traders use, like on a stock exchange.'],
@@ -103,41 +107,50 @@ const PLAIN_GLOSSARY = [
     ['Market Maker Dashboard', SITE_IS_PT ? 'Dashboard para quem mantém o mercado líquido oferecendo preços de compra e venda.' : 'A control panel for traders who keep markets liquid by always offering buy and sell prices.'],
     ['Market Makers', SITE_IS_PT ? 'Operadores que mantêm o mercado líquido oferecendo preços de compra e venda continuamente.' : 'Traders who keep markets liquid by always offering buy and sell prices.'],
     ['Market Maker', SITE_IS_PT ? 'Operador que mantém o mercado líquido oferecendo preços de compra e venda continuamente.' : 'A trader who keeps markets liquid by always offering buy and sell prices.'],
-    ['participation model', 'The rules for how users join in and take action in a product.'],
-    ['participation data', 'Public info showing what other users picked or bet.'],
-    ['cross-checking', 'Manually comparing prices and data across different tools and tabs.'],
-    ['Pre-launch Waitlist', 'A signup page before the product was built, to collect early users.'],
-    ['paid acquisition', 'Paying for ads to bring visitors to a page.'],
-    ['paid traffic', 'Visitors who found the page through paid ads.'],
-    ['institutional audience', 'Professional investors and companies, not casual users.'],
-    ['institutional credibility', 'Proof that a company is serious and trustworthy enough for professionals.'],
-    ['on-chain-focused', 'Built to work on a blockchain, with publicly verifiable records.'],
-    ['on-chain', 'Recorded on a blockchain, publicly verifiable.'],
-    ['Worldchain', "World App's blockchain network, used for on-chain finance."],
-    ['Telemedicine', 'Healthcare delivered online: video calls, chat, and digital prescriptions.'],
-    ['telemedicine', 'Healthcare delivered online: video calls, chat, and digital prescriptions.'],
-    ['telehealth', 'Healthcare delivered online: video calls, chat, and digital prescriptions.'],
-    ['care flows', 'The steps patients take to book, see a doctor, and follow up.'],
-    ['conversion', 'The share of visitors who took the action you wanted, like signing up.'],
-    ['waitlist', 'A signup list for people interested before a product launches.'],
-    ['liquidity', 'How easily an asset can be bought or sold without big price swings.'],
-    ['counterparties', 'The other side of a trade — who you buy from or sell to.'],
-    ['DeFi protocols', 'Decentralized finance apps that run on blockchains without traditional banks.'],
-    ['DeFi user', 'Someone who uses decentralized finance apps on blockchains.'],
-    ['DeFi', 'Decentralized finance: financial apps that run on blockchains without traditional banks.'],
-    ['Web3', 'The blockchain-based internet: apps built on crypto networks instead of traditional servers.'],
-    ['B2B', 'Business-to-business: products sold to companies, not individual consumers.'],
-    ['SLA', 'Service level agreement: a contract promising a minimum performance standard.'],
-    ['CTA', 'Call to action: the main button asking the user to do something, like sign up.'],
-    ['A/B tests', 'Comparing two versions of a page to see which performs better.'],
-    ['A/B test', 'Comparing two versions of a page to see which performs better.'],
-    ['social proof', 'Signals that other people trust or use something, like reviews or follower counts.'],
-    ['drill-down', 'Clicking into a summary to see more detailed information.'],
-    ['product-market fit', 'When a product clearly solves a real need that people will pay for.'],
-    ['beneficiaries', 'People covered by a health insurance plan who can use its services.'],
-    ['no-show', 'When someone books an appointment but does not attend.'],
-    ['healthtech', 'Technology products built for healthcare and medical services.'],
-    ['health cooperative', 'A member-owned organization that provides healthcare services.'],
+    ['participation model', SITE_IS_PT ? 'As regras que definem como as pessoas entram e agem em um produto.' : 'The rules for how users join in and take action in a product.'],
+    ['participation data', SITE_IS_PT ? 'Informações públicas que mostram o que outras pessoas escolheram ou apostaram.' : 'Public info showing what other users picked or bet.'],
+    ['cross-checking', SITE_IS_PT ? 'Comparar manualmente preços e dados entre ferramentas e abas diferentes.' : 'Manually comparing prices and data across different tools and tabs.'],
+    ['Pre-launch Waitlist', SITE_IS_PT ? 'Uma página de cadastro antes do produto existir, para reunir os primeiros interessados.' : 'A signup page before the product was built, to collect early users.'],
+    ['paid acquisition', SITE_IS_PT ? 'Pagar anúncios para trazer visitantes a uma página.' : 'Paying for ads to bring visitors to a page.'],
+    ['paid traffic', SITE_IS_PT ? 'Visitantes que chegaram à página por anúncios pagos.' : 'Visitors who found the page through paid ads.'],
+    ['institutional audience', SITE_IS_PT ? 'Investidores profissionais e empresas, não usuários casuais.' : 'Professional investors and companies, not casual users.'],
+    ['institutional credibility', SITE_IS_PT ? 'Prova de que uma empresa é séria e confiável para profissionais.' : 'Proof that a company is serious and trustworthy enough for professionals.'],
+    ['three-layer funnel', SITE_IS_PT ? 'Três etapas na página: entender a oferta, confiar nela e entrar na waitlist.' : 'Three steps on the page: understand the offer, trust it, then join the waitlist.'],
+    ['binary SLA', SITE_IS_PT ? 'Um score claro de passou/falhou para a qualidade do serviço ao longo do tempo.' : 'A clear pass/fail score for service quality over time.'],
+    ['on-chain-focused', SITE_IS_PT ? 'Feito para funcionar em blockchain, com registros publicamente verificáveis.' : 'Built to work on a blockchain, with publicly verifiable records.'],
+    ['on-chain', SITE_IS_PT ? 'Registrado em uma blockchain, publicamente verificável.' : 'Recorded on a blockchain, publicly verifiable.'],
+    ['Worldchain', SITE_IS_PT ? 'Rede blockchain do World App (Worldcoin): 24M+ usuários no app, rede em dezenas de milhões.' : "World App's blockchain network (Worldcoin): 24M+ app users, network at tens of millions."],
+    ['Kraken', SITE_IS_PT ? 'Exchange global de cripto: ~6M contas com saldo e ~US$40B em ativos na plataforma.' : 'Global crypto exchange: ~6M funded accounts and ~$40B in assets on platform.'],
+    ['Kalshi', SITE_IS_PT ? 'Mercado de previsão regulamentado nos EUA, baseado em eventos do mundo real.' : 'A US-regulated prediction market based on real-world events.'],
+    ['Polymarket', SITE_IS_PT ? 'Mercado de previsão on-chain focado em eventos reais, como política e notícias.' : 'An on-chain prediction market focused on real-world events, like politics and news.'],
+    ['Binance', SITE_IS_PT ? 'A maior exchange de criptomoedas do mundo por número de usuários.' : "The world's largest cryptocurrency exchange by number of users."],
+    ['MEXC', SITE_IS_PT ? 'Exchange de cripto conhecida por trading de curto prazo e uma enorme lista de ativos.' : 'A crypto exchange known for short-term trading and a huge range of assets.'],
+    ['Telemedicine', SITE_IS_PT ? 'Atendimento de saúde on-line: videochamada, chat e receitas digitais.' : 'Healthcare delivered online: video calls, chat, and digital prescriptions.'],
+    ['telemedicine', SITE_IS_PT ? 'Atendimento de saúde on-line: videochamada, chat e receitas digitais.' : 'Healthcare delivered online: video calls, chat, and digital prescriptions.'],
+    ['telehealth', SITE_IS_PT ? 'Atendimento de saúde on-line: videochamada, chat e receitas digitais.' : 'Healthcare delivered online: video calls, chat, and digital prescriptions.'],
+    ['care flows', SITE_IS_PT ? 'As etapas que o paciente percorre para agendar, consultar e acompanhar.' : 'The steps patients take to book, see a doctor, and follow up.'],
+    ['conversion', SITE_IS_PT ? 'A parcela dos visitantes que realizou a ação desejada, como fazer cadastro.' : 'The share of visitors who took the action you wanted, like signing up.'],
+    ['waitlist', SITE_IS_PT ? 'Lista de cadastro para quem se interessa antes do lançamento do produto.' : 'A signup list for people interested before a product launches.'],
+    ['liquidity', SITE_IS_PT ? 'A facilidade de comprar ou vender um ativo sem grandes oscilações de preço.' : 'How easily an asset can be bought or sold without big price swings.'],
+    ['counterparties', SITE_IS_PT ? 'O outro lado de uma negociação: de quem você compra ou para quem vende.' : 'The other side of a trade — who you buy from or sell to.'],
+    ['DeFi protocols', SITE_IS_PT ? 'Apps de finanças descentralizadas que rodam em blockchains, sem bancos tradicionais.' : 'Decentralized finance apps that run on blockchains without traditional banks.'],
+    ['DeFi user', SITE_IS_PT ? 'Alguém que usa apps de finanças descentralizadas em blockchains.' : 'Someone who uses decentralized finance apps on blockchains.'],
+    ['DeFi', SITE_IS_PT ? 'Finanças descentralizadas: apps financeiros em blockchain, sem bancos tradicionais.' : 'Decentralized finance: financial apps that run on blockchains without traditional banks.'],
+    ['Web3', SITE_IS_PT ? 'A internet baseada em blockchain: apps em redes cripto em vez de servidores tradicionais.' : 'The blockchain-based internet: apps built on crypto networks instead of traditional servers.'],
+    ['B2B', SITE_IS_PT ? 'Business-to-business: produtos vendidos para empresas, não para consumidores finais.' : 'Business-to-business: products sold to companies, not individual consumers.'],
+    ['SLA', SITE_IS_PT ? 'Service level agreement: contrato que promete um padrão mínimo de performance.' : 'Service level agreement: a contract promising a minimum performance standard.'],
+    ['CTA', SITE_IS_PT ? 'Call to action: o botão principal pedindo uma ação, como se cadastrar.' : 'Call to action: the main button asking the user to do something, like sign up.'],
+    ['A/B tests', SITE_IS_PT ? 'Comparar duas versões de uma página para ver qual performa melhor.' : 'Comparing two versions of a page to see which performs better.'],
+    ['A/B test', SITE_IS_PT ? 'Comparar duas versões de uma página para ver qual performa melhor.' : 'Comparing two versions of a page to see which performs better.'],
+    ['social proof', SITE_IS_PT ? 'Sinais de que outras pessoas confiam ou usam algo, como reviews ou seguidores.' : 'Signals that other people trust or use something, like reviews or follower counts.'],
+    ['drill-down', SITE_IS_PT ? 'Clicar em um resumo para ver informações mais detalhadas.' : 'Clicking into a summary to see more detailed information.'],
+    ['product-market fit', SITE_IS_PT ? 'Quando um produto resolve uma necessidade real que as pessoas pagam para usar.' : 'When a product clearly solves a real need that people will pay for.'],
+    ['beneficiaries', SITE_IS_PT ? 'Pessoas cobertas por um plano de saúde e que podem usar seus serviços.' : 'People covered by a health insurance plan who can use its services.'],
+    ['no-show', SITE_IS_PT ? 'Quando alguém agenda uma consulta, mas não comparece.' : 'When someone books an appointment but does not attend.'],
+    ['healthtech', SITE_IS_PT ? 'Produtos de tecnologia feitos para saúde e serviços médicos.' : 'Technology products built for healthcare and medical services.'],
+    ['health cooperative', SITE_IS_PT ? 'Organização de propriedade dos membros que oferece serviços de saúde.' : 'A member-owned organization that provides healthcare services.'],
+    ['tx fees', SITE_IS_PT ? 'Taxas de transação pagas na rede blockchain para confirmar uma ação.' : 'Transaction fees paid on the blockchain network to confirm an action.'],
+    ['tx fee', SITE_IS_PT ? 'Taxa de transação paga na rede blockchain para confirmar uma ação.' : 'A transaction fee paid on the blockchain network to confirm an action.'],
 ];
 
 const PLAIN_GLOSSARY_SORTED = [...PLAIN_GLOSSARY].sort((a, b) => b[0].length - a[0].length);
@@ -212,7 +225,9 @@ function annotatePlainTermsIn(container) {
 }
 
 function initPlainTerms() {
-    document.querySelectorAll('body.project-case-page .project-hero-case, body.project-case-page .case-editorial').forEach(annotatePlainTermsIn);
+    document.querySelectorAll(
+        'body.project-case-page .project-hero-case, body.project-case-page .case-editorial, body.short-case-page .short-case, body.short-case-page .project-hero-case'
+    ).forEach(annotatePlainTermsIn);
 
     const terms = document.querySelectorAll('.plain-term[data-plain]');
     if (!terms.length) return;
@@ -645,8 +660,52 @@ function initSiteSplash() {
     return true;
 }
 
+const FONSECA_CASE_NAV_KEY = 'fonseca:case-nav';
+
+function markCaseNav(kind) {
+    if (!kind) return;
+    try {
+        sessionStorage.setItem(FONSECA_CASE_NAV_KEY, kind);
+    } catch (_) {}
+}
+
+function resolveCaseNavKind(link, url) {
+    const explicit = link?.getAttribute('data-case-nav');
+    if (explicit === 'to-short' || explicit === 'to-full') return explicit;
+
+    const file = ((url && url.pathname) || '').split('/').pop() || '';
+    if (/-short(-pt)?\.html$/i.test(file)) return 'to-short';
+    if (
+        document.body.classList.contains('short-case-page') &&
+        /^project-.+\.html$/i.test(file) &&
+        !/-short(-pt)?\.html$/i.test(file)
+    ) {
+        return 'to-full';
+    }
+    return null;
+}
+
 function initPageTransitions() {
     if (prefersReducedMotion()) return;
+
+    window.addEventListener('pageswap', (e) => {
+        if (!e.viewTransition) return;
+        const pending = document.documentElement.dataset.pendingCaseNav;
+        if (pending) {
+            e.viewTransition.types.add(pending);
+            return;
+        }
+        const toUrl = e.activation?.entry?.url;
+        if (!toUrl) return;
+        let url;
+        try {
+            url = new URL(toUrl);
+        } catch (_) {
+            return;
+        }
+        const kind = resolveCaseNavKind(null, url);
+        if (kind) e.viewTransition.types.add(kind);
+    });
 
     document.addEventListener('click', (e) => {
         const link = e.target.closest('a[href]');
@@ -670,13 +729,21 @@ function initPageTransitions() {
             markHomeSplashForNextLoad();
         }
 
+        const caseNav = resolveCaseNavKind(link, url);
+        if (caseNav) {
+            markCaseNav(caseNav);
+            document.documentElement.dataset.pendingCaseNav = caseNav;
+        }
+
         if (supportsNavViewTransitions()) return;
 
         e.preventDefault();
         document.body.classList.add('page-leaving');
+        if (caseNav) document.body.classList.add(`page-leaving--${caseNav}`);
+        const delay = caseNav === 'to-full' ? 420 : caseNav === 'to-short' ? 340 : 260;
         window.setTimeout(() => {
             window.location.href = url.href;
-        }, 260);
+        }, delay);
     }, { capture: true });
 }
 
@@ -904,133 +971,144 @@ function initAboutPhotoCarousel() {
 }
 
 // =====================================================
-// TESTIMONIALS — clamp long quotes + read more / read less
+// TESTIMONIALS — editorial single-quote carousel
 // =====================================================
-function initTestimonialReadMore() {
-    const root = document.querySelector('.section-testimonials');
+function initTestimonialsCarousel() {
+    const root = document.querySelector('[data-testimonials-carousel]');
     if (!root) return;
 
-    const cards = Array.from(root.querySelectorAll('.testimonial-card'));
+    const slides = [...root.querySelectorAll('[data-testimonials-slide]')];
+    const prev = root.querySelector('[data-testimonials-prev]');
+    const next = root.querySelector('[data-testimonials-next]');
+    const currentEl = root.querySelector('[data-testimonials-current]');
+    const totalEl = root.querySelector('[data-testimonials-total]');
+    if (!slides.length) return;
 
-    function syncCarouselPause() {
-        const anyExpanded = cards.some((card) => card.classList.contains('testimonial-card--expanded'));
-        root.classList.toggle('clients-carousel--paused', anyExpanded);
+    const reduceMotion = prefersReducedMotion();
+    let current = Math.max(0, slides.findIndex((slide) => slide.classList.contains('active')));
+    let revealTimer = 0;
+    if (totalEl) totalEl.textContent = String(slides.length);
+
+    function ensurePoint(quote) {
+        if (!quote || quote.querySelector('.testimonials-stage__point')) return;
+        const point = document.createElement('span');
+        point.className = 'testimonials-stage__point';
+        point.setAttribute('aria-hidden', 'true');
+        quote.appendChild(point);
     }
 
-    function measureCard(card) {
-        const p = card.querySelector('.testimonial-card__text');
-        const btn = card.querySelector('.testimonial-card__read-more');
-        if (!p || !btn) return;
-        if (card.classList.contains('testimonial-card--expanded')) return;
-
-        p.classList.remove('testimonial-card__text--clamped');
-        btn.hidden = true;
-        btn.textContent = SITE_IS_PT ? 'Ler mais' : 'Read more';
-        btn.setAttribute('aria-expanded', 'false');
-
-        p.classList.add('testimonial-card__text--clamped');
-        const overflow = p.scrollHeight > p.clientHeight + 2;
-        if (overflow) {
-            btn.hidden = false;
-        } else {
-            p.classList.remove('testimonial-card__text--clamped');
-        }
-    }
-
-    cards.forEach((card) => {
-        const btn = card.querySelector('.testimonial-card__read-more');
-        btn?.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const expanding = !card.classList.contains('testimonial-card--expanded');
-            card.classList.toggle('testimonial-card--expanded', expanding);
-            const p = card.querySelector('.testimonial-card__text');
-            if (p) p.classList.toggle('testimonial-card__text--clamped', !expanding);
-            btn.setAttribute('aria-expanded', expanding ? 'true' : 'false');
-            btn.textContent = expanding
-                ? (SITE_IS_PT ? 'Ler menos' : 'Read less')
-                : (SITE_IS_PT ? 'Ler mais' : 'Read more');
-            syncCarouselPause();
+    function playReveal(slide) {
+        const quote = slide.querySelector('.testimonials-stage__quote');
+        ensurePoint(quote);
+        slide.classList.remove('is-revealed');
+        void slide.offsetWidth;
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                slide.classList.add('is-revealed');
+            });
         });
-    });
-
-    function runMeasure() {
-        cards.forEach(measureCard);
     }
 
-    requestAnimationFrame(() => {
-        requestAnimationFrame(runMeasure);
-    });
-    if (document.fonts?.ready) {
-        document.fonts.ready.then(runMeasure);
+    const AUTO_MS = 7500;
+    let autoTimer = 0;
+    let paused = false;
+    let inView = true;
+
+    function stopAuto() {
+        window.clearTimeout(autoTimer);
+        autoTimer = 0;
     }
 
-    let resizeT;
-    window.addEventListener('resize', () => {
-        clearTimeout(resizeT);
-        resizeT = setTimeout(() => cards.forEach(measureCard), 150);
-    });
-}
+    function scheduleAuto() {
+        stopAuto();
+        if (reduceMotion || paused || !inView || slides.length < 2) return;
+        autoTimer = window.setTimeout(() => {
+            goTo(current + 1);
+        }, AUTO_MS);
+    }
 
-// =====================================================
-// CLIENTS — entrance + velocity-based marquee
-// =====================================================
-function initClientsCarousel() {
-    const section = document.querySelector('.section-testimonials');
-    if (!section) return;
+    function goTo(idx) {
+        const n = slides.length;
+        current = ((idx % n) + n) % n;
 
-    const track = section.querySelector('.testimonials-track');
-    if (!track) return;
-
-    const syncDuration = () => {
-        const halfWidth = track.scrollWidth / 2;
-        if (halfWidth <= 0) return;
-        const pxPerSecond = window.matchMedia('(max-width: 768px)').matches ? 36 : 44;
-        track.style.setProperty('--clients-marquee-duration', `${halfWidth / pxPerSecond}s`);
-    };
-
-    const activate = () => {
-        if (section.classList.contains('clients-carousel--ready')) return;
-        syncDuration();
-        section.classList.add('clients-carousel--ready');
-        section.querySelectorAll('.section-head [data-anim]').forEach((el) => {
-            el.classList.add('in-view');
+        slides.forEach((slide, i) => {
+            const on = i === current;
+            slide.classList.toggle('active', on);
+            slide.setAttribute('aria-hidden', on ? 'false' : 'true');
+            if (!on) slide.classList.remove('is-revealed');
         });
-    };
+        if (currentEl) currentEl.textContent = String(current + 1);
 
-    if (prefersReducedMotion()) {
-        section.classList.add('clients-carousel--ready', 'clients-carousel--static');
-        section.querySelectorAll('.section-head [data-anim]').forEach((el) => {
-            el.classList.add('in-view');
-        });
-        return;
-    }
+        window.clearTimeout(revealTimer);
+        const active = slides[current];
 
-    syncDuration();
-
-    let resizeT;
-    window.addEventListener('resize', () => {
-        clearTimeout(resizeT);
-        resizeT = window.setTimeout(syncDuration, 150);
-    });
-    window.addEventListener('fonseca:layoutready', syncDuration);
-    if (document.fonts?.ready) {
-        document.fonts.ready.then(syncDuration);
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                activate();
-                observer.disconnect();
+        revealTimer = window.setTimeout(() => {
+            if (reduceMotion) {
+                ensurePoint(active.querySelector('.testimonials-stage__quote'));
+                active.classList.add('is-revealed');
+            } else {
+                playReveal(active);
             }
-        });
-    }, { threshold: 0.15, rootMargin: '0px 0px -48px 0px' });
-
-    observer.observe(section);
-
-    if (section.getBoundingClientRect().top < window.innerHeight * 0.85) {
-        requestAnimationFrame(activate);
+            scheduleAuto();
+        }, 40);
     }
+
+    function pauseAuto() {
+        paused = true;
+        stopAuto();
+    }
+
+    function resumeAuto() {
+        paused = false;
+        scheduleAuto();
+    }
+
+    prev?.addEventListener('click', () => goTo(current - 1));
+    next?.addEventListener('click', () => goTo(current + 1));
+
+    root.addEventListener('mouseenter', pauseAuto);
+    root.addEventListener('mouseleave', resumeAuto);
+    root.addEventListener('focusin', pauseAuto);
+    root.addEventListener('focusout', (e) => {
+        if (!root.contains(e.relatedTarget)) resumeAuto();
+    });
+
+    root.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            goTo(current - 1);
+        } else if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            goTo(current + 1);
+        }
+    });
+
+    let touchX = null;
+    root.addEventListener('touchstart', (e) => {
+        touchX = e.changedTouches?.[0]?.clientX ?? null;
+        pauseAuto();
+    }, { passive: true });
+    root.addEventListener('touchend', (e) => {
+        if (touchX == null) {
+            resumeAuto();
+            return;
+        }
+        const dx = (e.changedTouches?.[0]?.clientX ?? touchX) - touchX;
+        touchX = null;
+        if (Math.abs(dx) >= 40) goTo(current + (dx < 0 ? 1 : -1));
+        else resumeAuto();
+    }, { passive: true });
+
+    if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+            inView = entries.some((entry) => entry.isIntersecting);
+            if (inView) scheduleAuto();
+            else stopAuto();
+        }, { threshold: 0.35 });
+        io.observe(root);
+    }
+
+    goTo(current);
 }
 
 // =====================================================
@@ -1046,8 +1124,12 @@ function initCaseImageLightbox() {
 }
 
 function setupCaseImageLightbox() {
-    const mediaEls = Array.from(document.querySelectorAll('.case-gallery-img'));
-    if (!mediaEls.length) return;
+    const mediaEls = Array.from(document.querySelectorAll(
+        '.case-gallery-img, .short-case__bento-item img, .short-case__bento-item video'
+    ));
+    // De-dupe nodes matched by multiple selectors
+    const unique = [...new Set(mediaEls)];
+    if (!unique.length) return;
 
     const lb = document.createElement('div');
     lb.className = 'case-lightbox';
@@ -1116,9 +1198,11 @@ function setupCaseImageLightbox() {
         '<svg width="20" height="20" viewBox="0 0 24 24" fill="none">' +
         '<path d="M9 4H4v5M15 4h5v5M15 20h5v-5M9 20H4v-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
-    mediaEls.forEach((el) => {
+    unique.forEach((el) => {
+        if (el.dataset.lightboxBound === '1') return;
+        el.dataset.lightboxBound = '1';
         const isVideo = el.tagName === 'VIDEO';
-        const special = el.closest('.case-gallery-tight-pair, .case-gallery-duo, .theme-compare');
+        const special = el.closest('.case-gallery-tight-pair, .case-gallery-duo, .theme-compare, .project-cover-image');
 
         el.style.cursor = 'zoom-in';
         el.addEventListener('click', () => open(el, el));
@@ -1547,30 +1631,52 @@ function initSingleHeroAscii(canvas) {
 }
 
 // =====================================================
-// HERO — copy email shortcut
+// HERO — copy email / phone shortcuts
 // =====================================================
 const HERO_EMAIL = 'fonsecaa.design@gmail.com';
+const HERO_PHONE = '+55 21 97196-5645';
 
 function initHeroCopyEmail() {
-    const triggers = [...document.querySelectorAll('[data-copy-email]')];
+    const triggers = [...document.querySelectorAll('[data-copy-email], [data-copy-phone]')];
     if (!triggers.length) return;
 
-    function showEmailCopiedToast() {
-        let toast = document.getElementById('emailCopyToast');
+    const getCopyValue = (trigger) => (
+        trigger.hasAttribute('data-copy-phone') ? HERO_PHONE : HERO_EMAIL
+    );
+
+    const getCopyMeta = (trigger) => {
+        if (trigger.hasAttribute('data-copy-phone')) {
+            return {
+                label: SITE_IS_PT ? 'Telefone copiado' : 'Phone copied',
+                aria: SITE_IS_PT ? 'Copiar número de telefone' : 'Copy phone number',
+            };
+        }
+        return {
+            label: SITE_IS_PT ? 'E-mail copiado' : 'Email copied',
+            aria: SITE_IS_PT ? 'Copiar endereço de e-mail' : 'Copy email address',
+        };
+    };
+
+    function showContactCopiedToast(trigger) {
+        const { label } = getCopyMeta(trigger);
+        const value = getCopyValue(trigger);
+        let toast = document.getElementById('contactCopyToast');
         if (!toast) {
             toast = document.createElement('div');
-            toast.id = 'emailCopyToast';
+            toast.id = 'contactCopyToast';
             toast.className = 'email-copy-toast';
             toast.setAttribute('role', 'status');
             toast.setAttribute('aria-live', 'polite');
             toast.innerHTML =
-                `<span class="email-copy-toast__label">${SITE_IS_PT ? 'E-mail copiado' : 'Email copied'}</span>` +
-                `<span class="email-copy-toast__email">${HERO_EMAIL}</span>`;
+                '<span class="email-copy-toast__label"></span>' +
+                '<span class="email-copy-toast__email"></span>';
             document.body.appendChild(toast);
         }
+        toast.querySelector('.email-copy-toast__label').textContent = label;
+        toast.querySelector('.email-copy-toast__email').textContent = value;
         toast.classList.add('is-visible');
-        clearTimeout(showEmailCopiedToast._hideT);
-        showEmailCopiedToast._hideT = setTimeout(() => {
+        clearTimeout(showContactCopiedToast._hideT);
+        showContactCopiedToast._hideT = setTimeout(() => {
             toast.classList.remove('is-visible');
         }, 2800);
     }
@@ -1587,30 +1693,32 @@ function initHeroCopyEmail() {
         }, 2200);
     }
 
-    function copyHeroEmail(trigger) {
+    function copyContactValue(trigger) {
+        const value = getCopyValue(trigger);
         const onSuccess = () => {
-            showEmailCopiedToast();
+            showContactCopiedToast(trigger);
             if (trigger) markCopied(trigger);
         };
         if (!navigator.clipboard?.writeText) {
             onSuccess();
             return;
         }
-        navigator.clipboard.writeText(HERO_EMAIL)
+        navigator.clipboard.writeText(value)
             .then(onSuccess)
             .catch(() => {});
     }
 
     triggers.forEach((trigger) => {
+        const { aria } = getCopyMeta(trigger);
         if (!trigger.hasAttribute('aria-label')) {
-            trigger.setAttribute('aria-label', SITE_IS_PT ? 'Copiar endereço de e-mail' : 'Copy email address');
+            trigger.setAttribute('aria-label', aria);
         }
         if (trigger.tagName === 'A' && !trigger.getAttribute('role')) {
             trigger.setAttribute('role', 'button');
         }
         trigger.addEventListener('click', (e) => {
             e.preventDefault();
-            copyHeroEmail(trigger);
+            copyContactValue(trigger);
         });
     });
 
@@ -1623,7 +1731,8 @@ function initHeroCopyEmail() {
         if (e.key !== 'c' && e.key !== 'C') return;
         if (e.metaKey || e.ctrlKey || e.altKey) return;
         e.preventDefault();
-        copyHeroEmail(triggers[0]);
+        const emailTrigger = triggers.find((trigger) => trigger.hasAttribute('data-copy-email'));
+        if (emailTrigger) copyContactValue(emailTrigger);
     });
 }
 
@@ -1688,9 +1797,10 @@ function initMotionCarousel() {
     const next = root.querySelector('[data-motion-next]');
     if (!slides.length) return;
 
-    let current = 0;
+    let current = Math.max(0, slides.findIndex((slide) => slide.classList.contains('active')));
     let carouselInView = false;
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isCascade = root.classList.contains('motion-carousel--cascade');
 
     function ensureVideo(slide) {
         const video = slide.querySelector('video');
@@ -1704,17 +1814,32 @@ function initMotionCarousel() {
         return video;
     }
 
+    function primeCollapsedFrame(video, slideIndex) {
+        if (!video) return;
+        const seek = () => {
+            try {
+                if (!Number.isFinite(video.duration) || video.duration <= 0) return;
+                const offsets = [0.18, 0.42, 0.66];
+                video.currentTime = Math.min(video.duration * (offsets[slideIndex % offsets.length] || 0.25), Math.max(0, video.duration - 0.05));
+            } catch (_) {}
+        };
+        if (video.readyState >= 1) seek();
+        else video.addEventListener('loadedmetadata', seek, { once: true });
+    }
+
     function syncPlayback() {
         if (!carouselInView) return;
         slides.forEach((slide, i) => {
-            const video = slide.querySelector('video');
+            const video = ensureVideo(slide);
             if (!video) return;
             if (i === current) {
-                ensureVideo(slide);
                 if (!reduceMotion) playVideoFromStart(video);
             } else {
                 video.pause();
-                try { video.currentTime = 0; } catch (_) {}
+                if (isCascade) primeCollapsedFrame(video, i);
+                else {
+                    try { video.currentTime = 0; } catch (_) {}
+                }
             }
         });
     }
@@ -1722,25 +1847,42 @@ function initMotionCarousel() {
     function goTo(idx) {
         const n = slides.length;
         const nextIdx = ((idx % n) + n) % n;
-        slides[current].classList.remove('active');
-        slides[current].setAttribute('aria-hidden', 'true');
-        dots[current]?.classList.remove('active');
-        dots[current]?.setAttribute('aria-selected', 'false');
+        const changed = nextIdx !== current;
         current = nextIdx;
-        slides[current].classList.add('active');
-        slides[current].setAttribute('aria-hidden', 'false');
-        dots[current]?.classList.add('active');
-        dots[current]?.setAttribute('aria-selected', 'true');
-        syncPlayback();
+
+        slides.forEach((slide, i) => {
+            const on = i === current;
+            slide.classList.toggle('active', on);
+            slide.setAttribute('aria-pressed', on ? 'true' : 'false');
+            if (!isCascade) slide.setAttribute('aria-hidden', on ? 'false' : 'true');
+            dots[i]?.classList.toggle('active', on);
+            dots[i]?.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+
+        if (changed || !slides[current].dataset.motionPrimed) {
+            slides[current].dataset.motionPrimed = '1';
+            syncPlayback();
+        }
     }
 
-    slides.forEach((slide) => {
+    slides.forEach((slide, i) => {
         const video = slide.querySelector('video');
-        if (!video) return;
-        video.removeAttribute('loop');
-        video.addEventListener('ended', () => {
-            if (slide !== slides[current]) return;
-            goTo(current + 1);
+        if (video) {
+            video.removeAttribute('loop');
+            video.addEventListener('ended', () => {
+                if (slide !== slides[current]) return;
+                goTo(current + 1);
+            });
+        }
+
+        if (!isCascade) return;
+
+        slide.addEventListener('click', () => goTo(i));
+        slide.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                goTo(i);
+            }
         });
     });
 
@@ -1751,6 +1893,7 @@ function initMotionCarousel() {
     });
 
     root.addEventListener('keydown', (e) => {
+        if (e.target.closest('[data-motion-slide]') && (e.key === 'Enter' || e.key === ' ')) return;
         if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(current - 1); }
         else if (e.key === 'ArrowRight') { e.preventDefault(); goTo(current + 1); }
     });
@@ -1758,13 +1901,17 @@ function initMotionCarousel() {
     const io = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             carouselInView = entry.isIntersecting;
-            if (entry.isIntersecting) syncPlayback();
-            else slides.forEach((slide) => slide.querySelector('video')?.pause());
+            if (entry.isIntersecting) {
+                if (isCascade) slides.forEach((slide) => ensureVideo(slide));
+                syncPlayback();
+            } else {
+                slides.forEach((slide) => slide.querySelector('video')?.pause());
+            }
         });
-    }, { threshold: 0.25, rootMargin: '40px 0px' });
+    }, { threshold: 0.2, rootMargin: '40px 0px' });
     io.observe(root);
 
-    goTo(0);
+    goTo(current);
 }
 
 // =====================================================

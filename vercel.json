@@ -1,4 +1,11 @@
 {
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/index-pt.html",
+      "permanent": false
+    }
+  ],
   "headers": [
     {
       "source": "/MatheusFonsecaCV.pdf",
