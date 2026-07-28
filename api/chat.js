@@ -5,7 +5,7 @@
 //  Zero npm deps: calls the OpenAI REST API with global fetch.
 // =====================================================
 
-import { createPostHogClient } from './posthog-client.js';
+import { capturePostHogEvent, capturePostHogException } from './posthog-client.js';
 
 const KNOWLEDGE = `
 IDENTITY
@@ -155,40 +155,24 @@ export default async function handler(req, res) {
 
   // No key configured → curated fallback so the feature still works.
   if (!apiKey) {
-    const posthog = createPostHogClient();
-    if (posthog) {
-      posthog.capture({
-        distinctId,
-        event: 'ai_chat_message_processed',
-        properties: {
-          language,
-          has_quote: Boolean(quote),
-          message_count: history.length,
-          source: 'fallback',
-          ...(sessionId && { $session_id: sessionId }),
-        },
-      });
-      await posthog.flush();
-    }
+    await capturePostHogEvent(distinctId, 'ai_chat_message_processed', {
+      language,
+      has_quote: Boolean(quote),
+      message_count: history.length,
+      source: 'fallback',
+      ...(sessionId && { $session_id: sessionId }),
+    });
     return res.status(200).json({ reply: fallbackReply(lastUserText, quote, language), source: 'fallback' });
   }
 
-  const posthog = createPostHogClient();
-
-  async function captureAndFlush(source) {
-    if (!posthog) return;
-    posthog.capture({
-      distinctId,
-      event: 'ai_chat_message_processed',
-      properties: {
-        language,
-        has_quote: Boolean(quote),
-        message_count: history.length,
-        source,
-        ...(sessionId && { $session_id: sessionId }),
-      },
+  async function captureProcessed(source) {
+    await capturePostHogEvent(distinctId, 'ai_chat_message_processed', {
+      language,
+      has_quote: Boolean(quote),
+      message_count: history.length,
+      source,
+      ...(sessionId && { $session_id: sessionId }),
     });
-    await posthog.flush();
   }
 
   try {
@@ -228,23 +212,24 @@ export default async function handler(req, res) {
     clearTimeout(timeout);
 
     if (!apiRes.ok) {
-      await captureAndFlush('fallback');
+      await captureProcessed('fallback');
       return res.status(200).json({ reply: fallbackReply(lastUserText, quote, language), source: 'fallback' });
     }
 
     const data = await apiRes.json();
     const reply = data?.choices?.[0]?.message?.content?.trim();
     if (!reply) {
-      await captureAndFlush('fallback');
+      await captureProcessed('fallback');
       return res.status(200).json({ reply: fallbackReply(lastUserText, quote, language), source: 'fallback' });
     }
-    await captureAndFlush('openai');
+    await captureProcessed('openai');
     return res.status(200).json({ reply, source: 'openai' });
   } catch (err) {
-    if (posthog) {
-      posthog.captureException(err, distinctId);
-      await posthog.flush();
-    }
+    await capturePostHogException(distinctId, err, {
+      language,
+      has_quote: Boolean(quote),
+      message_count: history.length,
+    });
     return res.status(200).json({ reply: fallbackReply(lastUserText, quote, language), source: 'fallback' });
   }
 }

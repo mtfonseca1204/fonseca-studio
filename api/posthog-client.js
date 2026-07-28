@@ -1,24 +1,33 @@
-import { PostHog } from 'posthog-node';
-
 const key = (process.env.POSTHOG_API_KEY || process.env.POSTHOG_KEY || '').trim();
-const host = process.env.POSTHOG_HOST || 'https://us.i.posthog.com';
+const host = (process.env.POSTHOG_HOST || 'https://us.i.posthog.com').replace(/\/$/, '');
 
-if (!key.startsWith('phc_')) {
-  if (process.env.NODE_ENV !== 'production') {
-    console.error(
-      'POSTHOG_API_KEY variable required by PostHog is missing or un-configured, ' +
-      'this causes events to be silently missed. ' +
-      'This error stops appearing once POSTHOG_API_KEY is configured'
-    );
+export function isPostHogConfigured() {
+  return key.startsWith('phc_');
+}
+
+export async function capturePostHogEvent(distinctId, event, properties = {}) {
+  if (!isPostHogConfigured()) return;
+  try {
+    await fetch(`${host}/capture/`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        api_key: key,
+        event,
+        distinct_id: distinctId || 'anonymous',
+        properties,
+      }),
+    });
+  } catch {
+    // Analytics must never break chat.
   }
 }
 
-export function createPostHogClient() {
-  if (!key.startsWith('phc_')) return null;
-  return new PostHog(key, {
-    host,
-    flushAt: 1,
-    flushInterval: 0,
-    enableExceptionAutocapture: true,
+export async function capturePostHogException(distinctId, error, properties = {}) {
+  if (!isPostHogConfigured()) return;
+  await capturePostHogEvent(distinctId, '$exception', {
+    ...properties,
+    $exception_message: error?.message || String(error),
+    $exception_type: error?.name || 'Error',
   });
 }

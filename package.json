@@ -5,8 +5,5 @@
     "build": "node scripts/generate-posthog-config.js",
     "posthog:setup": "npx -y @posthog/wizard@latest",
     "posthog:audit": "npx -y @posthog/wizard@latest audit all"
-  },
-  "dependencies": {
-    "posthog-node": "^5.46.1"
   }
 }
