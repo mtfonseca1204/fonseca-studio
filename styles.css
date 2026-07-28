@@ -18076,41 +18076,6 @@ body.short-case-page.project-case-page .project-hero-case .project-hero-title {
     margin-top: 0.9em;
 }
 
-.short-case__beat-list {
-    margin: 0.65em 0 0;
-    padding: 0 0 0 1.1em;
-    max-width: 65ch;
-    list-style: none;
-}
-
-.short-case__beat-list li {
-    position: relative;
-    margin: 0 0 0.55em;
-    padding-left: 0.85em;
-    font-family: 'Inter', sans-serif;
-    font-size: clamp(15px, 1.08vw, 16.5px);
-    font-weight: 450;
-    letter-spacing: -0.014em;
-    line-height: 1.55;
-    color: var(--text-dark);
-    text-wrap: pretty;
-}
-
-.short-case__beat-list li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0.62em;
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background: #ff5c00;
-}
-
-.short-case__beat-list li:last-child {
-    margin-bottom: 0;
-}
-
 .short-case__label {
     display: block;
     margin: 0 0 10px;
