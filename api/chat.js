@@ -5,6 +5,8 @@
 //  Zero npm deps: calls the OpenAI REST API with global fetch.
 // =====================================================
 
+import { createPostHogClient } from './posthog-client.js';
+
 const KNOWLEDGE = `
 IDENTITY
 - Name: Matheus Fonseca. Brand: Fonseca Studio (fonseca.studio).
@@ -146,11 +148,47 @@ export default async function handler(req, res) {
   const lastUser = [...history].reverse().find((m) => m && m.role === 'user');
   const lastUserText = lastUser ? String(lastUser.content || '') : '';
 
+  const distinctId = req.headers['x-posthog-distinct-id'] || 'anonymous';
+  const sessionId = req.headers['x-posthog-session-id'] || undefined;
+
   const apiKey = process.env.OPENAI_API_KEY;
 
   // No key configured → curated fallback so the feature still works.
   if (!apiKey) {
+    const posthog = createPostHogClient();
+    if (posthog) {
+      posthog.capture({
+        distinctId,
+        event: 'ai_chat_message_processed',
+        properties: {
+          language,
+          has_quote: Boolean(quote),
+          message_count: history.length,
+          source: 'fallback',
+          ...(sessionId && { $session_id: sessionId }),
+        },
+      });
+      await posthog.flush();
+    }
     return res.status(200).json({ reply: fallbackReply(lastUserText, quote, language), source: 'fallback' });
+  }
+
+  const posthog = createPostHogClient();
+
+  async function captureAndFlush(source) {
+    if (!posthog) return;
+    posthog.capture({
+      distinctId,
+      event: 'ai_chat_message_processed',
+      properties: {
+        language,
+        has_quote: Boolean(quote),
+        message_count: history.length,
+        source,
+        ...(sessionId && { $session_id: sessionId }),
+      },
+    });
+    await posthog.flush();
   }
 
   try {
@@ -190,16 +228,23 @@ export default async function handler(req, res) {
     clearTimeout(timeout);
 
     if (!apiRes.ok) {
+      await captureAndFlush('fallback');
       return res.status(200).json({ reply: fallbackReply(lastUserText, quote, language), source: 'fallback' });
     }
 
     const data = await apiRes.json();
     const reply = data?.choices?.[0]?.message?.content?.trim();
     if (!reply) {
+      await captureAndFlush('fallback');
       return res.status(200).json({ reply: fallbackReply(lastUserText, quote, language), source: 'fallback' });
     }
+    await captureAndFlush('openai');
     return res.status(200).json({ reply, source: 'openai' });
   } catch (err) {
+    if (posthog) {
+      posthog.captureException(err, distinctId);
+      await posthog.flush();
+    }
     return res.status(200).json({ reply: fallbackReply(lastUserText, quote, language), source: 'fallback' });
   }
 }

@@ -71,7 +71,25 @@ document.addEventListener('DOMContentLoaded', () => {
     initLazyBelowFoldMedia();
     initLazyWorkCardVideos();
     initPlainTerms();
+    initCvDownloadTracking();
 });
+
+// =====================================================
+// ANALYTICS — CV / resume download tracking
+// =====================================================
+function initCvDownloadTracking() {
+    document.querySelectorAll('a[href]').forEach((anchor) => {
+        const href = anchor.getAttribute('href') || '';
+        if (!/\.pdf(\?|$)/i.test(href)) return;
+        anchor.addEventListener('click', () => {
+            window.capturePosthog?.('cv_downloaded', {
+                href,
+                page: document.body?.className || '',
+                language: SITE_IS_PT ? 'pt-BR' : 'en',
+            });
+        });
+    });
+}
 
 // =====================================================
 // PLAIN ENGLISH — hover/tap glossary on portfolio terms
@@ -1698,6 +1716,10 @@ function initHeroCopyEmail() {
         const onSuccess = () => {
             showContactCopiedToast(trigger);
             if (trigger) markCopied(trigger);
+            window.capturePosthog?.('contact_copied', {
+                type: trigger?.hasAttribute('data-copy-phone') ? 'phone' : 'email',
+                page: document.body?.className || '',
+            });
         };
         if (!navigator.clipboard?.writeText) {
             onSuccess();
@@ -3470,9 +3492,17 @@ function initFonsecaLLM() {
     }
 
     async function fetchChatReply(history, quote) {
+        const extraHeaders = {};
+        if (window.posthog?.get_distinct_id) {
+            extraHeaders['X-PostHog-Distinct-Id'] = window.posthog.get_distinct_id();
+        }
+        if (window.posthog?.get_session_id) {
+            const sid = window.posthog.get_session_id();
+            if (sid) extraHeaders['X-PostHog-Session-Id'] = sid;
+        }
         const res = await fetch('/api/chat', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'application/json', ...extraHeaders },
             body: JSON.stringify({ messages: history, quote, language: SITE_IS_PT ? 'pt-BR' : 'en' }),
         });
         if (!res.ok) throw new Error('bad status ' + res.status);
@@ -3487,7 +3517,13 @@ function initFonsecaLLM() {
 
         const quoteForThisTurn = selectedQuote;
         const displayText = text || (SITE_IS_PT ? 'Conte mais sobre isto.' : 'Tell me about this.');
-        addBubble('user', quoteForThisTurn ? `“${quoteForThisTurn}”\n\n${displayText}` : displayText);
+        addBubble('user', quoteForThisTurn ? `"${quoteForThisTurn}"\n\n${displayText}` : displayText);
+
+        window.capturePosthog?.('ai_chat_message_sent', {
+            has_quote: Boolean(quoteForThisTurn),
+            language: SITE_IS_PT ? 'pt-BR' : 'en',
+            message_count: messages.length + 1,
+        });
 
         messages.push({ role: 'user', content: text || (SITE_IS_PT ? 'Conte mais sobre isto.' : 'Tell me more about this.') });
         chatInput.value = '';
@@ -3599,6 +3635,10 @@ function initFonsecaLLM() {
         document.body.classList.add('fllm-open');
         overlay.setAttribute('aria-hidden', 'false');
         panel.setAttribute('aria-hidden', 'false');
+        window.capturePosthog?.('ai_chat_opened', {
+            has_quote: Boolean(quote),
+            page: document.body?.className || '',
+        });
         if (!greeted) {
             greeted = true;
             window.setTimeout(() => {

@@ -18054,25 +18054,27 @@ body.short-case-page.project-case-page .project-hero-case .project-hero-title {
 }
 
 .short-case__beats {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: clamp(28px, 4vw, 48px);
-    margin-top: clamp(40px, 6vw, 64px);
-    padding-top: clamp(40px, 6vw, 56px);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(32px, 4.5vw, 44px);
+    margin-top: clamp(40px, 6vw, 56px);
+    padding-top: clamp(32px, 4.5vw, 44px);
     border-top: 1px solid var(--border-color);
 }
 
 .short-case__beat {
     min-width: 0;
+    padding: 0;
+    border: 0;
 }
 
 .short-case__label {
     display: block;
-    margin: 0 0 16px;
+    margin: 0 0 10px;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 600;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--text-light);
 }
@@ -18080,9 +18082,9 @@ body.short-case-page.project-case-page .project-hero-case .project-hero-title {
 .short-case__label::before {
     content: '';
     display: inline-block;
-    width: 16px;
+    width: 14px;
     height: 1px;
-    margin-right: 10px;
+    margin-right: 8px;
     vertical-align: middle;
     background: #ff5c00;
 }
@@ -18091,11 +18093,22 @@ body.short-case-page.project-case-page .project-hero-case .project-hero-title {
     margin: 0;
     max-width: none;
     font-family: 'Inter', sans-serif;
-    font-size: clamp(0.98rem, 1.4vw, 1.1rem);
+    font-size: clamp(15px, 1.08vw, 16.5px);
     font-weight: 450;
-    letter-spacing: -0.015em;
-    line-height: 1.55;
+    letter-spacing: -0.014em;
+    line-height: 1.62;
     color: var(--text-dark);
+    text-wrap: pretty;
+}
+
+.short-case__copy strong,
+.short-case__copy .case-brief__hl {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.short-case__copy .plain-term {
+    font-size: inherit;
 }
 
 .short-case__copy--muted {
@@ -18105,7 +18118,7 @@ body.short-case-page.project-case-page .project-hero-case .project-hero-title {
 .short-case__numbers {
     margin-top: clamp(36px, 5vw, 56px);
     padding-top: clamp(28px, 4vw, 40px);
-    border-top: 1px solid var(--border-color);
+    border-top: 0;
 }
 
 .short-case__inner > .short-case__numbers:first-child {
@@ -18121,42 +18134,51 @@ body.short-case-page.project-case-page .project-hero-case .project-hero-title {
 .short-case__metrics {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: clamp(20px, 3.5vw, 40px);
-    align-items: start;
+    gap: clamp(24px, 3.5vw, 40px);
+    align-items: stretch;
+    border: 0;
 }
 
 .short-case__metric {
     min-width: 0;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 100%;
+    padding: 0;
+    text-align: center;
+    border: 0;
+    background: transparent;
 }
 
 .short-case__metric-label {
     margin: 0;
     font-family: 'Inter', sans-serif;
-    font-size: 14px;
+    font-size: 13.5px;
     font-weight: 600;
     letter-spacing: -0.01em;
+    line-height: 1.35;
     color: var(--text-dark);
 }
 
 .short-case__metric-value {
     margin: 0;
     font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(2.5rem, 5.8vw, 4.5rem);
+    font-size: clamp(2.25rem, 5.2vw, 3.75rem);
     font-weight: 700;
     letter-spacing: -0.055em;
-    line-height: 0.92;
+    line-height: 0.95;
     color: #ff5c00;
     white-space: nowrap;
 }
 
 .short-case__metric-desc {
     margin: 2px 0 0;
-    max-width: 22ch;
+    max-width: 26ch;
     font-family: 'Inter', sans-serif;
-    font-size: 14.5px;
+    font-size: 14px;
     font-weight: 450;
     letter-spacing: -0.01em;
     line-height: 1.45;
@@ -18403,11 +18425,19 @@ body.short-case-page.project-case-page .project-hero.project-hero-case {
 @media (max-width: 900px) {
     .short-case__metrics {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 32px;
+    }
+
+    .short-case__metric {
+        padding: 0;
     }
 
     .short-case__metric-value {
-        font-size: clamp(3rem, 14vw, 4.25rem);
+        font-size: clamp(2.75rem, 14vw, 3.5rem);
+    }
+
+    .short-case__metric-desc {
+        max-width: 32ch;
     }
 
     .short-case__role {
@@ -18416,8 +18446,14 @@ body.short-case-page.project-case-page .project-hero.project-hero-case {
     }
 
     .short-case__beats {
-        grid-template-columns: 1fr;
-        gap: 32px;
+        gap: 28px;
+        margin-top: clamp(36px, 5vw, 48px);
+        padding-top: clamp(28px, 4vw, 36px);
+    }
+
+    .short-case__copy {
+        font-size: 15px;
+        line-height: 1.6;
     }
 
     .short-case__bento-pair {
@@ -18429,11 +18465,6 @@ body.short-case-page.project-case-page .project-hero.project-hero-case {
 @media (max-width: 768px) {
     .short-case__inner {
         padding: 0 24px;
-    }
-
-    .short-case__beats {
-        grid-template-columns: 1fr;
-        gap: 40px;
     }
 
     .short-case__top {

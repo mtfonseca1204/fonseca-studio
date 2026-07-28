@@ -1,12 +1,6 @@
 # fonseca.studio
 
-Portfolio site for **Matheus Fonseca**, senior product designer.
-
-Live: [fonseca.studio](https://fonseca.studio)
-
-## Stack
-
-Static HTML, CSS, and JavaScript. Deployed on [Vercel](https://vercel.com).
+Portfolio website.
 
 ## Local preview
 
@@ -16,6 +10,6 @@ python3 -m http.server 8080
 
 Open `http://localhost:8080`.
 
-## Deploy
+## Stack
 
-Push to `main` on GitHub. Vercel redeploys automatically.
+HTML, CSS, JavaScript.
