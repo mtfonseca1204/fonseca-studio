@@ -1,7 +1,9 @@
 (function initPostHog() {
     const config = window.FONSECA_POSTHOG_CONFIG || {};
     const key = (config.key || window.FONSECA_POSTHOG_KEY || '').trim();
-    const apiHost = (config.api_host || 'https://us.i.posthog.com').trim();
+    // Prefer same-origin proxy so ad blockers don't kill capture.
+    const apiHost = (config.api_host || '/relay-fsg').trim();
+    const uiHost = (config.ui_host || 'https://us.posthog.com').trim();
 
     if (!key.startsWith('phc_')) {
         if (/localhost|127\.0\.0\.1/.test(window.location.hostname)) {
@@ -14,7 +16,10 @@
     const forceLocal = params.has('posthog') || params.get('posthog') === '1';
     const host = window.location.hostname;
     const isLocal = host === 'localhost' || host === '127.0.0.1';
-    if (isLocal && !forceLocal) return;
+    if (isLocal && !forceLocal) {
+        console.info('[PostHog] Skipped on localhost. Add ?posthog=1 to enable local tracking.');
+        return;
+    }
 
     !function (t, e) {
         var o, n, p, r;
@@ -45,7 +50,7 @@
     const lang = document.documentElement.lang || 'en';
     posthog.init(key, {
         api_host: apiHost,
-        ui_host: apiHost.replace('.i.posthog.com', '.posthog.com'),
+        ui_host: uiHost,
         defaults: '2026-05-30',
         person_profiles: 'identified_only',
         capture_pageview: true,
