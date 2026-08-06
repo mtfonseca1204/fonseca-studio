@@ -11122,7 +11122,10 @@ body.project-case-page .project-hero .container.container-narrow {
     }
 
     body.home-page .hero-intro__name {
-        font-size: clamp(6.25rem, 6.4vw, 7.75rem);
+        font-size: clamp(2.35rem, 0.9rem + 3vw, 3.85rem);
+        line-height: 1.06;
+        letter-spacing: -0.04em;
+        max-width: none;
     }
 
     body.home-page .hero-intro__bio {
@@ -11155,17 +11158,21 @@ body.project-case-page .project-hero .container.container-narrow {
 .hero-intro__name {
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 700;
-    font-size: clamp(3.25rem, 9.5vw, 6.25rem);
-    letter-spacing: -0.048em;
+    font-size: clamp(1.7rem, 0.95rem + 3.2vw, 3.75rem);
+    letter-spacing: -0.04em;
     color: var(--text-primary);
     margin: 0;
-    line-height: 0.9;
+    line-height: 1.06;
     display: flex;
     flex-direction: column;
+    max-width: 100%;
 }
 
 .hero-intro__name-line {
     display: block;
+    width: max-content;
+    max-width: 100%;
+    white-space: nowrap;
 }
 
 .hero-intro__typewriter {
@@ -11180,6 +11187,17 @@ body.project-case-page .project-hero .container.container-narrow {
     color: #ff5c00;
     margin-left: 0.02em;
     display: inline-block;
+    animation: heroNameDotBlink 1.35s ease-in-out infinite;
+}
+
+/* Home hero: keep the period hidden until the typewriter finishes */
+.hero-intro__name .hero-intro__name-dot {
+    opacity: 0;
+    animation: none;
+}
+
+.hero-intro__name .hero-intro__typewriter.is-typed + .hero-intro__name-dot {
+    opacity: 1;
     animation: heroNameDotBlink 1.35s ease-in-out infinite;
 }
 
@@ -11203,15 +11221,17 @@ body.project-case-page .project-hero .container.container-narrow {
         animation: none;
     }
 
+    .hero-intro__name .hero-intro__typewriter.is-typed + .hero-intro__name-dot {
+        opacity: 1;
+        animation: none;
+    }
+
     .hero-intro__status .status-dot::after {
         animation: none;
     }
 }
 
 .hero-intro__bio {
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
     font-family: 'Inter', sans-serif;
     font-size: clamp(14.5px, 1vw, 15.5px);
     font-weight: 400;
@@ -11224,23 +11244,26 @@ body.project-case-page .project-hero .container.container-narrow {
 }
 
 .hero-intro__bio-text {
-    flex: 1;
-    min-width: 0;
     text-wrap: pretty;
+}
+
+.hero-intro__bio-name {
+    color: var(--text-primary);
+    font-weight: 600;
+    background: rgba(255, 92, 0, 0.12);
+    padding: 0.02em 0.16em;
+    border-radius: 2px;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+}
+
+[data-theme="dark"] .hero-intro__bio-name {
+    background: rgba(255, 92, 0, 0.2);
+    color: #fff;
 }
 
 .hero-intro__bio-avail {
     white-space: nowrap;
-}
-
-.hero-intro__bio-mark {
-    flex-shrink: 0;
-    width: 2px;
-    min-height: 100%;
-    align-self: stretch;
-    margin-top: 4px;
-    background: linear-gradient(to bottom, #ff5c00 0%, rgba(255, 92, 0, 0.15) 100%);
-    border-radius: 1px;
 }
 
 .hero-intro__email {
@@ -11697,7 +11720,18 @@ body.project-case-page .project-hero .container.container-narrow {
     }
 
     .hero-intro__name {
-        font-size: clamp(2.85rem, 14vw, 4rem);
+        font-size: clamp(1.4rem, 0.85rem + 4.2vw, 2.25rem);
+        max-width: 100%;
+    }
+
+    .hero-intro__name-line {
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 380px) {
+    .hero-intro__name {
+        font-size: clamp(1.25rem, 5.8vw, 1.55rem);
     }
 }
 
@@ -18339,6 +18373,10 @@ body.short-case-page.project-case-page .project-hero-case .project-hero-title {
 .short-case__top {
     padding-top: calc(var(--site-nav-offset) + 18px);
     margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
 }
 
 .short-case__back {
@@ -18358,6 +18396,41 @@ body.short-case-page.project-case-page .project-hero-case .project-hero-title {
 .short-case__back:hover {
     color: #ff5c00;
     transform: translateX(-2px);
+}
+
+.short-case__top-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--text-dark);
+    border-bottom: 1px solid #ff5c00;
+    padding-bottom: 2px;
+    transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.short-case__top-cta:hover {
+    color: #ff5c00;
+    transform: translateX(2px);
+}
+
+.short-case__top-cta-arrow {
+    color: #ff5c00;
+    transition: transform 0.2s ease;
+}
+
+.short-case__top-cta:hover .short-case__top-cta-arrow {
+    transform: translateX(3px);
+}
+
+[data-theme="dark"] .short-case__top-cta {
+    color: var(--text-primary);
 }
 
 body.short-case-page.project-case-page .project-hero.project-hero-case {
