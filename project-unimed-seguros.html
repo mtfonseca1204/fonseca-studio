@@ -23,8 +23,8 @@
     <meta name="twitter:image" content="https://fonseca.studio/Unimed/Cover/Cover%20unimed%20Hero%20cover.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260769">
+    <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;500;600;700;800&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=20260819q">
 
     
     <script>
@@ -62,7 +62,7 @@
             <div class="nav-left">
                 <a href="index.html" class="nav-logo">
                     <img src="logo.svg" alt="Fonseca" class="nav-logo-img logo-light">
-                    <img src="logo white.svg" alt="Fonseca" class="nav-logo-img logo-dark">
+                    <img src="logo%20white.svg" alt="Fonseca" class="nav-logo-img logo-dark">
                 </a>
             </div>
             <div class="nav-center">
@@ -76,7 +76,7 @@
                     <svg class="icon-sun" width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M10 3V1M10 19V17M17 10H19M1 10H3M15.657 4.343L17.071 2.929M2.929 17.071L4.343 15.657M15.657 15.657L17.071 17.071M2.929 2.929L4.343 4.343M14 10C14 12.2091 12.2091 14 10 14C7.79086 14 6 12.2091 6 10C6 7.79086 7.79086 6 10 6C12.2091 6 14 7.79086 14 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     <svg class="icon-moon" width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </button>
-                <a href="project-unimed-seguros-pt.html" class="nav-cta language-toggle" aria-label="Mudar idioma para português do Brasil"><span>PT</span><span class="language-toggle__sep" aria-hidden="true">/</span><span class="is-active">EN</span></a>
+                <a href="project-unimed-seguros-pt.html" class="nav-cta language-toggle" aria-label="Mudar idioma para português do Brasil"><span class="is-active">EN</span><span class="language-toggle__sep" aria-hidden="true">/</span><span>PT</span></a>
                 <button class="mobile-menu-toggle" aria-label="Toggle menu"><span></span><span></span></button>
             </div>
         </div>
@@ -125,10 +125,35 @@
 
     <section class="project-case-content case-editorial">
         <div class="container container-narrow">
-            <div id="case-scan" class="case-scan" aria-label="Project summary for quick reading">
-                <article class="case-scan__line"><span class="case-scan__label">Problem</span><span class="case-scan__text">Remote care was urgent, but <strong>generic apps</strong> with fragmented scheduling weren&rsquo;t built for a large institutional healthcare audience.</span></article>
-                <article class="case-scan__line"><span class="case-scan__label">Approach</span><span class="case-scan__text"><strong>Four pillars, trust-first design</strong>, dedicated onboarding for 60+ beneficiaries, and 24/7 in-app support.</span></article>
-                <article class="case-scan__line"><span class="case-scan__label">Outcome</span><span class="case-scan__text"><strong>40K+ beneficiaries</strong>, ~50K consultations/month, &lt;30% no-show, 80%+ chat retention.</span></article>
+            <div id="case-scan" class="case-brief case-scan" aria-label="Project summary for quick reading">
+                <div class="case-brief__grid">
+                    <article class="case-brief__card">
+                        <h3 class="case-brief__card-label">Problem</h3>
+                        <p class="case-brief__card-text">Remote care was urgent, but <mark class="case-brief__hl">generic apps</mark> with fragmented scheduling weren&rsquo;t built for a large institutional healthcare audience.</p>
+                    </article>
+                    <article class="case-brief__card">
+                        <h3 class="case-brief__card-label">Approach</h3>
+                        <p class="case-brief__card-text"><mark class="case-brief__hl">Four pillars, trust-first design</mark>, dedicated onboarding for 60+ beneficiaries, and 24/7 in-app support.</p>
+                    </article>
+                    <article class="case-brief__card case-brief__card--result">
+                        <h3 class="case-brief__card-label">Outcome</h3>
+                        <p class="case-brief__card-text"><mark class="case-brief__hl">40K+ beneficiaries</mark>, ~50K consultations/month, &lt;30% no-show, 80%+ chat retention.</p>
+                    </article>
+                </div>
+                <ul class="case-scan__stats" aria-label="Headline numbers">
+                    <li class="case-scan__stat">
+                        <span class="case-scan__stat-value">50K</span>
+                        <span class="case-scan__stat-label">Consultations per month</span>
+                    </li>
+                    <li class="case-scan__stat">
+                        <span class="case-scan__stat-value">40K<span class="case-scan__stat-unit">+</span></span>
+                        <span class="case-scan__stat-label">Primary beneficiaries</span>
+                    </li>
+                    <li class="case-scan__stat">
+                        <span class="case-scan__stat-value">&lt;30<span class="case-scan__stat-unit">%</span></span>
+                        <span class="case-scan__stat-label">No-show rate</span>
+                    </li>
+                </ul>
             </div>
 
             <section id="problem" class="case-section">
@@ -264,7 +289,7 @@
                             <p class="case-big-stat__label">Chat retention · doubts resolved in-app</p>
                         </article>
                     </div>
-                    <p class="case-impact-lead">Consultation volume reached approximately <strong>50,000 per month</strong>, an unusually high number, especially considering the pandemic period the product was operating in. The app became the access point for medical orders, prescriptions, medical certificates, and other kinds of assistance when almost no one could leave home.</p>
+                    <p class="case-impact-lead">The app became the primary healthcare access point during lockdowns, handling prescriptions, certificates, and referrals without sending users to other channels.</p>
                     <ul class="case-list case-list--impact case-impact-list">
                         <li><strong>In-consultation referrals:</strong> when needed, made directly during the consultation, no extra step or redirect to another channel</li>
                         <li><strong>No-show discipline:</strong> patients who scheduled but didn&rsquo;t attend stayed below 30%, a strong number given the context and the product&rsquo;s role as primary healthcare access</li>
@@ -311,10 +336,10 @@
                         <img src="logo.svg" alt="" class="footer-logo-img logo-light" height="32">
                         <img src="logo%20white.svg" alt="" class="footer-logo-img logo-dark" height="32">
                     </a>
-                    <p class="hero-intro__bio footer-v3__tagline">Product designer turning complex systems into clear, trustworthy experiences<span class="footer-v3__dot" aria-hidden="true">.</span></p>
+                    <p class="footer-v3__tagline">Product designer turning complex systems into clear, trustworthy experiences<span class="footer-v3__dot" aria-hidden="true">.</span></p>
                 </div>
                 <nav class="footer-v3__col footer-v3__col--nav" aria-label="Footer">
-                    <p class="hero-intro__role footer-v3__col-head">Navigate</p>
+                    <p class="footer-v3__col-head">Navigate</p>
                     <div class="footer-v3__links">
                         <a href="index.html#work">Work</a>
                         <a href="fun.html">Side Quests</a>
@@ -323,7 +348,7 @@
                     </div>
                 </nav>
                 <div class="footer-v3__col footer-v3__col--social">
-                    <p class="hero-intro__role footer-v3__col-head">Connect</p>
+                    <p class="footer-v3__col-head">Connect</p>
                     <div class="footer-v3__links">
                         <a href="#" data-copy-email>fonsecaa.design@gmail.com</a>
                         <a href="https://www.linkedin.com/in/maths-fonseca/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -334,7 +359,6 @@
             </div>
             <div class="footer-bottom footer-v3__bottom">
                 <p>&copy; <span id="current-year">2026</span> Matheus Fonseca &middot; Rio de Janeiro, Brazil</p>
-                <span class="footer-coords">22&deg;54' S &middot; 43&deg;12' W</span>
                 <a href="#" class="footer-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Back to top &uarr;</a>
             </div>
         </div>

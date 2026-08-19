@@ -3,12 +3,51 @@
   "outputDirectory": ".",
   "redirects": [
     {
-      "source": "/",
-      "destination": "/index-pt.html",
-      "permanent": false
+      "source": "/project-hedgehog-product-short.html",
+      "destination": "/project-hedgehog-product.html",
+      "permanent": true
+    },
+    {
+      "source": "/project-hedgehog-product-short-pt.html",
+      "destination": "/project-hedgehog-product-pt.html",
+      "permanent": true
+    },
+    {
+      "source": "/project-hedgehog-short.html",
+      "destination": "/project-hedgehog.html",
+      "permanent": true
+    },
+    {
+      "source": "/project-hedgehog-short-pt.html",
+      "destination": "/project-hedgehog-pt.html",
+      "permanent": true
+    },
+    {
+      "source": "/project-transparent-space-short.html",
+      "destination": "/project-transparent-space.html",
+      "permanent": true
+    },
+    {
+      "source": "/project-transparent-space-short-pt.html",
+      "destination": "/project-transparent-space-pt.html",
+      "permanent": true
+    },
+    {
+      "source": "/project-unimed-seguros-short.html",
+      "destination": "/project-unimed-seguros.html",
+      "permanent": true
+    },
+    {
+      "source": "/project-unimed-seguros-short-pt.html",
+      "destination": "/project-unimed-seguros-pt.html",
+      "permanent": true
     }
   ],
   "rewrites": [
+    {
+      "source": "/",
+      "destination": "/index.html"
+    },
     {
       "source": "/relay-fsg/static/:path(.*)",
       "destination": "https://us-assets.i.posthog.com/static/:path"

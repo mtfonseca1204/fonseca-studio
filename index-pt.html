@@ -8,9 +8,9 @@
     <link rel="icon" type="image/svg+xml" href="logo.svg">
     <link rel="apple-touch-icon" href="logo.svg">
     <link rel="canonical" href="https://fonseca.studio/index-pt.html">
-    <link rel="alternate" hreflang="en" href="https://fonseca.studio/index.html">
+    <link rel="alternate" hreflang="en" href="https://fonseca.studio/">
     <link rel="alternate" hreflang="pt-BR" href="https://fonseca.studio/index-pt.html">
-    <link rel="alternate" hreflang="x-default" href="https://fonseca.studio/index-pt.html">
+    <link rel="alternate" hreflang="x-default" href="https://fonseca.studio/">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://fonseca.studio/index-pt.html">
     <meta property="og:title" content="Matheus Fonseca | Senior Product Designer">
@@ -47,9 +47,8 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="preload" href="wave2-kanagawa.png" as="image" type="image/png">
-    <link rel="stylesheet" href="styles.css?v=20260806c">
+    <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;500;600;700;800&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=20260819w">
     <style>
         #site-splash{position:fixed;inset:0;z-index:10060;display:flex;align-items:center;justify-content:center;background:#fafaf9;opacity:1;transition:opacity .45s cubic-bezier(.16,1,.3,1),visibility .45s}
         html[data-theme="dark"] #site-splash{background:#0a0a0a}
@@ -87,7 +86,7 @@
             <div class="nav-left">
                 <a href="#home" class="nav-logo">
                     <img src="logo.svg" alt="Fonseca" class="nav-logo-img logo-light">
-                    <img src="logo white.svg" alt="Fonseca" class="nav-logo-img logo-dark">
+                    <img src="logo%20white.svg" alt="Fonseca" class="nav-logo-img logo-dark">
                 </a>
             </div>
             <div class="nav-center">
@@ -101,7 +100,7 @@
                     <svg class="icon-sun" width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M10 3V1M10 19V17M17 10H19M1 10H3M15.657 4.343L17.071 2.929M2.929 17.071L4.343 15.657M15.657 15.657L17.071 17.071M2.929 2.929L4.343 4.343M14 10C14 12.2091 12.2091 14 10 14C7.79086 14 6 12.2091 6 10C6 7.79086 7.79086 6 10 6C12.2091 6 14 7.79086 14 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     <svg class="icon-moon" width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </button>
-                <a href="index.html" class="nav-cta language-toggle" aria-label="Switch language to English"><span class="is-active">PT</span><span class="language-toggle__sep" aria-hidden="true">/</span><span>EN</span></a>
+                <a href="index.html" class="nav-cta language-toggle" aria-label="Switch language to English"><span>EN</span><span class="language-toggle__sep" aria-hidden="true">/</span><span class="is-active">PT</span></a>
                 <button class="mobile-menu-toggle" aria-label="Abrir ou fechar menu"><span></span><span></span></button>
             </div>
         </div>
@@ -117,29 +116,19 @@
 
     <!-- Hero -->
     <section id="home" class="hero hero--intro">
-        <canvas class="hero-ascii-terrain" aria-hidden="true"></canvas>
-        <img id="heroAsciiSrc" class="hero-ascii-src" src="wave2-kanagawa.png" alt="" width="626" height="417" decoding="async" fetchpriority="low">
         <div class="container hero-intro">
             <div class="hero-intro__layout">
                 <div class="hero-intro__column">
                     <div class="hero-intro__main">
-                        <h1 class="hero-intro__name" data-anim="title" aria-label="Transformando o complexo em experiências claras e confiáveis.">
+                        <h1 class="hero-intro__name hero-intro__name--statement" data-anim="title" aria-label="Um designer criativo explorando a interseção entre marca, produto, tecnologia e IA para construir experiências com propósito e personalidade.">
                             <span class="hero-intro__name-line">
-                                <span class="hero-intro__typewriter" data-typewriter="Transformando o complexo"></span>
-                            </span>
-                            <span class="hero-intro__name-line">
-                                <span class="hero-intro__typewriter" data-typewriter="em experiências claras"></span>
-                            </span>
-                            <span class="hero-intro__name-line hero-intro__name-line--accent">
-                                <span class="hero-intro__typewriter" data-typewriter="e confiáveis"></span><span class="hero-intro__name-dot" aria-hidden="true">.</span>
+                                <span class="hero-intro__typewriter" data-typewriter="Um designer criativo explorando a interseção entre marca, produto, tecnologia e IA para construir experiências com propósito e personalidade"></span><span class="hero-intro__name-dot" aria-hidden="true">.</span>
                             </span>
                         </h1>
-                        <p class="hero-intro__bio" data-anim="fade"><span class="hero-intro__bio-text">Oi, meu nome é <span class="hero-intro__bio-name">Matheus Fonseca</span> e sou Product Designer com +5 anos de experiência com raízes em Art Direction. <span class="hero-intro__bio-avail">Disponível para projetos no mundo todo.</span></span></p>
-                        <button type="button" class="hero-intro__email" data-copy-email data-anim="fade" aria-label="Copiar endereço de e-mail">
-                            <span class="hero-intro__email-label">fonsecaa.design@gmail.com</span>
-                            <span class="hero-intro__email-action" aria-hidden="true">Copiar</span>
-                        </button>
                     </div>
+                </div>
+                <div class="hero-intro__media">
+                    <video class="hero-main-video" data-src="Video%20main%20page.webm" muted loop playsinline preload="metadata" aria-hidden="true"></video>
                 </div>
             </div>
         </div>
@@ -150,15 +139,13 @@
     <!-- 01 Work -->
     <section id="work" class="section-work">
         <div class="container">
-            <header class="section-head section-head--plain" data-anim="fade">
-                <span class="section-num">01</span>
+            <header class="section-head section-head--index" data-anim="fade">
                 <h2 class="section-title">Projetos selecionados</h2>
-                <span class="section-rule"></span>
-                <a href="fun-pt.html" class="section-link">Side Quests &nearr;</a>
+                <span class="section-count">[04]</span>
             </header>
             <div class="work-grid work-grid--portfolio">
                 <article class="work-card work-card--portfolio" data-anim="card">
-                    <a href="project-hedgehog-product-short-pt.html" class="work-card__link" data-case-nav="to-short">
+                    <a href="project-hedgehog-product-pt.html" class="work-card__link">
                         <div class="work-card__media">
                             <div class="work-card__thumb" data-project-carousel>
                                 <div class="project-card__slides">
@@ -167,16 +154,23 @@
                             </div>
                         </div>
                         <div class="work-card__info">
-                            <h3 class="work-card__name">Quebrando a barreira com early users em cripto, via tx fees<span class="work-card__name-dot" aria-hidden="true">.</span></h3>
                             <p class="work-card__meta-line">
                                 <span class="work-card__meta-client">Hedgehog</span>
+                                <span class="work-card__meta-sep" aria-hidden="true">&middot;</span>
+                                <span class="work-card__meta-kind">Prediction market</span>
                             </p>
+                            <h3 class="work-card__name">Quebrando a barreira com early users em cripto, via tx fees<span class="work-card__name-dot" aria-hidden="true">.</span></h3>
+                            <p class="work-card__desc">Um prediction market redesenhado a partir de um modelo mais simples, levando early users da curiosidade à participação com confiança.</p>
+                            <ul class="work-card__impact">
+                                <li class="work-card__stat">100% entenderam at&eacute; a 2&ordf; rodada</li>
+                                <li class="work-card__stat">10s &rarr; 2&ndash;4s at&eacute; a primeira a&ccedil;&atilde;o</li>
+                            </ul>
                         </div>
                     </a>
                 </article>
 
                 <article class="work-card work-card--portfolio" data-anim="card">
-                    <a href="project-hedgehog-short-pt.html" class="work-card__link" data-case-nav="to-short">
+                    <a href="project-hedgehog-pt.html" class="work-card__link">
                         <div class="work-card__media">
                             <div class="work-card__thumb" data-project-carousel>
                                 <div class="project-card__slides">
@@ -185,16 +179,23 @@
                             </div>
                         </div>
                         <div class="work-card__info">
-                            <h3 class="work-card__name">Sem produto. Sem ads. Uma waitlist que converteu 37,5%<span class="work-card__name-dot" aria-hidden="true">.</span></h3>
                             <p class="work-card__meta-line">
                                 <span class="work-card__meta-client">Hedgehog</span>
+                                <span class="work-card__meta-sep" aria-hidden="true">&middot;</span>
+                                <span class="work-card__meta-kind">Convers&atilde;o da waitlist</span>
                             </p>
+                            <h3 class="work-card__name">Sem produto. Sem ads. Uma waitlist que converteu 37,5%<span class="work-card__name-dot" aria-hidden="true">.</span></h3>
+                            <p class="work-card__desc">Uma experiência de pré-lançamento baseada em confiança, que transformou uma comunidade Web3 institucional em pipeline para o produto.</p>
+                            <ul class="work-card__impact">
+                                <li class="work-card__stat">15.000+ cadastros na waitlist</li>
+                                <li class="work-card__stat">$0 de tr&aacute;fego pago</li>
+                            </ul>
                         </div>
                     </a>
                 </article>
 
                 <article class="work-card work-card--portfolio" data-anim="card">
-                    <a href="project-transparent-space-short-pt.html" class="work-card__link" data-case-nav="to-short">
+                    <a href="project-transparent-space-pt.html" class="work-card__link">
                         <div class="work-card__media">
                             <div class="work-card__thumb work-card__thumb--video-light" data-project-carousel>
                                 <div class="project-card__slides">
@@ -203,16 +204,23 @@
                             </div>
                         </div>
                         <div class="work-card__info">
-                            <h3 class="work-card__name">De 20 minutos cruzando dados a 30 segundos de certeza<span class="work-card__name-dot" aria-hidden="true">.</span></h3>
                             <p class="work-card__meta-line">
                                 <span class="work-card__meta-client">Transparent.space</span>
+                                <span class="work-card__meta-sep" aria-hidden="true">&middot;</span>
+                                <span class="work-card__meta-kind">Dashboard</span>
                             </p>
+                            <h3 class="work-card__name">De 20 minutos cruzando dados a 30 segundos de certeza<span class="work-card__name-dot" aria-hidden="true">.</span></h3>
+                            <p class="work-card__desc">Uma plataforma de monitoramento institucional que transforma dados fragmentados de Market Makers em decisões claras e defensáveis.</p>
+                            <ul class="work-card__impact">
+                                <li class="work-card__stat">61 &rarr; 88% de conclus&atilde;o de tarefas</li>
+                                <li class="work-card__stat">20min &rarr; &lt;30s por verifica&ccedil;&atilde;o</li>
+                            </ul>
                         </div>
                     </a>
                 </article>
 
                 <article class="work-card work-card--portfolio" data-anim="card">
-                    <a href="project-unimed-seguros-short-pt.html" class="work-card__link" data-case-nav="to-short">
+                    <a href="project-unimed-seguros-pt.html" class="work-card__link">
                         <div class="work-card__media">
                             <div class="work-card__thumb" data-project-carousel>
                                 <div class="project-card__slides">
@@ -221,10 +229,17 @@
                             </div>
                         </div>
                         <div class="work-card__info">
-                            <h3 class="work-card__name">De dúvida na telemedicina a 50K consultas por mês<span class="work-card__name-dot" aria-hidden="true">.</span></h3>
                             <p class="work-card__meta-line">
                                 <span class="work-card__meta-client">Unimed Seguros</span>
+                                <span class="work-card__meta-sep" aria-hidden="true">&middot;</span>
+                                <span class="work-card__meta-kind">Aplicativo de seguros</span>
                             </p>
+                            <h3 class="work-card__name">De dúvida na telemedicina a 50K consultas por mês<span class="work-card__name-dot" aria-hidden="true">.</span></h3>
+                            <p class="work-card__desc">Uma experiência confiável de telemedicina, criada para manter o cuidado acessível, guiado e acolhedor durante a pandemia.</p>
+                            <ul class="work-card__impact">
+                                <li class="work-card__stat">50 mil consultas por m&ecirc;s</li>
+                                <li class="work-card__stat">40 mil+ benefici&aacute;rios titulares</li>
+                            </ul>
                         </div>
                     </a>
                 </article>
@@ -235,11 +250,9 @@
     <!-- 02 Motion -->
     <section id="motion" class="section-motion">
         <div class="container">
-            <header class="section-head section-head--plain" data-anim="fade">
-                <span class="section-num">02</span>
-                <h2 class="section-title">Como motion entrou no meu trabalho</h2>
-                <span class="section-rule"></span>
-                <a href="fun-pt.html" class="section-link">Side Quests &nearr;</a>
+            <header class="motion-intro" data-anim="fade">
+                <h2 class="motion-intro__title">Motion<span class="motion-intro__slash">/</span>3d</h2>
+                <p class="motion-intro__sub">Como o motion 3D entra no meu trabalho</p>
             </header>
         </div>
         <div class="motion-carousel motion-carousel--cascade" data-motion-carousel tabindex="0" aria-roledescription="carrossel" aria-label="Clipes de animação 3D da Hedgehog">
@@ -271,69 +284,64 @@
     <!-- Testimonials -->
     <section id="testimonials" class="section-testimonials">
         <div class="container">
-            <header class="section-head section-head--plain" data-anim="fade">
-                <span class="section-num">03</span>
+            <header class="section-head section-head--index" data-anim="fade">
                 <h2 class="section-title">Depoimentos</h2>
-                <span class="section-rule"></span>
+                <span class="section-count">[04]</span>
             </header>
 
-            <div class="testimonials-stage" data-testimonials-carousel tabindex="0" aria-roledescription="carrossel" aria-label="Depoimentos de clientes">
-<div class="testimonials-stage__body">
-                    <p class="testimonials-stage__meta">
-                        <span class="testimonials-stage__count"><span data-testimonials-current>1</span> / <span data-testimonials-total>4</span></span>
-                        <span class="testimonials-stage__label">O que os clientes dizem:</span>
-                    </p>
-
-                    <div class="testimonials-stage__viewport">
-                    <article class="testimonials-stage__slide active" data-testimonials-slide aria-hidden="false">
-                        <blockquote class="testimonials-stage__quote" data-testimonials-quote>&ldquo;Trabalhar com o Fonseca tem sido excepcional. Ele combina uma ótima intuição visual com uma leitura clara dos objetivos do produto, criando soluções marcantes, práticas e centradas nas pessoas. O que mais chama atenção é sua capacidade de transformar ideias abstratas e direcionamentos iniciais em <mark class="case-brief__hl">design systems claros e bem estruturados.</mark> Ele trabalha rápido sem abrir mão da qualidade, se comunica com clareza e evolui as soluções com critério a partir do feedback.&rdquo;<span class="testimonials-stage__point" aria-hidden="true"></span></blockquote>
-                        <footer class="testimonials-stage__author">
-                            <img src="Testimunials Photo/Esko.png" alt="" class="testimonials-stage__avatar">
-                            <div>
-                                <strong>Esko K.</strong>
-                                <span>CEO, Hedgehog</span>
-                            </div>
-                        </footer>
-                    </article>
-                    <article class="testimonials-stage__slide" data-testimonials-slide aria-hidden="true">
-                        <blockquote class="testimonials-stage__quote" data-testimonials-quote>&ldquo;O Fonseca é o designer que procuro para tudo. Explico uma vez, e ele volta com algo <mark class="case-brief__hl">realmente premium.</mark> Sem idas e vindas, sempre no mais alto nível.&rdquo;<span class="testimonials-stage__point" aria-hidden="true"></span></blockquote>
-                        <footer class="testimonials-stage__author">
-                            <img src="Testimunials Photo/Pedro.png" alt="" class="testimonials-stage__avatar">
-                            <div>
-                                <strong>Pedro A.</strong>
-                                <span>Fundador, Transparent Space</span>
-                            </div>
-                        </footer>
-                    </article>
-                    <article class="testimonials-stage__slide" data-testimonials-slide aria-hidden="true">
-                        <blockquote class="testimonials-stage__quote" data-testimonials-quote>&ldquo;O Fonseca é muito dedicado. Decidi contratá-lo para a AI Agent Arena pela sua habilidade excepcional em UX e UI e pela <mark class="case-brief__hl">comunicação clara,</mark> que ajudou a tornar a v1 da AI Agent Arena um sucesso.&rdquo;<span class="testimonials-stage__point" aria-hidden="true"></span></blockquote>
-                        <footer class="testimonials-stage__author">
-                            <img src="Testimunials Photo/Bruno.jpeg" alt="" class="testimonials-stage__avatar">
-                            <div>
-                                <strong>Bruno Eleodoro</strong>
-                                <span>Fundador, Agent Arena</span>
-                            </div>
-                        </footer>
-                    </article>
-                    <article class="testimonials-stage__slide" data-testimonials-slide aria-hidden="true">
-                        <blockquote class="testimonials-stage__quote" data-testimonials-quote>&ldquo;Trabalhar com o Fonseca foi uma ótima experiência. Ele transformou nosso posicionamento em um <mark class="case-brief__hl">sistema de identidade visual coeso,</mark> com padrões e templates claros que facilitaram muito a criação de conteúdo para redes sociais e a consistência da marca em diferentes pontos de contato. Sua capacidade de entender não só o que precisávamos, mas por que precisávamos, fez toda a diferença. Recomendo muito.&rdquo;<span class="testimonials-stage__point" aria-hidden="true"></span></blockquote>
-                        <footer class="testimonials-stage__author">
-                            <img src="Testimunials Photo/Rafael.png" alt="" class="testimonials-stage__avatar">
-                            <div>
-                                <strong>Rafael Queiroz</strong>
-                                <span>Líder de Design, Picnic</span>
-                            </div>
-                        </footer>
-                    </article>
+            <div class="quote-carousel" data-testimonials-carousel tabindex="0" aria-roledescription="carrossel" aria-label="Depoimentos de clientes">
+                <div class="quote-carousel__viewport">
+                    <div class="quote-carousel__track">
+                        <article class="quote-card" data-testimonials-slide>
+                            <p class="quote-item__role">CEO, Hedgehog</p>
+                            <blockquote class="quote-item__quote">
+                                <p>Trabalhar com o Fonseca tem sido excepcional. Ele combina uma &oacute;tima intui&ccedil;&atilde;o visual com uma leitura clara dos objetivos do produto, criando solu&ccedil;&otilde;es marcantes, pr&aacute;ticas e centradas nas pessoas. O que mais chama aten&ccedil;&atilde;o &eacute; sua capacidade de transformar ideias abstratas e direcionamentos iniciais em design systems claros e bem estruturados. Ele trabalha r&aacute;pido sem abrir m&atilde;o da qualidade, se comunica com clareza e evolui as solu&ccedil;&otilde;es com crit&eacute;rio a partir do feedback.</p>
+                            </blockquote>
+                            <footer class="quote-item__author">
+                                <img src="Testimunials Photo/Esko.png" alt="" class="quote-item__avatar">
+                                <cite>Esko K.</cite>
+                            </footer>
+                        </article>
+                        <article class="quote-card" data-testimonials-slide>
+                            <p class="quote-item__role">Fundador, Transparent Space</p>
+                            <blockquote class="quote-item__quote">
+                                <p>O Fonseca &eacute; o designer que procuro para tudo. Explico uma vez, e ele volta com algo realmente premium. Sem idas e vindas, sempre no mais alto n&iacute;vel.</p>
+                            </blockquote>
+                            <footer class="quote-item__author">
+                                <img src="Testimunials Photo/Pedro.png" alt="" class="quote-item__avatar">
+                                <cite>Pedro A.</cite>
+                            </footer>
+                        </article>
+                        <article class="quote-card" data-testimonials-slide>
+                            <p class="quote-item__role">Fundador, Agent Arena</p>
+                            <blockquote class="quote-item__quote">
+                                <p>O Fonseca &eacute; muito dedicado. Decidi contrat&aacute;-lo para a AI Agent Arena pela sua habilidade excepcional em UX e UI e pela comunica&ccedil;&atilde;o clara, que ajudou a tornar a v1 da AI Agent Arena um sucesso.</p>
+                            </blockquote>
+                            <footer class="quote-item__author">
+                                <img src="Testimunials Photo/Bruno.jpeg" alt="" class="quote-item__avatar">
+                                <cite>Bruno Eleodoro</cite>
+                            </footer>
+                        </article>
+                        <article class="quote-card" data-testimonials-slide>
+                            <p class="quote-item__role">L&iacute;der de Design, Picnic</p>
+                            <blockquote class="quote-item__quote">
+                                <p>Trabalhar com o Fonseca foi uma &oacute;tima experi&ecirc;ncia. Ele transformou nosso posicionamento em um sistema de identidade visual coeso, com padr&otilde;es e templates claros que facilitaram muito a cria&ccedil;&atilde;o de conte&uacute;do para redes sociais e a consist&ecirc;ncia da marca em diferentes pontos de contato. Sua capacidade de entender n&atilde;o s&oacute; o que precis&aacute;vamos, mas por que precis&aacute;vamos, fez toda a diferen&ccedil;a. Recomendo muito.</p>
+                            </blockquote>
+                            <footer class="quote-item__author">
+                                <img src="Testimunials Photo/Rafael.png" alt="" class="quote-item__avatar">
+                                <cite>Rafael Queiroz</cite>
+                            </footer>
+                        </article>
+                    </div>
                 </div>
-                </div>
-                <div class="testimonials-stage__footer">
-                    <div class="testimonials-stage__nav" role="group" aria-label="Navegação dos depoimentos">
-                        <button type="button" class="testimonials-stage__arrow" data-testimonials-prev aria-label="Depoimento anterior">
-                            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M12 4l-6 6 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <div class="quote-carousel__bar">
+                    <span class="quote-carousel__count"><span data-testimonials-current>1</span> / <span data-testimonials-total>4</span></span>
+                    <div class="quote-carousel__nav" role="group" aria-label="Navega&ccedil;&atilde;o dos depoimentos">
+                        <button type="button" class="quote-carousel__btn" data-testimonials-prev aria-label="Depoimentos anteriores">
+                            <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M12 4l-6 6 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </button>
-                        <button type="button" class="testimonials-stage__arrow" data-testimonials-next aria-label="Próximo depoimento">
-                            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M8 4l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <button type="button" class="quote-carousel__btn" data-testimonials-next aria-label="Pr&oacute;ximos depoimentos">
+                            <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M8 4l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </button>
                     </div>
                 </div>
@@ -375,7 +383,6 @@
             </div>
             <div class="footer-bottom footer-v3__bottom">
                 <p>&copy; <span id="current-year">2026</span> Matheus Fonseca &middot; Rio de Janeiro, Brasil</p>
-                <span class="footer-coords">22&deg;54' S &middot; 43&deg;12' W</span>
                 <a href="#home" class="footer-top-btn">Voltar ao topo &uarr;</a>
             </div>
         </div>
@@ -422,7 +429,7 @@
 
     <script src="posthog-config.js?v=20260782"></script>
     <script src="posthog.js?v=20260782"></script>
-    <script src="script.js?v=20260771"></script>
+    <script src="script.js?v=20260819t"></script>
 
     <!-- Vercel Web Analytics (free) -->
     <script>

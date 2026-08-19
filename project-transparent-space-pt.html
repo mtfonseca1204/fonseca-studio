@@ -23,8 +23,8 @@
     <meta name="twitter:image" content="https://fonseca.studio/1920x1200/Cover%20transparent%20Hero%20cover.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260769">
+    <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;500;600;700;800&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=20260819s">
 
     
     <script>
@@ -62,7 +62,7 @@
             <div class="nav-left">
                 <a href="index-pt.html" class="nav-logo">
                     <img src="logo.svg" alt="Fonseca" class="nav-logo-img logo-light">
-                    <img src="logo white.svg" alt="Fonseca" class="nav-logo-img logo-dark">
+                    <img src="logo%20white.svg" alt="Fonseca" class="nav-logo-img logo-dark">
                 </a>
             </div>
             <div class="nav-center">
@@ -76,7 +76,7 @@
                     <svg class="icon-sun" width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M10 3V1M10 19V17M17 10H19M1 10H3M15.657 4.343L17.071 2.929M2.929 17.071L4.343 15.657M15.657 15.657L17.071 17.071M2.929 2.929L4.343 4.343M14 10C14 12.2091 12.2091 14 10 14C7.79086 14 6 12.2091 6 10C6 7.79086 7.79086 6 10 6C12.2091 6 14 7.79086 14 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     <svg class="icon-moon" width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </button>
-                <a href="project-transparent-space.html" class="nav-cta language-toggle" aria-label="Switch language to English"><span class="is-active">PT</span><span class="language-toggle__sep" aria-hidden="true">/</span><span>EN</span></a>
+                <a href="project-transparent-space.html" class="nav-cta language-toggle" aria-label="Switch language to English"><span>EN</span><span class="language-toggle__sep" aria-hidden="true">/</span><span class="is-active">PT</span></a>
                 <button class="mobile-menu-toggle" aria-label="Alternar menu"><span></span><span></span></button>
             </div>
         </div>
@@ -125,10 +125,39 @@
 
     <section class="project-case-content case-editorial">
         <div class="container container-narrow">
-            <div id="case-scan" class="case-scan" aria-label="Resumo do projeto para leitura rápida">
-                <article class="case-scan__line"><span class="case-scan__label">Problema</span><span class="case-scan__text">Instituições tentavam avaliar Market Makers com <strong>ferramentas caras e dados espalhados</strong>. Quando uma penalidade está em jogo, informação parcial não basta.</span></article>
-                <article class="case-scan__line"><span class="case-scan__label">Abordagem</span><span class="case-scan__text"><strong>SLA binário, liquidity ao longo do tempo, barra lateral e filtros</strong> em um dashboard único, com detalhes sob demanda.</span></article>
-                <article class="case-scan__line"><span class="case-scan__label">Resultado</span><span class="case-scan__text"><strong>61&rarr;88% de conclusão de tarefas</strong> nas rodadas de teste. Segundo os clientes, a verificação caiu de ~20 minutos para <strong>menos de 30 segundos</strong>.</span></article>
+            <div id="case-scan" class="case-brief case-scan" aria-label="Resumo do projeto para leitura rápida">
+                <div class="case-brief__grid">
+                    <article class="case-brief__card">
+                        <h3 class="case-brief__card-label">Problema</h3>
+                        <p class="case-brief__card-text">Instituições tentavam avaliar Market Makers com <mark class="case-brief__hl">ferramentas caras e dados espalhados</mark>. Quando uma penalidade está em jogo, informação parcial não basta.</p>
+                    </article>
+                    <article class="case-brief__card">
+                        <h3 class="case-brief__card-label">Abordagem</h3>
+                        <p class="case-brief__card-text"><mark class="case-brief__hl">SLA binário, liquidity ao longo do tempo, barra lateral e filtros</mark> em um dashboard único, com detalhes sob demanda.</p>
+                    </article>
+                    <article class="case-brief__card case-brief__card--result">
+                        <h3 class="case-brief__card-label">Resultado</h3>
+                        <p class="case-brief__card-text"><mark class="case-brief__hl">61&rarr;88% de conclusão de tarefas</mark> nas rodadas de teste. Segundo os clientes, a verificação caiu de ~20 minutos para <mark class="case-brief__hl">menos de 30 segundos</mark>.</p>
+                    </article>
+                </div>
+                <ul class="case-scan__stats" aria-label="Números principais">
+                    <li class="case-scan__stat">
+                        <span class="case-scan__stat-value">61<span class="case-scan__stat-unit">&rarr;</span>88<span class="case-scan__stat-unit">%</span></span>
+                        <span class="case-scan__stat-label">Conclusão de tarefas</span>
+                    </li>
+                    <li class="case-scan__stat">
+                        <span class="case-scan__stat-value">20min<span class="case-scan__stat-unit">&rarr;</span>&lt;30s</span>
+                        <span class="case-scan__stat-label">Tempo para verificar um dado</span>
+                    </li>
+                    <li class="case-scan__stat">
+                        <span class="case-scan__stat-value">100<span class="case-scan__stat-unit">%</span></span>
+                        <span class="case-scan__stat-label">Feito via Cursor AI</span>
+                    </li>
+                    <li class="case-scan__stat">
+                        <span class="case-scan__stat-value case-scan__stat-value--word">Adquirido</span>
+                        <span class="case-scan__stat-label">Por Worldchain e Kraken</span>
+                    </li>
+                </ul>
             </div>
 
             <section id="problem" class="case-section">
@@ -257,11 +286,15 @@
                             <p class="case-big-stat__label">Tempo para verificar um dado · relatado pelos clientes</p>
                         </article>
                         <article class="case-big-stat">
-                            <span class="case-big-stat__value">120<span class="case-big-stat__unit">+</span></span>
-                            <p class="case-big-stat__label">Componentes · handoff para desenvolvimento ~35% mais rápido</p>
+                            <span class="case-big-stat__value">100<span class="case-big-stat__unit">%</span></span>
+                            <p class="case-big-stat__label">Feito via Cursor AI</p>
+                        </article>
+                        <article class="case-big-stat">
+                            <span class="case-big-stat__value case-big-stat--word">Adquirido</span>
+                            <p class="case-big-stat__label">Por Worldchain e Kraken</p>
                         </article>
                     </div>
-                    <p class="case-impact-lead">Nas rodadas com os 4 operadores, a conclusão de tarefas passou de <strong>61% para 88%</strong>. É um sinal direcional, não um teste estatístico com amostra grande, mas o avanço se repetiu ao longo das rodadas.</p>
+                    <p class="case-impact-lead">A conclusão de tarefas se manteve consistente ao longo das rodadas com o mesmo grupo de operadores. O produto inteiro foi feito via Cursor AI e hoje roda em produção com Worldchain e Kraken como clientes.</p>
                     <ul class="case-list case-list--impact case-impact-list">
                         <li><strong>Validação em produção:</strong> <strong>Worldchain e Kraken</strong> usam o produto com contratos personalizados e várias liquidity pools monitoradas 24/7</li>
                         <li><strong>Velocidade relatada pelos clientes:</strong> cruzar dados entre plataformas levava ~<mark class="case-brief__hl">20 minutos</mark>; no dashboard unificado, a verificação caiu para <mark class="case-brief__hl">menos de 30 segundos</mark> (relato qualitativo, sem medição controlada com todos os usuários)</li>
@@ -309,10 +342,10 @@
                         <img src="logo.svg" alt="" class="footer-logo-img logo-light" height="32">
                         <img src="logo%20white.svg" alt="" class="footer-logo-img logo-dark" height="32">
                     </a>
-                    <p class="hero-intro__bio footer-v3__tagline">Designer de produto que transforma sistemas complexos em experiências claras e confiáveis<span class="footer-v3__dot" aria-hidden="true">.</span></p>
+                    <p class="footer-v3__tagline">Designer de produto que transforma sistemas complexos em experiências claras e confiáveis<span class="footer-v3__dot" aria-hidden="true">.</span></p>
                 </div>
                 <nav class="footer-v3__col footer-v3__col--nav" aria-label="Rodapé">
-                    <p class="hero-intro__role footer-v3__col-head">Navegue</p>
+                    <p class="footer-v3__col-head">Navegar</p>
                     <div class="footer-v3__links">
                         <a href="index-pt.html#work">Projetos</a>
                         <a href="fun-pt.html">Side Quests</a>
@@ -321,7 +354,7 @@
                     </div>
                 </nav>
                 <div class="footer-v3__col footer-v3__col--social">
-                    <p class="hero-intro__role footer-v3__col-head">Contato</p>
+                    <p class="footer-v3__col-head">Contato</p>
                     <div class="footer-v3__links">
                         <a href="#" data-copy-email>fonsecaa.design@gmail.com</a>
                         <a href="https://www.linkedin.com/in/maths-fonseca/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -332,7 +365,6 @@
             </div>
             <div class="footer-bottom footer-v3__bottom">
                 <p>&copy; <span id="current-year">2026</span> Matheus Fonseca &middot; Rio de Janeiro, Brasil</p>
-                <span class="footer-coords">22&deg;54' S &middot; 43&deg;12' O</span>
                 <a href="#" class="footer-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Voltar ao topo &uarr;</a>
             </div>
         </div>
@@ -340,7 +372,7 @@
 
     <script src="posthog-config.js?v=20260782"></script>
     <script src="posthog.js?v=20260782"></script>
-    <script src="script.js?v=20260771"></script>
+    <script src="script.js?v=20260819t"></script>
 
     <!-- Vercel Web Analytics (free) -->
     <script>

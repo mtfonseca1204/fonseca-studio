@@ -23,8 +23,8 @@
     <meta name="twitter:image" content="https://fonseca.studio/1920x1200/Cover%20Hedgehog%20Hero%20cover.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260769">
+    <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;500;600;700;800&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=20260819q">
 
     <script>
     (function () {
@@ -61,7 +61,7 @@
             <div class="nav-left">
                 <a href="index.html" class="nav-logo">
                     <img src="logo.svg" alt="Fonseca" class="nav-logo-img logo-light">
-                    <img src="logo white.svg" alt="Fonseca" class="nav-logo-img logo-dark">
+                    <img src="logo%20white.svg" alt="Fonseca" class="nav-logo-img logo-dark">
                 </a>
             </div>
             <div class="nav-center">
@@ -75,7 +75,7 @@
                     <svg class="icon-sun" width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M10 3V1M10 19V17M17 10H19M1 10H3M15.657 4.343L17.071 2.929M2.929 17.071L4.343 15.657M15.657 15.657L17.071 17.071M2.929 2.929L4.343 4.343M14 10C14 12.2091 12.2091 14 10 14C7.79086 14 6 12.2091 6 10C6 7.79086 7.79086 6 10 6C12.2091 6 14 7.79086 14 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     <svg class="icon-moon" width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </button>
-                <a href="project-hedgehog-pt.html" class="nav-cta language-toggle" aria-label="Mudar idioma para português do Brasil"><span>PT</span><span class="language-toggle__sep" aria-hidden="true">/</span><span class="is-active">EN</span></a>
+                <a href="project-hedgehog-pt.html" class="nav-cta language-toggle" aria-label="Mudar idioma para português do Brasil"><span class="is-active">EN</span><span class="language-toggle__sep" aria-hidden="true">/</span><span>PT</span></a>
                 <button class="mobile-menu-toggle" aria-label="Toggle menu"><span></span><span></span></button>
             </div>
         </div>
@@ -124,10 +124,35 @@
 
     <section class="project-case-content case-editorial">
         <div class="container container-narrow">
-            <div id="case-scan" class="case-scan" aria-label="Project summary for quick reading">
-                <article class="case-scan__line"><span class="case-scan__label">Problem</span><span class="case-scan__text">No public product yet, but an <strong>institutional audience</strong> that demands proof before sharing contact info.</span></article>
-                <article class="case-scan__line"><span class="case-scan__label">Approach</span><span class="case-scan__text"><strong>Three-layer funnel</strong> (understand &rarr; trust &rarr; act) plus a live community engine on X, Telegram, and Discord.</span></article>
-                <article class="case-scan__line"><span class="case-scan__label">Outcome</span><span class="case-scan__text"><strong>15,000+ sign-ups</strong> at 37.5% conversion from a 40K+ organic community, zero paid traffic, same audience later fed the product beta.</span></article>
+            <div id="case-scan" class="case-brief case-scan" aria-label="Project summary for quick reading">
+                <div class="case-brief__grid">
+                    <article class="case-brief__card">
+                        <h3 class="case-brief__card-label">Problem</h3>
+                        <p class="case-brief__card-text">No public product yet, but an <mark class="case-brief__hl">institutional audience</mark> that demands proof before sharing contact info.</p>
+                    </article>
+                    <article class="case-brief__card">
+                        <h3 class="case-brief__card-label">Approach</h3>
+                        <p class="case-brief__card-text"><mark class="case-brief__hl">Three-layer funnel</mark> (understand &rarr; trust &rarr; act) plus a live community engine on X, Telegram, and Discord.</p>
+                    </article>
+                    <article class="case-brief__card case-brief__card--result">
+                        <h3 class="case-brief__card-label">Outcome</h3>
+                        <p class="case-brief__card-text"><mark class="case-brief__hl">15,000+ sign-ups</mark> at 37.5% conversion from a 40K+ organic community, zero paid traffic, same audience later fed the product beta.</p>
+                    </article>
+                </div>
+                <ul class="case-scan__stats" aria-label="Headline numbers">
+                    <li class="case-scan__stat">
+                        <span class="case-scan__stat-value">15,000<span class="case-scan__stat-unit">+</span></span>
+                        <span class="case-scan__stat-label">Waitlist sign-ups</span>
+                    </li>
+                    <li class="case-scan__stat">
+                        <span class="case-scan__stat-value">37.5<span class="case-scan__stat-unit">%</span></span>
+                        <span class="case-scan__stat-label">Conversion from organic visitors</span>
+                    </li>
+                    <li class="case-scan__stat">
+                        <span class="case-scan__stat-value"><span class="case-scan__stat-unit">$</span>0</span>
+                        <span class="case-scan__stat-label">Paid traffic</span>
+                    </li>
+                </ul>
             </div>
 
             <section id="problem" class="case-section">
@@ -263,7 +288,7 @@
                             <p class="case-big-stat__label">Paid traffic · Discord + Web3 networks</p>
                         </article>
                     </div>
-                    <p class="case-impact-lead"><strong>37.5% conversion</strong> from organic community visitors (benchmark: 2 to 8%). <strong>15,000+ waitlist sign-ups</strong> with <strong>$0 paid acquisition</strong> across <a href="https://x.com/TheHedgehog_io" target="_blank" rel="noopener noreferrer" class="case-inline-link">X</a>, Telegram, Discord, and Web3 networks.</p>
+                    <p class="case-impact-lead">Conversion held well above typical waitlist benchmarks, entirely from organic community reach. The same audience that signed up here later validated the product in beta.</p>
                     <ul class="case-list case-list--impact case-impact-list">
                         <li><strong>Conversion engine:</strong> page designed for direct action, amplified by community on X/Telegram, Discord engagement, and USDC missions</li>
                         <li><strong>CTA consistency:</strong> sustained engagement across primary and secondary conversion points</li>
@@ -310,10 +335,10 @@
                         <img src="logo.svg" alt="" class="footer-logo-img logo-light" height="32">
                         <img src="logo%20white.svg" alt="" class="footer-logo-img logo-dark" height="32">
                     </a>
-                    <p class="hero-intro__bio footer-v3__tagline">Product designer turning complex systems into clear, trustworthy experiences<span class="footer-v3__dot" aria-hidden="true">.</span></p>
+                    <p class="footer-v3__tagline">Product designer turning complex systems into clear, trustworthy experiences<span class="footer-v3__dot" aria-hidden="true">.</span></p>
                 </div>
                 <nav class="footer-v3__col footer-v3__col--nav" aria-label="Footer">
-                    <p class="hero-intro__role footer-v3__col-head">Navigate</p>
+                    <p class="footer-v3__col-head">Navigate</p>
                     <div class="footer-v3__links">
                         <a href="index.html#work">Work</a>
                         <a href="fun.html">Side Quests</a>
@@ -322,7 +347,7 @@
                     </div>
                 </nav>
                 <div class="footer-v3__col footer-v3__col--social">
-                    <p class="hero-intro__role footer-v3__col-head">Connect</p>
+                    <p class="footer-v3__col-head">Connect</p>
                     <div class="footer-v3__links">
                         <a href="#" data-copy-email>fonsecaa.design@gmail.com</a>
                         <a href="https://www.linkedin.com/in/maths-fonseca/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -333,7 +358,6 @@
             </div>
             <div class="footer-bottom footer-v3__bottom">
                 <p>&copy; <span id="current-year">2026</span> Matheus Fonseca &middot; Rio de Janeiro, Brazil</p>
-                <span class="footer-coords">22&deg;54' S &middot; 43&deg;12' W</span>
                 <a href="#" class="footer-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Back to top &uarr;</a>
             </div>
         </div>

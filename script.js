@@ -28,6 +28,7 @@ function deferNonCritical(fn, timeout = 2000) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    initCaseNavEnter();
     const splashActive = initSiteSplash();
     const coldFade = initPageEnter();
     if (!splashActive) {
@@ -54,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     revealHeroOnLoad();
     initTypewriter();
     initAboutPhotoCarousel();
+    initHeroMainVideo();
     deferNonCritical(initHeroAsciiTerrain, 1200);
     initHeroCopyEmail();
     initWorkProjectCarousels();
@@ -64,6 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initNavMotion();
     initCaseStudyMotion();
     initCaseStudyMagazine();
+    initWorkCardNavTransition();
     initPageTransitions();
     initThemeCompare();
     initCaseImageLightbox();
@@ -689,18 +692,54 @@ function markCaseNav(kind) {
 
 function resolveCaseNavKind(link, url) {
     const explicit = link?.getAttribute('data-case-nav');
-    if (explicit === 'to-short' || explicit === 'to-full') return explicit;
+    if (explicit === 'to-full') return explicit;
 
     const file = ((url && url.pathname) || '').split('/').pop() || '';
-    if (/-short(-pt)?\.html$/i.test(file)) return 'to-short';
-    if (
-        document.body.classList.contains('short-case-page') &&
-        /^project-.+\.html$/i.test(file) &&
-        !/-short(-pt)?\.html$/i.test(file)
-    ) {
-        return 'to-full';
-    }
+    if (/^project-.+\.html$/i.test(file)) return 'to-full';
     return null;
+}
+
+function initCaseNavEnter() {
+    if (prefersReducedMotion()) return;
+    let kind = null;
+    try {
+        kind = sessionStorage.getItem(FONSECA_CASE_NAV_KEY);
+        if (!kind) return;
+        sessionStorage.removeItem(FONSECA_CASE_NAV_KEY);
+    } catch (_) {
+        return;
+    }
+
+    if (supportsNavViewTransitions()) return;
+
+    document.documentElement.classList.add(`case-nav-${kind}`);
+    const ms = kind === 'to-full' ? 720 : 600;
+    window.setTimeout(() => {
+        document.documentElement.classList.remove(`case-nav-${kind}`);
+    }, ms);
+}
+
+function initWorkCardNavTransition() {
+    if (!isHomepage() || prefersReducedMotion()) return;
+
+    document.querySelectorAll('.work-card--portfolio .work-card__link').forEach((link) => {
+        link.setAttribute('data-case-nav', 'to-full');
+
+        link.addEventListener('click', (e) => {
+            if (e.defaultPrevented) return;
+            if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+            if (link.target === '_blank') return;
+
+            const href = link.getAttribute('href');
+            if (!href || href.startsWith('#')) return;
+
+            const card = link.closest('.work-card');
+            if (!card) return;
+
+            document.body.classList.add('home-project-nav');
+            card.classList.add('work-card--opening');
+        }, { capture: true });
+    });
 }
 
 function initPageTransitions() {
@@ -758,7 +797,7 @@ function initPageTransitions() {
         e.preventDefault();
         document.body.classList.add('page-leaving');
         if (caseNav) document.body.classList.add(`page-leaving--${caseNav}`);
-        const delay = caseNav === 'to-full' ? 420 : caseNav === 'to-short' ? 340 : 260;
+        const delay = caseNav === 'to-full' ? 380 : 260;
         window.setTimeout(() => {
             window.location.href = url.href;
         }, delay);
@@ -881,10 +920,10 @@ function initTypewriter() {
 
     let cursor = 320;
     const lineGap = 220;
-    const heroDelay = 68;
 
     immediate.forEach((el) => {
         const text = el.dataset.typewriter || '';
+        const heroDelay = el.closest('.hero-intro__name--statement') ? 26 : 68;
         typeInto(el, { charDelay: heroDelay, startDelay: cursor });
         cursor += text.length * heroDelay + lineGap;
     });
@@ -995,42 +1034,49 @@ function initTestimonialsCarousel() {
     const root = document.querySelector('[data-testimonials-carousel]');
     if (!root) return;
 
+    const track = root.querySelector('.quote-carousel__track');
     const slides = [...root.querySelectorAll('[data-testimonials-slide]')];
     const prev = root.querySelector('[data-testimonials-prev]');
     const next = root.querySelector('[data-testimonials-next]');
     const currentEl = root.querySelector('[data-testimonials-current]');
     const totalEl = root.querySelector('[data-testimonials-total]');
-    if (!slides.length) return;
+    if (!track || !slides.length) return;
 
     const reduceMotion = prefersReducedMotion();
-    let current = Math.max(0, slides.findIndex((slide) => slide.classList.contains('active')));
-    let revealTimer = 0;
-    if (totalEl) totalEl.textContent = String(slides.length);
-
-    function ensurePoint(quote) {
-        if (!quote || quote.querySelector('.testimonials-stage__point')) return;
-        const point = document.createElement('span');
-        point.className = 'testimonials-stage__point';
-        point.setAttribute('aria-hidden', 'true');
-        quote.appendChild(point);
-    }
-
-    function playReveal(slide) {
-        const quote = slide.querySelector('.testimonials-stage__quote');
-        ensurePoint(quote);
-        slide.classList.remove('is-revealed');
-        void slide.offsetWidth;
-        requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-                slide.classList.add('is-revealed');
-            });
-        });
-    }
-
-    const AUTO_MS = 7500;
+    const mq = window.matchMedia('(max-width: 900px)');
+    let page = 0;
     let autoTimer = 0;
     let paused = false;
     let inView = true;
+
+    function perPage() {
+        return mq.matches ? 1 : 2;
+    }
+
+    function pageCount() {
+        return Math.max(1, Math.ceil(slides.length / perPage()));
+    }
+
+    function apply() {
+        const n = perPage();
+        const max = pageCount() - 1;
+        page = Math.max(0, Math.min(page, max));
+        track.style.transform = `translateX(-${page * 100}%)`;
+        slides.forEach((slide, i) => {
+            const start = page * n;
+            const on = i >= start && i < start + n;
+            slide.setAttribute('aria-hidden', on ? 'false' : 'true');
+        });
+        if (currentEl) currentEl.textContent = String(page + 1);
+        if (totalEl) totalEl.textContent = String(pageCount());
+    }
+
+    function goTo(idx) {
+        const max = pageCount() - 1;
+        page = ((idx % (max + 1)) + (max + 1)) % (max + 1);
+        apply();
+        scheduleAuto();
+    }
 
     function stopAuto() {
         window.clearTimeout(autoTimer);
@@ -1039,94 +1085,61 @@ function initTestimonialsCarousel() {
 
     function scheduleAuto() {
         stopAuto();
-        if (reduceMotion || paused || !inView || slides.length < 2) return;
-        autoTimer = window.setTimeout(() => {
-            goTo(current + 1);
-        }, AUTO_MS);
+        if (reduceMotion || paused || !inView || pageCount() < 2) return;
+        autoTimer = window.setTimeout(() => goTo(page + 1), 6000);
     }
 
-    function goTo(idx) {
-        const n = slides.length;
-        current = ((idx % n) + n) % n;
+    prev?.addEventListener('click', () => goTo(page - 1));
+    next?.addEventListener('click', () => goTo(page + 1));
 
-        slides.forEach((slide, i) => {
-            const on = i === current;
-            slide.classList.toggle('active', on);
-            slide.setAttribute('aria-hidden', on ? 'false' : 'true');
-            if (!on) slide.classList.remove('is-revealed');
-        });
-        if (currentEl) currentEl.textContent = String(current + 1);
-
-        window.clearTimeout(revealTimer);
-        const active = slides[current];
-
-        revealTimer = window.setTimeout(() => {
-            if (reduceMotion) {
-                ensurePoint(active.querySelector('.testimonials-stage__quote'));
-                active.classList.add('is-revealed');
-            } else {
-                playReveal(active);
-            }
-            scheduleAuto();
-        }, 40);
-    }
-
-    function pauseAuto() {
-        paused = true;
-        stopAuto();
-    }
-
-    function resumeAuto() {
-        paused = false;
-        scheduleAuto();
-    }
-
-    prev?.addEventListener('click', () => goTo(current - 1));
-    next?.addEventListener('click', () => goTo(current + 1));
-
-    root.addEventListener('mouseenter', pauseAuto);
-    root.addEventListener('mouseleave', resumeAuto);
-    root.addEventListener('focusin', pauseAuto);
+    root.addEventListener('mouseenter', () => { paused = true; stopAuto(); });
+    root.addEventListener('mouseleave', () => { paused = false; scheduleAuto(); });
+    root.addEventListener('focusin', () => { paused = true; stopAuto(); });
     root.addEventListener('focusout', (e) => {
-        if (!root.contains(e.relatedTarget)) resumeAuto();
-    });
-
-    root.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') {
-            e.preventDefault();
-            goTo(current - 1);
-        } else if (e.key === 'ArrowRight') {
-            e.preventDefault();
-            goTo(current + 1);
+        if (!root.contains(e.relatedTarget)) {
+            paused = false;
+            scheduleAuto();
         }
+    });
+    root.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(page - 1); }
+        if (e.key === 'ArrowRight') { e.preventDefault(); goTo(page + 1); }
     });
 
     let touchX = null;
     root.addEventListener('touchstart', (e) => {
         touchX = e.changedTouches?.[0]?.clientX ?? null;
-        pauseAuto();
+        paused = true;
+        stopAuto();
     }, { passive: true });
     root.addEventListener('touchend', (e) => {
-        if (touchX == null) {
-            resumeAuto();
-            return;
-        }
+        if (touchX == null) { paused = false; scheduleAuto(); return; }
         const dx = (e.changedTouches?.[0]?.clientX ?? touchX) - touchX;
         touchX = null;
-        if (Math.abs(dx) >= 40) goTo(current + (dx < 0 ? 1 : -1));
-        else resumeAuto();
+        if (Math.abs(dx) >= 40) goTo(page + (dx < 0 ? 1 : -1));
+        else { paused = false; scheduleAuto(); }
     }, { passive: true });
+
+    function onBreak() {
+        page = 0;
+        apply();
+        scheduleAuto();
+    }
+
+    mq.addEventListener?.('change', onBreak);
+    if (!mq.addEventListener && mq.addListener) mq.addListener(onBreak);
 
     if ('IntersectionObserver' in window) {
         const io = new IntersectionObserver((entries) => {
             inView = entries.some((entry) => entry.isIntersecting);
             if (inView) scheduleAuto();
             else stopAuto();
-        }, { threshold: 0.35 });
+        }, { threshold: 0.3 });
         io.observe(root);
     }
 
-    goTo(current);
+    apply();
+    scheduleAuto();
 }
 
 // =====================================================
@@ -1254,6 +1267,33 @@ function setupCaseImageLightbox() {
         });
         wrap.appendChild(btn);
     });
+}
+
+function initHeroMainVideo() {
+    const video = document.querySelector('.hero-main-video');
+    if (!video) return;
+
+    const src = video.dataset.src;
+    if (src && !video.getAttribute('src')) {
+        video.src = src;
+        video.removeAttribute('data-src');
+    }
+
+    video.muted = true;
+    video.loop = true;
+    video.playsInline = true;
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const play = () => {
+        const attempt = video.play();
+        if (attempt && typeof attempt.catch === 'function') attempt.catch(() => {});
+    };
+
+    if (video.readyState >= 2) play();
+    else video.addEventListener('canplay', play, { once: true });
 }
 
 // =====================================================
@@ -2569,9 +2609,7 @@ function initNavMotion() {
     navbar.classList.add('navbar--nav-motion');
 
     navbar.querySelectorAll('.nav-center .nav-link, .mobile-menu-links .mobile-link:not(.mobile-cta)').forEach((link, i) => {
-        const rule = HEADER_NAV_ICON_RULES.find((r) => r.match(link));
-        if (!rule) return;
-        prependNavIcon(link, rule.key, rule.html, 'nav-link--motion');
+        link.classList.add('nav-link--motion');
         link.style.setProperty('--nav-motion-i', String(i));
     });
 
