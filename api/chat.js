@@ -42,8 +42,7 @@ CONTACT
 - LinkedIn: https://www.linkedin.com/in/maths-fonseca/
 - Behance: https://www.behance.net/maths-fonseca
 - X / Twitter: https://x.com/0xFonseca
-- Resume (EN): MatheusFonsecaCV.pdf
-- Currículo (PT): Matheus_Fonseca_CV_PT.pdf
+- CV (EN/PT): MatheusFonsecaCV.pdf
 `;
 
 const SYSTEM_PROMPT = `You are FonsecaLLM, the AI assistant on Matheus Fonseca's design portfolio (fonseca.studio).
