@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transparent.space · Dashboard para Market Makers | Fonseca</title>
-    <meta name="description" content="Product design desde a fundação da Transparent.space: um dashboard B2B que reduziu a verificação de SLA de Market Makers de 20 minutos para menos de 30 segundos.">
+    <meta name="description" content="Product design fundador da Transparent.space: monitoramento de market makers que reduziu uma checagem relatada por clientes de cerca de 20 minutos para menos de 30 segundos.">
     <link rel="icon" type="image/svg+xml" href="logo.svg">
     <link rel="apple-touch-icon" href="logo.svg">
     <link rel="canonical" href="https://fonseca.studio/project-transparent-space-pt.html">
@@ -24,7 +24,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;500;600;700;800&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260819s">
+    <link rel="stylesheet" href="styles.css?v=20261013l">
 
     
     <script>
@@ -65,11 +65,12 @@
                     <img src="logo%20white.svg" alt="Fonseca" class="nav-logo-img logo-dark">
                 </a>
             </div>
+            <p class="rail-back"><a href="index-pt.html#work"><svg class="rail-back__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M18.32 12.66H8.26L12.41 16.79L11.46 17.78L5.68 11.98L11.47 6.22L12.42 7.21L8.28 11.34L18.32 11.32V12.66Z" fill="currentColor"/></svg>Projetos</a><span class="rail-back__sep" aria-hidden="true">/</span><span class="rail-back__name">Transparent.space</span></p>
             <div class="nav-center">
-                <a href="index-pt.html#work" class="nav-link"><span class="nav-num">01</span> Projetos</a>
+                <a href="index-pt.html#work" class="nav-link nav-link--active" aria-current="page"><span class="nav-num">01</span> Projetos</a>
                 <a href="fun-pt.html" class="nav-link"><span class="nav-num">02</span> Side Quests</a>
                 <a href="about-pt.html" class="nav-link"><span class="nav-num">03</span> Sobre</a>
-                <a href="MatheusFonsecaCV.pdf?v=20260820i" target="_blank" rel="noopener noreferrer" class="nav-link"><span class="nav-num">04</span> Currículo</a>
+                <a href="MatheusFonsecaCV.pdf?v=20260820i" class="nav-link" target="_blank" rel="noopener noreferrer"><span class="nav-num">04</span> Currículo</a>
             </div>
             <div class="nav-right">
                 <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Alternar modo escuro">
@@ -77,302 +78,107 @@
                     <svg class="icon-moon" width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </button>
                 <a href="project-transparent-space.html" class="nav-cta language-toggle" aria-label="Switch language to English"><span>EN</span><span class="language-toggle__sep" aria-hidden="true">/</span><span class="is-active">PT</span></a>
-                <button class="mobile-menu-toggle" aria-label="Alternar menu"><span></span><span></span></button>
+                <button class="mobile-menu-toggle" aria-label="Abrir ou fechar menu"><span></span><span></span></button>
             </div>
         </div>
         <div class="mobile-menu">
             <div class="mobile-menu-links">
-                <a href="index-pt.html#work" class="mobile-link">Projetos</a>
-                <a href="fun-pt.html" class="mobile-link">Side Quests</a>
-                <a href="about-pt.html" class="mobile-link">Sobre</a>
-                <a href="MatheusFonsecaCV.pdf?v=20260820i" target="_blank" rel="noopener noreferrer" class="mobile-link">Currículo</a>
+                <a href="index-pt.html#work" class="mobile-link">Projetos</a><a href="fun-pt.html" class="mobile-link">Side Quests</a><a href="about-pt.html" class="mobile-link">Sobre</a><a href="MatheusFonsecaCV.pdf?v=20260820i" target="_blank" rel="noopener noreferrer" class="mobile-link">Currículo</a>
             </div>
         </div>
     </nav>
 
-    <section class="project-hero project-hero-case">
-        <div class="container container-narrow">
-            <p class="project-hero-tagline">WEB3 · PRODUCT DESIGN B2B</p>
-            <h1 class="project-hero-title">De 20 minutos cruzando dados a 30 segundos para decidir</h1>
-        </div>
-    </section>
-
-    <aside class="case-side-nav" id="caseSideNav" aria-label="Navegação do projeto">
+<aside class="case-side-nav" id="caseSideNav" aria-label="Projeto">
         <nav class="case-side-nav-inner">
-            <a href="#case-scan" class="case-side-nav__summary case-side-nav-link case-side-nav-link--summary">Resumo</a>
+            <a href="#overview" class="case-side-nav-link">Visão geral</a>
             <a href="#problem" class="case-side-nav-link">Problema</a>
-            <a href="#why" class="case-side-nav-link">Por que importa</a>
-            <a href="#research" class="case-side-nav-link">Pesquisa</a>
+            <a href="#opportunity" class="case-side-nav-link">Oportunidade</a>
             <a href="#solution" class="case-side-nav-link">Solução</a>
-            <a href="#validation" class="case-side-nav-link">Validação</a>
-            <a href="#impact" class="case-side-nav-link">Impacto</a>
-            <a href="#next" class="case-side-nav-link">Próximos passos</a>
+            <a href="#experience" class="case-side-nav-link">Experiência central</a>
+            <a href="#decisions" class="case-side-nav-link">Decisões</a>
+            <a href="#results" class="case-side-nav-link">Resultados</a>
+            <a href="#reflection" class="case-side-nav-link">Reflexão</a>
         </nav>
     </aside>
 
-    <section class="project-cover">
-        <div class="project-cover-image project-cover-image--scaled">
-            <video src="Transparent.space Products/New imgs/Demo_showcase.mov" autoplay muted loop playsinline preload="auto" class="case-gallery-img" aria-label="Demonstração do dashboard para Market Makers da Transparent.space"></video>
-        </div>
-        <div class="container container-narrow">
-            <div class="project-case-meta project-case-meta--after-cover">
-                <div class="case-meta-item"><span class="case-meta-label">CLIENTE</span><span class="case-meta-value">Transparent.space</span></div>
-                <div class="case-meta-item"><span class="case-meta-label">MEU PAPEL</span><span class="case-meta-value">Founding Product Designer</span></div>
-                <div class="case-meta-item"><span class="case-meta-label">PERÍODO</span><span class="case-meta-value">~6 meses · 2025-2026</span></div>
-            </div>
-        </div>
-    </section>
-
-    <section class="project-case-content case-editorial">
-        <div class="container container-narrow">
-            <div id="case-scan" class="case-brief case-scan" aria-label="Resumo do projeto para leitura rápida">
-                <div class="case-brief__grid">
-                    <article class="case-brief__card">
-                        <h3 class="case-brief__card-label">Problema</h3>
-                        <p class="case-brief__card-text">Instituições tentavam avaliar Market Makers com <mark class="case-brief__hl">ferramentas caras e dados espalhados</mark>. Quando uma penalidade está em jogo, informação parcial não basta.</p>
-                    </article>
-                    <article class="case-brief__card">
-                        <h3 class="case-brief__card-label">Abordagem</h3>
-                        <p class="case-brief__card-text"><mark class="case-brief__hl">SLA binário, liquidity ao longo do tempo, barra lateral e filtros</mark> em um dashboard único, com detalhes sob demanda.</p>
-                    </article>
-                    <article class="case-brief__card case-brief__card--result">
-                        <h3 class="case-brief__card-label">Resultado</h3>
-                        <p class="case-brief__card-text"><mark class="case-brief__hl">61&rarr;88% de conclusão de tarefas</mark> nas rodadas de teste. Segundo os clientes, a verificação caiu de ~20 minutos para <mark class="case-brief__hl">menos de 30 segundos</mark>.</p>
-                    </article>
-                </div>
-                <ul class="case-scan__stats" aria-label="Números principais">
-                    <li class="case-scan__stat">
-                        <span class="case-scan__stat-value">61<span class="case-scan__stat-unit">&rarr;</span>88<span class="case-scan__stat-unit">%</span></span>
-                        <span class="case-scan__stat-label">Conclusão de tarefas</span>
-                    </li>
-                    <li class="case-scan__stat">
-                        <span class="case-scan__stat-value">20min<span class="case-scan__stat-unit">&rarr;</span>&lt;30s</span>
-                        <span class="case-scan__stat-label">Tempo para verificar um dado</span>
-                    </li>
-                    <li class="case-scan__stat">
-                        <span class="case-scan__stat-value">100<span class="case-scan__stat-unit">%</span></span>
-                        <span class="case-scan__stat-label">Feito via Cursor AI</span>
-                    </li>
-                    <li class="case-scan__stat">
-                        <span class="case-scan__stat-value case-scan__stat-value--word">Adquirido</span>
-                        <span class="case-scan__stat-label">Por Worldchain e Kraken</span>
-                    </li>
-                </ul>
-            </div>
-
-            <section id="problem" class="case-section">
-                <span class="case-section-label">Problema</span>
-                <h2 class="case-section-title">Avaliar um Market Maker era mais difícil do que deveria</h2>
-                <div class="case-section-body case-prose-stack">
-                    <p class="case-prose-lead">Instituições Web3 dependem de Market Makers para manter liquidity e eficiência de mercado. Mesmo assim, entender se eles estão entregando o que foi contratado ainda exige muito trabalho manual.</p>
-                    <p>Ferramentas como <strong>Dune</strong> e <strong>DeFiLlama</strong> são caras, deixam os dados espalhados e nem sempre indexam exatamente o que cada cliente institucional precisa.</p>
-                    <p>Quando há dinheiro em risco, inclusive na decisão de aplicar uma <mark class="case-brief__hl">penalidade contratual a um Market Maker</mark>, não dá para depender de dados incompletos.</p>
-                </div>
-                <div class="case-section-gallery case-section-gallery--linear" aria-label="Avaliação de desempenho fragmentada entre ferramentas">
-                    <img src="Transparent.space Products/New imgs/Discovery research.png" alt="Pesquisa de descoberta com dados de desempenho de Market Makers espalhados entre várias plataformas" class="case-gallery-img" loading="lazy" decoding="async">
-                </div>
-            </section>
-
-            <section id="why" class="case-section">
-                <span class="case-section-label">Por que isso importa</span>
-                <h2 class="case-section-title">Dois públicos. Necessidades opostas. Uma decisão.</h2>
-                <div class="case-section-body case-prose-stack">
-                    <p class="case-prose-lead">Dois públicos usam os mesmos dados para objetivos diferentes: <mark class="case-brief__hl">fundos institucionais, protocolos DeFi e exchanges</mark> precisam decidir rápido, mesmo sem domínio técnico; já os <mark class="case-brief__hl">Market Makers</mark> precisam provar que cumpriram o SLA.</p>
-                    <p>Quando um Market Maker sai dos limites do contrato, alguém precisa decidir, com dados confiáveis, se cabe uma penalidade.</p>
-                    <p>Uma decisão errada custa <strong>dinheiro para os dois lados</strong>.</p>
-                </div>
-            </section>
-
-            <section id="research" class="case-section">
-                <span class="case-section-label">Como a pesquisa foi feita</span>
-                <h2 class="case-section-title">Conhecimento do mercado, depois referências de produto</h2>
-                <div class="case-section-body case-prose-stack">
-                    <p class="case-prose-lead">A equipe já conhecia o problema por dentro. O Product Manager tinha anos de experiência como <strong>analista de dados</strong>, com contato direto com a dor que queríamos resolver.</p>
-                    <p>O CEO também lidava com esse problema antes do projeto. Cruzamos esse conhecimento com referências como <strong>Dune, DeFiLlama, Bloomberg Terminal, Grafana e Datadog</strong> para entender como cada produto organiza dados financeiros densos.</p>
-                    <p>O padrão era claro: ferramentas caras, dados fragmentados e pouca flexibilidade para indexar o que cada cliente precisava. A oportunidade era <mark class="case-brief__hl">reunir tudo em uma única plataforma</mark>, com preço justo e contratos personalizados. Cada liquidity pool era configurado e indexado de acordo com o contrato, com clareza suficiente para reduzir perdas e evitar penalidades aplicadas com base em uma leitura errada.</p>
-                </div>
-                <div class="case-section-gallery case-section-gallery--linear" aria-label="Direção de plataforma unificada definida pela pesquisa">
-                    <img src="Transparent.space Products/New imgs/Solution 1.png" alt="Direção de dashboard único da Transparent.space definida pela pesquisa" class="case-gallery-img" loading="lazy" decoding="async">
-                </div>
-            </section>
-
-            <section id="solution" class="case-section">
-                <span class="case-section-label">Como foi resolvido</span>
-                <h2 class="case-section-title">Quatro decisões de UX que moldaram o produto</h2>
-                <div class="case-section-body">
-                    <p class="case-prose-lead">Quatro decisões de UX definiram o produto, cada uma comparada a uma alternativa. Todas respondiam ao mesmo objetivo: <strong>reduzir drasticamente o tempo</strong> entre consultar um dado e decidir se cabia uma penalidade.</p>
-                    <div class="case-stages case-stages--v3">
-                        <article class="case-stage-v3">
-                            <div class="case-stage-v3__head">
-                                <span class="case-stage-v3__num">01</span>
-                                <div>
-                                    <h3 class="case-stage-v3__title">SLA como contrato binário, não como percentual isolado</h3>
-                                    <p class="case-stage-v3__copy">&ldquo;98,7%&rdquo; não responde ao que importa: o contrato foi cumprido ou não? A UI mostra o SLA como <mark class="case-brief__hl">cumprido ou não cumprido</mark>.</p>
-                                </div>
-                            </div>
-                            <div class="case-section-gallery case-section-gallery--linear">
-                                <img src="Transparent.space Products/New imgs/Solution 04.png" alt="Status binário do SLA, cumprido ou não cumprido, visível de imediato" class="case-gallery-img" loading="lazy" decoding="async">
-                            </div>
-                        </article>
-                        <article class="case-stage-v3">
-                            <div class="case-stage-v3__head">
-                                <span class="case-stage-v3__num">02</span>
-                                <div>
-                                    <h3 class="case-stage-v3__title">Liquidez como comportamento ao longo do tempo, não como valor estático</h3>
-                                    <p class="case-stage-v3__copy">Uma liquidity pool de US$ 200 mil pode ter caído 60% na última semana. Mostrar só o valor atual esconde o principal. Por isso, <strong>tendência e direção</strong> vêm primeiro.</p>
-                                </div>
-                            </div>
-                            <div class="case-section-gallery case-section-gallery--pair">
-                                <img src="Transparent.space Products/New imgs/overview 1.png" alt="Comportamento da liquidez ao longo do tempo com direção da tendência" class="case-gallery-img" loading="lazy" decoding="async">
-                                <img src="Transparent.space Products/New imgs/overview 2.png" alt="Detalhes de profundidade e comportamento da liquidity pool" class="case-gallery-img" loading="lazy" decoding="async">
-                            </div>
-                        </article>
-                        <article class="case-stage-v3">
-                            <div class="case-stage-v3__head">
-                                <span class="case-stage-v3__num">03</span>
-                                <div>
-                                    <h3 class="case-stage-v3__title">Contexto e filtros na barra lateral, sempre ao alcance</h3>
-                                    <p class="case-stage-v3__copy">Quem monitora várias liquidity pools com contratos diferentes precisa se orientar sem sair do dashboard. A <mark class="case-brief__hl">barra lateral reúne dados do contrato, contexto da pool e referências</mark>; os filtros recortam por pool, período e status do SLA.</p>
-                                </div>
-                            </div>
-                            <div class="case-section-gallery case-section-gallery--linear">
-                                <img src="Transparent.space Products/New imgs/Solution 3.png" alt="Contexto na barra lateral e filtros do dashboard" class="case-gallery-img" loading="lazy" decoding="async">
-                            </div>
-                        </article>
-                        <article class="case-stage-v3">
-                            <div class="case-stage-v3__head">
-                                <span class="case-stage-v3__num">04</span>
-                                <div>
-                                    <h3 class="case-stage-v3__title">Um modelo mental de tela única</h3>
-                                    <p class="case-stage-v3__copy">As informações foram organizadas em quatro camadas: <strong>status do SLA, comportamento da liquidity, comparação de mercado e metodologia</strong>. Os detalhes aparecem sob demanda, sem tirar o usuário do contexto.</p>
-                                </div>
-                            </div>
-                            <div class="case-section-gallery case-section-gallery--linear">
-                                <img src="Transparent.space Products/New imgs/Solution 1.png" alt="Dashboard único com quatro camadas de informação" class="case-gallery-img" loading="lazy" decoding="async">
-                            </div>
-                        </article>
-                    </div>
-                    <blockquote class="case-callout case-callout--lesson">
-                        <p><strong>Alertas automáticos</strong> avisam quando um dado passa do limite esperado e reduzem o monitoramento manual. Para entregar um produto dessa complexidade no prazo, usamos <mark class="case-brief__hl">fluxos de trabalho assistidos por IA</mark>. Isso acelerou a execução e abriu espaço para testar mais variações de layout sem reconstruir cada opção do zero.</p>
-                    </blockquote>
-                </div>
-            </section>
-
-            <section id="validation" class="case-section">
-                <span class="case-section-label">Como foi validado</span>
-                <h2 class="case-section-title">Rodadas com operadores, depois uso real em produção</h2>
-                <div class="case-section-body case-prose-stack">
-                    <p class="case-prose-lead">Testamos com <strong>4 operadores</strong> em várias rodadas ao longo do projeto, não em uma sessão isolada. Também fizemos testes A/B rápidos e enxutos para comparar alternativas sem comprometer o cronograma.</p>
-                    <p>O principal atrito da v1 era direto: <mark class="case-brief__hl">&ldquo;métricas demais ao mesmo tempo&rdquo;</mark>. Reduzimos o dashboard principal de <strong>12 métricas para 4 essenciais</strong> e deixamos as demais nos níveis de detalhe.</p>
-                    <p>Depois do lançamento, a validação mais forte veio do uso real pelos dois principais clientes B2B, <strong>Worldchain e Kraken</strong>. O projeto levou cerca de <strong>6 meses</strong> do início ao handoff.</p>
-                </div>
-                <div class="case-section-gallery case-validation-media" aria-label="Produto validado em sessões de usabilidade e no uso por clientes">
-                    <video src="Transparent.space Products/New imgs/Demo_showcase.mov" autoplay muted loop playsinline preload="auto" class="case-gallery-img case-gallery-img--zoom-in" aria-label="Demonstração do dashboard da Transparent.space"></video>
-                    <video src="Transparent.space Products/New imgs/granuled.mov" autoplay muted loop playsinline preload="auto" class="case-gallery-img case-gallery-img--edge-crop" aria-label="Interações para acessar detalhes no dashboard"></video>
-                </div>
-            </section>
-
-            <section id="impact" class="case-section">
-                <span class="case-section-label">O que melhorou</span>
-                <h2 class="case-section-title">Resultados mensurados e adoção institucional</h2>
-                <div class="case-section-body case-impact-body">
-                    <div class="case-big-stats case-big-stats--impact">
-                        <article class="case-big-stat">
-                            <span class="case-big-stat__value">61<span class="case-big-stat__unit">→</span>88<span class="case-big-stat__unit">%</span></span>
-                            <p class="case-big-stat__label">Conclusão de tarefas · 4 operadores, várias rodadas</p>
-                        </article>
-                        <article class="case-big-stat">
-                            <span class="case-big-stat__value">20min<span class="case-big-stat__unit">→</span>&lt;30s</span>
-                            <p class="case-big-stat__label">Tempo para verificar um dado · relatado pelos clientes</p>
-                        </article>
-                        <article class="case-big-stat">
-                            <span class="case-big-stat__value">100<span class="case-big-stat__unit">%</span></span>
-                            <p class="case-big-stat__label">Feito via Cursor AI</p>
-                        </article>
-                        <article class="case-big-stat">
-                            <span class="case-big-stat__value case-big-stat--word">Adquirido</span>
-                            <p class="case-big-stat__label">Por Worldchain e Kraken</p>
-                        </article>
-                    </div>
-                    <p class="case-impact-lead">A conclusão de tarefas se manteve consistente ao longo das rodadas com o mesmo grupo de operadores. O produto inteiro foi feito via Cursor AI e hoje roda em produção com Worldchain e Kraken como clientes.</p>
-                    <ul class="case-list case-list--impact case-impact-list">
-                        <li><strong>Validação em produção:</strong> <strong>Worldchain e Kraken</strong> usam o produto com contratos personalizados e várias liquidity pools monitoradas 24/7</li>
-                        <li><strong>Velocidade relatada pelos clientes:</strong> cruzar dados entre plataformas levava ~<mark class="case-brief__hl">20 minutos</mark>; no dashboard unificado, a verificação caiu para <mark class="case-brief__hl">menos de 30 segundos</mark> (relato qualitativo, sem medição controlada com todos os usuários)</li>
-                        <li><strong>Entrega assistida por IA:</strong> os ciclos de design ficaram ~60% mais rápidos, o que permitiu testar mais variações de layout dentro dos mesmos 6 meses</li>
-                        <li><strong>Foco nas métricas:</strong> o dashboard principal passou de 12 métricas simultâneas para 4 essenciais, com as demais disponíveis sob demanda</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="next" class="case-section">
-                <span class="case-section-label">Próximos passos</span>
-                <h2 class="case-section-title">Do monitoramento reativo às decisões preditivas</h2>
-                <div class="case-section-body case-prose-stack">
-                    <p class="case-prose-lead">Hoje, a plataforma responde: &ldquo;este Market Maker está dentro do contrato agora?&rdquo; O próximo passo é responder: <strong>&ldquo;ele continuará dentro do contrato amanhã?&rdquo;</strong></p>
-                    <p>As prioridades são <mark class="case-brief__hl">alertas preditivos antes que os limites sejam ultrapassados</mark> e comparação neutra de até três Market Makers na mesma visualização, sem reintroduzir o viés de ranking que removemos.</p>
-                    <blockquote class="case-callout case-callout--lesson">
-                        <p>Em produtos institucionais, menos pode ser uma decisão estratégica. Simplificar a UI sem simplificar a arquitetura da informação só transfere a confusão para outra tela. Cada métrica removida do dashboard precisava justificar por que voltaria nos detalhes.</p>
-                    </blockquote>
-                </div>
-            </section>
-        </div>
-    </section>
-
-    <section class="related-projects related-projects--selected-work" aria-labelledby="selected-work-heading">
-        <div class="container">
-            <header class="section-head section-head--plain">
-                <span class="section-num">01</span>
-                <h2 class="section-title" id="selected-work-heading">Projetos selecionados</h2>
-                <span class="section-rule"></span>
+    <article class="project-case-content story">
+        <div class="story-frame">
+            <figure class="story-cover"><video src="Transparent.space Products/New imgs/Demo_showcase.mov" autoplay muted loop playsinline preload="auto" aria-label="Dashboard da Transparent.space"></video></figure>
+            <header class="story-intro">
+                <p class="story-kicker">Transparent.space · Monitoramento de market maker</p>
+                <h1>Uma decisão de penalidade levava vinte minutos cruzando ferramentas.</h1>
+                <p class="story-dek">Desenhei o produto de monitoramento para um operador ver, numa tela, se um market maker estava em conformidade.</p>
+                <dl class="story-meta">
+                    <div><dt>Papel</dt><dd>Founding Product Designer</dd></div>
+                    <div><dt>Período</dt><dd>Cerca de 6 meses · 2025–2026</dd></div>
+                    <div><dt>Escopo</dt><dd>Product design e interface</dd></div>
+                </dl>
             </header>
-            <div class="related-grid related-grid--work">
-                <a href="project-hedgehog-product-pt.html" class="related-card"><div class="related-image"><img src="Hedgehog product/Covers/Cover Hedgehog Hero cover.png" alt="Produto de prediction market da Hedgehog" class="related-img" loading="lazy" decoding="async"></div><div class="related-info"><span class="related-name">Hedgehog</span><span class="related-location">Prediction Market</span></div></a>
-                <a href="project-hedgehog-pt.html" class="related-card"><div class="related-image"><img src="Hedgehog /Hedgehog/Cover Hedgehog Hero cover.png" alt="Landing page da waitlist da Hedgehog" class="related-img" loading="lazy" decoding="async"></div><div class="related-info"><span class="related-name">Hedgehog</span><span class="related-location">Conversão da waitlist</span></div></a>
-                <div class="related-card is-current" aria-current="page"><div class="related-image"><img src="Transparent.space Products/Dashboard.png" alt="Dashboard para Market Makers da Transparent.space" class="related-img" loading="lazy" decoding="async"></div><div class="related-info"><span class="related-name">Transparent.space</span><span class="related-location">Dashboard para Market Makers</span></div></div>
-                <a href="project-unimed-seguros-pt.html" class="related-card"><div class="related-image"><img src="Unimed/Cover/Cover unimed all projects.png" alt="Reformulação do aplicativo da Unimed Seguros" class="related-img" loading="lazy" decoding="async"></div><div class="related-info"><span class="related-name">Unimed Seguros</span><span class="related-location">Aplicativo de seguros</span></div></a>
-            </div>
+        <section id="overview" class="case-section">
+            <p class="story-label">Visão geral</p>
+            <h2>Instituições contratam market makers. Depois precisam provar o trabalho.</h2>
+            <div class="story-prose"><p>Instituições de Web3 dependem de market makers para liquidez. Avaliar se esse maker de fato performou é surpreendentemente difícil.</p></div>
+<div class="story-prose"><p>Ferramentas como Dune e DeFiLlama são caras, ficam espalhadas entre produtos e às vezes não indexam o campo exato que o contrato exige. Quando a decisão é uma penalidade contratual, dado parcial não serve.</p></div>
+<figure class="story-figure"><video src="Transparent.space Products/New imgs/granuled.mov" autoplay muted loop playsinline preload="metadata" aria-label="Detalhe no dashboard"></video><figcaption class="story-caption">O produto mantém a decisão numa tela e deixa a profundidade abrir sem perder o lugar.</figcaption></figure>
+        </section>
+        <section id="problem" class="case-section">
+            <p class="story-label">Problema</p>
+            <h2>O número na tela não era a pergunta que estava sendo feita.</h2>
+            <div class="story-prose"><p>Dois grupos compartilham o dado e querem coisas opostas. Fundos, protocolos e exchanges precisam decidir rápido sem fundo técnico. Os times de market maker precisam provar que cumpriram o SLA.</p></div>
+<div class="story-prose"><p>No meio está uma decisão cara: se um maker sai do contrato, alguém precisa decidir se a penalidade se aplica. Errar custa dinheiro dos dois lados.</p></div>
+<figure class="story-figure"><img src="Transparent.space Products/New imgs/Discovery research.png" alt="Dados fragmentados de market maker" loading="lazy" decoding="async"><figcaption class="story-caption">O trabalho vivia espalhado em ferramentas. A decisão não podia.</figcaption></figure>
+        </section>
+        <section id="opportunity" class="case-section">
+            <p class="story-label">Oportunidade</p>
+            <h2>Unificar a checagem, a um preço justo, contra o contrato de verdade.</h2>
+            <div class="story-prose"><p>O product manager tinha anos como analista de dados, então a dor era de quem viveu o problema. O CEO já convivia com ele antes do projeto. Usei esse contexto e depois fiz benchmark de como Dune, DeFiLlama, Bloomberg Terminal, Grafana e Datadog lidam com dado financeiro denso.</p></div>
+<div class="story-prose"><p>A lacuna era consistente: ferramentas caras, dados fragmentados e contratos que não podiam ser indexados como estavam escritos. O produto precisava colocar um contrato personalizado numa plataforma só.</p></div>
+        </section>
+        <section id="solution" class="case-section">
+            <p class="story-label">Solução</p>
+            <h2>Responder uma pergunta primeiro: em conformidade, ou não.</h2>
+            <div class="story-prose"><p>Cada decisão da interface mirava o mesmo resultado: reduzir o tempo para verificar um ponto e decidir se a penalidade se aplica.</p></div>
+<figure class="story-figure"><img src="Transparent.space Products/New imgs/Solution 1.png" alt="Dashboard de uma tela" loading="lazy" decoding="async"><figcaption class="story-caption">Quatro camadas numa tela: status de SLA, comportamento da liquidez, comparação de mercado e metodologia.</figcaption></figure>
+        </section>
+        <section id="experience" class="case-section">
+            <p class="story-label">Experiência central</p>
+            <h2>A tela é construída em torno da penalidade, não do gráfico.</h2>
+            <div class="story-points"><article class="story-point"><h3>SLA como cumprido ou não cumprido.</h3><div class="story-prose"><p>“98,7%” não responde a pergunta que importa. A interface trata o SLA como um contrato binário.</p></div><figure class="story-figure"><img src="Transparent.space Products/New imgs/Solution 04.png" alt="Status binário de SLA" loading="lazy" decoding="async"><figcaption class="story-caption">Conformidade é um estado, não uma porcentagem solta sem veredito.</figcaption></figure></article><article class="story-point"><h3>Liquidez como comportamento no tempo.</h3><div class="story-prose"><p>Um pool de US$ 200 mil que caiu 60% numa semana é outra história de um pool estável. Mostrar só o valor atual esconde a decisão.</p></div><div class="story-gallery"><figure class=""><img src="Transparent.space Products/New imgs/overview 1.png" alt="Liquidez no tempo" loading="lazy" decoding="async"><figcaption class="story-caption">A tendência antes do retrato.</figcaption></figure><figure class=""><img src="Transparent.space Products/New imgs/overview 2.png" alt="Profundidade do pool" loading="lazy" decoding="async"><figcaption class="story-caption">A profundidade fica a um passo, não em cima do veredito.</figcaption></figure></div></article><article class="story-point"><h3>Contexto que continua ao alcance.</h3><div class="story-prose"><p>Operadores acompanham vários pools sob contratos personalizados. A barra lateral guarda metadados do contrato e referências. Filtros restringem por pool, período e estado de SLA, então a sessão já começa no recorte certo.</p></div><figure class="story-figure"><img src="Transparent.space Products/New imgs/Solution 3.png" alt="Barra lateral e filtros" loading="lazy" decoding="async"><figcaption class="story-caption">Orientação sem sair da visão principal.</figcaption></figure></article></div>
+        </section>
+        <section id="decisions" class="case-section">
+            <p class="story-label">Decisões</p>
+            <h2>Simplificar a tela sem simplificar o modelo só muda a confusão de lugar.</h2>
+            <div class="story-points"><article class="story-point"><h3>Binário no lugar de uma porcentagem precisa.</h3><div class="story-prose"><p>Precisão parecia rigor e ainda assim falhava no trabalho. O operador precisava de um veredito que pudesse defender.</p></div></article><article class="story-point"><h3>Tendência antes do valor atual.</h3><div class="story-prose"><p>Um número estático parece completo numa revisão com stakeholders. Ele esconde a semana que de fato justifica a penalidade.</p></div></article><article class="story-point"><h3>Profundidade sob demanda.</h3><div class="story-prose"><p>Cada métrica tirada da visão principal precisava merecer a volta pelo detalhe. Fluxos com apoio de IA tornaram essa iteração possível num projeto de seis meses. O produto inteiro foi construído com o Cursor.</p></div><p class="story-note">Os ciclos de design aceleraram cerca de 60% nesse prazo. Isso é efeito de entrega, não métrica de usuário.</p></article></div>
+        </section>
+        <section id="results" class="case-section">
+            <p class="story-label">Resultados</p>
+            <h2>Checagens mais rápidas, com o cuidado de como foram medidas.</h2>
+            <div class="story-stats"><div class="story-stat"><strong>61% → 88%</strong><span>Conclusão de tarefas entre rodadas com 4 operadores</span></div><div class="story-stat"><strong>20m → <30s</strong><span>Tempo relatado por clientes para checar um ponto. Não é um estudo controlado de todo usuário.</span></div><div class="story-stat"><strong>Adquirido</strong><span>Worldchain e Kraken, os clientes de produção</span></div></div>
+<div class="story-prose"><p>Worldchain e Kraken adquiriram o produto e o operam em produção, com contratos personalizados em vários pools.</p></div>
+        </section>
+        <section id="reflection" class="case-section">
+            <p class="story-label">Reflexão</p>
+            <h2>O produto responde “em conformidade agora”. Ainda não responde “amanhã”.</h2>
+            <div class="story-prose"><p>A próxima camada é um alerta preditivo antes de um limite estourar, e uma comparação neutra de até três market makers numa visão, sem o viés de ranking que tiramos de propósito.</p></div>
+<div class="story-prose"><p>Em produto institucional, a contenção é a estratégia. Uma UI mais limpa em cima da mesma pilha de métricas só muda a confusão de endereço.</p></div>
+        </section>
         </div>
-    </section>
+    </article>
 
-    <footer class="footer footer--v3">
-        <div class="footer-v3__inner">
-            <div class="footer-v3__main">
-                <div class="footer-v3__col footer-v3__col--brand">
-                    <a href="index-pt.html" class="footer-logo-link" aria-label="Página inicial da Fonseca">
-                        <img src="logo.svg" alt="" class="footer-logo-img logo-light" height="32">
-                        <img src="logo%20white.svg" alt="" class="footer-logo-img logo-dark" height="32">
-                    </a>
-                    <p class="footer-v3__tagline">Designer de produto que transforma sistemas complexos em experiências claras e confiáveis<span class="footer-v3__dot" aria-hidden="true">.</span></p>
-                </div>
-                <nav class="footer-v3__col footer-v3__col--nav" aria-label="Rodapé">
-                    <p class="footer-v3__col-head">Navegar</p>
-                    <div class="footer-v3__links">
-                        <a href="index-pt.html#work">Projetos</a>
-                        <a href="fun-pt.html">Side Quests</a>
-                        <a href="about-pt.html">Sobre</a>
-                        <a href="index-pt.html#testimonials">Depoimentos</a>
-                    </div>
-                </nav>
-                <div class="footer-v3__col footer-v3__col--social">
-                    <p class="footer-v3__col-head">Contato</p>
-                    <div class="footer-v3__links">
-                        <a href="#" data-copy-email>fonsecaa.design@gmail.com</a>
-                        <a href="https://www.linkedin.com/in/maths-fonseca/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                        <a href="https://www.behance.net/maths-fonseca" target="_blank" rel="noopener noreferrer">Behance</a>
-                        <a href="https://x.com/0xFonseca" target="_blank" rel="noopener noreferrer">X / Twitter</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom footer-v3__bottom">
-                <p>&copy; <span id="current-year">2026</span> Matheus Fonseca &middot; Rio de Janeiro, Brasil</p>
-                <a href="#" class="footer-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Voltar ao topo &uarr;</a>
-            </div>
+    <footer class="site-foot">
+        <div class="site-foot__inner">
+            <nav class="site-foot__links" aria-label="Conectar">
+                <a href="https://www.linkedin.com/in/maths-fonseca/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="#" data-copy-email>Email</a>
+                <a href="https://x.com/0xFonseca" target="_blank" rel="noopener noreferrer">X</a>
+                <a href="https://www.behance.net/maths-fonseca" target="_blank" rel="noopener noreferrer">Behance</a>
+            </nav>
         </div>
     </footer>
 
     <script src="posthog-config.js?v=20260782"></script>
     <script src="posthog.js?v=20260782"></script>
-    <script src="script.js?v=20260819t"></script>
+    <script src="script.js?v=20261012o"></script>
 
     <!-- Vercel Web Analytics (free) -->
     <script>

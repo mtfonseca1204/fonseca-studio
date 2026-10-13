@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unimed Seguros · Telemedicine App | Fonseca</title>
-    <meta name="description" content="Telemedicine app design for Unimed Seguros: 40,000+ beneficiaries, trust-first flows, and 50,000 consultations per month during the pandemic.">
+    <meta name="description" content="Telemedicine for Unimed Seguros: a guided consultation path for 40,000+ beneficiaries, reaching about 50,000 consultations a month.">
     <link rel="icon" type="image/svg+xml" href="logo.svg">
     <link rel="apple-touch-icon" href="logo.svg">
     <link rel="canonical" href="https://fonseca.studio/project-unimed-seguros.html">
@@ -24,7 +24,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;500;600;700;800&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260819q">
+    <link rel="stylesheet" href="styles.css?v=20261013l">
 
     
     <script>
@@ -65,11 +65,12 @@
                     <img src="logo%20white.svg" alt="Fonseca" class="nav-logo-img logo-dark">
                 </a>
             </div>
+            <p class="rail-back"><a href="index.html#work"><svg class="rail-back__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M18.32 12.66H8.26L12.41 16.79L11.46 17.78L5.68 11.98L11.47 6.22L12.42 7.21L8.28 11.34L18.32 11.32V12.66Z" fill="currentColor"/></svg>Work</a><span class="rail-back__sep" aria-hidden="true">/</span><span class="rail-back__name">Unimed Seguros</span></p>
             <div class="nav-center">
-                <a href="index.html#work" class="nav-link"><span class="nav-num">01</span> Work</a>
+                <a href="index.html#work" class="nav-link nav-link--active" aria-current="page"><span class="nav-num">01</span> Work</a>
                 <a href="fun.html" class="nav-link"><span class="nav-num">02</span> Side Quests</a>
                 <a href="about.html" class="nav-link"><span class="nav-num">03</span> About</a>
-                <a href="MatheusFonsecaCV.pdf?v=20260820i" target="_blank" rel="noopener noreferrer" class="nav-link"><span class="nav-num">04</span> CV</a>
+                <a href="MatheusFonsecaCV.pdf?v=20260820i" class="nav-link" target="_blank" rel="noopener noreferrer"><span class="nav-num">04</span> CV</a>
             </div>
             <div class="nav-right">
                 <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
@@ -82,291 +83,103 @@
         </div>
         <div class="mobile-menu">
             <div class="mobile-menu-links">
-                <a href="index.html#work" class="mobile-link">Work</a>
-                <a href="fun.html" class="mobile-link">Side Quests</a>
-                <a href="about.html" class="mobile-link">About</a>
-                <a href="MatheusFonsecaCV.pdf?v=20260820i" target="_blank" rel="noopener noreferrer" class="mobile-link">CV</a>
+                <a href="index.html#work" class="mobile-link">Work</a><a href="fun.html" class="mobile-link">Side Quests</a><a href="about.html" class="mobile-link">About</a><a href="MatheusFonsecaCV.pdf?v=20260820i" target="_blank" rel="noopener noreferrer" class="mobile-link">CV</a>
             </div>
         </div>
     </nav>
 
-    <section class="project-hero project-hero-case">
-        <div class="container container-narrow">
-            <p class="project-hero-tagline">HEALTHCARE · TELEMEDICINE</p>
-            <h1 class="project-hero-title">From telemedicine doubt to 50K consultations a month.</h1>
-        </div>
-    </section>
-
-    <aside class="case-side-nav" id="caseSideNav" aria-label="Project navigation">
+<aside class="case-side-nav" id="caseSideNav" aria-label="Project">
         <nav class="case-side-nav-inner">
-            <a href="#case-scan" class="case-side-nav__summary case-side-nav-link case-side-nav-link--summary">Summary</a>
+            <a href="#overview" class="case-side-nav-link">Overview</a>
             <a href="#problem" class="case-side-nav-link">Problem</a>
-            <a href="#why" class="case-side-nav-link">Why it matters</a>
-            <a href="#research" class="case-side-nav-link">Research</a>
+            <a href="#opportunity" class="case-side-nav-link">Opportunity</a>
             <a href="#solution" class="case-side-nav-link">Solution</a>
-            <a href="#validation" class="case-side-nav-link">Validation</a>
-            <a href="#impact" class="case-side-nav-link">Impact</a>
-            <a href="#next" class="case-side-nav-link">Next steps</a>
+            <a href="#experience" class="case-side-nav-link">Core experience</a>
+            <a href="#decisions" class="case-side-nav-link">Decisions</a>
+            <a href="#results" class="case-side-nav-link">Results</a>
+            <a href="#reflection" class="case-side-nav-link">Reflection</a>
         </nav>
     </aside>
 
-    <section class="project-cover">
-        <div class="project-cover-image">
-            <img src="Unimed/Cover/Cover unimed Hero cover.png" alt="Unimed Seguros telemedicine app cover" class="cover-img" loading="lazy" decoding="async">
-        </div>
-        <div class="container container-narrow">
-            <div class="project-case-meta project-case-meta--after-cover">
-                <div class="case-meta-item"><span class="case-meta-label">CLIENT</span><span class="case-meta-value">Unimed Seguros</span></div>
-                <div class="case-meta-item"><span class="case-meta-label">MY ROLE</span><span class="case-meta-value">Product Designer</span></div>
-                <div class="case-meta-item"><span class="case-meta-label">TIMELINE</span><span class="case-meta-value">2021&ndash;2022 · COVID</span></div>
-            </div>
-        </div>
-    </section>
-
-    <section class="project-case-content case-editorial">
-        <div class="container container-narrow">
-            <div id="case-scan" class="case-brief case-scan" aria-label="Project summary for quick reading">
-                <div class="case-brief__grid">
-                    <article class="case-brief__card">
-                        <h3 class="case-brief__card-label">Problem</h3>
-                        <p class="case-brief__card-text">Remote care was urgent, but <mark class="case-brief__hl">generic apps</mark> with fragmented scheduling weren&rsquo;t built for a large institutional healthcare audience.</p>
-                    </article>
-                    <article class="case-brief__card">
-                        <h3 class="case-brief__card-label">Approach</h3>
-                        <p class="case-brief__card-text"><mark class="case-brief__hl">Four pillars, trust-first design</mark>, dedicated onboarding for 60+ beneficiaries, and 24/7 in-app support.</p>
-                    </article>
-                    <article class="case-brief__card case-brief__card--result">
-                        <h3 class="case-brief__card-label">Outcome</h3>
-                        <p class="case-brief__card-text"><mark class="case-brief__hl">40K+ beneficiaries</mark>, ~50K consultations/month, &lt;30% no-show, 80%+ chat retention.</p>
-                    </article>
-                </div>
-                <ul class="case-scan__stats" aria-label="Headline numbers">
-                    <li class="case-scan__stat">
-                        <span class="case-scan__stat-value">50K</span>
-                        <span class="case-scan__stat-label">Consultations per month</span>
-                    </li>
-                    <li class="case-scan__stat">
-                        <span class="case-scan__stat-value">40K<span class="case-scan__stat-unit">+</span></span>
-                        <span class="case-scan__stat-label">Primary beneficiaries</span>
-                    </li>
-                    <li class="case-scan__stat">
-                        <span class="case-scan__stat-value">&lt;30<span class="case-scan__stat-unit">%</span></span>
-                        <span class="case-scan__stat-label">No-show rate</span>
-                    </li>
-                </ul>
-            </div>
-
-            <section id="problem" class="case-section">
-                <span class="case-section-label">Problem</span>
-                <h2 class="case-section-title">Remote care was necessary. The experience wasn&rsquo;t ready.</h2>
-                <div class="case-section-body case-prose-stack">
-                    <p class="case-prose-lead">Remote care was becoming a necessity, but the experience available on the market wasn&rsquo;t ready for it, generic apps, lacking the specific experience a large institutional healthcare audience needed, with <mark class="case-brief__hl">accessibility barriers and fragmented scheduling</mark>.</p>
-                </div>
-                <div class="case-section-gallery case-section-gallery--linear" aria-label="Generic telemedicine experience gaps">
-                    <img src="Unimed/new imgs/01.png" alt="Unimed Seguros telemedicine app context" class="case-gallery-img" loading="lazy" decoding="async">
-                </div>
-            </section>
-
-            <section id="why" class="case-section">
-                <span class="case-section-label">Why this matters</span>
-                <h2 class="case-section-title">40,000 people who needed remote care to actually work</h2>
-                <div class="case-section-body case-prose-stack">
-                    <p class="case-prose-lead"><strong>40,000+ beneficiaries</strong> of Brazil&rsquo;s largest health cooperative, with widely varying digital literacy, Unimed itself had flagged to the team ahead of time that a significant portion of that base was made up of beneficiaries <mark class="case-brief__hl">aged 60+</mark>, which shaped the extra care around clarity and support from early on.</p>
-                    <p>These beneficiaries needed to trust that a remote consultation would &ldquo;actually work when I need it.&rdquo; In healthcare, the barrier isn&rsquo;t just usability, it&rsquo;s <strong>trust</strong>. A flow that raises doubt makes someone give up and seek in-person care instead, exactly what the product was meant to prevent.</p>
-                </div>
-                <div class="case-section-gallery case-section-gallery--linear" aria-label="Neutral design system for institutional healthcare trust">
-                    <img src="Unimed/new imgs/Design 01.png" alt="Neutral design system for institutional healthcare trust" class="case-gallery-img" loading="lazy" decoding="async">
-                </div>
-            </section>
-
-            <section id="research" class="case-section">
-                <span class="case-section-label">How it was researched</span>
-                <h2 class="case-section-title">Refined personas, pandemic urgency, not a blank slate</h2>
-                <div class="case-section-body case-prose-stack">
-                    <p class="case-prose-lead">The company was already an established healthtech, so the team didn&rsquo;t start from zero, there was already a <strong>persona study built from multiple interviews</strong> with real users over time, which had produced well-defined patient profiles.</p>
-                    <p>When Unimed Seguros contracted the service bundle, the work was to refine that existing study around Unimed&rsquo;s specific audience, rather than starting new research from scratch.</p>
-                    <p>There was no benchmarking against other health apps, the company itself was the reference, given its accumulated product experience in the space. This project took place in the middle of the pandemic, and the core goal was to get a patient through a consultation as fast as possible and into the right referral, not a convenience goal, but literally about <mark class="case-brief__hl">shortening the gap between &ldquo;I have a symptom&rdquo; and &ldquo;I have the right guidance.&rdquo;</mark></p>
-                    <blockquote class="case-callout case-callout--insight">
-                        <p>The pattern that showed up, both internally and observed across other companies in the sector during the same period, was the broader pandemic scenario itself: real chaos and an urgent search for help. This wasn&rsquo;t an abstract usability pain point, it was the emotional context of everyone opening the app.</p>
-                    </blockquote>
-                </div>
-            </section>
-
-            <section id="solution" class="case-section">
-                <span class="case-section-label">How it was solved</span>
-                <h2 class="case-section-title">Four pillars, three design principles</h2>
-                <div class="case-section-body">
-                    <p class="case-prose-lead">The app was structured around <strong>four pillars</strong>, guided by three decisions: <mark class="case-brief__hl">clear next steps</mark> instead of an overload of options, <mark class="case-brief__hl">institutional trust through visual restraint</mark> (neutral colors, accessible typography), and predictable guidance at every step of the flow.</p>
-                    <div class="case-stages case-stages--v3">
-                        <article class="case-stage-v3">
-                            <div class="case-stage-v3__head">
-                                <span class="case-stage-v3__num">01</span>
-                                <div>
-                                    <h3 class="case-stage-v3__title">Simplified scheduling</h3>
-                                    <p class="case-stage-v3__copy">From <strong>symptom description to confirmation</strong>, one guided path with a clear next step at every screen, built for users who may be anxious and unfamiliar with telemedicine.</p>
-                                </div>
-                            </div>
-                            <div class="case-section-gallery case-section-gallery--linear">
-                                <img src="Unimed/new imgs/Solution 02.png" alt="Unimed Seguros appointment scheduling flow from symptom to confirmation" class="case-gallery-img" loading="lazy" decoding="async">
-                            </div>
-                        </article>
-                        <article class="case-stage-v3">
-                            <div class="case-stage-v3__head">
-                                <span class="case-stage-v3__num">02</span>
-                                <div>
-                                    <h3 class="case-stage-v3__title">Consultation interface</h3>
-                                    <p class="case-stage-v3__copy"><strong>Video and chat</strong> with a healthcare professional, the moment trust matters most. Referrals, when needed, happen directly during the consultation, with no extra step or redirect to another channel.</p>
-                                </div>
-                            </div>
-                            <div class="case-section-gallery case-section-gallery--linear">
-                                <img src="Unimed/new imgs/02.png" alt="Unimed Seguros video and chat consultation interface" class="case-gallery-img" loading="lazy" decoding="async">
-                            </div>
-                        </article>
-                        <article class="case-stage-v3">
-                            <div class="case-stage-v3__head">
-                                <span class="case-stage-v3__num">03</span>
-                                <div>
-                                    <h3 class="case-stage-v3__title">Centralized health history</h3>
-                                    <p class="case-stage-v3__copy">Past consultations, recommendations, and guidance in <strong>one place</strong>, so follow-up doesn&rsquo;t require navigating a maze of disconnected screens.</p>
-                                </div>
-                            </div>
-                            <div class="case-section-gallery case-section-gallery--linear">
-                                <img src="Unimed/new imgs/Solution 05.png" alt="Unimed Seguros centralized health history and guidance" class="case-gallery-img" loading="lazy" decoding="async">
-                            </div>
-                        </article>
-                        <article class="case-stage-v3">
-                            <div class="case-stage-v3__head">
-                                <span class="case-stage-v3__num">04</span>
-                                <div>
-                                    <h3 class="case-stage-v3__title">Documents, medicines, and certificates in one place</h3>
-                                    <p class="case-stage-v3__copy">When almost no one could leave home, the app became the access point for <strong>medical orders, prescriptions, medical certificates</strong>, and other assistance. Beneficiaries access medicines and documents through a clear, guided path, without hunting across channels or calling support.</p>
-                                </div>
-                            </div>
-                            <div class="case-section-gallery case-section-gallery--linear">
-                                <img src="Unimed/new imgs/Solution 6.png" alt="Unimed Seguros access to prescriptions, medicines, and medical documents" class="case-gallery-img" loading="lazy" decoding="async">
-                            </div>
-                        </article>
-                    </div>
-                    <blockquote class="case-callout case-callout--lesson">
-                        <p>Since a significant part of the audience was beneficiaries aged 60+, the team went beyond the interface. A <strong>full product onboarding was built exclusively for Unimed</strong>, highlighting each function, permanently available on the platform, not just on first open. The <strong>24/7 in-app chat</strong> worked as an additional layer of retention and support, and explanatory materials were made available to staff and support agents so human help stayed aligned with the same simple language used in the product.</p>
-                    </blockquote>
-                </div>
-            </section>
-
-            <section id="validation" class="case-section">
-                <span class="case-section-label">How it was validated</span>
-                <h2 class="case-section-title">Built on a foundation already proven in production</h2>
-                <div class="case-section-body case-prose-stack">
-                    <p class="case-prose-lead">Validation for this case didn&rsquo;t come from a formal usability test run with Unimed, it came from an <strong>already-established foundation</strong>. The product had already been through its &ldquo;trial by fire&rdquo; with a previous client, so the core (flow, architecture, language) was already validated in production before Unimed came on board.</p>
-                    <p>The work specific to Unimed was building new services and features on top of that proven foundation, like the <mark class="case-brief__hl">dedicated onboarding</mark>, tailored to their specific audience and contract, without needing to rebuild from scratch or revalidate what had already proven solid with another client.</p>
-                    <p>Validation for these specific pieces came from <strong>real production results</strong>, detailed in the impact section below.</p>
-                </div>
-                <div class="case-section-gallery case-validation-media" aria-label="Unimed-specific onboarding and support layers">
-                    <img src="Unimed/new imgs/Solution 7.png" alt="24/7 in-app chat support layer for beneficiary guidance" class="case-gallery-img" loading="lazy" decoding="async">
-                    <img src="Unimed/new imgs/Solution 8.png" alt="Onboarding and support flows tailored to Unimed beneficiaries" class="case-gallery-img" loading="lazy" decoding="async">
-                </div>
-            </section>
-
-            <section id="impact" class="case-section">
-                <span class="case-section-label">What improved</span>
-                <h2 class="case-section-title">Scale, retention, and trust at pandemic volume</h2>
-                <div class="case-section-body case-impact-body">
-                    <div class="case-big-stats case-big-stats--impact case-big-stats--impact-social">
-                        <article class="case-big-stat">
-                            <span class="case-big-stat__value">40K<span class="case-big-stat__unit">+</span></span>
-                            <p class="case-big-stat__label">Primary beneficiaries · dependents not counted</p>
-                        </article>
-                        <article class="case-big-stat">
-                            <span class="case-big-stat__value">50K</span>
-                            <p class="case-big-stat__label">Consultations per month · 24/7 + scheduled</p>
-                        </article>
-                        <article class="case-big-stat">
-                            <span class="case-big-stat__value">&lt;30<span class="case-big-stat__unit">%</span></span>
-                            <p class="case-big-stat__label">No-show rate during pandemic lockdowns</p>
-                        </article>
-                        <article class="case-big-stat">
-                            <span class="case-big-stat__value">80<span class="case-big-stat__unit">%+</span></span>
-                            <p class="case-big-stat__label">Chat retention · doubts resolved in-app</p>
-                        </article>
-                    </div>
-                    <p class="case-impact-lead">The app became the primary healthcare access point during lockdowns, handling prescriptions, certificates, and referrals without sending users to other channels.</p>
-                    <ul class="case-list case-list--impact case-impact-list">
-                        <li><strong>In-consultation referrals:</strong> when needed, made directly during the consultation, no extra step or redirect to another channel</li>
-                        <li><strong>No-show discipline:</strong> patients who scheduled but didn&rsquo;t attend stayed below 30%, a strong number given the context and the product&rsquo;s role as primary healthcare access</li>
-                        <li><strong>Support that retains:</strong> the 24/7 chat retained over 80% of clients who reached out with a doubt, resolving it with direct guidance instead of losing the user mid-flow</li>
-                        <li><strong>Designed with Karla Granadeiro:</strong> research, flows, and design system delivered as a paired design effort during COVID peak demand</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="next" class="case-section">
-                <span class="case-section-label">Next steps</span>
-                <h2 class="case-section-title">Anxiety reduction is the engagement metric</h2>
-                <div class="case-section-body case-prose-stack">
-                    <p class="case-prose-lead">In health products, every ambiguous scheduling step adds stress; every clear next step keeps people in the flow. The priority ahead is <strong>real-time appointment status</strong> and integrated health records across consultations, so trust extends beyond the first visit.</p>
-                    <blockquote class="case-callout case-callout--lesson">
-                        <p>When beneficiaries aged 60+ are learning telemedicine for the first time, the interface is only half the product. Onboarding, chat, and aligned human support are what make remote care feel like it will &ldquo;actually work when I need it.&rdquo;</p>
-                    </blockquote>
-                </div>
-            </section>
-        </div>
-    </section>
-
-    <section class="related-projects related-projects--selected-work" aria-labelledby="selected-work-heading">
-        <div class="container">
-            <header class="section-head section-head--plain">
-                <span class="section-num">01</span>
-                <h2 class="section-title" id="selected-work-heading">Selected Work</h2>
-                <span class="section-rule"></span>
+    <article class="project-case-content story">
+        <div class="story-frame">
+            <figure class="story-cover"><img src="Unimed/Cover/Cover unimed Hero cover.png" alt="Unimed Seguros telemedicine" loading="eager" decoding="async"></figure>
+            <header class="story-intro">
+                <p class="story-kicker">Unimed Seguros · Telemedicine</p>
+                <h1>Remote care only works if people believe it will work.</h1>
+                <p class="story-dek">With Karla Granadeiro, I designed the Unimed Seguros telemedicine experience for beneficiaries who needed a consultation they could trust.</p>
+                <dl class="story-meta">
+                    <div><dt>Role</dt><dd>Product Designer, with Karla Granadeiro</dd></div>
+                    <div><dt>Timeline</dt><dd>COVID period</dd></div>
+                    <div><dt>Scope</dt><dd>Flows, onboarding, and interface</dd></div>
+                </dl>
             </header>
-            <div class="related-grid related-grid--work">
-                <a href="project-hedgehog-product.html" class="related-card"><div class="related-image"><img src="Hedgehog product/Covers/Cover Hedgehog Hero cover.png" alt="Hedgehog prediction market product" class="related-img" loading="lazy" decoding="async"></div><div class="related-info"><span class="related-name">Hedgehog</span><span class="related-location">Prediction Market</span></div></a>
-                <a href="project-hedgehog.html" class="related-card"><div class="related-image"><img src="Hedgehog /Hedgehog/Cover Hedgehog Hero cover.png" alt="Hedgehog waitlist landing page" class="related-img" loading="lazy" decoding="async"></div><div class="related-info"><span class="related-name">Hedgehog</span><span class="related-location">Waitlist Conversion</span></div></a>
-                <a href="project-transparent-space.html" class="related-card"><div class="related-image"><img src="Transparent.space Products/Dashboard.png" alt="Transparent.space Market Maker dashboard" class="related-img" loading="lazy" decoding="async"></div><div class="related-info"><span class="related-name">Transparent.space</span><span class="related-location">Market Maker Dashboard</span></div></a>
-                <div class="related-card is-current" aria-current="page"><div class="related-image"><img src="Unimed/Cover/Cover unimed all projects.png" alt="Unimed Seguros telemedicine app" class="related-img" loading="lazy" decoding="async"></div><div class="related-info"><span class="related-name">Unimed Seguros</span><span class="related-location">Telemedicine App</span></div></div>
-            </div>
+        <section id="overview" class="case-section">
+            <p class="story-label">Overview</p>
+            <h2>40,000 people needed remote care to actually hold.</h2>
+            <div class="story-prose"><p>Unimed Seguros is part of Brazil’s largest health cooperative. During the pandemic, remote care was necessary, and the apps on the market were generic: fragmented scheduling, and little of the institutional reassurance this audience needed.</p></div>
+<div class="story-prose"><p>A significant share of beneficiaries were 60 or older. Unimed had flagged that before we started. It shaped how much clarity the product had to carry.</p></div>
+<figure class="story-figure"><img src="Unimed/new imgs/01.png" alt="Unimed Seguros app" loading="lazy" decoding="async"><figcaption class="story-caption">The product had to feel like care, not like a form.</figcaption></figure>
+        </section>
+        <section id="problem" class="case-section">
+            <p class="story-label">Problem</p>
+            <h2>The barrier was trust, not a missing feature.</h2>
+            <div class="story-prose"><p>Beneficiaries needed to believe a remote consultation would work when they needed it. A flow that raises doubt sends someone back to in-person care, which is exactly what the product was meant to avoid.</p></div>
+<figure class="story-figure"><img src="Unimed/new imgs/Design 01.png" alt="Calm visual system" loading="lazy" decoding="async"><figcaption class="story-caption">Neutral color and accessible type were part of the trust, not decoration.</figcaption></figure>
+        </section>
+        <section id="opportunity" class="case-section">
+            <p class="story-label">Opportunity</p>
+            <h2>The company already knew its patients. The job was to refine that for Unimed.</h2>
+            <div class="story-prose"><p>This was an established healthtech, not a blank slate. Personas already existed from interviews over time. When Unimed contracted the bundle, we refined that study for their audience instead of starting research from zero.</p></div>
+<div class="story-prose"><p>There was no benchmark against other health apps. The company was the reference. The goal, in the middle of the pandemic, was to get a patient through a consultation as fast as possible. The emotional context was chaos and an urgent search for help.</p></div>
+        </section>
+        <section id="solution" class="case-section">
+            <p class="story-label">Solution</p>
+            <h2>One next step, on every screen.</h2>
+            <div class="story-prose"><p>The app sits on four pillars, held by three principles: a clear next step instead of a menu of options, institutional trust through visual restraint, and predictable guidance through the whole flow.</p></div>
+<figure class="story-figure"><img src="Unimed/new imgs/Solution 02.png" alt="Scheduling from symptom to confirmation" loading="lazy" decoding="async"><figcaption class="story-caption">Scheduling is one guided path, built for someone who may be anxious and new to telemedicine.</figcaption></figure>
+        </section>
+        <section id="experience" class="case-section">
+            <p class="story-label">Core experience</p>
+            <h2>The consultation is the product. Everything else keeps people in it.</h2>
+            <div class="story-points"><article class="story-point"><h3>The visit itself.</h3><div class="story-prose"><p>Video and chat with a professional, which is the moment trust matters most. Referrals, when needed, happen during the consultation. There is no extra redirect.</p></div><figure class="story-figure"><img src="Unimed/new imgs/02.png" alt="Video and chat consultation" loading="lazy" decoding="async"><figcaption class="story-caption">The visit stays in one place.</figcaption></figure></article><article class="story-point"><h3>History, so follow-up is not a search.</h3><div class="story-prose"><p>Past consultations, recommendations, and guidance live together.</p></div><figure class="story-figure"><img src="Unimed/new imgs/Solution 05.png" alt="Health history" loading="lazy" decoding="async"><figcaption class="story-caption">Follow-up without a maze of screens.</figcaption></figure></article><article class="story-point"><h3>Prescriptions, certificates, and medicines.</h3><div class="story-prose"><p>When almost nobody could leave home, the app became the way to reach medical orders and other assistance, through one guided path.</p></div><figure class="story-figure"><img src="Unimed/new imgs/Solution 6.png" alt="Documents and medicines" loading="lazy" decoding="async"><figcaption class="story-caption">Documents without a support call.</figcaption></figure></article><article class="story-point"><h3>Onboarding and a human on the other side.</h3><div class="story-prose"><p>Because so many beneficiaries were 60 or older, interface was only half of it. A full onboarding was built for Unimed and stayed available on the platform, not only on first open. A 24/7 in-app chat covered doubts in the flow.</p></div><div class="story-gallery"><figure class=""><img src="Unimed/new imgs/Solution 7.png" alt="In-app chat" loading="lazy" decoding="async"><figcaption class="story-caption">Support inside the product.</figcaption></figure><figure class=""><img src="Unimed/new imgs/Solution 8.png" alt="Onboarding" loading="lazy" decoding="async"><figcaption class="story-caption">Teaching that stays available after the first visit.</figcaption></figure></div></article></div>
+        </section>
+        <section id="decisions" class="case-section">
+            <p class="story-label">Decisions</p>
+            <h2>We extended a product that had already been proven, instead of rebuilding it.</h2>
+            <div class="story-prose"><p>Validation for the core did not come from a formal usability test with Unimed. The product had already been through a previous client, so the flow, architecture, and language were already in production.</p></div>
+<div class="story-prose"><p>The Unimed-specific work was new services on that base, including the dedicated onboarding. Karla Granadeiro and I shared the research, flows, and design system.</p></div>
+        </section>
+        <section id="results" class="case-section">
+            <p class="story-label">Results</p>
+            <h2>Scale, during lockdown, with the numbers the operation reported.</h2>
+            <div class="story-stats"><div class="story-stat"><strong>50K</strong><span>Consultations a month, 24/7 and scheduled</span></div><div class="story-stat"><strong>40K+</strong><span>Primary beneficiaries. Dependents not counted.</span></div><div class="story-stat"><strong><30%</strong><span>No-show rate during pandemic lockdowns</span></div></div>
+<div class="story-prose"><p>The 24/7 chat retained over 80% of people who arrived with a doubt, resolving it in the product instead of losing them mid-flow. Referrals stayed inside the consultation.</p></div>
+<p class="story-note">These are operational outcomes from production, not a controlled usability study run with Unimed beneficiaries.</p>
+        </section>
+        <section id="reflection" class="case-section">
+            <p class="story-label">Reflection</p>
+            <h2>For a first telemedicine visit, the interface is only half the product.</h2>
+            <div class="story-prose"><p>Onboarding, chat, and aligned human support are what make remote care feel like it will work when someone needs it. Every ambiguous step adds stress. Every clear next step keeps the person in the flow.</p></div>
+<div class="story-prose"><p>What I would still want: real-time appointment status, and records that stay connected across consultations, so trust lasts past the first visit.</p></div>
+        </section>
         </div>
-    </section>
+    </article>
 
-    <footer class="footer footer--v3">
-        <div class="footer-v3__inner">
-            <div class="footer-v3__main">
-                <div class="footer-v3__col footer-v3__col--brand">
-                    <a href="index.html" class="footer-logo-link" aria-label="Fonseca Home">
-                        <img src="logo.svg" alt="" class="footer-logo-img logo-light" height="32">
-                        <img src="logo%20white.svg" alt="" class="footer-logo-img logo-dark" height="32">
-                    </a>
-                    <p class="footer-v3__tagline">Product designer turning complex systems into clear, trustworthy experiences<span class="footer-v3__dot" aria-hidden="true">.</span></p>
-                </div>
-                <nav class="footer-v3__col footer-v3__col--nav" aria-label="Footer">
-                    <p class="footer-v3__col-head">Navigate</p>
-                    <div class="footer-v3__links">
-                        <a href="index.html#work">Work</a>
-                        <a href="fun.html">Side Quests</a>
-                        <a href="about.html">About</a>
-                        <a href="index.html#testimonials">Testimonials</a>
-                    </div>
-                </nav>
-                <div class="footer-v3__col footer-v3__col--social">
-                    <p class="footer-v3__col-head">Connect</p>
-                    <div class="footer-v3__links">
-                        <a href="#" data-copy-email>fonsecaa.design@gmail.com</a>
-                        <a href="https://www.linkedin.com/in/maths-fonseca/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                        <a href="https://www.behance.net/maths-fonseca" target="_blank" rel="noopener noreferrer">Behance</a>
-                        <a href="https://x.com/0xFonseca" target="_blank" rel="noopener noreferrer">X / Twitter</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom footer-v3__bottom">
-                <p>&copy; <span id="current-year">2026</span> Matheus Fonseca &middot; Rio de Janeiro, Brazil</p>
-                <a href="#" class="footer-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Back to top &uarr;</a>
-            </div>
+    <footer class="site-foot">
+        <div class="site-foot__inner">
+            <nav class="site-foot__links" aria-label="Connect">
+                <a href="https://www.linkedin.com/in/maths-fonseca/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="#" data-copy-email>Email</a>
+                <a href="https://x.com/0xFonseca" target="_blank" rel="noopener noreferrer">X</a>
+                <a href="https://www.behance.net/maths-fonseca" target="_blank" rel="noopener noreferrer">Behance</a>
+            </nav>
         </div>
     </footer>
 
     <script src="posthog-config.js?v=20260782"></script>
     <script src="posthog.js?v=20260782"></script>
-    <script src="script.js?v=20260771"></script>
+    <script src="script.js?v=20261012o"></script>
 
     <!-- Vercel Web Analytics (free) -->
     <script>

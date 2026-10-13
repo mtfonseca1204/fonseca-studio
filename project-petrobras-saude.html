@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Petrobras Saúde - Fonseca</title>
-    <meta name="description" content="Healthcare platform redesign for one of Brazil's largest corporate health plans.">
+    <meta name="description" content="Triage-first telemedicine for Petrobras Saúde, designed with Karla Granadeiro for 50,000+ beneficiaries during COVID.">
     <link rel="icon" type="image/svg+xml" href="logo.svg">
     <link rel="apple-touch-icon" href="logo.svg">
     <link rel="canonical" href="https://fonseca.studio/project-petrobras-saude.html">
@@ -24,7 +24,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;500;600;700;800&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260819q">
+    <link rel="stylesheet" href="styles.css?v=20261013l">
 
     <!-- Microsoft Clarity -->
     <script type="text/javascript">
@@ -45,11 +45,12 @@
                     <img src="logo%20white.svg" alt="Fonseca" class="nav-logo-img logo-dark">
                 </a>
             </div>
+            <p class="rail-back"><a href="index.html#work"><svg class="rail-back__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M18.32 12.66H8.26L12.41 16.79L11.46 17.78L5.68 11.98L11.47 6.22L12.42 7.21L8.28 11.34L18.32 11.32V12.66Z" fill="currentColor"/></svg>Work</a><span class="rail-back__sep" aria-hidden="true">/</span><span class="rail-back__name">Petrobras Saúde</span></p>
             <div class="nav-center">
-                <a href="index.html#work" class="nav-link"><span class="nav-num">01</span> Work</a>
+                <a href="index.html#work" class="nav-link nav-link--active" aria-current="page"><span class="nav-num">01</span> Work</a>
                 <a href="fun.html" class="nav-link"><span class="nav-num">02</span> Side Quests</a>
                 <a href="about.html" class="nav-link"><span class="nav-num">03</span> About</a>
-                <a href="MatheusFonsecaCV.pdf?v=20260820i" target="_blank" rel="noopener noreferrer" class="nav-link"><span class="nav-num">04</span> CV</a>
+                <a href="MatheusFonsecaCV.pdf?v=20260820i" class="nav-link" target="_blank" rel="noopener noreferrer"><span class="nav-num">04</span> CV</a>
             </div>
             <div class="nav-right">
                 <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
@@ -62,244 +63,94 @@
         </div>
         <div class="mobile-menu">
             <div class="mobile-menu-links">
-                <a href="index.html#work" class="mobile-link">Work</a>
-                <a href="fun.html" class="mobile-link">Side Quests</a>
-                <a href="about.html" class="mobile-link">About</a>
-                <a href="MatheusFonsecaCV.pdf?v=20260820i" target="_blank" rel="noopener noreferrer" class="mobile-link">CV</a>
+                <a href="index.html#work" class="mobile-link">Work</a><a href="fun.html" class="mobile-link">Side Quests</a><a href="about.html" class="mobile-link">About</a><a href="MatheusFonsecaCV.pdf?v=20260820i" target="_blank" rel="noopener noreferrer" class="mobile-link">CV</a>
             </div>
         </div>
     </nav>
 
-    <section class="project-hero project-hero-case">
-        <div class="container container-narrow">
-            <p class="project-hero-tagline">HEALTHCARE · PRODUCT DESIGN</p>
-            <h1 class="project-hero-title">Petrobras Saúde · Telemedicine Platform</h1>
-            <p class="project-hero-description">
-                Petrobras employees needed medical guidance during COVID without visiting a clinic. I designed a triage-first telehealth platform for a workforce under stress.
-            </p>
-            <div class="project-case-meta">
-                <div class="case-meta-item"><span class="case-meta-label">MY ROLE</span><span class="case-meta-value">Product Designer</span></div>
-                <div class="case-meta-item"><span class="case-meta-label">YEAR</span><span class="case-meta-value">2022/2023</span></div>
-                <div class="case-meta-item"><span class="case-meta-label">TEAM</span><span class="case-meta-value">Matheus Fonseca · Karla Granadeiro</span></div>
-                <div class="case-meta-item"><span class="case-meta-label">SCOPE</span><span class="case-meta-value">UX Research · UX/UI Design · Healthcare Platform</span></div>
-            </div>
-        </div>
-    </section>
-
-    <aside class="case-side-nav" id="caseSideNav" aria-label="Project navigation">
+<aside class="case-side-nav" id="caseSideNav" aria-label="Project">
         <nav class="case-side-nav-inner">
-            <p class="case-side-nav__summary">Summary</p>
-            <a href="#overview" class="case-side-nav-link">At a glance</a>
-            <a href="#context" class="case-side-nav-link">Situation</a>
-            <a href="#approach" class="case-side-nav-link">Process</a>
-            <a href="#solution" class="case-side-nav-link">The work</a>
-            <a href="#decisions" class="case-side-nav-link">Choices</a>
-            <a href="#results" class="case-side-nav-link">Impact</a>
-            <a href="#reflection" class="case-side-nav-link">Ahead</a>
+            <a href="#overview" class="case-side-nav-link">Overview</a>
+            <a href="#problem" class="case-side-nav-link">Problem</a>
+            <a href="#opportunity" class="case-side-nav-link">Opportunity</a>
+            <a href="#solution" class="case-side-nav-link">Solution</a>
+            <a href="#decisions" class="case-side-nav-link">Decisions</a>
+            <a href="#results" class="case-side-nav-link">Results</a>
+            <a href="#reflection" class="case-side-nav-link">Reflection</a>
         </nav>
     </aside>
 
-    <section class="project-cover">
-        <div class="project-cover-image">
-            <img src="Petrobras/Cover/Cover petro Hero cover.png" alt="Petrobras Saúde Project Cover" class="cover-img">
-        </div>
-    </section>
-
-    <section class="project-case-content case-editorial">
-        <div class="container container-narrow">
-            <div id="case-scan" class="case-brief case-scan" aria-label="Project summary for quick reading">
-                <div class="case-brief__grid">
-                    <article class="case-brief__card">
-                        <h3 class="case-brief__card-label">My role</h3>
-                        <p class="case-brief__card-text">Product Designer with Karla Granadeiro. <mark class="case-brief__hl">Research, triage flows, and interface design.</mark></p>
-                    </article>
-                    <article class="case-brief__card">
-                        <h3 class="case-brief__card-label">The moment</h3>
-                        <p class="case-brief__card-text">COVID-era workforce: <mark class="case-brief__hl">50K+ beneficiaries</mark> needed care without clinic visits.</p>
-                    </article>
-                    <article class="case-brief__card case-brief__card--result">
-                        <h3 class="case-brief__card-label">What we built</h3>
-                        <p class="case-brief__card-text"><mark class="case-brief__hl">Triage-first telehealth:</mark> describe symptoms, get guidance, reach a doctor in one calm path.</p>
-                    </article>
-                </div>
-            </div>
-
-            <section id="overview" class="case-section">
-                <span class="case-section-label">At a glance</span>
-                <h2 class="case-section-title">The short version</h2>
-                <div class="case-brief" role="region" aria-label="Project summary">
-                    <div class="case-brief__stat-band">
-                        <div class="case-brief__stat-main">
-                            <span class="case-brief__stat-value">50<span class="case-brief__stat-unit">K+</span></span>
-                            <span class="case-brief__stat-caption">Beneficiaries across Brazil's corporate healthcare plan</span>
-                        </div>
-                        <div class="case-brief__stat-compare">
-                            <div class="case-brief__compare-item">
-                                <span class="case-brief__compare-label">Timeline</span>
-                                <span class="case-brief__compare-value case-brief__compare-value--accent">COVID-19 era</span>
-                            </div>
-                            <div class="case-brief__compare-item">
-                                <span class="case-brief__compare-label">Focus</span>
-                                <span class="case-brief__compare-value">Symptom triage</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="case-brief__grid">
-                        <article class="case-brief__card">
-                            <h3 class="case-brief__card-label">Problem</h3>
-                            <p class="case-brief__card-text">Clinics closed; <mark class="case-brief__hl">50K+ employees</mark> needed guidance from home, but the corporate portal felt fragmented to first-time telehealth users.</p>
-                        </article>
-                        <article class="case-brief__card">
-                            <h3 class="case-brief__card-label">Solution</h3>
-                            <p class="case-brief__card-text"><mark class="case-brief__hl">Triage-first telehealth</mark>: one calm path, one decision at a time. <span class="case-brief__flow">Describe → triage → consult → guidance</span></p>
-                        </article>
-                        <article class="case-brief__card case-brief__card--result">
-                            <h3 class="case-brief__card-label">Result</h3>
-                            <p class="case-brief__card-text">Shipped at COVID peak. <mark class="case-brief__hl">Remote access</mark> eased clinic load; usability testing highlighted ease of navigation.</p>
-                        </article>
-                    </div>
-                </div>
-                <div class="case-section-gallery">
-                    <video src="Petrobras/Tutorial%20de%20acesso%20aos%20servi%C3%A7os%20do%20Programa%20Cuidar%20Gest%C3%A3o%20de%20Sa%C3%BAde%20-%20Sa%C3%BAde%20Petrobras%20%281080p%29.mp4" autoplay muted loop playsinline preload="auto" class="case-gallery-img" aria-label="Petrobras Saúde Cuidar program access tutorial"></video>
-                    <img src="Petrobras/1.png" alt="Petrobras Saúde Programa Cuidar login and home screens" class="case-gallery-img" decoding="async">
-                </div>
-            </section>
-
-            <section id="context" class="case-section">
-                <span class="case-section-label">The situation</span>
-                <h2 class="case-section-title">A workforce that couldn&rsquo;t wait for in-person care</h2>
-                <div class="case-section-body case-prose-stack">
-                    <p class="case-prose-lead">50K+ employees and families needed symptom evaluation and doctor access without clinic visits, but the corporate portal was fragmented. Crisis telehealth: anxious, often first-time users, needing direction fast.</p>
-                    <p>Petrobras Saúde serves one of Brazil's largest corporate health plans. During COVID, the workforce could not wait for in-person care, yet the digital entry point scattered symptom evaluation, scheduling, and medical guidance across disconnected screens.</p>
-                </div>
-            </section>
-
-            <section id="approach" class="case-section">
-                <span class="case-section-label">How I worked</span>
-                <h2 class="case-section-title">Triage before features, with Karla Granadeiro</h2>
-                <div class="case-section-body case-prose-stack">
-                    <p class="case-prose-lead">Employee interviews, flow mapping, and prototype testing before full build. Research surfaced one need: plain language, quick access, clear next steps.</p>
-                    <p>Modular step-by-step screens: one decision at a time, especially during moments of health concern. Scope covered triage workflows, interface design, and Petrobras-aligned visual system.</p>
-                </div>
-            </section>
-
-            <section id="solution" class="case-section">
-                <span class="case-section-label">What we built</span>
-                <h2 class="case-section-title">Describe → triage → consult → guidance</h2>
-                <div class="case-section-body case-prose-stack">
-                    <p class="case-prose-lead">Four components, one crisis-ready path. First-time users could complete a flow without training.</p>
-                    <ul class="case-list">
-                        <li><strong>Symptom triage:</strong> Guided steps to describe concerns and surface urgency</li>
-                        <li><strong>Remote consultation:</strong> Scheduling and live interaction with medical staff</li>
-                        <li><strong>Resource hub:</strong> COVID guidance, FAQs, and personalized recommendations</li>
-                        <li><strong>Mobile-first:</strong> On-the-go access when symptoms couldn&rsquo;t wait</li>
-                    </ul>
-                    <div class="case-section-gallery">
-                        <img src="Petrobras/7.png" alt="Petrobras Saúde symptom triage flow" class="case-gallery-img" decoding="async">
-                        <img src="Petrobras/8.png" alt="Petrobras Saúde virtual service, scheduling, and medical record flows" class="case-gallery-img" decoding="async">
-                        <img src="Petrobras/10.png" alt="Petrobras Saúde resource hub and mobile screens" class="case-gallery-img" decoding="async">
-                    </div>
-                </div>
-            </section>
-
-            <section id="decisions" class="case-section">
-                <span class="case-section-label">Key choices</span>
-                <h2 class="case-section-title">Three tradeoffs for crisis UX</h2>
-                <div class="case-section-body">
-                    <div class="case-key-decisions">
-                        <article class="case-key-decision">
-                            <h3 class="case-key-decision__title">Plain language over medical density</h3>
-                            <p class="case-key-decision__text">We tested information-heavy screens early. Users skipped them. Progressive disclosure and everyday language replaced jargon-heavy dashboards.</p>
-                        </article>
-                        <article class="case-key-decision">
-                            <h3 class="case-key-decision__title">Triage sequence, not feature menu</h3>
-                            <p class="case-key-decision__text">A home screen with multiple health services looked complete in stakeholder reviews but failed in usability. We led with symptom evaluation. That was the entry point employees actually needed.</p>
-                        </article>
-                        <article class="case-key-decision">
-                            <h3 class="case-key-decision__title">Institutional trust with human tone</h3>
-                            <p class="case-key-decision__text">Petrobras brand alignment without bureaucratic coldness. Calm visuals, confirmation states, and secure-session cues at every handoff.</p>
-                        </article>
-                    </div>
-                </div>
-            </section>
-
-            <section id="results" class="case-section">
-                <span class="case-section-label">What changed</span>
-                <h2 class="case-section-title">Crisis delivery: observed outcomes, not published benchmarks</h2>
-                <div class="case-section-body case-prose-stack">
-                    <p>Shipped at <strong>COVID peak</strong> for <strong>50K+ beneficiaries</strong> across Petrobras's corporate health plan. Employees reached medical support without clinic visits during critical pandemic periods, easing load on in-person services when capacity mattered most.</p>
-                    <p>Usability testing highlighted <strong>ease of navigation</strong> for first-time telehealth users. Digital triage routed non-critical cases away from in-person services, and plain-language flows kept anxious users moving through one decision at a time.</p>
-                </div>
-            </section>
-
-            <section id="reflection" class="case-section">
-                <span class="case-section-label">Looking ahead</span>
-                <h2 class="case-section-title">What I&rsquo;d carry forward</h2>
-                <div class="case-section-body">
-                    <blockquote class="case-callout case-callout--lesson">
-                        <p>Crisis UX demands simplicity. Every extra decision point increases abandonment, especially when health anxiety is already high.</p>
-                    </blockquote>
-                    <p><strong>Next:</strong> Integrate preventative care at the telemedicine entry point; personalized health tracking from prior consultations.</p>
-                </div>
-            </section>        </div>
-    </section>
-
-    <section class="related-projects related-projects--selected-work" aria-labelledby="selected-work-heading">
-        <div class="container">
-            <header class="section-head section-head--plain">
-                <span class="section-num">01</span>
-                <h2 class="section-title" id="selected-work-heading">Selected Work</h2>
-                <span class="section-rule"></span>
+    <article class="project-case-content story">
+        <div class="story-frame">
+            <figure class="story-cover"><img src="Petrobras/Cover/Cover petro Hero cover.png" alt="Petrobras Saúde" loading="eager" decoding="async"></figure>
+            <header class="story-intro">
+                <p class="story-kicker">Petrobras Saúde · Telemedicine</p>
+                <h1>A workforce that could not wait for the clinic.</h1>
+                <p class="story-dek">With Karla Granadeiro, I designed a triage-first path so employees could describe a symptom, get guidance, and reach a doctor without a clinic visit.</p>
+                <dl class="story-meta">
+                    <div><dt>Role</dt><dd>Product Designer, with Karla Granadeiro</dd></div>
+                    <div><dt>Timeline</dt><dd>COVID peak</dd></div>
+                    <div><dt>Scope</dt><dd>Triage flows and interface</dd></div>
+                </dl>
             </header>
-            <div class="related-grid related-grid--work">
-                <a href="project-hedgehog-product.html" class="related-card"><div class="related-image"><img src="Hedgehog product/Covers/Cover Hedgehog Hero cover.png" alt="Hedgehog prediction market product" class="related-img" loading="lazy" decoding="async"></div><div class="related-info"><span class="related-name">Hedgehog</span><span class="related-location">Prediction Market</span></div></a>
-                <a href="project-hedgehog.html" class="related-card"><div class="related-image"><img src="Hedgehog /Hedgehog/Cover Hedgehog Hero cover.png" alt="Hedgehog waitlist landing page" class="related-img" loading="lazy" decoding="async"></div><div class="related-info"><span class="related-name">Hedgehog</span><span class="related-location">Waitlist Conversion</span></div></a>
-                <a href="project-transparent-space.html" class="related-card"><div class="related-image"><img src="Transparent.space Products/Dashboard.png" alt="Transparent.space product dashboard" class="related-img" loading="lazy" decoding="async"></div><div class="related-info"><span class="related-name">Transparent.space</span><span class="related-location">Dashboard</span></div></a>
-                <div class="related-card is-current" aria-current="page"><div class="related-image"><img src="Petrobras/Cover/Cover petro Hero cover.png" alt="Petrobras Saúde corporate health platform" class="related-img" loading="lazy" decoding="async"></div><div class="related-info"><span class="related-name">Petrobras Saúde</span><span class="related-location">Healthcare Platform</span></div></div>
-                <a href="project-unimed-seguros.html" class="related-card"><div class="related-image"><img src="Unimed/Cover/Cover unimed all projects.png" alt="Unimed Seguros app redesign" class="related-img" loading="lazy" decoding="async"></div><div class="related-info"><span class="related-name">Unimed Seguros</span><span class="related-location">Insurance App</span></div></a>
-            </div>
+        <section id="overview" class="case-section">
+            <p class="story-label">Overview</p>
+            <h2>Describe, triage, consult, then guidance.</h2>
+            <div class="story-prose"><p>Petrobras Saúde is one of Brazil’s largest corporate health plans. During COVID, 50,000+ employees and families needed symptom evaluation and a doctor without a clinic visit.</p></div>
+<div class="story-prose"><p>The corporate portal scattered that path across disconnected screens. Many of these people were using telehealth for the first time, and they were anxious.</p></div>
+<figure class="story-figure"><video src="Petrobras/Tutorial%20de%20acesso%20aos%20servi%C3%A7os%20do%20Programa%20Cuidar%20Gest%C3%A3o%20de%20Sa%C3%BAde%20-%20Sa%C3%BAde%20Petrobras%20%281080p%29.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Access tutorial for Programa Cuidar"></video><figcaption class="story-caption">How someone actually gets into the service.</figcaption></figure>
+        </section>
+        <section id="problem" class="case-section">
+            <p class="story-label">Problem</p>
+            <h2>A complete menu failed the moment people were worried.</h2>
+            <div class="story-prose"><p>A home screen full of health services looked finished in stakeholder reviews. In use, people skipped dense medical screens and stalled on the choice of where to start.</p></div>
+<figure class="story-figure"><img src="Petrobras/1.png" alt="Login and home" loading="lazy" decoding="async"><figcaption class="story-caption">The entry had to point at one job.</figcaption></figure>
+        </section>
+        <section id="opportunity" class="case-section">
+            <p class="story-label">Opportunity</p>
+            <h2>Lead with the symptom, not the service catalog.</h2>
+            <div class="story-prose"><p>Employee interviews, flow mapping, and prototype testing happened before the full build. The research kept returning the same need: plain language, quick access, a clear next step.</p></div>
+        </section>
+        <section id="solution" class="case-section">
+            <p class="story-label">Solution</p>
+            <h2>One decision at a time.</h2>
+            <div class="story-prose"><p>The path is modular and step by step, especially in a moment of health concern. Scope covered triage, the interface, and a visual system aligned with Petrobras.</p></div>
+<div class="story-gallery"><figure class=""><img src="Petrobras/7.png" alt="Symptom triage" loading="lazy" decoding="async"><figcaption class="story-caption">Guided steps to describe a concern and surface urgency.</figcaption></figure><figure class=""><img src="Petrobras/8.png" alt="Scheduling and medical record" loading="lazy" decoding="async"><figcaption class="story-caption">The consult, once triage has done its job.</figcaption></figure><figure class="story-gallery__wide"><img src="Petrobras/10.png" alt="Guidance and mobile" loading="lazy" decoding="async"><figcaption class="story-caption">COVID guidance, questions, and access when symptoms could not wait.</figcaption></figure></div>
+        </section>
+        <section id="decisions" class="case-section">
+            <p class="story-label">Decisions</p>
+            <h2>Three trade-offs for a crisis.</h2>
+            <div class="story-points"><article class="story-point"><h3>Everyday language over a clinical dashboard.</h3><div class="story-prose"><p>Information-heavy screens were tested early. People skipped them. Progressive disclosure replaced the jargon.</p></div></article><article class="story-point"><h3>Triage before the feature menu.</h3><div class="story-prose"><p>We led with symptom evaluation because that was the entry employees actually needed.</p></div></article><article class="story-point"><h3>The institution’s trust, with a human tone.</h3><div class="story-prose"><p>Petrobras alignment without bureaucratic coldness: calm visuals, confirmation states, and a cue that the session was secure at every handoff.</p></div></article></div>
+        </section>
+        <section id="results" class="case-section">
+            <p class="story-label">Results</p>
+            <h2>What we could observe. Not a published benchmark.</h2>
+            <div class="story-prose"><p>The product shipped at the COVID peak for 50,000+ beneficiaries. Employees reached medical support without a clinic visit, which eased in-person load when capacity mattered.</p></div>
+<div class="story-prose"><p>Usability testing highlighted ease of navigation for first-time telehealth users. Digital triage routed non-critical cases away from in-person services. I do not have published completion rates or time-on-task for this project, so I am not stating them.</p></div>
+        </section>
+        <section id="reflection" class="case-section">
+            <p class="story-label">Reflection</p>
+            <h2>Every extra decision point costs more when someone is already afraid.</h2>
+            <div class="story-prose"><p>Crisis products do not get to show the whole system at once. The judgment was what to withhold until the person had described what was wrong.</p></div>
+<div class="story-prose"><p>What I would still build: preventative care at the same entry, and health tracking that remembers the last consultation.</p></div>
+        </section>
         </div>
-    </section>
+    </article>
 
-    <footer class="footer footer--v3">
-        <div class="footer-v3__inner">
-            <div class="footer-v3__main">
-                <div class="footer-v3__col footer-v3__col--brand">
-                    <a href="index.html" class="footer-logo-link" aria-label="Fonseca home">
-                        <img src="logo.svg" alt="" class="footer-logo-img logo-light" height="32">
-                        <img src="logo%20white.svg" alt="" class="footer-logo-img logo-dark" height="32">
-                    </a>
-                    <p class="footer-v3__tagline">Product designer turning complex systems into clear, trustworthy experiences<span class="footer-v3__dot" aria-hidden="true">.</span></p>
-                </div>
-                <nav class="footer-v3__col footer-v3__col--nav" aria-label="Footer">
-                    <p class="footer-v3__col-head">Navigate</p>
-                    <div class="footer-v3__links">
-                        <a href="index.html#work">Work</a>
-                        <a href="fun.html">Side Quests</a>
-                        <a href="about.html">About</a>
-                        <a href="index.html#testimonials">Testimonials</a>
-                    </div>
-                </nav>
-                <div class="footer-v3__col footer-v3__col--social">
-                    <p class="footer-v3__col-head">Connect</p>
-                    <div class="footer-v3__links">
-                        <a href="#" data-copy-email>fonsecaa.design@gmail.com</a>
-                        <a href="https://www.linkedin.com/in/maths-fonseca/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                        <a href="https://www.behance.net/maths-fonseca" target="_blank" rel="noopener noreferrer">Behance</a>
-                        <a href="https://x.com/0xFonseca" target="_blank" rel="noopener noreferrer">X / Twitter</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom footer-v3__bottom">
-                <p>&copy; <span id="current-year">2026</span> Matheus Fonseca &middot; Rio de Janeiro, Brazil</p>
-                <a href="#" class="footer-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Back to top &uarr;</a>
-            </div>
+    <footer class="site-foot">
+        <div class="site-foot__inner">
+            <nav class="site-foot__links" aria-label="Connect">
+                <a href="https://www.linkedin.com/in/maths-fonseca/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="#" data-copy-email>Email</a>
+                <a href="https://x.com/0xFonseca" target="_blank" rel="noopener noreferrer">X</a>
+                <a href="https://www.behance.net/maths-fonseca" target="_blank" rel="noopener noreferrer">Behance</a>
+            </nav>
         </div>
     </footer>
 
     <script src="posthog-config.js?v=20260782"></script>
     <script src="posthog.js?v=20260782"></script>
-    <script src="script.js?v=20260819t"></script>
+    <script src="script.js?v=20261012o"></script>
 
     <!-- Vercel Web Analytics (free) -->
     <script>

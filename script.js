@@ -28,6 +28,22 @@ function deferNonCritical(fn, timeout = 2000) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    window.addEventListener('pageshow', (event) => {
+        document.body.classList.remove(
+            'home-project-nav',
+            'page-leaving',
+            'page-leaving--to-short',
+            'page-leaving--to-full'
+        );
+        document.querySelectorAll('.work-card--opening').forEach((card) => {
+            card.classList.remove('work-card--opening');
+        });
+        if (event.persisted) {
+            document.body.classList.add('loaded');
+            document.body.classList.remove('has-splash', 'page-init-fade');
+            document.getElementById('site-splash')?.remove();
+        }
+    });
     initCaseNavEnter();
     const splashActive = initSiteSplash();
     const coldFade = initPageEnter();
@@ -46,6 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initDarkMode();
     initMobileMenu();
     initNavbarScroll();
+    initQuestFilters();
+    initAboutDate();
     initSmoothScroll();
     initTestimonialsCarousel();
     initMotionCarousel();
@@ -1284,15 +1302,64 @@ function initHeroMainVideo() {
     video.setAttribute('muted', '');
     video.setAttribute('playsinline', '');
 
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const character = video.classList.contains('hero-main-video--character');
 
     const play = () => {
+        if (reduce) return;
         const attempt = video.play();
         if (attempt && typeof attempt.catch === 'function') attempt.catch(() => {});
     };
 
+    if (character) mountHeroCharacter(video, reduce);
+
     if (video.readyState >= 2) play();
     else video.addEventListener('canplay', play, { once: true });
+}
+
+function mountHeroCharacter(video, reduce) {
+    const canvas = document.createElement('canvas');
+    canvas.className = 'hero-character';
+    canvas.setAttribute('aria-hidden', 'true');
+    video.after(canvas);
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
+    let running = false;
+
+    const paint = () => {
+        const w = video.videoWidth;
+        const h = video.videoHeight;
+        if (!w || !h) return;
+        if (canvas.width !== w || canvas.height !== h) {
+            canvas.width = w;
+            canvas.height = h;
+        }
+        ctx.drawImage(video, 0, 0, w, h);
+        const frame = ctx.getImageData(0, 0, w, h);
+        const data = frame.data;
+        for (let i = 0; i < data.length; i += 4) {
+            const max = Math.max(data[i], data[i + 1], data[i + 2]);
+            data[i + 3] = max < 26 ? 0 : max > 58 ? 255 : Math.round(((max - 26) / 32) * 255);
+        }
+        ctx.putImageData(frame, 0, 0);
+    };
+
+    const loop = () => {
+        if (!running) return;
+        paint();
+        if (!video.paused && !video.ended) requestAnimationFrame(loop);
+        else running = false;
+    };
+
+    const start = () => {
+        paint();
+        if (reduce || running) return;
+        running = true;
+        requestAnimationFrame(loop);
+    };
+
+    if (video.readyState >= 2) start();
+    else video.addEventListener('loadeddata', start, { once: true });
+    video.addEventListener('play', start);
 }
 
 // =====================================================
@@ -2237,16 +2304,47 @@ function initMobileMenu() {
 function initNavbarScroll() {
     const navbar = document.querySelector('.navbar');
     if (!navbar) return;
-    let lastScroll = 0;
 
     const onScroll = rafThrottle(() => {
         const y = window.pageYOffset;
         navbar.classList.toggle('scrolled', y > 100);
-        navbar.style.transform = (y > lastScroll && y > 500) ? 'translateY(-100%)' : 'translateY(0)';
-        lastScroll = y;
+        navbar.style.transform = 'none';
     });
 
     window.addEventListener('scroll', onScroll, { passive: true });
+}
+
+function initAboutDate() {
+    const el = document.querySelector('[data-about-date]');
+    if (!el) return;
+    const locale = el.getAttribute('data-about-date') || 'en';
+    el.textContent = new Date().toLocaleDateString(locale, {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric',
+    });
+}
+
+function initQuestFilters() {
+    const bar = document.querySelector('[data-quest-filters]');
+    if (!bar) return;
+    const buttons = [...bar.querySelectorAll('[data-quest-filter]')];
+    const cards = [...document.querySelectorAll('[data-quest]')];
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            const key = button.getAttribute('data-quest-filter');
+            buttons.forEach((item) => {
+                const on = item === button;
+                item.classList.toggle('is-active', on);
+                if (on) item.setAttribute('aria-current', 'true');
+                else item.removeAttribute('aria-current');
+            });
+            cards.forEach((card) => {
+                const kinds = (card.getAttribute('data-quest') || '').split(/\s+/);
+                card.hidden = key !== 'all' && !kinds.includes(key);
+            });
+        });
+    });
 }
 
 // =====================================================
@@ -2331,10 +2429,11 @@ function initCaseStudyNav() {
             else summaryLink.removeAttribute('aria-current');
         }
         if (sideNav) {
-            const top = caseContent.getBoundingClientRect().top + window.scrollY - 150;
-            const bottom = top + caseContent.offsetHeight - 300;
-            const y = window.scrollY;
-            const show = y >= top && y <= bottom;
+            const wide = window.innerWidth >= 760;
+            const bar = document.querySelector('.case-topbar');
+            const minTop = (bar ? bar.offsetHeight : 72) + 12;
+            const contentRect = caseContent.getBoundingClientRect();
+            const show = wide || (contentRect.bottom > minTop && contentRect.top < window.innerHeight);
             sideNav.classList.toggle('visible', show);
             sideNav.classList.toggle('case-side-nav--revealed', show);
         }
@@ -2356,9 +2455,31 @@ function initCaseStudyNav() {
         });
     });
 
+    function pinSideNav() {
+        if (!sideNav) return;
+        if (window.innerWidth >= 760) {
+            sideNav.style.top = '';
+            return;
+        }
+        const cover = document.querySelector('.story-cover');
+        const bar = document.querySelector('.case-topbar');
+        const minTop = (bar ? bar.offsetHeight : 72) + 16;
+        if (!cover) {
+            sideNav.style.top = minTop + 'px';
+            return;
+        }
+        const docTop = cover.getBoundingClientRect().top + window.scrollY;
+        sideNav.style.top = Math.max(minTop, docTop) + 'px';
+    }
+
     window.addEventListener('scroll', update, { passive: true });
     window.addEventListener('load', update);
-    window.addEventListener('resize', update);
+    window.addEventListener('resize', () => {
+        pinSideNav();
+        update();
+    });
+    pinSideNav();
+    update();
 }
 
 // =====================================================
@@ -2458,10 +2579,6 @@ function initCaseStudyMotion() {
     }
 
     sideNav?.querySelectorAll('.case-side-nav-link:not(.case-side-nav-link--summary):not(.case-side-nav__summary)').forEach((link, i) => {
-        const id = (link.getAttribute('href') || '').replace('#', '');
-        const iconKey = CASE_SECTION_ICON_HTML[id] ? id : 'overview';
-        const html = CASE_SECTION_ICON_HTML[iconKey];
-        wrapLinkLabel(link, iconKey, html, 'case-side-nav-link--motion');
         link.style.setProperty('--nav-motion-i', String(i));
     });
 

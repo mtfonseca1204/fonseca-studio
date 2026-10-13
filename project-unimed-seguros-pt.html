@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unimed Seguros · Telemedicina para 40 mil beneficiários | Fonseca</title>
-    <meta name="description" content="Product design do aplicativo de telemedicina da Unimed Seguros: mais de 40 mil beneficiários, 50 mil consultas por mês e no-show abaixo de 30% durante a pandemia.">
+    <meta name="description" content="Telemedicina da Unimed Seguros: um caminho guiado de consulta para mais de 40 mil beneficiários, chegando a cerca de 50 mil consultas por mês.">
     <link rel="icon" type="image/svg+xml" href="logo.svg">
     <link rel="apple-touch-icon" href="logo.svg">
     <link rel="canonical" href="https://fonseca.studio/project-unimed-seguros-pt.html">
@@ -24,7 +24,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;500;600;700;800&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260819q">
+    <link rel="stylesheet" href="styles.css?v=20261013l">
 
     
     <script>
@@ -65,11 +65,12 @@
                     <img src="logo%20white.svg" alt="Fonseca" class="nav-logo-img logo-dark">
                 </a>
             </div>
+            <p class="rail-back"><a href="index-pt.html#work"><svg class="rail-back__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M18.32 12.66H8.26L12.41 16.79L11.46 17.78L5.68 11.98L11.47 6.22L12.42 7.21L8.28 11.34L18.32 11.32V12.66Z" fill="currentColor"/></svg>Projetos</a><span class="rail-back__sep" aria-hidden="true">/</span><span class="rail-back__name">Unimed Seguros</span></p>
             <div class="nav-center">
-                <a href="index-pt.html#work" class="nav-link"><span class="nav-num">01</span> Projetos</a>
+                <a href="index-pt.html#work" class="nav-link nav-link--active" aria-current="page"><span class="nav-num">01</span> Projetos</a>
                 <a href="fun-pt.html" class="nav-link"><span class="nav-num">02</span> Side Quests</a>
                 <a href="about-pt.html" class="nav-link"><span class="nav-num">03</span> Sobre</a>
-                <a href="MatheusFonsecaCV.pdf?v=20260820i" target="_blank" rel="noopener noreferrer" class="nav-link"><span class="nav-num">04</span> Currículo</a>
+                <a href="MatheusFonsecaCV.pdf?v=20260820i" class="nav-link" target="_blank" rel="noopener noreferrer"><span class="nav-num">04</span> Currículo</a>
             </div>
             <div class="nav-right">
                 <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Alternar modo escuro">
@@ -77,296 +78,108 @@
                     <svg class="icon-moon" width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </button>
                 <a href="project-unimed-seguros.html" class="nav-cta language-toggle" aria-label="Switch language to English"><span>EN</span><span class="language-toggle__sep" aria-hidden="true">/</span><span class="is-active">PT</span></a>
-                <button class="mobile-menu-toggle" aria-label="Alternar menu"><span></span><span></span></button>
+                <button class="mobile-menu-toggle" aria-label="Abrir ou fechar menu"><span></span><span></span></button>
             </div>
         </div>
         <div class="mobile-menu">
             <div class="mobile-menu-links">
-                <a href="index-pt.html#work" class="mobile-link">Projetos</a>
-                <a href="fun-pt.html" class="mobile-link">Side Quests</a>
-                <a href="about-pt.html" class="mobile-link">Sobre</a>
-                <a href="MatheusFonsecaCV.pdf?v=20260820i" target="_blank" rel="noopener noreferrer" class="mobile-link">Currículo</a>
+                <a href="index-pt.html#work" class="mobile-link">Projetos</a><a href="fun-pt.html" class="mobile-link">Side Quests</a><a href="about-pt.html" class="mobile-link">Sobre</a><a href="MatheusFonsecaCV.pdf?v=20260820i" target="_blank" rel="noopener noreferrer" class="mobile-link">Currículo</a>
             </div>
         </div>
     </nav>
 
-    <section class="project-hero project-hero-case">
-        <div class="container container-narrow">
-            <p class="project-hero-tagline">SAÚDE · TELEMEDICINA</p>
-            <h1 class="project-hero-title">De dúvida na telemedicina a 50K consultas por mês.</h1>
-        </div>
-    </section>
-
-    <aside class="case-side-nav" id="caseSideNav" aria-label="Navegação do projeto">
+<aside class="case-side-nav" id="caseSideNav" aria-label="Projeto">
         <nav class="case-side-nav-inner">
-            <a href="#case-scan" class="case-side-nav__summary case-side-nav-link case-side-nav-link--summary">Resumo</a>
+            <a href="#overview" class="case-side-nav-link">Visão geral</a>
             <a href="#problem" class="case-side-nav-link">Problema</a>
-            <a href="#why" class="case-side-nav-link">Por que importa</a>
-            <a href="#research" class="case-side-nav-link">Pesquisa</a>
+            <a href="#opportunity" class="case-side-nav-link">Oportunidade</a>
             <a href="#solution" class="case-side-nav-link">Solução</a>
-            <a href="#validation" class="case-side-nav-link">Validação</a>
-            <a href="#impact" class="case-side-nav-link">Impacto</a>
-            <a href="#next" class="case-side-nav-link">Próximos passos</a>
+            <a href="#experience" class="case-side-nav-link">Experiência central</a>
+            <a href="#decisions" class="case-side-nav-link">Decisões</a>
+            <a href="#results" class="case-side-nav-link">Resultados</a>
+            <a href="#reflection" class="case-side-nav-link">Reflexão</a>
         </nav>
     </aside>
 
-    <section class="project-cover">
-        <div class="project-cover-image">
-            <img src="Unimed/Cover/Cover unimed Hero cover.png" alt="Capa do aplicativo de telemedicina da Unimed Seguros" class="cover-img" loading="lazy" decoding="async">
-        </div>
-        <div class="container container-narrow">
-            <div class="project-case-meta project-case-meta--after-cover">
-                <div class="case-meta-item"><span class="case-meta-label">CLIENTE</span><span class="case-meta-value">Unimed Seguros</span></div>
-                <div class="case-meta-item"><span class="case-meta-label">MEU PAPEL</span><span class="case-meta-value">Product Designer</span></div>
-                <div class="case-meta-item"><span class="case-meta-label">PERÍODO</span><span class="case-meta-value">2021&ndash;2022 · COVID</span></div>
-            </div>
-        </div>
-    </section>
-
-    <section class="project-case-content case-editorial">
-        <div class="container container-narrow">
-            <div id="case-scan" class="case-brief case-scan" aria-label="Resumo do projeto para leitura rápida">
-                <div class="case-brief__grid">
-                    <article class="case-brief__card">
-                        <h3 class="case-brief__card-label">Problema</h3>
-                        <p class="case-brief__card-text">A demanda por atendimento remoto era urgente, mas <mark class="case-brief__hl">apps genéricos</mark> e agendamentos fragmentados não atendiam uma operação de saúde desse porte.</p>
-                    </article>
-                    <article class="case-brief__card">
-                        <h3 class="case-brief__card-label">Abordagem</h3>
-                        <p class="case-brief__card-text"><mark class="case-brief__hl">Quatro pilares e uma experiência baseada em confiança</mark>, com onboarding para beneficiários 60+ e suporte 24/7 no app.</p>
-                    </article>
-                    <article class="case-brief__card case-brief__card--result">
-                        <h3 class="case-brief__card-label">Resultado</h3>
-                        <p class="case-brief__card-text"><mark class="case-brief__hl">Mais de 40 mil beneficiários</mark>, ~50 mil consultas por mês, no-show abaixo de 30% e retenção de mais de 80% no chat.</p>
-                    </article>
-                </div>
-                <ul class="case-scan__stats" aria-label="Números principais">
-                    <li class="case-scan__stat">
-                        <span class="case-scan__stat-value">50 mil</span>
-                        <span class="case-scan__stat-label">Consultas por mês</span>
-                    </li>
-                    <li class="case-scan__stat">
-                        <span class="case-scan__stat-value">40 mil<span class="case-scan__stat-unit">+</span></span>
-                        <span class="case-scan__stat-label">Beneficiários titulares</span>
-                    </li>
-                    <li class="case-scan__stat">
-                        <span class="case-scan__stat-value">&lt;30<span class="case-scan__stat-unit">%</span></span>
-                        <span class="case-scan__stat-label">No-show</span>
-                    </li>
-                </ul>
-            </div>
-
-            <section id="problem" class="case-section">
-                <span class="case-section-label">Problema</span>
-                <h2 class="case-section-title">O atendimento remoto era urgente. A experiência ainda não estava pronta.</h2>
-                <div class="case-section-body case-prose-stack">
-                    <p class="case-prose-lead">A procura por atendimento remoto crescia rápido, mas as soluções do mercado ainda eram genéricas. Para uma operação de saúde desse porte, havia dois problemas claros: <mark class="case-brief__hl">barreiras de acessibilidade e agendamento fragmentado</mark>.</p>
-                </div>
-                <div class="case-section-gallery case-section-gallery--linear" aria-label="Lacunas das experiências genéricas de telemedicina">
-                    <img src="Unimed/new imgs/01.png" alt="Contexto do aplicativo de telemedicina da Unimed Seguros" class="case-gallery-img" loading="lazy" decoding="async">
-                </div>
-            </section>
-
-            <section id="why" class="case-section">
-                <span class="case-section-label">Por que isso importa</span>
-                <h2 class="case-section-title">40 mil pessoas precisavam confiar no atendimento remoto</h2>
-                <div class="case-section-body case-prose-stack">
-                    <p class="case-prose-lead">Eram mais de <strong>40 mil beneficiários</strong> da maior cooperativa de saúde do Brasil, com níveis muito diferentes de familiaridade digital. A Unimed já havia sinalizado que uma parte relevante da base tinha <mark class="case-brief__hl">60 anos ou mais</mark>, então clareza e suporte entraram como requisitos desde o início.</p>
-                    <p>Essas pessoas precisavam acreditar que a consulta remota funcionaria quando fosse necessário. Em saúde, a barreira não é só usabilidade: é <strong>confiança</strong>. Se o fluxo gera dúvida, o beneficiário desiste e procura atendimento presencial, justamente o que o produto precisava evitar.</p>
-                </div>
-                <div class="case-section-gallery case-section-gallery--linear" aria-label="Sistema de design neutro para a confiança na saúde institucional">
-                    <img src="Unimed/new imgs/Design 01.png" alt="Sistema de design neutro para a confiança na saúde institucional" class="case-gallery-img" loading="lazy" decoding="async">
-                </div>
-            </section>
-
-            <section id="research" class="case-section">
-                <span class="case-section-label">Como a pesquisa foi feita</span>
-                <h2 class="case-section-title">Uma base de pesquisa sólida, adaptada à urgência da pandemia</h2>
-                <div class="case-section-body case-prose-stack">
-                    <p class="case-prose-lead">A empresa já tinha experiência consolidada em tecnologia para saúde. Por isso, partimos de um <strong>estudo de personas baseado em várias entrevistas</strong> com usuários reais e perfis de pacientes bem definidos.</p>
-                    <p>Com a entrada da Unimed Seguros, adaptamos essa pesquisa ao perfil dos seus beneficiários e às necessidades do contrato, sem repetir um estudo que já tinha uma base consistente.</p>
-                    <p>Não fizemos benchmark com outros apps de saúde: a própria empresa já tinha repertório de produto no setor. Em plena pandemia, a prioridade era levar o paciente à consulta e ao encaminhamento certo o mais rápido possível. O objetivo era <mark class="case-brief__hl">encurtar o caminho entre &ldquo;estou com um sintoma&rdquo; e &ldquo;sei o que fazer&rdquo;.</mark></p>
-                    <blockquote class="case-callout case-callout--insight">
-                        <p>O contexto era o mesmo dentro e fora da empresa: pessoas ansiosas, em meio ao caos da pandemia, procurando ajuda com urgência. Não era um problema abstrato de usabilidade. Era o estado emocional de quem abria o app.</p>
-                    </blockquote>
-                </div>
-            </section>
-
-            <section id="solution" class="case-section">
-                <span class="case-section-label">Como foi resolvido</span>
-                <h2 class="case-section-title">Quatro pilares, três princípios de design</h2>
-                <div class="case-section-body">
-                    <p class="case-prose-lead">Organizamos o app em <strong>quatro pilares</strong>, guiados por três princípios: <mark class="case-brief__hl">um próximo passo claro</mark> em vez de muitas opções, <mark class="case-brief__hl">confiança por meio de uma UI contida</mark>, com cores neutras e tipografia acessível, e orientação previsível em cada etapa.</p>
-                    <div class="case-stages case-stages--v3">
-                        <article class="case-stage-v3">
-                            <div class="case-stage-v3__head">
-                                <span class="case-stage-v3__num">01</span>
-                                <div>
-                                    <h3 class="case-stage-v3__title">Agendamento simplificado</h3>
-                                    <p class="case-stage-v3__copy">Da <strong>descrição do sintoma à confirmação</strong>, o fluxo segue por um único caminho, sempre com o próximo passo visível. Isso reduz dúvidas para quem está ansioso ou usando telemedicina pela primeira vez.</p>
-                                </div>
-                            </div>
-                            <div class="case-section-gallery case-section-gallery--linear">
-                                <img src="Unimed/new imgs/Solution 02.png" alt="Fluxo de agendamento da Unimed Seguros, do sintoma à confirmação" class="case-gallery-img" loading="lazy" decoding="async">
-                            </div>
-                        </article>
-                        <article class="case-stage-v3">
-                            <div class="case-stage-v3__head">
-                                <span class="case-stage-v3__num">02</span>
-                                <div>
-                                    <h3 class="case-stage-v3__title">Interface de consulta</h3>
-                                    <p class="case-stage-v3__copy"><strong>Vídeo e chat</strong> conectam o beneficiário a um profissional de saúde no momento mais importante da jornada. Quando necessário, o encaminhamento acontece na própria consulta, sem etapas extras nem troca de canal.</p>
-                                </div>
-                            </div>
-                            <div class="case-section-gallery case-section-gallery--linear">
-                                <img src="Unimed/new imgs/02.png" alt="Interface de consulta por vídeo e chat da Unimed Seguros" class="case-gallery-img" loading="lazy" decoding="async">
-                            </div>
-                        </article>
-                        <article class="case-stage-v3">
-                            <div class="case-stage-v3__head">
-                                <span class="case-stage-v3__num">03</span>
-                                <div>
-                                    <h3 class="case-stage-v3__title">Histórico de saúde centralizado</h3>
-                                    <p class="case-stage-v3__copy">Consultas anteriores, recomendações e orientações ficam em <strong>um só lugar</strong>, sem obrigar o beneficiário a procurar informações em telas desconectadas.</p>
-                                </div>
-                            </div>
-                            <div class="case-section-gallery case-section-gallery--linear">
-                                <img src="Unimed/new imgs/Solution 05.png" alt="Histórico de saúde e orientações centralizados da Unimed Seguros" class="case-gallery-img" loading="lazy" decoding="async">
-                            </div>
-                        </article>
-                        <article class="case-stage-v3">
-                            <div class="case-stage-v3__head">
-                                <span class="case-stage-v3__num">04</span>
-                                <div>
-                                    <h3 class="case-stage-v3__title">Documentos, medicamentos e atestados em um só lugar</h3>
-                                    <p class="case-stage-v3__copy">Durante o isolamento, o app virou o principal acesso a <strong>pedidos médicos, receitas, atestados</strong> e outros serviços. Medicamentos e documentos ficavam em um fluxo claro, sem busca em vários canais nem ligação para o suporte.</p>
-                                </div>
-                            </div>
-                            <div class="case-section-gallery case-section-gallery--linear">
-                                <img src="Unimed/new imgs/Solution 6.png" alt="Acesso a receitas, medicamentos e documentos médicos da Unimed Seguros" class="case-gallery-img" loading="lazy" decoding="async">
-                            </div>
-                        </article>
-                    </div>
-                    <blockquote class="case-callout case-callout--lesson">
-                        <p>Como uma parte relevante do público tinha 60 anos ou mais, a solução foi além da UI. Criamos um <strong>onboarding completo e exclusivo para a Unimed</strong>, que explicava cada função e podia ser revisto a qualquer momento, não só no primeiro acesso. O <strong>chat 24/7 no app</strong> reforçava o suporte, enquanto materiais para funcionários e atendentes mantinham a mesma linguagem simples do produto.</p>
-                    </blockquote>
-                </div>
-            </section>
-
-            <section id="validation" class="case-section">
-                <span class="case-section-label">Como foi validado</span>
-                <h2 class="case-section-title">Uma base já validada, adaptada para a Unimed</h2>
-                <div class="case-section-body case-prose-stack">
-                    <p class="case-prose-lead">Este case não teve um teste formal de usabilidade com a Unimed. O ponto de partida era uma <strong>base já consolidada</strong>, cujo fluxo, arquitetura e linguagem tinham sido validados em produção com um cliente anterior.</p>
-                    <p>Para a Unimed, criamos novos serviços e funcionalidades sobre essa base, incluindo o <mark class="case-brief__hl">onboarding dedicado</mark>, adaptado ao público e ao contrato. Assim, não foi preciso reconstruir nem testar novamente o que já funcionava.</p>
-                    <p>As novas partes foram validadas pelos <strong>resultados reais em produção</strong>, apresentados a seguir.</p>
-                </div>
-                <div class="case-section-gallery case-validation-media" aria-label="Onboarding e suporte criados para a Unimed">
-                    <img src="Unimed/new imgs/Solution 7.png" alt="Camada de suporte por chat 24/7 no aplicativo para orientar beneficiários" class="case-gallery-img" loading="lazy" decoding="async">
-                    <img src="Unimed/new imgs/Solution 8.png" alt="Fluxos de onboarding e suporte adaptados aos beneficiários da Unimed" class="case-gallery-img" loading="lazy" decoding="async">
-                </div>
-            </section>
-
-            <section id="impact" class="case-section">
-                <span class="case-section-label">O que melhorou</span>
-                <h2 class="case-section-title">Escala e confiança no pico da pandemia</h2>
-                <div class="case-section-body case-impact-body">
-                    <div class="case-big-stats case-big-stats--impact case-big-stats--impact-social">
-                        <article class="case-big-stat">
-                            <span class="case-big-stat__value">40 mil<span class="case-big-stat__unit">+</span></span>
-                            <p class="case-big-stat__label">Beneficiários titulares · dependentes não contabilizados</p>
-                        </article>
-                        <article class="case-big-stat">
-                            <span class="case-big-stat__value">50 mil</span>
-                            <p class="case-big-stat__label">Consultas por mês · 24/7 + agendadas</p>
-                        </article>
-                        <article class="case-big-stat">
-                            <span class="case-big-stat__value">&lt;30<span class="case-big-stat__unit">%</span></span>
-                            <p class="case-big-stat__label">No-show durante o isolamento da pandemia</p>
-                        </article>
-                        <article class="case-big-stat">
-                            <span class="case-big-stat__value">80<span class="case-big-stat__unit">%+</span></span>
-                            <p class="case-big-stat__label">Retenção no chat · dúvidas resolvidas no aplicativo</p>
-                        </article>
-                    </div>
-                    <p class="case-impact-lead">O app se tornou o principal ponto de acesso à saúde durante os lockdowns, cobrindo receitas, atestados e encaminhamentos sem mandar usuários para outros canais.</p>
-                    <ul class="case-list case-list--impact case-impact-list">
-                        <li><strong>Encaminhamento na consulta:</strong> quando necessário, acontecia durante o próprio atendimento, sem etapa extra nem mudança de canal</li>
-                        <li><strong>No-show abaixo de 30%:</strong> mesmo durante a pandemia, menos de 30% dos pacientes agendavam e não compareciam</li>
-                        <li><strong>Suporte com mais de 80% de retenção:</strong> o chat 24/7 resolvia dúvidas dentro do app e evitava que o beneficiário abandonasse o fluxo</li>
-                        <li><strong>Parceria com Karla Granadeiro:</strong> pesquisa, fluxos e design system entregues por duas designers durante o pico da demanda da COVID</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="next" class="case-section">
-                <span class="case-section-label">Próximos passos</span>
-                <h2 class="case-section-title">Reduzir a ansiedade também é resultado de produto</h2>
-                <div class="case-section-body case-prose-stack">
-                    <p class="case-prose-lead">Em saúde, cada etapa ambígua aumenta o estresse. Um próximo passo claro mantém a pessoa no fluxo. As próximas prioridades são o <strong>status da consulta em tempo real</strong> e prontuários integrados entre consultas, para levar essa confiança além do primeiro atendimento.</p>
-                    <blockquote class="case-callout case-callout--lesson">
-                        <p>Para beneficiários com 60 anos ou mais usando telemedicina pela primeira vez, a UI é só metade do produto. Onboarding, chat e suporte humano alinhado fazem o atendimento remoto parecer confiável quando ele realmente importa.</p>
-                    </blockquote>
-                </div>
-            </section>
-        </div>
-    </section>
-
-    <section class="related-projects related-projects--selected-work" aria-labelledby="selected-work-heading">
-        <div class="container">
-            <header class="section-head section-head--plain">
-                <span class="section-num">01</span>
-                <h2 class="section-title" id="selected-work-heading">Projetos selecionados</h2>
-                <span class="section-rule"></span>
+    <article class="project-case-content story">
+        <div class="story-frame">
+            <figure class="story-cover"><img src="Unimed/Cover/Cover unimed Hero cover.png" alt="Telemedicina da Unimed Seguros" loading="eager" decoding="async"></figure>
+            <header class="story-intro">
+                <p class="story-kicker">Unimed Seguros · Telemedicina</p>
+                <h1>Cuidado remoto só funciona se as pessoas acreditarem que vai funcionar.</h1>
+                <p class="story-dek">Com Karla Granadeiro, desenhei a experiência de telemedicina da Unimed Seguros para beneficiários que precisavam de uma consulta em que pudessem confiar.</p>
+                <dl class="story-meta">
+                    <div><dt>Papel</dt><dd>Product Designer, com Karla Granadeiro</dd></div>
+                    <div><dt>Período</dt><dd>Período da COVID</dd></div>
+                    <div><dt>Escopo</dt><dd>Fluxos, onboarding e interface</dd></div>
+                </dl>
             </header>
-            <div class="related-grid related-grid--work">
-                <a href="project-hedgehog-product-pt.html" class="related-card"><div class="related-image"><img src="Hedgehog product/Covers/Cover Hedgehog Hero cover.png" alt="Produto de prediction market da Hedgehog" class="related-img" loading="lazy" decoding="async"></div><div class="related-info"><span class="related-name">Hedgehog</span><span class="related-location">Prediction Market</span></div></a>
-                <a href="project-hedgehog-pt.html" class="related-card"><div class="related-image"><img src="Hedgehog /Hedgehog/Cover Hedgehog Hero cover.png" alt="Landing page da waitlist da Hedgehog" class="related-img" loading="lazy" decoding="async"></div><div class="related-info"><span class="related-name">Hedgehog</span><span class="related-location">Conversão da waitlist</span></div></a>
-                <a href="project-transparent-space-pt.html" class="related-card"><div class="related-image"><img src="Transparent.space Products/Dashboard.png" alt="Dashboard para Market Makers da Transparent.space" class="related-img" loading="lazy" decoding="async"></div><div class="related-info"><span class="related-name">Transparent.space</span><span class="related-location">Dashboard para Market Makers</span></div></a>
-                <div class="related-card is-current" aria-current="page"><div class="related-image"><img src="Unimed/Cover/Cover unimed all projects.png" alt="Aplicativo de telemedicina da Unimed Seguros" class="related-img" loading="lazy" decoding="async"></div><div class="related-info"><span class="related-name">Unimed Seguros</span><span class="related-location">Aplicativo de telemedicina</span></div></div>
-            </div>
+        <section id="overview" class="case-section">
+            <p class="story-label">Visão geral</p>
+            <h2>40 mil pessoas precisavam que o cuidado remoto de fato segurasse.</h2>
+            <div class="story-prose"><p>A Unimed Seguros faz parte da maior cooperativa de saúde do Brasil. Na pandemia, o cuidado remoto era necessário, e os aplicativos do mercado eram genéricos: agendamento fragmentado e pouca da segurança institucional que esse público precisava.</p></div>
+<div class="story-prose"><p>Uma parte relevante dos beneficiários tinha 60 anos ou mais. A Unimed tinha sinalizado isso antes de começarmos. Isso definiu quanta clareza o produto precisava carregar.</p></div>
+<figure class="story-figure"><img src="Unimed/new imgs/01.png" alt="Aplicativo da Unimed Seguros" loading="lazy" decoding="async"><figcaption class="story-caption">O produto precisava parecer cuidado, não um formulário.</figcaption></figure>
+        </section>
+        <section id="problem" class="case-section">
+            <p class="story-label">Problema</p>
+            <h2>A barreira era confiança, não uma função faltando.</h2>
+            <div class="story-prose"><p>Os beneficiários precisavam acreditar que uma consulta remota funcionaria quando precisassem. Um fluxo que gera dúvida manda a pessoa de volta ao presencial, que é exatamente o que o produto deveria evitar.</p></div>
+<figure class="story-figure"><img src="Unimed/new imgs/Design 01.png" alt="Sistema visual calmo" loading="lazy" decoding="async"><figcaption class="story-caption">Cor neutra e tipo acessível faziam parte da confiança, não da decoração.</figcaption></figure>
+        </section>
+        <section id="opportunity" class="case-section">
+            <p class="story-label">Oportunidade</p>
+            <h2>A empresa já conhecia os pacientes. O trabalho era refinar isso para a Unimed.</h2>
+            <div class="story-prose"><p>Era uma healthtech estabelecida, não uma página em branco. As personas já existiam, de entrevistas ao longo do tempo. Quando a Unimed contratou o pacote, refinamos esse estudo para o público dela em vez de começar a pesquisa do zero.</p></div>
+<div class="story-prose"><p>Não houve benchmark contra outros apps de saúde. A empresa era a referência. O objetivo, no meio da pandemia, era levar um paciente por uma consulta o mais rápido possível. O contexto emocional era caos e uma busca urgente por ajuda.</p></div>
+        </section>
+        <section id="solution" class="case-section">
+            <p class="story-label">Solução</p>
+            <h2>Um próximo passo, em cada tela.</h2>
+            <div class="story-prose"><p>O aplicativo se apoia em quatro pilares, segurados por três princípios: um próximo passo claro no lugar de um menu de opções, confiança institucional por contenção visual, e orientação previsível no fluxo inteiro.</p></div>
+<figure class="story-figure"><img src="Unimed/new imgs/Solution 02.png" alt="Agendamento do sintoma à confirmação" loading="lazy" decoding="async"><figcaption class="story-caption">O agendamento é um caminho guiado, feito para quem pode estar ansioso e novo em telemedicina.</figcaption></figure>
+        </section>
+        <section id="experience" class="case-section">
+            <p class="story-label">Experiência central</p>
+            <h2>A consulta é o produto. O resto mantém as pessoas nela.</h2>
+            <div class="story-points"><article class="story-point"><h3>A consulta em si.</h3><div class="story-prose"><p>Vídeo e chat com um profissional, que é o momento em que a confiança mais importa. Encaminhamentos, quando necessários, acontecem durante a consulta. Não há um redirecionamento extra.</p></div><figure class="story-figure"><img src="Unimed/new imgs/02.png" alt="Consulta por vídeo e chat" loading="lazy" decoding="async"><figcaption class="story-caption">A consulta fica num lugar só.</figcaption></figure></article><article class="story-point"><h3>Histórico, para o retorno não ser uma busca.</h3><div class="story-prose"><p>Consultas anteriores, recomendações e orientações ficam juntas.</p></div><figure class="story-figure"><img src="Unimed/new imgs/Solution 05.png" alt="Histórico de saúde" loading="lazy" decoding="async"><figcaption class="story-caption">Retorno sem um labirinto de telas.</figcaption></figure></article><article class="story-point"><h3>Receitas, atestados e medicamentos.</h3><div class="story-prose"><p>Quando quase ninguém podia sair de casa, o aplicativo virou o caminho para pedidos médicos e outros atendimentos, num percurso guiado.</p></div><figure class="story-figure"><img src="Unimed/new imgs/Solution 6.png" alt="Documentos e medicamentos" loading="lazy" decoding="async"><figcaption class="story-caption">Documentos sem uma ligação para o suporte.</figcaption></figure></article><article class="story-point"><h3>Onboarding e uma pessoa do outro lado.</h3><div class="story-prose"><p>Como tantos beneficiários tinham 60 anos ou mais, a interface era só metade. Um onboarding completo foi feito para a Unimed e ficou disponível na plataforma, não só na primeira abertura. Um chat 24 horas dentro do app cobria dúvidas no meio do fluxo.</p></div><div class="story-gallery"><figure class=""><img src="Unimed/new imgs/Solution 7.png" alt="Chat no aplicativo" loading="lazy" decoding="async"><figcaption class="story-caption">Suporte dentro do produto.</figcaption></figure><figure class=""><img src="Unimed/new imgs/Solution 8.png" alt="Onboarding" loading="lazy" decoding="async"><figcaption class="story-caption">Um ensino que continua disponível depois da primeira visita.</figcaption></figure></div></article></div>
+        </section>
+        <section id="decisions" class="case-section">
+            <p class="story-label">Decisões</p>
+            <h2>Estendemos um produto que já tinha sido provado, em vez de reconstruí-lo.</h2>
+            <div class="story-prose"><p>A validação do núcleo não veio de um teste formal de usabilidade com a Unimed. O produto já tinha passado por um cliente anterior, então fluxo, arquitetura e linguagem já estavam em produção.</p></div>
+<div class="story-prose"><p>O trabalho específico da Unimed foram serviços novos sobre essa base, inclusive o onboarding dedicado. Karla Granadeiro e eu dividimos a pesquisa, os fluxos e o design system.</p></div>
+        </section>
+        <section id="results" class="case-section">
+            <p class="story-label">Resultados</p>
+            <h2>Escala, durante o lockdown, com os números que a operação reportou.</h2>
+            <div class="story-stats"><div class="story-stat"><strong>50K</strong><span>Consultas por mês, 24 horas e agendadas</span></div><div class="story-stat"><strong>40K+</strong><span>Beneficiários titulares. Dependentes não entram na conta.</span></div><div class="story-stat"><strong><30%</strong><span>Taxa de não comparecimento durante os lockdowns</span></div></div>
+<div class="story-prose"><p>O chat 24 horas reteve mais de 80% de quem chegou com uma dúvida, resolvendo dentro do produto em vez de perder a pessoa no meio do fluxo. Os encaminhamentos ficaram dentro da consulta.</p></div>
+<p class="story-note">São resultados operacionais de produção, não um estudo controlado de usabilidade feito com beneficiários da Unimed.</p>
+        </section>
+        <section id="reflection" class="case-section">
+            <p class="story-label">Reflexão</p>
+            <h2>Na primeira consulta por telemedicina, a interface é só metade do produto.</h2>
+            <div class="story-prose"><p>Onboarding, chat e suporte humano alinhado são o que fazem o cuidado remoto parecer que vai funcionar quando alguém precisar. Cada passo ambíguo adiciona estresse. Cada próximo passo claro mantém a pessoa no fluxo.</p></div>
+<div class="story-prose"><p>O que eu ainda quereria: status da consulta em tempo real, e prontuários conectados entre consultas, para a confiança durar além da primeira visita.</p></div>
+        </section>
         </div>
-    </section>
+    </article>
 
-    <footer class="footer footer--v3">
-        <div class="footer-v3__inner">
-            <div class="footer-v3__main">
-                <div class="footer-v3__col footer-v3__col--brand">
-                    <a href="index-pt.html" class="footer-logo-link" aria-label="Página inicial da Fonseca">
-                        <img src="logo.svg" alt="" class="footer-logo-img logo-light" height="32">
-                        <img src="logo%20white.svg" alt="" class="footer-logo-img logo-dark" height="32">
-                    </a>
-                    <p class="footer-v3__tagline">Designer de produto que transforma sistemas complexos em experiências claras e confiáveis<span class="footer-v3__dot" aria-hidden="true">.</span></p>
-                </div>
-                <nav class="footer-v3__col footer-v3__col--nav" aria-label="Rodapé">
-                    <p class="footer-v3__col-head">Navegar</p>
-                    <div class="footer-v3__links">
-                        <a href="index-pt.html#work">Projetos</a>
-                        <a href="fun-pt.html">Side Quests</a>
-                        <a href="about-pt.html">Sobre</a>
-                        <a href="index-pt.html#testimonials">Depoimentos</a>
-                    </div>
-                </nav>
-                <div class="footer-v3__col footer-v3__col--social">
-                    <p class="footer-v3__col-head">Contato</p>
-                    <div class="footer-v3__links">
-                        <a href="#" data-copy-email>fonsecaa.design@gmail.com</a>
-                        <a href="https://www.linkedin.com/in/maths-fonseca/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                        <a href="https://www.behance.net/maths-fonseca" target="_blank" rel="noopener noreferrer">Behance</a>
-                        <a href="https://x.com/0xFonseca" target="_blank" rel="noopener noreferrer">X / Twitter</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom footer-v3__bottom">
-                <p>&copy; <span id="current-year">2026</span> Matheus Fonseca &middot; Rio de Janeiro, Brasil</p>
-                <a href="#" class="footer-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Voltar ao topo &uarr;</a>
-            </div>
+    <footer class="site-foot">
+        <div class="site-foot__inner">
+            <nav class="site-foot__links" aria-label="Conectar">
+                <a href="https://www.linkedin.com/in/maths-fonseca/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="#" data-copy-email>Email</a>
+                <a href="https://x.com/0xFonseca" target="_blank" rel="noopener noreferrer">X</a>
+                <a href="https://www.behance.net/maths-fonseca" target="_blank" rel="noopener noreferrer">Behance</a>
+            </nav>
         </div>
     </footer>
 
     <script src="posthog-config.js?v=20260782"></script>
     <script src="posthog.js?v=20260782"></script>
-    <script src="script.js?v=20260819t"></script>
+    <script src="script.js?v=20261012o"></script>
 
     <!-- Vercel Web Analytics (free) -->
     <script>

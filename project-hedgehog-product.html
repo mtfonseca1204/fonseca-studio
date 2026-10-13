@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hedgehog · Prediction Market | Fonseca</title>
-    <meta name="description" content="Product design for Hedgehog: a prediction market that replaced orderbooks with pooled UP/DOWN rounds, validated in a 100-user closed beta.">
+    <meta name="description" content="Product design for Hedgehog: pooled UP/DOWN rounds that replaced orderbook trading, tested with 100 waitlist users.">
     <link rel="icon" type="image/svg+xml" href="logo.svg?v=20260703">
     <link rel="apple-touch-icon" href="logo.svg?v=20260703">
     <link rel="canonical" href="https://fonseca.studio/project-hedgehog-product.html">
@@ -24,7 +24,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;500;600;700;800&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260819v">
+    <link rel="stylesheet" href="styles.css?v=20261013l">
 
     
     <script>
@@ -61,15 +61,16 @@
         <div class="nav-container">
             <div class="nav-left">
                 <a href="index.html" class="nav-logo">
-                    <img src="logo.svg?v=20260703" alt="Fonseca" class="nav-logo-img logo-light">
-                    <img src="logo%20white.svg?v=20260703" alt="Fonseca" class="nav-logo-img logo-dark">
+                    <img src="logo.svg" alt="Fonseca" class="nav-logo-img logo-light">
+                    <img src="logo%20white.svg" alt="Fonseca" class="nav-logo-img logo-dark">
                 </a>
             </div>
+            <p class="rail-back"><a href="index.html#work"><svg class="rail-back__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M18.32 12.66H8.26L12.41 16.79L11.46 17.78L5.68 11.98L11.47 6.22L12.42 7.21L8.28 11.34L18.32 11.32V12.66Z" fill="currentColor"/></svg>Work</a><span class="rail-back__sep" aria-hidden="true">/</span><span class="rail-back__name">Hedgehog</span></p>
             <div class="nav-center">
-                <a href="index.html#work" class="nav-link"><span class="nav-num">01</span> Work</a>
+                <a href="index.html#work" class="nav-link nav-link--active" aria-current="page"><span class="nav-num">01</span> Work</a>
                 <a href="fun.html" class="nav-link"><span class="nav-num">02</span> Side Quests</a>
                 <a href="about.html" class="nav-link"><span class="nav-num">03</span> About</a>
-                <a href="MatheusFonsecaCV.pdf?v=20260820i" target="_blank" rel="noopener noreferrer" class="nav-link"><span class="nav-num">04</span> CV</a>
+                <a href="MatheusFonsecaCV.pdf?v=20260820i" class="nav-link" target="_blank" rel="noopener noreferrer"><span class="nav-num">04</span> CV</a>
             </div>
             <div class="nav-right">
                 <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
@@ -82,328 +83,115 @@
         </div>
         <div class="mobile-menu">
             <div class="mobile-menu-links">
-                <a href="index.html#work" class="mobile-link">Work</a>
-                <a href="fun.html" class="mobile-link">Side Quests</a>
-                <a href="about.html" class="mobile-link">About</a>
-                <a href="MatheusFonsecaCV.pdf?v=20260820i" target="_blank" rel="noopener noreferrer" class="mobile-link">CV</a>
+                <a href="index.html#work" class="mobile-link">Work</a><a href="fun.html" class="mobile-link">Side Quests</a><a href="about.html" class="mobile-link">About</a><a href="MatheusFonsecaCV.pdf?v=20260820i" target="_blank" rel="noopener noreferrer" class="mobile-link">CV</a>
             </div>
         </div>
     </nav>
 
-    <section class="project-hero project-hero-case">
-        <div class="container container-narrow">
-            <p class="project-hero-tagline">WEB3 · PREDICTION MARKETS</p>
-            <h1 class="project-hero-title">Turning prediction curiosity into participation</h1>
-        </div>
-    </section>
-
-    <aside class="case-side-nav" id="caseSideNav" aria-label="Project navigation">
+<aside class="case-side-nav" id="caseSideNav" aria-label="Project">
         <nav class="case-side-nav-inner">
-            <a href="#case-scan" class="case-side-nav__summary case-side-nav-link case-side-nav-link--summary">Summary</a>
+            <a href="#overview" class="case-side-nav-link">Overview</a>
             <a href="#problem" class="case-side-nav-link">Problem</a>
-            <a href="#why" class="case-side-nav-link">Why it matters</a>
-            <a href="#research" class="case-side-nav-link">Research</a>
+            <a href="#opportunity" class="case-side-nav-link">Opportunity</a>
             <a href="#solution" class="case-side-nav-link">Solution</a>
-            <a href="#validation" class="case-side-nav-link">Validation</a>
-            <a href="#impact" class="case-side-nav-link">Impact</a>
-            <a href="#next" class="case-side-nav-link">Next steps</a>
+            <a href="#experience" class="case-side-nav-link">Core experience</a>
+            <a href="#insights" class="case-side-nav-link">Insights</a>
+            <a href="#decisions" class="case-side-nav-link">Decisions</a>
+            <a href="#results" class="case-side-nav-link">Results</a>
+            <a href="#reflection" class="case-side-nav-link">Reflection</a>
         </nav>
     </aside>
 
-    <section class="project-cover">
-        <div class="project-cover-image">
-            <video src="Hedgehog%20product/product_calling.mp4?v=20260703" autoplay muted loop playsinline preload="auto" class="case-gallery-img" aria-label="Hedgehog prediction market product demo"></video>
-        </div>
-        <div class="container container-narrow">
-            <div class="project-case-meta project-case-meta--after-cover">
-                <div class="case-meta-item"><span class="case-meta-label">CLIENT</span><span class="case-meta-value">Hedgehog</span></div>
-                <div class="case-meta-item"><span class="case-meta-label">MY ROLE</span><span class="case-meta-value">Product Designer</span></div>
-                <div class="case-meta-item"><span class="case-meta-label">TIMELINE</span><span class="case-meta-value">8 months</span></div>
-            </div>
-        </div>
-    </section>
-
-    <section class="project-case-content case-editorial">
-        <div class="container container-narrow">
-            <div id="case-scan" class="case-brief case-scan" aria-label="Project summary for quick reading">
-                <div class="case-brief__grid">
-                    <article class="case-brief__card">
-                        <h3 class="case-brief__card-label">Problem</h3>
-                        <p class="case-brief__card-text">Prediction markets ask for <mark class="case-brief__hl">orderbook literacy</mark> before a single bet. Interest dies in the first 30 seconds.</p>
-                    </article>
-                    <article class="case-brief__card">
-                        <h3 class="case-brief__card-label">Approach</h3>
-                        <p class="case-brief__card-text"><mark class="case-brief__hl">Pooled UP/DOWN rounds</mark>, five-minute cycles, public participation data. Designed for desktop and mobile from day one.</p>
-                    </article>
-                    <article class="case-brief__card case-brief__card--result">
-                        <h3 class="case-brief__card-label">Outcome</h3>
-                        <p class="case-brief__card-text"><mark class="case-brief__hl">100% of beta users</mark> understood mechanics by round two. First action in under 2&ndash;4 seconds.</p>
-                    </article>
-                </div>
-                <ul class="case-scan__stats" aria-label="Headline numbers">
-                    <li class="case-scan__stat">
-                        <span class="case-scan__stat-value">100<span class="case-scan__stat-unit">%</span></span>
-                        <span class="case-scan__stat-label">Understood mechanics by round two</span>
-                    </li>
-                    <li class="case-scan__stat">
-                        <span class="case-scan__stat-value">10<span class="case-scan__stat-unit">&rarr;</span>2<span class="case-scan__stat-unit">&ndash;4s</span></span>
-                        <span class="case-scan__stat-label">Time to first action</span>
-                    </li>
-                    <li class="case-scan__stat">
-                        <span class="case-scan__stat-value">37.5<span class="case-scan__stat-unit">%</span></span>
-                        <span class="case-scan__stat-label">Waitlist conversion &middot; zero paid</span>
-                    </li>
-                </ul>
-            </div>
-
-            <section id="problem" class="case-section">
-                <span class="case-section-label">Problem</span>
-                <h2 class="case-section-title">Demand exists. The participation model doesn&rsquo;t.</h2>
-                <div class="case-section-body case-prose-stack">
-                    <p class="case-prose-lead">Polymarket, Augur, and a wave of DeFi protocols already proved that people want to predict outcomes on-chain. What never scaled was <strong>who could participate</strong>.</p>
-                    <p>Every existing platform routes users through orderbooks, liquidity, and trading mechanics before they place a single prediction. The interest is real. The technical barrier is what kills it before it becomes action.</p>
-                </div>
-                <div class="case-section-gallery case-section-gallery--linear" aria-label="Category interfaces built for traders">
-                    <img src="Hedgehog%20product/screens.png?v=20260703" alt="Prediction market interface patterns across the category" class="case-gallery-img" loading="eager" decoding="async">
-                </div>
-            </section>
-
-            <section id="why" class="case-section">
-                <span class="case-section-label">Why this matters</span>
-                <h2 class="case-section-title">Two audiences. Opposite needs. One product.</h2>
-                <div class="case-section-body case-prose-stack">
-                    <p class="case-prose-lead">This wasn&rsquo;t a UI simplification problem. It was a <strong>participation model</strong> problem, and solving for only one audience meant losing the other.</p>
-                    <p>The <mark class="case-brief__hl">curious newcomer</mark> has heard of prediction markets but never joined. Drop-off happens if orientation takes more than 30 seconds. The <mark class="case-brief__hl">experienced DeFi user</mark> wants fast engagement cycles, not long-term position management, and bounces when the product feels too shallow.</p>
-                    <p>Designing for traders alone keeps the category small. Designing for newcomers alone alienates the power users who drive volume. The product had to hold both.</p>
-                </div>
-                <div class="theme-compare" data-theme-compare role="region" aria-label="Hedgehog main screen light and dark">
-                    <div class="theme-compare-viewport">
-                        <img src="Hedgehog%20product/Imgs/Main%20Page%20dark.png?v=20260703" alt="" class="theme-compare-base" decoding="async">
-                        <div class="theme-compare-clip">
-                            <img src="Hedgehog%20product/Imgs/Main%20Page.png?v=20260703" alt="" class="theme-compare-top" decoding="async">
-                        </div>
-                        <button type="button" class="theme-compare-handle" aria-label="Drag to compare light and dark theme" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-orientation="horizontal">
-                            <span class="theme-compare-handle-line" aria-hidden="true"></span>
-                            <span class="theme-compare-handle-grip" aria-hidden="true"></span>
-                        </button>
-                    </div>
-                    <div class="theme-compare-labels">
-                        <span>Light</span>
-                        <span>Dark</span>
-                    </div>
-                </div>
-            </section>
-
-            <section id="research" class="case-section">
-                <span class="case-section-label">How it was researched</span>
-                <h2 class="case-section-title">Benchmark the category before opening Figma</h2>
-                <div class="case-section-body case-prose-stack">
-                    <p class="case-prose-lead">Competitive benchmarking across <strong>six platforms</strong>, Polymarket, Augur, Drift Protocol, Binance Predictions, Azuro, and Limitless, cross-referencing interface patterns with perceived friction.</p>
-                    <p>Five insights guided direction. The decision to avoid orderbooks wasn&rsquo;t a late pivot, it was clear <em>before any prototype existed</em>.</p>
-                    <ul class="case-list case-list--impact">
-                        <li>Users stall on orderbooks not from lack of intelligence, but because that system was built for <strong>financial professionals</strong>.</li>
-                        <li>The more data visible at the moment of decision, the <strong>higher the hesitation</strong> and drop-off.</li>
-                        <li>Weak feedback loops mean users don&rsquo;t understand what happened after their own prediction.</li>
-                        <li><mark class="case-brief__hl">Participation data</mark> is a decision signal. Hiding what others are doing ignores real behavior.</li>
-                        <li><mark class="case-brief__hl">Short cycles build habit.</mark> Long cycles tied to external events don&rsquo;t.</li>
-                    </ul>
-                    <blockquote class="case-callout case-callout--insight">
-                        <p>Orderbooks were the single biggest barrier to entry across the entire category. We chose a different path from the start, not after testing and discarding the obvious one.</p>
-                    </blockquote>
-                </div>
-            </section>
-
-            <section id="solution" class="case-section">
-                <span class="case-section-label">How it was solved</span>
-                <h2 class="case-section-title">Five decisions that changed the participation model</h2>
-                <div class="case-section-body">
-                    <p class="case-prose-lead">The platform was designed for <strong>desktop and mobile from the outset</strong>, with every state built and tested across both breakpoints.</p>
-                    <div class="case-stages case-stages--v3">
-                        <article class="case-stage-v3">
-                            <div class="case-stage-v3__head">
-                                <span class="case-stage-v3__num">01</span>
-                                <div>
-                                    <h3 class="case-stage-v3__title">Pooled positions, not an orderbook</h3>
-                                    <p class="case-stage-v3__copy">Users deposit into a shared pool and pick a side, <strong>UP or DOWN</strong>. The decision becomes binary, not a trading operation. No counterparties, no liquidity literacy required.</p>
-                                </div>
-                            </div>
-                            <div class="case-section-gallery case-section-gallery--linear">
-                                <img src="Hedgehog%20product/Betting.png?v=20260703" alt="Hedgehog pooled betting: UP or DOWN decision screen" class="case-gallery-img" loading="eager" decoding="async">
-                            </div>
-                        </article>
-                        <article class="case-stage-v3">
-                            <div class="case-stage-v3__head">
-                                <span class="case-stage-v3__num">02</span>
-                                <div>
-                                    <h3 class="case-stage-v3__title">Time-based rounds, not a continuous market</h3>
-                                    <p class="case-stage-v3__copy"><strong>3-minute preparation</strong>: choose amount and direction. Room locks, no new entries. <strong>2-minute resolution</strong> counts down to outcome. Total cycle ~5 minutes: short enough to build habit, contained enough to reduce anxiety.</p>
-                                </div>
-                            </div>
-                            <div class="case-section-gallery case-section-gallery--linear">
-                                <img src="Hedgehog%20product/modals.png?v=20260703" alt="Round timer and modal states across the prediction cycle" class="case-gallery-img" loading="eager" decoding="async">
-                            </div>
-                        </article>
-                        <article class="case-stage-v3">
-                            <div class="case-stage-v3__head">
-                                <span class="case-stage-v3__num">03</span>
-                                <div>
-                                    <h3 class="case-stage-v3__title">Participation data as interface, not backend</h3>
-                                    <p class="case-stage-v3__copy">Pool distribution is public from day one, a <mark class="case-brief__hl">visible table of what each participant bet</mark>. Social proof for newcomers. Contrarian signal for experienced users. Either way, the decision stays inside the product.</p>
-                                </div>
-                            </div>
-                            <div class="case-section-gallery case-section-gallery--linear">
-                                <img src="Hedgehog%20product/Communicate.png?v=20260703" alt="Public participation data and live communication in the product" class="case-gallery-img" loading="eager" decoding="async">
-                            </div>
-                        </article>
-                        <article class="case-stage-v3">
-                            <div class="case-stage-v3__head">
-                                <span class="case-stage-v3__num">04</span>
-                                <div>
-                                    <h3 class="case-stage-v3__title">One dominant action</h3>
-                                    <p class="case-stage-v3__copy"><strong>UP or DOWN</strong> is the strongest visual element on screen. Amount and confirmation are deliberately secondary, the interface answers one question at the moment that matters.</p>
-                                </div>
-                            </div>
-                            <div class="case-section-gallery case-section-gallery--linear">
-                                <img src="Hedgehog%20product/Action.png?v=20260703" alt="UP and DOWN as dominant actions on screen" class="case-gallery-img" loading="eager" decoding="async">
-                            </div>
-                        </article>
-                        <article class="case-stage-v3">
-                            <div class="case-stage-v3__head">
-                                <span class="case-stage-v3__num">05</span>
-                                <div>
-                                    <h3 class="case-stage-v3__title">Resolution as a loop, not a dead end</h3>
-                                    <p class="case-stage-v3__copy">Win/loss appears as a modal at round end. Acknowledge it and you stay on the same screen, <strong>ready for the next round</strong> without navigating away. The emotional peak channels directly into the next action.</p>
-                                </div>
-                            </div>
-                            <div class="case-section-gallery case-section-gallery--linear">
-                                <img src="Hedgehog%20product/win%20lose.png?v=20260703" alt="Win and loss resolution states" class="case-gallery-img" loading="eager" decoding="async">
-                                <img src="Hedgehog%20product/Imgs/Desktop_win.png?v=20260703" alt="Resolution screen desktop" class="case-gallery-img" loading="eager" decoding="async">
-                            </div>
-                        </article>
-                    </div>
-                    <blockquote class="case-callout case-callout--lesson">
-                        <p><strong>Iteration after beta:</strong> Live chat wasn&rsquo;t in the original launch. During the closed test, some users still hesitated when choosing a side, even after understanding mechanics. Chat opened to everyone with an active prediction in the round, so decisions stopped happening in a vacuum.</p>
-                    </blockquote>
-                </div>
-            </section>
-
-            <section id="validation" class="case-section">
-                <span class="case-section-label">How it was validated</span>
-                <h2 class="case-section-title">Production beta, not A/B theater</h2>
-                <div class="case-section-body case-prose-stack">
-                    <p class="case-prose-lead">No version comparison in a lab. Validation happened <strong>in production</strong> with people who already wanted to use the product.</p>
-                    <p>A closed beta ran <strong>5 days</strong>: 5 groups of 20 users (100 total), all from the product&rsquo;s own waitlist, an audience that arrived with real intent, not a random sample.</p>
-                    <p>More than half already understood the product&rsquo;s purpose before entering, thanks to education on the <a href="project-hedgehog.html" class="case-inline-link">landing page</a>. Combined with a self-explanatory flow, <mark class="case-brief__hl">100% of participants understood mechanics by the second round</mark>. Individual win/loss outcomes varied normally, that was never the success criteria.</p>
-                    <p>Founders and stakeholders who followed the beta shared the same read as users: intuitive, clear, delivers on what it promises.</p>
-                </div>
-                <div class="case-section-gallery case-validation-media" aria-label="Product in motion during beta">
-                    <video src="Hedgehog%20product/Product.mov?v=20260703" autoplay muted loop playsinline preload="auto" class="case-gallery-img case-gallery-img--zoom-in" aria-label="Hedgehog product walkthrough"></video>
-                    <div class="case-section-gallery case-section-gallery--pair case-validation-media__pair" aria-label="Supporting screens from the beta">
-                        <img src="Hedgehog%20product/how%20it%20works.png?v=20260703" alt="Self-explanatory product mechanics shown during beta" class="case-gallery-img" loading="eager" decoding="async">
-                        <img src="Hedgehog%20product/payment.png?v=20260703" alt="Amount selection as secondary step in the flow" class="case-gallery-img" loading="eager" decoding="async">
-                    </div>
-                    <div class="case-validation-media__mobile">
-                        <img src="Hedgehog%20product/mobile%20screens.png?v=20260703" alt="Hedgehog mobile screens validated in beta" class="case-gallery-img case-gallery-img--mobile" loading="eager" decoding="async">
-                    </div>
-                </div>
-            </section>
-
-            <section id="impact" class="case-section">
-                <span class="case-section-label">What improved</span>
-                <h2 class="case-section-title">Measured outcomes and delivery impact</h2>
-                <div class="case-section-body case-impact-body">
-                    <div class="case-big-stats case-big-stats--impact">
-                        <article class="case-big-stat">
-                            <span class="case-big-stat__value">10<span class="case-big-stat__unit">→</span>2<span class="case-big-stat__unit">–4s</span></span>
-                            <p class="case-big-stat__label">Time to first action</p>
-                        </article>
-                        <article class="case-big-stat">
-                            <span class="case-big-stat__value">100<span class="case-big-stat__unit">%</span></span>
-                            <p class="case-big-stat__label">Understood mechanics by round two</p>
-                        </article>
-                        <article class="case-big-stat">
-                            <span class="case-big-stat__value">37.5<span class="case-big-stat__unit">%</span></span>
-                            <p class="case-big-stat__label">Waitlist conversion · zero paid</p>
-                        </article>
-                    </div>
-                    <p class="case-impact-lead">Usability held in production beta. The same work also shipped a <strong>120+ component design system</strong> and closed the loop from waitlist interest to product validation.</p>
-                    <ul class="case-list case-list--impact case-impact-list">
-                        <li><strong>Design system:</strong> 120+ components cut handoff time by <mark class="case-brief__hl">~35%</mark></li>
-                        <li><strong>Waitlist funnel:</strong> the same audience that validated interest on the landing page validated the product in beta</li>
-                        <li><strong>Qualitative alignment:</strong> users and internal team agreed, intuitive, clear, purpose delivered</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="next" class="case-section">
-                <span class="case-section-label">Next steps</span>
-                <h2 class="case-section-title">Where users still hesitate</h2>
-                <div class="case-section-body case-prose-stack">
-                    <p class="case-prose-lead">The most critical moment today is the <strong>3-minute preparation window</strong>, when a user decides alone on amount and direction, with no real-time guidance, before the room locks.</p>
-                    <p>That&rsquo;s where newcomers are most likely to get lost. The top priority is bringing <mark class="case-brief__hl">guided support at room creation</mark>, before lock, not after, building on what live chat taught us in beta.</p>
-                    <blockquote class="case-callout case-callout--lesson">
-                        <p>When users are confused, fix the mental model before the UI. We never polished our way out of an orderbook. We replaced the model, then designed the loop around it.</p>
-                    </blockquote>
-                </div>
-            </section>
-        </div>
-    </section>
-
-    <section class="related-projects related-projects--selected-work" aria-labelledby="selected-work-heading">
-        <div class="container">
-            <header class="section-head section-head--plain">
-                <span class="section-num">01</span>
-                <h2 class="section-title" id="selected-work-heading">Selected Work</h2>
-                <span class="section-rule"></span>
+    <article class="project-case-content story">
+        <div class="story-frame">
+            <figure class="story-cover"><video src="Hedgehog%20product/product_calling.mp4" autoplay muted loop playsinline preload="auto" aria-label="Hedgehog prediction market"></video></figure>
+            <header class="story-intro">
+                <p class="story-kicker">Hedgehog · Prediction market</p>
+                <h1>People wanted to predict. The product asked them to trade.</h1>
+                <p class="story-dek">I redesigned participation so a newcomer could pick a side in a shared pool, without learning an orderbook first.</p>
+                <dl class="story-meta">
+                    <div><dt>Role</dt><dd>Product Designer</dd></div>
+                    <div><dt>Timeline</dt><dd>8 months</dd></div>
+                    <div><dt>Scope</dt><dd>Desktop and mobile</dd></div>
+                </dl>
             </header>
-            <div class="related-grid related-grid--work">
-                <div class="related-card is-current" aria-current="page"><div class="related-image"><img src="Hedgehog%20product/Covers/Cover%20Hedgehog%20Hero%20cover.png?v=20260703" alt="Hedgehog prediction market product" class="related-img" loading="lazy" decoding="async"></div><div class="related-info"><span class="related-name">Hedgehog</span><span class="related-location">Prediction Market</span></div></div>
-                <a href="project-hedgehog.html" class="related-card"><div class="related-image"><img src="Hedgehog%20/Hedgehog/Cover%20Hedgehog%20Hero%20cover.png?v=20260703" alt="Hedgehog waitlist landing page" class="related-img" loading="lazy" decoding="async"></div><div class="related-info"><span class="related-name">Hedgehog</span><span class="related-location">Waitlist Conversion</span></div></a>
-                <a href="project-transparent-space.html" class="related-card"><div class="related-image"><img src="Transparent.space%20Products/Dashboard.png?v=20260703" alt="Transparent.space product dashboard" class="related-img" loading="lazy" decoding="async"></div><div class="related-info"><span class="related-name">Transparent.space</span><span class="related-location">Dashboard</span></div></a>
-                <a href="project-unimed-seguros.html" class="related-card"><div class="related-image"><img src="Unimed/Cover/Cover%20unimed%20all%20projects.png?v=20260703" alt="Unimed Seguros app redesign" class="related-img" loading="lazy" decoding="async"></div><div class="related-info"><span class="related-name">Unimed Seguros</span><span class="related-location">Insurance App</span></div></a>
-            </div>
+        <section id="overview" class="case-section">
+            <p class="story-label">Overview</p>
+            <h2>A five-minute bet, not a trading desk.</h2>
+            <div class="story-prose"><p>Hedgehog is a prediction market. People take a side on whether a price goes up or down.</p></div>
+<div class="story-prose"><p>The category already had demand. Polymarket, Augur, and a wave of DeFi products had proved that. What had not scaled was who could join.</p></div>
+<figure class="story-figure"><video src="Hedgehog%20product/Product.mov" autoplay muted loop playsinline preload="metadata" aria-label="Hedgehog product walkthrough"></video><figcaption class="story-caption">The shipped loop: choose a side, wait for the round, see the result, stay for the next one.</figcaption></figure>
+        </section>
+        <section id="problem" class="case-section">
+            <p class="story-label">Problem</p>
+            <h2>Interest died in the mechanics, not in the idea.</h2>
+            <div class="story-prose"><p>Existing platforms asked for orderbook literacy, liquidity, and trading mechanics before a single prediction.</p></div>
+<div class="story-prose"><p>That system was built for financial professionals. For everyone else, the first half minute was enough to leave.</p></div>
+<figure class="story-figure"><img src="Hedgehog%20product/screens.png" alt="Category interfaces built around trading mechanics" loading="lazy" decoding="async"><figcaption class="story-caption">The pattern across the category: a lot of market structure before the actual decision.</figcaption></figure>
+        </section>
+        <section id="opportunity" class="case-section">
+            <p class="story-label">Opportunity</p>
+            <h2>Two audiences, and designing for only one would lose the other.</h2>
+            <div class="story-prose"><p>The curious newcomer had heard of prediction markets and bounced if orientation took more than about 30 seconds.</p></div>
+<div class="story-prose"><p>The experienced DeFi user wanted short cycles, not a position to manage for days, and left when the product felt shallow.</p></div>
+<div class="story-prose"><p>The opportunity was a participation model that stayed legible for the first group and fast enough for the second.</p></div>
+        </section>
+        <section id="solution" class="case-section">
+            <p class="story-label">Solution</p>
+            <h2>Deposit into a pool. Pick UP or DOWN.</h2>
+            <div class="story-prose"><p>We replaced the orderbook with a shared pool. The decision is binary. There is no counterparty to find and no liquidity lesson before the first action.</p></div>
+<div class="story-prose"><p>Desktop and mobile were designed together. Every state was built for both.</p></div>
+<figure class="story-figure"><img src="Hedgehog%20product/Betting.png" alt="UP or DOWN decision on Hedgehog" loading="lazy" decoding="async"><figcaption class="story-caption">The primary idea, on the screen where it matters.</figcaption></figure>
+        </section>
+        <section id="experience" class="case-section">
+            <p class="story-label">Core experience</p>
+            <h2>Four moments that make the loop understandable.</h2>
+            <div class="story-points"><article class="story-point"><h3>A round with a beginning and an end.</h3><div class="story-prose"><p>Three minutes to choose an amount and a direction. The room locks. Two minutes resolve the outcome. The whole cycle is about five minutes: short enough to repeat, contained enough to lower the stakes of waiting.</p></div><figure class="story-figure"><img src="Hedgehog%20product/modals.png" alt="Round timer and modal states" loading="lazy" decoding="async"><figcaption class="story-caption">Preparation, lock, and resolution as distinct states.</figcaption></figure></article><article class="story-point"><h3>One action louder than everything else.</h3><div class="story-prose"><p>UP or DOWN is the strongest element on screen. Amount and confirmation stay secondary, so the interface answers one question at the moment that matters.</p></div><figure class="story-figure"><img src="Hedgehog%20product/Action.png" alt="UP and DOWN as the dominant actions" loading="lazy" decoding="async"><figcaption class="story-caption">The decision is visually louder than the setup around it.</figcaption></figure></article><article class="story-point"><h3>Other people's bets, in the open.</h3><div class="story-prose"><p>Pool distribution is public, including a table of what each participant chose. Newcomers get social proof. Experienced users get a contrarian signal. Either way, the decision stays inside the product.</p></div><figure class="story-figure"><img src="Hedgehog%20product/Communicate.png" alt="Public participation data" loading="lazy" decoding="async"><figcaption class="story-caption">Participation is part of the interface, not a hidden backend field.</figcaption></figure></article><article class="story-point"><h3>The result sends you into the next round.</h3><div class="story-prose"><p>Win or loss appears as a modal. Acknowledge it and you are still on the same screen, ready for the next round. The emotional peak feeds the next action instead of ending the session.</p></div><figure class="story-figure"><img src="Hedgehog%20product/win%20lose.png" alt="Win and loss states" loading="lazy" decoding="async"><figcaption class="story-caption">Resolution is a beat in the loop, not a dead end.</figcaption></figure></article></div>
+        </section>
+        <section id="insights" class="case-section">
+            <p class="story-label">Insights</p>
+            <h2>The orderbook was the barrier before any prototype existed.</h2>
+            <div class="story-prose"><p>I benchmarked six products: Polymarket, Augur, Drift Protocol, Binance Predictions, Azuro, and Limitless. The point was to see where people stalled, not to collect screens.</p></div>
+<div class="story-prose"><p>More data at the moment of decision raised hesitation. Weak feedback left people unsure what their own prediction had done. Short cycles built a habit. Long cycles tied to outside events did not.</p></div>
+<div class="story-prose"><p>So the decision to avoid an orderbook was a starting constraint, not a pivot after a failed prototype.</p></div>
+        </section>
+        <section id="decisions" class="case-section">
+            <p class="story-label">Decisions</p>
+            <h2>Three calls that changed the product, not just the pixels.</h2>
+            <div class="story-points"><article class="story-point"><h3>Change the model, then design the screen.</h3><div class="story-prose"><p>Polishing an orderbook would have made a trader's tool prettier. It would not have let a newcomer in. We took the pool as the product, and the interface followed.</p></div></article><article class="story-point"><h3>Show the crowd, carefully.</h3><div class="story-prose"><p>Hiding what others were doing ignored how people actually decide. Publishing the pool gave newcomers a cue and gave experienced users something to disagree with, without turning the screen into a leaderboard.</p></div></article><article class="story-point"><h3>Add conversation where people still froze.</h3><div class="story-prose"><p>Live chat was not in the original launch. In the closed beta, some people still hesitated on a side after they understood the mechanics. Chat opened for anyone with an active prediction in that round, so the choice stopped happening in a vacuum.</p></div><figure class="story-figure"><img src="Hedgehog%20product/how%20it%20works.png" alt="How the mechanics are explained in product" loading="lazy" decoding="async"><figcaption class="story-caption">The flow had to explain itself. The landing page had already done some of that teaching.</figcaption></figure></article></div>
+        </section>
+        <section id="results" class="case-section">
+            <p class="story-label">Results</p>
+            <h2>A closed beta, with people who already wanted in.</h2>
+            <div class="story-prose"><p>There was no lab A/B. For five days, five groups of 20 people from the product's own waitlist used it in production. One hundred people, with real intent.</p></div>
+<div class="story-prose"><p>More than half already understood the purpose before they entered, because of the landing page. With a self-explanatory flow, every participant understood the mechanics by the second round. Individual wins and losses varied, and that was never the success criteria.</p></div>
+<div class="story-stats"><div class="story-stat"><strong>100%</strong><span>Understood the mechanics by round two</span></div><div class="story-stat"><strong>10s → 2–4s</strong><span>Time to first action</span></div><div class="story-stat"><strong>120+</strong><span>Components in the design system, cutting handoff time by about 35%</span></div></div>
+<p class="story-note">Founders who followed the beta described the same thing users did: intuitive, clear, and matched to the promise. The 37.5% waitlist conversion belongs to the pre-launch page, not to this beta.</p>
+<figure class="story-figure"><img src="Hedgehog%20product/mobile%20screens.png" alt="Hedgehog on mobile" loading="lazy" decoding="async"><figcaption class="story-caption">The same loop on a phone, which was in scope from the start.</figcaption></figure>
+        </section>
+        <section id="reflection" class="case-section">
+            <p class="story-label">Reflection</p>
+            <h2>When people are confused, fix the model before the interface.</h2>
+            <div class="story-prose"><p>We never polished our way out of an orderbook. We replaced the model, then designed the loop around it.</p></div>
+<div class="story-prose"><p>The open question is the three-minute preparation window, when someone chooses amount and direction alone, before the room locks. That is where a newcomer is most likely to stall. The next useful move is guidance at room creation, before the lock, which is what the beta chat was already pointing at.</p></div>
+        </section>
         </div>
-    </section>
+    </article>
 
-    <footer class="footer footer--v3">
-        <div class="footer-v3__inner">
-            <div class="footer-v3__main">
-                <div class="footer-v3__col footer-v3__col--brand">
-                    <a href="index.html" class="footer-logo-link" aria-label="Fonseca Home">
-                        <img src="logo.svg?v=20260703" alt="" class="footer-logo-img logo-light" height="32">
-                        <img src="logo%20white.svg?v=20260703" alt="" class="footer-logo-img logo-dark" height="32">
-                    </a>
-                    <p class="footer-v3__tagline">Product designer turning complex systems into clear, trustworthy experiences<span class="footer-v3__dot" aria-hidden="true">.</span></p>
-                </div>
-                <nav class="footer-v3__col footer-v3__col--nav" aria-label="Footer">
-                    <p class="footer-v3__col-head">Navigate</p>
-                    <div class="footer-v3__links">
-                        <a href="index.html#work">Work</a>
-                        <a href="fun.html">Side Quests</a>
-                        <a href="about.html">About</a>
-                        <a href="index.html#testimonials">Testimonials</a>
-                    </div>
-                </nav>
-                <div class="footer-v3__col footer-v3__col--social">
-                    <p class="footer-v3__col-head">Connect</p>
-                    <div class="footer-v3__links">
-                        <a href="#" data-copy-email>fonsecaa.design@gmail.com</a>
-                        <a href="https://www.linkedin.com/in/maths-fonseca/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                        <a href="https://www.behance.net/maths-fonseca" target="_blank" rel="noopener noreferrer">Behance</a>
-                        <a href="https://x.com/0xFonseca" target="_blank" rel="noopener noreferrer">X / Twitter</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom footer-v3__bottom">
-                <p>&copy; <span id="current-year">2026</span> Matheus Fonseca &middot; Rio de Janeiro, Brazil</p>
-                <a href="#" class="footer-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Back to top &uarr;</a>
-            </div>
+    <footer class="site-foot">
+        <div class="site-foot__inner">
+            <nav class="site-foot__links" aria-label="Connect">
+                <a href="https://www.linkedin.com/in/maths-fonseca/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="#" data-copy-email>Email</a>
+                <a href="https://x.com/0xFonseca" target="_blank" rel="noopener noreferrer">X</a>
+                <a href="https://www.behance.net/maths-fonseca" target="_blank" rel="noopener noreferrer">Behance</a>
+            </nav>
         </div>
     </footer>
 
     <script src="posthog-config.js?v=20260782"></script>
     <script src="posthog.js?v=20260782"></script>
-    <script src="script.js?v=20260771"></script>
+    <script src="script.js?v=20261012o"></script>
 
     <!-- Vercel Web Analytics (free) -->
     <script>

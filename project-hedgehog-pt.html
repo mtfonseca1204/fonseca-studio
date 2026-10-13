@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hedgehog · Landing page e waitlist | Fonseca</title>
-    <meta name="description" content="Landing page e waitlist da Hedgehog focadas em conversão: taxa de 37,5%, sem mídia paga, para um público institucional de Web3.">
+    <meta name="description" content="Página de waitlist da Hedgehog para um público institucional: mais de 15 mil cadastros e 37,5% de conversão, sem tráfego pago.">
     <link rel="icon" type="image/svg+xml" href="logo.svg">
     <link rel="apple-touch-icon" href="logo.svg">
     <link rel="canonical" href="https://fonseca.studio/project-hedgehog-pt.html">
@@ -24,7 +24,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;500;600;700;800&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260819q">
+    <link rel="stylesheet" href="styles.css?v=20261013l">
 
     <script>
     (function () {
@@ -64,11 +64,12 @@
                     <img src="logo%20white.svg" alt="Fonseca" class="nav-logo-img logo-dark">
                 </a>
             </div>
+            <p class="rail-back"><a href="index-pt.html#work"><svg class="rail-back__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M18.32 12.66H8.26L12.41 16.79L11.46 17.78L5.68 11.98L11.47 6.22L12.42 7.21L8.28 11.34L18.32 11.32V12.66Z" fill="currentColor"/></svg>Projetos</a><span class="rail-back__sep" aria-hidden="true">/</span><span class="rail-back__name">Hedgehog Waitlist</span></p>
             <div class="nav-center">
-                <a href="index-pt.html#work" class="nav-link"><span class="nav-num">01</span> Projetos</a>
+                <a href="index-pt.html#work" class="nav-link nav-link--active" aria-current="page"><span class="nav-num">01</span> Projetos</a>
                 <a href="fun-pt.html" class="nav-link"><span class="nav-num">02</span> Side Quests</a>
                 <a href="about-pt.html" class="nav-link"><span class="nav-num">03</span> Sobre</a>
-                <a href="MatheusFonsecaCV.pdf?v=20260820i" target="_blank" rel="noopener noreferrer" class="nav-link"><span class="nav-num">04</span> Currículo</a>
+                <a href="MatheusFonsecaCV.pdf?v=20260820i" class="nav-link" target="_blank" rel="noopener noreferrer"><span class="nav-num">04</span> Currículo</a>
             </div>
             <div class="nav-right">
                 <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Alternar modo escuro">
@@ -76,296 +77,114 @@
                     <svg class="icon-moon" width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </button>
                 <a href="project-hedgehog.html" class="nav-cta language-toggle" aria-label="Switch language to English"><span>EN</span><span class="language-toggle__sep" aria-hidden="true">/</span><span class="is-active">PT</span></a>
-                <button class="mobile-menu-toggle" aria-label="Alternar menu"><span></span><span></span></button>
+                <button class="mobile-menu-toggle" aria-label="Abrir ou fechar menu"><span></span><span></span></button>
             </div>
         </div>
         <div class="mobile-menu">
             <div class="mobile-menu-links">
-                <a href="index-pt.html#work" class="mobile-link">Projetos</a>
-                <a href="fun-pt.html" class="mobile-link">Side Quests</a>
-                <a href="about-pt.html" class="mobile-link">Sobre</a>
-                <a href="MatheusFonsecaCV.pdf?v=20260820i" target="_blank" rel="noopener noreferrer" class="mobile-link">Currículo</a>
+                <a href="index-pt.html#work" class="mobile-link">Projetos</a><a href="fun-pt.html" class="mobile-link">Side Quests</a><a href="about-pt.html" class="mobile-link">Sobre</a><a href="MatheusFonsecaCV.pdf?v=20260820i" target="_blank" rel="noopener noreferrer" class="mobile-link">Currículo</a>
             </div>
         </div>
     </nav>
 
-    <section class="project-hero project-hero-case">
-        <div class="container container-narrow">
-            <p class="project-hero-tagline">WEB3 · DESIGN DE CONVERSÃO</p>
-            <h1 class="project-hero-title">Credibilidade antes de o produto existir</h1>
-        </div>
-    </section>
-
-    <aside class="case-side-nav" id="caseSideNav" aria-label="Navegação do projeto">
+<aside class="case-side-nav" id="caseSideNav" aria-label="Projeto">
         <nav class="case-side-nav-inner">
-            <a href="#case-scan" class="case-side-nav__summary case-side-nav-link case-side-nav-link--summary">Resumo</a>
+            <a href="#overview" class="case-side-nav-link">Visão geral</a>
             <a href="#problem" class="case-side-nav-link">Problema</a>
-            <a href="#why" class="case-side-nav-link">Por que importa</a>
-            <a href="#research" class="case-side-nav-link">Pesquisa</a>
+            <a href="#opportunity" class="case-side-nav-link">Oportunidade</a>
             <a href="#solution" class="case-side-nav-link">Solução</a>
-            <a href="#validation" class="case-side-nav-link">Validação</a>
-            <a href="#impact" class="case-side-nav-link">Impacto</a>
-            <a href="#next" class="case-side-nav-link">Próximos passos</a>
+            <a href="#experience" class="case-side-nav-link">Experiência central</a>
+            <a href="#insights" class="case-side-nav-link">Aprendizados</a>
+            <a href="#decisions" class="case-side-nav-link">Decisões</a>
+            <a href="#results" class="case-side-nav-link">Resultados</a>
+            <a href="#reflection" class="case-side-nav-link">Reflexão</a>
         </nav>
     </aside>
 
-    <section class="project-cover">
-        <div class="project-cover-image">
-            <video src="Hedgehog /Hedgehog-waitlist.mp4" autoplay muted loop playsinline preload="auto" class="case-gallery-img" aria-label="Demonstração da landing page da waitlist da Hedgehog"></video>
-        </div>
-        <div class="container container-narrow">
-            <div class="project-case-meta project-case-meta--after-cover">
-                <div class="case-meta-item"><span class="case-meta-label">CLIENTE</span><span class="case-meta-value">Hedgehog</span></div>
-                <div class="case-meta-item"><span class="case-meta-label">MEU PAPEL</span><span class="case-meta-value">Designer de Produto</span></div>
-                <div class="case-meta-item"><span class="case-meta-label">DURAÇÃO</span><span class="case-meta-value">3 meses</span></div>
-            </div>
-        </div>
-    </section>
-
-    <section class="project-case-content case-editorial">
-        <div class="container container-narrow">
-            <div id="case-scan" class="case-brief case-scan" aria-label="Resumo do projeto para leitura rápida">
-                <div class="case-brief__grid">
-                    <article class="case-brief__card">
-                        <h3 class="case-brief__card-label">Problema</h3>
-                        <p class="case-brief__card-text">O produto ainda não era público, e o <mark class="case-brief__hl">público institucional</mark> exigia evidências antes de compartilhar seus dados de contato.</p>
-                    </article>
-                    <article class="case-brief__card">
-                        <h3 class="case-brief__card-label">Abordagem</h3>
-                        <p class="case-brief__card-text"><mark class="case-brief__hl">Funil de três camadas</mark> (entender &rarr; confiar &rarr; agir), além de uma comunidade ativa no X, Telegram e Discord.</p>
-                    </article>
-                    <article class="case-brief__card case-brief__card--result">
-                        <h3 class="case-brief__card-label">Resultado</h3>
-                        <p class="case-brief__card-text"><mark class="case-brief__hl">Mais de 15.000 cadastros</mark>, com conversão de 37,5% a partir de uma comunidade orgânica de mais de 40 mil pessoas, sem mídia paga; o mesmo público depois alimentou o beta do produto.</p>
-                    </article>
-                </div>
-                <ul class="case-scan__stats" aria-label="Números principais">
-                    <li class="case-scan__stat">
-                        <span class="case-scan__stat-value">15.000<span class="case-scan__stat-unit">+</span></span>
-                        <span class="case-scan__stat-label">Cadastros na waitlist</span>
-                    </li>
-                    <li class="case-scan__stat">
-                        <span class="case-scan__stat-value">37,5<span class="case-scan__stat-unit">%</span></span>
-                        <span class="case-scan__stat-label">Conversão de visitantes orgânicos</span>
-                    </li>
-                    <li class="case-scan__stat">
-                        <span class="case-scan__stat-value"><span class="case-scan__stat-unit">$</span>0</span>
-                        <span class="case-scan__stat-label">Tráfego pago</span>
-                    </li>
-                </ul>
-            </div>
-
-            <section id="problem" class="case-section">
-                <span class="case-section-label">Problema</span>
-                <h2 class="case-section-title">A primeira impressão precisava funcionar antes do lançamento</h2>
-                <div class="case-section-body case-prose-stack">
-                    <p class="case-prose-lead">Antes mesmo de o produto existir publicamente, a Hedgehog precisava transmitir <strong>credibilidade institucional</strong> para converter um público profissional que exige contexto e evidências antes de deixar seus dados de contato.</p>
-                    <p>Sem uma landing page capaz de gerar confiança rapidamente, não seria possível validar a demanda nem formar uma waitlist qualificada antes do lançamento.</p>
-                </div>
-                <div class="case-section-gallery case-section-gallery--linear" aria-label="Visão geral da landing page">
-                    <img src="Hedgehog /frame6.png" alt="Visão geral do hero da landing page da waitlist da Hedgehog" class="case-gallery-img" loading="lazy" decoding="async">
-                </div>
-            </section>
-
-            <section id="why" class="case-section">
-                <span class="case-section-label">Por que isso importa</span>
-                <h2 class="case-section-title">Hype não converte esse público. Clareza, sim.</h2>
-                <div class="case-section-body case-prose-stack">
-                    <p class="case-prose-lead">A página não falava com o usuário casual de cripto, mas com um <strong>público institucional e profissional</strong> acostumado a avaliar produtos B2B e Web3 antes de assumir um compromisso.</p>
-                    <p>Para esse público, hype não converte; <mark class="case-brief__hl">clareza e provas de solidez</mark>, sim. Sem uma landing page eficiente, não seria possível validar a demanda nem formar uma waitlist qualificada antes do lançamento.</p>
-                </div>
-            </section>
-
-            <section id="research" class="case-section">
-                <span class="case-section-label">Como foi pesquisado</span>
-                <h2 class="case-section-title">Referências focadas em conversão, não em narrativas longas</h2>
-                <div class="case-section-body case-prose-stack">
-                    <p class="case-prose-lead">Parte das referências veio de recomendações dos stakeholders; outra parte, de escolhas independentes: <strong>Sonic Labs</strong> (o rebranding da antiga Fantom), <strong>Hyperliquid</strong> e <strong>Aave</strong>, entre outras.</p>
-                    <p>O padrão era claro: foco direto em conversão, sem construir uma narrativa longa antes de pedir uma ação. A landing page da Hedgehog seguiu a mesma lógica, com <mark class="case-brief__hl">gatilhos diretos de conversão desde a primeira rolagem</mark>, sem obrigar o usuário a percorrer uma jornada extensa antes do CTA.</p>
-                    <blockquote class="case-callout case-callout--insight">
-                        <p>O tom institucional não surgiu ao longo do caminho. Foi uma decisão tomada desde o primeiro dia com marketing e os fundadores.</p>
-                    </blockquote>
-                </div>
-            </section>
-
-            <section id="solution" class="case-section">
-                <span class="case-section-label">Como foi resolvido</span>
-                <h2 class="case-section-title">Três camadas: entender, confiar, agir</h2>
-                <div class="case-section-body">
-                    <p class="case-prose-lead">A página foi estruturada em três camadas para levar o usuário de <strong>entendimento &rarr; confiança &rarr; ação</strong>. O texto foi criado com marketing e os fundadores para falar diretamente com o público que a empresa já tinha e queria fortalecer.</p>
-                    <div class="case-stages case-stages--v3">
-                        <article class="case-stage-v3">
-                            <div class="case-stage-v3__head">
-                                <span class="case-stage-v3__num">01</span>
-                                <div>
-                                    <h3 class="case-stage-v3__title">Hero, proposta de valor + ação imediata</h3>
-                                    <p class="case-stage-v3__copy">Proposta de valor clara, tom institucional e CTA <strong>&ldquo;Entrar na waitlist&rdquo; acima da dobra</strong>. Sem hype nem mockups prematuros do produto; os visuais conceituais transmitem seriedade sem prometer demais.</p>
-                                </div>
-                            </div>
-                            <div class="case-section-gallery case-section-gallery--linear">
-                                <img src="Hedgehog /Frame4.png" alt="Hero da landing page da Hedgehog com CTA para entrar na waitlist" class="case-gallery-img" loading="lazy" decoding="async">
-                            </div>
-                        </article>
-                        <article class="case-stage-v3">
-                            <div class="case-stage-v3__head">
-                                <span class="case-stage-v3__num">02</span>
-                                <div>
-                                    <h3 class="case-stage-v3__title">Confiança e contexto: a camada de credibilidade</h3>
-                                    <p class="case-stage-v3__copy">O problema foi apresentado a partir da realidade do usuário. A <strong>diferenciação focada em on-chain</strong> e as seções sobre confiabilidade e governança respondem às perguntas que usuários institucionais fazem antes de confiar em um produto ainda não lançado.</p>
-                                </div>
-                            </div>
-                            <div class="case-section-gallery case-section-gallery--linear">
-                                <img src="Hedgehog /Context.png" alt="Seção da Hedgehog que apresenta confiança e contexto" class="case-gallery-img" loading="lazy" decoding="async">
-                            </div>
-                        </article>
-                        <article class="case-stage-v3">
-                            <div class="case-stage-v3__head">
-                                <span class="case-stage-v3__num">03</span>
-                                <div>
-                                    <h3 class="case-stage-v3__title">Reforço da ação, ciclos de conversão</h3>
-                                    <p class="case-stage-v3__copy">CTAs repetidos, com microcopy que evolui da descoberta à intenção. Prova social, mecânica explicada na medida certa para gerar confiança, não para servir como auditoria, e um <strong>CTA secundário no rodapé</strong> para converter no fim da rolagem.</p>
-                                </div>
-                            </div>
-                            <div class="case-section-gallery case-section-gallery--linear">
-                                <div class="case-gallery-tight-pair">
-                                    <img src="Hedgehog /Frame9.png" alt="Seção de CTA de conversão da Hedgehog" class="case-gallery-img" loading="lazy" decoding="async">
-                                    <img src="Hedgehog /frame10.png" alt="CTA de conversão no rodapé da Hedgehog" class="case-gallery-img" loading="lazy" decoding="async">
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-                    <blockquote class="case-callout case-callout--lesson">
-                        <p><strong>Comunidade em paralelo:</strong> a presença ativa no X e no Telegram gerava tráfego orgânico. Jogos e quizzes no Discord mantinham o engajamento, enquanto um sistema de missões recompensava em USDC quem concluía tarefas. Assim, cada participante ativo atraía mais pessoas.</p>
-                    </blockquote>
-                </div>
-            </section>
-
-            <section id="validation" class="case-section">
-                <span class="case-section-label">Como foi validado</span>
-                <h2 class="case-section-title">Alinhado antes do lançamento. Comprovado em produção.</h2>
-                <div class="case-section-body case-prose-stack">
-                    <p class="case-prose-lead">Não houve teste formal de usabilidade nem teste A/B antes do lançamento. A validação real aconteceu <strong>ao vivo, em produção</strong>, com o público da Hedgehog.</p>
-                    <p>Antes do lançamento, alinhamos internamente o texto com marketing e os fundadores para garantir que tom e mensagem fossem adequados ao público que a empresa já conhecia. Essa clareza desde o início reduziu significativamente o risco de errar na comunicação.</p>
-                    <p>A comprovação veio depois, pelo comportamento real de conversão, não em laboratório.</p>
-                </div>
-                <div class="case-section-gallery case-validation-media" aria-label="Landing page em movimento">
-                    <video src="Hedgehog /carrossel.mov" autoplay muted loop playsinline preload="auto" class="case-gallery-img case-gallery-img--zoom-in" data-playback-rate="0.45" aria-label="Demonstração da rolagem da landing page da Hedgehog"></video>
-                    <div class="case-section-gallery case-section-gallery--linear case-validation-media__frames" aria-label="Telas das seções da landing page">
-                        <img src="Hedgehog /frame5.png" alt="Seção da Hedgehog que apresenta confiança e o problema" class="case-gallery-img" loading="lazy" decoding="async">
-                        <img src="Hedgehog /frame7.png" alt="Seção da Hedgehog sobre a mecânica e seu funcionamento" class="case-gallery-img" loading="lazy" decoding="async">
-                        <img src="Hedgehog /frame8.png" alt="Detalhe da mecânica do produto Hedgehog" class="case-gallery-img" loading="lazy" decoding="async">
-                    </div>
-                </div>
-            </section>
-
-            <section id="impact" class="case-section">
-                <span class="case-section-label">O que melhorou</span>
-                <h2 class="case-section-title">Mais de 15.000 cadastros. Zero mídia paga.</h2>
-                <div class="case-section-body case-impact-body">
-                    <div class="case-big-stats case-big-stats--impact case-big-stats--impact-social">
-                        <article class="case-big-stat">
-                            <span class="case-big-stat__value">15,000<span class="case-big-stat__unit">+</span></span>
-                            <p class="case-big-stat__label">Cadastros na waitlist</p>
-                        </article>
-                        <article class="case-big-stat">
-                            <span class="case-big-stat__value">37.5<span class="case-big-stat__unit">%</span></span>
-                            <p class="case-big-stat__label">Conversão de visitantes orgânicos</p>
-                        </article>
-                        <article class="case-big-stat">
-                            <span class="case-big-stat__value">40K<span class="case-big-stat__unit">+</span></span>
-                            <p class="case-big-stat__label">Alcance da comunidade orgânica</p>
-                        </article>
-                        <article class="case-big-stat">
-                            <span class="case-big-stat__value">14.6K</span>
-                            <p class="case-big-stat__label"><a href="https://x.com/TheHedgehog_io" target="_blank" rel="noopener noreferrer" class="case-inline-link">X</a> seguidores</p>
-                        </article>
-                        <article class="case-big-stat">
-                            <span class="case-big-stat__value">14K</span>
-                            <p class="case-big-stat__label">Membros no Telegram</p>
-                        </article>
-                        <article class="case-big-stat">
-                            <span class="case-big-stat__value case-big-stat--word"><span class="case-big-stat__unit">$</span>0</span>
-                            <p class="case-big-stat__label">Tráfego pago · Discord + redes Web3</p>
-                        </article>
-                    </div>
-                    <p class="case-impact-lead">A conversão ficou bem acima dos benchmarks típicos de waitlist, inteiramente a partir do alcance orgânico da comunidade. O mesmo público que se cadastrou aqui validou depois o produto no beta.</p>
-                    <ul class="case-list case-list--impact case-impact-list">
-                        <li><strong>Motor de conversão:</strong> landing page projetada para ação direta, amplificada pela comunidade no X e Telegram, pelo engajamento no Discord e pelas missões em USDC</li>
-                        <li><strong>Consistência dos CTAs:</strong> engajamento contínuo nos pontos de conversão primários e secundários</li>
-                        <li><strong>Pipeline do produto:</strong> a mesma base de usuários gerada por esta página alimentou depois o beta do produto; os resultados estão detalhados no <a href="project-hedgehog-product-pt.html" class="case-inline-link">case do produto Hedgehog</a></li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="next" class="case-section">
-                <span class="case-section-label">Próximos passos</span>
-                <h2 class="case-section-title">Testar o que não foi testado antes do lançamento</h2>
-                <div class="case-section-body case-prose-stack">
-                    <p class="case-prose-lead">O próximo passo é testar formalmente <strong>variações de headline e CTA</strong> por meio de testes A/B, algo que não foi feito antes do lançamento inicial.</p>
-                    <p>A landing page foi validada em produção, diretamente com o público real, sem testes comparativos prévios. A próxima iteração vai aplicar experimentação estruturada aos textos de maior impacto.</p>
-                    <blockquote class="case-callout case-callout--lesson">
-                        <p>Em contextos institucionais, a conversão vem depois da confiança, não antes. A sobriedade da página, combinada a uma comunidade ativa, foi a estratégia que tornou possíveis os 37,5% sem investimento em mídia paga.</p>
-                    </blockquote>
-                </div>
-            </section>
-        </div>
-    </section>
-
-    <section class="related-projects related-projects--selected-work" aria-labelledby="selected-work-heading">
-        <div class="container">
-            <header class="section-head section-head--plain">
-                <span class="section-num">01</span>
-                <h2 class="section-title" id="selected-work-heading">Projetos selecionados</h2>
-                <span class="section-rule"></span>
+    <article class="project-case-content story">
+        <div class="story-frame">
+            <figure class="story-cover"><video src="Hedgehog /Hedgehog-waitlist.mp4" autoplay muted loop playsinline preload="auto" aria-label="Página de waitlist da Hedgehog"></video></figure>
+            <header class="story-intro">
+                <p class="story-kicker">Hedgehog · Waitlist</p>
+                <h1>O produto ainda não existia. A primeira impressão precisava converter mesmo assim.</h1>
+                <p class="story-dek">Desenhei uma página de pré-lançamento para um público institucional de Web3 que não se cadastra por hype.</p>
+                <dl class="story-meta">
+                    <div><dt>Papel</dt><dd>Product Designer</dd></div>
+                    <div><dt>Período</dt><dd>3 meses</dd></div>
+                    <div><dt>Escopo</dt><dd>Landing page e conversão</dd></div>
+                </dl>
             </header>
-            <div class="related-grid related-grid--work">
-                <a href="project-hedgehog-product-pt.html" class="related-card"><div class="related-image"><img src="Hedgehog product/Covers/Cover Hedgehog Hero cover.png" alt="Produto de prediction market da Hedgehog" class="related-img" loading="lazy" decoding="async"></div><div class="related-info"><span class="related-name">Hedgehog</span><span class="related-location">Prediction market</span></div></a>
-                <div class="related-card is-current" aria-current="page"><div class="related-image"><img src="Hedgehog /Hedgehog/Cover Hedgehog Hero cover.png" alt="Landing page da waitlist da Hedgehog" class="related-img" loading="lazy" decoding="async"></div><div class="related-info"><span class="related-name">Hedgehog</span><span class="related-location">Conversão da waitlist</span></div></div>
-                <a href="project-transparent-space-pt.html" class="related-card"><div class="related-image"><img src="Transparent.space Products/Dashboard.png" alt="Dashboard do produto Transparent.space" class="related-img" loading="lazy" decoding="async"></div><div class="related-info"><span class="related-name">Transparent.space</span><span class="related-location">Dashboard</span></div></a>
-                <a href="project-unimed-seguros-pt.html" class="related-card"><div class="related-image"><img src="Unimed/Cover/Cover unimed all projects.png" alt="Redesign do aplicativo da Unimed Seguros" class="related-img" loading="lazy" decoding="async"></div><div class="related-info"><span class="related-name">Unimed Seguros</span><span class="related-location">Aplicativo de seguros</span></div></a>
-            </div>
+        <section id="overview" class="case-section">
+            <p class="story-label">Visão geral</p>
+            <h2>A credibilidade era o produto, até o produto existir.</h2>
+            <div class="story-prose"><p>A Hedgehog precisava de uma waitlist qualificada antes do lançamento. Sem uma página que conquistasse confiança rápido, não havia como testar a demanda.</p></div>
+<div class="story-prose"><p>O público era institucional e profissional. Essas pessoas avaliam produtos B2B e Web3 antes de deixar um contato.</p></div>
+        </section>
+        <section id="problem" class="case-section">
+            <p class="story-label">Problema</p>
+            <h2>Hype não converte esse público. Clareza converte.</h2>
+            <div class="story-prose"><p>Uma história longa antes do call to action soaria como pitch. Esse público queria prova de solidez: o que o produto é, por que é sério e o que acontece se entrar.</p></div>
+<figure class="story-figure"><img src="Hedgehog /frame6.png" alt="Hero da waitlist" loading="lazy" decoding="async"><figcaption class="story-caption">A primeira tela precisava carregar o valor e a ação juntos.</figcaption></figure>
+        </section>
+        <section id="opportunity" class="case-section">
+            <p class="story-label">Oportunidade</p>
+            <h2>Converter desde o primeiro scroll, sem fingir que o produto estava pronto.</h2>
+            <div class="story-prose"><p>As referências vieram de stakeholders e da minha própria lista: Sonic Labs, Hyperliquid e Aave. O padrão em comum era conversão direta, não uma narrativa longa antes do pedido.</p></div>
+<div class="story-prose"><p>O tom foi institucional desde o primeiro dia, escrito com marketing e os fundadores para o público que a empresa já tinha.</p></div>
+        </section>
+        <section id="solution" class="case-section">
+            <p class="story-label">Solução</p>
+            <h2>Entender, confiar, agir.</h2>
+            <div class="story-prose"><p>A página tem três camadas. O texto foi feito com marketing e os fundadores para a mensagem bater com o público, em vez de inventar outro.</p></div>
+<figure class="story-figure"><img src="Hedgehog /Frame4.png" alt="Entrar na waitlist acima da dobra" loading="lazy" decoding="async"><figcaption class="story-caption">Uma proposta clara e Entrar na waitlist acima da dobra. Visuais de conceito, não um produto falso.</figcaption></figure>
+        </section>
+        <section id="experience" class="case-section">
+            <p class="story-label">Experiência central</p>
+            <h2>Cada camada tem um trabalho.</h2>
+            <div class="story-points"><article class="story-point"><h3>Hero: o valor e a ação.</h3><div class="story-prose"><p>Tom institucional, sem hype e sem mock prematuro do produto. O visual sinaliza seriedade sem prometer um produto que ainda não era público.</p></div></article><article class="story-point"><h3>Confiança: as perguntas que eles fazem antes de se cadastrar.</h3><div class="story-prose"><p>O problema na linguagem deles, diferenciação on-chain e seções sobre confiabilidade e governança.</p></div><figure class="story-figure"><img src="Hedgehog /Context.png" alt="Seção de confiança e contexto" loading="lazy" decoding="async"><figcaption class="story-caption">Contexto antes de um segundo pedido.</figcaption></figure></article><article class="story-point"><h3>Ação, mais de uma vez.</h3><div class="story-prose"><p>Os calls to action se repetem, e o microtexto anda da consciência para a intenção. Uma ação secundária no rodapé fecha a página no scroll mais fundo.</p></div><div class="story-gallery story-gallery--stack"><figure class=""><img src="Hedgehog /Frame9.png" alt="Seção de conversão" loading="lazy" decoding="async"><figcaption class="story-caption">O pedido volta depois da prova.</figcaption></figure><figure class=""><img src="Hedgehog /frame10.png" alt="Call to action do rodapé" loading="lazy" decoding="async"><figcaption class="story-caption">Uma última ação para quem leu até o fim.</figcaption></figure></div></article></div>
+        </section>
+        <section id="insights" class="case-section">
+            <p class="story-label">Aprendizados</p>
+            <h2>A página era só metade da aquisição.</h2>
+            <div class="story-prose"><p>Em paralelo, o time rodou um motor de comunidade: X e Telegram para tráfego orgânico, jogos e trivia no Discord, e um sistema de missões em USDC em que tarefas concluídas rendiam USDC. Gente ativa trazia mais gente.</p></div>
+<div class="story-prose"><p>Eu desenhei a página. Os loops de comunidade foram um esforço paralelo com o time. A conversão só faz sentido se você segura os dois.</p></div>
+<div class="story-gallery"><figure class=""><img src="Hedgehog /frame5.png" alt="Enquadramento do problema" loading="lazy" decoding="async"></figure><figure class=""><img src="Hedgehog /frame7.png" alt="A mecânica, explicada o bastante para acreditar" loading="lazy" decoding="async"></figure><figure class="story-gallery__wide"><img src="Hedgehog /frame8.png" alt="Mecânica do produto com mais detalhe" loading="lazy" decoding="async"><figcaption class="story-caption">O bastante para acreditar, não o bastante para auditar.</figcaption></figure></div>
+        </section>
+        <section id="decisions" class="case-section">
+            <p class="story-label">Decisões</p>
+            <h2>A contenção era a estratégia.</h2>
+            <div class="story-points"><article class="story-point"><h3>Sem telas de produto antes do produto.</h3><div class="story-prose"><p>Mostrar uma interface pronta teria prometido demais. Visuais de conceito mantiveram a página séria sem inventar um produto que não estava pronto.</p></div></article><article class="story-point"><h3>O tom decidido antes.</h3><div class="story-prose"><p>A voz institucional não foi descoberta na iteração. Foi definida com marketing e os fundadores antes da página ir a público, o que reduziu o risco de errar o público.</p></div></article><article class="story-point"><h3>Pedir cedo, e merecer o próximo pedido.</h3><div class="story-prose"><p>Um único call to action no fim teria desperdiçado quem já estava pronto. Repeti-lo só funcionou porque cada volta tinha uma prova nova por trás.</p></div></article></div>
+        </section>
+        <section id="results" class="case-section">
+            <p class="story-label">Resultados</p>
+            <h2>Validado em produção, não num pré-teste.</h2>
+            <div class="story-prose"><p>Não houve teste formal de usabilidade nem A/B antes do lançamento. O alinhamento de tom aconteceu internamente. A leitura real veio do comportamento de conversão.</p></div>
+<div class="story-stats"><div class="story-stat"><strong>15,000+</strong><span>Cadastros na waitlist</span></div><div class="story-stat"><strong>37.5%</strong><span>Conversão de visitantes orgânicos</span></div><div class="story-stat"><strong>$0</strong><span>Tráfego pago</span></div></div>
+<div class="story-stats"><div class="story-stat"><strong>40K+</strong><span>Alcance orgânico da comunidade</span></div><div class="story-stat"><strong>14.6K</strong><span>Seguidores no X</span></div><div class="story-stat"><strong>14K</strong><span>Membros no Telegram</span></div></div>
+<p class="story-note">O mesmo público entrou depois no beta do produto. Testes de headline e de call to action não rodaram antes do lançamento. Esse é o próximo experimento óbvio, não um resultado que eu possa alegar.</p>
+        </section>
+        <section id="reflection" class="case-section">
+            <p class="story-label">Reflexão</p>
+            <h2>Nesse contexto, a conversão vem depois da confiança.</h2>
+            <div class="story-prose"><p>A contenção na página, ao lado de uma comunidade viva, é o que tornou 37,5% possível sem mídia paga. Uma página mais alta teria pedido uma confiança que ainda não tinha conquistado.</p></div>
+        </section>
         </div>
-    </section>
+    </article>
 
-    <footer class="footer footer--v3">
-        <div class="footer-v3__inner">
-            <div class="footer-v3__main">
-                <div class="footer-v3__col footer-v3__col--brand">
-                    <a href="index-pt.html" class="footer-logo-link" aria-label="Início, Fonseca">
-                        <img src="logo.svg" alt="" class="footer-logo-img logo-light" height="32">
-                        <img src="logo%20white.svg" alt="" class="footer-logo-img logo-dark" height="32">
-                    </a>
-                    <p class="footer-v3__tagline">Designer de produto que transforma sistemas complexos em experiências claras e confiáveis<span class="footer-v3__dot" aria-hidden="true">.</span></p>
-                </div>
-                <nav class="footer-v3__col footer-v3__col--nav" aria-label="Rodapé">
-                    <p class="footer-v3__col-head">Navegar</p>
-                    <div class="footer-v3__links">
-                        <a href="index-pt.html#work">Projetos</a>
-                        <a href="fun-pt.html">Side Quests</a>
-                        <a href="about-pt.html">Sobre</a>
-                        <a href="index-pt.html#testimonials">Depoimentos</a>
-                    </div>
-                </nav>
-                <div class="footer-v3__col footer-v3__col--social">
-                    <p class="footer-v3__col-head">Contato</p>
-                    <div class="footer-v3__links">
-                        <a href="#" data-copy-email>fonsecaa.design@gmail.com</a>
-                        <a href="https://www.linkedin.com/in/maths-fonseca/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                        <a href="https://www.behance.net/maths-fonseca" target="_blank" rel="noopener noreferrer">Behance</a>
-                        <a href="https://x.com/0xFonseca" target="_blank" rel="noopener noreferrer">X / Twitter</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom footer-v3__bottom">
-                <p>&copy; <span id="current-year">2026</span> Matheus Fonseca &middot; Rio de Janeiro, Brasil</p>
-                <a href="#" class="footer-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Voltar ao topo &uarr;</a>
-            </div>
+    <footer class="site-foot">
+        <div class="site-foot__inner">
+            <nav class="site-foot__links" aria-label="Conectar">
+                <a href="https://www.linkedin.com/in/maths-fonseca/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="#" data-copy-email>Email</a>
+                <a href="https://x.com/0xFonseca" target="_blank" rel="noopener noreferrer">X</a>
+                <a href="https://www.behance.net/maths-fonseca" target="_blank" rel="noopener noreferrer">Behance</a>
+            </nav>
         </div>
     </footer>
 
     <script src="posthog-config.js?v=20260782"></script>
     <script src="posthog.js?v=20260782"></script>
-    <script src="script.js?v=20260819t"></script>
+    <script src="script.js?v=20261012o"></script>
 
     <!-- Vercel Web Analytics (free) -->
     <script>
