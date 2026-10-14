@@ -19546,6 +19546,12 @@ body.editorial-site .hh3d-title {
     }
 }
 
+@media (max-width: 1200px) {
+    .about-note__cols {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
 @media (max-width: 900px) {
     .about-note__body {
         grid-template-columns: 1fr;
@@ -19681,6 +19687,10 @@ body.editorial-site .hh3d-title {
         gap: 8px;
         margin-top: auto;
         margin-left: 0;
+    }
+
+    body.editorial-site .mobile-menu-toggle {
+        display: none;
     }
 
     body.editorial-site .hero.hero--intro,
