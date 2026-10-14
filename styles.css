@@ -18896,6 +18896,7 @@ body.editorial-site .footer.footer--v3 .footer-top-btn {
 
 .story-gallery--stack {
     grid-template-columns: 1fr;
+    gap: 0;
 }
 
 .story-gallery figure {
