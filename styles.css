@@ -19694,12 +19694,23 @@ body.editorial-site .hh3d-title {
         display: none;
     }
 
+    body.editorial-site {
+        min-height: 100vh;
+        min-height: 100dvh;
+        display: flex;
+        flex-direction: column;
+    }
+
     body.editorial-site .hero.hero--intro,
     body.editorial-site .home-main,
     body.editorial-site > main,
     body.editorial-site > article,
     body.editorial-site .site-foot {
         margin-left: 192px;
+    }
+
+    body.editorial-site > .site-foot {
+        margin-top: auto;
     }
 
     body.editorial-site .hh3d-intro {
