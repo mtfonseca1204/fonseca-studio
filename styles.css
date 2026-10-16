@@ -19208,6 +19208,87 @@ body.editorial-site .footer.footer--v3 .footer-top-btn {
     }
 }
 
+.interview-faq {
+    width: min(760px, calc(100% - 48px));
+    margin: 0 auto;
+    padding: 32px 0 96px;
+}
+
+.interview-faq__eyebrow {
+    margin: 0 0 16px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--text-light);
+}
+
+.interview-faq h1 {
+    margin: 0 0 24px;
+    font-family: var(--font-display);
+    font-size: clamp(28px, 3.6vw, 44px);
+    font-weight: 500;
+    letter-spacing: -0.035em;
+    line-height: 1.15;
+    color: var(--text-dark);
+    max-width: 18em;
+}
+
+.interview-faq__lede {
+    margin: 0 0 48px;
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--text-gray);
+    max-width: 40rem;
+}
+
+.interview-faq__item {
+    padding: 24px 0;
+    border-top: 1px solid var(--border-color);
+}
+
+.interview-faq__item:last-child {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.interview-faq h2 {
+    margin: 0 0 12px;
+    font-family: var(--font-body);
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.35;
+    color: var(--text-dark);
+}
+
+.interview-faq p,
+.interview-faq li {
+    margin: 0 0 12px;
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--text-gray);
+}
+
+.interview-faq ul {
+    margin: 0 0 12px;
+    padding-left: 1.2em;
+}
+
+.interview-faq li:last-child,
+.interview-faq p:last-child {
+    margin-bottom: 0;
+}
+
+.interview-faq a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.interview-faq a:hover {
+    color: #ff5c00;
+}
+
 .about-plain {
     width: min(760px, calc(100% - 48px));
     margin: 0 auto;
@@ -19540,6 +19621,7 @@ body.editorial-site .hh3d-title {
 @media (max-width: 759px) {
     .about-plain,
     .about-note,
+    .interview-faq,
     .quest-page,
     .visual-page,
     body.project-case-page .project-case-content {
@@ -19745,13 +19827,18 @@ body.editorial-site .hh3d-title {
     }
 
     body.editorial-site .quest-page,
-    body.editorial-site .about-note {
+    body.editorial-site .about-note,
+    body.editorial-site .interview-faq {
         width: auto;
         max-width: none;
         margin-left: 192px;
         margin-right: 0;
         padding-left: 40px;
         padding-right: 40px;
+    }
+
+    body.editorial-site .interview-faq {
+        max-width: calc(760px + 80px);
     }
 
     body.project-case-page .rail-back,

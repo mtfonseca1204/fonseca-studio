@@ -1,4 +1,28 @@
 User-agent: *
 Allow: /
 
+# AI / research crawlers — same public portfolio content
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
 Sitemap: https://fonseca.studio/sitemap.xml
+
+# Machine-readable summary for LLMs: https://fonseca.studio/llms.txt

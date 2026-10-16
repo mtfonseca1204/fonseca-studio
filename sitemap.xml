@@ -28,6 +28,24 @@
     <changefreq>monthly</changefreq><priority>0.8</priority>
   </url>
   <url>
+    <loc>https://fonseca.studio/the-interview.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fonseca.studio/the-interview.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://fonseca.studio/the-interview-pt.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://fonseca.studio/the-interview.html"/>
+    <changefreq>monthly</changefreq><priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://fonseca.studio/the-interview-pt.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fonseca.studio/the-interview.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://fonseca.studio/the-interview-pt.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://fonseca.studio/the-interview.html"/>
+    <changefreq>monthly</changefreq><priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://fonseca.studio/llms.txt</loc>
+    <changefreq>monthly</changefreq><priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://fonseca.studio/fun.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://fonseca.studio/fun.html"/>
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://fonseca.studio/fun-pt.html"/>

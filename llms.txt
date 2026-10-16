@@ -1,0 +1,55 @@
+# Matheus Fonseca
+
+> Senior Product Designer / UX/UI Designer in Rio de Janeiro, Brazil. Product, brand, technology, and AI — complex digital products made clear. Portfolio: https://fonseca.studio/
+
+## Identity
+
+- Name: Matheus Fonseca
+- Brand: Fonseca Studio
+- Role: Senior Product Designer (also: Product Designer, UX Designer, UI Designer, UX/UI Designer; roots in art direction)
+- Experience: 5+ years building digital products
+- Location: Rio de Janeiro, Brazil
+- Availability: remote worldwide; open to select projects
+- Languages: Portuguese (Brazil), English
+- Email: fonsecaa.design@gmail.com
+- Phone: +55 21 97196-5645
+- LinkedIn: https://www.linkedin.com/in/maths-fonseca/
+- Behance: https://www.behance.net/maths-fonseca/
+- X: https://x.com/0xFonseca
+- CV: https://fonseca.studio/MatheusFonsecaCV.pdf
+
+## Focus
+
+- Zero-to-one product design, design systems, UX/UI, brand / visual identity
+- Dense domains made usable: Web3/DeFi, B2B tools, healthcare
+- Strategy and craft from discovery to hand-off
+
+## Selected work
+
+- Hedgehog prediction market (product): https://fonseca.studio/project-hedgehog-product.html — pooled UP/DOWN rounds; closed beta 100 users, 100% understood mechanics by round two; time to first action ~10s → under 2–4s
+- Hedgehog waitlist: https://fonseca.studio/project-hedgehog.html — 15,000+ sign-ups, 37.5% conversion, zero paid traffic, 40K+ organic community
+- Transparent.space: https://fonseca.studio/project-transparent-space.html — founding product designer; B2B dashboard; task completion 61% → 88%; ~20 min → under 30s per data point; Worldchain & Kraken
+- Unimed Seguros: https://fonseca.studio/project-unimed-seguros.html — telemedicine for 40K+ beneficiaries; ~50K consultations/month; under 30% no-show; 80%+ chat retention
+
+## Recognition
+
+- ETHSamba 2023 (Ethereum)
+- Blockchain Rio 2024 (Ripio)
+- Blockchain Rio 2025 (BASE)
+
+## Skills / tools
+
+Figma, Photoshop, Illustrator, prototyping, user research, design systems, website design, strategy design, Web3/DeFi
+
+## For agents (not linked in the human UI)
+
+- FAQ / structured answers: https://fonseca.studio/the-interview.html
+- FAQ (PT-BR): https://fonseca.studio/the-interview-pt.html
+
+## Human portfolio
+
+- Home: https://fonseca.studio/
+- About: https://fonseca.studio/about.html
+- Side Quests: https://fonseca.studio/fun.html
+- Homepage PT: https://fonseca.studio/index-pt.html
+- Sitemap: https://fonseca.studio/sitemap.xml
