@@ -24,7 +24,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;500;600;700;800&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20261016b">
+    <link rel="stylesheet" href="styles.css?v=20261019b">
 
     
     <script>
@@ -109,30 +109,31 @@
                 <h1>Uma decisão de penalidade levava vinte minutos cruzando ferramentas.</h1>
                 <p class="story-dek">Desenhei o produto de monitoramento para um operador ver, numa tela, se um market maker estava em conformidade.</p>
                 <dl class="story-meta">
-                    <div><dt>Papel</dt><dd>Founding Product Designer</dd></div>
-                    <div><dt>Período</dt><dd>Cerca de 6 meses · 2025–2026</dd></div>
+                    <div><dt>Papel</dt><dd>Founding Product Designer · único</dd></div>
+                    <div><dt>Período</dt><dd>Cerca de 6 meses · 2025-2026</dd></div>
                     <div><dt>Escopo</dt><dd>Product design e interface</dd></div>
                 </dl>
             </header>
         <section id="overview" class="case-section">
             <p class="story-label">Visão geral</p>
             <h2>Instituições contratam market makers. Depois precisam provar o trabalho.</h2>
-            <div class="story-prose"><p>Instituições de Web3 dependem de market makers para liquidez. Avaliar se esse maker de fato performou é surpreendentemente difícil.</p></div>
-<div class="story-prose"><p>Ferramentas como Dune e DeFiLlama são caras, ficam espalhadas entre produtos e às vezes não indexam o campo exato que o contrato exige. Quando a decisão é uma penalidade contratual, dado parcial não serve.</p></div>
+            <div class="story-prose story-prose--lead">
+                <p>Instituições de Web3 dependem de market makers para liquidez, mas avaliar se esse maker de fato performou é difícil. Ferramentas como Dune e DeFiLlama são caras, ficam espalhadas entre produtos e às vezes não indexam o campo exato que o contrato exige. Quando a decisão é uma penalidade contratual, dado parcial não serve.</p>
+                <p>Liderei o product design sozinho como founding designer. Fiz e aprovei as decisões de interface, e discuti com o CEO e com engenharia quando a chamada do produto precisava de contexto compartilhado.</p>
+            </div>
+            <div class="story-stats"><div class="story-stat"><strong>61% → 88%</strong><span>Conclusão de tarefas entre rodadas com 4 operadores</span></div><div class="story-stat"><strong>20m → &lt;30s</strong><span>Tempo relatado por clientes para checar um ponto</span></div><div class="story-stat"><strong>Adquirido</strong><span>Worldchain e Kraken, em produção</span></div></div>
 <figure class="story-figure"><video src="Transparent.space Products/New imgs/granuled.mov" autoplay muted loop playsinline preload="metadata" aria-label="Detalhe no dashboard"></video><figcaption class="story-caption">O produto mantém a decisão numa tela e deixa a profundidade abrir sem perder o lugar.</figcaption></figure>
         </section>
         <section id="problem" class="case-section">
             <p class="story-label">Problema</p>
             <h2>O número na tela não era a pergunta que estava sendo feita.</h2>
-            <div class="story-prose"><p>Dois grupos compartilham o dado e querem coisas opostas. Fundos, protocolos e exchanges precisam decidir rápido sem fundo técnico. Os times de market maker precisam provar que cumpriram o SLA.</p></div>
-<div class="story-prose"><p>No meio está uma decisão cara: se um maker sai do contrato, alguém precisa decidir se a penalidade se aplica. Errar custa dinheiro dos dois lados.</p></div>
+            <div class="story-prose"><p>Dois grupos compartilham o dado e querem coisas opostas. Fundos, protocolos e exchanges precisam decidir rápido sem fundo técnico. Os times de market maker precisam provar que cumpriram o SLA. No meio está uma decisão cara: se um maker sai do contrato, alguém precisa decidir se a penalidade se aplica. Errar custa dinheiro dos dois lados.</p></div>
 <figure class="story-figure"><img src="Transparent.space Products/New imgs/Discovery research.png" alt="Dados fragmentados de market maker" loading="lazy" decoding="async"><figcaption class="story-caption">O trabalho vivia espalhado em ferramentas. A decisão não podia.</figcaption></figure>
         </section>
         <section id="opportunity" class="case-section">
             <p class="story-label">Oportunidade</p>
             <h2>Unificar a checagem, a um preço justo, contra o contrato de verdade.</h2>
-            <div class="story-prose"><p>O product manager tinha anos como analista de dados, então a dor era de quem viveu o problema. O CEO já convivia com ele antes do projeto. Usei esse contexto e depois fiz benchmark de como Dune, DeFiLlama, Bloomberg Terminal, Grafana e Datadog lidam com dado financeiro denso.</p></div>
-<div class="story-prose"><p>A lacuna era consistente: ferramentas caras, dados fragmentados e contratos que não podiam ser indexados como estavam escritos. O produto precisava colocar um contrato personalizado numa plataforma só.</p></div>
+            <div class="story-prose"><p>O product manager tinha anos como analista de dados, então a dor era de quem viveu o problema. O CEO já convivia com ele antes do projeto. Usei esse contexto e depois fiz benchmark de como Dune, DeFiLlama, Bloomberg Terminal, Grafana e Datadog lidam com dado financeiro denso. A lacuna era consistente: ferramentas caras, dados fragmentados e contratos que não podiam ser indexados como estavam escritos. O produto precisava colocar um contrato personalizado numa plataforma só.</p></div>
         </section>
         <section id="solution" class="case-section">
             <p class="story-label">Solução</p>
@@ -153,14 +154,12 @@
         <section id="results" class="case-section">
             <p class="story-label">Resultados</p>
             <h2>Checagens mais rápidas, com o cuidado de como foram medidas.</h2>
-            <div class="story-stats"><div class="story-stat"><strong>61% → 88%</strong><span>Conclusão de tarefas entre rodadas com 4 operadores</span></div><div class="story-stat"><strong>20m → <30s</strong><span>Tempo relatado por clientes para checar um ponto. Não é um estudo controlado de todo usuário.</span></div><div class="story-stat"><strong>Adquirido</strong><span>Worldchain e Kraken, os clientes de produção</span></div></div>
-<div class="story-prose"><p>Worldchain e Kraken adquiriram o produto e o operam em produção, com contratos personalizados em vários pools.</p></div>
+            <div class="story-prose"><p>Os números de tempo e conclusão acima vieram de rodadas com quatro operadores e do timing relatado pelos clientes, não de um estudo controlado de todo usuário. Worldchain e Kraken adquiriram o produto e o operam em produção, com contratos personalizados em vários pools.</p></div>
         </section>
         <section id="reflection" class="case-section">
             <p class="story-label">Reflexão</p>
             <h2>O produto responde “em conformidade agora”. Ainda não responde “amanhã”.</h2>
-            <div class="story-prose"><p>A próxima camada é um alerta preditivo antes de um limite estourar, e uma comparação neutra de até três market makers numa visão, sem o viés de ranking que tiramos de propósito.</p></div>
-<div class="story-prose"><p>Em produto institucional, a contenção é a estratégia. Uma UI mais limpa em cima da mesma pilha de métricas só muda a confusão de endereço.</p></div>
+            <div class="story-prose"><p>A próxima camada é um alerta preditivo antes de um limite estourar, e uma comparação neutra de até três market makers numa visão, sem o viés de ranking que tiramos de propósito. Em produto institucional, a contenção é a estratégia. Uma UI mais limpa em cima da mesma pilha de métricas só muda a confusão de endereço.</p></div>
         </section>
         </div>
     </article>
@@ -178,7 +177,7 @@
 
     <script src="posthog-config.js?v=20260782"></script>
     <script src="posthog.js?v=20260782"></script>
-    <script src="script.js?v=20261012o"></script>
+    <script src="script.js?v=20261019b"></script>
 
     <!-- Vercel Web Analytics (free) -->
     <script>

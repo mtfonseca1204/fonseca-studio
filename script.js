@@ -170,7 +170,7 @@ const PLAIN_GLOSSARY = [
     ['conversion', SITE_IS_PT ? 'A parcela dos visitantes que realizou a ação desejada, como fazer cadastro.' : 'The share of visitors who took the action you wanted, like signing up.'],
     ['waitlist', SITE_IS_PT ? 'Lista de cadastro para quem se interessa antes do lançamento do produto.' : 'A signup list for people interested before a product launches.'],
     ['liquidity', SITE_IS_PT ? 'A facilidade de comprar ou vender um ativo sem grandes oscilações de preço.' : 'How easily an asset can be bought or sold without big price swings.'],
-    ['counterparties', SITE_IS_PT ? 'O outro lado de uma negociação: de quem você compra ou para quem vende.' : 'The other side of a trade — who you buy from or sell to.'],
+    ['counterparties', SITE_IS_PT ? 'O outro lado de uma negociação: de quem você compra ou para quem vende.' : 'The other side of a trade: who you buy from or sell to.'],
     ['DeFi protocols', SITE_IS_PT ? 'Apps de finanças descentralizadas que rodam em blockchains, sem bancos tradicionais.' : 'Decentralized finance apps that run on blockchains without traditional banks.'],
     ['DeFi user', SITE_IS_PT ? 'Alguém que usa apps de finanças descentralizadas em blockchains.' : 'Someone who uses decentralized finance apps on blockchains.'],
     ['DeFi', SITE_IS_PT ? 'Finanças descentralizadas: apps financeiros em blockchain, sem bancos tradicionais.' : 'Decentralized finance: financial apps that run on blockchains without traditional banks.'],

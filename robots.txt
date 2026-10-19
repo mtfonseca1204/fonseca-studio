@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-# AI / research crawlers — same public portfolio content
+# AI / research crawlers: same public portfolio content
 User-agent: GPTBot
 Allow: /
 

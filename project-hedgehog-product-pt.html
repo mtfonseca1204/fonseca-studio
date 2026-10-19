@@ -24,7 +24,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;500;600;700;800&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20261016b">
+    <link rel="stylesheet" href="styles.css?v=20261019b">
 
     
     <script>
@@ -110,7 +110,7 @@
                 <h1>As pessoas queriam prever. O produto pedia que elas operassem.</h1>
                 <p class="story-dek">Redesenhei a participação para alguém novo escolher um lado num pool compartilhado, sem aprender um orderbook antes.</p>
                 <dl class="story-meta">
-                    <div><dt>Papel</dt><dd>Product Designer</dd></div>
+                    <div><dt>Papel</dt><dd>Product Designer único</dd></div>
                     <div><dt>Período</dt><dd>8 meses</dd></div>
                     <div><dt>Escopo</dt><dd>Desktop e mobile</dd></div>
                 </dl>
@@ -118,29 +118,28 @@
         <section id="overview" class="case-section">
             <p class="story-label">Visão geral</p>
             <h2>Uma aposta de cinco minutos, não uma mesa de operações.</h2>
-            <div class="story-prose"><p>A Hedgehog é um prediction market. As pessoas escolhem se um preço sobe ou desce.</p></div>
-<div class="story-prose"><p>A categoria já tinha demanda. Polymarket, Augur e uma leva de produtos DeFi já tinham provado isso. O que não tinha escalado era quem conseguia entrar.</p></div>
+            <div class="story-prose story-prose--lead">
+                <p>A Hedgehog é um prediction market em que as pessoas escolhem se um preço sobe ou desce. A categoria já tinha demanda. Polymarket, Augur e outros produtos DeFi já tinham provado isso. O que não tinha escalado era quem conseguia entrar.</p>
+                <p>Liderei o product design sozinho, de ponta a ponta. Cada decisão de design foi minha para fazer e aprovar. Alinhei com o CEO e com engenharia quando a chamada precisava.</p>
+            </div>
+            <div class="story-stats"><div class="story-stat"><strong>100%</strong><span>Entenderam a mecânica até a segunda rodada</span></div><div class="story-stat"><strong>10s → 2-4s</strong><span>Tempo até a primeira ação</span></div><div class="story-stat"><strong>120+</strong><span>Componentes no design system, com cerca de 35% a menos de tempo de handoff</span></div></div>
 <figure class="story-figure"><video src="Hedgehog%20product/Product.mov" autoplay muted loop playsinline preload="metadata" aria-label="Percurso do produto Hedgehog"></video><figcaption class="story-caption">O loop que foi para produção: escolher um lado, esperar a rodada, ver o resultado e ficar para a próxima.</figcaption></figure>
         </section>
         <section id="problem" class="case-section">
             <p class="story-label">Problema</p>
             <h2>O interesse morria na mecânica, não na ideia.</h2>
-            <div class="story-prose"><p>As plataformas existentes pediam familiaridade com orderbook, liquidez e mecânica de trade antes de uma única previsão.</p></div>
-<div class="story-prose"><p>Esse sistema foi feito para profissionais de mercado. Para todo o resto, o primeiro meio minuto bastava para sair.</p></div>
+            <div class="story-prose"><p>As plataformas existentes pediam familiaridade com orderbook, liquidez e mecânica de trade antes de uma única previsão. Esse sistema foi feito para profissionais de mercado. Para todo o resto, o primeiro meio minuto bastava para sair.</p></div>
 <figure class="story-figure"><img src="Hedgehog%20product/screens.png" alt="Interfaces da categoria construídas em torno da mecânica de trade" loading="lazy" decoding="async"><figcaption class="story-caption">O padrão da categoria: muita estrutura de mercado antes da decisão em si.</figcaption></figure>
         </section>
         <section id="opportunity" class="case-section">
             <p class="story-label">Oportunidade</p>
             <h2>Dois públicos, e desenhar só para um perderia o outro.</h2>
-            <div class="story-prose"><p>Quem chegava curioso já tinha ouvido falar de prediction markets e saía se a orientação passasse de uns 30 segundos.</p></div>
-<div class="story-prose"><p>Quem já usava DeFi queria ciclos curtos, não uma posição para administrar por dias, e saía quando o produto parecia raso.</p></div>
-<div class="story-prose"><p>A oportunidade era um modelo de participação legível para o primeiro grupo e rápido o bastante para o segundo.</p></div>
+            <div class="story-prose"><p>Quem chegava curioso já tinha ouvido falar de prediction markets e saía se a orientação passasse de uns 30 segundos. Quem já usava DeFi queria ciclos curtos, não uma posição para administrar por dias, e saía quando o produto parecia raso. A oportunidade era um modelo de participação legível para o primeiro grupo e rápido o bastante para o segundo.</p></div>
         </section>
         <section id="solution" class="case-section">
             <p class="story-label">Solução</p>
             <h2>Deposite num pool. Escolha UP ou DOWN.</h2>
-            <div class="story-prose"><p>Trocamos o orderbook por um pool compartilhado. A decisão é binária. Não há contraparte para encontrar nem uma aula de liquidez antes da primeira ação.</p></div>
-<div class="story-prose"><p>Desktop e mobile foram desenhados juntos. Cada estado foi feito para os dois.</p></div>
+            <div class="story-prose"><p>Troquei o orderbook por um pool compartilhado. A decisão é binária: sem contraparte para encontrar e sem aula de liquidez antes da primeira ação. Desktop e mobile foram desenhados juntos, com cada estado feito para os dois.</p></div>
 <figure class="story-figure"><img src="Hedgehog%20product/Betting.png" alt="Decisão UP ou DOWN na Hedgehog" loading="lazy" decoding="async"><figcaption class="story-caption">A ideia principal, na tela em que ela importa.</figcaption></figure>
         </section>
         <section id="experience" class="case-section">
@@ -151,9 +150,7 @@
         <section id="insights" class="case-section">
             <p class="story-label">Aprendizados</p>
             <h2>O orderbook já era a barreira antes de existir protótipo.</h2>
-            <div class="story-prose"><p>Fiz benchmark de seis produtos: Polymarket, Augur, Drift Protocol, Binance Predictions, Azuro e Limitless. O ponto era ver onde as pessoas travavam, não colecionar telas.</p></div>
-<div class="story-prose"><p>Mais dados no momento da decisão aumentavam a hesitação. Um retorno fraco deixava a pessoa sem saber o que a própria previsão tinha feito. Ciclos curtos criavam hábito. Ciclos longos, presos a eventos externos, não.</p></div>
-<div class="story-prose"><p>Por isso, evitar o orderbook foi uma restrição de partida, não um pivô depois de um protótipo que falhou.</p></div>
+            <div class="story-prose"><p>Fiz benchmark de seis produtos (Polymarket, Augur, Drift Protocol, Binance Predictions, Azuro e Limitless) para ver onde as pessoas travavam, não para colecionar telas. Mais dados no momento da decisão aumentavam a hesitação. Um retorno fraco deixava a pessoa sem saber o que a própria previsão tinha feito. Ciclos curtos criavam hábito; ciclos longos, presos a eventos externos, não. Evitar o orderbook foi uma restrição de partida, não um pivô depois de um protótipo que falhou.</p></div>
         </section>
         <section id="decisions" class="case-section">
             <p class="story-label">Decisões</p>
@@ -163,17 +160,14 @@
         <section id="results" class="case-section">
             <p class="story-label">Resultados</p>
             <h2>Um beta fechado, com gente que já queria entrar.</h2>
-            <div class="story-prose"><p>Não houve A/B de laboratório. Por cinco dias, cinco grupos de 20 pessoas da própria waitlist usaram o produto em produção. Cem pessoas, com intenção real.</p></div>
-<div class="story-prose"><p>Mais da metade já entendia o propósito antes de entrar, por causa da landing page. Com um fluxo que se explica, todo mundo entendeu a mecânica até a segunda rodada. Ganhos e perdas individuais variaram, e isso nunca foi o critério de sucesso.</p></div>
-<div class="story-stats"><div class="story-stat"><strong>100%</strong><span>Entenderam a mecânica até a segunda rodada</span></div><div class="story-stat"><strong>10s → 2–4s</strong><span>Tempo até a primeira ação</span></div><div class="story-stat"><strong>120+</strong><span>Componentes no design system, com cerca de 35% a menos de tempo de handoff</span></div></div>
+            <div class="story-prose"><p>Não houve A/B de laboratório. Por cinco dias, cinco grupos de 20 pessoas da própria waitlist usaram o produto em produção: cem pessoas com intenção real. Mais da metade já entendia o propósito antes de entrar, por causa da landing page. Com um fluxo que se explica, todo mundo entendeu a mecânica até a segunda rodada. Ganhos e perdas individuais variaram, e isso nunca foi o critério de sucesso.</p></div>
 <p class="story-note">Quem fundou o produto e acompanhou o beta descreveu o mesmo que as pessoas usuárias: intuitivo, claro e fiel à promessa. A conversão de 37,5% da waitlist pertence à página de pré-lançamento, não a este beta.</p>
 <figure class="story-figure"><img src="Hedgehog%20product/mobile%20screens.png" alt="Hedgehog no mobile" loading="lazy" decoding="async"><figcaption class="story-caption">O mesmo loop no celular, que estava no escopo desde o início.</figcaption></figure>
         </section>
         <section id="reflection" class="case-section">
             <p class="story-label">Reflexão</p>
             <h2>Quando as pessoas estão confusas, conserta o modelo antes da interface.</h2>
-            <div class="story-prose"><p>A gente não saiu de um orderbook polindo tela. Trocamos o modelo e desenhamos o loop em volta dele.</p></div>
-<div class="story-prose"><p>A pergunta em aberto é a janela de três minutos de preparação, quando alguém escolhe valor e direção sozinho, antes da sala travar. É ali que quem chega tem mais chance de travar. O próximo passo útil é orientação na criação da sala, antes da trava, que é para onde o chat do beta já apontava.</p></div>
+            <div class="story-prose"><p>A gente não saiu de um orderbook polindo tela. Trocamos o modelo e desenhamos o loop em volta dele. A pergunta em aberto é a janela de três minutos de preparação, quando alguém escolhe valor e direção sozinho, antes da sala travar. É ali que quem chega tem mais chance de travar. O próximo passo útil é orientação na criação da sala, antes da trava, que é para onde o chat do beta já apontava.</p></div>
         </section>
         </div>
     </article>
@@ -191,7 +185,7 @@
 
     <script src="posthog-config.js?v=20260782"></script>
     <script src="posthog.js?v=20260782"></script>
-    <script src="script.js?v=20261012o"></script>
+    <script src="script.js?v=20261019b"></script>
 
     <!-- Vercel Web Analytics (free) -->
     <script>

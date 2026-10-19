@@ -18789,24 +18789,39 @@ body.editorial-site .footer.footer--v3 .footer-top-btn {
 }
 
 .story-prose {
-    max-width: 40rem;
+    max-width: 42rem;
+}
+
+.story-prose + .story-prose {
+    margin-top: 14px;
 }
 
 .story-prose p,
 .story-prose li {
     font-family: var(--font-body);
-    font-size: 16.5px;
+    font-size: 17px;
     font-weight: 450;
-    line-height: 1.65;
+    line-height: 1.7;
     color: var(--text-gray);
+    text-wrap: pretty;
 }
 
 .story-prose p {
-    margin: 0 0 14px;
+    margin: 0 0 16px;
 }
 
 .story-prose p:last-child {
     margin-bottom: 0;
+}
+
+.story-prose--lead p {
+    font-size: 18px;
+    line-height: 1.65;
+    color: var(--text-body);
+}
+
+.case-section .story-stats {
+    margin-top: 32px;
 }
 
 .story-prose a {

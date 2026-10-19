@@ -1,5 +1,5 @@
 // =====================================================
-//  FonsecaLLM — serverless chat endpoint (Vercel)
+//  FonsecaLLM serverless chat endpoint (Vercel)
 //  - Uses OpenAI when OPENAI_API_KEY is set
 //  - Falls back to a curated keyword responder otherwise
 //  Zero npm deps: calls the OpenAI REST API with global fetch.
@@ -22,10 +22,10 @@ RECOGNITION
 - Hackathon wins: ETHSamba 2023 (Ethereum), Blockchain Rio 2024 (Ripio), Blockchain Rio 2025 (BASE).
 
 SELECTED WORK
-1) Hedgehog — Prediction Market, Product Designer (2024–2026). Turning prediction curiosity into participation: replaced order-matching/orderbooks with pooled UP/DOWN rounds and five-minute cycles. Closed beta with 100 waitlist users; 100% understood mechanics by round two. Time to first action dropped from ~10s to under 2–4s. 120+ components; ~35% faster handoff.
-2) Hedgehog — Waitlist & Landing, Product Designer (2024–2026). Credibility before the product existed: institutional waitlist with a three-layer funnel (understand → trust → act) and live community on X, Telegram, and Discord. 15,000+ sign-ups at 37.5% conversion with zero paid traffic; 40K+ organic community.
-3) Transparent.space — Founding Product Designer (2025–2026). From twenty minutes of cross-checking to thirty seconds of certainty: unified B2B dashboard with binary SLA, liquidity over time, and neutral Market Maker comparison. Task completion 61% → 88%; ~20 min → under 30s to check a data point. Validated with Worldchain and Kraken.
-4) Unimed Seguros — Product Designer (2021–2022). In healthcare, the barrier is trust, not usability: trust-first telemedicine for 40K+ beneficiaries with four pillars, dedicated onboarding for 60+ users, and 24/7 in-app support during COVID. ~50K consultations/month; <30% no-show; 80%+ in-app chat retention.
+1) Hedgehog Prediction Market, Product Designer (2024-2026). Turning prediction curiosity into participation: replaced order-matching/orderbooks with pooled UP/DOWN rounds and five-minute cycles. Closed beta with 100 waitlist users; 100% understood mechanics by round two. Time to first action dropped from ~10s to under 2-4s. 120+ components; ~35% faster handoff.
+2) Hedgehog Waitlist & Landing, Product Designer (2024-2026). Credibility before the product existed: institutional waitlist with a three-layer funnel (understand → trust → act) and live community on X, Telegram, and Discord. 15,000+ sign-ups at 37.5% conversion with zero paid traffic; 40K+ organic community.
+3) Transparent.space Founding Product Designer (2025-2026). From twenty minutes of cross-checking to thirty seconds of certainty: unified B2B dashboard with binary SLA, liquidity over time, and neutral Market Maker comparison. Task completion 61% → 88%; ~20 min → under 30s to check a data point. Validated with Worldchain and Kraken.
+4) Unimed Seguros Product Designer (2021-2022). In healthcare, the barrier is trust, not usability: trust-first telemedicine for 40K+ beneficiaries with four pillars, dedicated onboarding for 60+ users, and 24/7 in-app support during COVID. ~50K consultations/month; <30% no-show; 80%+ in-app chat retention.
 - Side Quests & other work: Picnic (brand/visual identity), AURA, NØRA, Agent Arena, and more.
 
 SERVICES
@@ -52,7 +52,7 @@ RULES:
 - Only use the facts in the KNOWLEDGE block below. Never invent companies, metrics, dates, or claims.
 - If something isn't covered, say you're not sure and point them to email fonsecaa.design@gmail.com.
 - Keep answers concise: usually 2-4 sentences. Use a short list only when it genuinely helps.
-- Be specific — cite real projects and numbers when relevant.
+- Be specific: cite real projects and numbers when relevant.
 - When someone shows hiring/collaboration intent, warmly invite them to reach out by email.
 - No markdown headers; plain text with the occasional dash list is fine. Don't use emojis unless the user does.
 - If asked something off-topic (not about Matheus, his work, design, or availability), gently steer back.
@@ -76,7 +76,7 @@ function fallbackReply(userText = '', quote = '', language = 'en') {
       return `Sim, estou aberto a projetos selecionados e disponível para trabalho remoto no mundo todo. O melhor caminho é escrever para fonsecaa.design@gmail.com.`;
     }
     if (has('hedgehog', 'previsão', 'previsao', 'orderbook', 'waitlist', 'lista de espera')) {
-      return `Na Hedgehog, substituí orderbooks por rodadas agrupadas de ALTA/BAIXA. No beta fechado com 100 pessoas, 100% entenderam a mecânica até a segunda rodada, e o tempo para a primeira ação caiu de cerca de 10s para menos de 2–4s.`;
+      return `Na Hedgehog, substituí orderbooks por rodadas agrupadas de ALTA/BAIXA. No beta fechado com 100 pessoas, 100% entenderam a mecânica até a segunda rodada, e o tempo para a primeira ação caiu de cerca de 10s para menos de 2-4s.`;
     }
     if (has('transparent', 'market maker', 'formador de mercado', 'liquidez', 'dashboard', 'painel')) {
       return `Na Transparent.space, criei do zero um dashboard B2B que reduziu verificações de cerca de 20 minutos para menos de 30 segundos por dado. A conclusão de tarefas subiu de 61% para 88%, com validação de Worldchain e Kraken.`;
@@ -91,16 +91,16 @@ function fallbackReply(userText = '', quote = '', language = 'en') {
   }
 
   if (quote && !userText.trim()) {
-    return `That line is about my work. Happy to go deeper — what would you like to know about it? You can also reach me at fonsecaa.design@gmail.com.`;
+    return `That line is about my work. Happy to go deeper. What would you like to know about it? You can also reach me at fonsecaa.design@gmail.com.`;
   }
   if (has('hello', 'hi ', 'hey', 'oi', 'olá', 'ola')) {
-    return `Hey! I'm Matheus — a senior product designer. Ask me about my projects, process, or availability.`;
+    return `Hey! I'm Matheus, a senior product designer. Ask me about my projects, process, or availability.`;
   }
   if (has('available', 'hire', 'hiring', 'freelance', 'work with', 'contact', 'reach', 'email', 'rate', 'budget', 'project in mind')) {
-    return `Yes — I'm open to select projects and available for remote work worldwide. The best way to start is an email to fonsecaa.design@gmail.com, or connect on LinkedIn (/in/maths-fonseca).`;
+    return `Yes. I'm open to select projects and available for remote work worldwide. The best way to start is an email to fonsecaa.design@gmail.com, or connect on LinkedIn (/in/maths-fonseca).`;
   }
   if (has('hedgehog', 'prediction', 'orderbook', 'waitlist')) {
-    return `At Hedgehog I redesigned how people predict on-chain, moving from orderbooks to pooled UP/DOWN rounds with five-minute cycles. In a closed beta with 100 waitlist users, 100% understood the mechanics by round two and time to first action dropped from ~10s to under 2–4s. I also designed the institutional waitlist landing that turned 40K+ organic followers into 15,000+ sign-ups at 37.5% conversion with zero paid spend.`;
+    return `At Hedgehog I redesigned how people predict on-chain, moving from orderbooks to pooled UP/DOWN rounds with five-minute cycles. In a closed beta with 100 waitlist users, 100% understood the mechanics by round two and time to first action dropped from ~10s to under 2-4s. I also designed the institutional waitlist landing that turned 40K+ organic followers into 15,000+ sign-ups at 37.5% conversion with zero paid spend.`;
   }
   if (has('transparent', 'market maker', 'liquidity', 'b2b', 'dashboard')) {
     return `At Transparent.space I'm Founding Product Designer. I built a B2B dashboard from zero that cuts cross-checking from ~20 minutes to under 30 seconds per data point, with binary SLA, liquidity over time, and neutral Market Maker comparison. Task completion climbed from 61% to 88%, validated with Worldchain and Kraken.`;
@@ -112,10 +112,10 @@ function fallbackReply(userText = '', quote = '', language = 'en') {
     return `Petrobras Saúde isn't in my current featured portfolio, but I'm happy to discuss healthcare work in detail. My featured case is Unimed Seguros: trust-first telemedicine for 40K+ beneficiaries with strong retention and no-show metrics during COVID.`;
   }
   if (has('web3', 'defi', 'crypto', 'blockchain', 'on-chain', 'onchain')) {
-    return `Web3/DeFi is a big part of my work — Hedgehog and Transparent.space, plus hackathon wins at ETHSamba 2023, Blockchain Rio 2024 (Ripio) and 2025 (BASE). I'm good at translating dense, technical systems into something people can actually use.`;
+    return `Web3/DeFi is a big part of my work: Hedgehog and Transparent.space, plus hackathon wins at ETHSamba 2023, Blockchain Rio 2024 (Ripio) and 2025 (BASE). I'm good at translating dense, technical systems into something people can actually use.`;
   }
   if (has('approach', 'process', 'philosophy', 'unique', 'different', 'how do you', 'balance', 'strategy')) {
-    return `I don't just design interfaces — I structure products. I start from the real problem and the system behind it, then turn complexity into something clear and usable, balancing strategy with craft from discovery to hand-off. My art-direction roots keep the work visually sharp.`;
+    return `I don't just design interfaces. I structure products. I start from the real problem and the system behind it, then turn complexity into something clear and usable, balancing strategy with craft from discovery to hand-off. My art-direction roots keep the work visually sharp.`;
   }
   if (has('project', 'work', 'portfolio', 'case', 'experience', 'done')) {
     return `Featured work: Hedgehog prediction market (product + waitlist), Transparent.space (B2B market-maker dashboard), and Unimed Seguros (trust-first telemedicine). Side Quests includes Picnic, AURA, and NØRA. Want detail on any one of them?`;

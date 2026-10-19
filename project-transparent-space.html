@@ -24,7 +24,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;500;600;700;800&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20261016b">
+    <link rel="stylesheet" href="styles.css?v=20261019b">
 
     
     <script>
@@ -109,30 +109,31 @@
                 <h1>A penalty decision was taking twenty minutes of cross-checking.</h1>
                 <p class="story-dek">I designed the monitoring product so an operator could see whether a market maker was in compliance, on one screen.</p>
                 <dl class="story-meta">
-                    <div><dt>Role</dt><dd>Founding Product Designer</dd></div>
-                    <div><dt>Timeline</dt><dd>About 6 months · 2025–2026</dd></div>
+                    <div><dt>Role</dt><dd>Founding Product Designer · sole</dd></div>
+                    <div><dt>Timeline</dt><dd>About 6 months · 2025-2026</dd></div>
                     <div><dt>Scope</dt><dd>Product design and interface</dd></div>
                 </dl>
             </header>
         <section id="overview" class="case-section">
             <p class="story-label">Overview</p>
             <h2>Institutions hire market makers. Then they have to prove the work.</h2>
-            <div class="story-prose"><p>Web3 institutions depend on market makers for liquidity. Evaluating whether that maker actually performed is surprisingly hard.</p></div>
-<div class="story-prose"><p>Tools such as Dune and DeFiLlama are expensive, split across products, and sometimes cannot index the exact field a contract cares about. When the decision is a contractual penalty, partial data is not good enough.</p></div>
+            <div class="story-prose story-prose--lead">
+                <p>Web3 institutions depend on market makers for liquidity, but evaluating whether that maker actually performed is hard. Tools such as Dune and DeFiLlama are expensive, split across products, and sometimes cannot index the exact field a contract cares about. When the decision is a contractual penalty, partial data is not good enough.</p>
+                <p>I led the product design alone as founding designer. I made and approved the interface decisions, and discussed with the CEO and engineering when the product call needed shared context.</p>
+            </div>
+            <div class="story-stats"><div class="story-stat"><strong>61% → 88%</strong><span>Task completion across rounds with 4 operators</span></div><div class="story-stat"><strong>20m → &lt;30s</strong><span>Client-reported time to check a point</span></div><div class="story-stat"><strong>Acquired</strong><span>Worldchain and Kraken, in production</span></div></div>
 <figure class="story-figure"><video src="Transparent.space Products/New imgs/granuled.mov" autoplay muted loop playsinline preload="metadata" aria-label="Drill-down in the dashboard"></video><figcaption class="story-caption">The product keeps the decision on one screen and lets depth open without losing the place.</figcaption></figure>
         </section>
         <section id="problem" class="case-section">
             <p class="story-label">Problem</p>
             <h2>The number on screen was not the question being asked.</h2>
-            <div class="story-prose"><p>Two groups share the data and want opposite things. Funds, protocols, and exchanges need to decide quickly without a technical background. Market-maker teams need to prove they met the SLA.</p></div>
-<div class="story-prose"><p>In the middle is a costly call: if a maker steps outside the contract, someone has to decide whether a penalty applies. Getting it wrong costs money on both sides.</p></div>
+            <div class="story-prose"><p>Two groups share the data and want opposite things. Funds, protocols, and exchanges need to decide quickly without a technical background. Market-maker teams need to prove they met the SLA. In the middle is a costly call: if a maker steps outside the contract, someone has to decide whether a penalty applies. Getting it wrong costs money on both sides.</p></div>
 <figure class="story-figure"><img src="Transparent.space Products/New imgs/Discovery research.png" alt="Fragmented market-maker data" loading="lazy" decoding="async"><figcaption class="story-caption">The work used to live across tools. The decision could not.</figcaption></figure>
         </section>
         <section id="opportunity" class="case-section">
             <p class="story-label">Opportunity</p>
             <h2>Unify the check, at a fair price, against the actual contract.</h2>
-            <div class="story-prose"><p>The product manager had years as a data analyst, so the pain was firsthand. The CEO had already been living with the problem. I used that context, then benchmarked how Dune, DeFiLlama, Bloomberg Terminal, Grafana, and Datadog handle dense financial data.</p></div>
-<div class="story-prose"><p>The gap was consistent: expensive tools, fragmented data, and contracts that could not be indexed as written. The product had to put a personalized contract on one platform.</p></div>
+            <div class="story-prose"><p>The product manager had years as a data analyst, so the pain was firsthand. The CEO had already been living with the problem. I used that context, then benchmarked how Dune, DeFiLlama, Bloomberg Terminal, Grafana, and Datadog handle dense financial data. The gap was consistent: expensive tools, fragmented data, and contracts that could not be indexed as written. The product had to put a personalized contract on one platform.</p></div>
         </section>
         <section id="solution" class="case-section">
             <p class="story-label">Solution</p>
@@ -153,14 +154,12 @@
         <section id="results" class="case-section">
             <p class="story-label">Results</p>
             <h2>Faster checks, with the caveat on how they were measured.</h2>
-            <div class="story-stats"><div class="story-stat"><strong>61% → 88%</strong><span>Task completion across rounds with 4 operators</span></div><div class="story-stat"><strong>20m → <30s</strong><span>Client-reported time to check a point. Not a controlled study of every user.</span></div><div class="story-stat"><strong>Acquired</strong><span>Worldchain and Kraken, the production clients</span></div></div>
-<div class="story-prose"><p>Worldchain and Kraken acquired the product and run it in production, with personalized contracts across multiple pools.</p></div>
+            <div class="story-prose"><p>The time and completion numbers above came from rounds with four operators and from client-reported timing, not a controlled study of every user. Worldchain and Kraken acquired the product and run it in production, with personalized contracts across multiple pools.</p></div>
         </section>
         <section id="reflection" class="case-section">
             <p class="story-label">Reflection</p>
             <h2>The product answers “in compliance right now.” It does not yet answer “tomorrow.”</h2>
-            <div class="story-prose"><p>The next layer is a predictive alert before a threshold breaks, and a neutral comparison of up to three market makers on one view, without the leaderboard bias we removed on purpose.</p></div>
-<div class="story-prose"><p>In institutional products, restraint is the strategy. A cleaner UI on top of the same pile of metrics only relocates the confusion.</p></div>
+            <div class="story-prose"><p>The next layer is a predictive alert before a threshold breaks, and a neutral comparison of up to three market makers on one view, without the leaderboard bias we removed on purpose. In institutional products, restraint is the strategy. A cleaner UI on top of the same pile of metrics only relocates the confusion.</p></div>
         </section>
         </div>
     </article>
@@ -178,7 +177,7 @@
 
     <script src="posthog-config.js?v=20260782"></script>
     <script src="posthog.js?v=20260782"></script>
-    <script src="script.js?v=20261012o"></script>
+    <script src="script.js?v=20261019b"></script>
 
     <!-- Vercel Web Analytics (free) -->
     <script>
