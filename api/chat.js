@@ -22,10 +22,10 @@ RECOGNITION
 - Hackathon wins: ETHSamba 2023 (Ethereum), Blockchain Rio 2024 (Ripio), Blockchain Rio 2025 (BASE).
 
 SELECTED WORK
-1) Hedgehog Prediction Market, Product Designer (2024-2026). Turning prediction curiosity into participation: replaced order-matching/orderbooks with pooled UP/DOWN rounds and five-minute cycles. Closed beta with 100 waitlist users; 100% understood mechanics by round two. Time to first action dropped from ~10s to under 2-4s. 120+ components; ~35% faster handoff.
+1) Hedgehog Prediction Market, Product Designer, design & concept lead (2024-2026). Led design and concept alone; aligned with engineering and C-level. Replaced orderbooks with pooled UP/DOWN rounds and five-minute cycles. Closed beta with 100 waitlist users; 100% understood mechanics by round two. Time to first action dropped from ~10s to under 2-4s. 120+ components; ~35% faster handoff.
 2) Hedgehog Waitlist & Landing, Product Designer (2024-2026). Credibility before the product existed: institutional waitlist with a three-layer funnel (understand → trust → act) and live community on X, Telegram, and Discord. 15,000+ sign-ups at 37.5% conversion with zero paid traffic; 40K+ organic community.
-3) Transparent.space Founding Product Designer (2025-2026). From twenty minutes of cross-checking to thirty seconds of certainty: unified B2B dashboard with binary SLA, liquidity over time, and neutral Market Maker comparison. Task completion 61% → 88%; ~20 min → under 30s to check a data point. Validated with Worldchain and Kraken.
-4) Unimed Seguros Product Designer (2021-2022). In healthcare, the barrier is trust, not usability: trust-first telemedicine for 40K+ beneficiaries with four pillars, dedicated onboarding for 60+ users, and 24/7 in-app support during COVID. ~50K consultations/month; <30% no-show; 80%+ in-app chat retention.
+3) Transparent.space Founding Product Designer with engineering (2025-2026). Led concept, product core, and all visual/UI design with an engineer colleague and input from CEO/manager. Unified B2B dashboard with binary SLA, liquidity over time, and neutral Market Maker comparison. Task completion 61% → 88%; ~20 min → under 30s to check a data point. Validated with Worldchain and Kraken.
+4) Unimed Seguros Product Designer with Karla Granadeiro (2021-2022). Co-shaped the concept for a white-label telemedicine product also shipped to other companies; owned Unimed flows, onboarding, and interface. Trust-first care for 40K+ beneficiaries during COVID. ~50K consultations/month; <30% no-show; 80%+ in-app chat retention.
 - Side Quests & other work: Picnic (brand/visual identity), AURA, NØRA, Agent Arena, and more.
 
 SERVICES
@@ -76,13 +76,13 @@ function fallbackReply(userText = '', quote = '', language = 'en') {
       return `Sim, estou aberto a projetos selecionados e disponível para trabalho remoto no mundo todo. O melhor caminho é escrever para fonsecaa.design@gmail.com.`;
     }
     if (has('hedgehog', 'previsão', 'previsao', 'orderbook', 'waitlist', 'lista de espera')) {
-      return `Na Hedgehog, substituí orderbooks por rodadas agrupadas de ALTA/BAIXA. No beta fechado com 100 pessoas, 100% entenderam a mecânica até a segunda rodada, e o tempo para a primeira ação caiu de cerca de 10s para menos de 2-4s.`;
+      return `Na Hedgehog, liderei design e conceito sozinho, alinhado com engenharia e C-level, e substituí orderbooks por rodadas agrupadas de ALTA/BAIXA. No beta fechado com 100 pessoas, 100% entenderam a mecânica até a segunda rodada, e o tempo para a primeira ação caiu de cerca de 10s para menos de 2-4s.`;
     }
     if (has('transparent', 'market maker', 'formador de mercado', 'liquidez', 'dashboard', 'painel')) {
-      return `Na Transparent.space, criei do zero um dashboard B2B que reduziu verificações de cerca de 20 minutos para menos de 30 segundos por dado. A conclusão de tarefas subiu de 61% para 88%, com validação de Worldchain e Kraken.`;
+      return `Na Transparent.space, liderei o conceito, o núcleo do produto e todo o visual/UI com um colega de engenharia e input do CEO e do manager. O dashboard B2B reduziu verificações de cerca de 20 minutos para menos de 30 segundos por dado. A conclusão de tarefas subiu de 61% para 88%, com validação de Worldchain e Kraken.`;
     }
     if (has('unimed', 'saúde', 'saude', 'telemedicina', 'seguro')) {
-      return `Na Unimed Seguros, liderei um app de telemedicina centrado em confiança para mais de 40 mil beneficiários durante a COVID. O produto chegou a cerca de 50 mil consultas por mês, menos de 30% de ausência e retenção superior a 80% no chat.`;
+      return `Na Unimed Seguros, trabalhei com Karla Granadeiro no conceito de um produto white-label de telemedicina também feito para outras empresas. Cuidei dos fluxos, onboarding e interface dessa versão, para mais de 40 mil beneficiários durante a COVID: cerca de 50 mil consultas por mês, menos de 30% de ausência e retenção superior a 80% no chat.`;
     }
     if (has('processo', 'abordagem', 'estratégia', 'estrategia', 'como você', 'como voce')) {
       return `Eu não desenho apenas interfaces: estruturo produtos. Primeiro entendo o problema e o sistema por trás dele; depois transformo a complexidade em uma experiência clara, útil e visualmente forte.`;
@@ -100,13 +100,13 @@ function fallbackReply(userText = '', quote = '', language = 'en') {
     return `Yes. I'm open to select projects and available for remote work worldwide. The best way to start is an email to fonsecaa.design@gmail.com, or connect on LinkedIn (/in/maths-fonseca).`;
   }
   if (has('hedgehog', 'prediction', 'orderbook', 'waitlist')) {
-    return `At Hedgehog I redesigned how people predict on-chain, moving from orderbooks to pooled UP/DOWN rounds with five-minute cycles. In a closed beta with 100 waitlist users, 100% understood the mechanics by round two and time to first action dropped from ~10s to under 2-4s. I also designed the institutional waitlist landing that turned 40K+ organic followers into 15,000+ sign-ups at 37.5% conversion with zero paid spend.`;
+    return `At Hedgehog I led design and concept alone, aligned with engineering and C-level, and redesigned how people predict on-chain: orderbooks became pooled UP/DOWN rounds with five-minute cycles. In a closed beta with 100 waitlist users, 100% understood the mechanics by round two and time to first action dropped from ~10s to under 2-4s. I also designed the institutional waitlist landing that turned 40K+ organic followers into 15,000+ sign-ups at 37.5% conversion with zero paid spend.`;
   }
   if (has('transparent', 'market maker', 'liquidity', 'b2b', 'dashboard')) {
-    return `At Transparent.space I'm Founding Product Designer. I built a B2B dashboard from zero that cuts cross-checking from ~20 minutes to under 30 seconds per data point, with binary SLA, liquidity over time, and neutral Market Maker comparison. Task completion climbed from 61% to 88%, validated with Worldchain and Kraken.`;
+    return `At Transparent.space I was Founding Product Designer. I led the concept, product core, and all visual/UI design with an engineer colleague and input from the CEO and manager. The B2B dashboard cuts cross-checking from ~20 minutes to under 30 seconds per data point. Task completion climbed from 61% to 88%, validated with Worldchain and Kraken.`;
   }
   if (has('unimed', 'healthcare', 'health', 'insurance', 'telemedicine')) {
-    return `At Unimed Seguros I led a trust-first telemedicine app for 40K+ beneficiaries during COVID: four pillars, dedicated onboarding for 60+ users, and 24/7 in-app support. The result was ~50K consultations per month with under 30% no-show and 80%+ in-app chat retention.`;
+    return `At Unimed Seguros I worked with Karla Granadeiro on the concept for a white-label telemedicine product we also shipped to other companies. I owned the Unimed flows, onboarding, and interface for 40K+ beneficiaries during COVID: ~50K consultations per month, under 30% no-show, and 80%+ in-app chat retention.`;
   }
   if (has('petrobras')) {
     return `Petrobras Saúde isn't in my current featured portfolio, but I'm happy to discuss healthcare work in detail. My featured case is Unimed Seguros: trust-first telemedicine for 40K+ beneficiaries with strong retention and no-show metrics during COVID.`;

@@ -26,10 +26,10 @@
 
 ## Selected work
 
-- Hedgehog prediction market (product): https://fonseca.studio/project-hedgehog-product.html: pooled UP/DOWN rounds; closed beta 100 users, 100% understood mechanics by round two; time to first action ~10s → under 2-4s
+- Hedgehog prediction market (product): https://fonseca.studio/project-hedgehog-product.html: design & concept lead alone, aligned with eng and C-level; pooled UP/DOWN rounds; closed beta 100 users, 100% understood mechanics by round two; time to first action ~10s → under 2-4s
 - Hedgehog waitlist: https://fonseca.studio/project-hedgehog.html: 15,000+ sign-ups, 37.5% conversion, zero paid traffic, 40K+ organic community
-- Transparent.space: https://fonseca.studio/project-transparent-space.html: founding product designer; B2B dashboard; task completion 61% → 88%; ~20 min → under 30s per data point; Worldchain & Kraken
-- Unimed Seguros: https://fonseca.studio/project-unimed-seguros.html: telemedicine for 40K+ beneficiaries; ~50K consultations/month; under 30% no-show; 80%+ chat retention
+- Transparent.space: https://fonseca.studio/project-transparent-space.html: founding product designer with engineering; led concept, product core, visual/UI; B2B dashboard; task completion 61% → 88%; ~20 min → under 30s per data point; Worldchain & Kraken
+- Unimed Seguros: https://fonseca.studio/project-unimed-seguros.html: with Karla Granadeiro on concept; white-label telemedicine also for other companies; Unimed flows/UI; 40K+ beneficiaries; ~50K consultations/month; under 30% no-show; 80%+ chat retention
 
 ## Recognition
 
